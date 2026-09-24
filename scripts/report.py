@@ -8,8 +8,10 @@ from collections import defaultdict
 
 from scripts.common import Context, Log, now, read_json
 
-ORDER = ["validate_sources", "check_created", "check_book", "verify_answers", "render_figs", "build", "check_layout"]
-NAMES = {"validate_sources": "원천 검증", "check_created": "창작 검문", "check_book": "교재 규칙",
+ORDER = ["pdf_pages", "validate_sources", "check_created", "check_source", "curate", "check_book", "verify_answers",
+         "render_figs", "build", "check_layout"]
+NAMES = {"pdf_pages": "PDF 쪽 변환", "validate_sources": "원천 검증", "check_created": "창작 검문",
+         "check_source": "교재 판독 검사", "curate": "큐레이션", "check_book": "교재 규칙",
          "verify_answers": "정답 검산", "render_figs": "그림", "build": "조판", "check_layout": "판면 점검"}
 
 
@@ -50,15 +52,17 @@ def run(ctx: Context) -> Log:
     if cb:
         L += ["## 교재 구성", "",
               f"- DAY {cb.get('days')}개 · 테마 {cb.get('themes')}개 · 문항 {cb.get('problems')}개 "
-              f"(기출 {cb.get('past')} · 창작 {cb.get('created')}, 기출 비율 {fmt_ratio(cb.get('past_ratio'))})",
+              f"(교재 {cb.get('textbook', 0)} · 기출 {cb.get('past')} · 창작 {cb.get('created')}, "
+              f"기출 비율 {fmt_ratio(cb.get('past_ratio'))})",
               f"- 고난도 번호 기출: {cb.get('hard_numbers')}문항", ""]
         ts = cb.get("theme_stats") or {}
         if ts:
-            L += ["| 테마 | 이름 | DAY | 문항 | 기출 | 창작 | 창작 비중 |", "|---|---|---|---|---|---|---|"]
+            L += ["| 테마 | 이름 | DAY | 문항 | 교재 | 기출 | 창작 | 창작 비중 |", "|---|---|---|---|---|---|---|---|"]
             for th, s in ts.items():
                 name = ctx.themes.get(th, {}).get("name", "")
                 share = s["created"] / s["problems"] if s["problems"] else 0
-                L.append(f"| {th} | {name} | {s['days']} | {s['problems']} | {s['past']} | {s['created']} | {share:.0%} |")
+                L.append(f"| {th} | {name} | {s['days']} | {s['problems']} | {s.get('textbook', 0)} | {s['past']} | "
+                         f"{s['created']} | {share:.0%} |")
             L.append("")
         for key, title in (("behavior", "행동 영역"), ("difficulty", "난도(연습 문항)")):
             dist = cb.get(key) or {}
@@ -67,6 +71,22 @@ def run(ctx: Context) -> Log:
                 L.append(f"- {title}: " + " · ".join(f"{k} {v}({v / tot:.0%})" for k, v in sorted(dist.items(), key=lambda kv: -kv[1])))
         if cb.get("reused"):
             L.append("- 여러 번 쓴 문항: " + ", ".join(f"{k}×{v}" for k, v in cb["reused"].items()))
+        L.append("")
+
+    # ---- 교재 판독·큐레이션
+    cs = (logs.get("check_source") or {}).get("stats") or {}
+    if cs and cs.get("problems"):
+        L += ["## 교재 판독", ""]
+        for b in cs.get("books") or []:
+            L.append(f"- {b['id']} {b['title']}: 문항 {b['problems']}개" + (f", PDF {b['pages']}쪽" if b.get("pages") else ""))
+        L.append(f"- 검사 통과 {cs.get('verified')} · 미통과 {cs.get('draft')}")
+        bt = cs.get("by_theme") or {}
+        if bt:
+            L.append("- 테마별: " + ", ".join(f"{k} {len(v)}" for k, v in bt.items()))
+        cu = (logs.get("curate") or {}).get("stats") or {}
+        if cu:
+            L.append(f"- 큐레이션 초안: 테마 {cu.get('themes')}개 · DAY {cu.get('days')}개 · 문항 {cu.get('problems')}개 "
+                     f"→ `out/curation.md`, `out/plan.json`")
         L.append("")
 
     # ---- 창작 문제은행

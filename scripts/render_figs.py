@@ -13,7 +13,7 @@ import sympy
 from sympy.parsing.sympy_parser import (convert_xor, implicit_multiplication_application,
                                         parse_expr, standard_transformations)
 
-from scripts.common import Context, Log, content_hash, is_created_id
+from scripts.common import Context, Log, content_hash, is_created_id, is_textbook_id
 from scripts.schemas import validate
 
 X = sympy.Symbol("x", real=True)
@@ -376,6 +376,8 @@ def collect(ctx: Context) -> list[tuple[str, dict]]:
         for r in refs:
             if r and is_created_id(r) and r in ctx.created and ctx.created[r]["rec"].get("figure"):
                 out.append((r, ctx.created[r]["rec"]["figure"]))
+            if r and is_textbook_id(r) and r in ctx.source and ctx.source[r]["rec"].get("figure"):
+                out.append((r, ctx.source[r]["rec"]["figure"]))
     for ref, f in (book.get("figures") or {}).items():
         out.append((f"figures/{ref}", f))
     return out

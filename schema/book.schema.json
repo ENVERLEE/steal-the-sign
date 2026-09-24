@@ -20,7 +20,8 @@
   },
   "$defs": {
     "text": {"type": "string", "minLength": 1},
-    "ref": {"type": "string", "pattern": "^((M1|M2|PS)-\\d{6}|C-(M1|M2|PS)-\\d{2}-\\d{3})$"},
+    "ref": {"type": "string", "pattern": "^((M1|M2|PS)-\\d{6}|C-(M1|M2|PS)-\\d{2}-\\d{3}|T-[A-Z0-9]{1,8}-\\d{3})$",
+            "description": "기출 db id | 창작 C-… | 교재 T-…"},
     "pastref": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{6}$"},
     "day": {
       "type": "object",

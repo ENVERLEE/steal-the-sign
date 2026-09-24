@@ -13,6 +13,7 @@ import re
 from scripts import render_figs
 from scripts.check_book import day_refs
 from scripts.common import (CIRCLED, Context, Log, answer_display, choice_text, has_choices, is_created_id,
+                            is_textbook_id, kind_of,
                             launch_chromium, route_network, source_label, strip_tex, write_json)
 from scripts.template import WEEK_TOKEN, load
 from scripts.tex import Math, katex_css
@@ -68,20 +69,39 @@ class Model:
         return " · ".join(self.ctx.concepts[c]["name"] for c in ids if c in self.ctx.concepts)
 
     def source_of(self, ref, rec):
-        return "STEAL THE SIGN 창작" if is_created_id(ref) else source_label(rec)
+        if is_created_id(ref):
+            return "STEAL THE SIGN 창작"
+        if is_textbook_id(ref):
+            e = self.ctx.source[ref]
+            return f"{e['book'].get('title', '교재')} {rec['page']}쪽 {rec['number']}번"
+        return source_label(rec)
 
     def record(self, ref):
         if is_created_id(ref):
             return self.ctx.created[ref]["rec"]
+        if is_textbook_id(ref):
+            return self.ctx.source[ref]["rec"]
         return self.ctx.db[ref]
+
+    def solution_of(self, ref, rec):
+        return rec["solution"] if (is_created_id(ref) or is_textbook_id(ref)) else self.ctx.study[ref]
+
+    def points_of(self, ref, rec):
+        if is_textbook_id(ref):
+            return rec["points"]
+        return self.ctx.config["points"]["created" if is_created_id(ref) else "past"]
 
     # ---- 문항
     def question(self, ref, no, difficulty, where):
         rec = self.record(ref)
         fig = None
-        if is_created_id(ref):
+        if is_created_id(ref) or is_textbook_id(ref):
             if rec.get("figure"):
                 fig = self.svg(rec["figure"], where)
+            elif rec.get("figure_note"):
+                self.log.error(where, "교재 문항 그림 명세가 없어 메모로 대신함")
+                fig = ('<div style="border:1px dashed #111;padding:10px 14px;font-size:12.5px;max-width:420px">그림: '
+                       + self.r(rec["figure_note"]) + "</div>")
         else:
             spec = (self.ctx.book.get("figures") or {}).get(ref)
             if spec:
@@ -102,14 +122,14 @@ class Model:
             # 마지막 줄의 큰 수식(Σ·분수)이 .pad 아래로 몇 px 나가지 않도록 줄 상자를 아래로 조금 늘리는 받침
             "no2": two(no), "text": self.r(rec["question"]) + STRUT, "cond": self.r(rec.get("condition")) or None,
             "fig": fig, "choices": choices, "choices_class": cls,
-            "points": self.ctx.config["points"]["created" if is_created_id(ref) else "past"],
-            "source": H.escape(self.source_of(ref, rec)), "kind": "창작" if is_created_id(ref) else "기출",
+            "points": self.points_of(ref, rec),
+            "source": H.escape(self.source_of(ref, rec)), "kind": kind_of(ref),
             "difficulty": H.escape(difficulty or ""),
         }
 
     def solution_item(self, ref, no, notes, reuse_note):
         rec = self.record(ref)
-        sol = rec["solution"] if is_created_id(ref) else self.ctx.study[ref]
+        sol = self.solution_of(ref, rec)
         note = notes.get(ref) or {}
         sols = sol.get("solutions") or []
 
@@ -196,6 +216,8 @@ class Model:
             rec = self.record(ref)
             if is_created_id(ref):
                 sig, cids = rec["target"]["first_judgment"], rec["target"]["concept_ids"]
+            elif is_textbook_id(ref):
+                sig, cids = rec["first_judgment"], rec["solution"].get("concept_refs") or []
             else:
                 sig, cids = rec["first_judgment"], ctx.study[ref].get("concept_refs") or []
             rows.append({"no2": two(i), "signal": self.r(reuse[i - 1] or sig), "method": self.r(self.concept_names(cids))})
@@ -206,10 +228,12 @@ class Model:
         sols = [self.solution_item(ref, i, notes, reuse[i - 1]) for i, ref in enumerate(refs, 1)]
 
         n_created = sum(1 for r in refs[1:] if is_created_id(r))
+        n_text = sum(1 for r in refs[1:] if is_textbook_id(r))
+        mix = f"기출 {len(refs) - 1 - n_created - n_text} · 창작 {n_created}" + (f" · 교재 {n_text}" if n_text else "")
         corners = {
             "THE SIGN": H.escape(t["name"]),
             "FIRST PITCH": "예제 · " + H.escape(self.source_of(refs[0], self.record(refs[0]))),
-            "PRACTICE": f"연습 {len(refs) - 1}문항 · 기출 {len(refs) - 1 - n_created} · 창작 {n_created}",
+            "PRACTICE": f"연습 {len(refs) - 1}문항 · {mix}",
             "DUGOUT NOTE": "채점 기록과 나의 복기",
             "SIGN BOOK": "문항별 신호와 고른 방법 정리",
         }

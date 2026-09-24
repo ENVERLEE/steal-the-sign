@@ -11,8 +11,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts import (build, check_book, check_created, check_layout, render_figs, report,
-                     validate_sources, verify_answers)
+from scripts import (build, check_book, check_created, check_layout, check_source, curate, pdf_pages,
+                     render_figs, report, validate_sources, verify_answers)
 from scripts.common import ROOT, Context, launch_chromium, read_json, write_json
 from scripts.mathval import run_verify, same_value, tex_to_sympy
 from scripts.template import load as load_template
@@ -20,6 +20,7 @@ from scripts.tex import split_math
 
 SAMPLE_BOOK = ROOT / "samples" / "book.sample.json"
 SAMPLE_CREATED = ROOT / "samples" / "created"
+SAMPLE_SOURCE = ROOT / "samples" / "source"
 
 
 def browser_available() -> bool:
@@ -42,12 +43,14 @@ class Sandbox:
         self.dir = Path(tempfile.mkdtemp(prefix="sts-"))
         self.created = self.dir / "created"
         shutil.copytree(SAMPLE_CREATED, self.created)
+        self.source = self.dir / "source"
+        shutil.copytree(SAMPLE_SOURCE, self.source)
         self.book = self.dir / "book.json"
         write_json(self.book, book if book is not None else read_json(SAMPLE_BOOK))
         self.out = self.dir / "out"
 
     def ctx(self) -> Context:
-        return Context(book_path=self.book, created_dir=self.created, out_dir=self.out)
+        return Context(book_path=self.book, created_dir=self.created, out_dir=self.out, source_dir=self.source)
 
     def close(self):
         shutil.rmtree(self.dir, ignore_errors=True)
@@ -119,6 +122,7 @@ class TestCreated(unittest.TestCase):
             self.assertEqual(read_json(f)["status"], "verified")
 
     def test_detects_problems(self):
+        check_created.run(self.sb.ctx())  # 샘플 2문항을 먼저 통과시켜 검사 대기 한도(4)를 비운다
         src = read_json(SAMPLE_CREATED / "M1-01" / "C-M1-01-002.json")
         bad = {
             "C-M1-01-003": lambda r: r.update(answer="3", answer_value="5"),
@@ -165,6 +169,7 @@ class TestBook(unittest.TestCase):
         try:
             ctx = sb.ctx()
             check_created.run(ctx)
+            check_source.run(ctx)
             return check_book.run(sb.ctx())
         finally:
             sb.close()
@@ -172,7 +177,8 @@ class TestBook(unittest.TestCase):
     def test_sample_ok(self):
         log = self.run_checks(read_json(SAMPLE_BOOK))
         self.assertEqual(log.errors, [])
-        self.assertEqual(log.stats["problems"], 10)
+        self.assertEqual(log.stats["problems"], 12)
+        self.assertEqual(log.stats["textbook"], 3)
 
     def test_rules(self):
         book = read_json(SAMPLE_BOOK)
@@ -191,7 +197,74 @@ class TestBook(unittest.TestCase):
         book["days"] = book["days"][:1]
         msgs = " | ".join(e["msg"] for e in self.run_checks(book).errors)
         self.assertIn("DAY 1개", msgs)
-        self.assertIn("문항 4개", msgs)
+        self.assertIn("문항 5개", msgs)
+
+
+class TestTextbook(unittest.TestCase):
+    def setUp(self):
+        self.sb = Sandbox()
+
+    def tearDown(self):
+        self.sb.close()
+
+    def test_source_passes(self):
+        log = check_source.run(self.sb.ctx())
+        self.assertEqual(log.errors, [])
+        self.assertEqual(log.stats["verified"], 3)
+
+    def test_source_detects(self):
+        f = self.sb.source / "SMP.json"
+        data = read_json(f)
+        data["problems"][0]["answer_value"] = "1"           # verify와 불일치
+        data["problems"][1]["similar"] = ["M1-999999"]       # 없는 기출
+        data["problems"][2]["theme"] = "M2-01"               # 과목 불일치
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx())
+        by = {e["where"]: e["msg"] for e in log.errors}
+        self.assertIn("정답", by["T-SMP-001"])
+        self.assertIn("M1-999999", by["T-SMP-002"])
+        self.assertIn("과목", by["T-SMP-003"])
+
+    def test_curate_plan(self):
+        ctx = self.sb.ctx()
+        check_created.run(ctx)
+        check_source.run(ctx)
+        log = curate.run(self.sb.ctx())
+        plan = read_json(self.sb.out / "plan.json")["themes"][0]
+        self.assertEqual(plan["theme"], "M1-01")
+        self.assertEqual([d["first_pitch"] for d in plan["days"]], ["T-SMP-001", "T-SMP-002", "T-SMP-003"])
+        self.assertGreaterEqual(plan["counts"]["past"], 5)
+        self.assertTrue(8 <= plan["counts"]["total"] <= 13, plan["counts"])
+        self.assertIn("M1-230911", plan["days"][0]["practice"] + plan["days"][0]["scouting"])
+        self.assertTrue((self.sb.out / "curation.md").exists())
+        self.assertEqual(log.errors, [])
+
+    def test_book_textbook_rules(self):
+        book = read_json(SAMPLE_BOOK)
+        book["days"][1]["practice"] = [p for p in book["days"][1]["practice"] if p["ref"] != "T-SMP-003"]
+        book["days"][1]["practice"].append({"ref": "M1-220610", "difficulty": "기본 적용"})
+        write_json(self.sb.book, book)
+        ctx = self.sb.ctx()
+        check_created.run(ctx)
+        check_source.run(ctx)
+        log = check_book.run(self.sb.ctx())
+        self.assertEqual(log.errors, [])
+        self.assertTrue(any("T-SMP-003" in w["msg"] for w in log.warnings))
+
+    @unittest.skipUnless(HAS_BROWSER, "Chromium 없음")
+    def test_pdf_pages(self):
+        from playwright.sync_api import sync_playwright
+        pdf = self.sb.dir / "book.pdf"
+        with sync_playwright() as p:
+            b = launch_chromium(p)
+            pg = b.new_page()
+            pg.set_content("<h1>1</h1><div style='page-break-after:always'></div><h1>2</h1>")
+            pg.pdf(path=str(pdf), format="A4")
+            b.close()
+        log = pdf_pages.run(self.sb.ctx(), pdf=str(pdf), book_id="smp")
+        self.assertEqual(log.errors, [])
+        self.assertEqual(log.stats["pages"], 2)
+        self.assertTrue((self.sb.source / "SMP" / "pages" / "p002.png").exists())
 
 
 @unittest.skipUnless(HAS_BROWSER, "Chromium 없음")
@@ -200,7 +273,7 @@ class TestBuild(unittest.TestCase):
         sb = Sandbox()
         try:
             ctx = sb.ctx()
-            for mod in (validate_sources, check_created):
+            for mod in (validate_sources, check_created, check_source):
                 self.assertEqual(mod.run(ctx).errors, [], mod.__name__)
             ctx = sb.ctx()
             for mod in (check_book, verify_answers, render_figs, build, check_layout):

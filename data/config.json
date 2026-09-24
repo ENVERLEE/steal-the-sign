@@ -61,6 +61,12 @@
     "verify_timeout_sec": 30
   },
 
+  "textbook": {
+    "examples_per_theme": [2, 3],
+    "similar_max": 8,
+    "pages_scale": 2.0
+  },
+
   "difficulty_labels": ["기본 적용", "조건 변형", "복합 사고", "고난도"],
   "behaviors": ["계산", "이해", "추론", "문제해결"],
 
@@ -82,6 +88,7 @@
     "template": "data/STS_template.html",
     "book": "work/book.json",
     "created": "work/created",
+    "source": "work/source",
     "out": "out",
     "katex": "vendor/katex"
   }

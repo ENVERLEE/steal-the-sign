@@ -1,0 +1,160 @@
+{
+  "book": {
+    "id": "SMP",
+    "title": "샘플 교재",
+    "pdf": "sample.pdf",
+    "note": "테스트용 가상 교재"
+  },
+  "problems": [
+    {
+      "id": "T-SMP-001",
+      "page": 1,
+      "number": "1",
+      "subject": "수학Ⅰ",
+      "theme": "M1-01",
+      "question": "$-27$의 세제곱근 중 실수인 것을 $a$, $16$의 네제곱근 중 양수인 것을 $b$라 할 때, $a+b$의 값은?",
+      "condition": null,
+      "choices": [
+        "$-5$",
+        "$-1$",
+        "$1$",
+        "$5$",
+        "$7$"
+      ],
+      "answer": "2",
+      "answer_value": "-1",
+      "answer_source": "교재 정답",
+      "points": 3,
+      "figure": null,
+      "first_judgment": "세제곱근(홀수)은 실수 하나, 네제곱근(짝수)은 $\\pm$ 쌍 중 양수 하나를 고른다.",
+      "behavior": "계산",
+      "difficulty": "기본 적용",
+      "similar": [
+        "M1-230911",
+        "M1-220621"
+      ],
+      "solution": {
+        "concept_refs": [
+          "수학Ⅰ-01-C1"
+        ],
+        "guide": "$n$제곱근 중 실수는 $x^n=a$의 실근이다. 홀수 $n$은 하나, 짝수 $n$은 양수 $a$에 대해 $\\pm$ 한 쌍.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 홀짝으로 바로",
+            "steps": [
+              {
+                "label": "$a$",
+                "body": "$x^3=-27$의 실근은 $-3$ 하나 → $a=-3$"
+              },
+              {
+                "label": "$b$",
+                "body": "$x^4=16$의 실근 $\\pm2$ 중 양수 → $b=2$"
+              },
+              {
+                "label": "합",
+                "body": "$a+b=-1$ ②"
+              }
+            ]
+          }
+        ],
+        "supplement": "짝수 제곱근에서 '양수인 것'이라는 조건을 놓치면 $b=\\pm2$로 두 값을 모두 더하는 실수가 나온다.",
+        "skill_point": "홀수 제곱근은 하나, 짝수 제곱근은 $\\pm$ 쌍."
+      },
+      "verify": "def skill():\n    return -3 + 2\n\ndef standard():\n    x = Symbol('x')\n    a = [r for r in real_roots(x**3 + 27)][0]\n    b = max(real_roots(x**4 - 16))\n    return a + b\n"
+    },
+    {
+      "id": "T-SMP-002",
+      "page": 1,
+      "number": "2",
+      "subject": "수학Ⅰ",
+      "theme": "M1-01",
+      "question": "$\\log_3 4\\times\\log_2 9$의 값을 구하시오.",
+      "condition": null,
+      "choices": null,
+      "answer": "4",
+      "answer_source": "교재 정답",
+      "points": 3,
+      "figure": null,
+      "first_judgment": "밑과 진수를 서로 바꾼 로그의 곱이므로 밑 변환으로 $\\log_a b\\times\\log_b a=1$ 꼴을 만든다.",
+      "behavior": "계산",
+      "difficulty": "기본 적용",
+      "similar": [
+        "M1-270610",
+        "M1-241109"
+      ],
+      "solution": {
+        "concept_refs": [
+          "수학Ⅰ-02-C1"
+        ],
+        "guide": "지수를 앞으로 빼면 $\\log_3 2$와 $\\log_2 3$의 곱이 남는다.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 지수 빼고 역수 곱",
+            "steps": [
+              {
+                "label": "정리",
+                "body": "$\\log_3 4\\times\\log_2 9=2\\log_3 2\\times 2\\log_2 3$"
+              },
+              {
+                "label": "역수",
+                "body": "$\\log_3 2\\times\\log_2 3=1$이므로 값은 $4$"
+              }
+            ]
+          }
+        ],
+        "supplement": "밑 변환 공식으로 모두 상용로그로 바꿔도 되지만, 역수 관계를 보면 한 줄이다.",
+        "skill_point": "$\\log_a b\\times\\log_b a=1$ — 밑과 진수가 뒤바뀐 곱은 1."
+      },
+      "verify": "def skill():\n    return 2*2\n\ndef standard():\n    return nsimplify(simplify(log(4, 3)*log(9, 2)))\n"
+    },
+    {
+      "id": "T-SMP-003",
+      "page": 2,
+      "number": "3",
+      "subject": "수학Ⅰ",
+      "theme": "M1-01",
+      "question": "$x$에 대한 방정식 $\\log_2(x+1)+\\log_2(x-1)=3$의 해를 구하시오.",
+      "condition": null,
+      "choices": null,
+      "answer": "3",
+      "answer_source": "교재 정답",
+      "points": 3,
+      "figure": null,
+      "first_judgment": "진수 조건 $x>1$을 먼저 적고, 로그의 합을 하나로 합쳐 $x^2-1=8$로 바꾼다.",
+      "behavior": "계산",
+      "difficulty": "조건 변형",
+      "similar": [
+        "M1-250614",
+        "M1-220610"
+      ],
+      "solution": {
+        "concept_refs": [
+          "수학Ⅰ-05-C1"
+        ],
+        "guide": "로그 방정식은 진수 조건을 먼저 적고, 같은 밑의 로그를 하나로 합쳐 진수를 비교한다.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 진수 조건 먼저",
+            "steps": [
+              {
+                "label": "진수 조건",
+                "body": "$x+1>0$, $x-1>0$ → $x>1$"
+              },
+              {
+                "label": "합치기",
+                "body": "$\\log_2(x^2-1)=3$ → $x^2-1=8$ → $x=\\pm3$"
+              },
+              {
+                "label": "조건 확인",
+                "body": "$x>1$이므로 $x=3$"
+              }
+            ]
+          }
+        ],
+        "supplement": "진수 조건을 나중에 확인하면 $x=-3$을 답으로 남기는 실수가 생긴다.",
+        "skill_point": "로그 방정식은 진수 조건부터."
+      },
+      "verify": "def skill():\n    return 3\n\ndef standard():\n    x = Symbol('x', real=True)\n    sols = [s for s in solve(Eq(x**2 - 1, 8), x) if s > 1]\n    return sols[0]\n\ndef unique():\n    x = Symbol('x', real=True)\n    return [s for s in solve(Eq(x**2 - 1, 8), x) if s + 1 > 0 and s - 1 > 0]\n"
+    }
+  ]
+}

@@ -3,8 +3,9 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 
+from scripts import check_source
 from scripts.check_created import banned_hits, body_hash
-from scripts.common import Context, Log, is_created_id
+from scripts.common import Context, Log, is_created_id, is_textbook_id
 from scripts.schemas import validate
 
 SKIP_KEYS = {"ref", "theme", "verify", "concept_ids", "difficulty"}
@@ -60,7 +61,8 @@ def run(ctx: Context) -> Log:
         prev = th
 
     uses = Counter()
-    theme_stats = defaultdict(lambda: {"days": 0, "problems": 0, "past": 0, "created": 0})
+    theme_stats = defaultdict(lambda: {"days": 0, "problems": 0, "past": 0, "created": 0, "textbook": 0})
+    tb_examples = defaultdict(int)
     behaviors = Counter()
     difficulties = Counter()
     hard = 0
@@ -99,6 +101,25 @@ def run(ctx: Context) -> Log:
                     log.error(where, "검문을 통과하지 않은 창작 (python run.py created)")
                 if rec.get("theme") != th and not reuse_notes.get(ref):
                     log.error(where, f"다른 테마({rec.get('theme')}) 창작을 쓰려면 reuse_note 필요")
+                behaviors[rec.get("behavior")] += 1
+            elif is_textbook_id(ref):
+                ts["textbook"] += 1
+                e = ctx.source.get(ref)
+                if not e:
+                    log.error(where, "교재 판독 파일(work/source)에 없는 교재 id")
+                    continue
+                rec = e["rec"]
+                rv = rec.get("review") or {}
+                if rec.get("status") != "verified" or rv.get("hash") != check_source.body_hash(rec):
+                    log.error(where, "검사를 통과하지 않은 교재 문항 (python run.py source)")
+                if rec.get("subject") != t["subject"]:
+                    log.error(where, f"과목 {rec.get('subject')}이 테마 과목 {t['subject']}과 다름")
+                if rec.get("theme") != th and not reuse_notes.get(ref):
+                    log.error(where, f"다른 테마({rec.get('theme')})로 분류된 교재 문항을 쓰려면 reuse_note 필요")
+                if rec.get("figure_note") and not rec.get("figure"):
+                    log.error(where, "그림이 있는 교재 문항 — 판독 파일에 figure 명세 필요")
+                if i == 1:
+                    tb_examples[th] += 1
                 behaviors[rec.get("behavior")] += 1
             else:
                 ts["past"] += 1
@@ -161,6 +182,20 @@ def run(ctx: Context) -> Log:
         if not (d["strategy"].get("concept_ids") or d["strategy"].get("tools")):
             log.error(w, "STRATEGY 실전 개념이 비어 있음(concept_ids 또는 tools)")
 
+    # ---- 교재 문항: 이 책의 테마로 분류된 교재 문항은 빠짐없이, 예제 자리는 교재 문항 우선
+    lo, hi = cfg["textbook"]["examples_per_theme"]
+    for th, s in theme_stats.items():
+        tb_all = [rid for rid, e in ctx.source.items()
+                  if e["rec"].get("theme") == th and e["rec"].get("status") == "verified"]
+        if not tb_all:
+            continue
+        unused = [rid for rid in tb_all if uses[rid] == 0]
+        if unused:
+            log.warn(th, f"테마 {th}로 분류된 교재 문항 중 이 책에 안 쓴 것: {', '.join(unused)}")
+        need = min(len(tb_all), s["days"], hi)
+        if tb_examples[th] < need:
+            log.warn(th, f"교재 문항 예제 {tb_examples[th]}개 — 교재 문항을 예제로 {need}개 쓰는 것이 원칙")
+
     # ---- 사용 횟수
     mx = cfg["reuse"]["max_uses"]
     for ref, n in uses.items():
@@ -191,10 +226,11 @@ def run(ctx: Context) -> Log:
 
     past = sum(s["past"] for s in theme_stats.values())
     created = sum(s["created"] for s in theme_stats.values())
+    textbook = sum(s["textbook"] for s in theme_stats.values())
     log.stats = {
-        "days": len(days), "themes": len(theme_stats), "problems": past + created,
-        "past": past, "created": created,
-        "past_ratio": round(past / (past + created), 3) if past + created else None,
+        "days": len(days), "themes": len(theme_stats), "problems": past + created + textbook,
+        "past": past, "created": created, "textbook": textbook,
+        "past_ratio": round(past / (past + created + textbook), 3) if past + created + textbook else None,
         "hard_numbers": hard, "behavior": dict(behaviors), "difficulty": dict(difficulties),
         "theme_stats": {k: dict(v) for k, v in theme_stats.items()},
         "reused": {r: n for r, n in uses.items() if n > 1},

@@ -7,7 +7,7 @@
 교재의 목적: 테마별 **실전개념(스킬)을 드릴링**해서 그 테마는 무조건 맞히게 하는 자습용 교재. 해설은 과외받듯 이해되고 개념 보충이 되는 수준이어야 하며, 비효율적 단순계산 풀이를 지양한다.
 
 ## 역할 분담
-- **AI(채팅)**: 테마·문항 선별, 창작문항, 교재 글(개념·비유·분석·오답 진단), 그림 명세 → `work/created/`(창작 문제은행)와 `work/book.json`(교재 구성)
+- **AI(채팅)**: 올린 교재 PDF 판독(OCR)·테마 분류·유사 기출 선정·해설, 창작문항, 교재 글(개념·비유·분석·오답 진단), 그림 명세 → `work/source/`(교재 판독), `work/created/`(창작 문제은행), `work/book.json`(교재 구성)
 - **스크립트**: 원천 검증, 창작 검문, book.json 규칙 검사, 정답 검산, 그림 렌더링, 수식 조판, 템플릿 채우기, 판면 점검, 보고서
 - **사람 승인 단계 없음.** 스크립트 검문을 통과한 창작(`verified`)은 바로 교재에 쓸 수 있다.
 - **AI API 호출 금지**: 스크립트는 Claude API 등 어떤 AI API도 호출하지 않는다(API 키·SDK 의존성 추가 금지). AI 작업은 모두 채팅 세션에서 하고, 스크립트는 그 결과를 검사·조판만 한다.
@@ -17,26 +17,31 @@
 pip install -r requirements.txt
 python -m playwright install chromium        # 처음 한 번 (브라우저가 이미 있으면 생략 가능)
 
-python run.py                 # 전체: validate → created → check → verify → figs → build → layout → report
-python run.py check           # 검사만 (조판 없이)
+python run.py pages --pdf 교재.pdf --id KB1   # 교재 PDF → work/source/KB1/pages/p001.png·p001.txt (판독용)
+python run.py source          # 교재 판독 검사 + 큐레이션 초안 → out/curation.md, out/plan.json
 python run.py created         # 창작 문제은행 검문만
+python run.py                 # 전체: validate → created → source → check → verify → figs → build → layout → report
+python run.py check           # 검사만 (조판 없이)
 python run.py build           # 조판만: figs → build → layout → report
 python run.py <단계>          # validate | created | check | verify | figs | layout | report
-  --book PATH --created DIR --out DIR   다른 책·문제은행·출력 폴더
-  --recheck                             창작 전체 재검사
+  --book PATH --created DIR --source DIR --out DIR   다른 책·문제은행·교재 판독·출력 폴더
+  --recheck                             창작·교재 전체 재검사
   --force                               검사 오류가 있어도 조판
 python -m unittest discover tests       # 테스트
 ```
 - 결과: `out/book.html`(한 파일, KaTeX 글꼴 내장), `out/report.md`, `out/excluded.json`, `out/pages.json`, `out/logs/*.json`
-- 검사 단계(validate·created·check·verify)에 오류가 있으면 조판하지 않는다(`--force` 제외). 오류가 하나라도 있으면 종료 코드 1.
+- 검사 단계(validate·created·source·check·verify)에 오류가 있으면 조판하지 않는다(`--force` 제외). 오류가 하나라도 있으면 종료 코드 1.
 - 판면 측정은 템플릿의 웹 글꼴(Google Fonts)을 불러와 잰다. 글꼴을 못 불러오면 경고를 남기고 대체 글꼴로 잰다. 그 밖의 외부 요청(스크립트 CDN 등)은 모두 막는다.
 
-## AI 작업 순서 (채팅)
-1. `out/report.md`와 `data/themes.json`으로 이번 권에 넣을 테마를 정한다(테마마다 2~3 DAY, 8~13문항).
-2. 창작이 필요하면 **한 테마씩, 4문항 이하**로 `work/created/{테마}/{id}.json`을 쓰고 `python run.py created`.
-   오류 목록을 받아 해당 문항만 고친다 → 통과(`verified`)할 때까지 반복.
-3. `work/book.json`을 쓰고 `python run.py`.
-4. `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 다시 `python run.py`. 오류 0이면 끝.
+## AI 작업 순서 (채팅) — 교재 PDF를 받았을 때
+교재의 문제가 **예제**가 되고, 테마별로 유사 기출·창작을 붙여 드릴 교재를 만든다.
+1. **쪽 변환**: `python run.py pages --pdf <올린 파일> --id <교재id>` → `work/source/<교재id>/pages/p###.png`(+텍스트 층).
+2. **판독·분류**: 쪽 이미지를 보고 모든 문제를 `work/source/<교재id>.json`에 적는다(아래 '교재 판독 파일'). 문항마다 테마(28개 중 하나), 첫 판단, 유사 기출(`similar`), 해설(새로 씀), `verify`. 한 번에 10~20문항씩 쓰고 `python run.py source`로 검사 → 오류만 고친다.
+3. **큐레이션**: `python run.py source`가 만든 `out/curation.md`·`out/plan.json`을 본다. 테마마다 2~3 DAY, 교재 문항 2~3개가 예제, 나머지 교재 문항·유사 기출·창작이 연습. '창작 N개 더 필요'가 뜨면 그 테마 창작을 **4문항 이하**로 `work/created/{테마}/{id}.json`에 쓰고 `python run.py created` → 통과할 때까지 → 다시 `python run.py source`.
+4. **교재 구성**: plan.json의 문항 배정을 `work/book.json`에 옮기고 글(개념·비유·THE SIGN·분석·REPLAY·다음 챕터)을 쓴다. 한 권(WEEK)에 담을 테마를 정해 권을 나눈다. 그림 있는 기출은 `figures` 명세.
+5. `python run.py` → `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 오류 0이면 `out/book.html`을 사용자에게 보낸다.
+
+교재 PDF 없이 만들 때는 3~5만 한다(예제도 기출·창작에서 고른다).
 
 ## 폴더 구조
 ```
@@ -52,9 +57,11 @@ data/
 work/
   book.json            AI가 쓰는 교재 한 권(WEEK) 구성
   created/{테마}/      창작 문제은행 (문항당 JSON 1개)
-schema/                book · created · figure 스키마 (JSON Schema 2020-12)
+  source/{교재id}.json 올린 교재의 판독·분류 결과 (문항 id T-{교재id}-NNN)
+  source/{교재id}/pages/  PDF 쪽 이미지·텍스트 (git 제외)
+schema/                book · created · source · figure 스키마 (JSON Schema 2020-12)
 scripts/               단계별 모듈 (아래 표)
-samples/               샘플 book.sample.json + 샘플 창작 2문항 (테스트용)
+samples/               샘플 book.sample.json + 창작 2문항 + 가상 교재(SMP) 3문항 (테스트용)
 tests/                 unittest
 vendor/katex/          로컬 KaTeX 0.18.9 (CDN 금지)
 out/                   결과물 (git 제외)
@@ -65,6 +72,9 @@ out/                   결과물 (git 제외)
 | 파일 | 역할 |
 |---|---|
 | `validate_sources.py` | id·code·월(06·09·11)·번호 범위(공통 1~22, 확통 23~30)·학년도(22~27)·배점, 수학Ⅰ·Ⅱ 같은 code 충돌, 선지·정답 형식, strategy_notes 예시(`db_code_candidate`) 대조, solutions.json 누락·정답 불일치·끊긴 `concept_refs`, themes.json 미배정·중복·끊긴 참조, **제어문자(깨진 LaTeX 이스케이프)**, **전체 수식 KaTeX 조판 오류** → `out/excluded.json` |
+| `pdf_pages.py` | 교재 PDF → 쪽 PNG·텍스트 층 (pypdfium2). 판독은 AI가 이미지를 보고 한다 |
+| `check_source.py` | 교재 판독 파일 검사: 스키마, id·쪽, 테마·과목, 개념·유사 기출 참조, `$` 짝, 그림 명세, `verify` 검산 → 문항별 `status: verified` |
+| `curate.py` | 교재 문항 → 테마별 DAY·예제·연습·SCOUTING 배정 초안 → `out/curation.md`, `out/plan.json` |
 | `check_created.py` | 창작 문제은행 검문(아래) → 통과 시 `status: verified`, 결과는 레코드 `review`에 기록 |
 | `check_book.py` | book.json 규칙 검사(아래) |
 | `verify_answers.py` | 기출: DB 정답 = 풀이 정답 = 정답 선지 값. 새 숏컷(`notes[ref].verify`)의 `skill()` 검산. 창작: `skill`·`standard`·`unique` 재실행 |
@@ -154,8 +164,29 @@ out/                   결과물 (git 제외)
 - `verify`: sympy(이름 그대로, `sp`)·numpy(`np`)·`math`·`itertools`·`Fraction` 사용 가능, `print` 금지, 30초 제한. 값은 sympy 식(`Rational(9,7)*pi`)이나 정수로 돌려준다.
 - 창작 문항은 교재에 `STEAL THE SIGN 창작` [3점]으로 찍힌다. 샘플: `samples/created/M1-01/`.
 
+## 교재 판독 파일 — `work/source/{교재id}.json` (`schema/source.schema.json`)
+```json
+{"book": {"id": "KB1", "title": "교재 이름", "pdf": "원본.pdf"},
+ "problems": [{
+   "id": "T-KB1-001", "page": 12, "number": "3", "subject": "수학Ⅰ", "theme": "M1-01",
+   "question": "$LaTeX$ 본문 (교재 원문 그대로)", "condition": null,
+   "choices": ["$-5$", "$-1$", "$1$", "$5$", "$7$"] | null,
+   "answer": "2", "answer_value": "-1", "answer_source": "교재 정답|AI 풀이", "points": 3,
+   "figure": 그림 명세 | null, "figure_note": "그림 명세를 못 쓸 때 메모",
+   "first_judgment": "한 문장", "behavior": "계산|이해|추론|문제해결", "difficulty": "기본 적용|…",
+   "similar": ["M1-230911", ...],                       // 판단 구조가 같은 기출, 가까운 순
+   "solution": {"concept_refs": [], "guide": "", "solutions": [{"title": "풀이 1 · 스킬", "steps": []}], "supplement": "", "skill_point": ""},
+   "verify": "def skill(): ...  (standard()·unique()는 선택)"
+ }]}
+```
+- 판독은 원문 그대로(수식은 `$…$`, 선지는 `$` 포함). 교재 번호·쪽을 그대로 적는다. 교재 출처는 `{교재 이름} {쪽}쪽 {번호}번`으로 찍힌다.
+- **교재 해설은 옮기지 않는다.** 해설은 AI가 새로 쓴다(풀이 1 = 스킬, 있으면 풀이 2 = 정석). `verify`의 `skill()`은 필수, 정답지가 없어 `answer_source: AI 풀이`면 `standard()`도 쓴다.
+- 테마는 themes.json의 `kice_intent`·`signals` 기준으로, `concept_refs`는 그 테마 `old_themes`의 개념에서 고른다. `similar`는 그 테마 `problem_ids`·`related_ids`에서 우선.
+- 교재 문항은 테마당 최대 8개(기출 5개 자리 확보)까지 한 테마에 넣는다. 넘치면 큐레이션이 다음 권·다른 테마로 돌리라고 알린다.
+- 저작권: 교재 원문을 실은 결과물은 수업·개인용으로 쓴다.
+
 ## book.json — 교재 한 권 (`schema/book.schema.json`)
-HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **id로만** 참조한다(기출 db id, 창작 `C-…`). 본문·정답·해설은 build가 가져온다.
+HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **id로만** 참조한다(기출 db id, 창작 `C-…`, 교재 `T-…`). 본문·정답·해설은 build가 가져온다.
 ```
 { "week", "total_weeks", "year_label": "2027학년도", "subject_label": "수학Ⅰ",
   "figures": {"M2-231110": 그림 명세, ...},          // 그림 있는 기출을 쓰면 필수
@@ -192,6 +223,7 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
 - 스키마, week ≤ total_weeks, DAY 번호 오름차순·중복 없음, 같은 테마 DAY는 연속
 - 기출: db에 있고 excluded 아님, 22~27학년도·4점, 과목 = 테마 과목, 후보 밖이면 `reason`(없으면 오류), 홈 테마 밖이면 `reuse_note`, 그림 있는 기출은 `figures` 명세
 - 창작: 문제은행에 있고 `verified`(통과 후 수정되지 않음), 다른 테마 창작은 `reuse_note`
+- 교재 문항: 판독 파일에 있고 `verified`, 과목 = 테마 과목, 다른 테마로 분류된 문항은 `reuse_note`, `figure_note`만 있으면 오류(그림 명세 필요). 이 책의 테마로 분류된 교재 문항을 다 쓰지 않았거나 예제가 교재 문항이 아니면 경고
 - 같은 DAY 안 중복 금지, 책 전체 사용 3회 이하, SCOUTING은 db 기출(예제 자신 제외), REPLAY·SIGN BOOK 번호 범위, `notes` 대상·`shortcut`+`verify`, `concept_ids` 존재
 - 테마마다 2~3 DAY, 8~13문항(예제 포함), 기출 5개 이상, 창작 50% 이하. 기출:창작 비율·행동 영역·난도 분포는 report에 표시만
 - 텍스트: `$` 짝, HTML 태그 금지, 야구 용어 금지(코너 이름 THE SIGN·FIRST PITCH·SIGN READING·SCOUTING REPORT·REPLAY·DUGOUT NOTE·SIGN BOOK 제외; 목록은 `config.json` `banned_terms`)

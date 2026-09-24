@@ -76,15 +76,17 @@ class Log:
 
 @dataclass
 class Context:
-    """경로와 데이터를 한곳에서 읽는다. CLI 옵션으로 book·created·out을 바꿀 수 있다."""
+    """경로와 데이터를 한곳에서 읽는다. CLI 옵션으로 book·created·source·out을 바꿀 수 있다."""
     book_path: Path | None = None
     created_dir: Path | None = None
     out_dir: Path | None = None
+    source_dir: Path | None = None
 
     def __post_init__(self):
         p = self.config["paths"]
         self.book_path = Path(self.book_path or ROOT / p["book"])
         self.created_dir = Path(self.created_dir or ROOT / p["created"])
+        self.source_dir = Path(self.source_dir or ROOT / p["source"])
         self.out_dir = Path(self.out_dir or ROOT / p["out"])
 
     @cached_property
@@ -145,6 +147,10 @@ class Context:
         return load_created(self.created_dir)
 
     @cached_property
+    def source(self) -> dict:
+        return load_source(self.source_dir)
+
+    @cached_property
     def book(self) -> dict:
         return read_json(self.book_path)
 
@@ -160,6 +166,21 @@ def load_created(created_dir: Path) -> dict:
 
 
 # ---------------------------------------------------------------- 공통 판정
+
+def load_source(source_dir: Path) -> dict:
+    """교재 판독 문항: id → (경로, 레코드, 교재 정보). 교재 하나 = work/source/{교재id}.json"""
+    bank = {}
+    if source_dir.exists():
+        for f in sorted(source_dir.glob("*.json")):
+            data = read_json(f)
+            for i, rec in enumerate(data.get("problems") or []):
+                bank[rec.get("id", f"{f.stem}#{i}")] = {"path": f, "index": i, "rec": rec, "book": data.get("book") or {}}
+    return bank
+
+
+def is_textbook_id(ref: str) -> bool:
+    return ref.startswith("T-")
+
 
 def is_created_id(ref: str) -> bool:
     return ref.startswith("C-")
@@ -194,9 +215,9 @@ def source_label(rec: dict) -> str:
     return f"{s['year']}학년도 {s['exam']} {s['number']}번"
 
 
-def points_of(ref: str, ctx: Context) -> int:
-    pts = ctx.config["points"]
-    return pts["created"] if is_created_id(ref) else pts["past"]
+def kind_of(ref: str) -> str:
+    """기출 | 창작 | 교재"""
+    return "창작" if is_created_id(ref) else ("교재" if is_textbook_id(ref) else "기출")
 
 
 def strip_tex(text: str) -> str:
