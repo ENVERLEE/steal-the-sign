@@ -64,10 +64,12 @@ vendor/katex/          로컬 KaTeX
 ## themes.json — 교재 테마 체계 (확정)
 - 원칙: 교과서 소단원이 아니라 **평가원이 요구하는 첫 판단**이 같은 문항끼리 묶는다. 첫 판단이 다르면 같은 단원이라도 나눈다.
 - 28개 테마 = 수학Ⅰ 11(`M1-01`~`11`) · 수학Ⅱ 10(`M2-01`~`10`) · 확통 7(`PS-01`~`07`). 테마당 기출 5~10문항, 208문항이 정확히 한 테마에 한 번씩 배정됨.
-- 필드: `id`, `subject`, `name`, `kice_intent`(평가원 의도), `signals`(문제에서 보이는 신호), `old_themes`(기존 64분류 id), `strategy_ids`, `problem_ids`, `stats`.
+- 필드: `id`, `subject`, `name`, `kice_intent`(평가원 의도), `signals`(문제에서 보이는 신호), `old_themes`(기존 64분류 id), `strategy_ids`, `problem_ids`(홈 테마 배정), `related_ids`(중복 사용 후보), `stats`.
+- **기출 중복 사용 허용.** 한 문항을 여러 테마에서 쓸 수 있다. 우선 `problem_ids`와 `related_ids`에서 고르고, 그 밖의 문항은 이유를 적으면 쓸 수 있다(check_book 경고). 같은 테마 안에서는 중복 금지, 책 전체 사용 횟수는 `config.json` `reuse.max_uses` 이하.
+- 다른 테마에서 다시 쓸 때는 해설은 solutions.json 것을 그대로 쓰고, book.json에 그 테마 관점의 한 줄(`reuse_note`: 이 테마에서 읽을 신호)을 붙인다.
 - **교재의 테마는 themes.json 기준.** db.json·solutions.json의 `theme.primary`(`수학Ⅰ-01` 등)는 기존 64분류로, 개념정리·개념 id 출처로만 쓴다.
 - 테마 도입부 개념정리는 `old_themes`에 속한 solutions.json 테마들의 `overview`·`core_concepts`·`decision_flow`를 합쳐 만든다. 개념 id(`{기존테마}-C{n}`)는 그대로 쓴다.
-- 창작은 테마당 기출 수에 맞춰 3문항 안팎(기출 5 → 창작 3~4, 기출 10 → 창작 3). 전체 약 208 + 85 ≈ 290문항, 56~84 DAY.
+- 창작은 테마당 기출 수에 맞춰 채운다. 중복 사용으로 기출이 늘면 창작 부담이 줄어든다. 기출:창작 비율은 등장 횟수 기준.
 
 ## solutions.json 스키마 (확정)
 - `themes[]`: `theme`, `theme_name`, `overview`, `core_concepts[{id, name, statement, why, when, strategy_ids, example?}]`, `decision_flow[]`, `problem_ids[]`. 54개 테마, 실전개념 177개. 개념 id = `{테마id}-C{n}` (예: `수학Ⅱ-08-C2`).
@@ -102,7 +104,7 @@ render_figs → build → check_layout → report
 - 테마마다 2~3 DAY 할애, 테마당 총 8~13문항(예제 포함, 기출+창작) / 기출:창작은 책 전체 기준 ≈ 7:3
 - 창작: [3점], 객관식 5지선다, 단답형은 3자리 이하 자연수
 - 기출: [4점], 22~27학년도
-- 테마 id가 themes.json의 28개 안, 기출은 themes.json에서 그 테마에 배정된 문항만
+- 테마 id가 themes.json의 28개 안. 기출이 그 테마의 `problem_ids`·`related_ids` 밖이면 경고, 같은 테마 안 중복은 오류, 책 전체 사용 횟수 초과는 오류
 - strategy id가 strategy_notes.json에 존재, 개념 참조(`{테마}-C{n}`)가 solutions.json에 존재
 - 야구 용어 금지어 검사(코너 이름 제외): 초구, 타석, 구종, 안타, 삼진, 덕아웃, 배터리, 스트라이크 등
 - 행동 영역(계산/이해/추론/문제해결) 분포 집계

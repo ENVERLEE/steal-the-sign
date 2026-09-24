@@ -27,8 +27,15 @@
     "count_example": true
   },
 
+  "reuse": {
+    "allowed": true,
+    "max_uses": 3,
+    "outside_candidates": "warn"
+  },
+
   "ratio": {
     "scope": "book",
+    "count_by": "appearance",
     "past": 0.7,
     "tolerance": 0.05
   },
