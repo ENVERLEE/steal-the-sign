@@ -281,7 +281,7 @@
      "title": "풀이 · 대칭축 $x=6$",
      "steps": [
       {
-       "label": "$\u0007lpha$와 $k$",
+       "label": "$\\alpha$와 $k$",
        "body": "$\\alpha_1+\\alpha_2=12$, $|\\alpha_1-\\alpha_2|=8$ → $\\{\\alpha_1,\\alpha_2\\}=\\{2,10\\}$. $k=f(2)=\\cos\\frac\\pi3=\\frac12$."
       },
       {

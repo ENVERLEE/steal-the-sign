@@ -1,0 +1,624 @@
+{
+ "theme": "수학Ⅰ-12",
+ "theme_name": "사인법칙과 코사인법칙",
+ "overview": "사인·코사인법칙 문제는 공식을 아는지가 아니라 **어떤 삼각형이 먼저 '결정'되는지 보고, 원을 보면 사인법칙을 떠올리는** 판단 싸움이다. 반복되는 판단은 다섯 가지다: (1) SSS·SAS·ASA로 확정되는 삼각형부터 코사인법칙으로 길이를 채운다(SSA는 이차방정식 → 근 선택), (2) 원이 보이면 '현 $=2R\\sin(\\text{원주각})$'으로 길이와 각을 한 번에 잇는다, (3) 원주각·내접사각형·지름·할선(닮음)으로 각과 길이를 다른 삼각형으로 옮긴다, (4) 비만 주어지면 모든 변을 한 문자로 두고 절대 조건 하나로 마지막에 크기를 정한다, (5) 넓이는 $\\frac12ab\\sin C$, $\\frac{abc}{4R}$, $bc=2R\\cdot h_a$ 중 계산이 짧은 것을 고른다.",
+ "core_concepts": [
+  {
+   "id": "수학Ⅰ-12-C1",
+   "name": "결정되는 삼각형부터 (SSS·SAS → 코사인법칙, SSA → 이차방정식)",
+   "statement": "· 두 변과 끼인각(SAS): $c^2=a^2+b^2-2ab\\cos C$로 나머지 변이 바로 나온다.\n· 세 변(SSS): $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}$로 각이 나온다.\n· 두 변과 끼인각이 아닌 각(SSA): 모르는 변 $x$에 대한 **이차방정식**이 되므로 두 근 중 조건(대소, 예각·둔각, 원 안의 위치)으로 하나를 고른다.",
+   "why": "합동조건으로 결정되는 삼각형은 모든 변·각이 계산 가능하다(S07). 결정되지 않는 삼각형에서 먼저 계산하려 하면 미지수만 늘어난다. SSA가 이차방정식이 되는 것은 같은 조건을 만족하는 삼각형이 두 개일 수 있기 때문이다.",
+   "when": "도형에 여러 삼각형이 얽혀 있을 때 '어디서부터 계산할까'를 정하는 첫 판단. 조건에 '$\\overline{\\mathrm{AC}}>3$', '예각삼각형', '$\\overline{\\mathrm{BC}}<\\overline{\\mathrm{AD}}$' 같은 부등식이 붙어 있으면 근 선택용이다.",
+   "strategy_ids": [
+    "S07"
+   ]
+  },
+  {
+   "id": "수학Ⅰ-12-C2",
+   "name": "원을 보면 사인법칙: 현 $=2R\\sin(\\text{원주각})$",
+   "statement": "반지름 $R$인 원 위의 현의 길이는 그 현에 대한 원주각 $\\theta$로 $\\text{현}=2R\\sin\\theta$.\n같은 원 위의 여러 현은 **공통의 $2R$**로 서로 연결된다. 외접원 반지름을 구할 때는 한 변과 그 대각의 $\\sin$만 있으면 된다.",
+   "why": "사인법칙 $\\frac{a}{\\sin A}=2R$의 기하학적 의미가 바로 이것이다. 원 위의 다른 점에서 본 원주각도 같으므로(또는 보각이므로 $\\sin$이 같으므로) 삼각형을 바꿔 가며 쓸 수 있다.",
+   "when": "외접원, 한 원에 내접하는 사각형, 지름을 갖는 원 위의 점이 나올 때. '반지름을 구하라'는 요구는 '한 변과 대각의 sin'을 찾으라는 뜻이다.",
+   "strategy_ids": [
+    "S08",
+    "S07"
+   ]
+  },
+  {
+   "id": "수학Ⅰ-12-C3",
+   "name": "원의 성질로 각·길이를 옮기기",
+   "statement": "· 같은 원주각 $\\iff$ 같은 현, 중심각 $=2\\times$원주각\n· 원에 내접하는 사각형: 대각의 합 $=\\pi$\n· 지름에 대한 원주각 $=\\frac\\pi2$\n· 두 현(할선)이 점 P에서 만나면 $\\overline{\\mathrm{PA}}\\cdot\\overline{\\mathrm{PB}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$ (닮음에서 나옴)",
+   "why": "원이 있으면 각이 원을 따라 이동한다. 계산 가능한 삼각형에서 구한 각·길이를 원의 성질로 다른 삼각형에 옮기면 새로운 삼각형이 '결정'된다(수학Ⅰ-12-C1과 짝).",
+   "when": "문제 삼각형이 결정되지 않을 때, 원 위의 다른 점을 통해 같은 각·같은 현·보각을 찾는다. 원의 중심이 보이면 이등변삼각형(반지름 두 개)을 먼저 찾는다(S08).",
+   "strategy_ids": [
+    "S08"
+   ]
+  },
+  {
+   "id": "수학Ⅰ-12-C4",
+   "name": "비는 한 문자로, 크기는 마지막에",
+   "statement": "$\\sin A:\\sin B:\\sin C=a:b:c$, 내분비, 넓이비, 길이비가 주어지면 모든 길이를 한 문자 $k$(또는 $r$)로 표현한다. 각(코사인)은 비만으로 결정되므로 먼저 구하고, 반지름·넓이·한 변의 길이 같은 **절대 조건 하나**로 $k$를 마지막에 정한다.",
+   "why": "닮은 삼각형은 각이 같으므로 비만으로 모든 각이 확정된다. 크기 조건을 처음부터 섞으면 미지수가 늘어나지만, 비로 모양을 확정한 뒤 크기를 한 번에 맞추면 연립이 필요 없다.",
+   "when": "조건이 '$:$'로 주어질 때, $\\sin$의 비·관계식($3\\sin A=2\\sin B$)이 나올 때.",
+   "strategy_ids": [
+    "S07"
+   ]
+  },
+  {
+   "id": "수학Ⅰ-12-C5",
+   "name": "넓이의 여러 얼굴",
+   "statement": "$$S=\\tfrac12ab\\sin C=\\frac{abc}{4R},\\qquad bc=2R\\cdot h_a\\ (h_a:\\text{A에서 BC까지의 높이})$$\n원 위의 점 P에 대한 $\\triangle\\mathrm{PBC}$의 넓이 최댓값: 높이 $=(\\text{중심에서 BC까지 거리})+(\\text{반지름})$.",
+   "why": "$h_a=b\\sin C$와 $c=2R\\sin C$를 곱해 $\\sin C$를 지우면 $bc=2Rh_a$가 된다. 넓이 공식은 '두 변과 끼인각', '세 변과 외접원'을 잇는 다리다.",
+   "when": "넓이·넓이비·수선의 길이와 외접원이 함께 나올 때. 수선의 발이 나오면 $\\sin$을 직각삼각형 비로 바로 쓴다.",
+   "strategy_ids": [
+    "S07"
+   ]
+  }
+ ],
+ "decision_flow": [
+  "결정되는 삼각형(SSS·SAS·ASA)이 있는가? → 그 삼각형부터 코사인법칙으로 변·각을 채운다. SSA면 이차방정식의 근을 조건으로 고른다(수학Ⅰ-12-C1).",
+  "원(외접원, 내접사각형, 지름)이 있는가? → 현 $=2R\\sin(\\text{원주각})$로 길이와 각을 잇고, 원주각·대각·지름·할선으로 각과 길이를 다른 삼각형에 옮긴다(수학Ⅰ-12-C2, C3).",
+  "조건이 비로만 주어지는가? → 한 문자로 모양을 확정하고, 각을 먼저 구한 뒤 절대 조건 하나로 크기를 정한다(수학Ⅰ-12-C4).",
+  "넓이·수선이 나오는가? → $\\frac12ab\\sin C$, $\\frac{abc}{4R}$, $bc=2Rh_a$ 중 이미 아는 양으로 쓸 수 있는 것을 고른다(수학Ⅰ-12-C5).",
+  "빈칸 추론형인가? → 과정의 논리를 따라가되, 각 빈칸이 어떤 법칙(피타고라스·사인·코사인·닮음)의 결과인지 먼저 확인하고 다항식 빈칸은 문자 그대로 적는다."
+ ],
+ "solutions": [
+  {
+   "id": "M1-230610",
+   "concept_refs": [
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C3"
+   ],
+   "guide": "삼각형 ABC는 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{BC}}$와 **끼인각이 아닌** $\\angle\\mathrm A$가 주어진 SSA다. $\\overline{\\mathrm{AC}}$에 대한 이차방정식이 되고 조건 $\\overline{\\mathrm{AC}}>3$이 근을 고른다(수학Ⅰ-12-C1).\n그다음 원 안에서 두 현 AC, BD가 M에서 만나므로 $\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}$ (수학Ⅰ-12-C3). $\\overline{\\mathrm{MB}}$만 구하면 끝이다.",
+   "solutions": [
+    {
+     "title": "풀이 · SSA 이차방정식 + 두 현의 곱",
+     "steps": [
+      {
+       "label": "$\\overline{\\mathrm{AC}}$ 구하기",
+       "body": "$\\overline{\\mathrm{AC}}=x$라 하면 코사인법칙에서\n$$2^2=3^2+x^2-2\\cdot3\\cdot x\\cdot\\tfrac78\\ \\Rightarrow\\ 4x^2-21x+20=0\\ \\Rightarrow\\ (4x-5)(x-4)=0$$\n$x>3$이므로 $x=4$. 따라서 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{MC}}=2$."
+      },
+      {
+       "label": "$\\overline{\\mathrm{MB}}$",
+       "body": "삼각형 ABM은 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{AM}}=2$, 끼인각 $A$로 결정된다(SAS).\n$$\\overline{\\mathrm{MB}}^2=9+4-2\\cdot3\\cdot2\\cdot\\tfrac78=\\tfrac52,\\qquad\\overline{\\mathrm{MB}}=\\tfrac{\\sqrt{10}}2$$"
+      },
+      {
+       "label": "두 현의 곱",
+       "body": "현 AC와 현 BD가 원 내부의 점 M에서 만나므로\n$$\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}\\ \\Rightarrow\\ 2\\cdot2=\\tfrac{\\sqrt{10}}2\\cdot\\overline{\\mathrm{MD}}$$\n$\\overline{\\mathrm{MD}}=\\frac8{\\sqrt{10}}=\\frac{4\\sqrt{10}}5$ → ③"
+      }
+     ]
+    }
+   ],
+   "supplement": "'두 현의 곱' 성질은 $\\triangle\\mathrm{MAB}\\sim\\triangle\\mathrm{MDC}$(같은 호에 대한 원주각 $\\angle\\mathrm{BAC}=\\angle\\mathrm{BDC}$, 맞꼭지각)에서 나온다. 이 성질 없이 D의 위치를 구하려면 외접원 반지름·각을 모두 계산해야 해서 훨씬 길어진다. SSA에서 $x=\\frac54$도 수학적으로 가능한 삼각형이라는 점, 그래서 문제에 $\\overline{\\mathrm{AC}}>3$이 붙어 있다는 점을 읽어 내는 것이 첫 판단이다.",
+   "skill_point": "SSA → 이차방정식, 붙은 부등식 조건으로 근 선택. 원 안에서 만나는 두 현 → 곱이 같다.",
+   "answer": "3"
+  },
+  {
+   "id": "M1-220612",
+   "concept_refs": [
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C2"
+   ],
+   "guide": "같은 각이 세 번 나오면 **이등변삼각형과 닮음**을 찾으라는 신호다.\n· $\\angle\\mathrm{BAD}=\\angle\\mathrm{BDA}$ → $\\triangle\\mathrm{ABD}$는 $\\overline{\\mathrm{BA}}=\\overline{\\mathrm{BD}}=4$인 이등변\n· 그러면 $\\overline{\\mathrm{AD}}=2\\cdot4\\cos A=1$, $\\overline{\\mathrm{DC}}=4=\\overline{\\mathrm{DB}}$ → $\\triangle\\mathrm{DBC}$도 이등변\n· 삼각형 BED의 두 각이 $C$, $A$가 되어 $\\triangle\\mathrm{ABC}$와 닮음\n삼각형 ABC는 SAS로 결정되므로 $\\overline{\\mathrm{BC}}$부터 구한다(수학Ⅰ-12-C1).",
+   "solutions": [
+    {
+     "title": "풀이 1 · 이등변 두 번 + 닮음",
+     "steps": [
+      {
+       "label": "이등변삼각형 ABD",
+       "body": "$\\angle\\mathrm{BAD}=\\angle\\mathrm{BDA}$이므로 $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BA}}=4$. B에서 AD에 내린 수선의 발은 AD의 중점이므로 $\\overline{\\mathrm{AD}}=2\\cdot4\\cdot\\cos A=2\\cdot4\\cdot\\frac18=1$, $\\overline{\\mathrm{DC}}=5-1=4$."
+      },
+      {
+       "label": "이등변삼각형 DBC",
+       "body": "$\\overline{\\mathrm{DB}}=\\overline{\\mathrm{DC}}=4$이므로 $\\angle\\mathrm{DBC}=\\angle\\mathrm{DCB}=C$.\n$\\overline{\\mathrm{BC}}^2=16+25-2\\cdot4\\cdot5\\cdot\\frac18=36$, $\\overline{\\mathrm{BC}}=6$."
+      },
+      {
+       "label": "닮음 찾기",
+       "body": "삼각형 BED에서 $\\angle\\mathrm{EBD}=C$, $\\angle\\mathrm{BED}=A$이므로 나머지 각은 $B$. 즉 $\\triangle\\mathrm{BED}\\sim\\triangle\\mathrm{ABC}$이고 대응은\n$$\\mathrm B\\leftrightarrow\\mathrm C,\\quad \\mathrm E\\leftrightarrow\\mathrm A,\\quad \\mathrm D\\leftrightarrow\\mathrm B$$"
+      },
+      {
+       "label": "닮음비",
+       "body": "$\\overline{\\mathrm{BD}}$(각 E의 대변) $\\leftrightarrow$ $\\overline{\\mathrm{CB}}$(각 A의 대변): 닮음비 $4:6=2:3$.\n$\\overline{\\mathrm{DE}}$(각 B의 대변) $\\leftrightarrow$ $\\overline{\\mathrm{BA}}$(각 C의 대변)이므로\n$$\\overline{\\mathrm{DE}}=\\tfrac23\\cdot4=\\tfrac83$$ → ③"
+      }
+     ]
+    },
+    {
+     "title": "풀이 2 · 삼각형 BED에서 사인법칙 (비교용)",
+     "steps": [
+      {
+       "label": "",
+       "body": "$\\sin A=\\frac{3\\sqrt7}8$, $\\cos C=\\frac{25+36-16}{2\\cdot5\\cdot6}=\\frac34$에서 $\\sin C=\\frac{\\sqrt7}4$. 삼각형 BED에서\n$$\\frac{\\overline{\\mathrm{DE}}}{\\sin C}=\\frac{\\overline{\\mathrm{BD}}}{\\sin A}\\ \\Rightarrow\\ \\overline{\\mathrm{DE}}=4\\cdot\\frac{\\sqrt7/4}{3\\sqrt7/8}=\\frac83$$"
+      }
+     ]
+    }
+   ],
+   "supplement": "같은 각 조건을 그대로 코사인법칙에 넣어 좌표·수선으로 풀면 계산이 길다. '같은 각 → 이등변 → 수선의 발이 중점'이 이 문제의 계산을 거의 없앤다. 덤으로 삼각형 DBC에서 $\\angle\\mathrm{BDC}=\\pi-A$이므로 $A=2C$라는 관계도 숨어 있다($\\cos2C=2\\cdot\\frac9{16}-1=\\frac18$로 확인). 닮음을 쓸 때는 '각의 대변끼리' 대응시키면 실수가 없다.",
+   "skill_point": "같은 각이 반복되면 이등변·닮음을 먼저 찾는다. 닮음은 '같은 각의 대변끼리' 대응.",
+   "answer": "3"
+  },
+  {
+   "id": "M1-221115",
+   "concept_refs": [
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C1"
+   ],
+   "guide": "빈칸 추론형이므로 과정을 따라가되, 각 빈칸이 무엇에서 나오는지만 정확히 잡는다.\n· (가): A, $\\mathrm O_1$, $\\mathrm O_2$가 한 직선 위이고 $\\mathrm O_2$가 원 $C_1$ 위에 있으므로 $\\overline{\\mathrm{AO_2}}$는 $C_1$의 **지름** → $\\angle\\mathrm{ABO_2}=\\frac\\pi2$ (수학Ⅰ-12-C3)\n· (나): 같은 직각삼각형의 $\\cos$\n· (다): 삼각형 $\\mathrm{O_2BC}$는 SSA → 이차방정식, 근은 원 안의 위치로 고른다(수학Ⅰ-12-C1)",
+   "solutions": [
+    {
+     "title": "풀이 · 지름의 원주각 + SSA 근 선택",
+     "steps": [
+      {
+       "label": "(가)",
+       "body": "$\\overline{\\mathrm{AO_2}}$가 원 $C_1$의 지름이고 B가 $C_1$ 위의 점이므로 $\\angle\\mathrm{ABO_2}=\\frac\\pi2$.\n$$\\overline{\\mathrm{AO_2}}=\\sqrt{k^2+(2\\sqrt2k)^2}=3k\\quad\\Rightarrow\\quad f(k)=3k$$"
+      },
+      {
+       "label": "(나)",
+       "body": "$\\angle\\mathrm{BO_2A}=\\frac{\\theta_1}2$(호 AB에 대한 원주각은 중심각 $\\theta_1$의 절반)이므로 직각삼각형 $\\mathrm{ABO_2}$에서\n$$\\cos\\tfrac{\\theta_1}2=\\frac{\\overline{\\mathrm{BO_2}}}{\\overline{\\mathrm{AO_2}}}=\\frac{2\\sqrt2k}{3k}=\\frac{2\\sqrt2}3=p$$"
+      },
+      {
+       "label": "(다)",
+       "body": "$\\angle\\mathrm{CO_1B}=\\angle\\mathrm{BO_1A}=\\theta_1$이므로 현 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{AB}}=k$. $\\overline{\\mathrm{O_2C}}=x$라 하면 코사인법칙에서\n$$k^2=x^2+8k^2-2\\cdot x\\cdot2\\sqrt2k\\cdot\\tfrac{2\\sqrt2}3\\ \\Rightarrow\\ 3x^2-16kx+21k^2=0\\ \\Rightarrow\\ (3x-7k)(x-3k)=0$$\n$x=3k$는 $\\overline{\\mathrm{O_2C}}=\\overline{\\mathrm{O_2A}}$(지름), 즉 $\\mathrm C=\\mathrm A$인 경우이므로 제외. $x=\\frac73k$, $g(k)=\\frac73k$."
+      },
+      {
+       "label": "답",
+       "body": "$f(p)\\cdot g(p)=3p\\cdot\\frac73p=7p^2=7\\cdot\\frac89=\\frac{56}9$ → ②"
+      }
+     ]
+    }
+   ],
+   "supplement": "SSA의 두 근 중 하나를 버리는 근거를 스스로 설명할 수 있어야 한다. 여기서는 $\\mathrm O_2$에서 원 $C_1$ 위의 점까지 거리가 최대 지름 $3k$이고, 그 최댓값은 A에서만 나온다. $x=3k$는 '삼각형 $\\mathrm{O_2BA}$'를 다시 구한 것이다(실제로 $\\overline{\\mathrm{BA}}=k$, $\\angle\\mathrm{AO_2B}=\\frac{\\theta_1}2$도 같은 조건을 만족). $f(p)g(p)$는 $p$를 대입하기 전에 $7p^2$으로 정리하면 계산이 한 줄이다.",
+   "skill_point": "지름이 보이면 직각. SSA의 가짜 근은 '같은 조건을 만족하는 다른 점'이다 — 그림으로 버린다.",
+   "answer": "2"
+  },
+  {
+   "id": "M1-260614",
+   "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C4"
+   ],
+   "guide": "$\\sin$의 비가 주어진 삼각형 APQ에서 사인법칙을 쓰면 **대변의 비**가 된다: $\\overline{\\mathrm{PQ}}:\\overline{\\mathrm{AQ}}=\\sin(\\angle\\mathrm{QAP}):\\sin(\\angle\\mathrm{APQ})$. 여기서 $\\overline{\\mathrm{PQ}}$가 나오면 P, Q가 BC의 내분점이므로 $\\overline{\\mathrm{BC}}$가 확정되고, 삼각형 ABQ가 SSS로 결정된다(수학Ⅰ-12-C1). 외접원은 '한 변과 대각의 $\\sin$'으로 구한다(수학Ⅰ-12-C2).",
+   "solutions": [
+    {
+     "title": "풀이 · 사인비 → 변의 비 → SSS",
+     "steps": [
+      {
+       "label": "$\\overline{\\mathrm{PQ}}$",
+       "body": "삼각형 APQ에서 $\\angle\\mathrm{QAP}$의 대변은 PQ, $\\angle\\mathrm{APQ}$의 대변은 AQ이므로\n$$\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{AQ}}\\cdot\\tfrac{\\sqrt2}3=3\\sqrt2\\cdot\\tfrac{\\sqrt2}3=2$$"
+      },
+      {
+       "label": "$\\overline{\\mathrm{BC}}$",
+       "body": "$\\overline{\\mathrm{BC}}=a$라 하면 $\\overline{\\mathrm{BP}}=\\frac a2$, $\\overline{\\mathrm{BQ}}=\\frac{5a}6$이므로 $\\overline{\\mathrm{PQ}}=\\frac a3=2$, $a=6$, $\\overline{\\mathrm{BQ}}=5$."
+      },
+      {
+       "label": "$\\cos B$",
+       "body": "삼각형 ABQ (SSS: $2\\sqrt7,5,3\\sqrt2$):\n$$\\cos B=\\frac{28+25-18}{2\\cdot2\\sqrt7\\cdot5}=\\frac{35}{20\\sqrt7}=\\frac{\\sqrt7}4,\\qquad\\sin B=\\frac34$$"
+      },
+      {
+       "label": "$\\overline{\\mathrm{AC}}$와 외접원",
+       "body": "$\\overline{\\mathrm{AC}}^2=28+36-2\\cdot2\\sqrt7\\cdot6\\cdot\\frac{\\sqrt7}4=22$.\n$$2R=\\frac{\\overline{\\mathrm{AC}}}{\\sin B}=\\frac{4\\sqrt{22}}3\\ \\Rightarrow\\ R^2=\\frac{88}9$$\n외접원의 넓이 $\\frac{88}9\\pi$ → ②"
+      }
+     ]
+    }
+   ],
+   "supplement": "'$\\sin$의 비'는 곧 '대변의 비'라는 번역이 첫 단추다. 어느 각의 대변이 어느 변인지 그림에서 반드시 확인하자(각 QAP는 꼭짓점 A, 대변 PQ). 외접원을 구할 때는 이미 구한 각 $B$의 대변 $\\overline{\\mathrm{AC}}$를 쓰는 것이 가장 짧다.",
+   "skill_point": "$\\sin$의 비 = 대변의 비. 내분점이 나오면 전체 길이를 한 문자로.",
+   "answer": "2"
+  },
+  {
+   "id": "M1-231111",
+   "concept_refs": [
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C2"
+   ],
+   "guide": "$\\angle\\mathrm{BAC}=\\angle\\mathrm{CAD}$는 같은 원의 원주각이므로 **현 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$** (수학Ⅰ-12-C3). 삼각형 ABC, ACD 각각은 두 변만 알고 각은 모르지만, 공통각 $\\theta$와 '같은 현'으로 식 두 개가 생긴다. 반지름은 현 BC와 원주각 $\\theta$로 $2R=\\frac{\\overline{\\mathrm{BC}}}{\\sin\\theta}$ (수학Ⅰ-12-C2).",
+   "solutions": [
+    {
+     "title": "풀이 · 같은 원주각 → 같은 현",
+     "steps": [
+      {
+       "label": "같은 현을 두 번 쓰기",
+       "body": "$\\angle\\mathrm{BAC}=\\angle\\mathrm{CAD}=\\theta$라 하면\n$$\\overline{\\mathrm{BC}}^2=25+45-30\\sqrt5\\cos\\theta,\\qquad\\overline{\\mathrm{CD}}^2=49+45-42\\sqrt5\\cos\\theta$$"
+      },
+      {
+       "label": "$\\cos\\theta$",
+       "body": "$\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$이므로 $70-30\\sqrt5\\cos\\theta=94-42\\sqrt5\\cos\\theta$, $12\\sqrt5\\cos\\theta=24$, $\\cos\\theta=\\frac2{\\sqrt5}$, $\\sin\\theta=\\frac1{\\sqrt5}$."
+      },
+      {
+       "label": "반지름",
+       "body": "$\\overline{\\mathrm{BC}}^2=70-60=10$. 삼각형 ABC에서 사인법칙:\n$$2R=\\frac{\\sqrt{10}}{1/\\sqrt5}=5\\sqrt2,\\qquad R=\\frac{5\\sqrt2}2$$ → ①"
+      }
+     ]
+    }
+   ],
+   "supplement": "같은 원주각이 보이면 곧바로 '같은 현'으로 번역하는 것이 핵심이다. 이 번역 없이 원의 중심을 잡으려 하면 미지수가 폭발한다. 참고로 $\\overline{\\mathrm{AB}}\\ne\\overline{\\mathrm{AD}}$인데도 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$인 것은 C가 호 BD의 중점이기 때문이다. $\\cos\\theta$를 구할 때 $\\overline{\\mathrm{BC}}^2$에서 $\\cos\\theta$의 계수 차 $12\\sqrt5$만 보면 되므로 계산이 짧다.",
+   "skill_point": "같은 원주각 → 같은 현 → 코사인법칙 두 식을 같다고 놓는다.",
+   "answer": "1"
+  },
+  {
+   "id": "M1-261114",
+   "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C3"
+   ],
+   "guide": "구하는 $\\overline{\\mathrm{GH}}$는 원 CEG의 현이고, 그 원주각이 $\\angle\\mathrm{HCG}=\\angle\\mathrm{BAC}$로 주어진다. 따라서 $\\overline{\\mathrm{GH}}=2R'\\sin(\\angle\\mathrm{BAC})$이고, 목표는 **원 CEG의 지름 $2R'$** 하나다(수학Ⅰ-12-C2).\n$2R'$은 삼각형 CEG의 한 변과 대각으로 구한다. 결정되는 삼각형부터: 삼각형 ACG는 SSS($5,2,2\\sqrt6$)로 결정 → $\\angle\\mathrm{GAE}$ → 이등변삼각형 AGE → $\\overline{\\mathrm{GE}}$와 밑각(수학Ⅰ-12-C1).",
+   "solutions": [
+    {
+     "title": "풀이 1 · 이등변삼각형의 밑각으로 $2R'$",
+     "steps": [
+      {
+       "label": "기본 길이",
+       "body": "$\\overline{\\mathrm{AC}}=5$, $\\sin(\\angle\\mathrm{BAC})=\\frac45$. $\\overline{\\mathrm{AD}}=2$이므로 원의 반지름은 $2$: $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{AG}}=2$, $\\overline{\\mathrm{CE}}=3$."
+      },
+      {
+       "label": "삼각형 ACG (SSS)",
+       "body": "$$\\cos(\\angle\\mathrm{CAG})=\\frac{4+25-24}{2\\cdot2\\cdot5}=\\frac14$$\n점 E는 AC 위에 있으므로 $\\angle\\mathrm{GAE}=\\angle\\mathrm{CAG}$."
+      },
+      {
+       "label": "이등변삼각형 AGE",
+       "body": "$\\overline{\\mathrm{GE}}^2=4+4-2\\cdot2\\cdot2\\cdot\\frac14=6$, $\\overline{\\mathrm{GE}}=\\sqrt6$.\n꼭짓점 A에서 GE에 수선을 내리면 밑각 $\\angle\\mathrm{AEG}$에 대해 $\\cos(\\angle\\mathrm{AEG})=\\frac{\\sqrt6/2}{2}=\\frac{\\sqrt6}4$, $\\sin(\\angle\\mathrm{AEG})=\\frac{\\sqrt{10}}4$."
+      },
+      {
+       "label": "원 CEG의 지름",
+       "body": "$\\angle\\mathrm{CEG}=\\pi-\\angle\\mathrm{AEG}$이므로 $\\sin(\\angle\\mathrm{CEG})=\\frac{\\sqrt{10}}4$. 삼각형 CEG에서 사인법칙:\n$$2R'=\\frac{\\overline{\\mathrm{CG}}}{\\sin(\\angle\\mathrm{CEG})}=\\frac{2\\sqrt6}{\\sqrt{10}/4}=\\frac{8\\sqrt{15}}5$$"
+      },
+      {
+       "label": "답",
+       "body": "$\\overline{\\mathrm{GH}}=2R'\\sin(\\angle\\mathrm{HCG})=\\frac{8\\sqrt{15}}5\\cdot\\frac45=\\frac{32\\sqrt{15}}{25}$ → ④"
+      }
+     ]
+    },
+    {
+     "title": "풀이 2 · 삼각형 CGE에서 코사인법칙 (비교용)",
+     "steps": [
+      {
+       "label": "",
+       "body": "$\\overline{\\mathrm{GE}}=\\sqrt6$을 구한 뒤 삼각형 CGE(SSS: $2\\sqrt6,3,\\sqrt6$)에서\n$$\\cos(\\angle\\mathrm{ECG})=\\frac{24+9-6}{2\\cdot2\\sqrt6\\cdot3}=\\frac{3\\sqrt6}8,\\quad\\sin(\\angle\\mathrm{ECG})=\\frac{\\sqrt{10}}8,\\quad 2R'=\\frac{\\sqrt6}{\\sqrt{10}/8}=\\frac{8\\sqrt{15}}5$$\n결과는 같지만 한 번 더 코사인법칙을 써야 한다."
+      }
+     ]
+    }
+   ],
+   "supplement": "점 H의 위치를 직접 구하려고 하면 막힌다. '원 위의 현 + 원주각'이 주어졌으니 필요한 것은 그 원의 지름뿐이라는 역산이 이 문제의 첫 판단이다. $\\angle\\mathrm{CEG}$와 $\\angle\\mathrm{AEG}$는 보각이라 $\\sin$이 같다는 점도 자주 쓰이는 연결고리다. 이등변삼각형(원의 반지름 두 개)이 보이면 수선을 내려 밑각의 $\\cos$을 바로 읽자(S08).",
+   "skill_point": "현의 길이를 묻고 원주각이 주어지면 목표는 그 원의 지름 $2R$ 하나. 반지름 두 개 → 이등변 → 밑각.",
+   "answer": "4"
+  },
+  {
+   "id": "M1-260920",
+   "concept_refs": [
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C4"
+   ],
+   "guide": "빈칸 추론형. 점 P는 원 밖에서 두 할선 PBA, PCD가 만나는 점이다. $\\triangle\\mathrm{BPC}\\sim\\triangle\\mathrm{DPA}$(내접사각형의 외각 = 내대각)에서 $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$ (수학Ⅰ-12-C3). 모든 길이를 $k$, $l$로 두고(수학Ⅰ-12-C4) 비례식 하나로 $l$을 $k$로 나타낸다. 그림에서 순서는 P–B–A, P–C–D.",
+   "solutions": [
+    {
+     "title": "풀이 · 할선 닮음 → 닮음비 → 사인법칙",
+     "steps": [
+      {
+       "label": "(가)",
+       "body": "$\\overline{\\mathrm{PA}}=7k+l$, $\\overline{\\mathrm{PD}}=5k+3l$. 닮음에서 $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$:\n$$7k(7k+l)=5k(5k+3l)\\ \\Rightarrow\\ 24k=8l\\ \\Rightarrow\\ l=3k$$\n$p=3$."
+      },
+      {
+       "label": "(나)",
+       "body": "$\\overline{\\mathrm{PD}}=5k+9k=14k$, $\\overline{\\mathrm{PA}}=10k$. 대응변 $\\overline{\\mathrm{PB}}:\\overline{\\mathrm{PD}}=7k:14k=1:2$ (확인: $\\overline{\\mathrm{PC}}:\\overline{\\mathrm{PA}}=5k:10k$). $q=2$."
+      },
+      {
+       "label": "(다)",
+       "body": "$\\overline{\\mathrm{BC}}=\\frac12\\overline{\\mathrm{AD}}=2\\sqrt{13}$. $\\cos\\theta=\\frac67$(삼각형 BPC의 세 변의 비 $7:5:\\sqrt{14}$에서 $\\frac{49+25-14}{70}$)이므로 $\\sin\\theta=\\frac{\\sqrt{13}}7$.\n$$R=\\frac{\\overline{\\mathrm{BC}}}{2\\sin\\theta}=\\frac{2\\sqrt{13}}{2\\sqrt{13}/7}=7$$\n$r=7$."
+      },
+      {
+       "label": "답",
+       "body": "$p+q+r=3+2+7=12$"
+      }
+     ]
+    }
+   ],
+   "supplement": "닮음의 대응을 헷갈리기 쉽다. $\\angle\\mathrm P$가 공통이고 $\\angle\\mathrm{PBC}=\\angle\\mathrm{PDA}$(내접사각형의 외각은 내대각과 같다)이므로 B↔D, C↔A다. 그래서 $\\overline{\\mathrm{PB}}$의 짝은 $\\overline{\\mathrm{PD}}$이고 곱 공식 $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$가 된다. 삼각형 BPC는 비만 알고 크기를 모르지만 $\\cos\\theta$는 비만으로 결정되므로(수학Ⅰ-12-C4) 먼저 구해 두고, 크기는 $\\overline{\\mathrm{AD}}$라는 절대 조건 하나로 마지막에 맞춘다.",
+   "skill_point": "원 밖의 점에서 두 할선 → $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$. 비로 모양, 절대 조건으로 크기.",
+   "answer": "12"
+  },
+  {
+   "id": "M1-230913",
+   "concept_refs": [
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C2"
+   ],
+   "guide": "결정되는 삼각형부터: 삼각형 CDE는 $\\overline{\\mathrm{CE}}=4$, $\\overline{\\mathrm{ED}}=3\\sqrt2$, 끼인각 $\\angle\\mathrm{CED}=\\pi-\\frac34\\pi=\\frac\\pi4$로 SAS → $\\overline{\\mathrm{CD}}$, $\\angle\\mathrm{CDE}$가 나온다(수학Ⅰ-12-C1).\n$\\overline{\\mathrm{AC}}$는 원의 중심 O가 핵심이다(S08). $\\angle\\mathrm{CDA}$는 호 AC에 대한 원주각이므로 중심각 $\\angle\\mathrm{AOC}=2\\angle\\mathrm{CDA}$, 그리고 $\\triangle\\mathrm{AOC}$는 반지름 두 개로 이등변이다(수학Ⅰ-12-C3). 그러면 삼각형 ACE의 세 각이 모두 정해져 ASA로 결정된다.",
+   "solutions": [
+    {
+     "title": "풀이 1 · 중심각 → 이등변 → 각으로 결정",
+     "steps": [
+      {
+       "label": "삼각형 CDE (SAS)",
+       "body": "$\\overline{\\mathrm{CD}}^2=16+18-2\\cdot4\\cdot3\\sqrt2\\cdot\\frac{\\sqrt2}2=10$, $\\overline{\\mathrm{CD}}=\\sqrt{10}$.\n$\\angle\\mathrm{CDE}=\\alpha$라 하면 $\\cos\\alpha=\\frac{18+10-16}{2\\cdot3\\sqrt2\\cdot\\sqrt{10}}=\\frac1{\\sqrt5}$, $\\sin\\alpha=\\frac2{\\sqrt5}$."
+      },
+      {
+       "label": "중심각과 이등변삼각형",
+       "body": "$\\angle\\mathrm{CDA}=\\alpha$는 호 AC에 대한 원주각이므로 $\\angle\\mathrm{AOC}=2\\alpha$. $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OC}}$이므로\n$$\\angle\\mathrm{OCA}=\\angle\\mathrm{OAC}=\\tfrac\\pi2-\\alpha$$"
+      },
+      {
+       "label": "삼각형 ACE의 세 각",
+       "body": "$\\angle\\mathrm{AEC}=\\frac34\\pi$, $\\angle\\mathrm{ACE}=\\angle\\mathrm{ACO}=\\frac\\pi2-\\alpha$이므로\n$$\\angle\\mathrm{CAE}=\\pi-\\tfrac34\\pi-\\left(\\tfrac\\pi2-\\alpha\\right)=\\alpha-\\tfrac\\pi4$$\n$\\sin\\left(\\alpha-\\frac\\pi4\\right)=\\frac{\\sin\\alpha-\\cos\\alpha}{\\sqrt2}=\\frac{1}{\\sqrt{10}}$."
+      },
+      {
+       "label": "사인법칙",
+       "body": "삼각형 ACE에서 $\\dfrac{\\overline{\\mathrm{AC}}}{\\sin\\frac34\\pi}=\\dfrac{\\overline{\\mathrm{CE}}}{\\sin(\\alpha-\\frac\\pi4)}$이므로\n$$\\overline{\\mathrm{AC}}=4\\cdot\\tfrac{\\sqrt2}2\\cdot\\sqrt{10}=4\\sqrt5$$"
+      },
+      {
+       "label": "답",
+       "body": "$\\overline{\\mathrm{AC}}\\times\\overline{\\mathrm{CD}}=4\\sqrt5\\cdot\\sqrt{10}=20\\sqrt2$ → ⑤"
+      }
+     ]
+    },
+    {
+     "title": "풀이 2 · 두 현의 곱 + 코사인법칙 (비교용)",
+     "steps": [
+      {
+       "label": "반지름 $r$로 두기",
+       "body": "직선 CO를 연장해 원과 다시 만나는 점을 $\\mathrm C'$라 하면 $\\overline{\\mathrm{EC'}}=\\overline{\\mathrm{EO}}+r=(r-4)+r=2r-4$. 두 현 AD, CC'이 E에서 만나므로\n$$\\overline{\\mathrm{EA}}\\cdot3\\sqrt2=4(2r-4)\\ \\Rightarrow\\ \\overline{\\mathrm{EA}}=\\tfrac{4\\sqrt2}3(r-2)$$"
+      },
+      {
+       "label": "삼각형 AOE",
+       "body": "$\\angle\\mathrm{AEO}=\\angle\\mathrm{CED}=\\frac\\pi4$(맞꼭지각), $\\overline{\\mathrm{OA}}=r$, $\\overline{\\mathrm{OE}}=r-4$. 코사인법칙 $r^2=\\overline{\\mathrm{EA}}^2+(r-4)^2-\\sqrt2\\,\\overline{\\mathrm{EA}}(r-4)$에 대입해 $(r-2)$로 나누면 $r=5$, $\\overline{\\mathrm{EA}}=4\\sqrt2$."
+      },
+      {
+       "label": "",
+       "body": "삼각형 ACE: $\\overline{\\mathrm{AC}}^2=32+16-2\\cdot4\\sqrt2\\cdot4\\cdot\\left(-\\frac{\\sqrt2}2\\right)=80$, $\\overline{\\mathrm{AC}}=4\\sqrt5$. 곱은 $20\\sqrt2$."
+      }
+     ]
+    }
+   ],
+   "supplement": "풀이 2도 가능하지만 반지름 $r$이라는 미지수를 새로 도입해 이차식을 정리해야 한다. 풀이 1은 '원의 중심이 보이면 반지름 두 개로 이등변, 원주각은 중심각의 절반'(S08)만으로 삼각형 ACE의 각을 모두 확정한다. 각이 모두 정해지면 한 변만으로 삼각형이 결정된다(ASA)는 것이 S07의 관점이다. $\\sin(\\alpha-\\frac\\pi4)$ 같은 합차 계산이 부담이면 삼각형 ACE에서 $\\angle\\mathrm{ACE}$의 $\\sin,\\cos$을 먼저 구해 사인법칙을 써도 된다.",
+   "skill_point": "원의 중심 → 반지름 두 개로 이등변 + 중심각 = 2×원주각 → 각으로 삼각형 결정.",
+   "answer": "5"
+  },
+  {
+   "id": "M1-240920",
+   "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C1"
+   ],
+   "guide": "두 외접원이 모두 공통변 BD를 현으로 갖는다. 각 원에서 BD의 대각이 주어져 있으므로 $R=\\frac{\\overline{\\mathrm{BD}}}{2\\sin(\\text{대각})}$로 둘 다 $\\overline{\\mathrm{BD}}$로 표현된다(수학Ⅰ-12-C2). 삼각형 ABD는 SAS이므로 $\\overline{\\mathrm{BD}}^2$가 코사인법칙으로 바로 나온다(수학Ⅰ-12-C1).",
+   "solutions": [
+    {
+     "title": "풀이 · 공통 현 BD",
+     "steps": [
+      {
+       "label": "(가)",
+       "body": "삼각형 ABD에서 $2R_2=\\dfrac{\\overline{\\mathrm{BD}}}{\\sin\\frac23\\pi}=\\dfrac{2}{\\sqrt3}\\overline{\\mathrm{BD}}$이므로 $R_2=\\dfrac{\\sqrt3}3\\overline{\\mathrm{BD}}$. $p=\\frac{\\sqrt3}3$."
+      },
+      {
+       "label": "(나)",
+       "body": "$\\overline{\\mathrm{BD}}^2=2^2+1^2-2\\cdot2\\cdot1\\cdot\\cos\\frac23\\pi$이므로 (나)$=2\\cdot2\\cdot1\\cdot\\left(-\\frac12\\right)=-2$. $q=-2$, $\\overline{\\mathrm{BD}}^2=7$."
+      },
+      {
+       "label": "(다)",
+       "body": "$R_1R_2=\\frac{\\sqrt2}2\\cdot\\frac{\\sqrt3}3\\cdot\\overline{\\mathrm{BD}}^2=\\frac{\\sqrt6}6\\cdot7=\\frac{7\\sqrt6}6$. $r=\\frac{7\\sqrt6}6$."
+      },
+      {
+       "label": "답",
+       "body": "$pqr=\\frac{\\sqrt3}3\\cdot(-2)\\cdot\\frac{7\\sqrt6}6=-\\frac{7\\sqrt2}3$, $(pqr)^2=\\frac{98}9$. 따라서 $9(pqr)^2=98$."
+      }
+     ]
+    }
+   ],
+   "supplement": "(나)는 '빼는 값'이므로 부호에 주의한다. $\\cos\\frac23\\pi<0$이라 (나)가 음수 $-2$가 되고, 이것을 $2$로 적으면 $(pqr)^2$는 같아 보여도 논리적으로 틀린 답을 쓴 셈이다(이 문제는 제곱이라 우연히 같다). 두 원이 공통 현을 가지면 $R_1:R_2=\\frac1{\\sin\\theta_1}:\\frac1{\\sin\\theta_2}$처럼 '대각의 $\\sin$'만으로 비교된다는 것이 드릴 포인트다.",
+   "skill_point": "공통 현을 가진 원들 → 모두 그 현과 대각의 $\\sin$으로 표현한다.",
+   "answer": "98"
+  },
+  {
+   "id": "M1-220912",
+   "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C1"
+   ],
+   "guide": "삼각형 ABC, BCD가 **같은 원**에 내접하므로 반지름 $2\\sqrt7$ 하나로 현 BC와 현 BD가 모두 나온다(수학Ⅰ-12-C2).\n· $\\overline{\\mathrm{BC}}=2R\\sin A$\n· $\\overline{\\mathrm{BD}}=2R\\sin(\\angle\\mathrm{BCD})$ ($\\angle\\mathrm{BCD}$는 현 BD의 원주각)\n그리고 사각형 ABDC가 원에 내접하므로 $\\angle\\mathrm{BDC}=\\pi-\\frac\\pi3$ (수학Ⅰ-12-C3). 그러면 삼각형 BCD는 SSA가 되어 $\\overline{\\mathrm{CD}}$에 대한 이차방정식.",
+   "solutions": [
+    {
+     "title": "풀이 · 같은 원의 사인법칙 두 번",
+     "steps": [
+      {
+       "label": "두 현",
+       "body": "$\\overline{\\mathrm{BC}}=2\\cdot2\\sqrt7\\cdot\\sin\\frac\\pi3=2\\sqrt{21}$, $\\overline{\\mathrm{BD}}=4\\sqrt7\\cdot\\frac{2\\sqrt7}7=8$."
+      },
+      {
+       "label": "대각",
+       "body": "D는 A를 포함하지 않는 호 위에 있으므로 A와 D는 현 BC에 대해 반대편: $\\angle\\mathrm{BDC}=\\pi-\\frac\\pi3=\\frac23\\pi$."
+      },
+      {
+       "label": "$\\overline{\\mathrm{CD}}$",
+       "body": "$\\overline{\\mathrm{CD}}=x$라 하면\n$$84=64+x^2-2\\cdot8\\cdot x\\cdot\\left(-\\tfrac12\\right)\\ \\Rightarrow\\ x^2+8x-20=0\\ \\Rightarrow\\ x=2\\ (x>0)$$"
+      },
+      {
+       "label": "답",
+       "body": "$\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}}=10$ → ②"
+      }
+     ]
+    }
+   ],
+   "supplement": "$\\sin(\\angle\\mathrm{BCD})$만 주어지면 $\\angle\\mathrm{BCD}$가 예각인지 둔각인지 모른다(S07 주의). 하지만 이 문제는 $\\angle\\mathrm{BCD}$를 직접 쓰지 않고 $\\sin$을 현의 길이로만 바꾸므로 그 모호함을 피한다. 원이 주어졌을 때 $\\sin$ 값은 곧 '현의 길이'라고 번역하는 습관을 들이자. 둔각 $\\frac23\\pi$에서 $-2ab\\cos$가 $+ab$가 되는 부호도 자주 틀리는 부분이다.",
+   "skill_point": "같은 원에 내접하면 $\\sin$ 값 = 현의 길이$/2R$. 내접사각형은 대각의 합 $\\pi$.",
+   "answer": "2"
+  },
+  {
+   "id": "M1-250910",
+   "concept_refs": [
+    "수학Ⅰ-12-C5",
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C4"
+   ],
+   "guide": "수선 AH가 있으면 $\\sin C=\\frac{\\overline{\\mathrm{AH}}}{\\overline{\\mathrm{AC}}}$가 직각삼각형에서 바로 나오고, 사인법칙 $\\overline{\\mathrm{AB}}=2R\\sin C$와 곱하면 $\\sin C$가 사라져\n$$\\overline{\\mathrm{AB}}\\cdot\\overline{\\mathrm{AC}}=2R\\cdot\\overline{\\mathrm{AH}}$$\n(수학Ⅰ-12-C5). 비 $\\sqrt2:1$로 두 변을 한 문자로 두면(수학Ⅰ-12-C4) 한 줄이다. $\\angle\\mathrm A$가 둔각이므로 B, C는 예각이고 H는 선분 BC 위에 있다.",
+   "solutions": [
+    {
+     "title": "풀이 · $bc=2R\\,h_a$",
+     "steps": [
+      {
+       "label": "반지름",
+       "body": "외접원의 넓이 $\\pi R^2=50\\pi$에서 $R=5\\sqrt2$."
+      },
+      {
+       "label": "핵심 식",
+       "body": "$\\overline{\\mathrm{AC}}=x$, $\\overline{\\mathrm{AB}}=\\sqrt2x$라 하면 $\\sin C=\\frac2x$(직각삼각형 AHC), 사인법칙 $\\overline{\\mathrm{AB}}=2R\\sin C$에서\n$$\\sqrt2x=10\\sqrt2\\cdot\\tfrac2x\\ \\Rightarrow\\ x^2=20$$"
+      },
+      {
+       "label": "$\\overline{\\mathrm{BH}}$",
+       "body": "$\\overline{\\mathrm{AB}}^2=2x^2=40$이므로 직각삼각형 ABH에서 $\\overline{\\mathrm{BH}}=\\sqrt{40-4}=6$ → ①"
+      }
+     ]
+    }
+   ],
+   "supplement": "확인: $\\overline{\\mathrm{CH}}=\\sqrt{20-4}=4$, $\\overline{\\mathrm{BC}}=10$이고 $\\overline{\\mathrm{AB}}^2+\\overline{\\mathrm{AC}}^2=60<100=\\overline{\\mathrm{BC}}^2$이므로 실제로 $\\angle\\mathrm A$는 둔각이다. $\\sin B$로 식을 세워도($\\overline{\\mathrm{AC}}=2R\\sin B$, $\\sin B=\\frac2{\\sqrt2x}$) 같은 식이 나온다. 수선과 외접원이 함께 나오면 $bc=2Rh_a$를 공식처럼 떠올리자.",
+   "skill_point": "수선 + 외접원 → $\\overline{\\mathrm{AB}}\\cdot\\overline{\\mathrm{AC}}=2R\\cdot\\overline{\\mathrm{AH}}$.",
+   "answer": "1"
+  },
+  {
+   "id": "M1-241113",
+   "concept_refs": [
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C5",
+    "수학Ⅰ-12-C2"
+   ],
+   "guide": "삼각형 ABC는 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{BC}}$, $\\angle\\mathrm{BAC}$로 SSA지만, 이차방정식의 양수근이 하나뿐이라 결정된다(수학Ⅰ-12-C1). $\\overline{\\mathrm{AC}}$가 나오면\n· $S_2=\\frac12\\overline{\\mathrm{AD}}\\cdot\\overline{\\mathrm{CD}}\\sin(\\angle\\mathrm{ADC})$에서 곱 $\\overline{\\mathrm{AD}}\\cdot\\overline{\\mathrm{CD}}=9$가 그대로 쓰여 $\\sin(\\angle\\mathrm{ADC})$가 나온다(수학Ⅰ-12-C5).\n· $R=\\frac{\\overline{\\mathrm{AC}}}{2\\sin(\\angle\\mathrm{ADC})}$ (수학Ⅰ-12-C2).\n변 AD, CD를 따로 구할 필요가 없다는 것이 포인트.",
+   "solutions": [
+    {
+     "title": "풀이",
+     "steps": [
+      {
+       "label": "$\\overline{\\mathrm{AC}}$",
+       "body": "$\\overline{\\mathrm{AC}}=a$: $13=9+a^2-2\\cdot3\\cdot a\\cdot\\frac12$ → $a^2-3a-4=0$ → $a=4$."
+      },
+      {
+       "label": "$S_1$과 $\\sin(\\angle\\mathrm{ADC})$",
+       "body": "$S_1=\\frac12\\cdot3\\cdot4\\cdot\\frac{\\sqrt3}2=3\\sqrt3$. $S_2=\\frac12\\cdot9\\cdot\\sin(\\angle\\mathrm{ADC})=\\frac56\\cdot3\\sqrt3=\\frac{5\\sqrt3}2$이므로 $\\sin(\\angle\\mathrm{ADC})=\\frac{5\\sqrt3}9$."
+      },
+      {
+       "label": "답",
+       "body": "$\\dfrac{R}{\\sin(\\angle\\mathrm{ADC})}=\\dfrac{\\overline{\\mathrm{AC}}}{2\\sin^2(\\angle\\mathrm{ADC})}=\\dfrac{4}{2\\cdot\\frac{75}{81}}=\\dfrac{54}{25}$ → ①"
+      }
+     ]
+    }
+   ],
+   "supplement": "$R$을 먼저 구해($R=\\frac{6\\sqrt3}5$) 나눠도 되지만, $\\frac{R}{\\sin}=\\frac{\\overline{\\mathrm{AC}}}{2\\sin^2}$로 한 번에 쓰면 근호 계산이 사라진다. 곱 $\\overline{\\mathrm{AD}}\\times\\overline{\\mathrm{CD}}$가 주어지면 개별 길이를 구하지 말고 넓이 공식의 $ab$ 자리에 그대로 넣으라는 신호다.",
+   "skill_point": "두 변의 곱이 주어지면 넓이 $\\frac12ab\\sin C$에 통째로 넣는다. 외접원은 한 변과 대각의 $\\sin$.",
+   "answer": "1"
+  },
+  {
+   "id": "M1-250610",
+   "concept_refs": [
+    "수학Ⅰ-12-C4",
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C5"
+   ],
+   "guide": "$\\sin$ 관계식은 사인법칙으로 **변의 관계식**이 된다(수학Ⅰ-12-C4).\n· (가) $3\\sin A=2\\sin B$ → $3a=2b$\n· (나) $\\cos B=\\cos C$ → $B=C$ ($0<B,C<\\pi$에서 $\\cos$은 일대일) → $b=c$\n세 변의 비 $2:3:3$으로 모양이 확정되고, 크기는 $R=3$으로 마지막에 정한다.",
+   "solutions": [
+    {
+     "title": "풀이 · 비로 모양, $R$로 크기",
+     "steps": [
+      {
+       "label": "변의 비",
+       "body": "$a:b:c=2:3:3$. 이등변이므로 $\\cos A=\\frac{9+9-4}{2\\cdot3\\cdot3}=\\frac79$, $\\sin A=\\frac{4\\sqrt2}9$."
+      },
+      {
+       "label": "크기 결정",
+       "body": "$\\pi R^2=9\\pi$에서 $R=3$. $a=2R\\sin A=6\\cdot\\frac{4\\sqrt2}9=\\frac{8\\sqrt2}3$이므로 비례상수 $\\frac{4\\sqrt2}3$, $b=c=4\\sqrt2$."
+      },
+      {
+       "label": "넓이",
+       "body": "$S=\\frac12bc\\sin A=\\frac12\\cdot32\\cdot\\frac{4\\sqrt2}9=\\frac{64\\sqrt2}9$ → ⑤"
+      }
+     ]
+    },
+    {
+     "title": "풀이 2 · $S=\\frac{abc}{4R}$ (확인용)",
+     "steps": [
+      {
+       "label": "",
+       "body": "$S=\\dfrac{abc}{4R}=\\dfrac{\\frac{8\\sqrt2}3\\cdot32}{12}=\\dfrac{64\\sqrt2}9$. 세 변과 $R$이 모두 있을 때는 이 공식이 가장 빠르다."
+      }
+     ]
+    }
+   ],
+   "supplement": "$\\cos B=\\cos C$에서 $B=C$로 가는 근거는 $(0,\\pi)$에서 $\\cos$이 감소함수(일대일)라는 것이다. $\\sin B=\\sin C$였다면 $B=C$ 또는 $B+C=\\pi$ 두 경우가 생긴다는 차이를 기억하자. 비를 먼저 확정하면 $\\cos A$가 크기와 무관하게 나오므로 계산이 깔끔하다.",
+   "skill_point": "$\\sin$ 관계식 → 변의 관계식. 비로 모양(각) 먼저, $R$로 크기는 마지막.",
+   "answer": "5"
+  },
+  {
+   "id": "M1-251114",
+   "concept_refs": [
+    "수학Ⅰ-12-C4",
+    "수학Ⅰ-12-C5",
+    "수학Ⅰ-12-C2"
+   ],
+   "guide": "주어진 것이 모두 **비**다: $\\overline{\\mathrm{AD}}:\\overline{\\mathrm{DB}}$, $\\sin A:\\sin C$, 넓이비. 원 $O$의 반지름을 $r$로 두고 모든 변을 $r$로 표현하면(수학Ⅰ-12-C4) 삼각형의 모양이 확정되고, 외접원 반지름 $7$로 $r$이 정해진다.\n최댓값: P가 원 $O$ 위를 움직일 때 높이는 'A에서 BC까지의 거리 $+\\,r$'이 최대다(수학Ⅰ-12-C5).",
+   "solutions": [
+    {
+     "title": "풀이 · 모든 변을 $r$로",
+     "steps": [
+      {
+       "label": "변을 $r$로",
+       "body": "$\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AE}}=r$, $\\overline{\\mathrm{AB}}=\\frac53r$.\n넓이비: $\\dfrac{\\frac12r\\cdot r\\sin A}{\\frac12\\cdot\\frac53r\\cdot\\overline{\\mathrm{AC}}\\sin A}=\\dfrac{3r}{5\\overline{\\mathrm{AC}}}=\\dfrac9{35}$ → $\\overline{\\mathrm{AC}}=\\frac73r$.\n$\\sin A:\\sin C=\\overline{\\mathrm{BC}}:\\overline{\\mathrm{AB}}=8:5$ → $\\overline{\\mathrm{BC}}=\\frac83r$."
+      },
+      {
+       "label": "모양 확정",
+       "body": "$\\overline{\\mathrm{AB}}:\\overline{\\mathrm{BC}}:\\overline{\\mathrm{CA}}=5:8:7$. 가운데 길이 7의 대각 B:\n$$\\cos B=\\frac{25+64-49}{2\\cdot5\\cdot8}=\\frac12\\ \\Rightarrow\\ B=\\frac\\pi3$$"
+      },
+      {
+       "label": "크기 확정",
+       "body": "사인법칙: $\\overline{\\mathrm{AC}}=2\\cdot7\\cdot\\sin\\frac\\pi3=7\\sqrt3=\\frac73r$ → $r=3\\sqrt3$. 따라서 $\\overline{\\mathrm{AB}}=5\\sqrt3$, $\\overline{\\mathrm{BC}}=8\\sqrt3$."
+      },
+      {
+       "label": "A에서 BC까지 거리",
+       "body": "$h=\\overline{\\mathrm{AB}}\\sin B=5\\sqrt3\\cdot\\frac{\\sqrt3}2=\\frac{15}2$."
+      },
+      {
+       "label": "최댓값",
+       "body": "P가 BC에서 가장 먼 곳(A를 지나 BC에 수직인 직선이 원과 만나는, BC 반대쪽 점)일 때 높이 $\\frac{15}2+3\\sqrt3$.\n$$\\tfrac12\\cdot8\\sqrt3\\cdot\\left(\\tfrac{15}2+3\\sqrt3\\right)=30\\sqrt3+36$$ → ④"
+      }
+     ]
+    }
+   ],
+   "supplement": "세 변의 비 $5:7:8$은 사잇각 $60^\\circ$가 나오는 유명한 삼각형이다($3:5:7$의 $120^\\circ$와 함께 기억). 크기 조건(외접원 반지름 7)을 처음부터 쓰면 $\\sin C$ 등 미지수가 늘어나지만, 비로 모양을 먼저 확정하면 각 $B$가 특수각으로 떨어져 모든 계산이 간단해진다. 원 위의 점에 대한 넓이 최대는 '중심까지 거리 + 반지름'이 정석이다.",
+   "skill_point": "비만 주어지면 한 문자로 모양 확정 → 특수각 확인 → 절대 조건으로 크기.",
+   "answer": "4"
+  },
+  {
+   "id": "M1-240613",
+   "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C5",
+    "수학Ⅰ-12-C1"
+   ],
+   "guide": "두 원은 지름이 $\\overline{\\mathrm{AE}}$, $\\overline{\\mathrm{CE}}$ ($1:2$)이다. 현 $\\mathrm{P_1P_2}$는 A에서 본 원주각이 $\\angle\\mathrm{DAB}=\\beta$, 현 $\\mathrm{Q_1Q_2}$는 C에서 본 원주각이 $\\angle\\mathrm{BCD}=\\alpha$이므로\n$$\\overline{\\mathrm{P_1P_2}}=\\overline{\\mathrm{AE}}\\sin\\beta,\\qquad\\overline{\\mathrm{Q_1Q_2}}=\\overline{\\mathrm{CE}}\\sin\\alpha$$\n(현 $=$ 지름 $\\times\\sin$ 원주각, 수학Ⅰ-12-C2). 여기서 $\\sin\\beta$가 나오고, 삼각형 ABD의 넓이·코사인법칙으로 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}$를 합·곱으로 구한다. $\\overline{\\mathrm{BD}}$는 SAS인 삼각형 BCD에서(수학Ⅰ-12-C1).",
+   "solutions": [
+    {
+     "title": "풀이 · 지름 × sin + 합과 곱",
+     "steps": [
+      {
+       "label": "$\\sin\\beta$",
+       "body": "$\\overline{\\mathrm{AE}}=d$, $\\overline{\\mathrm{CE}}=2d$라 하면\n$$\\frac{\\overline{\\mathrm{P_1P_2}}}{\\overline{\\mathrm{Q_1Q_2}}}=\\frac{d\\sin\\beta}{2d\\sin\\alpha}=\\frac3{5\\sqrt2}$$\n$\\cos\\alpha=-\\frac13$에서 $\\sin\\alpha=\\frac{2\\sqrt2}3$이므로 $\\sin\\beta=\\frac{6}{5\\sqrt2}\\cdot\\frac{2\\sqrt2}3=\\frac45$. $\\beta>\\frac\\pi2$이므로 $\\cos\\beta=-\\frac35$."
+      },
+      {
+       "label": "$\\overline{\\mathrm{BD}}^2$",
+       "body": "삼각형 BCD (SAS): $\\overline{\\mathrm{BD}}^2=9+4-2\\cdot3\\cdot2\\cdot\\left(-\\frac13\\right)=17$."
+      },
+      {
+       "label": "합과 곱",
+       "body": "$\\overline{\\mathrm{AB}}=x$, $\\overline{\\mathrm{AD}}=y$.\n· 넓이: $\\frac12xy\\cdot\\frac45=2$ → $xy=5$\n· 코사인법칙: $17=x^2+y^2-2xy\\left(-\\frac35\\right)=x^2+y^2+6$ → $x^2+y^2=11$"
+      },
+      {
+       "label": "답",
+       "body": "$(x+y)^2=11+10=21$이므로 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}=\\sqrt{21}$ → ①"
+      }
+     ]
+    }
+   ],
+   "supplement": "'예각삼각형' 조건은 $\\mathrm{P_1},\\mathrm{P_2},\\mathrm{Q_1},\\mathrm{Q_2}$가 모두 선분 위에 있도록(수선의 발이 변 위에 떨어지도록) 보장하는 장치이고, '$\\angle\\mathrm{DAB}>\\frac\\pi2$'는 $\\sin\\beta=\\frac45$에서 $\\cos\\beta$의 부호를 고르는 장치다(S07 주의: $\\sin$만으로는 예각·둔각을 모른다). $x$, $y$를 따로 구하지 말고 합·곱($x^2+y^2$와 $xy$)으로 바로 $(x+y)^2$을 만드는 것도 습관으로.",
+   "skill_point": "지름이 주어진 원의 현 = 지름 × sin(원주각). $\\sin$만 나오면 조건으로 $\\cos$ 부호를 고른다.",
+   "answer": "1"
+  }
+ ]
+}
