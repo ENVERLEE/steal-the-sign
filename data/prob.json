@@ -1,0 +1,2218 @@
+[
+ {
+  "id": "PS-220629",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "220629",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2021년 6월 고3 29번"
+  },
+  "question": "$1$부터 $6$까지의 자연수가 하나씩 적혀 있는 $6$개의 의자가 있다. 이 $6$개의 의자를 일정한 간격을 두고 원형으로 배열할 때, 서로 이웃한 $2$개의 의자에 적혀 있는 수의 곱이 $12$가 되지 않도록 배열하는 경우의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "48",
+  "answer_value": "48",
+  "figure": {
+   "description": "1~6이 적힌 의자 6개가 원형으로 놓인 그림",
+   "source_page": 1
+  },
+  "theme": {
+   "primary": "확률과 통계-01",
+   "primary_name": "원순열",
+   "links": []
+  },
+  "first_judgment": "곱이 $12$인 쌍은 $(2,6)$, $(3,4)$뿐이므로 전체에서 이 쌍이 이웃하는 경우를 뺀다(여사건·포함배제).",
+  "behavior": "계산",
+  "reasoning": [
+   "여사건·전체에서 빼기",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "전체 $5!=120$. $(2,6)$ 이웃: $4!\\cdot2=48$, $(3,4)$ 이웃: $48$, 둘 다: $3!\\cdot4=24$. $120-(48+48-24)=48$",
+  "legacy": {
+   "category": "원순열",
+   "book_no": 1,
+   "question_page": 1,
+   "solution_page": 25
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-220628",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "220628",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2021년 6월 고3 28번"
+  },
+  "question": "한 개의 주사위를 한 번 던져 나온 눈의 수가 $3$ 이하이면 나온 눈의 수를 점수로 얻고, 나온 눈의 수가 $4$ 이상이면 $0$점을 얻는다. 이 주사위를 네 번 던져 나온 눈의 수를 차례로 $a,b,c,d$라 할 때, 얻은 네 점수의 합이 $4$가 되는 모든 순서쌍 $(a,b,c,d)$의 개수는?",
+  "condition": null,
+  "choices": [
+   "187",
+   "190",
+   "193",
+   "196",
+   "199"
+  ],
+  "answer": "5",
+  "answer_value": "199",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-02",
+   "primary_name": "같은 것이 있는 순열",
+   "links": [
+    "확률과 통계-03"
+   ]
+  },
+  "first_judgment": "$0$점이 되는 눈(4,5,6)의 개수로 경우를 나누고, 점수 배열은 같은 것이 있는 순열로 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 4 이상 0개: $1,1,1,1$ → 1. (ii) 1개: $0,1,1,2$ 배열 $12$, 눈 3가지 → 36. (iii) 2개: $0,0,1,3$ → 12, $0,0,2,2$ → 6, 각 $9$ → $162$. 합 $199$",
+  "legacy": {
+   "category": "같은 것이 있는 순열",
+   "book_no": 2,
+   "question_page": 1,
+   "solution_page": 25
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-240628",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "240628",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2023년 6월 고3 28번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수는?",
+  "condition": "(가) $f(1)f(3)f(5)$는 홀수이다.\\\\(나) $f(2)<f(4)$\\\\(다) 함수 $f$의 치역의 원소의 개수는 $3$이다.",
+  "choices": [
+   "128",
+   "132",
+   "136",
+   "140",
+   "144"
+  ],
+  "answer": "5",
+  "answer_value": "144",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-03",
+   "primary_name": "중복순열",
+   "links": []
+  },
+  "first_judgment": "$f(1),f(3),f(5)$가 모두 홀수이므로 치역에 들어가는 홀수의 개수(1,2,3)로 나누고, 나머지 치역 원소를 $f(2),f(4)$가 채우게 한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 홀수 1개: $3$가지, $f(2)=2$, $f(4)=4$ → 3. (ii) 홀수 2개: $3\\cdot(2\\cdot2+6\\cdot4)=84$. (iii) 홀수 3개: $1\\cdot(3\\cdot1+18\\cdot2+6\\cdot3)=57$. 합 $144$",
+  "legacy": {
+   "category": "함수의 개수(1) : 중복순열",
+   "book_no": 3,
+   "question_page": 2,
+   "solution_page": 26
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-221128",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "221128",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 28,
+   "points": 4,
+   "label": "2021년 11월 고3 28번"
+  },
+  "question": "두 집합 $X=\\{1,2,3,4,5\\}$, $Y=\\{1,2,3,4\\}$에 대하여 다음 조건을 만족시키는 $X$에서 $Y$로의 함수 $f$의 개수는?",
+  "condition": "(가) 집합 $X$의 모든 원소 $x$에 대하여 $f(x)\\ge\\sqrt x$이다.\\\\(나) 함수 $f$의 치역의 원소의 개수는 $3$이다.",
+  "choices": [
+   "128",
+   "138",
+   "148",
+   "158",
+   "168"
+  ],
+  "answer": "1",
+  "answer_value": "128",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-03",
+   "primary_name": "중복순열",
+   "links": []
+  },
+  "first_judgment": "(가)로 $f(1)\\ge1$, $f(2),f(3)\\ge2$, $f(4)\\ge2$, $f(5)\\ge3$이 되고, 가능한 치역을 나열해 치역별로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "치역 후보 $\\{1,2,3\\},\\{1,2,4\\},\\{1,3,4\\},\\{2,3,4\\}$. $\\{1,2,3\\}$: $2^3-1=7$, $\\{1,2,4\\}$: 7, $\\{1,3,4\\}$: $2^4-2=14$, $\\{2,3,4\\}$: $f(5)=3,4$ 각각 $3^4-\\{3+(2^4-2)\\cdot2\\}=50$ → 100. 합 $128$",
+  "legacy": {
+   "category": "함수의 개수(1) : 중복순열",
+   "book_no": 4,
+   "question_page": 2,
+   "solution_page": 26
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-220928",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "220928",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2021년 9월 고3 28번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수는?",
+  "condition": "(가) $f(3)+f(4)$는 $5$의 배수이다.\\\\(나) $f(1)<f(3)$이고 $f(2)<f(3)$이다.\\\\(다) $f(4)<f(5)$이고 $f(4)<f(6)$이다.",
+  "choices": [
+   "384",
+   "394",
+   "404",
+   "414",
+   "424"
+  ],
+  "answer": "4",
+  "answer_value": "414",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-03",
+   "primary_name": "중복순열",
+   "links": []
+  },
+  "first_judgment": "$(f(3),f(4))$ 쌍을 먼저 나열하고($f(3)\\ne1$, $f(4)\\ne6$), 나머지는 각각 독립적으로 중복순열로 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$(f(3),f(4))=(4,1),(2,3),(3,2),(6,4),(5,5)$. 각각 $9\\cdot25$, $1\\cdot9$, $4\\cdot16$, $25\\cdot4$, $16\\cdot1$ → $225+9+64+100+16=414$",
+  "legacy": {
+   "category": "함수의 개수(1) : 중복순열",
+   "book_no": 5,
+   "question_page": 3,
+   "solution_page": 27
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-270630",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "270630",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2026년 6월 고3 30번"
+  },
+  "question": "노란색 공 $4$개, 보라색 공 $4$개, 검은색 공 $4$개가 있다. 이 $12$개의 공을 모두 일렬로 나열할 때, 노란색 공이 보라색 공과 이웃하지 않게 나열하는 경우의 수를 구하시오. (단, 같은 색 공끼리는 서로 구별하지 않는다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "780",
+  "answer_value": "780",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-07",
+   "primary_name": "중복조합 - 합 기본형",
+   "links": [
+    "확률과 통계-02"
+   ]
+  },
+  "first_judgment": "검은 공 4개를 먼저 놓아 만든 5개의 칸 각각에 한 색만 들어가게 하고, 노란 공이 들어갈 칸의 수로 나눠 중복조합으로 분배한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "대응·모델링",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "칸 5개. 노란 공 칸 수 $k$: $k=1$: $5\\cdot{}_4H_4=175$, $k=2$: $10\\cdot3\\cdot15=450$, $k=3$: $10\\cdot3\\cdot5=150$, $k=4$: $5\\cdot1\\cdot1=5$. 합 $780$",
+  "legacy": {
+   "category": "중복조합의 수",
+   "book_no": 6,
+   "question_page": 3,
+   "solution_page": 27
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-261130",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "261130",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 30,
+   "points": 4,
+   "label": "2025년 11월 고3 30번"
+  },
+  "question": "비어 있는 주머니 $10$개가 일렬로 놓여 있고, 공 $8$개가 있다. 각 주머니에 들어 있는 공의 개수가 $2$ 이하가 되도록 공을 주머니에 남김없이 나누어 넣을 때, 다음 조건을 만족시키는 경우의 수를 구하시오. (단, 공끼리는 서로 구별하지 않는다.)",
+  "condition": "(가) 들어 있는 공의 개수가 $1$인 주머니는 $4$개 또는 $6$개이다.\\\\(나) 들어 있는 공의 개수가 $2$인 주머니와 이웃한 주머니에는 공이 들어 있지 않다.",
+  "choices": null,
+  "answer": "262",
+  "answer_value": "262",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-08",
+   "primary_name": "중복조합 - 합 응용형",
+   "links": [
+    "확률과 통계-07"
+   ]
+  },
+  "first_judgment": "(가)로 개수 $2$, $0$인 주머니 수가 정해지므로, 빈 주머니를 먼저 놓고 그 사이/양 끝에 2개짜리, 1개짜리를 배치하는 중복조합 모델로 바꾼다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "대응·모델링",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 1개짜리 4개: 2개짜리 2, 빈 4 → $_5C_2\\cdot{}_3H_4=10\\cdot15=150$. (ii) 1개짜리 6개: 2개짜리 1, 빈 3 → $_4C_1\\cdot{}_3H_6=4\\cdot28=112$. 합 $262$",
+  "legacy": {
+   "category": "중복조합의 수",
+   "book_no": 7,
+   "question_page": 4,
+   "solution_page": 28
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-260928",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "260928",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2025년 9월 고3 28번"
+  },
+  "question": "빨간색 카드 $1$장, 파란색 카드 $1$장, 노란색 카드 $3$장, 보라색 카드 $3$장이 있다. 이 $8$장의 카드를 세 학생 $\\mathrm{A,B,C}$에게 다음 규칙에 따라 남김없이 나누어 주는 경우의 수는? (단, 같은 색 카드끼리는 서로 구별하지 않는다.)",
+  "condition": "(가) 두 학생 $\\mathrm{A,B}$는 각각 $1$장 이상의 카드를 받고, 학생 $\\mathrm{C}$는 카드를 받지 못할 수 있다.\\\\(나) 학생 $\\mathrm{A}$가 받는 카드의 색의 가짓수는 $3$ 이하이다.",
+  "choices": [
+   "730",
+   "746",
+   "762",
+   "778",
+   "794"
+  ],
+  "answer": "2",
+  "answer_value": "746",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-08",
+   "primary_name": "중복조합 - 합 응용형",
+   "links": [
+    "확률과 통계-07"
+   ]
+  },
+  "first_judgment": "색별로 독립 분배($3\\cdot3\\cdot{}_3H_3\\cdot{}_3H_3$)한 뒤, (가) 위반과 (나) 위반(A가 4색 모두)을 차례로 뺀다.",
+  "behavior": "추론",
+  "reasoning": [
+   "여사건·전체에서 빼기",
+   "대응·모델링"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "전체 $3\\cdot3\\cdot10\\cdot10=900$. A 0장 64, B 0장 64, 둘 다 0장 1 → $900-127=773$. A가 4색 모두 받고 B가 1장 이상: $36-9=27$. $773-27=746$",
+  "legacy": {
+   "category": "중복조합의 수",
+   "book_no": 8,
+   "question_page": 4,
+   "solution_page": 28
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-250930",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "250930",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2024년 9월 고3 30번"
+  },
+  "question": "흰 공 $4$개와 검은 공 $4$개를 세 명의 학생 $\\mathrm{A,B,C}$에게 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하시오. (단, 같은 색 공끼리는 서로 구별하지 않고, 공을 받지 못하는 학생이 있을 수 있다.)",
+  "condition": "(가) 학생 $\\mathrm{A}$가 받는 공의 개수는 $0$ 이상 $2$ 이하이다.\\\\(나) 학생 $\\mathrm{B}$가 받는 공의 개수는 $2$ 이상이다.",
+  "choices": null,
+  "answer": "93",
+  "answer_value": "93",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-08",
+   "primary_name": "중복조합 - 합 응용형",
+   "links": [
+    "확률과 통계-07"
+   ]
+  },
+  "first_judgment": "A가 받는 공의 개수(0,1,2)와 색 구성으로 나눈 뒤, 남은 공을 B, C에 나누되 B가 2개 미만인 경우를 뺀다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) A 0개: $5\\cdot5-3=22$. (ii) A 1개: 흰 1개 $4\\cdot5-3=17$, 검은 1개 17 → 34. (iii) A 2개: 흰2 → 12, 검2 → 12, 흰1검1 → $4\\cdot4-3=13$ → 37. 합 $93$",
+  "legacy": {
+   "category": "중복조합의 수",
+   "book_no": 9,
+   "question_page": 5,
+   "solution_page": 29
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-240930",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "240930",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2023년 9월 고3 30번"
+  },
+  "question": "다음 조건을 만족시키는 $13$ 이하의 자연수 $a,b,c,d$의 모든 순서쌍 $(a,b,c,d)$의 개수를 구하시오.",
+  "condition": "(가) $a\\le b\\le c\\le d$\\\\(나) $ad$는 홀수이고, $b+c$는 짝수이다.",
+  "choices": null,
+  "answer": "336",
+  "answer_value": "336",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-05"
+   ]
+  },
+  "first_judgment": "$a,d$는 홀수로 고정되고 $b,c$는 둘 다 홀수 또는 둘 다 짝수 — 두 경우로 나눠 중복조합을 쓴다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "대응·모델링"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) $b,c$ 홀수: 홀수 7개에서 4개 중복선택 $_7H_4=210$. (ii) $b,c$ 짝수: $d-a=12,10,8,6,4,2$별로 $1\\cdot{}_6H_2,\\ 2\\cdot{}_5H_2,\\ 3\\cdot{}_4H_2,\\ 4\\cdot{}_3H_2,\\ 5\\cdot{}_2H_2,\\ 6\\cdot1$ → $21+30+30+24+15+6=126$. 합 $336$",
+  "legacy": {
+   "category": "중복조합의 수",
+   "book_no": 10,
+   "question_page": 5,
+   "solution_page": 29
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-240629",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "240629",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2023년 6월 고3 29번"
+  },
+  "question": "그림과 같이 $2$장의 검은색 카드와 $1$부터 $8$까지의 자연수가 하나씩 적혀 있는 $8$장의 흰색 카드가 있다. 이 카드를 모두 한 번씩 사용하여 왼쪽에서 오른쪽으로 일렬로 배열할 때, 다음 조건을 만족시키는 경우의 수를 구하시오. (단, 검은색 카드는 서로 구별하지 않는다.)",
+  "condition": "(가) 흰색 카드에 적힌 수가 작은 수부터 크기순으로 왼쪽에서 오른쪽으로 배열되도록 카드가 놓여 있다.\\\\(나) 검은색 카드 사이에는 흰색 카드가 $2$장 이상 놓여 있다.\\\\(다) 검은색 카드 사이에는 $3$의 배수가 적힌 흰색 카드가 $1$장 이상 놓여 있다.",
+  "choices": null,
+  "answer": "25",
+  "answer_value": "25",
+  "figure": {
+   "description": "검은색 카드 2장과 1~8이 적힌 흰색 카드 8장",
+   "source_page": 6
+  },
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-05"
+   ]
+  },
+  "first_judgment": "흰 카드 순서가 고정이므로 검은 카드 왼쪽·사이·오른쪽의 흰 카드 수 $a+b+c=8$ ($b\\ge2$)로 바꾸고, 사이에 3의 배수가 없는 경우를 뺀다.",
+  "behavior": "추론",
+  "reasoning": [
+   "대응·모델링",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$b=b'+2$, $a+b'+c=6$ → $_3H_6=28$. 사이 카드가 $\\{1,2\\},\\{4,5\\},\\{7,8\\}$인 3가지 제외 → $25$",
+  "legacy": {
+   "category": "중복조합의 수",
+   "book_no": 11,
+   "question_page": 6,
+   "solution_page": 30
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-220930",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "220930",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2021년 9월 고3 30번"
+  },
+  "question": "네 명의 학생 $\\mathrm{A,B,C,D}$에게 같은 종류의 사인펜 $14$개를 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하시오.",
+  "condition": "(가) 각 학생은 $1$개 이상의 사인펜을 받는다.\\\\(나) 각 학생이 받는 사인펜의 개수는 $9$ 이하이다.\\\\(다) 적어도 한 학생은 짝수 개의 사인펜을 받는다.",
+  "choices": null,
+  "answer": "218",
+  "answer_value": "218",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-08"
+   ]
+  },
+  "first_judgment": "합이 $14$(짝수)이므로 홀수 개를 받는 학생 수는 짝수 — (다)는 '짝수 개 받는 학생이 2명 또는 4명'으로 바뀐다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 짝수 2명·홀수 2명: $_4C_2\\cdot({}_4H_4-2)=6\\cdot33=198$. (ii) 4명 모두 짝수: $a+b+c+d=3$ → $_4H_3=20$. 합 $218$",
+  "legacy": {
+   "category": "'적어도'의 조건이 있는 중복조합의 수",
+   "book_no": 12,
+   "question_page": 6,
+   "solution_page": 31
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-241129",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "241129",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 29,
+   "points": 4,
+   "label": "2023년 11월 고3 29번"
+  },
+  "question": "다음 조건을 만족시키는 $6$ 이하의 자연수 $a,b,c,d$의 모든 순서쌍 $(a,b,c,d)$의 개수를 구하시오.",
+  "condition": "$a\\le c\\le d$이고 $b\\le c\\le d$이다.",
+  "choices": null,
+  "answer": "196",
+  "answer_value": "196",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-05",
+   "primary_name": "중복조합 - 부등식 기본형",
+   "links": []
+  },
+  "first_judgment": "$a\\le b$와 $b\\le a$ 두 경우로 나누면 각각 4개짜리 비감소 수열이 되고, 겹치는 $a=b$를 한 번 뺀다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$a\\le b\\le c\\le d$: $_6H_4=126$, $b\\le a\\le c\\le d$: 126, $a=b$: $_6H_3=56$. $126+126-56=196$",
+  "legacy": {
+   "category": "부등식의 해의 개수",
+   "book_no": 13,
+   "question_page": 7,
+   "solution_page": 31
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-260630",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "260630",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2025년 6월 고3 30번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수를 구하시오.",
+  "condition": "(가) $x=1,2,3,4$일 때 $f(x+1)+3\\ge f(x)+x$이다.\\\\(나) $f(2)$의 값은 홀수이다.",
+  "choices": null,
+  "answer": "115",
+  "answer_value": "115",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-03"
+   ]
+  },
+  "first_judgment": "(가)를 $x$별로 풀면 $f(1)\\le f(2)+2$, $f(2)-1\\le f(3)\\le f(4)\\le f(5)-1$로 정리되어 $f(2)$ 값별 중복조합이 된다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) $f(2)=1$: $f(1)$ 3가지, $1\\le f(3)\\le f(4)\\le f(5)-1\\le4$ → $_4H_3=20$ → 60. (ii) $f(2)=3$: $5\\cdot{}_3H_3=50$. (iii) $f(2)=5$: $5\\cdot1=5$. 합 $115$",
+  "legacy": {
+   "category": "함수의 개수(2) : 중복조합",
+   "book_no": 14,
+   "question_page": 7,
+   "solution_page": 31
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-251128",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "251128",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 28,
+   "points": 4,
+   "label": "2024년 11월 고3 28번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수는?",
+  "condition": "(가) $f(1)\\times f(6)$의 값이 $6$의 약수이다.\\\\(나) $2f(1)\\le f(2)\\le f(3)\\le f(4)\\le f(5)\\le2f(6)$",
+  "choices": [
+   "166",
+   "171",
+   "176",
+   "181",
+   "186"
+  ],
+  "answer": "2",
+  "answer_value": "171",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-03"
+   ]
+  },
+  "first_judgment": "$f(1)f(6)\\in\\{1,2,3,6\\}$이고 $f(1)\\le f(6)$이므로 $(f(1),f(6))$ 쌍을 나열한 뒤 가운데 네 값은 중복조합으로 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$(1,1)$: 1. $(1,2)$: $_3H_4=15$. $(1,3)$: $_5H_4=70$. $(1,6)$: $_5H_4=70$, $(2,3)$: $_3H_4=15$. 합 $1+15+70+85=171$",
+  "legacy": {
+   "category": "함수의 개수(2) : 중복조합",
+   "book_no": 15,
+   "question_page": 8,
+   "solution_page": 32
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-250630",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "250630",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2024년 6월 고3 30번"
+  },
+  "question": "집합 $X=\\{-2,-1,0,1,2\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수를 구하시오.",
+  "condition": "(가) $X$의 모든 원소 $x$에 대하여 $x+f(x)\\in X$\\\\(나) $x=-2,-1,0,1$일 때 $f(x)\\ge f(x+1)$",
+  "choices": null,
+  "answer": "108",
+  "answer_value": "108",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-03"
+   ]
+  },
+  "first_judgment": "(가)로 각 $x$에서 가능한 $f(x)$ 범위가 제한되고 (나)는 비증가 조건이므로 $f(-2)$ 값별로 중복조합에서 불가능한 경우를 뺀다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$f(-2)\\ge0$, $f(2)\\le0$ 등. (i) $f(-2)=0$: $_3H_4-1=14$. (ii) $f(-2)=1$: $_4H_4-2=33$. (iii) $f(-2)=2$: $_5H_4-1-5-3=61$. 합 $108$",
+  "legacy": {
+   "category": "함수의 개수(2) : 중복조합",
+   "book_no": 16,
+   "question_page": 8,
+   "solution_page": 33
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-231130",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "231130",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 30,
+   "points": 4,
+   "label": "2022년 11월 고3 30번"
+  },
+  "question": "집합 $X=\\{x\\mid x\\text{는 }10\\text{ 이하의 자연수}\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수를 구하시오.",
+  "condition": "(가) $9$ 이하의 모든 자연수 $x$에 대하여 $f(x)\\le f(x+1)$이다.\\\\(나) $1\\le x\\le5$일 때 $f(x)\\le x$이고, $6\\le x\\le10$일 때 $f(x)\\ge x$이다.\\\\(다) $f(6)=f(5)+6$",
+  "choices": null,
+  "answer": "100",
+  "answer_value": "100",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-03"
+   ]
+  },
+  "first_judgment": "(나)에서 $f(1)=1$, $f(10)=10$이고 (다)로 $(f(5),f(6))$ 쌍이 4가지뿐 → 앞·뒤 부분을 독립적으로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$(f(5),f(6))=(1,7),(2,8),(3,9),(4,10)$. 앞부분 $(f(2),f(3),f(4))$ 수 $1,4,9,14$, 뒷부분 $(f(7),f(8),f(9))$ 수 $14,9,4,1$. $14+36+36+14=100$",
+  "legacy": {
+   "category": "함수의 개수(2) : 중복조합",
+   "book_no": 17,
+   "question_page": 9,
+   "solution_page": 33
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-230629",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "230629",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2022년 6월 고3 29번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수를 구하시오.",
+  "condition": "(가) $f(f(1))=4$\\\\(나) $f(1)\\le f(3)\\le f(5)$",
+  "choices": null,
+  "answer": "115",
+  "answer_value": "115",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-06",
+   "primary_name": "중복조합 - 부등식 응용형",
+   "links": [
+    "확률과 통계-03"
+   ]
+  },
+  "first_judgment": "$f(1)=k$로 두면 (가)는 $f(k)=4$ — $k$ 값(2,3,4,5)별로 고정되는 값과 (나)의 중복조합을 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$f(1)=1$ 모순. $f(1)=2$: $f(2)=4$, $_4H_2\\cdot5=50$. $f(1)=3$: $f(3)=4$, $2\\cdot25=50$. $f(1)=4$: $f(4)=4$, $_2H_2\\cdot5=15$. $f(1)=5$: (나) 위배. 합 $115$",
+  "legacy": {
+   "category": "함수의 개수(2) : 중복조합",
+   "book_no": 18,
+   "question_page": 9,
+   "solution_page": 34
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-230930",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "230930",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2022년 9월 고3 30번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5\\}$와 함수 $f:X\\to X$에 대하여 함수 $f$의 치역을 $A$, 합성함수 $f\\circ f$의 치역을 $B$라 할 때, 다음 조건을 만족시키는 함수 $f$의 개수를 구하시오.",
+  "condition": "(가) $n(A)\\le3$\\\\(나) $n(A)=n(B)$\\\\(다) 집합 $X$의 모든 원소 $x$에 대하여 $f(x)\\ne x$이다.",
+  "choices": null,
+  "answer": "260",
+  "answer_value": "260",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-03",
+   "primary_name": "중복순열",
+   "links": []
+  },
+  "first_judgment": "(나)는 $f$를 $A$에 제한했을 때 일대일(치역 $A$ 위에서 전단사)이라는 뜻이고, (다)로 $n(A)=2,3$만 가능하다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) $n(A)=2$: $A$ 선택 10, $A$ 위에서 교환 1가지, 나머지 3원소 $2^3=8$ → 80. (ii) $n(A)=3$: $A$ 선택 10, $A$ 위에서 고정점 없는 순열 2, 나머지 $3^2=9$ → 180. 합 $260$",
+  "legacy": {
+   "category": "함수의 개수(3) : 종합",
+   "book_no": 19,
+   "question_page": 10,
+   "solution_page": 34
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-270628",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "270628",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2026년 6월 고3 28번"
+  },
+  "question": "앞면에 숫자 $1,2,3,4,5,6$이 하나씩 적혀 있는 카드 $6$장이 있다. 각 카드의 뒷면에는 앞면에 적힌 숫자와 같은 숫자가 적혀 있다. 이 $6$장의 카드가 다음과 같이 놓여 있다. 이 $6$장의 카드와 한 개의 주사위를 사용하여 다음 시행을 한다. 이 시행을 $4$번 반복한 후 $6$장의 카드가 모두 앞면이 보이도록 놓여 있을 확률은?",
+  "condition": "[배치] 숫자 $1,6$이 적힌 카드는 뒷면이 보이도록 놓여 있고, 숫자 $2,3,4,5$가 적힌 카드는 앞면이 보이도록 놓여 있다.\\\\[시행] 주사위를 한 번 던져 나온 눈의 수가 $k$일 때, $k$가 홀수이면 $k$ 이하의 수가 적힌 카드를 모두 한 번씩 뒤집고, $k$가 짝수이면 $k$ 이상의 수가 적힌 카드를 모두 한 번씩 뒤집는다.",
+  "choices": [
+   "\\frac{19}{162}",
+   "\\frac{13}{108}",
+   "\\frac{10}{81}",
+   "\\frac{41}{324}",
+   "\\frac7{54}"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{10}{81}",
+  "figure": {
+   "description": "카드 1(뒷면), 2~5(앞면), 6(뒷면)",
+   "source_page": 10
+  },
+  "theme": {
+   "primary": "확률과 통계-02",
+   "primary_name": "같은 것이 있는 순열",
+   "links": [
+    "확률과 통계-09"
+   ]
+  },
+  "first_judgment": "카드 $1$은 홀수 눈, 카드 $6$은 짝수 눈이 나올 때마다 뒤집히므로 홀수·짝수 눈이 각각 홀수 번 나와야 하고, 가운데 카드들은 짝수 번 뒤집혀야 한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) $\\{1,1,1,6\\},\\{1,6,6,6\\},\\{2,2,2,5\\},\\{2,5,5,5\\}$ 꼴: $\\frac{4!}{3!}\\cdot4=16$. (ii) 1·6 또는 2·5가 한 번씩, 다른 수 2번: $\\frac{4!}{2!}\\cdot8=96$. (iii) $\\{1,3,5,4\\},\\{2,4,6,3\\}$: $4!\\cdot2=48$. $\\frac{160}{6^4}=\\frac{10}{81}$",
+  "legacy": {
+   "category": "수학적 확률 구하기(4) : 같은 것이 있는 순열",
+   "book_no": 20,
+   "question_page": 10,
+   "solution_page": 35
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-250629",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "250629",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2024년 6월 고3 29번"
+  },
+  "question": "$40$개의 공이 들어 있는 주머니가 있다. 각각의 공은 흰 공 또는 검은 공 중 하나이다. 이 주머니에서 임의로 $2$개의 공을 동시에 꺼낼 때, 흰 공 $2$개를 꺼낼 확률을 $p$, 흰 공 $1$개와 검은 공 $1$개를 꺼낼 확률을 $q$, 검은 공 $2$개를 꺼낼 확률을 $r$이라 하자. $p=q$일 때, $60r$의 값을 구하시오. (단, $p>0$)",
+  "condition": null,
+  "choices": null,
+  "answer": "6",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-09",
+   "primary_name": "확률의 정의 Ⅰ",
+   "links": []
+  },
+  "first_judgment": "흰 공을 $n$개로 두면 $p=q$는 $_nC_2=n(40-n)$이라는 방정식이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\frac{n(n-1)}2=n(40-n)$ → $n=27$, 검은 공 13. $r=\\frac{_{13}C_2}{_{40}C_2}=\\frac1{10}$. $60r=6$",
+  "legacy": {
+   "category": "수학적 확률 구하기(5) : 조합",
+   "book_no": 21,
+   "question_page": 11,
+   "solution_page": 35
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-240630",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "240630",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2023년 6월 고3 30번"
+  },
+  "question": "주머니에 숫자 $1,2,3,4$가 하나씩 적혀 있는 흰 공 $4$개와 숫자 $4,5,6,7$이 하나씩 적혀 있는 검은 공 $4$개가 들어 있다. 이 주머니를 사용하여 다음 규칙에 따라 점수를 얻는 시행을 한다. 이 시행을 한 번 하여 얻은 점수가 $24$ 이하의 짝수일 확률이 $\\dfrac qp$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "주머니에서 임의로 $2$개의 공을 동시에 꺼내어 꺼낸 공이 서로 다른 색이면 $12$를 점수로 얻고, 꺼낸 공이 서로 같은 색이면 꺼낸 두 공에 적힌 수의 곱을 점수로 얻는다.",
+  "choices": null,
+  "answer": "51",
+  "answer_value": "51",
+  "figure": {
+   "description": "주머니 속 흰 공 1~4, 검은 공 4~7",
+   "source_page": 11
+  },
+  "theme": {
+   "primary": "확률과 통계-09",
+   "primary_name": "확률의 정의 Ⅰ",
+   "links": [
+    "확률과 통계-10"
+   ]
+  },
+  "first_judgment": "다른 색이면 항상 $12$점(조건 만족)이고, 같은 색일 때만 곱이 $24$ 이하 짝수인지 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 다른 색: $\\frac{16}{28}=\\frac47$. (ii) 흰·흰 곱 짝수: $6-1=5$, 검·검 $\\{4,5\\},\\{4,6\\}$: 2 → $\\frac7{28}=\\frac14$. 합 $\\frac{23}{28}$, $p+q=51$",
+  "legacy": {
+   "category": "수학적 확률 구하기(5) : 조합",
+   "book_no": 22,
+   "question_page": 11,
+   "solution_page": 35
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-260629",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "260629",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2025년 6월 고3 29번"
+  },
+  "question": "한 개의 주사위를 세 번 던져서 나온 눈의 수를 차례로 $a,b,c$라 할 때, $a+b=8$ 또는 $b\\ge c$일 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "44",
+  "answer_value": "44",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-10",
+   "primary_name": "확률의 정의 Ⅱ",
+   "links": [
+    "확률과 통계-05"
+   ]
+  },
+  "first_judgment": "확률의 덧셈정리 $\\mathrm P(X\\cup Y)=\\mathrm P(X)+\\mathrm P(Y)-\\mathrm P(X\\cap Y)$를 쓰고, $b\\ge c$는 중복조합으로 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(X)=\\frac5{36}$, $\\mathrm P(Y)=\\frac{21}{36}=\\frac7{12}$, $\\mathrm P(X\\cap Y)=\\frac{6+5+4+3+2}{216}=\\frac5{54}$. $\\frac5{36}+\\frac7{12}-\\frac5{54}=\\frac{17}{27}$, $p+q=44$",
+  "legacy": {
+   "category": "수학적 확률 구하기(6) : 중복조합",
+   "book_no": 23,
+   "question_page": 12,
+   "solution_page": 36
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-251130",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "251130",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 30,
+   "points": 4,
+   "label": "2024년 11월 고3 30번"
+  },
+  "question": "탁자 위에 $5$개의 동전이 일렬로 놓여 있다. 이 $5$개의 동전 중 $1$번째 자리와 $2$번째 자리의 동전은 앞면이 보이도록 놓여 있고, 나머지 자리의 $3$개의 동전은 뒷면이 보이도록 놓여 있다. 이 $5$개의 동전과 한 개의 주사위를 사용하여 다음 시행을 한다. 위의 시행을 $3$번 반복한 후 이 $5$개의 동전이 모두 앞면이 보이도록 놓여 있을 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $k$일 때, $k\\le5$이면 $k$번째 자리의 동전을 한 번 뒤집어 제자리에 놓고, $k=6$이면 모든 동전을 한 번씩 뒤집어 제자리에 놓는다.",
+  "choices": null,
+  "answer": "19",
+  "answer_value": "19",
+  "figure": {
+   "description": "동전 5개: 1·2번째 앞면, 3·4·5번째 뒷면",
+   "source_page": 12
+  },
+  "theme": {
+   "primary": "확률과 통계-10",
+   "primary_name": "확률의 정의 Ⅱ",
+   "links": [
+    "확률과 통계-14"
+   ]
+  },
+  "first_judgment": "$6$이 나온 횟수(0~3)로 경우를 나누면, 나머지 시행이 뒤집어야 할 자리가 정해진다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "6이 3번·2번: 불가. 6이 1번: 1,2,6이 한 번씩 → $\\frac{3!}{6^3}=\\frac1{36}$. 6이 0번: 3,4,5가 한 번씩 → $\\frac1{36}$. 합 $\\frac1{18}$, $p+q=19$",
+  "legacy": {
+   "category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+   "book_no": 24,
+   "question_page": 12,
+   "solution_page": 36
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-230928",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "230928",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2022년 9월 고3 28번"
+  },
+  "question": "$1$부터 $10$까지의 자연수 중에서 임의로 서로 다른 $3$개의 수를 선택한다. 선택된 세 개의 수의 곱이 $5$의 배수이고 합은 $3$의 배수일 확률은?",
+  "condition": null,
+  "choices": [
+   "\\frac3{20}",
+   "\\frac16",
+   "\\frac{11}{60}",
+   "\\frac15",
+   "\\frac{13}{60}"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{11}{60}",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-10",
+   "primary_name": "확률의 정의 Ⅱ",
+   "links": [
+    "확률과 통계-09"
+   ]
+  },
+  "first_judgment": "곱이 $5$의 배수 ⇔ $5$ 또는 $10$ 포함; 합이 $3$의 배수는 나머지 집합 $S_0,S_1,S_2$로 분류해 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$S_0=\\{3,6,9\\}$, $S_1=\\{1,4,7,10\\}$, $S_2=\\{2,5,8\\}$. 5 포함 13, 10 포함 12, 둘 다 3 → 22. $\\frac{22}{120}=\\frac{11}{60}$",
+  "legacy": {
+   "category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+   "book_no": 25,
+   "question_page": 13,
+   "solution_page": 37
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-230628",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "230628",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2022년 6월 고3 28번"
+  },
+  "question": "숫자 $1,2,3,4,5$ 중에서 서로 다른 $4$개를 택해 일렬로 나열하여 만들 수 있는 모든 네 자리의 자연수 중에서 임의로 하나의 수를 택할 때, 택한 수가 $5$의 배수 또는 $3500$ 이상일 확률은?",
+  "condition": null,
+  "choices": [
+   "\\frac9{20}",
+   "\\frac12",
+   "\\frac{11}{20}",
+   "\\frac35",
+   "\\frac{13}{20}"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac35",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-10",
+   "primary_name": "확률의 정의 Ⅱ",
+   "links": []
+  },
+  "first_judgment": "덧셈정리로 '5의 배수', '3500 이상', '둘 다'를 각각 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "전체 120. 5의 배수 24, 3500 이상 $6+24+24=54$, 둘 다 6. $\\frac{24+54-6}{120}=\\frac35$",
+  "legacy": {
+   "category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+   "book_no": 26,
+   "question_page": 13,
+   "solution_page": 37
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-220630",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "220630",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2021년 6월 고3 30번"
+  },
+  "question": "숫자 $1,2,3$이 하나씩 적혀 있는 $3$개의 공이 들어 있는 주머니가 있다. 이 주머니에서 임의로 한 개의 공을 꺼내어 공에 적혀 있는 수를 확인한 후 다시 넣는 시행을 한다. 이 시행을 $5$번 반복하여 확인한 $5$개의 수의 곱이 $6$의 배수일 확률이 $\\dfrac qp$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "47",
+  "answer_value": "47",
+  "figure": {
+   "description": "숫자 1, 2, 3이 적힌 공이 든 주머니",
+   "source_page": 14
+  },
+  "theme": {
+   "primary": "확률과 통계-10",
+   "primary_name": "확률의 정의 Ⅱ",
+   "links": [
+    "확률과 통계-14"
+   ]
+  },
+  "first_judgment": "곱이 $6$의 배수 ⇔ $2$와 $3$이 모두 나옴 — 여사건(한 종류 또는 두 종류만)을 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "6의 배수 아님: 한 숫자만 3, $\\{1,2\\}$만 $2^5-2=30$, $\\{1,3\\}$만 30 → 63. $1-\\frac{63}{243}=\\frac{20}{27}$, $p+q=47$",
+  "legacy": {
+   "category": "여사건의 확률(2) : '이상', '이하', '아닌'의 조건이 있는 경우",
+   "book_no": 27,
+   "question_page": 14,
+   "solution_page": 38
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-270629",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "270629",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2026년 6월 고3 29번"
+  },
+  "question": "서로 다른 다섯 개의 주사위를 동시에 던져 나온 다섯 개의 눈의 수의 곱이 홀수일 때, 이 다섯 개의 눈의 수의 합이 $15$일 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "98",
+  "answer_value": "98",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-11",
+   "primary_name": "조건부확률 Ⅰ",
+   "links": [
+    "확률과 통계-02"
+   ]
+  },
+  "first_judgment": "곱이 홀수 ⇔ 모두 홀수이므로 표본공간이 $3^5$으로 줄고, 합이 $15$인 홀수 다섯 개의 구성을 나열한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(A)=\\left(\\frac12\\right)^5$. 합 15 구성: $3,3,3,3,3$(1), $1,1,3,5,5$(30), $1,3,3,3,5$(20) → 51. $\\mathrm P(B|A)=\\frac{51}{243}=\\frac{17}{81}$, $p+q=98$",
+  "legacy": {
+   "category": "조건부확률",
+   "book_no": 28,
+   "question_page": 14,
+   "solution_page": 38
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-250928",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "250928",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2024년 9월 고3 28번"
+  },
+  "question": "집합 $X=\\{1,2,3,4\\}$에 대하여 $f:X\\to X$인 모든 함수 $f$ 중에서 임의로 하나를 선택하는 시행을 한다. 이 시행에서 선택한 함수 $f$가 다음 조건을 만족시킬 때, $f(4)$가 짝수일 확률은?",
+  "condition": "$a\\in X$, $b\\in X$에 대하여 $a$가 $b$의 약수이면 $f(a)$는 $f(b)$의 약수이다.",
+  "choices": [
+   "\\frac9{19}",
+   "\\frac8{15}",
+   "\\frac35",
+   "\\frac{27}{40}",
+   "\\frac{19}{25}"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{27}{40}",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-12",
+   "primary_name": "조건부확률 Ⅱ",
+   "links": [
+    "확률과 통계-11"
+   ]
+  },
+  "first_judgment": "조건은 '$b$가 $a$의 배수이면 $f(b)$는 $f(a)$의 배수'이므로 $f(1)$ 값별로 $f(2)$, $f(4)$, $f(3)$의 가능성을 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$f(1)=4$: 1개(짝수 1). $f(1)=3$: 1개(짝수 0). $f(1)=2$: $(f(2),f(4))=(2,2),(2,4),(4,4)$, $f(3)=2,4$ → 6(짝수 6). $f(1)=1$: 쌍 8가지 × $f(3)$ 4가지 = 32(짝수 20). $n(A)=40$, $n(A\\cap B)=27$ → $\\frac{27}{40}$",
+  "legacy": {
+   "category": "조건부확률",
+   "book_no": 29,
+   "question_page": 15,
+   "solution_page": 38
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-241128",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "241128",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 28,
+   "points": 4,
+   "label": "2023년 11월 고3 28번"
+  },
+  "question": "하나의 주머니와 두 상자 $\\mathrm{A}$, $\\mathrm{B}$가 있다. 주머니에는 숫자 $1,2,3,4$가 하나씩 적힌 $4$장의 카드가 들어 있고, 상자 $\\mathrm{A}$에는 흰 공과 검은 공이 각각 $8$개 이상 들어 있고, 상자 $\\mathrm{B}$는 비어 있다. 이 주머니와 두 상자 $\\mathrm{A}$, $\\mathrm{B}$를 사용하여 다음 시행을 한다. 이 시행을 $4$번 반복한 후 상자 $\\mathrm{B}$에 들어 있는 공의 개수가 $8$일 때, 상자 $\\mathrm{B}$에 있는 검은 공의 개수가 $2$일 확률은?",
+  "condition": "주머니에서 임의로 한 장의 카드를 꺼내어 카드에 적힌 수를 확인한 후 다시 주머니에 넣는다. 확인한 수가 $1$이면 상자 $\\mathrm{A}$에 있는 흰 공 $1$개를 상자 $\\mathrm{B}$에 넣고, 확인한 수가 $2$ 또는 $3$이면 상자 $\\mathrm{A}$에 있는 흰 공 $1$개와 검은 공 $1$개를 상자 $\\mathrm{B}$에 넣고, 확인한 수가 $4$이면 상자 $\\mathrm{A}$에 있는 흰 공 $2$개와 검은 공 $1$개를 상자 $\\mathrm{B}$에 넣는다.",
+  "choices": [
+   "\\frac3{70}",
+   "\\frac2{35}",
+   "\\frac1{14}",
+   "\\frac3{35}",
+   "\\frac1{10}"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac3{35}",
+  "figure": {
+   "description": "카드 1~4가 든 주머니, 공이 든 상자 A, 빈 상자 B",
+   "source_page": 15
+  },
+  "theme": {
+   "primary": "확률과 통계-12",
+   "primary_name": "조건부확률 Ⅱ",
+   "links": [
+    "확률과 통계-14"
+   ]
+  },
+  "first_judgment": "한 번에 넣는 공의 수가 $1,2,3$이므로 4번의 합이 $8$인 분할($3+3+1+1$, $3+2+2+1$, $2+2+2+2$)을 나열한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) $3,3,1,1$: 검은 공 2개, $6\\left(\\frac14\\right)^4$. (ii) $3,2,2,1$: $48\\left(\\frac14\\right)^4$. (iii) $2,2,2,2$: $16\\left(\\frac14\\right)^4$. $\\mathrm P(F|E)=\\frac6{70}=\\frac3{35}$",
+  "legacy": {
+   "category": "조건부확률",
+   "book_no": 30,
+   "question_page": 15,
+   "solution_page": 39
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-231129",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "231129",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 29,
+   "points": 4,
+   "label": "2022년 11월 고3 29번"
+  },
+  "question": "앞면에는 $1$부터 $6$까지의 자연수가 하나씩 적혀 있고 뒷면에는 모두 $0$이 하나씩 적혀 있는 $6$장의 카드가 있다. 이 $6$장의 카드가 그림과 같이 $6$ 이하의 자연수 $k$에 대하여 $k$번째 자리에 자연수 $k$가 보이도록 놓여 있다. 이 $6$장의 카드와 한 개의 주사위를 사용하여 다음 시행을 한다. 위의 시행을 $3$번 반복한 후 $6$장의 카드에 보이는 모든 수의 합이 짝수일 때, 주사위의 $1$의 눈이 한 번만 나왔을 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $k$이면 $k$번째 자리에 놓여 있는 카드를 한 번 뒤집어 제자리에 놓는다.",
+  "choices": null,
+  "answer": "49",
+  "answer_value": "49",
+  "figure": {
+   "description": "자리 1~6에 숫자 1~6이 보이는 카드",
+   "source_page": 16
+  },
+  "theme": {
+   "primary": "확률과 통계-12",
+   "primary_name": "조건부확률 Ⅱ",
+   "links": [
+    "확률과 통계-14"
+   ]
+  },
+  "first_judgment": "합이 짝수 ⇔ 보이는 홀수 카드가 0개 또는 2개 ⇔ 홀수 눈이 3번 또는 1번 나옴 — 독립시행으로 $\\mathrm P(A)$부터 구한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(A)=\\frac18+\\frac38=\\frac12$. $\\mathrm P(A\\cap B)=3\\cdot\\frac16\\cdot\\left(\\frac26\\right)^2+3\\cdot\\frac16\\cdot\\left(\\frac12\\right)^2=\\frac1{18}+\\frac18=\\frac{13}{72}$. $\\mathrm P(B|A)=\\frac{13}{36}$, $p+q=49$",
+  "legacy": {
+   "category": "조건부확률",
+   "book_no": 31,
+   "question_page": 16,
+   "solution_page": 40
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-230630",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "230630",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2022년 6월 고3 30번"
+  },
+  "question": "주머니에 $1$부터 $12$까지의 자연수가 각각 하나씩 적혀 있는 $12$개의 공이 들어 있다. 이 주머니에서 임의로 $3$개의 공을 동시에 꺼내어 공에 적혀 있는 수를 작은 수부터 크기 순서대로 $a,b,c$라 하자. $b-a\\ge5$일 때, $c-a\\ge10$일 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-12",
+   "primary_name": "조건부확률 Ⅱ",
+   "links": [
+    "확률과 통계-11"
+   ]
+  },
+  "first_judgment": "$b-a\\ge5$인 $(a,b,c)$를 $a$별로 세고, 그중 $c-a\\ge10$인 것을 직접 나열한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$n(E)=21+15+10+6+3+1=56$. $n(E\\cap F)=5+6+5=16$. $\\frac{16}{56}=\\frac27$, $p+q=9$",
+  "legacy": {
+   "category": "조건부확률",
+   "book_no": 32,
+   "question_page": 16,
+   "solution_page": 40
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-221130",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "221130",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 30,
+   "points": 4,
+   "label": "2021년 11월 고3 30번"
+  },
+  "question": "흰 공과 검은 공이 각각 $10$개 이상 들어 있는 바구니와 비어 있는 주머니가 있다. 한 개의 주사위를 사용하여 다음 시행을 한다. 위의 시행을 $5$번 반복할 때, $n$ $(1\\le n\\le5)$번째 시행 후 주머니에 들어 있는 흰 공과 검은 공의 개수를 각각 $a_n$, $b_n$이라 하자. $a_5+b_5\\ge7$일 때, $a_k=b_k$인 자연수 $k$ $(1\\le k\\le5)$가 존재할 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $5$ 이상이면 바구니에 있는 흰 공 $2$개를 주머니에 넣고, 나온 눈의 수가 $4$ 이하이면 바구니에 있는 검은 공 $1$개를 주머니에 넣는다.",
+  "choices": null,
+  "answer": "191",
+  "answer_value": "191",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-12",
+   "primary_name": "조건부확률 Ⅱ",
+   "links": [
+    "확률과 통계-14"
+   ]
+  },
+  "first_judgment": "$a_5+b_5=5+(\\text{5 이상 눈 횟수})$이므로 $\\ge7$은 '5 이상이 2번 이상'; $a_k=b_k$는 흰 2개 한 번과 검은 2개가 어느 시점에 맞아떨어지는 경우다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(A)=\\frac{10\\cdot8+10\\cdot4+5\\cdot2+1}{3^5}=\\frac{131}{3^5}$. $A\\cap B$: 3번째 시행까지 5 이상 1번·4 이하 2번이 나오고 남은 2번 조건 충족 → $3\\cdot\\frac{16}{3^5}+3\\cdot\\frac4{3^5}=\\frac{60}{3^5}$. $\\frac{60}{131}$, $p+q=191$",
+  "legacy": {
+   "category": "조건부확률의 계산(2) : 표, 문장 등으로 확률이 주어진 경우",
+   "book_no": 33,
+   "question_page": 17,
+   "solution_page": 41
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-250628",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "250628",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2024년 6월 고3 28번"
+  },
+  "question": "탁자 위에 놓인 $4$개의 동전에 대하여 다음 시행을 한다. 처음에 $3$개의 동전은 앞면이 보이도록, $1$개의 동전은 뒷면이 보이도록 놓여 있다. 위의 시행을 $5$번 반복한 후 $4$개의 동전이 모두 같은 면이 보이도록 놓여 있을 때, 모두 앞면이 보이도록 놓여 있을 확률은?",
+  "condition": "$4$개의 동전 중 임의로 한 개의 동전을 택하여 한 번 뒤집는다.",
+  "choices": [
+   "\\frac{17}{32}",
+   "\\frac{35}{64}",
+   "\\frac9{16}",
+   "\\frac{37}{64}",
+   "\\frac{19}{32}"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{17}{32}",
+  "figure": {
+   "description": "동전 4개: 앞, 앞, 앞, 뒤",
+   "source_page": 17
+  },
+  "theme": {
+   "primary": "확률과 통계-13",
+   "primary_name": "확률의 곱셈정리",
+   "links": [
+    "확률과 통계-12"
+   ]
+  },
+  "first_judgment": "각 동전이 뒤집힌 횟수의 홀짝으로 최종 상태가 정해지므로, 5번을 네 동전에 분배하는 방법을 모두 앞면/모두 뒷면별로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "대응·모델링"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "모두 앞면: 뒷면 동전 홀수 번, 나머지 짝수 번 → $1+30+15+90=136$. 모두 뒷면: 앞 동전 셋 모두 홀수 번, 뒷면 동전 짝수 번 → $60+60=120$. $\\mathrm P(A)=\\frac{256}{4^5}=\\frac14$, $\\mathrm P(A\\cap B)=\\frac{136}{4^5}=\\frac{17}{128}$ → $\\frac{17}{32}$",
+  "legacy": {
+   "category": "확률의 곱셈정리(1) :  P(A∩B)=P(A)P(B┃A)",
+   "book_no": 34,
+   "question_page": 17,
+   "solution_page": 41
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-260930",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "260930",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 30,
+   "points": 4,
+   "label": "2025년 9월 고3 30번"
+  },
+  "question": "학생 $\\mathrm{A}$는 숫자 $1,8$이 각각 하나씩 적혀 있는 $2$장의 카드 중 임의로 한 장의 카드를 선택하여 선택한 카드에 적힌 수가 $8$일 때만 선택한 카드를 바닥에 내려놓고, 학생 $\\mathrm{B}$는 숫자 $2,3,4,5,6,7$이 각각 하나씩 적혀 있는 $6$장의 카드 중 임의로 한 장의 카드를 선택하여 선택한 카드에 적힌 수가 자연수 $n$보다 작거나 같을 때만 선택한 카드를 바닥에 내려놓는다. 다음 규칙에 따라 학생 $\\mathrm{A}$가 귤을 받을 확률을 $p$, 학생 $\\mathrm{B}$가 귤을 받을 확률을 $q$라 하자. $p=q$일 때, $24(n+p)$의 값을 구하시오. (단, $n$은 $7$ 이하의 자연수이다.)",
+  "condition": "· 카드를 내려놓은 학생이 $2$명이면 더 큰 수가 적힌 카드를 내려놓은 학생만 귤을 받는다.\\\\· 카드를 내려놓은 학생이 $1$명이면 카드를 내려놓지 않은 학생만 귤을 받는다.\\\\· 카드를 내려놓은 학생이 없으면 어느 학생도 귤을 받지 못한다.",
+  "choices": null,
+  "answer": "80",
+  "answer_value": "80",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-13",
+   "primary_name": "확률의 곱셈정리",
+   "links": [
+    "확률과 통계-12"
+   ]
+  },
+  "first_judgment": "A가 내려놓으면 항상 $8$이 가장 크므로, A가 귤을 받는 경우는 'A·B 모두 내려놓음' 또는 'B만 내려놓음'이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(A)=\\frac12$, $\\mathrm P(B)=\\frac{n-1}6$. $p=\\frac12\\cdot\\frac{n-1}6+\\frac12\\cdot\\frac{n-1}6=\\frac{n-1}6$, $q=\\frac12\\left(1-\\frac{n-1}6\\right)=\\frac{7-n}{12}$. $p=q$ → $n=3$, $p=\\frac13$. $24\\left(3+\\frac13\\right)=80$",
+  "legacy": {
+   "category": "확률의 곱셈정리(2) : P( E) =P(A∩E)+P(A^c∩E)",
+   "book_no": 35,
+   "question_page": 18,
+   "solution_page": 42
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-240929",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "240929",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2023년 9월 고3 29번"
+  },
+  "question": "앞면에는 문자 $\\mathrm{A}$, 뒷면에는 문자 $\\mathrm{B}$가 적힌 한 장의 카드가 있다. 이 카드와 한 개의 동전을 사용하여 다음 시행을 한다. 처음에 문자 $\\mathrm{A}$가 보이도록 카드가 놓여 있을 때, 이 시행을 $5$번 반복한 후 문자 $\\mathrm{B}$가 보이도록 카드가 놓일 확률은 $p$이다. $128p$의 값을 구하시오.",
+  "condition": "동전을 두 번 던져 앞면이 나온 횟수가 $2$이면 카드를 한 번 뒤집고, 앞면이 나온 횟수가 $0$ 또는 $1$이면 카드를 그대로 둔다.",
+  "choices": null,
+  "answer": "62",
+  "answer_value": "62",
+  "figure": {
+   "description": "앞면 A, 뒷면 B인 카드",
+   "source_page": 18
+  },
+  "theme": {
+   "primary": "확률과 통계-14",
+   "primary_name": "독립시행의 확률",
+   "links": []
+  },
+  "first_judgment": "한 번 시행에서 뒤집힐 확률은 $\\frac14$이고, B가 보이려면 뒤집힌 횟수가 홀수여야 한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$p={}_5C_1\\frac14\\left(\\frac34\\right)^4+{}_5C_3\\left(\\frac14\\right)^3\\left(\\frac34\\right)^2+{}_5C_5\\left(\\frac14\\right)^5=\\frac{405+90+1}{4^5}=\\frac{31}{64}$. $128p=62$",
+  "legacy": {
+   "category": "독립시행의 확률",
+   "book_no": 36,
+   "question_page": 18,
+   "solution_page": 42
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-261128",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "261128",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 28,
+   "points": 4,
+   "label": "2025년 11월 고3 28번"
+  },
+  "question": "$16$개의 공과 $1$부터 $6$까지의 자연수가 하나씩 적혀 있는 여섯 개의 빈 상자가 있다. 한 개의 주사위를 사용하여 다음 시행을 한다. 이 시행을 $4$번 반복한 후 여섯 개의 상자에 들어 있는 모든 공의 개수의 합이 홀수일 때, $3$이 적힌 상자에 들어 있는 공의 개수가 $2$가 적힌 상자에 들어 있는 공의 개수보다 $1$개 더 많을 확률은?",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $k$일 때, $k$가 홀수이면 $1,3,5$가 적힌 상자에 공을 각각 $1$개씩 넣고, $k$가 짝수이면 $k$의 약수가 적힌 상자에 공을 각각 $1$개씩 넣는다.",
+  "choices": [
+   "\\frac18",
+   "\\frac3{16}",
+   "\\frac14",
+   "\\frac5{16}",
+   "\\frac38"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac3{16}",
+  "figure": {
+   "description": "공 16개와 1~6이 적힌 빈 상자 6개",
+   "source_page": 19
+  },
+  "theme": {
+   "primary": "확률과 통계-14",
+   "primary_name": "독립시행의 확률",
+   "links": [
+    "확률과 통계-12"
+   ]
+  },
+  "first_judgment": "눈별로 넣는 공의 수가 홀수 3, 2→2, 4→3, 6→4이므로, 합이 홀수가 되는 눈 구성을 나열하고 상자 2·3의 개수 차를 확인한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "합 홀수 경우 (i)~(iv): $\\frac{216+216+168+40}{6^4}=\\frac{640}{6^4}$. 상자3 = 상자2 + 1인 경우: $\\frac{120}{6^4}$. $\\frac{120}{640}=\\frac3{16}$",
+  "legacy": {
+   "category": "독립시행의 확률을 이용한 계산",
+   "book_no": 37,
+   "question_page": 19,
+   "solution_page": 42
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-260628",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "260628",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2025년 6월 고3 28번"
+  },
+  "question": "공 $15$개와 비어 있는 세 상자 $\\mathrm{A,B,C}$가 있다. 한 개의 주사위를 사용하여 다음 규칙에 따라 세 상자 $\\mathrm{A,B,C}$에 공을 넣는 시행을 한다. 이 시행을 $5$번 반복한 후 상자 $\\mathrm{B}$에 들어 있는 공의 개수가 홀수일 때, 상자 $\\mathrm{A}$에 들어 있는 공의 개수와 상자 $\\mathrm{C}$에 들어 있는 공의 개수의 합이 $8$ 이상일 확률은?",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $3$의 배수이면 세 상자 $\\mathrm{A,B,C}$에 넣는 공의 개수가 각각 $1,2,0$이고 나온 눈의 수가 $3$의 배수가 아니면 세 상자 $\\mathrm{A,B,C}$에 넣는 공의 개수가 각각 $1,1,1$이다.",
+  "choices": [
+   "\\frac{44}{61}",
+   "\\frac{47}{61}",
+   "\\frac{50}{61}",
+   "\\frac{53}{61}",
+   "\\frac{56}{61}"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{56}{61}",
+  "figure": {
+   "description": "공 15개와 빈 상자 A, B, C",
+   "source_page": 19
+  },
+  "theme": {
+   "primary": "확률과 통계-14",
+   "primary_name": "독립시행의 확률",
+   "links": [
+    "확률과 통계-12"
+   ]
+  },
+  "first_judgment": "3의 배수가 아닌 눈이 나온 횟수 $n$이 홀수여야 B가 홀수이고, A+C는 $5+n$이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(X)={}_5C_1\\frac23\\left(\\frac13\\right)^4+{}_5C_3\\left(\\frac23\\right)^3\\left(\\frac13\\right)^2+\\left(\\frac23\\right)^5=\\frac{122}{243}$. A+C$\\ge8$ ⇔ $n=3,5$: $\\frac{112}{243}$. $\\frac{112}{122}=\\frac{56}{61}$",
+  "legacy": {
+   "category": "독립시행의 확률을 이용한 계산",
+   "book_no": 38,
+   "question_page": 19,
+   "solution_page": 43
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-220929",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "220929",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2021년 9월 고3 29번"
+  },
+  "question": "두 이산확률변수 $X$, $Y$의 확률분포를 표로 나타내면 각각 다음과 같다. $\\mathrm V(X)=\\dfrac{31}5$일 때, $10\\,\\mathrm V(Y)$의 값을 구하시오.",
+  "condition": "$X$: $1,3,5,7,9$의 확률이 각각 $a,b,c,b,a$ (합계 1)\\\\$Y$: $1,3,5,7,9$의 확률이 각각 $a+\\frac1{20},\\ b,\\ c-\\frac1{10},\\ b,\\ a+\\frac1{20}$ (합계 1)",
+  "choices": null,
+  "answer": "78",
+  "answer_value": "78",
+  "figure": {
+   "description": "두 확률분포표",
+   "source_page": 20
+  },
+  "theme": {
+   "primary": "확률과 통계-15",
+   "primary_name": "이산확률변수",
+   "links": []
+  },
+  "first_judgment": "두 분포 모두 $5$에 대해 대칭이므로 평균이 $5$로 같고, $\\mathrm E(Y^2)$와 $\\mathrm E(X^2)$의 차만 계산하면 된다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm E(X)=\\mathrm E(Y)=5$, $\\mathrm E(X^2)=25+\\frac{31}5$. $\\mathrm E(Y^2)=\\mathrm E(X^2)+\\frac1{20}-\\frac52+\\frac{81}{20}=\\mathrm E(X^2)+\\frac85$. $\\mathrm V(Y)=\\frac{39}5$, $10\\mathrm V(Y)=78$",
+  "legacy": {
+   "category": "이산확률변수의 분산, 표준편차",
+   "book_no": 39,
+   "question_page": 20,
+   "solution_page": 44
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-231128",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "231128",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 28,
+   "points": 4,
+   "label": "2022년 11월 고3 28번"
+  },
+  "question": "연속확률변수 $X$가 갖는 값의 범위는 $0\\le X\\le a$이고, $X$의 확률밀도함수의 그래프가 그림과 같다. $\\mathrm P(X\\le b)-\\mathrm P(X\\ge b)=\\dfrac14$, $\\mathrm P(X\\le\\sqrt5)=\\dfrac12$일 때, $a+b+c$의 값은? (단, $a,b,c$는 상수이다.)",
+  "condition": null,
+  "choices": [
+   "\\frac{11}2",
+   "6",
+   "\\frac{13}2",
+   "7",
+   "\\frac{15}2"
+  ],
+  "answer": "4",
+  "answer_value": "7",
+  "figure": {
+   "description": "원점에서 $(b,c)$까지 증가, $(b,c)$에서 $(a,0)$까지 감소하는 삼각형 모양의 확률밀도함수",
+   "source_page": 20
+  },
+  "theme": {
+   "primary": "확률과 통계-16",
+   "primary_name": "연속확률변수",
+   "links": []
+  },
+  "first_judgment": "전체 넓이 $1$에서 $ac=2$, 두 조건에서 $\\mathrm P(X\\le b)=\\frac58$을 얻고, $\\sqrt5<b$이므로 왼쪽 삼각형의 닮음을 쓴다.",
+  "behavior": "계산",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$ac=2$, $\\mathrm P(X\\le b)=\\frac58$ → $\\frac12bc=\\frac58$. $\\mathrm P(X\\le\\sqrt5)=\\frac12\\cdot\\sqrt5\\cdot\\frac cb\\sqrt5=\\frac12$ → $b=5c$, $5c^2=\\frac54$, $c=\\frac12$, $b=\\frac52$, $a=4$. 합 $7$",
+  "legacy": {
+   "category": "확률밀도함수를 이용하여 확률 구하기",
+   "book_no": 40,
+   "question_page": 20,
+   "solution_page": 44
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-221129",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "221129",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 29,
+   "points": 4,
+   "label": "2021년 11월 고3 29번"
+  },
+  "question": "두 연속확률변수 $X$와 $Y$가 갖는 값의 범위는 $0\\le X\\le6$, $0\\le Y\\le6$이고, $X$와 $Y$의 확률밀도함수는 각각 $f(x)$, $g(x)$이다. 확률변수 $X$의 확률밀도함수 $f(x)$의 그래프는 그림과 같다. $0\\le x\\le6$인 모든 $x$에 대하여 $f(x)+g(x)=k$ ($k$는 상수)를 만족시킬 때, $\\mathrm P(6k\\le Y\\le15k)=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "31",
+  "answer_value": "31",
+  "figure": {
+   "description": "$y=f(x)$: 원점에서 $(3,\frac14)$까지 증가, $(5,\frac14)$까지 수평, $(6,0)$까지 감소",
+   "source_page": 21
+  },
+  "theme": {
+   "primary": "확률과 통계-16",
+   "primary_name": "연속확률변수",
+   "links": []
+  },
+  "first_judgment": "$g=k-f$의 넓이도 $1$이므로 $6k-1=1$에서 $k=\\frac13$이 바로 나온다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$6k=2$ → $k=\\frac13$. $\\mathrm P(2\\le Y\\le5)=\\int_2^5\\left(\\frac13-f\\right)dx$, $f=\\frac1{12}x$ ($0\\le x\\le3$). $=\\left\\{\\frac13-\\frac12\\left(\\frac16+\\frac14\\right)\\right\\}+\\left(\\frac13\\cdot2-\\frac14\\cdot2\\right)=\\frac18+\\frac16=\\frac7{24}$. $p+q=31$",
+  "legacy": {
+   "category": "확률밀도함수를 이용하여 확률 구하기",
+   "book_no": 41,
+   "question_page": 21,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-241130",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "241130",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 30,
+   "points": 4,
+   "label": "2023년 11월 고3 30번"
+  },
+  "question": "양수 $t$에 대하여 확률변수 $X$가 정규분포 $\\mathrm N(1,t^2)$을 따른다. $\\mathrm P(X\\le5t)\\ge\\dfrac12$이 되도록 하는 모든 양수 $t$에 대하여 $\\mathrm P(t^2-t+1\\le X\\le t^2+t+1)$의 최댓값을 다음 표준정규분포표를 이용하여 구한 값을 $k$라 하자. $1000k$의 값을 구하시오.",
+  "condition": "표준정규분포표: $\\mathrm P(0\\le Z\\le0.6)=0.226$, $\\mathrm P(0\\le Z\\le0.8)=0.288$, $\\mathrm P(0\\le Z\\le1.0)=0.341$, $\\mathrm P(0\\le Z\\le1.2)=0.385$, $\\mathrm P(0\\le Z\\le1.4)=0.419$",
+  "choices": null,
+  "answer": "673",
+  "answer_value": "673",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-18",
+   "primary_name": "정규분포와 표준화",
+   "links": [
+    "확률과 통계-19"
+   ]
+  },
+  "first_judgment": "표준화하면 구간이 $[t-1,t+1]$로 길이 $2$가 고정되므로, 중심 $t$가 $0$에 가까울수록 확률이 커진다 — $t\\ge\\frac15$의 최소값에서 최대.",
+  "behavior": "추론",
+  "reasoning": [
+   "치환·보조함수 도입",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$5t\\ge1$ → $t\\ge\\frac15$. $\\mathrm P(t-1\\le Z\\le t+1)$은 $t=\\frac15$에서 최대: $\\mathrm P(-0.8\\le Z\\le1.2)=0.288+0.385=0.673$. $1000k=673$",
+  "legacy": {
+   "category": "정규분포에서 확률을 만족시키는 미지수의 값 구하기",
+   "book_no": 42,
+   "question_page": 21,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-251129",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "251129",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 29,
+   "points": 4,
+   "label": "2024년 11월 고3 29번"
+  },
+  "question": "정규분포 $\\mathrm N(m_1,\\sigma_1^2)$을 따르는 확률변수 $X$와 정규분포 $\\mathrm N(m_2,\\sigma_2^2)$을 따르는 확률변수 $Y$가 다음 조건을 만족시킨다. $\\mathrm P(15\\le X\\le20)+\\mathrm P(15\\le Y\\le20)$의 값을 다음 표준정규분포표를 이용하여 구한 것이 $0.4772$일 때, $m_1+\\sigma_2$의 값을 구하시오. (단, $\\sigma_1$과 $\\sigma_2$는 양수이다.)",
+  "condition": "모든 실수 $x$에 대하여 $\\mathrm P(X\\le x)=\\mathrm P(X\\ge40-x)$이고, $\\mathrm P(Y\\le x)=\\mathrm P(X\\le x+10)$이다.\\\\표준정규분포표: $\\mathrm P(0\\le Z\\le0.5)=0.1915$, $1.0$: $0.3413$, $1.5$: $0.4332$, $2.0$: $0.4772$",
+  "choices": null,
+  "answer": "25",
+  "answer_value": "25",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-18",
+   "primary_name": "정규분포와 표준화",
+   "links": [
+    "확률과 통계-19"
+   ]
+  },
+  "first_judgment": "첫 조건은 $X$가 $x=20$ 대칭 ⇒ $m_1=20$; 둘째 조건은 $Y$가 $X$를 $10$만큼 평행이동한 분포 ⇒ $m_2=10$, $\\sigma_2=\\sigma_1$.",
+  "behavior": "추론",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$m_1=20$, $\\sigma_1=\\sigma_2$, $m_2=10$. 합 $=\\mathrm P\\left(0\\le Z\\le\\frac5{\\sigma_1}\\right)+\\mathrm P\\left(\\frac5{\\sigma_1}\\le Z\\le\\frac{10}{\\sigma_1}\\right)=\\mathrm P\\left(0\\le Z\\le\\frac{10}{\\sigma_1}\\right)=0.4772$ → $\\sigma_1=5$. $m_1+\\sigma_2=25$",
+  "legacy": {
+   "category": "표준화하여 미지수의 값 구하기",
+   "book_no": 43,
+   "question_page": 22,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-261129",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "261129",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 29,
+   "points": 4,
+   "label": "2025년 11월 고3 29번"
+  },
+  "question": "$6$ 이하의 자연수 $a$에 대하여 한 개의 주사위와 한 개의 동전을 사용하여 아래 시행을 한다. 이 시행을 $19200$번 반복하여 기록한 수가 $3$인 횟수를 확률변수 $X$라 하자. $\\mathrm E(X)=4800$일 때, $\\mathrm P(X\\le4800+30a)$의 값을 다음 표준정규분포표를 이용하여 구한 값이 $k$이다. $1000k$의 값을 구하시오.",
+  "condition": "[시행] 주사위를 한 번 던져 나온 눈의 수가 $a$보다 작거나 같으면 동전을 $5$번 던져 앞면이 나온 횟수를 기록하고, 나온 눈의 수가 $a$보다 크면 동전을 $3$번 던져 앞면이 나온 횟수를 기록한다.\\\\표준정규분포표: $0.5$: $0.191$, $1.0$: $0.341$, $1.5$: $0.433$, $2.0$: $0.477$, $2.5$: $0.494$, $3.0$: $0.499$",
+  "choices": null,
+  "answer": "977",
+  "answer_value": "977",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-20",
+   "primary_name": "이항분포와 정규분포의 관계",
+   "links": [
+    "확률과 통계-17"
+   ]
+  },
+  "first_judgment": "한 번 시행에서 $3$을 기록할 확률을 $a$로 나타내면 $X\\sim\\mathrm B\\left(19200,\\frac{a+4}{32}\\right)$이고, 평균 조건으로 $a$를 정한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$p=\\frac a6\\cdot\\frac{10}{32}+\\frac{6-a}6\\cdot\\frac18=\\frac{a+4}{32}$. $19200\\cdot\\frac{a+4}{32}=4800$ → $a=4$, $p=\\frac14$. $\\mathrm V=3600$, $X\\approx\\mathrm N(4800,60^2)$. $\\mathrm P(X\\le4920)=\\mathrm P(Z\\le2)=0.977$",
+  "legacy": {
+   "category": "이항분포와 정규분포의 관계의 활용(1) : 확률 구하기",
+   "book_no": 44,
+   "question_page": 22,
+   "solution_page": 46
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-260929",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "260929",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2025년 9월 고3 29번"
+  },
+  "question": "두 집합 $A=\\{2,3,4\\}$, $B=\\{2,3\\}$에 대하여 다음 시행을 한다. 이 시행을 $15360$번 반복하여 기록한 수가 $1$인 횟수가 $5880$ 이상일 확률을 다음 표준정규분포표를 이용하여 구한 값이 $k$일 때, $1000k$의 값을 구하시오.",
+  "condition": "[시행] 집합 $A$의 모든 부분집합 $8$개 중에서 임의로 한 개를 선택하고, 집합 $B$의 모든 부분집합 $4$개 중에서 임의로 한 개를 선택한다. 선택한 두 집합의 교집합의 원소의 개수를 기록한다.\\\\표준정규분포표: $1.0$: $0.341$, $1.5$: $0.433$, $2.0$: $0.477$, $2.5$: $0.494$, $3.0$: $0.499$",
+  "choices": null,
+  "answer": "23",
+  "answer_value": "23",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-20",
+   "primary_name": "이항분포와 정규분포의 관계",
+   "links": [
+    "확률과 통계-17"
+   ]
+  },
+  "first_judgment": "교집합이 $\\{2\\}$ 또는 $\\{3\\}$인 확률을 세어 한 번 시행의 성공 확률 $\\frac38$을 구하면 이항분포 → 정규근사다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "교집합 $\\{2\\}$: $\\frac{6}{32}=\\frac3{16}$, $\\{3\\}$: $\\frac3{16}$ → $p=\\frac38$. $\\mathrm E=5760$, $\\sigma=60$. $\\mathrm P(X\\ge5880)=\\mathrm P(Z\\ge2)=0.023$. $1000k=23$",
+  "legacy": {
+   "category": "이항분포와 정규분포의 관계의 활용(1) : 확률 구하기",
+   "book_no": 45,
+   "question_page": 23,
+   "solution_page": 47
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-250929",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "250929",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2024년 9월 고3 29번"
+  },
+  "question": "수직선의 원점에 점 $\\mathrm{A}$가 있다. 한 개의 주사위를 사용하여 다음 시행을 한다. 이 시행을 $16200$번 반복하여 이동된 점 $\\mathrm{A}$의 위치가 $5700$ 이하일 확률을 다음 표준정규분포표를 이용하여 구한 값을 $k$라 하자. $1000k$의 값을 구하시오.",
+  "condition": "[시행] 주사위를 한 번 던져 나온 눈의 수가 $4$ 이하이면 점 $\\mathrm{A}$를 양의 방향으로 $1$만큼 이동시키고, $5$ 이상이면 점 $\\mathrm{A}$를 음의 방향으로 $1$만큼 이동시킨다.\\\\표준정규분포표: $1.0$: $0.341$, $1.5$: $0.433$, $2.0$: $0.477$, $2.5$: $0.494$",
+  "choices": null,
+  "answer": "994",
+  "answer_value": "994",
+  "figure": null,
+  "theme": {
+   "primary": "확률과 통계-20",
+   "primary_name": "이항분포와 정규분포의 관계",
+   "links": [
+    "확률과 통계-17"
+   ]
+  },
+  "first_judgment": "5 이상이 나온 횟수를 $X$로 두면 위치는 $16200-2X$이므로 조건을 $X\\ge5250$으로 바꾼다.",
+  "behavior": "계산",
+  "reasoning": [
+   "치환·보조함수 도입",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$X\\sim\\mathrm B\\left(16200,\\frac13\\right)$, $\\mathrm E=5400$, $\\sigma=60$. $16200-2X\\le5700$ → $X\\ge5250$. $\\mathrm P(Z\\ge-2.5)=0.994$",
+  "legacy": {
+   "category": "이항분포와 정규분포의 관계의 활용(1) : 확률 구하기",
+   "book_no": 46,
+   "question_page": 23,
+   "solution_page": 47
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-240928",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "240928",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 28,
+   "points": 4,
+   "label": "2023년 9월 고3 28번"
+  },
+  "question": "주머니 $\\mathrm{A}$에는 숫자 $1,2,3$이 하나씩 적힌 $3$개의 공이 들어 있고, 주머니 $\\mathrm{B}$에는 숫자 $1,2,3,4$가 하나씩 적힌 $4$개의 공이 들어 있다. 두 주머니 $\\mathrm{A,B}$와 한 개의 주사위를 사용하여 다음 시행을 한다. 이 시행을 $2$번 반복하여 기록한 두 개의 수의 평균을 $\\overline X$라 할 때, $\\mathrm P(\\overline X=2)$의 값은?",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $3$의 배수이면 주머니 $\\mathrm{A}$에서 임의로 $2$개의 공을 동시에 꺼내고, 나온 눈의 수가 $3$의 배수가 아니면 주머니 $\\mathrm{B}$에서 임의로 $2$개의 공을 동시에 꺼낸다. 꺼낸 $2$개의 공에 적혀 있는 수의 차를 기록한 후, 공을 꺼낸 주머니에 이 $2$개의 공을 다시 넣는다.",
+  "choices": [
+   "\\frac{11}{81}",
+   "\\frac{13}{81}",
+   "\\frac5{27}",
+   "\\frac{17}{81}",
+   "\\frac{19}{81}"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{19}{81}",
+  "figure": {
+   "description": "주사위와 주머니 A(1,2,3), 주머니 B(1,2,3,4)",
+   "source_page": 24
+  },
+  "theme": {
+   "primary": "확률과 통계-21",
+   "primary_name": "표본평균",
+   "links": [
+    "확률과 통계-12"
+   ]
+  },
+  "first_judgment": "한 번 시행에서 기록값 $1,2,3$의 확률분포를 먼저 구하고, $X_1+X_2=4$인 순서쌍 $(1,3),(3,1),(2,2)$를 더한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(1)=\\frac13\\cdot\\frac23+\\frac23\\cdot\\frac12$, $\\mathrm P(3)=\\frac23\\cdot\\frac16=\\frac19$ 등. $(1,3)$: $\\frac5{81}$, $(3,1)$: $\\frac5{81}$, $(2,2)$: $\\frac1{81}+\\frac4{81}+\\frac4{81}=\\frac19$. 합 $\\frac{19}{81}$",
+  "legacy": {
+   "category": "모평균과 표본평균",
+   "book_no": 47,
+   "question_page": 24,
+   "solution_page": 47
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "PS-230929",
+  "subject": "확률과 통계",
+  "source": {
+   "code": "230929",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 29,
+   "points": 4,
+   "label": "2022년 9월 고3 29번"
+  },
+  "question": "$1$부터 $6$까지의 자연수가 하나씩 적힌 $6$장의 카드가 들어 있는 주머니가 있다. 이 주머니에서 임의로 한 장의 카드를 꺼내어 카드에 적힌 수를 확인한 후 다시 넣는 시행을 한다. 이 시행을 $4$번 반복하여 확인한 네 개의 수의 평균을 $\\overline X$라 할 때, $\\mathrm P\\left(\\overline X=\\dfrac{11}4\\right)=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "175",
+  "answer_value": "175",
+  "figure": {
+   "description": "1~6이 적힌 카드 6장이 든 주머니",
+   "source_page": 24
+  },
+  "theme": {
+   "primary": "확률과 통계-21",
+   "primary_name": "표본평균",
+   "links": [
+    "확률과 통계-07"
+   ]
+  },
+  "first_judgment": "$\\overline X=\\frac{11}4$ ⇔ 네 수의 합 $11$ — 각 수가 $1\\sim6$인 순서쌍 개수를 중복조합에서 상한 초과를 빼서 센다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대응·모델링",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$X_i=x_i+1$: $x_1+\\dots+x_4=7$ → $_4H_7=120$. $x_i\\ge6$인 $(7,0,0,0)$ 4개, $(6,1,0,0)$ 12개 제외 → 104. $\\frac{104}{6^4}=\\frac{13}{162}$, $p+q=175$",
+  "legacy": {
+   "category": "모평균과 표본평균",
+   "book_no": 48,
+   "question_page": 24,
+   "solution_page": 48
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ }
+]
