@@ -1,0 +1,1256 @@
+{
+"m1": [
+{
+"no": 1,
+"q_page": 1,
+"legacy_category": "ⁿ√a의 정의",
+"sol_page": 42
+},
+{
+"no": 2,
+"q_page": 1,
+"legacy_category": "a^r이 자연수가 되도록 하는 미지수 구하기",
+"sol_page": 42
+},
+{
+"no": 3,
+"q_page": 2,
+"legacy_category": "로그의 정의",
+"sol_page": 43
+},
+{
+"no": 4,
+"q_page": 2,
+"legacy_category": "로그의 여러 가지 성질을 이용한 계산",
+"sol_page": 43
+},
+{
+"no": 5,
+"q_page": 3,
+"legacy_category": "로그의 여러 가지 성질을 이용한 계산",
+"sol_page": 43
+},
+{
+"no": 6,
+"q_page": 3,
+"legacy_category": "로그의 여러 가지 성질을 이용한 계산",
+"sol_page": 44
+},
+{
+"no": 7,
+"q_page": 4,
+"legacy_category": "지수함수의 그래프에서의 함숫값",
+"sol_page": 44
+},
+{
+"no": 8,
+"q_page": 4,
+"legacy_category": "지수함수의 그래프에서의 함숫값",
+"sol_page": 45
+},
+{
+"no": 9,
+"q_page": 5,
+"legacy_category": "지수함수의 그래프에서의 함숫값",
+"sol_page": 45
+},
+{
+"no": 10,
+"q_page": 5,
+"legacy_category": "지수함수의 그래프에서의 함숫값",
+"sol_page": 46
+},
+{
+"no": 11,
+"q_page": 6,
+"legacy_category": "지수함수의 그래프에서의 함숫값",
+"sol_page": 46
+},
+{
+"no": 12,
+"q_page": 6,
+"legacy_category": "지수함수의 그래프에서의 함숫값",
+"sol_page": 46
+},
+{
+"no": 13,
+"q_page": 7,
+"legacy_category": "지수함수의 그래프에서의 함숫값",
+"sol_page": 47
+},
+{
+"no": 14,
+"q_page": 7,
+"legacy_category": "로그함수의 그래프에서의 함숫값",
+"sol_page": 48
+},
+{
+"no": 15,
+"q_page": 8,
+"legacy_category": "로그함수의 그래프에서의 함숫값",
+"sol_page": 48
+},
+{
+"no": 16,
+"q_page": 8,
+"legacy_category": "로그함수의 그래프에서의 함숫값",
+"sol_page": 49
+},
+{
+"no": 17,
+"q_page": 9,
+"legacy_category": "로그함수의 그래프에서의 함숫값",
+"sol_page": 49
+},
+{
+"no": 18,
+"q_page": 9,
+"legacy_category": "로그함수의 그래프에서의 함숫값",
+"sol_page": 49
+},
+{
+"no": 19,
+"q_page": 10,
+"legacy_category": "로그함수의 그래프에서의 함숫값",
+"sol_page": 51
+},
+{
+"no": 20,
+"q_page": 10,
+"legacy_category": "로그함수의 최대·최소 (2) : 최대·최소를 이용하여 미지수 구하기",
+"sol_page": 51
+},
+{
+"no": 21,
+"q_page": 11,
+"legacy_category": "지수함수와 로그함수의 관계",
+"sol_page": 52
+},
+{
+"no": 22,
+"q_page": 11,
+"legacy_category": "지수함수와 로그함수의 관계",
+"sol_page": 52
+},
+{
+"no": 23,
+"q_page": 12,
+"legacy_category": "지수함수와 로그함수의 관계",
+"sol_page": 52
+},
+{
+"no": 24,
+"q_page": 12,
+"legacy_category": "지수에 미지수를 포함하는 방정식의 응용",
+"sol_page": 54
+},
+{
+"no": 25,
+"q_page": 13,
+"legacy_category": "로그의 진수에 미지수를 포함하는 부등식의 응용",
+"sol_page": 54
+},
+{
+"no": 26,
+"q_page": 13,
+"legacy_category": "y=asin(bx)의 성질",
+"sol_page": 55
+},
+{
+"no": 27,
+"q_page": 14,
+"legacy_category": "y=asin(bx+c)+d의 성질",
+"sol_page": 55
+},
+{
+"no": 28,
+"q_page": 14,
+"legacy_category": "y=atan(bx)의 성질",
+"sol_page": 56
+},
+{
+"no": 29,
+"q_page": 15,
+"legacy_category": "y=atan(bx)의 성질",
+"sol_page": 56
+},
+{
+"no": 30,
+"q_page": 15,
+"legacy_category": "삼각함수의 미정계수의 결정(1) : 조건이 주어진 경우",
+"sol_page": 57
+},
+{
+"no": 31,
+"q_page": 16,
+"legacy_category": "삼각함수의 미정계수의 결정(1) : 조건이 주어진 경우",
+"sol_page": 57
+},
+{
+"no": 32,
+"q_page": 16,
+"legacy_category": "삼각함수의 그래프의 대칭성",
+"sol_page": 58
+},
+{
+"no": 33,
+"q_page": 17,
+"legacy_category": "삼각함수가 포함된 방정식(4) : 그래프 이용",
+"sol_page": 58
+},
+{
+"no": 34,
+"q_page": 17,
+"legacy_category": "삼각함수가 포함된 방정식의 근의 조건",
+"sol_page": 59
+},
+{
+"no": 35,
+"q_page": 18,
+"legacy_category": "삼각함수가 포함된 방정식의 근의 조건",
+"sol_page": 59
+},
+{
+"no": 36,
+"q_page": 18,
+"legacy_category": "삼각함수가 포함된 부등식(1) : 일차식 꼴",
+"sol_page": 60
+},
+{
+"no": 37,
+"q_page": 19,
+"legacy_category": "코사인법칙",
+"sol_page": 60
+},
+{
+"no": 38,
+"q_page": 19,
+"legacy_category": "코사인법칙",
+"sol_page": 61
+},
+{
+"no": 39,
+"q_page": 20,
+"legacy_category": "코사인법칙",
+"sol_page": 61
+},
+{
+"no": 40,
+"q_page": 20,
+"legacy_category": "사인법칙과 코사인법칙",
+"sol_page": 62
+},
+{
+"no": 41,
+"q_page": 21,
+"legacy_category": "사인법칙과 코사인법칙",
+"sol_page": 62
+},
+{
+"no": 42,
+"q_page": 21,
+"legacy_category": "사인법칙과 코사인법칙",
+"sol_page": 63
+},
+{
+"no": 43,
+"q_page": 22,
+"legacy_category": "사인법칙과 코사인법칙",
+"sol_page": 63
+},
+{
+"no": 44,
+"q_page": 22,
+"legacy_category": "사인법칙과 코사인법칙",
+"sol_page": 63
+},
+{
+"no": 45,
+"q_page": 23,
+"legacy_category": "사인법칙과 코사인법칙",
+"sol_page": 64
+},
+{
+"no": 46,
+"q_page": 23,
+"legacy_category": "사인법칙과 코사인법칙",
+"sol_page": 65
+},
+{
+"no": 47,
+"q_page": 24,
+"legacy_category": "외접원의 반지름의 길이와 삼각형의 넓이",
+"sol_page": 65
+},
+{
+"no": 48,
+"q_page": 24,
+"legacy_category": "외접원의 반지름의 길이와 삼각형의 넓이",
+"sol_page": 66
+},
+{
+"no": 49,
+"q_page": 25,
+"legacy_category": "삼각형의 넓이(4) : 한 변의 길이와 양 끝 각의 크기가 주어진 경우",
+"sol_page": 66
+},
+{
+"no": 50,
+"q_page": 25,
+"legacy_category": "삼각형의 넓이를 활용하는 문제",
+"sol_page": 66
+},
+{
+"no": 51,
+"q_page": 26,
+"legacy_category": "삼각형의 넓이를 활용하는 문제",
+"sol_page": 68
+},
+{
+"no": 52,
+"q_page": 26,
+"legacy_category": "조건을 만족시키는 등차수열의 항 구하기(3) : 이외의 조건이 주어진 경우",
+"sol_page": 68
+},
+{
+"no": 53,
+"q_page": 27,
+"legacy_category": "조건을 만족시키는 등차수열의 항 구하기(3) : 이외의 조건이 주어진 경우",
+"sol_page": 69
+},
+{
+"no": 54,
+"q_page": 27,
+"legacy_category": "등비수열의 일반항 구하기(3) : a_i+a_j=k 형태(a_i와 a_j의 사칙연산 형태)로 주어",
+"sol_page": 69
+},
+{
+"no": 55,
+"q_page": 28,
+"legacy_category": "등비수열의 일반항 구하기(3) : a_i+a_j=k 형태(a_i와 a_j의 사칙연산 형태)로 주어",
+"sol_page": 69
+},
+{
+"no": 56,
+"q_page": 28,
+"legacy_category": "도형에서 등비수열의 활용",
+"sol_page": 70
+},
+{
+"no": 57,
+"q_page": 29,
+"legacy_category": "∑의 뜻",
+"sol_page": 70
+},
+{
+"no": 58,
+"q_page": 29,
+"legacy_category": "∑를 이용한 수열의 합",
+"sol_page": 71
+},
+{
+"no": 59,
+"q_page": 30,
+"legacy_category": "자연수의 거듭제곱의 합(1) : 기본 공식을 이용하는 경우",
+"sol_page": 71
+},
+{
+"no": 60,
+"q_page": 30,
+"legacy_category": "자연수의 거듭제곱의 합(2) : 다항식인 일반항을 구해야하는 경우",
+"sol_page": 72
+},
+{
+"no": 61,
+"q_page": 31,
+"legacy_category": "여러 가지 수열의 합(1) : 부분분수를 이용하는 경우",
+"sol_page": 72
+},
+{
+"no": 62,
+"q_page": 31,
+"legacy_category": "여러 가지 수열의 합(8) : 수열의 일반항을 새롭게 정의하는 경우",
+"sol_page": 73
+},
+{
+"no": 63,
+"q_page": 32,
+"legacy_category": "여러 가지 수열의 합(11) : 이외의 조건이 주어진 경우 수열의 합",
+"sol_page": 73
+},
+{
+"no": 64,
+"q_page": 32,
+"legacy_category": "여러 가지 수열의 합(11) : 이외의 조건이 주어진 경우 수열의 합",
+"sol_page": 73
+},
+{
+"no": 65,
+"q_page": 33,
+"legacy_category": "여러 가지 수열의 합(11) : 이외의 조건이 주어진 경우 수열의 합",
+"sol_page": 74
+},
+{
+"no": 66,
+"q_page": 33,
+"legacy_category": "∑로 표현된 수열의 합과 일반항의 관계",
+"sol_page": 74
+},
+{
+"no": 67,
+"q_page": 34,
+"legacy_category": "∑로 표현된 수열의 합과 일반항의 관계",
+"sol_page": 75
+},
+{
+"no": 68,
+"q_page": 34,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 75
+},
+{
+"no": 69,
+"q_page": 35,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 76
+},
+{
+"no": 70,
+"q_page": 35,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 76
+},
+{
+"no": 71,
+"q_page": 36,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 76
+},
+{
+"no": 72,
+"q_page": 36,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 77
+},
+{
+"no": 73,
+"q_page": 37,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 78
+},
+{
+"no": 74,
+"q_page": 37,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 78
+},
+{
+"no": 75,
+"q_page": 38,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 79
+},
+{
+"no": 76,
+"q_page": 38,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 80
+},
+{
+"no": 77,
+"q_page": 39,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 80
+},
+{
+"no": 78,
+"q_page": 39,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 82
+},
+{
+"no": 79,
+"q_page": 40,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 83
+},
+{
+"no": 80,
+"q_page": 40,
+"legacy_category": "수열의 귀납적 정의",
+"sol_page": 84
+},
+{
+"no": 81,
+"q_page": 41,
+"legacy_category": "a_n과 S_n 사이의 관계식이 주어진 수열",
+"sol_page": 84
+}
+],
+"prob": [
+{
+"no": 1,
+"q_page": 1,
+"legacy_category": "원순열",
+"sol_page": 25
+},
+{
+"no": 2,
+"q_page": 1,
+"legacy_category": "같은 것이 있는 순열",
+"sol_page": 25
+},
+{
+"no": 3,
+"q_page": 2,
+"legacy_category": "함수의 개수(1) : 중복순열",
+"sol_page": 26
+},
+{
+"no": 4,
+"q_page": 2,
+"legacy_category": "함수의 개수(1) : 중복순열",
+"sol_page": 26
+},
+{
+"no": 5,
+"q_page": 3,
+"legacy_category": "함수의 개수(1) : 중복순열",
+"sol_page": 27
+},
+{
+"no": 6,
+"q_page": 3,
+"legacy_category": "중복조합의 수",
+"sol_page": 27
+},
+{
+"no": 7,
+"q_page": 4,
+"legacy_category": "중복조합의 수",
+"sol_page": 28
+},
+{
+"no": 8,
+"q_page": 4,
+"legacy_category": "중복조합의 수",
+"sol_page": 28
+},
+{
+"no": 9,
+"q_page": 5,
+"legacy_category": "중복조합의 수",
+"sol_page": 29
+},
+{
+"no": 10,
+"q_page": 5,
+"legacy_category": "중복조합의 수",
+"sol_page": 29
+},
+{
+"no": 11,
+"q_page": 6,
+"legacy_category": "중복조합의 수",
+"sol_page": 30
+},
+{
+"no": 12,
+"q_page": 6,
+"legacy_category": "'적어도'의 조건이 있는 중복조합의 수",
+"sol_page": 31
+},
+{
+"no": 13,
+"q_page": 7,
+"legacy_category": "부등식의 해의 개수",
+"sol_page": 31
+},
+{
+"no": 14,
+"q_page": 7,
+"legacy_category": "함수의 개수(2) : 중복조합",
+"sol_page": 31
+},
+{
+"no": 15,
+"q_page": 8,
+"legacy_category": "함수의 개수(2) : 중복조합",
+"sol_page": 32
+},
+{
+"no": 16,
+"q_page": 8,
+"legacy_category": "함수의 개수(2) : 중복조합",
+"sol_page": 33
+},
+{
+"no": 17,
+"q_page": 9,
+"legacy_category": "함수의 개수(2) : 중복조합",
+"sol_page": 33
+},
+{
+"no": 18,
+"q_page": 9,
+"legacy_category": "함수의 개수(2) : 중복조합",
+"sol_page": 34
+},
+{
+"no": 19,
+"q_page": 10,
+"legacy_category": "함수의 개수(3) : 종합",
+"sol_page": 34
+},
+{
+"no": 20,
+"q_page": 10,
+"legacy_category": "수학적 확률 구하기(4) : 같은 것이 있는 순열",
+"sol_page": 35
+},
+{
+"no": 21,
+"q_page": 11,
+"legacy_category": "수학적 확률 구하기(5) : 조합",
+"sol_page": 35
+},
+{
+"no": 22,
+"q_page": 11,
+"legacy_category": "수학적 확률 구하기(5) : 조합",
+"sol_page": 35
+},
+{
+"no": 23,
+"q_page": 12,
+"legacy_category": "수학적 확률 구하기(6) : 중복조합",
+"sol_page": 36
+},
+{
+"no": 24,
+"q_page": 12,
+"legacy_category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+"sol_page": 36
+},
+{
+"no": 25,
+"q_page": 13,
+"legacy_category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+"sol_page": 37
+},
+{
+"no": 26,
+"q_page": 13,
+"legacy_category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+"sol_page": 37
+},
+{
+"no": 27,
+"q_page": 14,
+"legacy_category": "여사건의 확률(2) : '이상', '이하', '아닌'의 조건이 있는 경우",
+"sol_page": 38
+},
+{
+"no": 28,
+"q_page": 14,
+"legacy_category": "조건부확률",
+"sol_page": 38
+},
+{
+"no": 29,
+"q_page": 15,
+"legacy_category": "조건부확률",
+"sol_page": 38
+},
+{
+"no": 30,
+"q_page": 15,
+"legacy_category": "조건부확률",
+"sol_page": 39
+},
+{
+"no": 31,
+"q_page": 16,
+"legacy_category": "조건부확률",
+"sol_page": 40
+},
+{
+"no": 32,
+"q_page": 16,
+"legacy_category": "조건부확률",
+"sol_page": 40
+},
+{
+"no": 33,
+"q_page": 17,
+"legacy_category": "조건부확률의 계산(2) : 표, 문장 등으로 확률이 주어진 경우",
+"sol_page": 41
+},
+{
+"no": 34,
+"q_page": 17,
+"legacy_category": "확률의 곱셈정리(1) :  P(A∩B)=P(A)P(B┃A)",
+"sol_page": 41
+},
+{
+"no": 35,
+"q_page": 18,
+"legacy_category": "확률의 곱셈정리(2) : P( E) =P(A∩E)+P(A^c∩E)",
+"sol_page": 42
+},
+{
+"no": 36,
+"q_page": 18,
+"legacy_category": "독립시행의 확률",
+"sol_page": 42
+},
+{
+"no": 37,
+"q_page": 19,
+"legacy_category": "독립시행의 확률을 이용한 계산",
+"sol_page": 42
+},
+{
+"no": 38,
+"q_page": 19,
+"legacy_category": "독립시행의 확률을 이용한 계산",
+"sol_page": 43
+},
+{
+"no": 39,
+"q_page": 20,
+"legacy_category": "이산확률변수의 분산, 표준편차",
+"sol_page": 44
+},
+{
+"no": 40,
+"q_page": 20,
+"legacy_category": "확률밀도함수를 이용하여 확률 구하기",
+"sol_page": 44
+},
+{
+"no": 41,
+"q_page": 21,
+"legacy_category": "확률밀도함수를 이용하여 확률 구하기",
+"sol_page": 45
+},
+{
+"no": 42,
+"q_page": 21,
+"legacy_category": "정규분포에서 확률을 만족시키는 미지수의 값 구하기",
+"sol_page": 45
+},
+{
+"no": 43,
+"q_page": 22,
+"legacy_category": "표준화하여 미지수의 값 구하기",
+"sol_page": 45
+},
+{
+"no": 44,
+"q_page": 22,
+"legacy_category": "이항분포와 정규분포의 관계의 활용(1) : 확률 구하기",
+"sol_page": 46
+},
+{
+"no": 45,
+"q_page": 23,
+"legacy_category": "이항분포와 정규분포의 관계의 활용(1) : 확률 구하기",
+"sol_page": 47
+},
+{
+"no": 46,
+"q_page": 23,
+"legacy_category": "이항분포와 정규분포의 관계의 활용(1) : 확률 구하기",
+"sol_page": 47
+},
+{
+"no": 47,
+"q_page": 24,
+"legacy_category": "모평균과 표본평균",
+"sol_page": 47
+},
+{
+"no": 48,
+"q_page": 24,
+"legacy_category": "모평균과 표본평균",
+"sol_page": 48
+}
+],
+"m2": [
+{
+"no": 1,
+"q_page": 1,
+"legacy_category": "미정계수의 결정",
+"sol_page": 41
+},
+{
+"no": 2,
+"q_page": 1,
+"legacy_category": "미정계수의 결정",
+"sol_page": 41
+},
+{
+"no": 3,
+"q_page": 2,
+"legacy_category": "미정계수의 결정",
+"sol_page": 42
+},
+{
+"no": 4,
+"q_page": 2,
+"legacy_category": "다항함수의 결정",
+"sol_page": 42
+},
+{
+"no": 5,
+"q_page": 3,
+"legacy_category": "함수의 극한의 활용",
+"sol_page": 44
+},
+{
+"no": 6,
+"q_page": 3,
+"legacy_category": "함수가 연속일 조건(1) : 구간별로 주어진 함수가 연속일 조건",
+"sol_page": 44
+},
+{
+"no": 7,
+"q_page": 4,
+"legacy_category": "함수가 연속일 조건(1) : 구간별로 주어진 함수가 연속일 조건",
+"sol_page": 45
+},
+{
+"no": 8,
+"q_page": 4,
+"legacy_category": "연속함수의 성질",
+"sol_page": 45
+},
+{
+"no": 9,
+"q_page": 5,
+"legacy_category": "함수의 연속과 불연속(6) : (x-a)f(x)꼴의 함수",
+"sol_page": 45
+},
+{
+"no": 10,
+"q_page": 5,
+"legacy_category": "함수가 불연속일 조건(2) : 다양한 형태의 함수가 불연속일 조건",
+"sol_page": 46
+},
+{
+"no": 11,
+"q_page": 6,
+"legacy_category": "관계식이 주어질 때 도함수 구하기",
+"sol_page": 47
+},
+{
+"no": 12,
+"q_page": 6,
+"legacy_category": "곡선 위의 점에서의 접선의 방정식의 활용",
+"sol_page": 48
+},
+{
+"no": 13,
+"q_page": 7,
+"legacy_category": "곡선 위의 점에서의 접선의 방정식의 활용",
+"sol_page": 48
+},
+{
+"no": 14,
+"q_page": 7,
+"legacy_category": "곡선 위의 점에서의 접선의 방정식의 활용",
+"sol_page": 48
+},
+{
+"no": 15,
+"q_page": 8,
+"legacy_category": "곡선 위의 점에서의 접선의 방정식의 활용",
+"sol_page": 49
+},
+{
+"no": 16,
+"q_page": 8,
+"legacy_category": "곡선 위의 점에서의 접선의 방정식의 활용",
+"sol_page": 49
+},
+{
+"no": 17,
+"q_page": 9,
+"legacy_category": "곡선 위의 점과 직선 사이의 거리",
+"sol_page": 50
+},
+{
+"no": 18,
+"q_page": 9,
+"legacy_category": "함수의 증가와 감소",
+"sol_page": 50
+},
+{
+"no": 19,
+"q_page": 10,
+"legacy_category": "삼차함수의 증가 · 감소의 조건(2) : 주어진 구간에서",
+"sol_page": 50
+},
+{
+"no": 20,
+"q_page": 10,
+"legacy_category": "함수의 극대 · 극소를 이용한 미정계수의 결정",
+"sol_page": 51
+},
+{
+"no": 21,
+"q_page": 11,
+"legacy_category": "함수의 극대 · 극소를 이용한 미정계수의 결정",
+"sol_page": 51
+},
+{
+"no": 22,
+"q_page": 11,
+"legacy_category": "함수의 그래프 그리기",
+"sol_page": 52
+},
+{
+"no": 23,
+"q_page": 12,
+"legacy_category": "함수의 그래프 그리기",
+"sol_page": 53
+},
+{
+"no": 24,
+"q_page": 12,
+"legacy_category": "삼차함수의 극값(3) : 주어진 구간에서 삼차함수가 극값을 가질 조건",
+"sol_page": 53
+},
+{
+"no": 25,
+"q_page": 13,
+"legacy_category": "삼차함수의 극값(3) : 주어진 구간에서 삼차함수가 극값을 가질 조건",
+"sol_page": 54
+},
+{
+"no": 26,
+"q_page": 13,
+"legacy_category": "함수의 최대 · 최소를 이용한 미정계수의 결정",
+"sol_page": 55
+},
+{
+"no": 27,
+"q_page": 14,
+"legacy_category": "함수의 최대 · 최소를 이용한 미정계수의 결정",
+"sol_page": 56
+},
+{
+"no": 28,
+"q_page": 14,
+"legacy_category": "방정식 f(x)=0의 실근",
+"sol_page": 57
+},
+{
+"no": 29,
+"q_page": 15,
+"legacy_category": "방정식 f(x)=0의 실근",
+"sol_page": 58
+},
+{
+"no": 30,
+"q_page": 15,
+"legacy_category": "방정식 f(x)=g(x)의 실근",
+"sol_page": 58
+},
+{
+"no": 31,
+"q_page": 16,
+"legacy_category": "두 그래프의 교점의 개수",
+"sol_page": 60
+},
+{
+"no": 32,
+"q_page": 16,
+"legacy_category": "주어진 구간에서 부등식이 항상 성립할 조건(2) : 최대 · 최소의 활용",
+"sol_page": 60
+},
+{
+"no": 33,
+"q_page": 17,
+"legacy_category": "부등식이 항상 성립할 조건",
+"sol_page": 61
+},
+{
+"no": 34,
+"q_page": 17,
+"legacy_category": "가속도",
+"sol_page": 61
+},
+{
+"no": 35,
+"q_page": 18,
+"legacy_category": "속도 · 가속도와 운동 방향",
+"sol_page": 61
+},
+{
+"no": 36,
+"q_page": 18,
+"legacy_category": "속도 · 가속도와 운동 방향",
+"sol_page": 62
+},
+{
+"no": 37,
+"q_page": 19,
+"legacy_category": "부정적분의 정의",
+"sol_page": 62
+},
+{
+"no": 38,
+"q_page": 19,
+"legacy_category": "도함수가 주어진 경우의 부정적분 : f'(x)로부터 f(x)구하기",
+"sol_page": 62
+},
+{
+"no": 39,
+"q_page": 20,
+"legacy_category": "함수의 연속과 부정적분",
+"sol_page": 63
+},
+{
+"no": 40,
+"q_page": 20,
+"legacy_category": "함수의 연속과 부정적분",
+"sol_page": 64
+},
+{
+"no": 41,
+"q_page": 21,
+"legacy_category": "정적분의 계산(1) : 적분 구간이 같은 경우",
+"sol_page": 65
+},
+{
+"no": 42,
+"q_page": 21,
+"legacy_category": "정적분의 계산(2) : 피적분함수가 같은 경우",
+"sol_page": 65
+},
+{
+"no": 43,
+"q_page": 22,
+"legacy_category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+"sol_page": 65
+},
+{
+"no": 44,
+"q_page": 22,
+"legacy_category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+"sol_page": 66
+},
+{
+"no": 45,
+"q_page": 23,
+"legacy_category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+"sol_page": 67
+},
+{
+"no": 46,
+"q_page": 23,
+"legacy_category": "정적분의 계산(5) : 다양한 조건이 주어진 경우",
+"sol_page": 67
+},
+{
+"no": 47,
+"q_page": 24,
+"legacy_category": "정적분의 계산(5) : 다양한 조건이 주어진 경우",
+"sol_page": 68
+},
+{
+"no": 48,
+"q_page": 24,
+"legacy_category": "우함수 · 기함수의 정적분(1) : 피적분함수가 주어진 경우",
+"sol_page": 68
+},
+{
+"no": 49,
+"q_page": 25,
+"legacy_category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+"sol_page": 69
+},
+{
+"no": 50,
+"q_page": 25,
+"legacy_category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+"sol_page": 69
+},
+{
+"no": 51,
+"q_page": 26,
+"legacy_category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+"sol_page": 69
+},
+{
+"no": 52,
+"q_page": 26,
+"legacy_category": "정적분으로 정의된 함수의 극대 · 극소",
+"sol_page": 69
+},
+{
+"no": 53,
+"q_page": 27,
+"legacy_category": "정적분으로 정의된 함수의 극대 · 극소",
+"sol_page": 70
+},
+{
+"no": 54,
+"q_page": 27,
+"legacy_category": "정적분으로 정의된 함수의 극대 · 극소",
+"sol_page": 71
+},
+{
+"no": 55,
+"q_page": 28,
+"legacy_category": "정적분으로 정의된 함수의 극대 · 극소",
+"sol_page": 72
+},
+{
+"no": 56,
+"q_page": 28,
+"legacy_category": "정적분으로 정의된 함수의 최대 · 최소",
+"sol_page": 73
+},
+{
+"no": 57,
+"q_page": 29,
+"legacy_category": "정적분으로 정의된 함수의 그래프",
+"sol_page": 73
+},
+{
+"no": 58,
+"q_page": 29,
+"legacy_category": "정적분으로 정의된 함수의 그래프",
+"sol_page": 74
+},
+{
+"no": 59,
+"q_page": 30,
+"legacy_category": "곡선과 x축 사이의 넓이",
+"sol_page": 75
+},
+{
+"no": 60,
+"q_page": 30,
+"legacy_category": "곡선과 x축 사이의 넓이",
+"sol_page": 75
+},
+{
+"no": 61,
+"q_page": 31,
+"legacy_category": "곡선과 x축 사이의 넓이",
+"sol_page": 76
+},
+{
+"no": 62,
+"q_page": 31,
+"legacy_category": "곡선과 직선 사이의 넓이",
+"sol_page": 76
+},
+{
+"no": 63,
+"q_page": 32,
+"legacy_category": "곡선과 직선 사이의 넓이",
+"sol_page": 76
+},
+{
+"no": 64,
+"q_page": 32,
+"legacy_category": "곡선과 직선 사이의 넓이",
+"sol_page": 77
+},
+{
+"no": 65,
+"q_page": 33,
+"legacy_category": "곡선과 직선 사이의 넓이",
+"sol_page": 77
+},
+{
+"no": 66,
+"q_page": 33,
+"legacy_category": "두 곡선 사이의 넓이",
+"sol_page": 78
+},
+{
+"no": 67,
+"q_page": 34,
+"legacy_category": "두 도형의 넓이가 같을 조건",
+"sol_page": 78
+},
+{
+"no": 68,
+"q_page": 34,
+"legacy_category": "두 곡선 사이의 넓이의 활용(2) : 넓이의 최솟값",
+"sol_page": 78
+},
+{
+"no": 69,
+"q_page": 35,
+"legacy_category": "위치와 위치의 변화량",
+"sol_page": 79
+},
+{
+"no": 70,
+"q_page": 35,
+"legacy_category": "위치와 위치의 변화량",
+"sol_page": 79
+},
+{
+"no": 71,
+"q_page": 36,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 80
+},
+{
+"no": 72,
+"q_page": 36,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 81
+},
+{
+"no": 73,
+"q_page": 37,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 81
+},
+{
+"no": 74,
+"q_page": 37,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 82
+},
+{
+"no": 75,
+"q_page": 38,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 82
+},
+{
+"no": 76,
+"q_page": 38,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 82
+},
+{
+"no": 77,
+"q_page": 39,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 83
+},
+{
+"no": 78,
+"q_page": 39,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 83
+},
+{
+"no": 79,
+"q_page": 40,
+"legacy_category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+"sol_page": 83
+}
+]
+}

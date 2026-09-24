@@ -1,0 +1,4077 @@
+[
+ {
+  "id": "M1-230911",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230911",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2022년 9월 고3 11번"
+  },
+  "question": "함수 $f(x)=-(x-2)^2+k$에 대하여 다음 조건을 만족시키는 자연수 $n$의 개수가 $2$일 때, 상수 $k$의 값은?",
+  "condition": "$\\sqrt{3}^{\\,f(n)}$의 네제곱근 중 실수인 것을 모두 곱한 값이 $-9$이다.",
+  "choices": [
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "answer": "2",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-01",
+   "primary_name": "거듭제곱근",
+   "links": [
+    "수학Ⅰ-02"
+   ]
+  },
+  "first_judgment": "양수의 네제곱근 중 실수는 $\\pm$ 두 개이므로 그 곱은 $-\\sqrt{3}^{\\,f(n)/2}$이고, 이것이 $-9$가 되는 $f(n)$ 값을 먼저 구한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S01",
+   "S02"
+  ],
+  "solution_ref": "$\\sqrt[4]{\\sqrt3^{f(n)}}\\cdot\\left(-\\sqrt[4]{\\sqrt3^{f(n)}}\\right)=-3^{\\frac14 f(n)}=-9\\Rightarrow f(n)=8$. 대칭축 $x=2$이므로 $f(n)=8$인 자연수 $n$이 2개이려면 그래프가 $(1,8)$을 지나야 한다. $f(1)=-1+k=8\\therefore k=9$",
+  "legacy": {
+   "category": "ⁿ√a의 정의",
+   "book_no": 1,
+   "question_page": 1,
+   "solution_page": 42
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220621",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220621",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2021년 6월 고3 21번"
+  },
+  "question": "다음 조건을 만족시키는 최고차항의 계수가 $1$인 이차함수 $f(x)$가 존재하도록 하는 모든 자연수 $n$의 값의 합을 구하시오.",
+  "condition": "(가) $x$에 대한 방정식 $(x^n-64)f(x)=0$은 서로 다른 두 실근을 갖고, 각각의 실근은 중근이다.\\\\(나) 함수 $f(x)$의 최솟값은 음의 정수이다.",
+  "choices": null,
+  "answer": "24",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-01",
+   "primary_name": "거듭제곱근",
+   "links": []
+  },
+  "first_judgment": "$x^n=64$의 실근 개수가 $n$의 홀짝에 따라 달라지므로 $n$을 홀수·짝수로 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S01",
+   "S02"
+  ],
+  "solution_ref": "$f$의 최솟값이 음수이므로 $f(x)=0$은 서로 다른 두 실근을 가진다. (i) $n$ 홀수: $x^n=64$의 실근 1개 → 모든 근이 중근일 수 없다. (ii) $n$ 짝수: $x=\\pm2^{6/n}$이므로 $f(x)=(x-2^{6/n})(x+2^{6/n})$, 최솟값 $f(0)=-2^{12/n}$이 음의 정수 → $n=2,4,6,12$. 합 $24$",
+  "legacy": {
+   "category": "a^r이 자연수가 되도록 하는 미지수 구하기",
+   "book_no": 2,
+   "question_page": 1,
+   "solution_page": 42
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230621",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230621",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2022년 6월 고3 21번"
+  },
+  "question": "자연수 $n$에 대하여 $4\\log_{64}\\left(\\dfrac{3}{4n+16}\\right)$의 값이 정수가 되도록 하는 $1000$ 이하의 모든 $n$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "426",
+  "answer_value": "426",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-02",
+   "primary_name": "지수로그의 연산",
+   "links": [
+    "수학Ⅰ-05"
+   ]
+  },
+  "first_judgment": "식을 $\\log_8\\left(\\frac{3}{4n+16}\\right)^2$로 정리하고, 값 자체를 정수 $m$으로 두어 $n$이 아니라 $m$(또는 $k$) 기준으로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S03",
+   "S04"
+  ],
+  "solution_ref": "$4\\log_{64}\\frac{3}{4n+16}=\\log_8\\left(\\frac{3}{4n+16}\\right)^2$이 정수 $m$ → $\\left(\\frac{3}{4n+16}\\right)^2=8^m$. $4n+16$이 3의 배수여야 하므로 $n=3k-1$ ($1\\le k\\le333$). $\\left(\\frac{1}{4k+4}\\right)^2=2^{3m}\\Rightarrow (k+1)^2=2^{-3m-4}$, 즉 $2^2,2^8,2^{14}$ → $k=1,15,127$, $n=2,44,380$. 합 $426$",
+  "legacy": {
+   "category": "로그의 정의",
+   "book_no": 3,
+   "question_page": 2,
+   "solution_page": 43
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-241109",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "241109",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 9,
+   "points": 4,
+   "label": "2023년 11월 고3 9번"
+  },
+  "question": "수직선 위의 두 점 $\\mathrm{P}(\\log_5 3)$, $\\mathrm{Q}(\\log_5 12)$에 대하여 선분 $\\mathrm{PQ}$를 $m:(1-m)$으로 내분하는 점의 좌표가 $1$일 때, $4^m$의 값은? (단, $m$은 $0<m<1$인 상수이다.)",
+  "condition": null,
+  "choices": [
+   "\\frac{7}{6}",
+   "\\frac{4}{3}",
+   "\\frac{3}{2}",
+   "\\frac{5}{3}",
+   "\\frac{11}{6}"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{5}{3}",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-02",
+   "primary_name": "지수로그의 연산",
+   "links": []
+  },
+  "first_judgment": "내분점 공식으로 식을 세우면 $m$에 대한 일차방정식이 되고, $m$이 로그 꼴로 나온다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S03"
+  ],
+  "solution_ref": "$m\\log_5 12+(1-m)\\log_5 3=1\\Rightarrow m\\log_5 4=\\log_5\\frac53\\Rightarrow m=\\log_4\\frac53$, $4^m=\\frac53$",
+  "legacy": {
+   "category": "로그의 여러 가지 성질을 이용한 계산",
+   "book_no": 4,
+   "question_page": 2,
+   "solution_page": 43
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-270610",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "270610",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2026년 6월 고3 10번"
+  },
+  "question": "두 양수 $a,b$가 $\\log_9 a+\\log_3 b=2$, $\\log_3 a=8\\log_9 b$를 만족시킬 때, $\\dfrac{a}{b}$의 값은?",
+  "condition": null,
+  "choices": [
+   "1",
+   "3",
+   "9",
+   "27",
+   "81"
+  ],
+  "answer": "3",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-02",
+   "primary_name": "지수로그의 연산",
+   "links": []
+  },
+  "first_judgment": "밑을 $3$으로 통일하여 $\\log_3 a$, $\\log_3 b$에 대한 연립일차방정식으로 본다.",
+  "behavior": "계산",
+  "reasoning": [
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S03"
+  ],
+  "solution_ref": "$\\frac12\\log_3a+\\log_3b=2$, $\\log_3a=4\\log_3b$ → $\\log_3b=\\frac23$, $\\log_3a=\\frac83$. $\\log_3\\frac ab=2$, $\\frac ab=9$",
+  "legacy": {
+   "category": "로그의 여러 가지 성질을 이용한 계산",
+   "book_no": 5,
+   "question_page": 3,
+   "solution_page": 43
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-221113",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "221113",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 13,
+   "points": 4,
+   "label": "2021년 11월 고3 13번"
+  },
+  "question": "두 상수 $a,b$ $(1<a<b)$에 대하여 좌표평면 위의 두 점 $(a,\\log_2 a)$, $(b,\\log_2 b)$를 지나는 직선의 $y$절편과 두 점 $(a,\\log_4 a)$, $(b,\\log_4 b)$를 지나는 직선의 $y$절편이 같다. 함수 $f(x)=a^{bx}+b^{ax}$에 대하여 $f(1)=40$일 때, $f(2)$의 값은?",
+  "condition": null,
+  "choices": [
+   "760",
+   "800",
+   "840",
+   "880",
+   "920"
+  ],
+  "answer": "2",
+  "answer_value": "800",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-02",
+   "primary_name": "지수로그의 연산",
+   "links": [
+    "수학Ⅰ-04"
+   ]
+  },
+  "first_judgment": "$\\log_4=\\frac12\\log_2$이므로 두 $y$절편 식을 $\\log_2$로 통일해 같다고 놓으면 $a^b=b^a$가 나온다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S03"
+  ],
+  "solution_ref": "$y$절편: $-\\frac{a(\\log_2b-\\log_2a)}{b-a}+\\log_2a=-\\frac12\\cdot\\frac{a(\\log_2b-\\log_2a)}{b-a}+\\frac12\\log_2a$ → $(b-a)\\log_2a=a\\log_2\\frac ba$ → $a^b=b^a$. $f(1)=a^b+b^a=40\\Rightarrow a^b=b^a=20$. $f(2)=(a^b)^2+(b^a)^2=800$",
+  "legacy": {
+   "category": "로그의 여러 가지 성질을 이용한 계산",
+   "book_no": 6,
+   "question_page": 3,
+   "solution_page": 44
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260912",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260912",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2025년 9월 고3 12번"
+  },
+  "question": "상수 $a$ $(a>1)$과 양수 $t$에 대하여 곡선 $y=a^x$과 두 직선 $x=t$, $x=2t$가 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 점 $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이고 삼각형 $\\mathrm{ACB}$의 넓이가 $8$일 때, $at$의 값은?",
+  "condition": null,
+  "choices": [
+   "2^{\\frac94}",
+   "2^{\\frac{23}{8}}",
+   "2^{\\frac72}",
+   "2^{\\frac{33}{8}}",
+   "2^{\\frac{19}{4}}"
+  ],
+  "answer": "1",
+  "answer_value": "2^{\\frac94}",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-03",
+   "primary_name": "지수함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "이등변삼각형이므로 $\\mathrm{A}$에서 $\\mathrm{BC}$에 내린 수선의 발이 $\\mathrm{BC}$의 중점이다 → $2a^t=a^{2t}$.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\mathrm A(t,a^t)$, $\\mathrm B(2t,a^{2t})$, $\\mathrm C(2t,0)$. $\\mathrm{BC}$의 중점 높이 $=a^t$ → $2a^t=a^{2t}$, $a^t=2$. 넓이 $\\frac12\\cdot t\\cdot a^{2t}=8\\Rightarrow t=4$, $a=2^{1/4}$, $at=2^{9/4}$",
+  "legacy": {
+   "category": "지수함수의 그래프에서의 함숫값",
+   "book_no": 7,
+   "question_page": 4,
+   "solution_page": 44
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-261110",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "261110",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 10,
+   "points": 4,
+   "label": "2025년 11월 고3 10번"
+  },
+  "question": "상수 $a$ $(a>1)$에 대하여 곡선 $y=a^x-2$ 위의 점 중 제1사분면에 있는 점 $\\mathrm{A}$를 지나고 $y$축에 평행한 직선이 $x$축과 만나는 점을 $\\mathrm{B}$, 곡선 $y=a^x-2$의 점근선과 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}$이고 삼각형 $\\mathrm{AOC}$의 넓이가 $8$일 때, $a\\times\\overline{\\mathrm{OB}}$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+   "2^{\\frac{13}{6}}",
+   "2^{\\frac73}",
+   "2^{\\frac52}",
+   "2^{\\frac83}",
+   "2^{\\frac{17}{6}}"
+  ],
+  "answer": "3",
+  "answer_value": "2^{\\frac52}",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-03",
+   "primary_name": "지수함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "점근선 $y=-2$이므로 $\\overline{\\mathrm{BC}}=2$, 따라서 $\\mathrm A$의 $y$좌표가 $2$로 바로 정해진다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{BC}}=2=\\overline{\\mathrm{AB}}$ → $\\mathrm A(p,2)$, $a^p=4$. 넓이 $\\frac12\\cdot4\\cdot\\overline{\\mathrm{OB}}=8\\Rightarrow\\overline{\\mathrm{OB}}=4$, $a^4=4$, $a=\\sqrt2$. $a\\cdot\\overline{\\mathrm{OB}}=4\\sqrt2=2^{5/2}$",
+  "legacy": {
+   "category": "지수함수의 그래프에서의 함숫값",
+   "book_no": 8,
+   "question_page": 4,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-251120",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "251120",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 20,
+   "points": 4,
+   "label": "2024년 11월 고3 20번"
+  },
+  "question": "곡선 $y=\\left(\\dfrac15\\right)^{x-3}$과 직선 $y=x$가 만나는 점의 $x$좌표를 $k$라 하자. 실수 전체의 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다. $f\\left(\\dfrac{1}{k^3\\times5^{3k}}\\right)$의 값을 구하시오.",
+  "condition": "$x>k$인 모든 실수 $x$에 대하여 $f(x)=\\left(\\dfrac15\\right)^{x-3}$이고 $f(f(x))=3x$이다.",
+  "choices": null,
+  "answer": "36",
+  "answer_value": "36",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-03",
+   "primary_name": "지수함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "$k$의 정의 $\\left(\\frac15\\right)^{k-3}=k$에서 $k\\cdot5^k=5^3$을 얻어 입력값을 $\\frac1{5^9}$로 단순화하고, 이것을 $f(\\alpha)$ 꼴로 본다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\left(\\frac15\\right)^{k-3}=k\\Rightarrow k\\cdot5^k=5^3$, 따라서 $\\frac1{k^3 5^{3k}}=\\frac1{5^9}$. $x<k$에서 $f$ 감소 확인 후, $f(\\alpha)=\\left(\\frac15\\right)^{\\alpha-3}=\\frac1{5^9}$인 $\\alpha=12>k$. $f\\left(\\frac1{5^9}\\right)=f(f(12))=36$",
+  "legacy": {
+   "category": "지수함수의 그래프에서의 함숫값",
+   "book_no": 9,
+   "question_page": 5,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250612",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250612",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2024년 6월 고3 12번"
+  },
+  "question": "그림과 같이 곡선 $y=1-2^{-x}$ 위의 제1사분면에 있는 점 $\\mathrm{A}$를 지나고 $y$축에 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{C}$, 점 $\\mathrm{C}$를 지나고 $y$축에 평행한 직선이 곡선 $y=1-2^{-x}$과 만나는 점을 $\\mathrm{D}$라 하자. $\\overline{\\mathrm{AB}}=2\\overline{\\mathrm{CD}}$일 때, 사각형 $\\mathrm{ABCD}$의 넓이는?",
+  "condition": null,
+  "choices": [
+   "\\frac52\\log_2 3-\\frac54",
+   "3\\log_2 3-\\frac32",
+   "\\frac72\\log_2 3-\\frac74",
+   "4\\log_2 3-2",
+   "\\frac92\\log_2 3-\\frac94"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac72\\log_2 3-\\frac74",
+  "figure": {
+   "description": "곡선 $y=2^x$, $y=1-2^{-x}$와 점 A(제1사분면, 아래 곡선 위), B(A 위쪽 $y=2^x$ 위), C(A와 같은 높이, $y=2^x$ 위), D(C 아래 $y=1-2^{-x}$ 위); 사각형 ABCD가 색칠됨",
+   "source_page": 5
+  },
+  "theme": {
+   "primary": "수학Ⅰ-03",
+   "primary_name": "지수함수의 그래프",
+   "links": [
+    "수학Ⅰ-06"
+   ]
+  },
+  "first_judgment": "A의 $x$좌표 $a$, C의 $x$좌표 $c$로 두고 'A, C의 $y$좌표가 같다'는 관계로 미지수를 하나로 줄인다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립",
+   "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AB}}=2^a+2^{-a}-1$, $\\overline{\\mathrm{CD}}=2^c+2^{-c}-1$, $2^c=1-2^{-a}$. $2^a=t$로 두면 $t+\\frac1t-1=-\\frac2t+\\frac{2t}{t-1}$ → $(t-3)(t^2-t+1)=0$, $t=3$. $a=\\log_2 3$, $c=1-\\log_2 3$. 넓이 $\\frac12(a-c)(2^a-1+2^{-c})=\\frac12(2\\log_2 3-1)\\left(3-1+\\frac32\\right)=\\frac72\\log_2 3-\\frac74$",
+  "legacy": {
+   "category": "지수함수의 그래프에서의 함숫값",
+   "book_no": 10,
+   "question_page": 5,
+   "solution_page": 46
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240914",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240914",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2023년 9월 고3 14번"
+  },
+  "question": "두 자연수 $a,b$에 대하여 함수 $f(x)=\\begin{cases}2^{x+a}+b & (x\\le-8)\\\\ -3^{x-3}+8 & (x>-8)\\end{cases}$이 다음 조건을 만족시킬 때, $a+b$의 값은?",
+  "condition": "집합 $\\{f(x)\\mid x\\le k\\}$의 원소 중 정수인 것의 개수가 $2$가 되도록 하는 모든 실수 $k$의 값의 범위는 $3\\le k<4$이다.",
+  "choices": [
+   "11",
+   "13",
+   "15",
+   "17",
+   "19"
+  ],
+  "answer": "2",
+  "answer_value": "13",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-03",
+   "primary_name": "지수함수의 그래프",
+   "links": [
+    "수학Ⅰ-07"
+   ]
+  },
+  "first_judgment": "$x>-8$ 부분에서 $3\\le k<4$일 때 나오는 정수값이 $6,7$뿐이므로, $x\\le-8$ 부분이 새 정수를 만들지 않도록 치역을 제한한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$x>-8$에서 $3\\le k<4$이면 정수 $f(x)=6,7$ ($f(3)=7$, $f(4)=5$). 따라서 $x\\le-8$ 부분의 정수값은 $6$뿐 → $b=5$, $6\\le f(-8)=2^{-8+a}+5<7$ → $8\\le a<9$, $a=8$. $a+b=13$",
+  "legacy": {
+   "category": "지수함수의 그래프에서의 함숫값",
+   "book_no": 11,
+   "question_page": 6,
+   "solution_page": 46
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260622",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260622",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2025년 6월 고3 22번"
+  },
+  "question": "$k>1$인 실수 $k$에 대하여 두 곡선 $y=2^x+\\dfrac k2$, $y=k\\cdot\\left(\\dfrac12\\right)^x+k-2$가 만나는 점을 $\\mathrm{A}$라 하고, 점 $\\mathrm{A}$를 지나고 기울기가 $-1$인 직선이 곡선 $y=2^{x-2}-3$과 만나는 점을 $\\mathrm{B}$라 하자. 삼각형 $\\mathrm{AOB}$의 넓이가 $16$일 때, $k+\\log_2 k=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $\\mathrm{O}$는 원점이고, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "38",
+  "answer_value": "38",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-03",
+   "primary_name": "지수함수의 그래프",
+   "links": [
+    "수학Ⅰ-07"
+   ]
+  },
+  "first_judgment": "교점 $\\mathrm A$가 $\\left(\\log_2\\frac k2,k\\right)$로 정리되어 곡선 $y=2^{x+1}$ 위를 움직이고, $y=2^{x-2}-3$은 이 곡선의 평행이동이므로 $\\overline{\\mathrm{AB}}$가 상수가 된다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$2^a=t$: $t+\\frac k2=\\frac kt+k-2\\Rightarrow(t+2)(2t-k)=0$, $t=\\frac k2$. $\\mathrm A\\left(\\log_2\\frac k2,k\\right)$는 $y=2^{x+1}$ 위. $y=2^{x-2}-3$은 이를 $(3,-3)$ 평행이동 → $\\mathrm B\\left(\\log_2\\frac k2+3,k-3\\right)$, $\\overline{\\mathrm{AB}}=3\\sqrt2$. 높이 $h=\\frac{16\\sqrt2}{3}$. 직선 $x+y-k-\\log_2\\frac k2=0$과 원점 거리: $\\frac{|k+\\log_2 k-1|}{\\sqrt2}=\\frac{16\\sqrt2}3$ → $k+\\log_2k=\\frac{35}{3}$. $p+q=38$",
+  "legacy": {
+   "category": "지수함수의 그래프에서의 함숫값",
+   "book_no": 12,
+   "question_page": 6,
+   "solution_page": 46
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230921",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230921",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2022년 9월 고3 21번"
+  },
+  "question": "그림과 같이 곡선 $y=2^x$ 위에 두 점 $\\mathrm{P}(a,2^a)$, $\\mathrm{Q}(b,2^b)$이 있다. 직선 $\\mathrm{PQ}$의 기울기를 $m$이라 할 때, 점 $\\mathrm{P}$를 지나며 기울기가 $-m$인 직선이 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 점 $\\mathrm{Q}$를 지나며 기울기가 $-m$인 직선이 $x$축과 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=4\\overline{\\mathrm{PB}}$, $\\overline{\\mathrm{CQ}}=3\\overline{\\mathrm{AB}}$일 때, $90(a+b)$의 값을 구하시오. (단, $0<a<b$)",
+  "condition": null,
+  "choices": null,
+  "answer": "220",
+  "answer_value": "220",
+  "figure": {
+   "description": "곡선 $y=2^x$ 위의 P, Q와 기울기 $-m$인 평행한 두 직선(P를 지나 $y$축의 B, $x$축의 A와 만남 / Q를 지나 $x$축의 C와 만남)",
+   "source_page": 7
+  },
+  "theme": {
+   "primary": "수학Ⅰ-03",
+   "primary_name": "지수함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "두 직선이 평행하므로 닮은 삼각형으로 길이비를 높이비($2^a:2^b$)로 옮긴다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{PB}}=k$면 $\\overline{\\mathrm{AP}}=3k$, $\\overline{\\mathrm{CQ}}=12k$, 닮음으로 $2^a:2^b=1:4$ → $b=a+2$, $m=\\frac{2^{a+2}-2^a}{2}=3\\cdot2^{a-1}$. A의 $x$좌표 $a+\\frac23$. $\\overline{\\mathrm{AO}}:\\overline{\\mathrm{DO}}=4:1$ → $a+\\frac23=4a$, $a=\\frac29$, $b=\\frac{20}9$. $90(a+b)=220$",
+  "legacy": {
+   "category": "지수함수의 그래프에서의 함숫값",
+   "book_no": 13,
+   "question_page": 7,
+   "solution_page": 47
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220610",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220610",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2021년 6월 고3 10번"
+  },
+  "question": "$n\\ge2$인 자연수 $n$에 대하여 두 곡선 $y=\\log_n x$, $y=-\\log_n(x+3)+1$이 만나는 점의 $x$좌표가 $1$보다 크고 $2$보다 작도록 하는 모든 $n$의 값의 합은?",
+  "condition": null,
+  "choices": [
+   "30",
+   "35",
+   "40",
+   "45",
+   "50"
+  ],
+  "answer": "2",
+  "answer_value": "35",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-04",
+   "primary_name": "로그함수의 그래프",
+   "links": [
+    "수학Ⅰ-05"
+   ]
+  },
+  "first_judgment": "교점 조건을 $\\log_n x=\\log_n\\frac{n}{x+3}$으로 바꾸면 이차방정식 $x^2+3x-n=0$의 근이 $(1,2)$에 있을 조건이 된다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S03"
+  ],
+  "solution_ref": "$x=\\frac{n}{x+3}\\Rightarrow x^2+3x-n=0$. $f(x)=x^2+3x-n$에서 $f(1)=4-n<0$, $f(2)=10-n>0$ → $4<n<10$, $n=5,\\dots,9$. 합 $35$",
+  "legacy": {
+   "category": "로그함수의 그래프에서의 함숫값",
+   "book_no": 14,
+   "question_page": 7,
+   "solution_page": 48
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260610",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260610",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2025년 6월 고3 10번"
+  },
+  "question": "실수 $a$ $(a>1)$에 대하여 곡선 $y=\\log_a(x+3)$이 곡선 $y=\\log_a(-x+3)$과 만나는 점을 $\\mathrm{A}$, 곡선 $y=\\log_a(x+3)$이 $x$축과 만나는 점을 $\\mathrm{B}$, 곡선 $y=\\log_a(-x+3)$이 $x$축과 만나는 점을 $\\mathrm{C}$라 하자. 삼각형 $\\mathrm{ABC}$가 정삼각형일 때, $a$의 값은?",
+  "condition": null,
+  "choices": [
+   "3^{\\frac{\\sqrt3}{6}}",
+   "3^{\\frac{\\sqrt3}{4}}",
+   "3^{\\frac{\\sqrt3}{3}}",
+   "3^{\\frac{5\\sqrt3}{12}}",
+   "3^{\\frac{\\sqrt3}{2}}"
+  ],
+  "answer": "1",
+  "answer_value": "3^{\\frac{\\sqrt3}{6}}",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-04",
+   "primary_name": "로그함수의 그래프",
+   "links": [
+    "수학Ⅰ-06"
+   ]
+  },
+  "first_judgment": "두 곡선은 $y$축 대칭이므로 $\\mathrm A$는 $y$축 위의 $(0,\\log_a3)$이고, 정삼각형 조건은 $\\tan\\frac\\pi3=\\frac{\\overline{\\mathrm{OA}}}{\\overline{\\mathrm{OB}}}$이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\mathrm A(0,\\log_a3)$, $\\mathrm B(-2,0)$, $\\mathrm C(2,0)$. $\\sqrt3=\\frac{\\log_a3}{2}\\Rightarrow a^{2\\sqrt3}=3$, $a=3^{\\frac{\\sqrt3}{6}}$",
+  "legacy": {
+   "category": "로그함수의 그래프에서의 함숫값",
+   "book_no": 15,
+   "question_page": 8,
+   "solution_page": 48
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-270620",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "270620",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2026년 6월 고3 20번"
+  },
+  "question": "다음 그림과 같이 $1$보다 큰 실수 $b$에 대하여 두 함수 $f(x)=b^x$과 $g(x)=-\\log_b x$의 그래프가 제1사분면에서 만나는 점 $\\mathrm{P}$의 좌표를 $(\\alpha,\\beta)$라 하자. 다음은 $\\alpha\\beta^3=1$일 때, 직선 $\\mathrm{OP}$의 기울기 $m$에 대하여 $g(m)$의 값을 구하는 과정이다. (단, $\\mathrm{O}$는 원점이다.) 위의 (가), (나), (다)에 알맞은 수를 각각 $p,q,r$이라 할 때, $(pqr)^2$의 값을 구하시오.",
+  "condition": "제1사분면에 있는 점 $\\mathrm P(\\alpha,\\beta)$는 두 곡선 $y=f(x)$, $y=g(x)$ 위의 점이므로 두 양수 $\\alpha,\\beta$가 $\\beta=b^\\alpha$, $\\beta=-\\log_b\\alpha$를 만족시킨다. $\\alpha\\beta^3=1$이고 $\\alpha=\\log_b\\beta$, $\\beta=-\\log_b\\alpha$이므로 $3\\alpha-\\beta=3\\log_b\\beta+\\log_b\\alpha=\\log_b(\\alpha\\beta^3)=0$이다. 따라서 $m=\\dfrac\\beta\\alpha=$ (가) 이다. $\\beta^4=m\\alpha\\beta^3=m$이므로 $\\beta=$ (나) 이다. $b=\\alpha^{-\\frac1\\beta}$이고 $\\alpha=\\dfrac\\beta m$이므로 $g(m)=-\\log_b m=\\dfrac{\\beta}{\\log_m\\alpha}=\\dfrac{\\beta}{-1+\\log_m\\beta}=$ (다) 이다.",
+  "choices": null,
+  "answer": "48",
+  "answer_value": "48",
+  "figure": {
+   "description": "증가하는 곡선 $y=f(x)=b^x$와 감소하는 곡선 $y=g(x)=-\\log_b x$가 제1사분면의 점 P에서 만나는 그림",
+   "source_page": 8
+  },
+  "theme": {
+   "primary": "수학Ⅰ-04",
+   "primary_name": "로그함수의 그래프",
+   "links": [
+    "수학Ⅰ-03"
+   ]
+  },
+  "first_judgment": "빈칸 과정의 흐름을 따라 $\\beta=3\\alpha$를 먼저 얻고 $m=3$을 확정한 뒤 나머지를 대입한다.",
+  "behavior": "이해",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$3\\alpha-\\beta=0$ → $m=3$ (가). $\\beta^4=3$ → $\\beta=3^{1/4}$ (나). $g(m)=\\frac{3^{1/4}}{-1+\\frac14}=-4\\cdot3^{-3/4}$ (다). $(pqr)^2=(-4\\cdot3^{1/2})^2=48$",
+  "legacy": {
+   "category": "로그함수의 그래프에서의 함숫값",
+   "book_no": 16,
+   "question_page": 8,
+   "solution_page": 49
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240621",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240621",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2023년 6월 고3 21번"
+  },
+  "question": "실수 $t$에 대하여 두 곡선 $y=t-\\log_2 x$와 $y=2^{x-t}$이 만나는 점의 $x$좌표를 $f(t)$라 하자. <보기>의 각 명제에 대하여 다음 규칙에 따라 $A,B,C$의 값을 정할 때, $A+B+C$의 값을 구하시오. (단, $A+B+C\\ne0$)",
+  "condition": "· 명제 ㄱ이 참이면 $A=100$, 거짓이면 $A=0$이다.\\\\· 명제 ㄴ이 참이면 $B=10$, 거짓이면 $B=0$이다.\\\\· 명제 ㄷ이 참이면 $C=1$, 거짓이면 $C=0$이다.\\\\<보기>\\\\ㄱ. $f(1)=1$이고 $f(2)=2$이다.\\\\ㄴ. 실수 $t$의 값이 증가하면 $f(t)$의 값도 증가한다.\\\\ㄷ. 모든 양의 실수 $t$에 대하여 $f(t)\\ge t$이다.",
+  "choices": null,
+  "answer": "110",
+  "answer_value": "110",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-04",
+   "primary_name": "로그함수의 그래프",
+   "links": [
+    "수학Ⅰ-07"
+   ]
+  },
+  "first_judgment": "두 곡선을 각각 기본 곡선의 $t$만큼 평행이동으로 보고, 감소·증가 함수의 교점이 $t$에 따라 어떻게 움직이는지 본다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "단순화·특수화로 규칙성 찾기"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "ㄱ: $t=1$일 때 두 곡선 모두 $(1,1)$, $t=2$일 때 모두 $(2,1)$ 지남 → 참. ㄴ: 두 곡선 모두 $t$만큼 오른쪽/위로 이동하므로 교점의 $x$좌표 증가 → 참. ㄷ: $f(t)\\ge t\\iff t-\\log_2t\\ge2^{0}=1$, 즉 $t-1\\ge\\log_2 t$; $1<t<2$에서 $\\log_2t>t-1$이므로 거짓. $A+B+C=110$",
+  "legacy": {
+   "category": "로그함수의 그래프에서의 함숫값",
+   "book_no": 17,
+   "question_page": 9,
+   "solution_page": 49
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260922",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260922",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2025년 9월 고3 22번"
+  },
+  "question": "곡선 $y=\\log_2 x$ 위에 서로 다른 두 점 $\\mathrm{A}$, $\\mathrm{B}$가 있다. 점 $\\mathrm{A}$에서 직선 $y=x$에 내린 수선의 발을 $\\mathrm{P}$라 하고, 점 $\\mathrm{B}$를 직선 $y=x$에 대하여 대칭이동한 점을 $\\mathrm{Q}$라 할 때, 네 점 $\\mathrm{A,B,P,Q}$가 다음 조건을 만족시킨다. 사각형 $\\mathrm{APQB}$의 넓이가 $\\dfrac qp$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "(가) (직선 $\\mathrm{AP}$의 $y$절편)$-$(직선 $\\mathrm{BQ}$의 $y$절편)$=\\dfrac{13}{2}$\\\\(나) 직선 $\\mathrm{AB}$의 기울기는 $\\dfrac67$이다.",
+  "choices": null,
+  "answer": "73",
+  "answer_value": "73",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-04",
+   "primary_name": "로그함수의 그래프",
+   "links": [
+    "수학Ⅰ-06"
+   ]
+  },
+  "first_judgment": "$\\mathrm{AP}$, $\\mathrm{BQ}$ 모두 기울기 $-1$인 직선이므로 $y$절편을 $a+\\log_2a$, $b+\\log_2b$로 쓰고 (나)와 연립한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "미지수 소거·연립",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\mathrm A(a,\\log_2a)$, $\\mathrm B(b,\\log_2b)$. (가) $(a-b)+(\\log_2a-\\log_2b)=\\frac{13}2$, (나) $\\log_2a-\\log_2b=\\frac67(a-b)$ → $a-b=\\frac72$, $\\frac ab=8$ → $b=\\frac12$, $a=4$. $\\mathrm P(3,3)$, $\\mathrm Q(-1,\\frac12)$. $\\overline{\\mathrm{AP}}=\\sqrt2$, $\\overline{\\mathrm{BQ}}=\\frac{3\\sqrt2}2$, 높이 $\\overline{\\mathrm{PM}}=\\frac{13\\sqrt2}4$. 넓이 $\\frac12\\left(\\sqrt2+\\frac{3\\sqrt2}{2}\\right)\\frac{13\\sqrt2}{4}=\\frac{65}8$, $p+q=73$",
+  "legacy": {
+   "category": "로그함수의 그래프에서의 함숫값",
+   "book_no": 18,
+   "question_page": 9,
+   "solution_page": 49
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-261122",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "261122",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 22,
+   "points": 4,
+   "label": "2025년 11월 고3 22번"
+  },
+  "question": "곡선 $y=\\log_{16}(8x+2)$ 위의 점 $\\mathrm{A}(a,b)$와 곡선 $y=4^{x-1}-\\dfrac12$ 위의 점 $\\mathrm{B}$가 제1사분면에 있다. 점 $\\mathrm{A}$를 직선 $y=x$에 대하여 대칭이동한 점이 직선 $\\mathrm{OB}$ 위에 있고 선분 $\\mathrm{AB}$의 중점의 좌표가 $\\left(\\dfrac{77}8,\\dfrac{133}8\\right)$일 때, $ab=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $\\mathrm{O}$는 원점이고, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "457",
+  "answer_value": "457",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-06",
+   "primary_name": "지수함수와 로그함수의 대칭성",
+   "links": [
+    "수학Ⅰ-04",
+    "수학Ⅰ-07"
+   ]
+  },
+  "first_judgment": "두 곡선 식을 $16^y=8x+2$, $4^x=4y+2$로 바꾸면 한쪽이 다른 쪽을 $x\\to\\frac x2$, $y\\to\\frac y2$ 대신 넣은 관계(닮음)임이 보인다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$16^b=8a+2$, $\\mathrm B(c,d)$: $4^c=4d+2$. 두 식 관계로 $d=2a$, $c=2b$ (점 $(b,a)$가 직선 $\\mathrm{OB}$ 위). 중점: $a+2b=\\frac{77}4$, $2a+b=\\frac{133}4$ → $a=\\frac{63}4$, $b=\\frac74$. $ab=\\frac{441}{16}$, $p+q=457$",
+  "legacy": {
+   "category": "로그함수의 그래프에서의 함숫값",
+   "book_no": 19,
+   "question_page": 10,
+   "solution_page": 51
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-241121",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "241121",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 21,
+   "points": 4,
+   "label": "2023년 11월 고3 21번"
+  },
+  "question": "양수 $a$에 대하여 $x\\ge-1$에서 정의된 함수 $f(x)$는 $f(x)=\\begin{cases}-x^2+6x & (-1\\le x<6)\\\\ a\\log_4(x-5) & (x\\ge6)\\end{cases}$이다. $t\\ge0$인 실수 $t$에 대하여 닫힌구간 $[t-1,t+1]$에서의 $f(x)$의 최댓값을 $g(t)$라 하자. 구간 $[0,\\infty)$에서 함수 $g(t)$의 최솟값이 $5$가 되도록 하는 양수 $a$의 최솟값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "10",
+  "answer_value": "10",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-04",
+   "primary_name": "로그함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "$g(0)=5$이고 $f(5)=5$, $f(6)=0$이므로 $t=6$일 때 구간 $[5,7]$의 최댓값이 $5$ 이상이어야 한다 → $f(7)\\ge5$.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$g(0)=f(1)=5$. $1\\le t\\le5$에서 $g(t)\\ge5$. $t=6$일 때 $[5,7]$에서 최댓값 $\\ge5$ → $f(7)=a\\log_4 2=\\frac a2\\ge5$, $a\\ge10$. 최솟값 $10$",
+  "legacy": {
+   "category": "로그함수의 최대·최소 (2) : 최대·최소를 이용하여 미지수 구하기",
+   "book_no": 20,
+   "question_page": 10,
+   "solution_page": 51
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250914",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250914",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2024년 9월 고3 14번"
+  },
+  "question": "자연수 $n$에 대하여 곡선 $y=2^x$ 위의 두 점 $\\mathrm{A}_n$, $\\mathrm{B}_n$이 다음 조건을 만족시킨다. 중심이 직선 $y=x$ 위에 있고 두 점 $\\mathrm{A}_n$, $\\mathrm{B}_n$을 지나는 원이 곡선 $y=\\log_2 x$와 만나는 두 점의 $x$좌표 중 큰 값을 $x_n$이라 하자. $x_1+x_2+x_3$의 값은?",
+  "condition": "(가) 직선 $\\mathrm{A}_n\\mathrm{B}_n$의 기울기는 $3$이다.\\\\(나) $\\overline{\\mathrm{A}_n\\mathrm{B}_n}=\\sqrt{10}\\,n$",
+  "choices": [
+   "\\frac{150}7",
+   "\\frac{155}7",
+   "\\frac{160}7",
+   "\\frac{165}7",
+   "\\frac{170}7"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{170}7",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-06",
+   "primary_name": "지수함수와 로그함수의 대칭성",
+   "links": [
+    "수학Ⅰ-03"
+   ]
+  },
+  "first_judgment": "원의 중심이 $y=x$ 위이므로 원과 두 곡선이 모두 $y=x$ 대칭 → $x_n$은 $\\mathrm B_n$의 $y$좌표와 같다.",
+  "behavior": "추론",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\mathrm A_n(a_n,2^{a_n})$, $\\mathrm B_n(b_n,2^{b_n})$. (가) $2^{b_n}-2^{a_n}=3(b_n-a_n)$, (나) 대입 → $b_n-a_n=n$. $2^{b_n}(1-2^{-n})=3n$ → $2^{b_n}=\\frac{3n\\cdot2^n}{2^n-1}$. $x_n=2^{b_n}$이므로 $x_1+x_2+x_3=6+8+\\frac{72}7=\\frac{170}7$",
+  "legacy": {
+   "category": "지수함수와 로그함수의 관계",
+   "book_no": 21,
+   "question_page": 11,
+   "solution_page": 52
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220921",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220921",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2021년 9월 고3 21번"
+  },
+  "question": "$a>1$인 실수 $a$에 대하여 직선 $y=-x+4$가 두 곡선 $y=a^{x-1}$, $y=\\log_a(x-1)$과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 곡선 $y=a^{x-1}$이 $y$축과 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=2\\sqrt2$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는 $S$이다. $50S$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "192",
+  "answer_value": "192",
+  "figure": {
+   "description": "곡선 $y=a^{x-1}$, $y=\\log_a(x-1)$과 직선 $y=-x+4$가 각각 A, B에서 만나고, C는 $y=a^{x-1}$의 $y$절편; 삼각형 ABC 색칠",
+   "source_page": 11
+  },
+  "theme": {
+   "primary": "수학Ⅰ-06",
+   "primary_name": "지수함수와 로그함수의 대칭성",
+   "links": [
+    "수학Ⅰ-07"
+   ]
+  },
+  "first_judgment": "두 곡선은 직선 $y=x-1$에 대하여 대칭이므로 $\\mathrm{AB}$의 중점은 $y=-x+4$와 $y=x-1$의 교점 $\\mathrm M\\left(\\frac52,\\frac32\\right)$이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$\\mathrm M\\left(\\frac52,\\frac32\\right)$, $\\overline{\\mathrm{AM}}=\\sqrt2$ → $\\mathrm A\\left(\\frac32,\\frac52\\right)$, $a^{1/2}=\\frac52$, $a=\\frac{25}4$. $\\mathrm C\\left(0,\\frac4{25}\\right)$. $\\overline{\\mathrm{CH}}=\\frac{|4/25-4|}{\\sqrt2}=\\frac{48\\sqrt2}{25}$. $S=\\frac12\\cdot2\\sqrt2\\cdot\\frac{48\\sqrt2}{25}=\\frac{96}{25}$, $50S=192$",
+  "legacy": {
+   "category": "지수함수와 로그함수의 관계",
+   "book_no": 22,
+   "question_page": 11,
+   "solution_page": 52
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-231121",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "231121",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 21,
+   "points": 4,
+   "label": "2022년 11월 고3 21번"
+  },
+  "question": "자연수 $n$에 대하여 함수 $f(x)$를 $f(x)=\\begin{cases}|3^{x+2}-n| & (x<0)\\\\ |\\log_2(x+4)-n| & (x\\ge0)\\end{cases}$이라 하자. 실수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 실근의 개수를 $g(t)$라 할 때, 함수 $g(t)$의 최댓값이 $4$가 되도록 하는 모든 자연수 $n$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "33",
+  "answer_value": "33",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-07",
+   "primary_name": "지수함수와 로그함수의 평행이동",
+   "links": [
+    "수학Ⅰ-03",
+    "수학Ⅰ-04"
+   ]
+  },
+  "first_judgment": "각 부분을 평행이동 + 절댓값으로 그리고, $x=0$에서의 값 $|9-n|$, $|2-n|$의 부호로 $n$을 구간별로 나눈다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S05"
+  ],
+  "solution_ref": "$x<0$: $y=|3^{x+2}-n|$은 점근선 $y=n$, $(0,|9-n|)$. $x\\ge0$: $y=|\\log_2(x+4)-n|$은 $(0,|2-n|)$. $g(t)$ 최댓값 4가 되려면 두 부분 모두 꺾임이 생겨야 하므로 $9-n>0$, $2-n<0$ → $n=3,\\dots,8$. 합 $33$",
+  "legacy": {
+   "category": "지수함수와 로그함수의 관계",
+   "book_no": 23,
+   "question_page": 12,
+   "solution_page": 52
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-221109",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "221109",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 9,
+   "points": 4,
+   "label": "2021년 11월 고3 9번"
+  },
+  "question": "직선 $y=2x+k$가 두 함수 $y=\\left(\\dfrac23\\right)^{x+3}+1$, $y=\\left(\\dfrac23\\right)^{x+1}+\\dfrac83$의 그래프와 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 하자. $\\overline{\\mathrm{PQ}}=\\sqrt5$일 때, 상수 $k$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{31}6",
+   "\\frac{16}3",
+   "\\frac{11}2",
+   "\\frac{17}3",
+   "\\frac{35}6"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{17}3",
+  "figure": {
+   "description": "직선 $y=2x+k$와 두 감소 지수곡선; 아래 곡선 위의 P, 위 곡선 위의 Q",
+   "source_page": 12
+  },
+  "theme": {
+   "primary": "수학Ⅰ-05",
+   "primary_name": "지수로그의 방정식과 부등식",
+   "links": [
+    "수학Ⅰ-03"
+   ]
+  },
+  "first_judgment": "기울기가 $2$이므로 $\\overline{\\mathrm{PQ}}=\\sqrt5$에서 $x$좌표 차가 $1$임을 바로 얻고, 두 점을 $p$ 하나로 표현한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S03",
+   "S04"
+  ],
+  "solution_ref": "$\\mathrm P(p,2p+k)$, $\\mathrm Q(p+1,2p+k+2)$. $\\left(\\frac23\\right)^{p+3}+1=2p+k$, $\\left(\\frac23\\right)^{p+2}+\\frac83=2p+k+2$ → $\\left(\\frac23\\right)^{p+2}=1$, $p=-2$. $k=\\frac23+1+4=\\frac{17}3$",
+  "legacy": {
+   "category": "지수에 미지수를 포함하는 방정식의 응용",
+   "book_no": 24,
+   "question_page": 12,
+   "solution_page": 54
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250614",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250614",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2024년 6월 고3 14번"
+  },
+  "question": "다음 조건을 만족시키는 모든 자연수 $k$의 값의 합은?",
+  "condition": "$\\log_2\\sqrt{-n^2+10n+75}-\\log_4(75-kn)$의 값이 양수가 되도록 하는 자연수 $n$의 개수가 $12$이다.",
+  "choices": [
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "answer": "4",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-05",
+   "primary_name": "지수로그의 방정식과 부등식",
+   "links": [
+    "수학Ⅰ-02"
+   ]
+  },
+  "first_judgment": "진수 조건 두 개와 부등식을 모두 $n$의 범위로 바꾼 뒤, 세 범위의 교집합 크기를 $k$별로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S03",
+   "S04"
+  ],
+  "solution_ref": "진수: $1\\le n<15$ ㉠, $n<\\frac{75}k$ ㉡. 부등식 $\\log_4(-n^2+10n+75)>\\log_4(75-kn)$ → $n(n-10-k)<0$ → $n<10+k$ ㉢. 개수 12 → $k>2$. $k=3$: $1\\le n<13$ (12개, 적합), $k=4$: 13개, $k=5$: 14개, $k=6$: $n<\\frac{25}2$ (12개, 적합), $k\\ge7$: $\\frac{75}k<11$ 부적합. 합 $3+6=9$",
+  "legacy": {
+   "category": "로그의 진수에 미지수를 포함하는 부등식의 응용",
+   "book_no": 25,
+   "question_page": 13,
+   "solution_page": 54
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220910",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220910",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2021년 9월 고3 10번"
+  },
+  "question": "두 양수 $a,b$에 대하여 곡선 $y=a\\sin b\\pi x\\left(0\\le x\\le\\dfrac3b\\right)$이 직선 $y=a$와 만나는 서로 다른 두 점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. 삼각형 $\\mathrm{OAB}$의 넓이가 $5$이고 직선 $\\mathrm{OA}$의 기울기와 직선 $\\mathrm{OB}$의 기울기의 곱이 $\\dfrac54$일 때, $a+b$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": "3",
+  "answer_value": "3",
+  "figure": {
+   "description": "곡선 $y=a\\sin b\\pi x$가 직선 $y=a$와 A, B(최댓점 두 곳)에서 만나고 삼각형 OAB 색칠",
+   "source_page": 13
+  },
+  "theme": {
+   "primary": "수학Ⅰ-09",
+   "primary_name": "삼각함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "주기 $\\frac2b$로 최댓점 $\\mathrm A\\left(\\frac1{2b},a\\right)$, $\\mathrm B\\left(\\frac5{2b},a\\right)$를 바로 적는다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "넓이 $\\frac12\\cdot a\\cdot\\frac2b=5\\Rightarrow a=5b$. 기울기 곱 $2ab\\cdot\\frac{2ab}5=\\frac54\\Rightarrow ab=\\frac54$. $a=\\frac52$, $b=\\frac12$, $a+b=3$",
+  "legacy": {
+   "category": "y=asin(bx)의 성질",
+   "book_no": 26,
+   "question_page": 13,
+   "solution_page": 55
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250620",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250620",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2024년 6월 고3 20번"
+  },
+  "question": "$5$ 이하의 두 자연수 $a,b$에 대하여 열린구간 $(0,2\\pi)$에서 정의된 함수 $y=a\\sin x+b$의 그래프가 직선 $x=\\pi$와 만나는 점의 집합을 $A$라 하고, 두 직선 $y=1$, $y=3$과 만나는 점의 집합을 각각 $B$, $C$라 하자. $n(A\\cup B\\cup C)=3$이 되도록 하는 $a,b$의 순서쌍 $(a,b)$에 대하여 $a+b$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $Mm$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "24",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-09",
+   "primary_name": "삼각함수의 그래프",
+   "links": [
+    "수학Ⅰ-10"
+   ]
+  },
+  "first_judgment": "$x=\\pi$와의 교점 $(\\pi,b)$는 항상 1개이므로, $b$ 값(1~5)별로 $y=1$, $y=3$과의 교점 수를 그래프로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "(i) $b=1$: $a>2$ → $(3,1),(4,1),(5,1)$. (ii) $b=2$: $a=1$ → $(1,2)$. (iii) $b=3$: $-a+3<1$, $a>2$ → $(3,3),(4,3),(5,3)$. (iv) $b=4$: $1<-a+4<3$ → $(2,4)$. (v) $b=5$: $2<a<4$ → $(3,5)$. $M=8$, $m=3$, $Mm=24$",
+  "legacy": {
+   "category": "y=asin(bx+c)+d의 성질",
+   "book_no": 27,
+   "question_page": 14,
+   "solution_page": 55
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260914",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260914",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2025년 9월 고3 14번"
+  },
+  "question": "양수 $k$에 대하여 집합 $\\left\\{x\\,\\middle|\\,0\\le x<\\dfrac{3k\\pi}2,\\ x\\ne\\dfrac{k\\pi}2\\right\\}$에서 정의된 함수 $f(x)=\\tan\\dfrac xk$가 있다. 점 $\\mathrm{P}(0,p)$ $(p>0)$을 지나며 $x$축에 평행한 직선이 함수 $y=f(x)$의 그래프와 만나는 두 점을 $\\mathrm{A}$, $\\mathrm{B}$ $(\\overline{\\mathrm{PA}}<\\overline{\\mathrm{PB}})$라 하고, 직선 $y=-p$가 함수 $y=f(x)$의 그래프와 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=3\\overline{\\mathrm{PA}}$이고 삼각형 $\\mathrm{OCB}$의 넓이가 $\\dfrac{5\\pi}3$일 때, $k+p$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+   "\\frac{4\\sqrt3}3",
+   "\\frac{13\\sqrt3}9",
+   "\\frac{14\\sqrt3}9",
+   "\\frac{5\\sqrt3}3",
+   "\\frac{16\\sqrt3}9"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{14\\sqrt3}9",
+  "figure": {
+   "description": "$y=\tan\frac xk$의 두 가지와 직선 $y=p$(P, A, B), $y=-p$(C); 삼각형 OCB 색칠",
+   "source_page": 14
+  },
+  "theme": {
+   "primary": "수학Ⅰ-09",
+   "primary_name": "삼각함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "주기 $k\\pi$이므로 $\\overline{\\mathrm{AB}}=k\\pi$, $\\overline{\\mathrm{PA}}=\\frac{k\\pi}3$을 바로 얻고, $\\mathrm B$와 $\\mathrm C$는 $x$축 위의 점 $\\mathrm D(k\\pi,0)$에 대해 대칭이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{OD}}=k\\pi$, $\\overline{\\mathrm{PA}}=\\frac{k\\pi}3$. $p=\\tan\\frac\\pi3=\\sqrt3$. 넓이 $=\\triangle\\mathrm{ODB}+\\triangle\\mathrm{OCD}=\\sqrt3k\\pi=\\frac{5\\pi}3$ → $k=\\frac{5\\sqrt3}9$. $k+p=\\frac{14\\sqrt3}9$",
+  "legacy": {
+   "category": "y=atan(bx)의 성질",
+   "book_no": 28,
+   "question_page": 14,
+   "solution_page": 56
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-221111",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "221111",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 11,
+   "points": 4,
+   "label": "2021년 11월 고3 11번"
+  },
+  "question": "양수 $a$에 대하여 집합 $\\left\\{x\\,\\middle|\\,-\\dfrac a2<x\\le a,\\ x\\ne\\dfrac a2\\right\\}$에서 정의된 함수 $f(x)=\\tan\\dfrac{\\pi x}a$가 있다. 그림과 같이 함수 $y=f(x)$의 그래프 위의 세 점 $\\mathrm{O}$, $\\mathrm{A}$, $\\mathrm{B}$를 지나는 직선이 있다. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 함수 $y=f(x)$의 그래프와 만나는 점 중 $\\mathrm{A}$가 아닌 점을 $\\mathrm{C}$라 하자. 삼각형 $\\mathrm{ABC}$가 정삼각형일 때, 삼각형 $\\mathrm{ABC}$의 넓이는? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+   "\\frac{3\\sqrt3}2",
+   "\\frac{17\\sqrt3}{12}",
+   "\\frac{4\\sqrt3}3",
+   "\\frac{5\\sqrt3}4",
+   "\\frac{7\\sqrt3}6"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{4\\sqrt3}3",
+  "figure": {
+   "description": "$y=\tan\frac{\\pi x}a$ 그래프 위 원점을 지나는 직선 위의 A(제3사분면), B(제1사분면); A에서 수평선이 다음 가지와 만나는 점 C; 정삼각형 ABC",
+   "source_page": 15
+  },
+  "theme": {
+   "primary": "수학Ⅰ-09",
+   "primary_name": "삼각함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "정삼각형이면 직선 $\\mathrm{AB}$의 기울기가 $\\sqrt3$이고, $\\overline{\\mathrm{AC}}$는 주기 $a$와 같다.",
+  "behavior": "추론",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "$\\mathrm B(t,\\sqrt3t)$, $\\mathrm A(-t,-\\sqrt3t)$, $\\overline{\\mathrm{AB}}=4t=\\overline{\\mathrm{AC}}=a$. $\\mathrm C(3t,-\\sqrt3t)$가 곡선 위: $-\\sqrt3t=\\tan\\frac{3\\pi}4$ → $t=\\frac1{\\sqrt3}$. 넓이 $\\frac{\\sqrt3}4(4t)^2=\\frac{4\\sqrt3}3$",
+  "legacy": {
+   "category": "y=atan(bx)의 성질",
+   "book_no": 29,
+   "question_page": 15,
+   "solution_page": 56
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-231109",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "231109",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 9,
+   "points": 4,
+   "label": "2022년 11월 고3 9번"
+  },
+  "question": "함수 $f(x)=a-\\sqrt3\\tan2x$가 닫힌구간 $\\left[-\\dfrac\\pi6,b\\right]$에서 최댓값 $7$, 최솟값 $3$을 가질 때, $ab$의 값은? (단, $a,b$는 상수이다.)",
+  "condition": null,
+  "choices": [
+   "\\frac\\pi2",
+   "\\frac{5\\pi}{12}",
+   "\\frac\\pi3",
+   "\\frac\\pi4",
+   "\\frac\\pi6"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac\\pi3",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-09",
+   "primary_name": "삼각함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "$f$는 구간에서 감소하므로 양 끝값이 최댓값·최솟값이다(단, 구간이 점근선을 넘지 않아야 함).",
+  "behavior": "계산",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "$-\\frac\\pi6<b<\\frac\\pi4$. $f\\left(-\\frac\\pi6\\right)=a+3=7\\Rightarrow a=4$. $f(b)=4-\\sqrt3\\tan2b=3\\Rightarrow\\tan2b=\\frac{\\sqrt3}3$, $b=\\frac\\pi{12}$. $ab=\\frac\\pi3$",
+  "legacy": {
+   "category": "삼각함수의 미정계수의 결정(1) : 조건이 주어진 경우",
+   "book_no": 30,
+   "question_page": 15,
+   "solution_page": 57
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-251110",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "251110",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 10,
+   "points": 4,
+   "label": "2024년 11월 고3 10번"
+  },
+  "question": "닫힌구간 $[0,2\\pi]$에서 정의된 함수 $f(x)=a\\cos bx+3$이 $x=\\dfrac\\pi3$에서 최댓값 $13$을 갖도록 하는 두 자연수 $a,b$의 순서쌍 $(a,b)$에 대하여 $a+b$의 최솟값은?",
+  "condition": null,
+  "choices": [
+   "12",
+   "14",
+   "16",
+   "18",
+   "20"
+  ],
+  "answer": "3",
+  "answer_value": "16",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-09",
+   "primary_name": "삼각함수의 그래프",
+   "links": []
+  },
+  "first_judgment": "$a>0$이므로 최댓값은 $a+3$이고, $x=\\frac\\pi3$이 주기 $\\frac{2\\pi}b$의 정수배여야 한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "$a+3=13\\Rightarrow a=10$. $\\frac{2\\pi}b\\cdot n=\\frac\\pi3\\Rightarrow b=6n$, 최소 $b=6$. $a+b=16$",
+  "legacy": {
+   "category": "삼각함수의 미정계수의 결정(1) : 조건이 주어진 경우",
+   "book_no": 31,
+   "question_page": 16,
+   "solution_page": 57
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230909",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230909",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2022년 9월 고3 9번"
+  },
+  "question": "닫힌구간 $[0,12]$에서 정의된 두 함수 $f(x)=\\cos\\dfrac{\\pi x}6$, $g(x)=-3\\cos\\dfrac{\\pi x}6-1$이 있다. 곡선 $y=f(x)$와 직선 $y=k$가 만나는 두 점의 $x$좌표를 $\\alpha_1,\\alpha_2$라 할 때, $|\\alpha_1-\\alpha_2|=8$이다. 곡선 $y=g(x)$와 직선 $y=k$가 만나는 두 점의 $x$좌표를 $\\beta_1,\\beta_2$라 할 때, $|\\beta_1-\\beta_2|$의 값은? (단, $k$는 $-1<k<1$인 상수이다.)",
+  "condition": null,
+  "choices": [
+   "3",
+   "\\frac72",
+   "4",
+   "\\frac92",
+   "5"
+  ],
+  "answer": "3",
+  "answer_value": "4",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-09",
+   "primary_name": "삼각함수의 그래프",
+   "links": [
+    "수학Ⅰ-10"
+   ]
+  },
+  "first_judgment": "주기 $12$, 대칭축 $x=6$이므로 $\\alpha_1+\\alpha_2=12$와 차 $8$로 교점을 바로 구한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "$\\alpha_1+\\alpha_2=12$, $\\alpha_2-\\alpha_1=8$ → $\\alpha_1=2$, $k=\\cos\\frac\\pi3=\\frac12$. $-3\\cos\\frac{\\pi x}6-1=\\frac12\\Rightarrow\\cos\\frac{\\pi x}6=-\\frac12$ → $x=4,8$. $|\\beta_1-\\beta_2|=4$",
+  "legacy": {
+   "category": "삼각함수의 그래프의 대칭성",
+   "book_no": 32,
+   "question_page": 16,
+   "solution_page": 58
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250920",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250920",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2024년 9월 고3 20번"
+  },
+  "question": "닫힌구간 $[0,2\\pi]$에서 정의된 함수 $f(x)=\\begin{cases}\\sin x-1 & (0\\le x<\\pi)\\\\ -\\sqrt2\\sin x-1 & (\\pi\\le x\\le2\\pi)\\end{cases}$가 있다. $0\\le t\\le2\\pi$인 실수 $t$에 대하여 $x$에 대한 방정식 $f(x)=f(t)$의 서로 다른 실근의 개수가 $3$이 되도록 하는 모든 $t$의 값의 합은 $\\dfrac qp\\pi$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "15",
+  "answer_value": "15",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-10",
+   "primary_name": "삼각함수의 방정식과 부등식",
+   "links": [
+    "수학Ⅰ-09"
+   ]
+  },
+  "first_judgment": "$f$의 그래프를 그리고 수평선 $y=f(t)$와 교점이 3개가 되는 높이($-1$, $0$)를 먼저 찾은 뒤 그 높이를 주는 $t$를 모두 모은다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "$[0,\\pi)$: 최댓값 0, 최솟값 $-1$. $[\\pi,2\\pi]$: 최댓값 $\\sqrt2-1$, 최솟값 $-1$. 교점 3개 ⇔ $f(t)=-1$ 또는 $0$. (i) $f(t)=-1$: $t=0,\\pi,2\\pi$. (ii) $f(t)=0$: $t=\\frac\\pi2$, $-\\sqrt2\\sin t-1=0$에서 $t=\\frac54\\pi,\\frac74\\pi$. 합 $\\frac{13}2\\pi$, $p+q=15$",
+  "legacy": {
+   "category": "삼각함수가 포함된 방정식(4) : 그래프 이용",
+   "book_no": 33,
+   "question_page": 17,
+   "solution_page": 58
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220615",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220615",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2021년 6월 고3 15번"
+  },
+  "question": "$-1\\le t\\le1$인 실수 $t$에 대하여 $x$에 대한 방정식 $\\left(\\sin\\dfrac{\\pi x}2-t\\right)\\left(\\cos\\dfrac{\\pi x}2-t\\right)=0$의 실근 중에서 집합 $\\{x\\mid0\\le x<4\\}$에 속하는 가장 작은 값을 $\\alpha(t)$, 가장 큰 값을 $\\beta(t)$라 하자. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $-1\\le t<0$인 모든 실수 $t$에 대하여 $\\alpha(t)+\\beta(t)=5$이다.\\\\ㄴ. $\\{t\\mid\\beta(t)-\\alpha(t)=\\beta(0)-\\alpha(0)\\}=\\left\\{t\\,\\middle|\\,0\\le t\\le\\dfrac{\\sqrt2}2\\right\\}$\\\\ㄷ. $\\alpha(t_1)=\\alpha(t_2)$인 두 실수 $t_1,t_2$에 대하여 $t_2-t_1=\\dfrac12$이면 $t_1t_2=\\dfrac13$이다.",
+  "choices": [
+   "ㄱ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ",
+   "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "2",
+  "answer_value": "ㄱ, ㄴ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-10",
+   "primary_name": "삼각함수의 방정식과 부등식",
+   "links": [
+    "수학Ⅰ-09",
+    "수학Ⅰ-11"
+   ]
+  },
+  "first_judgment": "$y=\\sin\\frac{\\pi x}2$, $y=\\cos\\frac{\\pi x}2$ 두 그래프와 수평선 $y=t$의 교점으로 보고, 대칭축 $x=1,3$과 대칭점 $(2,0)$을 활용한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "ㄱ: $-1\\le t<0$이면 $\\alpha=1+k$, $\\beta=4-k$ → 합 5 (참). ㄴ: $\\beta(0)-\\alpha(0)=3$; $0\\le t\\le\\frac{\\sqrt2}2$에서 $\\beta-\\alpha=3$, $\\frac{\\sqrt2}2<t<1$에서 $4-2k$, $t=1$에서 1, $t<0$에서 $<3$ (참). ㄷ: $\\alpha(t_1)=\\alpha(t_2)=\\alpha$면 $t_1=\\sin\\frac\\pi2\\alpha$, $t_2=\\cos\\frac\\pi2\\alpha$, $t_2=t_1+\\frac12$ → $\\sin\\frac\\pi2\\alpha=\\frac{-1+\\sqrt7}4$, $t_1t_2=\\frac38$ (거짓). 답 ㄱ, ㄴ",
+  "legacy": {
+   "category": "삼각함수가 포함된 방정식의 근의 조건",
+   "book_no": 34,
+   "question_page": 17,
+   "solution_page": 59
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-270614",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "270614",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2026년 6월 고3 14번"
+  },
+  "question": "양수 $a$와 자연수 $b$에 대하여 $0\\le x\\le2$일 때 $x$에 대한 방정식 $\\left\\{\\cos(b\\pi x)-\\dfrac12\\right\\}\\left\\{a\\cos(b\\pi x)+\\dfrac{a+2}2\\right\\}=0$의 서로 다른 실근의 개수는 $15$이다. $a+b$의 값은?",
+  "condition": null,
+  "choices": [
+   "6",
+   "\\frac{13}2",
+   "7",
+   "\\frac{15}2",
+   "8"
+  ],
+  "answer": "3",
+  "answer_value": "7",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-10",
+   "primary_name": "삼각함수의 방정식과 부등식",
+   "links": [
+    "수학Ⅰ-09"
+   ]
+  },
+  "first_judgment": "두 번째 인수를 $\\cos(b\\pi x)=-\\left(\\frac12+\\frac1a\\right)$로 바꾸고, 이 값이 $-1$보다 작은지·같은지·큰지($a$와 $2$ 비교)로 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "한 주기 $\\left[0,\\frac2b\\right]$에서 근의 수: (i) $a>2$: 4개 → $4b=15$ 불가. (ii) $a=2$: 3개 → $3b=15$, $b=5$. (iii) $0<a<2$: 2개 → $2b=15$ 불가. $a+b=7$",
+  "legacy": {
+   "category": "삼각함수가 포함된 방정식의 근의 조건",
+   "book_no": 35,
+   "question_page": 18,
+   "solution_page": 59
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240909",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240909",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2023년 9월 고3 9번"
+  },
+  "question": "$0\\le x\\le2\\pi$일 때, 부등식 $\\cos x\\le\\sin\\dfrac\\pi7$을 만족시키는 모든 $x$의 값의 범위는 $\\alpha\\le x\\le\\beta$이다. $\\beta-\\alpha$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac87\\pi",
+   "\\frac{17}{14}\\pi",
+   "\\frac97\\pi",
+   "\\frac{19}{14}\\pi",
+   "\\frac{10}7\\pi"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac97\\pi",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-10",
+   "primary_name": "삼각함수의 방정식과 부등식",
+   "links": [
+    "수학Ⅰ-11"
+   ]
+  },
+  "first_judgment": "$\\sin\\frac\\pi7=\\cos\\frac{5\\pi}{14}$로 바꿔 코사인끼리 비교한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S06"
+  ],
+  "solution_ref": "$\\sin\\frac\\pi7=\\cos\\frac{5}{14}\\pi$. $x_1=\\frac5{14}\\pi$, $x_2=2\\pi-x_1=\\frac{23}{14}\\pi$. $\\beta-\\alpha=\\frac97\\pi$",
+  "legacy": {
+   "category": "삼각함수가 포함된 부등식(1) : 일차식 꼴",
+   "book_no": 36,
+   "question_page": 18,
+   "solution_page": 60
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230610",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230610",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2022년 6월 고3 10번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=2$, $\\overline{\\mathrm{AC}}>3$이고 $\\cos(\\angle\\mathrm{BAC})=\\dfrac78$인 삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{AC}$의 중점을 $\\mathrm{M}$, 삼각형 $\\mathrm{ABC}$의 외접원이 직선 $\\mathrm{BM}$과 만나는 점 중 $\\mathrm{B}$가 아닌 점을 $\\mathrm{D}$라 할 때, 선분 $\\mathrm{MD}$의 길이는?",
+  "condition": null,
+  "choices": [
+   "\\frac{3\\sqrt{10}}5",
+   "\\frac{7\\sqrt{10}}{10}",
+   "\\frac{4\\sqrt{10}}5",
+   "\\frac{9\\sqrt{10}}{10}",
+   "\\sqrt{10}"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{4\\sqrt{10}}5",
+  "figure": {
+   "description": "삼각형 ABC의 외접원, AC의 중점 M, 직선 BM이 원과 다시 만나는 점 D",
+   "source_page": 19
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "코사인법칙으로 $\\overline{\\mathrm{AC}}$를 구한 뒤, 원의 할선 성질(닮음) $\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}$를 쓴다.",
+  "behavior": "계산",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$4=9+a^2-\\frac{21}4a$ → $(4a-5)(a-4)=0$, $a=4$. $\\overline{\\mathrm{MB}}^2=9+4-2\\cdot3\\cdot2\\cdot\\frac78=\\frac52$, $\\overline{\\mathrm{MB}}=\\frac{\\sqrt{10}}2$. $2\\cdot2=\\frac{\\sqrt{10}}2\\overline{\\mathrm{MD}}$ → $\\overline{\\mathrm{MD}}=\\frac{4\\sqrt{10}}5$",
+  "legacy": {
+   "category": "코사인법칙",
+   "book_no": 37,
+   "question_page": 19,
+   "solution_page": 60
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220612",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220612",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2021년 6월 고3 12번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{AC}}=5$이고 $\\cos(\\angle\\mathrm{BAC})=\\dfrac18$인 삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$와 선분 $\\mathrm{BC}$ 위의 점 $\\mathrm{E}$에 대하여 $\\angle\\mathrm{BAC}=\\angle\\mathrm{BDA}=\\angle\\mathrm{BED}$일 때, 선분 $\\mathrm{DE}$의 길이는?",
+  "condition": null,
+  "choices": [
+   "\\frac73",
+   "\\frac52",
+   "\\frac83",
+   "\\frac{17}6",
+   "3"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac83",
+  "figure": {
+   "description": "삼각형 ABC와 AC 위의 D, BC 위의 E; $\u0007ngle$BAC$=\u0007ngle$BDA$=\u0007ngle$BED 표시",
+   "source_page": 19
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "같은 각 조건에서 이등변삼각형($\\overline{\\mathrm{BD}}=\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{DB}}=\\overline{\\mathrm{DC}}$)을 찾아 길이를 확정한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07"
+  ],
+  "solution_ref": "$\\triangle\\mathrm{ABD}$ 이등변 → $\\overline{\\mathrm{BD}}=4$, $\\overline{\\mathrm{AD}}=2\\cdot4\\cdot\\frac18=1$, $\\overline{\\mathrm{DC}}=4$. $\\overline{\\mathrm{BC}}^2=16+25-5=36$, $\\overline{\\mathrm{BC}}=6$, $\\overline{\\mathrm{BH'}}=3$. $\\overline{\\mathrm{DE}}=x$면 $\\overline{\\mathrm{DH'}}=\\frac{\\sqrt{63}}8x$. $16=\\frac{63}{64}x^2+9$ → $x=\\frac83$",
+  "legacy": {
+   "category": "코사인법칙",
+   "book_no": 38,
+   "question_page": 19,
+   "solution_page": 61
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-221115",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "221115",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 15,
+   "points": 4,
+   "label": "2021년 11월 고3 15번"
+  },
+  "question": "두 점 $\\mathrm{O}_1$, $\\mathrm{O}_2$를 각각 중심으로 하고 반지름의 길이가 $\\overline{\\mathrm{O}_1\\mathrm{O}_2}$인 두 원 $C_1$, $C_2$가 있다. 그림과 같이 원 $C_1$ 위의 서로 다른 세 점 $\\mathrm{A,B,C}$와 원 $C_2$ 위의 점 $\\mathrm{D}$가 주어져 있고, 세 점 $\\mathrm{A},\\mathrm{O}_1,\\mathrm{O}_2$와 세 점 $\\mathrm{C},\\mathrm{O}_2,\\mathrm{D}$가 각각 한 직선 위에 있다. 이때 $\\angle\\mathrm{BO}_1\\mathrm{A}=\\theta_1$, $\\angle\\mathrm{O}_2\\mathrm{O}_1\\mathrm{C}=\\theta_2$, $\\angle\\mathrm{O}_1\\mathrm{O}_2\\mathrm{D}=\\theta_3$이라 하자. 다음은 $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{O}_1\\mathrm{D}}=1:2\\sqrt2$이고 $\\theta_3=\\theta_1+\\theta_2$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{CD}$의 길이의 비를 구하는 과정이다. 위의 (가), (다)에 알맞은 식을 각각 $f(k)$, $g(k)$라 하고, (나)에 알맞은 수를 $p$라 할 때, $f(p)\\times g(p)$의 값은?",
+  "condition": "$\\angle\\mathrm{CO}_2\\mathrm{O}_1+\\angle\\mathrm{O}_1\\mathrm{O}_2\\mathrm{D}=\\pi$이므로 $\\theta_3=\\dfrac\\pi2+\\dfrac{\\theta_2}2$이고 $\\theta_3=\\theta_1+\\theta_2$에서 $2\\theta_1+\\theta_2=\\pi$이므로 $\\angle\\mathrm{CO}_1\\mathrm{B}=\\theta_1$. 이때 $\\angle\\mathrm{O}_2\\mathrm{O}_1\\mathrm{B}=\\theta_1+\\theta_2=\\theta_3$이므로 삼각형 $\\mathrm{O}_1\\mathrm{O}_2\\mathrm{B}$와 삼각형 $\\mathrm{O}_2\\mathrm{O}_1\\mathrm{D}$는 합동이다. $\\overline{\\mathrm{AB}}=k$라 할 때, $\\overline{\\mathrm{BO}_2}=\\overline{\\mathrm{O}_1\\mathrm{D}}=2\\sqrt2k$이므로 $\\overline{\\mathrm{AO}_2}=$ (가) 이고, $\\angle\\mathrm{BO}_2\\mathrm{A}=\\dfrac{\\theta_1}2$이므로 $\\cos\\dfrac{\\theta_1}2=$ (나) 이다. 삼각형 $\\mathrm{O}_2\\mathrm{BC}$에서 $\\overline{\\mathrm{BC}}=k$, $\\overline{\\mathrm{BO}_2}=2\\sqrt2k$, $\\angle\\mathrm{CO}_2\\mathrm{B}=\\dfrac{\\theta_1}2$이므로 코사인법칙에 의하여 $\\overline{\\mathrm{O}_2\\mathrm{C}}=$ (다) 이다. $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{O}_2\\mathrm{D}}+\\overline{\\mathrm{O}_2\\mathrm{C}}=\\overline{\\mathrm{O}_1\\mathrm{O}_2}+\\overline{\\mathrm{O}_2\\mathrm{C}}$이므로 $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{CD}}=k:\\left(\\dfrac{(가)}2+(다)\\right)$이다.",
+  "choices": [
+   "\\frac{169}{27}",
+   "\\frac{56}9",
+   "\\frac{167}{27}",
+   "\\frac{166}{27}",
+   "\\frac{55}9"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{56}9",
+  "figure": {
+   "description": "두 원 $C_1$, $C_2$(중심 $\\mathrm O_1$, $\\mathrm O_2$)와 점 A, B, C, D, 각 $\theta_1,\theta_2,\theta_3$",
+   "source_page": 20
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "$\\mathrm{AO_2}$가 지름이므로 $\\angle\\mathrm{ABO_2}=90^\\circ$를 이용해 피타고라스로 (가)를 구하고, 이어서 과정을 따라간다.",
+  "behavior": "이해",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "(가) $\\overline{\\mathrm{AO_2}}=\\sqrt{k^2+8k^2}=3k$. (나) $\\cos\\frac{\\theta_1}2=\\frac{2\\sqrt2k}{3k}=\\frac{2\\sqrt2}3$. (다) $k^2=x^2+8k^2-2x\\cdot2\\sqrt2k\\cdot\\frac{2\\sqrt2}3$ → $(3x-7k)(x-3k)=0$, $x=\\frac73k$. $f(p)g(p)=3p\\cdot\\frac73p=7p^2=\\frac{56}9$",
+  "legacy": {
+   "category": "코사인법칙",
+   "book_no": 39,
+   "question_page": 20,
+   "solution_page": 61
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260614",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260614",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2025년 6월 고3 14번"
+  },
+  "question": "$\\overline{\\mathrm{AB}}=2\\sqrt7$인 삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{BC}$의 중점을 $\\mathrm{P}$, 선분 $\\mathrm{BC}$를 $5:1$로 내분하는 점을 $\\mathrm{Q}$라 하자. $\\overline{\\mathrm{AQ}}=3\\sqrt2$, $\\sin(\\angle\\mathrm{QAP}):\\sin(\\angle\\mathrm{APQ})=\\sqrt2:3$일 때, 삼각형 $\\mathrm{ABC}$의 외접원의 넓이는?",
+  "condition": null,
+  "choices": [
+   "\\frac{85}9\\pi",
+   "\\frac{88}9\\pi",
+   "\\frac{91}9\\pi",
+   "\\frac{94}9\\pi",
+   "\\frac{97}9\\pi"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{88}9\\pi",
+  "figure": {
+   "description": "삼각형 ABC와 BC 위의 점 P(중점), Q(5:1 내분점)",
+   "source_page": 20
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "삼각형 $\\mathrm{APQ}$에서 사인법칙으로 $\\overline{\\mathrm{PQ}}$를 구하면 $\\overline{\\mathrm{BC}}$가 결정되고, 이후 삼각형이 SSS로 결정된다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S07"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{PQ}}=\\frac{\\sqrt2}3\\cdot3\\sqrt2=2$. $\\overline{\\mathrm{BC}}=\\frac12\\overline{\\mathrm{BC}}+2+\\frac16\\overline{\\mathrm{BC}}$ → $\\overline{\\mathrm{BC}}=6$, $\\overline{\\mathrm{BQ}}=5$. $\\cos B=\\frac{28+25-18}{2\\cdot2\\sqrt7\\cdot5}=\\frac{\\sqrt7}4$. $\\overline{\\mathrm{AC}}^2=28+36-2\\cdot2\\sqrt7\\cdot6\\cdot\\frac{\\sqrt7}4=22$. $\\sin B=\\frac34$, $R=\\frac{\\sqrt{22}}{2\\cdot3/4}=\\frac{2\\sqrt{22}}3$. 넓이 $\\frac{88}9\\pi$",
+  "legacy": {
+   "category": "사인법칙과 코사인법칙",
+   "book_no": 40,
+   "question_page": 20,
+   "solution_page": 62
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-231111",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "231111",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 11,
+   "points": 4,
+   "label": "2022년 11월 고3 11번"
+  },
+  "question": "그림과 같이 사각형 $\\mathrm{ABCD}$가 한 원에 내접하고 $\\overline{\\mathrm{AB}}=5$, $\\overline{\\mathrm{AC}}=3\\sqrt5$, $\\overline{\\mathrm{AD}}=7$, $\\angle\\mathrm{BAC}=\\angle\\mathrm{CAD}$일 때, 이 원의 반지름의 길이는?",
+  "condition": null,
+  "choices": [
+   "\\frac{5\\sqrt2}2",
+   "\\frac{8\\sqrt5}5",
+   "\\frac{5\\sqrt5}3",
+   "\\frac{8\\sqrt2}3",
+   "\\frac{9\\sqrt3}4"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{5\\sqrt2}2",
+  "figure": {
+   "description": "원에 내접하는 사각형 ABCD, 대각선 AC, $\u0007ngle$BAC$=\u0007ngle$CAD 표시",
+   "source_page": 21
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "같은 원주각에 대한 현이므로 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$; 두 삼각형에서 코사인법칙을 세워 $\\cos\\theta$를 구한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{BC}}^2=70-30\\sqrt5\\cos\\theta$, $\\overline{\\mathrm{CD}}^2=94-42\\sqrt5\\cos\\theta$, 같으므로 $\\cos\\theta=\\frac{2\\sqrt5}5$, $\\overline{\\mathrm{BC}}=\\sqrt{10}$, $\\sin\\theta=\\frac{\\sqrt5}5$. $2R=\\frac{\\sqrt{10}}{\\sqrt5/5}=5\\sqrt2$, $R=\\frac{5\\sqrt2}2$",
+  "legacy": {
+   "category": "사인법칙과 코사인법칙",
+   "book_no": 41,
+   "question_page": 21,
+   "solution_page": 62
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-261114",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "261114",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 14,
+   "points": 4,
+   "label": "2025년 11월 고3 14번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=4$이고 $\\angle\\mathrm{B}=\\dfrac\\pi2$인 직각삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{AB}$를 $2:1$로 내분하는 점을 $\\mathrm{D}$, 점 $\\mathrm{A}$를 중심으로 하고 반지름의 길이가 $\\overline{\\mathrm{AD}}$인 원이 선분 $\\mathrm{AC}$와 만나는 점을 $\\mathrm{E}$, 직선 $\\mathrm{AB}$가 이 원과 만나는 점 중 $\\mathrm{D}$가 아닌 점을 $\\mathrm{F}$라 하고, 호 $\\mathrm{EF}$ 위의 점 $\\mathrm{G}$를 $\\overline{\\mathrm{CG}}=2\\sqrt6$이 되도록 잡는다. 세 점 $\\mathrm{C,E,G}$를 지나는 원 위의 점 $\\mathrm{H}$가 $\\angle\\mathrm{HCG}=\\angle\\mathrm{BAC}$를 만족시킬 때, 선분 $\\mathrm{GH}$의 길이는?",
+  "condition": null,
+  "choices": [
+   "\\frac{6\\sqrt{15}}5",
+   "\\frac{38\\sqrt{10}}{25}",
+   "\\frac{14\\sqrt3}5",
+   "\\frac{32\\sqrt{15}}{25}",
+   "\\frac{8\\sqrt{10}}5"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{32\\sqrt{15}}{25}",
+  "figure": {
+   "description": "직각삼각형 ABC, A 중심 반지름 2인 원(D, E, F, G), C·E·G·H를 지나는 원",
+   "source_page": 21
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "$\\overline{\\mathrm{GH}}=2R\\sin\\angle\\mathrm{HCG}$이므로 원 $\\mathrm{CEG}$의 반지름 $R$을 삼각형 $\\mathrm{CGE}$에서 구하는 것이 목표다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AC}}=5$, $\\sin\\theta_1=\\frac45$. $\\overline{\\mathrm{AG}}=\\overline{\\mathrm{AE}}=2$, $\\cos\\angle\\mathrm{CAG}=\\frac{4+25-24}{20}=\\frac14$, $\\overline{\\mathrm{GE}}^2=8-2=6$. $\\cos\\angle\\mathrm{ECG}=\\frac{24+9-6}{2\\cdot2\\sqrt6\\cdot3}=\\frac{3\\sqrt6}8$, $\\sin=\\frac{\\sqrt{10}}8$. $2R=\\frac{\\sqrt6}{\\sqrt{10}/8}=\\frac{8\\sqrt{15}}5$. $\\overline{\\mathrm{GH}}=2R\\sin\\theta_1=\\frac{32\\sqrt{15}}{25}$",
+  "legacy": {
+   "category": "사인법칙과 코사인법칙",
+   "book_no": 42,
+   "question_page": 21,
+   "solution_page": 63
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260920",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260920",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2025년 9월 고3 20번"
+  },
+  "question": "그림과 같이 사각형 $\\mathrm{ABCD}$가 한 원에 내접하고 $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{CD}}=1:3$, $\\overline{\\mathrm{BC}}<\\overline{\\mathrm{AD}}$일 때, 직선 $\\mathrm{AB}$와 직선 $\\mathrm{CD}$가 만나는 점을 $\\mathrm{P}$라 하자. 다음은 $\\overline{\\mathrm{PB}}:\\overline{\\mathrm{PC}}:\\overline{\\mathrm{BC}}=7:5:\\sqrt{14}$이고 $\\overline{\\mathrm{AD}}=4\\sqrt{13}$일 때, 삼각형 $\\mathrm{BPC}$의 외접원의 반지름의 길이를 구하는 과정이다. 위의 (가), (나), (다)에 알맞은 수를 각각 $p,q,r$이라 할 때, $p+q+r$의 값을 구하시오.",
+  "condition": "$\\angle\\mathrm{BPC}=\\theta$라 할 때, $\\overline{\\mathrm{PB}}:\\overline{\\mathrm{PC}}:\\overline{\\mathrm{BC}}=7:5:\\sqrt{14}$이므로 삼각형 $\\mathrm{BPC}$에서 코사인법칙에 의하여 $\\cos\\theta=\\dfrac67$이다. $\\overline{\\mathrm{PB}}=7k$, $\\overline{\\mathrm{PC}}=5k$, $\\overline{\\mathrm{AB}}=l$, $\\overline{\\mathrm{CD}}=3l$이라 하자. 원의 성질에 의하여 삼각형 $\\mathrm{BPC}$와 삼각형 $\\mathrm{DPA}$가 서로 닮음이므로 $\\overline{\\mathrm{PB}}:\\overline{\\mathrm{PC}}=\\overline{\\mathrm{PD}}:\\overline{\\mathrm{PA}}$이고, $l=$ (가) $\\cdot k$이다. 삼각형 $\\mathrm{BPC}$와 삼각형 $\\mathrm{DPA}$의 닮음비가 $1:$ (나) 이므로 $\\overline{\\mathrm{BC}}=\\dfrac1{(나)}\\cdot\\overline{\\mathrm{AD}}$이다. 따라서 삼각형 $\\mathrm{BPC}$의 외접원의 반지름의 길이를 $R$이라 할 때, 삼각형 $\\mathrm{BPC}$에서 사인법칙에 의하여 $R=$ (다) 이다.",
+  "choices": null,
+  "answer": "12",
+  "answer_value": "12",
+  "figure": {
+   "description": "원에 내접하는 사각형 ABCD와 직선 AB, CD의 교점 P",
+   "source_page": 22
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "할선이 만드는 닮음 $\\triangle\\mathrm{BPC}\\sim\\triangle\\mathrm{DPA}$로 비례식을 세워 $l$과 $k$의 관계를 얻는다.",
+  "behavior": "이해",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$7:5=(5k+3l):(7k+l)$ → $l=3k$ (가). $\\overline{\\mathrm{PD}}=14k$, 닮음비 $7k:14k=1:2$ (나). $\\sin\\theta=\\frac{\\sqrt{13}}7$, $\\overline{\\mathrm{BC}}=2\\sqrt{13}$, $R=\\frac{2\\sqrt{13}}{2\\cdot\\sqrt{13}/7}=7$ (다). $p+q+r=12$",
+  "legacy": {
+   "category": "사인법칙과 코사인법칙",
+   "book_no": 43,
+   "question_page": 22,
+   "solution_page": 63
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230913",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230913",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2022년 9월 고3 13번"
+  },
+  "question": "그림과 같이 선분 $\\mathrm{AB}$를 지름으로 하는 반원의 호 $\\mathrm{AB}$ 위에 두 점 $\\mathrm{C}$, $\\mathrm{D}$가 있다. 선분 $\\mathrm{AB}$의 중점 $\\mathrm{O}$에 대하여 두 선분 $\\mathrm{AD}$, $\\mathrm{CO}$가 점 $\\mathrm{E}$에서 만나고, $\\overline{\\mathrm{CE}}=4$, $\\overline{\\mathrm{ED}}=3\\sqrt2$, $\\angle\\mathrm{CEA}=\\dfrac34\\pi$이다. $\\overline{\\mathrm{AC}}\\times\\overline{\\mathrm{CD}}$의 값은?",
+  "condition": null,
+  "choices": [
+   "6\\sqrt{10}",
+   "10\\sqrt5",
+   "16\\sqrt2",
+   "12\\sqrt5",
+   "20\\sqrt2"
+  ],
+  "answer": "5",
+  "answer_value": "20\\sqrt2",
+  "figure": {
+   "description": "지름 AB인 반원, 호 위의 C, D, 중심 O, AD와 CO의 교점 E, $\u0007ngle$CEA$=\frac34\\pi$",
+   "source_page": 22
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "삼각형 $\\mathrm{CDE}$는 두 변과 끼인각($\\frac\\pi4$)이 주어져 결정되므로 $\\overline{\\mathrm{CD}}$부터 구하고, $\\overline{\\mathrm{AC}}$는 외접원·이등변삼각형 $\\mathrm{AOC}$로 구한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{CD}}^2=16+18-2\\cdot4\\cdot3\\sqrt2\\cdot\\frac1{\\sqrt2}=10$. $\\cos\\angle\\mathrm{CDE}=\\frac1{\\sqrt5}$, $\\sin=\\frac2{\\sqrt5}$. $\\overline{\\mathrm{AC}}=x$, $\\overline{\\mathrm{AE}}=y$: $x^2=y^2+4\\sqrt2y+16$ ㉠; $2R=\\frac{\\sqrt5}2x$, $\\cos\\alpha=\\frac2{\\sqrt5}$, $\\sin\\alpha=\\frac{\\sqrt5}5$; 삼각형 ACE 사인법칙 $\\sqrt2x=\\sqrt5y$ ㉡ → $3y^2-8\\sqrt2y-32=0$, $y=4\\sqrt2$, $x=4\\sqrt5$. $\\overline{\\mathrm{AC}}\\cdot\\overline{\\mathrm{CD}}=4\\sqrt5\\cdot\\sqrt{10}=20\\sqrt2$",
+  "legacy": {
+   "category": "사인법칙과 코사인법칙",
+   "book_no": 44,
+   "question_page": 22,
+   "solution_page": 63
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240920",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240920",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2023년 9월 고3 20번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{AD}}=1$, $\\angle\\mathrm{DAB}=\\dfrac23\\pi$, $\\angle\\mathrm{BCD}=\\dfrac34\\pi$인 사각형 $\\mathrm{ABCD}$가 있다. 삼각형 $\\mathrm{BCD}$의 외접원의 반지름의 길이를 $R_1$, 삼각형 $\\mathrm{ABD}$의 외접원의 반지름의 길이를 $R_2$라 하자. 다음은 $R_1\\times R_2$의 값을 구하는 과정이다. 위의 (가), (나), (다)에 알맞은 수를 각각 $p,q,r$이라 할 때, $9\\times(p\\times q\\times r)^2$의 값을 구하시오.",
+  "condition": "삼각형 $\\mathrm{BCD}$에서 사인법칙에 의하여 $R_1=\\dfrac{\\sqrt2}2\\times\\overline{\\mathrm{BD}}$. 삼각형 $\\mathrm{ABD}$에서 사인법칙에 의하여 $R_2=$ (가) $\\times\\overline{\\mathrm{BD}}$. 삼각형 $\\mathrm{ABD}$에서 코사인법칙에 의하여 $\\overline{\\mathrm{BD}}^2=2^2+1^2-($(나)$)$이므로 $R_1\\times R_2=$ (다)",
+  "choices": null,
+  "answer": "98",
+  "answer_value": "98",
+  "figure": {
+   "description": "사각형 ABCD와 삼각형 BCD, ABD의 외접원(반지름 $R_1$, $R_2$)",
+   "source_page": 23
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "두 외접원 모두 공통변 $\\overline{\\mathrm{BD}}$에 대한 사인법칙으로 쓰고, $\\overline{\\mathrm{BD}}^2$는 코사인법칙으로 구한다.",
+  "behavior": "이해",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$R_2=\\frac{\\overline{\\mathrm{BD}}}{2\\sin\\frac23\\pi}=\\frac{\\sqrt3}3\\overline{\\mathrm{BD}}$ (가). $\\overline{\\mathrm{BD}}^2=4+1-2\\cdot2\\cdot1\\cdot\\cos\\frac23\\pi=5-(-2)=7$ (나)$=-2$. $R_1R_2=\\frac{\\sqrt6}6\\cdot7=\\frac{7\\sqrt6}6$ (다). $9(pqr)^2=9\\left(\\frac{\\sqrt3}3\\cdot(-2)\\cdot\\frac{7\\sqrt6}6\\right)^2=98$",
+  "legacy": {
+   "category": "사인법칙과 코사인법칙",
+   "book_no": 45,
+   "question_page": 23,
+   "solution_page": 64
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220912",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220912",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2021년 9월 고3 12번"
+  },
+  "question": "반지름의 길이가 $2\\sqrt7$인 원에 내접하고 $\\angle\\mathrm{A}=\\dfrac\\pi3$인 삼각형 $\\mathrm{ABC}$가 있다. 점 $\\mathrm{A}$를 포함하지 않는 호 $\\mathrm{BC}$ 위의 점 $\\mathrm{D}$에 대하여 $\\sin(\\angle\\mathrm{BCD})=\\dfrac{2\\sqrt7}7$일 때, $\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}}$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{19}2",
+   "10",
+   "\\frac{21}2",
+   "11",
+   "\\frac{23}2"
+  ],
+  "answer": "2",
+  "answer_value": "10",
+  "figure": {
+   "description": "원에 내접하는 삼각형 ABC($\u0007ngle$A$=\frac\\pi3$)와 호 BC 위의 점 D",
+   "source_page": 23
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "같은 외접원을 공유하므로 사인법칙으로 $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{BD}}$를 구하고, 내접사각형 대각의 합 $\\pi$로 $\\angle\\mathrm{BDC}=\\frac23\\pi$를 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{BC}}=4\\sqrt7\\sin\\frac\\pi3=2\\sqrt{21}$, $\\overline{\\mathrm{BD}}=4\\sqrt7\\cdot\\frac{2\\sqrt7}7=8$. $\\angle\\mathrm{BDC}=\\frac23\\pi$: $84=x^2+64+8x$ → $x=2$. 합 $10$",
+  "legacy": {
+   "category": "사인법칙과 코사인법칙",
+   "book_no": 46,
+   "question_page": 23,
+   "solution_page": 65
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250910",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250910",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2024년 9월 고3 10번"
+  },
+  "question": "$\\angle\\mathrm{A}>\\dfrac\\pi2$인 삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 선분 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{H}$라 하자. $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{AC}}=\\sqrt2:1$, $\\overline{\\mathrm{AH}}=2$이고, 삼각형 $\\mathrm{ABC}$의 외접원의 넓이가 $50\\pi$일 때, 선분 $\\mathrm{BH}$의 길이는?",
+  "condition": null,
+  "choices": [
+   "6",
+   "\\frac{25}4",
+   "\\frac{13}2",
+   "\\frac{27}4",
+   "7"
+  ],
+  "answer": "1",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "$\\sin C=\\frac{\\overline{\\mathrm{AH}}}{\\overline{\\mathrm{AC}}}$와 사인법칙 $\\overline{\\mathrm{AB}}=2R\\sin C$를 연결한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S07"
+  ],
+  "solution_ref": "$R=5\\sqrt2$. $\\overline{\\mathrm{AC}}=x$, $\\overline{\\mathrm{AB}}=\\sqrt2x$, $\\sin C=\\frac2x$. $\\sqrt2x=2\\cdot5\\sqrt2\\cdot\\frac2x$ → $x^2=20$, $\\overline{\\mathrm{AB}}=2\\sqrt{10}$. $\\overline{\\mathrm{BH}}=\\sqrt{40-4}=6$",
+  "legacy": {
+   "category": "외접원의 반지름의 길이와 삼각형의 넓이",
+   "book_no": 47,
+   "question_page": 24,
+   "solution_page": 65
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-241113",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "241113",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 13,
+   "points": 4,
+   "label": "2023년 11월 고3 13번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=\\sqrt{13}$, $\\overline{\\mathrm{AD}}\\times\\overline{\\mathrm{CD}}=9$, $\\angle\\mathrm{BAC}=\\dfrac\\pi3$인 사각형 $\\mathrm{ABCD}$가 있다. 삼각형 $\\mathrm{ABC}$의 넓이를 $S_1$, 삼각형 $\\mathrm{ACD}$의 넓이를 $S_2$라 하고, 삼각형 $\\mathrm{ACD}$의 외접원의 반지름의 길이를 $R$이라 하자. $S_2=\\dfrac56S_1$일 때, $\\dfrac{R}{\\sin(\\angle\\mathrm{ADC})}$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{54}{25}",
+   "\\frac{117}{50}",
+   "\\frac{63}{25}",
+   "\\frac{27}{10}",
+   "\\frac{72}{25}"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{54}{25}",
+  "figure": {
+   "description": "사각형 ABCD와 삼각형 ACD의 외접원, $\u0007ngle$BAC$=\frac\\pi3$",
+   "source_page": 24
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "삼각형 $\\mathrm{ABC}$는 SSA 조건이지만 코사인법칙으로 $\\overline{\\mathrm{AC}}$가 결정되고, 넓이 조건으로 $\\sin(\\angle\\mathrm{ADC})$가 나온다.",
+  "behavior": "계산",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$13=9+a^2-3a$ → $a=4$. $S_1=3\\sqrt3$. $S_2=\\frac92\\sin(\\angle\\mathrm{ADC})=\\frac56\\cdot3\\sqrt3$ → $\\sin=\\frac{5\\sqrt3}9$. $2R=\\frac{4}{5\\sqrt3/9}$, $R=\\frac{6\\sqrt3}5$. $\\frac{R}{\\sin}=\\frac{54}{25}$",
+  "legacy": {
+   "category": "외접원의 반지름의 길이와 삼각형의 넓이",
+   "book_no": 48,
+   "question_page": 24,
+   "solution_page": 66
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250610",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250610",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2024년 6월 고3 10번"
+  },
+  "question": "다음 조건을 만족시키는 삼각형 $\\mathrm{ABC}$의 외접원의 넓이가 $9\\pi$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는?",
+  "condition": "(가) $3\\sin A=2\\sin B$\\\\(나) $\\cos B=\\cos C$",
+  "choices": [
+   "\\frac{32}9\\sqrt2",
+   "\\frac{40}9\\sqrt2",
+   "\\frac{16}3\\sqrt2",
+   "\\frac{56}9\\sqrt2",
+   "\\frac{64}9\\sqrt2"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{64}9\\sqrt2",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "(가)는 사인법칙으로 변의 비 $3a=2b$, (나)는 $b=c$(이등변)로 바꾼다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S07"
+  ],
+  "solution_ref": "$R=3$. $b=\\frac32a$, $b=c$ → $a=2k$, $b=c=3k$. $\\cos A=\\frac{9+9-4}{18}=\\frac79$, $\\sin A=\\frac{4\\sqrt2}9$. $a=6\\sin A=\\frac{8\\sqrt2}3$, $b=c=4\\sqrt2$. 넓이 $\\frac12\\cdot32\\cdot\\frac{4\\sqrt2}9=\\frac{64\\sqrt2}9$",
+  "legacy": {
+   "category": "삼각형의 넓이(4) : 한 변의 길이와 양 끝 각의 크기가 주어진 경우",
+   "book_no": 49,
+   "question_page": 25,
+   "solution_page": 66
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-251114",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "251114",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 14,
+   "points": 4,
+   "label": "2024년 11월 고3 14번"
+  },
+  "question": "그림과 같이 삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{AB}$ 위에 $\\overline{\\mathrm{AD}}:\\overline{\\mathrm{DB}}=3:2$인 점 $\\mathrm{D}$를 잡고, 점 $\\mathrm{A}$를 중심으로 하고 점 $\\mathrm{D}$를 지나는 원을 $O$, 원 $O$와 선분 $\\mathrm{AC}$가 만나는 점을 $\\mathrm{E}$라 하자. $\\sin A:\\sin C=8:5$이고, 삼각형 $\\mathrm{ADE}$와 삼각형 $\\mathrm{ABC}$의 넓이의 비가 $9:35$이다. 삼각형 $\\mathrm{ABC}$의 외접원의 반지름의 길이가 $7$일 때, 원 $O$ 위의 점 $\\mathrm{P}$에 대하여 삼각형 $\\mathrm{PBC}$의 넓이의 최댓값은? (단, $\\overline{\\mathrm{AB}}<\\overline{\\mathrm{AC}}$)",
+  "condition": null,
+  "choices": [
+   "18+15\\sqrt3",
+   "24+20\\sqrt3",
+   "30+25\\sqrt3",
+   "36+30\\sqrt3",
+   "42+35\\sqrt3"
+  ],
+  "answer": "4",
+  "answer_value": "36+30\\sqrt3",
+  "figure": {
+   "description": "삼각형 ABC, A 중심 원 O(반지름 AD), AC와 원의 교점 E",
+   "source_page": 25
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "원 $O$의 반지름을 $r$로 두고 모든 변을 $r$로 표현한 뒤, 최댓값은 '$\\mathrm{A}$에서 $\\mathrm{BC}$까지 거리 $+\\,r$'이 높이일 때다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AE}}=r$, $\\overline{\\mathrm{AB}}=\\frac53r$, $\\overline{\\mathrm{CE}}=x$. 넓이비 $\\frac12r^2:\\frac56r(r+x)=9:35$ → $x=\\frac43r$, $\\overline{\\mathrm{AC}}=\\frac73r$. $\\overline{\\mathrm{BC}}=\\frac53r\\cdot\\frac85=\\frac83r$. $\\cos\\theta=\\frac{11}{14}$, $\\sin\\theta=\\frac{5\\sqrt3}{14}$ ($\\theta=\\angle\\mathrm{ACB}$). $\\frac{5r/3}{\\sin\\theta}=14$ → $r=3\\sqrt3$. $\\overline{\\mathrm{AH}}=\\frac73r\\sin\\theta=\\frac{15}2$. 최댓값 $\\frac12\\cdot8\\sqrt3\\cdot\\left(3\\sqrt3+\\frac{15}2\\right)=36+30\\sqrt3$",
+  "legacy": {
+   "category": "삼각형의 넓이를 활용하는 문제",
+   "book_no": 50,
+   "question_page": 25,
+   "solution_page": 66
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240613",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240613",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2023년 6월 고3 13번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{BC}}=3$, $\\overline{\\mathrm{CD}}=2$, $\\cos(\\angle\\mathrm{BCD})=-\\dfrac13$, $\\angle\\mathrm{DAB}>\\dfrac\\pi2$인 사각형 $\\mathrm{ABCD}$에서 두 삼각형 $\\mathrm{ABC}$와 $\\mathrm{ACD}$는 모두 예각삼각형이다. 선분 $\\mathrm{AC}$를 $1:2$로 내분하는 점 $\\mathrm{E}$에 대하여 선분 $\\mathrm{AE}$를 지름으로 하는 원이 두 선분 $\\mathrm{AB}$, $\\mathrm{AD}$와 만나는 점 중 $\\mathrm{A}$가 아닌 점을 각각 $\\mathrm{P}_1$, $\\mathrm{P}_2$라 하고, 선분 $\\mathrm{CE}$를 지름으로 하는 원이 두 선분 $\\mathrm{BC}$, $\\mathrm{CD}$와 만나는 점 중 $\\mathrm{C}$가 아닌 점을 각각 $\\mathrm{Q}_1$, $\\mathrm{Q}_2$라 하자. $\\overline{\\mathrm{P}_1\\mathrm{P}_2}:\\overline{\\mathrm{Q}_1\\mathrm{Q}_2}=3:5\\sqrt2$이고 삼각형 $\\mathrm{ABD}$의 넓이가 $2$일 때, $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}$의 값은? (단, $\\overline{\\mathrm{AB}}>\\overline{\\mathrm{AD}}$)",
+  "condition": null,
+  "choices": [
+   "\\sqrt{21}",
+   "\\sqrt{22}",
+   "\\sqrt{23}",
+   "2\\sqrt6",
+   "5"
+  ],
+  "answer": "1",
+  "answer_value": "\\sqrt{21}",
+  "figure": {
+   "description": "사각형 ABCD, 대각선 AC 위의 E, AE·CE를 지름으로 하는 두 원과 교점 $\\mathrm P_1,\\mathrm P_2,\\mathrm Q_1,\\mathrm Q_2$",
+   "source_page": 26
+  },
+  "theme": {
+   "primary": "수학Ⅰ-12",
+   "primary_name": "사인법칙과 코사인법칙",
+   "links": []
+  },
+  "first_judgment": "두 원의 지름 비가 $1:2$이므로 반지름을 $r$, $2r$로 두고 사인법칙으로 $\\sin\\alpha:\\sin\\beta$를 얻는다($\\alpha=\\angle\\mathrm{BCD}$, $\\beta=\\angle\\mathrm{DAB}$).",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S07",
+   "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{BD}}^2=9+4+4=17$. $\\frac{\\overline{\\mathrm{P_1P_2}}}{\\sin\\beta}=2r$, $\\frac{\\overline{\\mathrm{Q_1Q_2}}}{\\sin\\alpha}=4r$ → $\\sin\\beta=\\frac{6\\sin\\alpha}{5\\sqrt2}$; $\\sin\\alpha=\\frac{2\\sqrt2}3$ → $\\sin\\beta=\\frac45$, $\\cos\\beta=-\\frac35$. $\\frac12ab\\cdot\\frac45=2$ → $ab=5$. $a^2+b^2+6=17$ → $a^2+b^2=11$. $(a+b)^2=21$",
+  "legacy": {
+   "category": "삼각형의 넓이를 활용하는 문제",
+   "book_no": 51,
+   "question_page": 26,
+   "solution_page": 68
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240612",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240612",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2023년 6월 고3 12번"
+  },
+  "question": "$a_2=-4$이고 공차가 $0$이 아닌 등차수열 $\\{a_n\\}$에 대하여 수열 $\\{b_n\\}$을 $b_n=a_n+a_{n+1}$ $(n\\ge1)$이라 하고, 두 집합 $A$, $B$를 $A=\\{a_1,a_2,a_3,a_4,a_5\\}$, $B=\\{b_1,b_2,b_3,b_4,b_5\\}$라 하자. $n(A\\cap B)=3$이 되도록 하는 모든 수열 $\\{a_n\\}$에 대하여 $a_{20}$의 값의 합은?",
+  "condition": null,
+  "choices": [
+   "30",
+   "34",
+   "38",
+   "42",
+   "46"
+  ],
+  "answer": "5",
+  "answer_value": "46",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-13",
+   "primary_name": "등차수열과 등비수열",
+   "links": []
+  },
+  "first_judgment": "$\\{b_n\\}$도 공차 $2d$인 등차수열이므로 공차 부호로 나누고, 두 수열의 항이 '몇 칸 어긋나 겹치는지'로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "(i) $d>0$: $a_1<0$, $b_1<a_1$; $n(A\\cap B)=3$이려면 $b_2=a_1$ 또는 $b_3=a_1$. (a) $b_2=a_1$: $-8+d=-4-d$, $d=2$, $a_{20}=32$. (b) $b_3=a_1$: $-8+3d=-4-d$, $d=1$, $a_{20}=14$. (ii) $d<0$: 어떤 경우든 $n(A\\cap B)\\le2$. 합 $46$",
+  "legacy": {
+   "category": "조건을 만족시키는 등차수열의 항 구하기(3) : 이외의 조건이 주어진 경우",
+   "book_no": 52,
+   "question_page": 26,
+   "solution_page": 68
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260620",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260620",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2025년 6월 고3 20번"
+  },
+  "question": "실수 전체의 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다. 방정식 $f(f(x))=f(x)$의 $0$ 이상인 모든 실근을 작은 수부터 크기순으로 나열할 때, $n$번째 수를 $a_n$이라 하자. 다음은 $a_{20}+a_{21}+a_{22}$의 값을 구하는 과정이다. 위의 (가), (나), (다)에 알맞은 수를 각각 $p,q,r$이라 할 때, $p+q+r$의 값을 구하시오.",
+  "condition": "[조건] $0\\le x<4$일 때 $f(x)=-x^2+4x$이고, 모든 실수 $x$에 대하여 $f(x+4)=f(x)$이다.\\\\[과정] 방정식 $f(x)=x$의 모든 실근이 $0,3$이므로 방정식 $f(f(x))=f(x)$의 실근을 구하는 것은 방정식 $f(x)\\{f(x)-3\\}=0$의 실근을 구하는 것과 같다. $0\\le x<4$일 때, 방정식 $f(x)\\{f(x)-3\\}=0$의 모든 실근은 $0$, (가), $3$이므로 $a_1=0$, $a_2=$ (가), $a_3=3$이다. 또한, 모든 실수 $x$에 대하여 $f(x+4)=f(x)$이므로 세 수열 $\\{a_{3n-2}\\}$, $\\{a_{3n-1}\\}$, $\\{a_{3n}\\}$은 첫째항이 각각 $0$, (가), $3$이고 공차가 모두 (나) 인 등차수열이다. 따라서 $a_{20}+a_{21}+a_{22}=$ (다) 이다.",
+  "choices": null,
+  "answer": "85",
+  "answer_value": "85",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-13",
+   "primary_name": "등차수열과 등비수열",
+   "links": []
+  },
+  "first_judgment": "$f(X)=X$의 근 $X=0,3$을 먼저 구해 $f(x)=0$ 또는 $f(x)=3$으로 바꾸고, 주기 $4$로 근이 3개씩 반복됨을 본다.",
+  "behavior": "이해",
+  "reasoning": [
+   "치환·보조함수 도입",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$f(x)=x\\Rightarrow x=0,3$. $0\\le x<4$에서 $f(x)=0\\Rightarrow x=0$, $f(x)=3\\Rightarrow x=1,3$. (가) $1$, (나) $4$. $a_{20}=a_{3\\cdot7-1}=1+24=25$, $a_{21}=3+24=27$, $a_{22}=a_{3\\cdot8-2}=0+28=28$, (다) $80$. $p+q+r=85$",
+  "legacy": {
+   "category": "조건을 만족시키는 등차수열의 항 구하기(3) : 이외의 조건이 주어진 경우",
+   "book_no": 53,
+   "question_page": 27,
+   "solution_page": 69
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": [
+    "원문 해설의 a_20+a_21+a_22 계산은 25+27+28=80으로 표기됨(정답 85는 p+q+r=1+4+80)"
+   ]
+  }
+ },
+ {
+  "id": "M1-270612",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "270612",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2026년 6월 고3 12번"
+  },
+  "question": "공비가 양수인 등비수열 $\\{a_n\\}$이 $2a_1(a_1+a_3)=5a_2(a_1+a_2)=20$을 만족시킬 때, $a_1a_6$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac1{27}",
+   "\\frac19",
+   "\\frac13",
+   "1",
+   "3"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac1{27}",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-13",
+   "primary_name": "등차수열과 등비수열",
+   "links": []
+  },
+  "first_judgment": "첫째항 $a$, 공비 $r$로 두면 앞의 등식에서 $a^2$이 약분되어 $r$에 대한 이차방정식이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$2a^2(1+r^2)=5a^2r(1+r)$ → $3r^2+5r-2=0$, $r=\\frac13$. $2a^2(1+r^2)=20$ → $a^2=9$. $a_1a_6=a^2r^5=\\frac1{27}$",
+  "legacy": {
+   "category": "등비수열의 일반항 구하기(3) : a_i+a_j=k 형태(a_i와 a_j의 사칙연산 형태)로 주어",
+   "book_no": 54,
+   "question_page": 27,
+   "solution_page": 69
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-261112",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "261112",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 12,
+   "points": 4,
+   "label": "2025년 11월 고3 12번"
+  },
+  "question": "등비수열 $\\{a_n\\}$이 $2(a_1+a_4+a_7)=a_4+a_7+a_{10}=6$을 만족시킬 때, $a_{10}$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{22}7",
+   "\\frac{24}7",
+   "\\frac{26}7",
+   "\\frac{30}7",
+   "\\frac{32}7"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{24}7",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-13",
+   "primary_name": "등차수열과 등비수열",
+   "links": []
+  },
+  "first_judgment": "$a_4+a_7+a_{10}=r^3(a_1+a_4+a_7)$이므로 두 식을 나누면 $r^3$이 바로 나온다.",
+  "behavior": "계산",
+  "reasoning": [
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$a_1(1+r^3+r^6)=3$, $a_1r^3(1+r^3+r^6)=6$ → $r^3=2$, $a_1=\\frac37$. $a_{10}=a_1r^9=\\frac{24}7$",
+  "legacy": {
+   "category": "등비수열의 일반항 구하기(3) : a_i+a_j=k 형태(a_i와 a_j의 사칙연산 형태)로 주어",
+   "book_no": 55,
+   "question_page": 28,
+   "solution_page": 69
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230613",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230613",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2022년 6월 고3 13번"
+  },
+  "question": "두 곡선 $y=16^x$, $y=2^x$과 한 점 $\\mathrm{A}(64,2^{64})$이 있다. 점 $\\mathrm{A}$를 지나며 $x$축과 평행한 직선이 곡선 $y=16^x$과 만나는 점을 $\\mathrm{P}_1$이라 하고, 점 $\\mathrm{P}_1$을 지나며 $y$축과 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{Q}_1$이라 하자. 점 $\\mathrm{Q}_1$을 지나며 $x$축과 평행한 직선이 곡선 $y=16^x$과 만나는 점을 $\\mathrm{P}_2$라 하고, 점 $\\mathrm{P}_2$를 지나며 $y$축과 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{Q}_2$라 하자. 이와 같은 과정을 계속하여 $n$번째 얻은 두 점을 각각 $\\mathrm{P}_n$, $\\mathrm{Q}_n$이라 하고 점 $\\mathrm{Q}_n$의 $x$좌표를 $x_n$이라 할 때, $x_n<\\dfrac1k$을 만족시키는 $n$의 최솟값이 $6$이 되도록 하는 자연수 $k$의 개수는?",
+  "condition": null,
+  "choices": [
+   "48",
+   "51",
+   "54",
+   "57",
+   "60"
+  ],
+  "answer": "1",
+  "answer_value": "48",
+  "figure": {
+   "description": "곡선 $y=16^x$, $y=2^x$ 사이를 계단 모양으로 내려가는 점 A, $\\mathrm P_1,\\mathrm Q_1,\\mathrm P_2,\\mathrm Q_2,\\dots$",
+   "source_page": 28
+  },
+  "theme": {
+   "primary": "수학Ⅰ-13",
+   "primary_name": "등차수열과 등비수열",
+   "links": [
+    "수학Ⅰ-03"
+   ]
+  },
+  "first_judgment": "같은 높이 조건 $2^{x_n}=16^{x_{n+1}}$에서 $x_{n+1}=\\frac14x_n$, 즉 $\\{x_n\\}$이 등비수열임을 먼저 잡는다.",
+  "behavior": "추론",
+  "reasoning": [
+   "단순화·특수화로 규칙성 찾기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$2^{64}=16^{x_1}$ → $x_1=16$. $x_{n+1}=\\frac14x_n$ → $x_n=2^{6-2n}$. $x_5\\ge\\frac1k$, $x_6<\\frac1k$ → $16\\le k<64$. 개수 $48$",
+  "legacy": {
+   "category": "도형에서 등비수열의 활용",
+   "book_no": 56,
+   "question_page": 28,
+   "solution_page": 70
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-231113",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "231113",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 13,
+   "points": 4,
+   "label": "2022년 11월 고3 13번"
+  },
+  "question": "자연수 $m$ $(m\\ge2)$에 대하여 $m^{12}$의 $n$제곱근 중에서 정수가 존재하도록 하는 $2$ 이상의 자연수 $n$의 개수를 $f(m)$이라 할 때, $\\displaystyle\\sum_{m=2}^{9}f(m)$의 값은?",
+  "condition": null,
+  "choices": [
+   "37",
+   "42",
+   "47",
+   "52",
+   "57"
+  ],
+  "answer": "3",
+  "answer_value": "47",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-01",
+   "primary_name": "거듭제곱근",
+   "links": [
+    "수학Ⅰ-16"
+   ]
+  },
+  "first_judgment": "$x^n=m^{12}$의 정수근 존재 조건이므로, $m$이 완전거듭제곱($4=2^2$, $8=2^3$, $9=3^2$)인지에 따라 지수가 달라진다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S01",
+   "S02"
+  ],
+  "solution_ref": "$m=2,3,5,6,7$: $n\\mid12$, $n\\ge2$ → $2,3,4,6,12$로 5개. $m=4$: $x^n=2^{24}$ → 7개. $m=8$: $2^{36}$ → 8개. $m=9$: $3^{24}$ → 7개. 합 $5\\cdot5+7\\cdot2+8=47$",
+  "legacy": {
+   "category": "∑의 뜻",
+   "book_no": 57,
+   "question_page": 29,
+   "solution_page": 70
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230612",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230612",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2022년 6월 고3 12번"
+  },
+  "question": "공차가 $3$인 등차수열 $\\{a_n\\}$이 다음 조건을 만족시킬 때, $a_{10}$의 값은?",
+  "condition": "(가) $a_5\\times a_7<0$\\\\(나) $\\displaystyle\\sum_{k=1}^{6}|a_{k+6}|=6+\\sum_{k=1}^{6}|a_{2k}|$",
+  "choices": [
+   "\\frac{21}2",
+   "11",
+   "\\frac{23}2",
+   "12",
+   "\\frac{25}2"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{23}2",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-14",
+   "primary_name": "등차수열의 합",
+   "links": [
+    "수학Ⅰ-13"
+   ]
+  },
+  "first_judgment": "(가)로 부호가 바뀌는 위치($a_5<0<a_7$)가 정해지므로 절댓값을 벗기고, 남는 $|a_6|$의 부호로 경우를 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$n\\le5$면 $a_n<0$, $n\\ge7$면 $a_n>0$. (나)에서 공통항 소거: $a_7+a_9+a_{11}=6-a_2-a_4+|a_6|$ → $|a_1+15|=5a_1+78$. $a_1+15\\ge0$이면 $a_1=-\\frac{63}4$ (모순). $a_1+15<0$ → $a_1=-\\frac{31}2$. $a_{10}=\\frac{23}2$",
+  "legacy": {
+   "category": "∑를 이용한 수열의 합",
+   "book_no": 58,
+   "question_page": 29,
+   "solution_page": 71
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240921",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240921",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2023년 9월 고3 21번"
+  },
+  "question": "모든 항이 자연수인 등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $a_7$이 $13$의 배수이고 $\\displaystyle\\sum_{k=1}^{7}S_k=644$일 때, $a_2$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "19",
+  "answer_value": "19",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-14",
+   "primary_name": "등차수열의 합",
+   "links": [
+    "수학Ⅰ-16"
+   ]
+  },
+  "first_judgment": "$\\sum S_k$를 $a,d$로 정리하면 $a+2d=23$이 되고, $a_7=13m$과 연립해 정수 조건으로 후보를 좁힌다.",
+  "behavior": "추론",
+  "reasoning": [
+   "미지수 소거·연립",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$\\sum_{k=1}^7S_k=28a+56d=644$ → $a+2d=23$. $a+6d=13m$ → $d=\\frac{13m-23}4$, $d+9=\\frac{13(m+1)}4$ → $m=3,7,\\dots$; $a=-\\frac{13}2m+\\frac{69}2>0$ → $m<\\frac{69}{13}$, $m=3$, $d=4$, $a=15$. $a_2=19$",
+  "legacy": {
+   "category": "자연수의 거듭제곱의 합(1) : 기본 공식을 이용하는 경우",
+   "book_no": 59,
+   "question_page": 30,
+   "solution_page": 71
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-251112",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "251112",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 12,
+   "points": 4,
+   "label": "2024년 11월 고3 12번"
+  },
+  "question": "$a_1=2$인 수열 $\\{a_n\\}$과 $b_1=2$인 등차수열 $\\{b_n\\}$이 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}\\frac{a_k}{b_{k+1}}=\\frac12n^2$을 만족시킬 때, $\\displaystyle\\sum_{k=1}^{5}a_k$의 값은?",
+  "condition": null,
+  "choices": [
+   "120",
+   "125",
+   "130",
+   "135",
+   "140"
+  ],
+  "answer": "1",
+  "answer_value": "120",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-16",
+   "primary_name": "여러 가지 수열의 합",
+   "links": [
+    "수학Ⅰ-14"
+   ]
+  },
+  "first_judgment": "$n=1$ 대입으로 $b_2$를 얻어 $\\{b_n\\}$을 확정하고, 합과 일반항의 관계($n$과 $n-1$ 차)로 $a_n$을 구한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S10"
+  ],
+  "solution_ref": "$\\frac{a_1}{b_2}=\\frac12$ → $b_2=4$, $b_n=2n$. $\\frac{a_n}{b_{n+1}}=n-\\frac12$ → $a_n=2(n+1)\\left(n-\\frac12\\right)=2n^2+n-1$ ($a_1=2$도 성립). $\\sum_{k=1}^5(2k^2+k-1)=110+15-5=120$",
+  "legacy": {
+   "category": "자연수의 거듭제곱의 합(2) : 다항식인 일반항을 구해야하는 경우",
+   "book_no": 60,
+   "question_page": 30,
+   "solution_page": 72
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-241111",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "241111",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 11,
+   "points": 4,
+   "label": "2023년 11월 고3 11번"
+  },
+  "question": "공차가 $0$이 아닌 등차수열 $\\{a_n\\}$에 대하여 $|a_6|=a_8$, $\\displaystyle\\sum_{k=1}^{5}\\frac{1}{a_ka_{k+1}}=\\frac5{96}$일 때, $\\displaystyle\\sum_{k=1}^{15}a_k$의 값은?",
+  "condition": null,
+  "choices": [
+   "60",
+   "65",
+   "70",
+   "75",
+   "80"
+  ],
+  "answer": "1",
+  "answer_value": "60",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-16",
+   "primary_name": "여러 가지 수열의 합",
+   "links": [
+    "수학Ⅰ-14"
+   ]
+  },
+  "first_judgment": "$|a_6|=a_8$이고 공차 $\\ne0$이므로 $a_6+a_8=0$ → $a_7=0$, $a_1=-6d$; 합은 부분분수로 망원합이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S10"
+  ],
+  "solution_ref": "$a_6+a_8=0$ → $a_1=-6d$ ($d>0$). $\\sum\\frac1{a_ka_{k+1}}=\\frac1d\\left(\\frac1{a_1}-\\frac1{a_6}\\right)=\\frac5{a_1(a_1+5d)}=\\frac5{96}$ → $a_1(a_1+5d)=96$ → $6d^2=96$, $d=4$, $a_1=-24$. $\\sum_{k=1}^{15}a_k=\\frac{15(-48+56)}2=60$",
+  "legacy": {
+   "category": "여러 가지 수열의 합(1) : 부분분수를 이용하는 경우",
+   "book_no": 61,
+   "question_page": 31,
+   "solution_page": 72
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250912",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250912",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2024년 9월 고3 12번"
+  },
+  "question": "수열 $\\{a_n\\}$은 등차수열이고, 수열 $\\{b_n\\}$은 모든 자연수 $n$에 대하여 $b_n=\\displaystyle\\sum_{k=1}^{n}(-1)^{k+1}a_k$를 만족시킨다. $b_2=-2$, $b_3+b_7=0$일 때, 수열 $\\{b_n\\}$의 첫째항부터 제9항까지의 합은?",
+  "condition": null,
+  "choices": [
+   "-22",
+   "-20",
+   "-18",
+   "-16",
+   "-14"
+  ],
+  "answer": "2",
+  "answer_value": "-20",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-16",
+   "primary_name": "여러 가지 수열의 합",
+   "links": [
+    "수학Ⅰ-13"
+   ]
+  },
+  "first_judgment": "$b_2=a_1-a_2=-d$로 공차부터 확정하고, 교대합을 두 항씩 묶어 $b_3$, $b_7$을 간단히 한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S10"
+  ],
+  "solution_ref": "$d=2$. $b_3=a_3-2$, $b_7=a_7-6$ → $2a_1+8=0$, $a_1=-4$, $a_n=2n-6$. $b_1,\\dots,b_9=-4,-2,-2,-4,0,-6,2,-8,4$, 합 $-20$",
+  "legacy": {
+   "category": "여러 가지 수열의 합(8) : 수열의 일반항을 새롭게 정의하는 경우",
+   "book_no": 62,
+   "question_page": 31,
+   "solution_page": 73
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220613",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220613",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2021년 6월 고3 13번"
+  },
+  "question": "실수 전체의 집합에서 정의된 함수 $f(x)$가 구간 $(0,1]$에서 $f(x)=\\begin{cases}3 & (0<x<1)\\\\ 1 & (x=1)\\end{cases}$이고, 모든 실수 $x$에 대하여 $f(x+1)=f(x)$를 만족시킨다. $\\displaystyle\\sum_{k=1}^{20}\\frac{k\\times f(\\sqrt k)}{3}$의 값은?",
+  "condition": null,
+  "choices": [
+   "150",
+   "160",
+   "170",
+   "180",
+   "190"
+  ],
+  "answer": "5",
+  "answer_value": "190",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-16",
+   "primary_name": "여러 가지 수열의 합",
+   "links": []
+  },
+  "first_judgment": "$f$는 정수에서만 $1$, 나머지에서 $3$이므로 $\\sqrt k$가 정수인 $k=1,4,9,16$만 따로 뺀다.",
+  "behavior": "계산",
+  "reasoning": [
+   "경우 나누기",
+   "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [
+   "S10"
+  ],
+  "solution_ref": "$k=1,4,9,16$: $f(\\sqrt k)=1$; 그 외 $3$. $30\\cdot\\frac13+(210-30)\\cdot1=190$",
+  "legacy": {
+   "category": "여러 가지 수열의 합(11) : 이외의 조건이 주어진 경우 수열의 합",
+   "book_no": 63,
+   "question_page": 32,
+   "solution_page": 73
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220913",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220913",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2021년 9월 고3 13번"
+  },
+  "question": "첫째항이 $-45$이고 공차가 $d$인 등차수열 $\\{a_n\\}$이 다음 조건을 만족시키도록 하는 모든 자연수 $d$의 값의 합은?",
+  "condition": "(가) $|a_m|=|a_{m+3}|$인 자연수 $m$이 존재한다.\\\\(나) 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}a_k>-100$이다.",
+  "choices": [
+   "44",
+   "48",
+   "52",
+   "56",
+   "60"
+  ],
+  "answer": "2",
+  "answer_value": "48",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-14",
+   "primary_name": "등차수열의 합",
+   "links": [
+    "수학Ⅰ-13"
+   ]
+  },
+  "first_judgment": "(가)는 $a_m+a_{m+3}=0$, 즉 $(2m+1)d=90$이라는 정수 조건이므로 $90$의 약수 중 가능한 $d$를 나열하고 (나)로 거른다.",
+  "behavior": "추론",
+  "reasoning": [
+   "정수 조건으로 후보 좁히기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$a_m<0<a_{m+3}$, $-90+(2m+1)d=0$. $2m+1$은 1보다 큰 홀수 → $d\\in\\{2,6,10,18,30\\}$. (나) $n\\{-90+(n-1)d\\}>-200$이 모든 $n$에서 성립하는 것은 $d=18,30$. 합 $48$",
+  "legacy": {
+   "category": "여러 가지 수열의 합(11) : 이외의 조건이 주어진 경우 수열의 합",
+   "book_no": 64,
+   "question_page": 32,
+   "solution_page": 73
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-221121",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "221121",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 21,
+   "points": 4,
+   "label": "2021년 11월 고3 21번"
+  },
+  "question": "수열 $\\{a_n\\}$이 다음 조건을 만족시킨다. $a_1+a_3+a_5+a_7+a_9$의 값을 구하시오.",
+  "condition": "(가) $|a_1|=2$\\\\(나) 모든 자연수 $n$에 대하여 $|a_{n+1}|=2|a_n|$이다.\\\\(다) $\\displaystyle\\sum_{n=1}^{10}a_n=-14$",
+  "choices": null,
+  "answer": "678",
+  "answer_value": "678",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-15",
+   "primary_name": "등비수열의 합",
+   "links": [
+    "수학Ⅰ-16"
+   ]
+  },
+  "first_judgment": "$|a_n|=2^n$이 확정되고 부호만 자유이므로, 합이 $-14$가 되려면 가장 큰 항 $a_{10}$이 음수여야 함을 먼저 본다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "단순화·특수화로 규칙성 찾기"
+  ],
+  "strategy_ids": [
+   "S09"
+  ],
+  "solution_ref": "$|a_n|=2^n$, $\\sum_{k=1}^9|a_k|=2^{10}-2<2^{10}$ → $a_{10}=-1024$. 나머지 합 $1010=2^{10}-14$: $a_1=-2$, $a_2=-4$, $a_3,\\dots,a_9>0$ ($\\sum_{k=3}^9 2^k=2^{10}-8$). $a_1+a_3+a_5+a_7+a_9=-2+8+32+128+512=678$",
+  "legacy": {
+   "category": "여러 가지 수열의 합(11) : 이외의 조건이 주어진 경우 수열의 합",
+   "book_no": 65,
+   "question_page": 33,
+   "solution_page": 74
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260910",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260910",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2025년 9월 고3 10번"
+  },
+  "question": "모든 항이 양수인 등비수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $a_2=1$, $\\displaystyle\\sum_{k=1}^{6}(-1)^kS_k=21$일 때, $S_2+S_7$의 값은?",
+  "condition": null,
+  "choices": [
+   "61",
+   "63",
+   "65",
+   "67",
+   "69"
+  ],
+  "answer": "3",
+  "answer_value": "65",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-15",
+   "primary_name": "등비수열의 합",
+   "links": [
+    "수학Ⅰ-16"
+   ]
+  },
+  "first_judgment": "교대합을 두 개씩 묶으면 $-S_{2k-1}+S_{2k}=a_{2k}$이므로 $a_2+a_4+a_6=21$이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S09",
+   "S10"
+  ],
+  "solution_ref": "$a_2+a_4+a_6=1+r^2+r^4=21$ → $r=2$, $a_1=\\frac12$. $S_2+S_7=\\frac32+\\frac{127}2=65$",
+  "legacy": {
+   "category": "∑로 표현된 수열의 합과 일반항의 관계",
+   "book_no": 66,
+   "question_page": 33,
+   "solution_page": 74
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240609",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240609",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2023년 6월 고3 9번"
+  },
+  "question": "수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}\\frac{1}{(2k-1)a_k}=n^2+2n$을 만족시킬 때, $\\displaystyle\\sum_{n=1}^{10}a_n$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{10}{21}",
+   "\\frac47",
+   "\\frac23",
+   "\\frac{16}{21}",
+   "\\frac67"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{10}{21}",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-16",
+   "primary_name": "여러 가지 수열의 합",
+   "links": []
+  },
+  "first_judgment": "합과 일반항의 관계로 $\\frac1{(2n-1)a_n}=2n+1$을 얻으면 $a_n$이 부분분수 꼴이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S10"
+  ],
+  "solution_ref": "$a_1=\\frac13$, $n\\ge2$: $\\frac1{(2n-1)a_n}=2n+1$ → $a_n=\\frac1{(2n-1)(2n+1)}$ ($n=1$도 성립). $\\sum_{n=1}^{10}=\\frac12\\left(1-\\frac1{21}\\right)=\\frac{10}{21}$",
+  "legacy": {
+   "category": "∑로 표현된 수열의 합과 일반항의 관계",
+   "book_no": 67,
+   "question_page": 34,
+   "solution_page": 75
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220609",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220609",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2021년 6월 고3 9번"
+  },
+  "question": "수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}\\dfrac1{a_n} & (n\\text{이 홀수인 경우})\\\\ 8a_n & (n\\text{이 짝수인 경우})\\end{cases}$이고 $a_{12}=\\dfrac12$일 때, $a_1+a_4$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac34",
+   "\\frac94",
+   "\\frac52",
+   "\\frac{17}4",
+   "\\frac92"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac92",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-20",
+   "primary_name": "역추적",
+   "links": [
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "뒤의 항이 주어졌으므로 점화식을 거꾸로 적용해 $a_{11},a_{10},\\dots$를 역추적한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "$a_{11}=2$, $a_{10}=\\frac14$, $a_9=4$, $a_8=\\frac12$, $a_7=2$, $a_6=\\frac14$, $a_5=4$, $a_4=\\frac12$, $a_3=2$, $a_2=\\frac14$, $a_1=4$. $a_1+a_4=\\frac92$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 68,
+   "question_page": 34,
+   "solution_page": 75
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-260612",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "260612",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2025년 6월 고3 12번"
+  },
+  "question": "다음 조건을 만족시키는 모든 수열 $\\{a_n\\}$에 대하여 $a_4$의 최댓값은?",
+  "condition": "(가) $a_1=a_3$\\\\(나) 모든 자연수 $n$에 대하여 $(a_{n+1}-a_n+3)(a_{n+1}-2a_n)=0$이다.",
+  "choices": [
+   "9",
+   "12",
+   "15",
+   "18",
+   "21"
+  ],
+  "answer": "2",
+  "answer_value": "12",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-21",
+   "primary_name": "가지수열",
+   "links": [
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "(나)는 매 단계 '$-3$' 또는 '$\\times2$' 두 갈래이므로 $a_1\\to a_3$의 네 경로를 나눠 $a_1=a_3$을 푼다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "(i) $-3,-3$: $a_3=a_1-6$ 모순. (ii) $\\times2,-3$: $a_3=2a_1-3$ → $a_3=3$, $a_4=0$ 또는 $6$. (iii) $-3,\\times2$: $a_3=2a_1-6$ → $a_3=6$, $a_4=3$ 또는 $12$. (iv) $\\times2,\\times2$: $a_3=0$, $a_4=-3$ 또는 $0$. 최댓값 $12$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 69,
+   "question_page": 35,
+   "solution_page": 76
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230615",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230615",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2022년 6월 고3 15번"
+  },
+  "question": "자연수 $k$에 대하여 다음 조건을 만족시키는 수열 $\\{a_n\\}$이 있다. $a_{22}=0$이 되도록 하는 모든 $k$의 값의 합은?",
+  "condition": "$a_1=0$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+\\dfrac1{k+1} & (a_n\\le0)\\\\ a_n-\\dfrac1k & (a_n>0)\\end{cases}$이다.",
+  "choices": [
+   "12",
+   "14",
+   "16",
+   "18",
+   "20"
+  ],
+  "answer": "2",
+  "answer_value": "14",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-17",
+   "primary_name": "귀납적으로 정의된 수열",
+   "links": [
+    "수학Ⅰ-18"
+   ]
+  },
+  "first_judgment": "몇 항을 직접 나열해 $a_{2j}=\\frac{j-k}{k(k+1)}$ 꼴의 규칙과 $0$으로 돌아오는 주기를 찾는다.",
+  "behavior": "추론",
+  "reasoning": [
+   "단순화·특수화로 규칙성 찾기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S10",
+   "S11"
+  ],
+  "solution_ref": "$a_2=\\frac1{k+1}$, $a_3=\\frac1{k+1}-\\frac1k<0$, $a_4=\\frac{k-1}{k(k+1)}$, …. $k=1$: $a_4=0$, 주기 3 → $a_{22}=0$. $k=2$: $a_6=0$, 주기 5 → $a_{22}\\ne0$. $k=3$: $a_8=0$ → $a_{22}=0$. $k=4$: $a_{10}=0$ → $\\ne0$. $5\\le k\\le9$: $\\ne0$. $k=10$: $a_{22}=0$. $k\\ge11$: $\\ne0$. 합 $1+3+10=14$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 70,
+   "question_page": 35,
+   "solution_page": 76
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-220915",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "220915",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2021년 9월 고3 15번"
+  },
+  "question": "수열 $\\{a_n\\}$은 $|a_1|\\le1$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}-2a_n-2 & \\left(-1\\le a_n<-\\dfrac12\\right)\\\\ 2a_n & \\left(-\\dfrac12\\le a_n\\le\\dfrac12\\right)\\\\ -2a_n+2 & \\left(\\dfrac12<a_n\\le1\\right)\\end{cases}$을 만족시킨다. $a_5+a_6=0$이고 $\\displaystyle\\sum_{k=1}^{5}a_k>0$이 되도록 하는 모든 $a_1$의 값의 합은?",
+  "condition": null,
+  "choices": [
+   "\\frac92",
+   "5",
+   "\\frac{11}2",
+   "6",
+   "\\frac{13}2"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac92",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-20",
+   "primary_name": "역추적",
+   "links": [
+    "수학Ⅰ-21",
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "$a_5+a_6=0$에서 $a_5=0$을 확정한 뒤, 가지가 둘인 역함수 $a_n=\\frac12a_{n+1}$ 또는 $1-\\frac12a_{n+1}$로 거꾸로 올라간다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "나열·역추적",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "세 구간별로 $a_5+a_6=0$ 확인 → $a_5=0$, $a_4=-1,0,1$. $a_4=-1$: 이후 음수로 조건 불만족. $a_4=0$: $a_3=0$(→$a_2=1$일 때 $a_1=\\frac12$, $a_2=0$일 때 $a_1=1$) 또는 $a_3=1$($a_2=\\frac12$, $a_1=\\frac14,\\frac34$). $a_4=1$: $a_3=\\frac12$, $a_2=\\frac14$($a_1=\\frac18,\\frac78$) 또는 $\\frac34$($a_1=\\frac38,\\frac58$). 합 $1+\\frac12+\\frac14+\\frac34+\\frac18+\\frac78+\\frac38+\\frac58=\\frac92$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 71,
+   "question_page": 36,
+   "solution_page": 76
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240912",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240912",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2023년 9월 고3 12번"
+  },
+  "question": "첫째항이 자연수인 수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+1 & (a_n\\text{이 홀수인 경우})\\\\ \\dfrac12a_n & (a_n\\text{이 짝수인 경우})\\end{cases}$를 만족시킬 때, $a_2+a_4=40$이 되도록 하는 모든 $a_1$의 값의 합은?",
+  "condition": null,
+  "choices": [
+   "172",
+   "175",
+   "178",
+   "181",
+   "184"
+  ],
+  "answer": "1",
+  "answer_value": "172",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-17",
+   "primary_name": "귀납적으로 정의된 수열",
+   "links": [
+    "수학Ⅰ-21"
+   ]
+  },
+  "first_judgment": "$a_1$을 $4$로 나눈 나머지($4k,4k-1,4k-2,4k-3$)로 나누면 $a_2,a_3,a_4$의 홀짝이 정해진다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "(i) $a_1=4k$: $k$ 홀수 → $3k+1=40$, $k=13$, $a_1=52$; $k$ 짝수 → $\\frac52k=40$, $k=16$, $a_1=64$. (ii) $a_1=4k-1$: $5k=40$, $a_1=31$. (iii) $a_1=4k-2$: $3k-1=40$ 불가. (iv) $a_1=4k-3$: $6k-2=40$, $k=7$, $a_1=25$. 합 $172$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 72,
+   "question_page": 36,
+   "solution_page": 77
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-251122",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "251122",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 22,
+   "points": 4,
+   "label": "2024년 11월 고3 22번"
+  },
+  "question": "모든 항이 정수이고 다음 조건을 만족시키는 모든 수열 $\\{a_n\\}$에 대하여 $|a_1|$의 값의 합을 구하시오.",
+  "condition": "(가) 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n-3 & (|a_n|\\text{이 홀수인 경우})\\\\ \\dfrac12a_n & (a_n=0\\text{ 또는 }|a_n|\\text{이 짝수인 경우})\\end{cases}$\\\\(나) $|a_m|=|a_{m+2}|$인 자연수 $m$의 최솟값은 $3$이다.",
+  "choices": null,
+  "answer": "64",
+  "answer_value": "64",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-20",
+   "primary_name": "역추적",
+   "links": [
+    "수학Ⅰ-21",
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "(나)에서 $|a_3|=|a_5|$이므로 $|a_3|$의 홀짝으로 나눠 $a_3$ 후보를 찾고, $|a_1|\\ne|a_3|$, $|a_2|\\ne|a_4|$를 확인하며 역추적한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "나열·역추적",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "(i) $|a_3|$ 홀수: $a_3=1$ 또는 $-3$ → 모두 $|a_2|=|a_4|$가 되어 불가. (ii) $|a_3|$ 짝수 또는 0: $\\frac14a_3$과 비교 → $a_3=0$ ($a_1=6$), 또는 $|a_3|=\\left|\\frac12a_3-3\\right|$ → $a_3=2$ ($a_1=10,7,8$), $a_3=-6$ ($a_1=-9,-24$). 합 $6+(10+7+8)+(9+24)=64$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 73,
+   "question_page": 37,
+   "solution_page": 78
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-231115",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "231115",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 15,
+   "points": 4,
+   "label": "2022년 11월 고3 15번"
+  },
+  "question": "모든 항이 자연수이고 다음 조건을 만족시키는 모든 수열 $\\{a_n\\}$에 대하여 $a_9$의 최댓값과 최솟값을 각각 $M$, $m$이라 할 때, $M+m$의 값은?",
+  "condition": "(가) $a_7=40$\\\\(나) 모든 자연수 $n$에 대하여 $a_{n+2}=\\begin{cases}a_{n+1}+a_n & (a_{n+1}\\text{이 3의 배수가 아닌 경우})\\\\ \\dfrac13a_{n+1} & (a_{n+1}\\text{이 3의 배수인 경우})\\end{cases}$이다.",
+  "choices": [
+   "216",
+   "218",
+   "220",
+   "222",
+   "224"
+  ],
+  "answer": "5",
+  "answer_value": "224",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-17",
+   "primary_name": "귀납적으로 정의된 수열",
+   "links": [
+    "수학Ⅰ-20"
+   ]
+  },
+  "first_judgment": "$a_9$는 $a_7=40$과 $a_8$로 정해지고 $a_8$은 $a_6$으로 정해지므로, $a_6$을 3으로 나눈 나머지로 경우를 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "(i) $a_6$이 3의 배수: $a_6=120$, $a_8=160$, $a_9=200$. (ii) $a_6=3k-2$: $a_5=3(14-k)$, $a_6=\\frac{a_5}3$ → $k=4$, $a_6=10$, $a_8=50$, $a_9=90$. (iii) $a_6=3k-1$: $a_5=41-3k$, $a_4=3(2k-14)$, $a_5=\\frac{a_4}3$ → $k=11$, $a_6=32$, $a_8=72$, $a_9=24$. $M=200$, $m=24$, $M+m=224$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 74,
+   "question_page": 37,
+   "solution_page": 78
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-270622",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "270622",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2026년 6월 고3 22번"
+  },
+  "question": "수열 $\\{a_n\\}$은 $a_1=1$, $a_3=4$이고, 모든 자연수 $n$에 대하여 $a_{2n}=a_n+1$, $a_{4n+3}=a_{4n+1}=a_n+4$를 만족시킨다. $a_k=10$을 만족시키는 자연수 $k$의 개수를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "32",
+  "answer_value": "32",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-21",
+   "primary_name": "가지수열",
+   "links": [
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "$k$를 홀수($4n+1$, $4n+3$)와 짝수($2m$)로 나눠 $a_k=10$을 더 작은 값 $a_n=6$, $a_m=9$ 등의 개수 문제로 줄인다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "표로 $a_n$의 값을 나열하면 $n\\ge17$, $n\\ne32$일 때 $a_n>6$. (i) $k$ 홀수: $a_n=6$인 $n$은 $9,10,11,12,14,32$의 6개, 각각 $4n+1$, $4n+3$ → 12개. (ii) $k$ 짝수: $k=4m$이면 $a_m=8$인 $m$ 개수 12, $k=8n+2$ 또는 $8n+6$이면 $a_n=5$인 $n$ 4개 → 8. 합 $12+20=32$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 75,
+   "question_page": 38,
+   "solution_page": 79
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": [
+    "해설 중간 표(a_{4n+1}~a_{4n+4})는 요약함"
+   ]
+  }
+ },
+ {
+  "id": "M1-250622",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250622",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2024년 6월 고3 22번"
+  },
+  "question": "수열 $\\{a_n\\}$은 $a_2=-a_1$이고, $n\\ge2$인 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n-\\sqrt n\\times a_{\\sqrt n} & (\\sqrt n\\text{이 자연수이고 }a_n>0\\text{인 경우})\\\\ a_n+1 & (\\text{그 외의 경우})\\end{cases}$을 만족시킨다. $a_{15}=1$이 되도록 하는 모든 $a_1$의 값의 곱을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "231",
+  "answer_value": "231",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-20",
+   "primary_name": "역추적",
+   "links": [
+    "수학Ⅰ-21",
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "$n=4,9$일 때만 특수 규칙이 적용되므로 $a_{15}=1$에서 $a_{10}=-4$까지 거꾸로 내려오고, $a_9$, $a_4$의 부호로 나눈다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "나열·역추적",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "$a_{14}=0,\\dots,a_{10}=-4$. (i) $a_9>0$: $a_9-3a_3=-4$ → $a_9=3a_3-4$, $a_5=3a_3-8$. (i-a) $a_4>0$: $a_4-2a_2=a_5$, $a_3=a_2+1$ → $a_2=\\frac74$, $a_1=-\\frac74$. (i-b) $a_4\\le0$: $a_3=5$ → $a_4=6>0$ 모순. (ii) $a_9\\le0$: $a_5=-9$. (ii-a) $a_4>0$: $a_4=2a_2-9$, $a_2=11$, $a_1=-11$. (ii-b) $a_4\\le0$: $a_4=-10$, $a_2=-12$, $a_1=12$. 곱 $-\\frac74\\cdot(-11)\\cdot12=231$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 76,
+   "question_page": 38,
+   "solution_page": 80
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-250922",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "250922",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2024년 9월 고3 22번"
+  },
+  "question": "양수 $k$에 대하여 $a_1=k$인 수열 $\\{a_n\\}$이 다음 조건을 만족시킨다. $a_5=0$이 되도록 하는 서로 다른 모든 양수 $k$에 대하여 $k^2$의 값의 합을 구하시오.",
+  "condition": "(가) $a_2a_3<0$\\\\(나) 모든 자연수 $n$에 대하여 $\\left(a_{n+1}-a_n+\\dfrac23k\\right)(a_{n+1}+ka_n)=0$이다.",
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-21",
+   "primary_name": "가지수열",
+   "links": [
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "매 단계 $a_{n+1}=a_n-\\frac23k$ 또는 $-ka_n$의 두 갈래이므로 트리로 나열하되, (가)로 $a_2,a_3$ 부호가 다른 가지만 남긴다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "$a_2=\\frac k3$ 또는 $-k^2$. (i) $a_2=\\frac k3$: $a_3=-\\frac k3$ → $a_4=\\frac{k^2}3$일 때 $a_5=\\frac{k^2}3-\\frac23k=0$, $k=2$; $a_3=-\\frac{k^2}3$ → $a_4=\\frac{k^3}3$일 때 $k=\\sqrt2$. (ii) $a_2=-k^2$: $a_3=k^3$ → $a_4=k^3-\\frac23k$일 때 $a_5=0$에서 $k=\\frac2{\\sqrt3}$ 또는 $\\sqrt{\\frac23}$. $k^2$의 합 $4+2+\\frac43+\\frac23=8$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 77,
+   "question_page": 39,
+   "solution_page": 80
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-240615",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "240615",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2023년 6월 고3 15번"
+  },
+  "question": "자연수 $k$에 대하여 다음 조건을 만족시키는 수열 $\\{a_n\\}$이 있다. $a_3\\times a_4\\times a_5\\times a_6<0$이 되도록 하는 모든 $k$의 값의 합은?",
+  "condition": "$a_1=k$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+2n-k & (a_n\\le0)\\\\ a_n-2n-k & (a_n>0)\\end{cases}$이다.",
+  "choices": [
+   "10",
+   "14",
+   "18",
+   "22",
+   "26"
+  ],
+  "answer": "2",
+  "answer_value": "14",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-17",
+   "primary_name": "귀납적으로 정의된 수열",
+   "links": [
+    "수학Ⅰ-21"
+   ]
+  },
+  "first_judgment": "$a_2=-2<0$이 $k$와 무관하게 정해지므로, 이후 항의 부호를 $k$의 범위로 나누며 나열한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "나열·역추적"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "$a_2=-2$, $a_3=2-k$. (i) $k=1$: $a_3>0$, $a_4<0$, $a_5>0$, $a_6<0$ → 곱 $>0$. (ii) $k>2$: $a_4=8-2k$. (a) $k=3$: $a_4=2$, $a_5=-9$, $a_6=-2$ → 조건 만족. (b) $k>4$: $a_5=16-3k$; $k=5$: $a_5=1$, $a_6=-14$ → 만족; $k\\ge6$: $a_6=26-4k>0$ → $k=6$. 합 $3+5+6=14$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 78,
+   "question_page": 39,
+   "solution_page": 82
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-241115",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "241115",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 15,
+   "points": 4,
+   "label": "2023년 11월 고3 15번"
+  },
+  "question": "첫째항이 자연수인 수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}2^{a_n} & (a_n\\text{이 홀수인 경우})\\\\ \\dfrac12a_n & (a_n\\text{이 짝수인 경우})\\end{cases}$를 만족시킬 때, $a_6+a_7=3$이 되도록 하는 모든 $a_1$의 값의 합은?",
+  "condition": null,
+  "choices": [
+   "139",
+   "146",
+   "153",
+   "160",
+   "167"
+  ],
+  "answer": "3",
+  "answer_value": "153",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-20",
+   "primary_name": "역추적",
+   "links": [
+    "수학Ⅰ-21"
+   ]
+  },
+  "first_judgment": "모든 항이 자연수이므로 $a_6+a_7=3$에서 $(a_6,a_7)=(1,2)$ 또는 $(2,1)$이고, 여기서 두 갈래 역함수로 $a_1$까지 거슬러 올라간다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "나열·역추적",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "(i) $a_6=1$: $a_5=2$, $a_4=1$ 또는 $4$, … 역추적하면 $a_1=2,6,8,32$. (ii) $a_6=2$: $a_2=2,6,8,32$에서 $a_1=1,4,12,3,16,5,64$. 합 $(2+6+8+32)+(1+3+4+5+12+16+64)=153$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 79,
+   "question_page": 40,
+   "solution_page": 83
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-230915",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "230915",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2022년 9월 고3 15번"
+  },
+  "question": "수열 $\\{a_n\\}$이 다음 조건을 만족시킨다. $|a_m|\\ge5$를 만족시키는 $100$ 이하의 자연수 $m$의 개수를 $p$라 할 때, $p+a_1$의 값은?",
+  "condition": "(가) 모든 자연수 $k$에 대하여 $a_{4k}=r^k$이다. (단, $r$는 $0<|r|<1$인 상수이다.)\\\\(나) $a_1<0$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+3 & (|a_n|<5)\\\\ -\\dfrac12a_n & (|a_n|\\ge5)\\end{cases}$이다.",
+  "choices": [
+   "8",
+   "10",
+   "12",
+   "14",
+   "16"
+  ],
+  "answer": "3",
+  "answer_value": "12",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-20",
+   "primary_name": "역추적",
+   "links": [
+    "수학Ⅰ-17",
+    "수학Ⅰ-18"
+   ]
+  },
+  "first_judgment": "$a_4=r$, $a_8=r^2$에서 출발해 $a_5,a_6,a_7,a_8$을 $r$로 나열하면 $r$이 결정되고, 이후 $a_3,a_2,a_1$은 역추적한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "나열·역추적",
+   "단순화·특수화로 규칙성 찾기"
+  ],
+  "strategy_ids": [
+   "S11"
+  ],
+  "solution_ref": "$a_4=r$, $|a_4|<5$ → $a_5=r+3$, $a_6=r+6$, $|a_6|\\ge5$ → $a_7=-\\frac r2-3$, $a_8=-\\frac r2=r^2$ → $r=-\\frac12$. 역추적: $a_3=-\\frac72$, $a_2=7$, $a_1=-14$. 이후 $|a_{4k-2}|\\ge5$, 즉 $m=1,2,6,10,\\dots,98$ → $p=26$. $p+a_1=12$",
+  "legacy": {
+   "category": "수열의 귀납적 정의",
+   "book_no": 80,
+   "question_page": 40,
+   "solution_page": 84
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M1-261120",
+  "subject": "수학Ⅰ",
+  "source": {
+   "code": "261120",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 20,
+   "points": 4,
+   "label": "2025년 11월 고3 20번"
+  },
+  "question": "수열 $\\{a_n\\}$이 다음 조건을 만족시킨다. 다음은 $\\displaystyle\\sum_{k=1}^{12}a_k+\\sum_{k=1}^{5}a_{2k+1}$의 값을 구하는 과정이다. 위의 (가)에 알맞은 식을 $f(n)$이라 하고, (나), (다)에 알맞은 수를 각각 $p,q$라 할 때, $\\dfrac{pq}{f(12)}$의 값을 구하시오.",
+  "condition": "[조건] $a_1=7$; $2$ 이상의 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}a_k=\\frac23a_n+\\frac16n^2-\\frac16n+10$이다.\\\\[과정] $2$ 이상의 자연수 $n$에 대하여 $a_{n+1}=\\displaystyle\\sum_{k=1}^{n+1}a_k-\\sum_{k=1}^{n}a_k$이므로 $a_{n+1}=\\dfrac23(a_{n+1}-a_n)+$ (가) 이고, 이 식을 정리하면 $2a_n+a_{n+1}=3\\times$ (가) $\\cdots$㉠ 이다. $\\displaystyle\\sum_{k=1}^{n}a_k=\\frac23a_n+\\frac16n^2-\\frac16n+10$ $(n\\ge2)$에서 양변에 $n=2$를 대입하면 $a_2=$ (나) $\\cdots$㉡ 이다. ㉠과 ㉡에 의하여 $\\displaystyle\\sum_{k=1}^{12}a_k+\\sum_{k=1}^{5}a_{2k+1}=a_1+a_2+\\sum_{k=1}^{5}(2a_{2k+1}+a_{2k+2})=$ (다) 이다.",
+  "choices": null,
+  "answer": "130",
+  "answer_value": "130",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅰ-16",
+   "primary_name": "여러 가지 수열의 합",
+   "links": [
+    "수학Ⅰ-17"
+   ]
+  },
+  "first_judgment": "$S_{n+1}-S_n$으로 $a_{n+1}$과 $a_n$의 관계식을 얻고, 구하는 합을 $2a_{2k+1}+a_{2k+2}$ 묶음으로 재배열한다.",
+  "behavior": "이해",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S10"
+  ],
+  "solution_ref": "(가) $\\frac13n$ → $2a_n+a_{n+1}=n$. $n=2$: $a_1+\\frac13a_2=\\frac{31}3$ → $a_2=10$ (나). $\\sum=a_1+a_2+\\sum_{k=1}^5(2k+1)=7+10+35=52$ (다). $\\frac{pq}{f(12)}=\\frac{10\\cdot52}{4}=130$",
+  "legacy": {
+   "category": "a_n과 S_n 사이의 관계식이 주어진 수열",
+   "book_no": 81,
+   "question_page": 41,
+   "solution_page": 84
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ }
+]
