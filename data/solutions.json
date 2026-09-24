@@ -4945,7 +4945,7 @@
    "answer": "3",
    "answer_value": "\\frac{14\\sqrt3}9",
    "figure": {
-    "description": "$y=\tan\frac xk$의 두 가지와 직선 $y=p$(P, A, B), $y=-p$(C); 삼각형 OCB 색칠",
+    "description": "$y=\\tan\\frac xk$의 두 가지와 직선 $y=p$(P, A, B), $y=-p$(C); 삼각형 OCB 색칠",
     "source_page": 14
    },
    "theme": {
@@ -5041,7 +5041,7 @@
    "answer": "3",
    "answer_value": "\\frac{4\\sqrt3}3",
    "figure": {
-    "description": "$y=\tan\frac{\\pi x}a$ 그래프 위 원점을 지나는 직선 위의 A(제3사분면), B(제1사분면); A에서 수평선이 다음 가지와 만나는 점 C; 정삼각형 ABC",
+    "description": "$y=\\tan\\frac{\\pi x}a$ 그래프 위 원점을 지나는 직선 위의 A(제3사분면), B(제1사분면); A에서 수평선이 다음 가지와 만나는 점 C; 정삼각형 ABC",
     "source_page": 15
    },
    "theme": {
@@ -5787,7 +5787,7 @@
    "answer": "3",
    "answer_value": "\\frac83",
    "figure": {
-    "description": "삼각형 ABC와 AC 위의 D, BC 위의 E; $\u0007ngle$BAC$=\u0007ngle$BDA$=\u0007ngle$BED 표시",
+    "description": "삼각형 ABC와 AC 위의 D, BC 위의 E; $\\angle$BAC$=\\angle$BDA$=\\angle$BED 표시",
     "source_page": 19
    },
    "theme": {
@@ -5883,7 +5883,7 @@
    "answer": "2",
    "answer_value": "\\frac{56}9",
    "figure": {
-    "description": "두 원 $C_1$, $C_2$(중심 $\\mathrm O_1$, $\\mathrm O_2$)와 점 A, B, C, D, 각 $\theta_1,\theta_2,\theta_3$",
+    "description": "두 원 $C_1$, $C_2$(중심 $\\mathrm O_1$, $\\mathrm O_2$)와 점 A, B, C, D, 각 $\\theta_1,\\theta_2,\\theta_3$",
     "source_page": 20
    },
    "theme": {
@@ -6058,7 +6058,7 @@
    "answer": "1",
    "answer_value": "\\frac{5\\sqrt2}2",
    "figure": {
-    "description": "원에 내접하는 사각형 ABCD, 대각선 AC, $\u0007ngle$BAC$=\u0007ngle$CAD 표시",
+    "description": "원에 내접하는 사각형 ABCD, 대각선 AC, $\\angle$BAC$=\\angle$CAD 표시",
     "source_page": 21
    },
    "theme": {
@@ -6325,7 +6325,7 @@
    "answer": "5",
    "answer_value": "20\\sqrt2",
    "figure": {
-    "description": "지름 AB인 반원, 호 위의 C, D, 중심 O, AD와 CO의 교점 E, $\u0007ngle$CEA$=\frac34\\pi$",
+    "description": "지름 AB인 반원, 호 위의 C, D, 중심 O, AD와 CO의 교점 E, $\\angle$CEA$=\\frac34\\pi$",
     "source_page": 22
    },
    "theme": {
@@ -6516,7 +6516,7 @@
    "answer": "2",
    "answer_value": "10",
    "figure": {
-    "description": "원에 내접하는 삼각형 ABC($\u0007ngle$A$=\frac\\pi3$)와 호 BC 위의 점 D",
+    "description": "원에 내접하는 삼각형 ABC($\\angle$A$=\\frac\\pi3$)와 호 BC 위의 점 D",
     "source_page": 23
    },
    "theme": {
@@ -6685,7 +6685,7 @@
    "answer": "1",
    "answer_value": "\\frac{54}{25}",
    "figure": {
-    "description": "사각형 ABCD와 삼각형 ACD의 외접원, $\u0007ngle$BAC$=\frac\\pi3$",
+    "description": "사각형 ABCD와 삼각형 ACD의 외접원, $\\angle$BAC$=\\frac\\pi3$",
     "source_page": 24
    },
    "theme": {
@@ -8836,11 +8836,11 @@
         "body": "· $|a_3|$ 홀수: $a_4=a_3-3$ (짝수) → $a_5=\\frac{a_3-3}2$. $|a_3|=\\left|\\frac{a_3-3}2\\right|$ → $a_3=1$ 또는 $-3$.\n· $a_3$이 $0$ 또는 짝수: $a_4=\\frac{a_3}2$.\n　├ $a_4$ 홀수: $a_5=\\frac{a_3}2-3$, $|a_3|=\\left|\\frac{a_3}2-3\\right|$ → $a_3=-6$ ($a_4=-3$) 또는 $a_3=2$ ($a_4=1$)\n　└ $a_4$가 $0$ 또는 짝수: $a_5=\\frac{a_3}4$, $|a_3|=\\frac{|a_3|}4$ → $a_3=0$"
        },
        {
-        "label": "$|a_2|\ne|a_4|$로 거르며 $a_2$",
+        "label": "$|a_2|\\ne|a_4|$로 거르며 $a_2$",
         "body": "$$\\begin{array}{c|c|c|c}a_3&a_4&a_2\\text{ 후보 }(2a_3,\\ a_3+3)&|a_2|\\ne|a_4|\\\\\\hline1&-2&2\\ (4\\text{는 짝수라 }✗)&|2|=|{-2}|\\ ✗\\\\-3&-6&-6\\ (0\\text{은 홀수 아님 }✗)&✗\\\\0&0&0,\\ 3&3\\\\2&1&4,\\ 5&4,\\ 5\\\\-6&-3&-12,\\ -3&-12\\end{array}$$"
        },
        {
-        "label": "$|a_1|\ne|a_3|$로 거르며 $a_1$",
+        "label": "$|a_1|\\ne|a_3|$로 거르며 $a_1$",
         "body": "$a_2=3$ → $a_1=6$ ($3$은 홀수라 '$y+3$' 역상은 불가, '$2y$' 역상만) ✓ ($|6|\\ne0$)\n$a_2=4$ → $a_1=8$ 또는 $7$ ✓\n$a_2=5$ → $a_1=10$ ($5$가 홀수라 $2y$만) ✓\n$a_2=-12$ → $a_1=-24$ 또는 $-9$ ✓ ($|a_1|\\ne6$)"
        },
        {
@@ -11664,7 +11664,7 @@
         "body": "$-\\frac32<k<0$ → $k=-1$."
        },
        {
-        "label": "$c=\frac43a$",
+        "label": "$c=\\frac43a$",
         "body": "이 극점에서 생기는 정수 $k$들의 집합을 $T$라 하면 $T$는 연속한 정수 $1$개 또는 $2$개이고, 전체 곱이 $-12$이므로 $T$에서 $-1$을 뺀 원소들의 곱이 $12$.\n연속 정수로 곱 $12$: $\\{12\\}$, $\\{3,4\\}$, $\\{-4,-3\\}$.\n· $\\{3,4\\}$: $\\frac43a>4$, $\\frac43a-\\frac32<3$ → $3<a<\\frac{27}8$, 정수 없음.\n· $\\{12\\}$만: $\\frac43a\\in\\left[\\frac{25}2,13\\right]$ → $a\\in\\left[\\frac{75}8,\\frac{39}4\\right]$, 정수 없음.\n· $\\{-4,-3\\}$: $\\frac43a>-3$, $\\frac43a-\\frac32<-4$ → $-\\frac94<a<-\\frac{15}8$ → $a=-2$ ✓ ($\\frac43a=-\\frac83$, 구간 $(-\\frac{25}6,-\\frac83)$에 정수 $-4,-3$)."
        },
        {
@@ -12824,7 +12824,7 @@
       "title": "풀이",
       "steps": [
        {
-        "label": "가장 작은 근 $\rho$에서는 항상 불연속",
+        "label": "가장 작은 근 $\\rho$에서는 항상 불연속",
         "body": "$f$의 가장 작은 근 $\\rho$ ($<3$) 근처:\n· $t<\\rho$: $f(t)<0$이라 $2f(t)<f(t)$, $f$는 $(-\\infty,t]$에서 증가 → 왼쪽 근 $1$개, 오른쪽은 $f$의 근 전부.\n· $t=\\rho$: 왼쪽 $f(x)=0$ ($x<\\rho$) 없음.\n· $t>\\rho$ (가까이): $f(t)>0$이라 $2f(t)>f(t)=\\max_{x\\le t}f$ → 왼쪽 $0$개, 오른쪽에서 $\\rho$가 빠짐.\n개수가 $1$씩 줄어들므로 $t=\\rho$는 반드시 불연속점."
        },
        {
@@ -14749,7 +14749,7 @@
    "answer": "4",
    "answer_value": "\\frac83",
    "figure": {
-    "description": "포물선 $y=3x^2-7x+2$와 직선 $y=\frac13x-\frac23$, $y$축, $x=k$; 영역 A(왼쪽 작은 부분), B(아래 큰 부분), C(오른쪽) 색칠",
+    "description": "포물선 $y=3x^2-7x+2$와 직선 $y=\\frac13x-\\frac23$, $y$축, $x=k$; 영역 A(왼쪽 작은 부분), B(아래 큰 부분), C(오른쪽) 색칠",
     "source_page": 31
    },
    "theme": {
@@ -14916,7 +14916,7 @@
    "answer": "3",
    "answer_value": "-\\frac43",
    "figure": {
-    "description": "곡선 $y=\frac14x^3+\frac12x$와 직선 $y=mx+2$, $y$축, $x=2$; 영역 A(왼쪽), B(오른쪽) 색칠",
+    "description": "곡선 $y=\\frac14x^3+\\frac12x$와 직선 $y=mx+2$, $y$축, $x=2$; 영역 A(왼쪽), B(오른쪽) 색칠",
     "source_page": 32
    },
    "theme": {
@@ -16523,7 +16523,7 @@
       "title": "풀이 · $f(1)=1$ 여부로 나누고 치역별로 전사 세기",
       "steps": [
        {
-        "label": "$f(1)\ne1$: 치역 $=\\{2,3,4\\}$",
+        "label": "$f(1)\\ne1$: 치역 $=\\{2,3,4\\}$",
         "body": "모든 값이 $\\{2,3,4\\}$ 안이고 치역이 $3$개이므로 치역은 $\\{2,3,4\\}$ 전체다. $f(5)=3$일 때 $f(1),\\dots,f(4)\\in\\{2,3,4\\}$가 $2$와 $4$를 모두 써야 한다:\\n$$3^4-\\underbrace{2^4}_{2\\text{ 없음}}-\\underbrace{2^4}_{4\\text{ 없음}}+\\underbrace{1}_{\\text{모두 }3}=81-32+1=50$$\\n$f(5)=4$일 때도 $3\\leftrightarrow4$ 대칭으로 $50$. → $100$."
        },
        {
@@ -19495,7 +19495,7 @@
    "answer": "31",
    "answer_value": "31",
    "figure": {
-    "description": "$y=f(x)$: 원점에서 $(3,\frac14)$까지 증가, $(5,\frac14)$까지 수평, $(6,0)$까지 감소",
+    "description": "$y=f(x)$: 원점에서 $(3,\\frac14)$까지 증가, $(5,\\frac14)$까지 수평, $(6,0)$까지 감소",
     "source_page": 21
    },
    "theme": {

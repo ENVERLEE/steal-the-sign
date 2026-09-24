@@ -3071,7 +3071,7 @@
   "answer": "4",
   "answer_value": "\\frac83",
   "figure": {
-   "description": "포물선 $y=3x^2-7x+2$와 직선 $y=\frac13x-\frac23$, $y$축, $x=k$; 영역 A(왼쪽 작은 부분), B(아래 큰 부분), C(오른쪽) 색칠",
+   "description": "포물선 $y=3x^2-7x+2$와 직선 $y=\\frac13x-\\frac23$, $y$축, $x=k$; 영역 A(왼쪽 작은 부분), B(아래 큰 부분), C(오른쪽) 색칠",
    "source_page": 31
   },
   "theme": {
@@ -3176,7 +3176,7 @@
   "answer": "3",
   "answer_value": "-\\frac43",
   "figure": {
-   "description": "곡선 $y=\frac14x^3+\frac12x$와 직선 $y=mx+2$, $y$축, $x=2$; 영역 A(왼쪽), B(오른쪽) 색칠",
+   "description": "곡선 $y=\\frac14x^3+\\frac12x$와 직선 $y=mx+2$, $y$축, $x=2$; 영역 A(왼쪽), B(오른쪽) 색칠",
    "source_page": 32
   },
   "theme": {

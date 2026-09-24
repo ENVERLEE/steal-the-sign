@@ -1,0 +1,103 @@
+{
+  "id": "C-M1-01-002",
+  "theme": "M1-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-250614",
+    "variation": "수치 변형",
+    "note": "진수 조건 여러 개의 교집합 → 밑 조건까지 포함한 정의역"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-05-C1"
+    ],
+    "strategy_ids": [
+      "S03"
+    ],
+    "first_judgment": "밑 조건(양수, 1 아님)과 진수 조건(양수)을 모두 $x$의 범위로 바꾼 뒤 교집합의 정수를 센다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "$\\log_{x-1}\\left(-x^2+6x+7\\right)$의 값이 존재하도록 하는 모든 정수 $x$의 개수는?",
+  "condition": null,
+  "choices": [
+    "$3$",
+    "$4$",
+    "$5$",
+    "$6$",
+    "$7$"
+  ],
+  "choice_values": [
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+  ],
+  "answer": "2",
+  "answer_value": "4",
+  "distractors": [
+    {
+      "choice": 1,
+      "error_path": "진수를 $-(x-6)(x+1)$로 잘못 인수분해해 $-1<x<6$으로 잡으면 $3,4,5$만 남는다."
+    },
+    {
+      "choice": 3,
+      "error_path": "밑이 $1$이 아니어야 한다는 조건($x\\ne2$)을 빠뜨리면 $2$까지 세어 $5$개."
+    },
+    {
+      "choice": 4,
+      "error_path": "밑이 양수라는 조건을 빠뜨리고 $x\\ne2$만 확인하면 $0,1,3,4,5,6$의 $6$개."
+    },
+    {
+      "choice": 5,
+      "error_path": "밑 조건을 전혀 보지 않고 진수 조건만 쓰면 $0$부터 $6$까지 $7$개."
+    }
+  ],
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-05-C1"
+    ],
+    "guide": "로그가 정의되려면 밑은 양수이면서 $1$이 아니고, 진수는 양수여야 한다. 조건 셋을 각각 $x$의 범위로 바꿔 교집합을 센다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 조건을 범위로 바꿔 교집합",
+        "steps": [
+          {
+            "label": "밑",
+            "body": "$x>1$, $x\\ne2$"
+          },
+          {
+            "label": "진수",
+            "body": "$-(x-7)(x+1)>0$ → $-1<x<7$"
+          },
+          {
+            "label": "교집합",
+            "body": "$x=3,4,5,6$ → $4$개 ②"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정수를 하나씩 대입 (비교용)",
+        "steps": [
+          {
+            "label": "진수 범위",
+            "body": "진수가 양수인 정수는 $-x^2+6x+7>0$에서 $x=0,1,2,3,4,5,6$이다."
+          },
+          {
+            "label": "밑 확인",
+            "body": "각각 밑 $x-1$을 확인하면 $x=0$일 때 $-1$(음수), $x=1$일 때 $0$, $x=2$일 때 $1$이므로 모두 제외되고, $x=3,4,5,6$일 때 밑은 $2,3,4,5$로 조건을 만족한다."
+          },
+          {
+            "label": "개수",
+            "body": "따라서 $4$개 ②"
+          }
+        ]
+      }
+    ],
+    "supplement": "밑 조건은 '양수'와 '1이 아님' 두 개다. 둘 중 하나만 쓰면 ③ 또는 ④가 나온다. 진수 조건은 인수분해 부호를 한 번 더 확인한다.",
+    "skill_point": "로그 정의 조건은 세 개: 밑 $>0$, 밑 $\\ne1$, 진수 $>0$ — 각각 범위로 바꿔 교집합."
+  },
+  "verify": "def ok(x):\n    b = x - 1\n    a = -x*x + 6*x + 7\n    return b > 0 and b != 1 and a > 0\n\ndef skill():\n    return len([x for x in range(-1, 8) if x > 1 and x != 2 and -1 < x < 7])\n\ndef standard():\n    return len([x for x in range(-100, 101) if ok(x)])\n\ndef unique():\n    return [standard()]\n"
+}

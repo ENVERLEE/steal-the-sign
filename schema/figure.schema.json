@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "figure.schema.json",
+  "title": "그림 명세 (render_figs가 SVG로 그린다)",
+  "description": "수식 문자열은 sympy 문법(x**2, sqrt(3), log(x, 2), exp(x), sin(pi*x), Abs(x), Piecewise((x, x<0), (x**2, True))). 숫자 자리에도 식 문자열을 쓸 수 있다.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fn": {"type": "string", "description": "단축형: fns 하나"},
+    "domain": {"$ref": "#/$defs/range"},
+    "fns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["expr"],
+        "properties": {
+          "expr": {"type": "string"},
+          "domain": {"$ref": "#/$defs/range"},
+          "label": {"type": "string"},
+          "label_at": {"$ref": "#/$defs/num", "description": "라벨을 붙일 x"},
+          "style": {"$ref": "#/$defs/style"},
+          "open_ends": {"type": "array", "items": {"enum": ["left", "right"]}}
+        }
+      }
+    },
+    "param": {
+      "type": "array",
+      "description": "매개변수 곡선 (원·타원 등)",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x", "y", "t"],
+        "properties": {
+          "x": {"type": "string"}, "y": {"type": "string"}, "t": {"$ref": "#/$defs/range"},
+          "style": {"$ref": "#/$defs/style"}, "label": {"type": "string"}
+        }
+      }
+    },
+    "x": {"$ref": "#/$defs/range", "description": "보이는 x 범위"},
+    "y": {"$ref": "#/$defs/range", "description": "보이는 y 범위"},
+    "axes": {"type": "boolean", "default": true},
+    "origin": {"type": "boolean", "default": true, "description": "원점 O 표시"},
+    "equal": {"type": "boolean", "default": false, "description": "x·y 축척을 같게 (도형 문제)"},
+    "hlines": {"type": "array", "items": {"$ref": "#/$defs/hline"}},
+    "vlines": {"type": "array", "items": {"$ref": "#/$defs/vline"}},
+    "points": {"type": "array", "items": {"$ref": "#/$defs/point"}},
+    "segments": {"type": "array", "items": {"$ref": "#/$defs/segment"}},
+    "polygons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pts"],
+        "properties": {
+          "pts": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/xy"}},
+          "style": {"$ref": "#/$defs/style"}
+        }
+      }
+    },
+    "circles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["c", "r"],
+        "properties": {"c": {"$ref": "#/$defs/xy"}, "r": {"$ref": "#/$defs/num"}, "style": {"$ref": "#/$defs/style"}}
+      }
+    },
+    "shade": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["upper", "from", "to"],
+        "properties": {
+          "upper": {"type": "string"}, "lower": {"type": "string", "default": "0"},
+          "from": {"$ref": "#/$defs/num"}, "to": {"$ref": "#/$defs/num"},
+          "label": {"type": "string"}, "style": {"enum": ["red", "gray"]}
+        }
+      }
+    },
+    "ticks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "x": {"type": "array", "items": {"$ref": "#/$defs/tick"}},
+        "y": {"type": "array", "items": {"$ref": "#/$defs/tick"}}
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["at", "text"],
+        "properties": {"at": {"$ref": "#/$defs/xy"}, "text": {"type": "string"}, "style": {"$ref": "#/$defs/style"}}
+      }
+    },
+    "caption": {"type": "string", "description": "CONCEPT·STRATEGY 그림 아래 한 줄"},
+    "size": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2}
+  },
+  "$defs": {
+    "num": {"type": ["number", "string"]},
+    "range": {"type": "array", "items": {"$ref": "#/$defs/num"}, "minItems": 2, "maxItems": 2},
+    "xy": {"type": "array", "items": {"$ref": "#/$defs/num"}, "minItems": 2, "maxItems": 2},
+    "style": {"enum": ["main", "sub", "dash", "red", "red-dash", "fill", "red-fill", "open", "dot"]},
+    "tick": {
+      "type": "object", "additionalProperties": false, "required": ["at"],
+      "properties": {"at": {"$ref": "#/$defs/num"}, "label": {"type": "string"}}
+    },
+    "hline": {
+      "type": "object", "additionalProperties": false, "required": ["y"],
+      "properties": {"y": {"$ref": "#/$defs/num"}, "label": {"type": "string"}, "style": {"$ref": "#/$defs/style"}}
+    },
+    "vline": {
+      "type": "object", "additionalProperties": false, "required": ["x"],
+      "properties": {"x": {"$ref": "#/$defs/num"}, "label": {"type": "string"}, "style": {"$ref": "#/$defs/style"}}
+    },
+    "point": {
+      "type": "object", "additionalProperties": false, "required": ["x", "y"],
+      "properties": {
+        "x": {"$ref": "#/$defs/num"}, "y": {"$ref": "#/$defs/num"},
+        "label": {"type": "string"}, "style": {"$ref": "#/$defs/style"},
+        "pos": {"enum": ["ne", "nw", "se", "sw", "n", "s", "e", "w"]},
+        "guides": {"type": "boolean", "description": "축까지 점선"}
+      }
+    },
+    "segment": {
+      "type": "object", "additionalProperties": false, "required": ["from", "to"],
+      "properties": {
+        "from": {"$ref": "#/$defs/xy"}, "to": {"$ref": "#/$defs/xy"},
+        "style": {"$ref": "#/$defs/style"}, "label": {"type": "string"}
+      }
+    }
+  }
+}

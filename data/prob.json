@@ -1870,7 +1870,7 @@
   "answer": "31",
   "answer_value": "31",
   "figure": {
-   "description": "$y=f(x)$: 원점에서 $(3,\frac14)$까지 증가, $(5,\frac14)$까지 수평, $(6,0)$까지 감소",
+   "description": "$y=f(x)$: 원점에서 $(3,\\frac14)$까지 증가, $(5,\\frac14)$까지 수평, $(6,0)$까지 감소",
    "source_page": 21
   },
   "theme": {

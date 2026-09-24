@@ -53,12 +53,11 @@
     "variations": ["수치 변형", "조건 변형", "역방향", "일반화", "결합"],
     "original_per_theme_max": 1,
     "batch_max": 4,
-    "pending_max_per_theme": 4,
     "skill_length_ratio_max": 0.7,
     "require_distractor_paths": true,
     "near_copy_warn": 0.9,
-    "statuses": ["draft", "verified", "approved", "rejected"],
-    "usable_status": "approved",
+    "statuses": ["draft", "verified"],
+    "usable_status": "verified",
     "verify_timeout_sec": 30
   },
 
@@ -83,7 +82,6 @@
     "template": "data/STS_template.html",
     "book": "work/book.json",
     "created": "work/created",
-    "review": "out/review.md",
     "out": "out",
     "katex": "vendor/katex"
   }
