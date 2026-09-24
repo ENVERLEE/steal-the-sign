@@ -33,11 +33,11 @@
     "outside_candidates": "warn"
   },
 
-  "ratio": {
-    "scope": "book",
+  "composition": {
+    "past_min_per_theme": 5,
+    "created_max_share_per_theme": 0.5,
     "count_by": "appearance",
-    "past": 0.7,
-    "tolerance": 0.05
+    "report_ratio": true
   },
 
   "points": {
@@ -45,9 +45,21 @@
     "created": 3
   },
 
-  "created_rules": {
+  "created": {
+    "dir": "work/created",
+    "id_format": "C-{theme}-{nnn}",
     "choices": 5,
-    "short_answer_max": 999
+    "short_answer_max": 999,
+    "variations": ["수치 변형", "조건 변형", "역방향", "일반화", "결합"],
+    "original_per_theme_max": 1,
+    "batch_max": 4,
+    "pending_max_per_theme": 4,
+    "skill_length_ratio_max": 0.7,
+    "require_distractor_paths": true,
+    "near_copy_warn": 0.9,
+    "statuses": ["draft", "verified", "approved", "rejected"],
+    "usable_status": "approved",
+    "verify_timeout_sec": 30
   },
 
   "difficulty_labels": ["기본 적용", "조건 변형", "복합 사고", "고난도"],
@@ -70,6 +82,8 @@
     "strategy_notes": "data/strategy_notes.json",
     "template": "data/STS_template.html",
     "book": "work/book.json",
+    "created": "work/created",
+    "review": "out/review.md",
     "out": "out",
     "katex": "vendor/katex"
   }
