@@ -45,3 +45,8 @@
 
 ## 재생성
 `python3 tools/build.py data` — `tools/records/*.py`(문항별 원본 기록) + `tools/sources_*.txt`(출처표) + `tools/skeleton.json`(PDF 페이지·소단원)을 합쳐 JSON을 만들고, 선택지 수·정답 번호·분류 허용값·strategy id를 검증한다.
+
+## 자습용 풀이집 (`solutions/`, `data/solutions_all.json`)
+- `solutions/{m1|m2|prob}/{테마}.json`: 테마별 개념정리(`overview`, `core_concepts`, `decision_flow`)와 그 테마 문항의 풀이(`guide`, `solutions`, `supplement`, `skill_point`). 작성 규격은 `solutions/SPEC.md`.
+- `data/solutions_all.json`: `{"themes": [54개 테마 개념정리], "problems": [208문항 + study_solution]}` 합본.
+- 검증: `python3 tools/check_solutions.py` — 누락·중복, DB 정답 일치, 필수 필드, `$` 짝을 검사하고 합본을 다시 만든다. 현재 208/208, 오류 0, 개념 177개, 끊긴 개념 참조 0.
