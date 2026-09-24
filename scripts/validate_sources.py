@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 from collections import Counter, defaultdict
 
+from scripts.check_created import LITERAL_NL_MSG, LITERAL_NL_RE
 from scripts.common import Context, Log, choice_text, read_json, write_json
 
 ID_RE = re.compile(r"^(M1|M2|PS)-(\d{2})(\d{2})(\d{2})$")
@@ -172,6 +173,8 @@ def run(ctx: Context, katex: bool = True) -> Log:
     for owner, text in texts:
         if text and CTRL_RE.search(text):
             log.error(owner, f"제어문자 {sorted({repr(ch) for ch in CTRL_RE.findall(text)})} — JSON 이스케이프로 깨진 LaTeX 명령(\\frac→\\f 등)")
+        if text and LITERAL_NL_RE.search(text):
+            log.error(owner, LITERAL_NL_MSG)
     if katex:
         from scripts.tex import Math, split_math
         m = Math()

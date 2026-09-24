@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 
-from scripts.check_created import banned_hits
+from scripts.check_created import LITERAL_NL_MSG, LITERAL_NL_RE, banned_hits
 from scripts.common import Context, Log, content_hash, has_choices, now, read_json, write_json
 from scripts.mathval import run_verify, same_value
 from scripts.schemas import validate
@@ -86,6 +86,8 @@ def check_problem(rec: dict, book: dict, pages: int | None, ctx: Context) -> tup
     for where, text in all_texts(rec):
         if text.count("$") % 2:
             errs.append(f"{where}: $ 짝이 맞지 않음")
+        if LITERAL_NL_RE.search(text):
+            errs.append(f"{where}: {LITERAL_NL_MSG}")
     for where, text in ai_texts(rec):
         hits = banned_hits(text, ctx.config)
         if hits:

@@ -225,6 +225,20 @@ class TestTextbook(unittest.TestCase):
         self.assertIn("M1-999999", by["T-SMP-002"])
         self.assertIn("과목", by["T-SMP-003"])
 
+    def test_literal_newline_detected(self):
+        # 줄바꿈을 두 번 이스케이프하면 교재에 '\n'이 글자 그대로 찍힌다. LaTeX \ne는 허용
+        f = self.sb.source / "SMP.json"
+        data = read_json(f)
+        data["problems"][0]["solution"]["guide"] = "첫 줄\\n둘째 줄, $a\\ne0$"
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx())
+        msgs = [e["msg"] for e in log.errors if e["where"] == "T-SMP-001"]
+        self.assertTrue(any("\\n" in m and "solution/guide" in m for m in msgs), msgs)
+        data["problems"][0]["solution"]["guide"] = "첫 줄\n둘째 줄, $a\\ne0$"
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx(), recheck=True)
+        self.assertEqual([e for e in log.errors if e["where"] == "T-SMP-001"], [])
+
     def test_curate_plan(self):
         ctx = self.sb.ctx()
         check_created.run(ctx)
@@ -296,6 +310,17 @@ class TestBuild(unittest.TestCase):
         self.assertTrue(svg.startswith("<svg"))
         with self.assertRaises(Exception):
             render_figs.render_svg({"fn": "x^^", "domain": [0, 1]})
+
+    def test_figure_clip_ids_unique(self):
+        # 한 HTML에 여러 그림이 들어가므로 clipPath id가 겹치면 뒤 그림의 곡선이 잘린다
+        import re
+        a = render_figs.render_svg({"fn": "x^2", "domain": [-2, 2]})
+        b = render_figs.render_svg({"fn": "x^3", "domain": [-1, 3], "size": [600, 170]})
+        ids = [re.search(r'<clipPath id="([^"]+)"', s).group(1) for s in (a, b)]
+        self.assertNotEqual(ids[0], ids[1])
+        for s, cid in zip((a, b), ids):
+            self.assertNotIn("url(#CLIP)", s)
+            self.assertIn(f"url(#{cid})", s)
 
 
 if __name__ == "__main__":

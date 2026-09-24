@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import difflib
+import re
 from collections import Counter, defaultdict
 
 from scripts.common import Context, Log, content_hash, has_choices, now, strip_tex, write_json
@@ -37,6 +38,12 @@ def iter_texts(rec: dict):
         yield f"distractors/{i}", d.get("error_path", "")
     if (rec.get("target") or {}).get("first_judgment"):
         yield "target/first_judgment", rec["target"]["first_judgment"]
+
+
+# 글자 그대로의 \n(백슬래시+n): 줄바꿈을 두 번 이스케이프해서 생긴다. 교재에 '\n'이 그대로 찍힌다.
+# 뒤에 영문자가 오면 LaTeX 명령(\ne, \neq, \nmid, \notin …)이므로 제외
+LITERAL_NL_RE = re.compile(r"\\n(?![A-Za-z])")
+LITERAL_NL_MSG = "글자 그대로의 '\\n' — 줄바꿈은 JSON에서 \\n 한 번(실제 개행)으로 쓴다"
 
 
 def banned_hits(text: str, cfg: dict) -> list[str]:
@@ -139,6 +146,8 @@ def check_record(rec: dict, path, ctx: Context) -> tuple[list[str], list[str]]:
     for where, text in iter_texts(rec):
         if text.count("$") % 2:
             errs.append(f"{where}: $ 짝이 맞지 않음")
+        if LITERAL_NL_RE.search(text):
+            errs.append(f"{where}: {LITERAL_NL_MSG}")
         hits = banned_hits(text, cfg)
         if hits:
             errs.append(f"{where}: 야구 용어 {hits}")
