@@ -1,0 +1,106 @@
+{
+ "theme": "확률과 통계-18",
+ "theme_name": "정규분포와 표준화",
+ "overview": "정규분포 문제의 모든 계산은 표준화 $Z=\\frac{X-m}\\sigma$ 한 번으로 표준정규분포표의 언어로 옮겨진다. 그런데 4점 문제의 핵심은 계산이 아니라 **조건의 번역**이다: '$\\mathrm P(X\\le x)=\\mathrm P(X\\ge c-x)$'는 평균이 $\\frac c2$라는 뜻이고, '$\\mathrm P(Y\\le x)=\\mathrm P(X\\le x+d)$'는 $Y$가 $X$를 평행이동한 분포라는 뜻이다. 또 구간의 길이가 표준화 후 고정되면, 확률은 구간의 중심이 $0$에 가까울수록 크다. 표준화된 구간들이 이어 붙으면 표의 값 하나로 합쳐진다.",
+ "core_concepts": [
+  {
+   "id": "확률과 통계-18-C1",
+   "name": "표준화 후 구간 이어붙이기·대칭",
+   "statement": "$X\\sim\\mathrm N(m,\\sigma^2)$이면 $\\mathrm P(a\\le X\\le b)=\\mathrm P\\!\\left(\\frac{a-m}\\sigma\\le Z\\le\\frac{b-m}\\sigma\\right)$. 또 $\\mathrm P(-\\alpha\\le Z\\le0)=\\mathrm P(0\\le Z\\le\\alpha)$, $\\mathrm P(0\\le Z\\le\\alpha)+\\mathrm P(\\alpha\\le Z\\le\\beta)=\\mathrm P(0\\le Z\\le\\beta)$.",
+   "why": "표준정규분포는 $z=0$ 대칭이고, 인접한 구간의 확률은 더하면 합구간의 확률이다. 두 확률변수의 확률 합이 주어지면 표준화한 구간이 이어지도록 대칭을 써서 옮긴다.",
+   "when": "여러 확률의 합이 표의 값 하나로 주어질 때 — 이어 붙여 한 구간으로 만든다.",
+   "strategy_ids": []
+  },
+  {
+   "id": "확률과 통계-18-C2",
+   "name": "길이 고정 구간은 중심이 0에 가까울수록 크다",
+   "statement": "$h(t)=\\mathrm P(t-L\\le Z\\le t+L)$는 $t=0$에서 최대이고, $t>0$에서 감소, $t<0$에서 증가한다.",
+   "why": "$h'(t)=\\varphi(t+L)-\\varphi(t-L)$이고 $t>0$이면 $|t+L|>|t-L|$이라 $\\varphi(t+L)<\\varphi(t-L)$. 그림으로는 같은 폭의 창을 종 모양의 꼭대기에서 멀리 밀수록 넓이가 줄어든다.",
+   "when": "매개변수에 따라 움직이는 구간의 확률의 최대·최소를 물을 때. 표준화했을 때 구간 길이가 상수가 되는지 먼저 확인한다.",
+   "strategy_ids": []
+  },
+  {
+   "id": "확률과 통계-18-C3",
+   "name": "확률 등식 → 평균·표준편차 번역",
+   "statement": "· 모든 $x$에 대해 $\\mathrm P(X\\le x)=\\mathrm P(X\\ge c-x)$ $\\iff$ $m=\\frac c2$ (분포가 $x=\\frac c2$ 대칭).\n· 모든 $x$에 대해 $\\mathrm P(Y\\le x)=\\mathrm P(X\\le x+d)$ $\\iff$ $Y$와 $X-d$의 분포가 같음 $\\iff$ $m_Y=m_X-d$, $\\sigma_Y=\\sigma_X$.",
+   "why": "첫째는 $x$와 $c-x$가 $\\frac c2$에 대해 대칭인 점이므로 곡선이 $\\frac c2$ 대칭. 둘째는 $\\mathrm P(X-d\\le x)$로 읽으면 누적분포가 같다는 뜻이고, 정규분포는 평균·표준편차로 결정된다.",
+   "when": "'모든 실수 $x$에 대하여 확률이 같다' 꼴의 조건. 대입해서 풀지 말고 모양(대칭·평행이동)으로 읽는다.",
+   "strategy_ids": []
+  }
+ ],
+ "decision_flow": [
+  "'모든 $x$에 대하여' 확률 등식이 있는가? → 대칭축·평행이동으로 번역해 $m,\\sigma$를 확정(C3).",
+  "매개변수가 있는 구간의 확률 최대·최소인가? → 표준화해서 길이가 고정되는지 보고, 중심과 $0$의 거리로 판단(C2).",
+  "확률의 합이 표의 값 하나인가? → 대칭으로 옮겨 이어 붙인다(C1)."
+ ],
+ "solutions": [
+  {
+   "id": "PS-241130",
+   "concept_refs": [
+    "확률과 통계-18-C1",
+    "확률과 통계-18-C2"
+   ],
+   "guide": "조건 $\\mathrm P(X\\le5t)\\ge\\frac12$는 '$5t$가 평균 $1$ 이상', 즉 $t\\ge\\frac15$. 구하는 확률을 표준화하면 $X$의 구간 $[t^2-t+1,\\ t^2+t+1]$이 $Z$의 구간 $[t-1,\\ t+1]$로 바뀐다 — 길이가 $2$로 고정되고 중심이 $t$다. 그러면 중심 $t$가 $0$에 가까울수록 확률이 크므로(C2) $t=\\frac15$에서 최대.",
+   "solutions": [
+    {
+     "title": "풀이 1 · 길이 고정 구간",
+     "steps": [
+      {
+       "label": "$t$의 범위",
+       "body": "$\\mathrm P(X\\le5t)\\ge\\frac12\\iff5t\\ge1\\iff t\\ge\\frac15$ (∵ 평균 이상일 때만 누적확률이 $\\frac12$ 이상)."
+      },
+      {
+       "label": "표준화",
+       "body": "$\\dfrac{t^2-t+1-1}t=t-1$, $\\dfrac{t^2+t+1-1}t=t+1$이므로\n$$\\mathrm P(t^2-t+1\\le X\\le t^2+t+1)=\\mathrm P(t-1\\le Z\\le t+1)$$"
+      },
+      {
+       "label": "최대",
+       "body": "길이 $2$인 구간의 중심이 $t>0$이므로 $t$가 작을수록 확률이 크다(C2). $t\\ge\\frac15$에서 최대는 $t=\\frac15$."
+      },
+      {
+       "label": "값",
+       "body": "$\\mathrm P(-0.8\\le Z\\le1.2)=0.288+0.385=0.673$ (C1). $1000k=673$."
+      }
+     ]
+    }
+   ],
+   "supplement": "표준화 결과가 이렇게 깔끔한 것은 출제 의도다: $t^2-t$와 $t^2+t$가 모두 $t$로 나누어떨어지도록 설계되어 있다. 표준화 전 $X$의 구간만 보면 구간 길이 $2t$와 위치가 동시에 변해 판단이 어렵지만, $Z$로 옮기면 '창의 중심만 움직인다'로 단순해진다. 흔한 실수는 $t\\ge\\frac15$ 조건을 $t\\le\\frac15$로 뒤집는 것 — 누적확률 $\\ge\\frac12$는 오른쪽(평균 이상)이다.",
+   "skill_point": "매개변수 구간은 먼저 표준화 → 길이 고정이면 중심이 $0$에 가장 가까운 곳에서 최대.",
+   "answer": "673"
+  },
+  {
+   "id": "PS-251129",
+   "concept_refs": [
+    "확률과 통계-18-C3",
+    "확률과 통계-18-C1"
+   ],
+   "guide": "두 조건을 모양으로 읽는다(C3). ① $\\mathrm P(X\\le x)=\\mathrm P(X\\ge40-x)$ → $X$는 $20$ 대칭, $m_1=20$. ② $\\mathrm P(Y\\le x)=\\mathrm P(X\\le x+10)=\\mathrm P(X-10\\le x)$ → $Y$는 $X$를 왼쪽으로 $10$ 평행이동: $m_2=10$, $\\sigma_2=\\sigma_1=\\sigma$. 이제 두 확률을 표준화하면 구간이 이어 붙어 표의 값 하나가 된다(C1).",
+   "solutions": [
+    {
+     "title": "풀이 1 · 모양 번역 + 이어붙이기",
+     "steps": [
+      {
+       "label": "모수 확정",
+       "body": "$m_1=20$, $m_2=10$, $\\sigma_1=\\sigma_2=\\sigma$."
+      },
+      {
+       "label": "표준화",
+       "body": "$\\mathrm P(15\\le X\\le20)=\\mathrm P\\!\\left(-\\frac5\\sigma\\le Z\\le0\\right)=\\mathrm P\\!\\left(0\\le Z\\le\\frac5\\sigma\\right)$\n$\\mathrm P(15\\le Y\\le20)=\\mathrm P\\!\\left(\\frac5\\sigma\\le Z\\le\\frac{10}\\sigma\\right)$"
+      },
+      {
+       "label": "이어붙이기",
+       "body": "합 $=\\mathrm P\\!\\left(0\\le Z\\le\\frac{10}\\sigma\\right)=0.4772$ → $\\frac{10}\\sigma=2$, $\\sigma=5$."
+      },
+      {
+       "label": "답",
+       "body": "$m_1+\\sigma_2=20+5=25$."
+      }
+     ]
+    }
+   ],
+   "supplement": "조건 ②를 특정 $x$ 값에 대입해 식을 여러 개 만들려고 하면 오히려 헷갈린다. '모든 $x$에 대해 누적확률이 같다 = 분포가 같다'로 읽으면 $Y\\sim\\mathrm N(m_1-10,\\sigma_1^2)$가 즉시 나온다. 또 두 확률을 따로 표에서 찾으려 하면 $\\sigma$를 모르니 막히는데, 대칭으로 옮겨 이어 붙이면 표의 $0.4772$ 한 값과 바로 대응한다 — 출제자가 준 값이 표의 한 칸이면 '이어 붙여서 한 구간'이 된다는 신호다.",
+   "skill_point": "'모든 $x$' 확률 등식 → 대칭·평행이동. 확률 합이 표의 한 칸 → 구간 이어붙이기.",
+   "answer": "25"
+  }
+ ]
+}
