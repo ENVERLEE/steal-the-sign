@@ -17,9 +17,8 @@
   },
 
   "themes": {
-    "수학Ⅰ": 21,
-    "수학Ⅱ": 21,
-    "확률과 통계": 22
+    "file": "data/themes.json",
+    "count": {"수학Ⅰ": 11, "수학Ⅱ": 10, "확률과 통계": 7}
   },
 
   "theme_plan": {
@@ -59,6 +58,7 @@
 
   "paths": {
     "db": "data/db.json",
+    "themes": "data/themes.json",
     "solutions": "data/solutions.json",
     "strategy_notes": "data/strategy_notes.json",
     "template": "data/STS_template.html",

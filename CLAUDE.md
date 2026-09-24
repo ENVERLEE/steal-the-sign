@@ -16,6 +16,7 @@
 data/
   db.json              통합 기출 DB 208문항 (수학Ⅰ 81·수학Ⅱ 79·확통 48) ← 이미 준비됨
   solutions.json       자습용 풀이 + 테마 개념정리 ← 이미 준비됨
+  themes.json          교재 테마 체계 28개와 기출 배정 ← 확정
   strategy_notes.json  실전 개념 (S01~S26, S12 없음, 수학Ⅰ·Ⅱ만)
   STS_template.html    판면 템플릿 (PAGE/REPEAT/OPTION 마커, [[슬롯]], data-slot 가짜 번호)
   config.json          고난도 번호 목록 등 설정
@@ -60,6 +61,14 @@ vendor/katex/          로컬 KaTeX
 - 그림: 텍스트 설명만 있음. 이미지는 `source_page` 페이지에서 잘라 쓰거나 `render_figs` 명세로 새로 그린다.
 - `reasoning` 허용값(11): 조건의 식 번역, 경우 나누기, 그래프·도형 해석, 대칭성·주기성 활용, 단순화·특수화로 규칙성 찾기, 나열·역추적, 치환·보조함수 도입, 미지수 소거·연립, 정수 조건으로 후보 좁히기, 여사건·전체에서 빼기, 대응·모델링.
 
+## themes.json — 교재 테마 체계 (확정)
+- 원칙: 교과서 소단원이 아니라 **평가원이 요구하는 첫 판단**이 같은 문항끼리 묶는다. 첫 판단이 다르면 같은 단원이라도 나눈다.
+- 28개 테마 = 수학Ⅰ 11(`M1-01`~`11`) · 수학Ⅱ 10(`M2-01`~`10`) · 확통 7(`PS-01`~`07`). 테마당 기출 5~10문항, 208문항이 정확히 한 테마에 한 번씩 배정됨.
+- 필드: `id`, `subject`, `name`, `kice_intent`(평가원 의도), `signals`(문제에서 보이는 신호), `old_themes`(기존 64분류 id), `strategy_ids`, `problem_ids`, `stats`.
+- **교재의 테마는 themes.json 기준.** db.json·solutions.json의 `theme.primary`(`수학Ⅰ-01` 등)는 기존 64분류로, 개념정리·개념 id 출처로만 쓴다.
+- 테마 도입부 개념정리는 `old_themes`에 속한 solutions.json 테마들의 `overview`·`core_concepts`·`decision_flow`를 합쳐 만든다. 개념 id(`{기존테마}-C{n}`)는 그대로 쓴다.
+- 창작은 테마당 기출 수에 맞춰 3문항 안팎(기출 5 → 창작 3~4, 기출 10 → 창작 3). 전체 약 208 + 85 ≈ 290문항, 56~84 DAY.
+
 ## solutions.json 스키마 (확정)
 - `themes[]`: `theme`, `theme_name`, `overview`, `core_concepts[{id, name, statement, why, when, strategy_ids, example?}]`, `decision_flow[]`, `problem_ids[]`. 54개 테마, 실전개념 177개. 개념 id = `{테마id}-C{n}` (예: `수학Ⅱ-08-C2`).
 - `problems[]`: db 레코드 + `study_solution{concept_refs, guide, solutions[{title, steps[{label, body}]}], supplement, skill_point, answer}`.
@@ -77,7 +86,7 @@ render_figs → build → check_layout → report
 ## 스크립트
 | 파일 | 역할 |
 |---|---|
-| validate_sources.py | 중복 id, 수학Ⅰ·Ⅱ 같은 code 충돌, 월 코드(06·09·11 외), 번호 범위(공통 1~22, 확통 23~30) 밖, strategy_notes `db_code_candidate`와 충돌, solutions.json 누락·정답 불일치·끊긴 `concept_refs` → `excluded.json` |
+| validate_sources.py | 중복 id, 수학Ⅰ·Ⅱ 같은 code 충돌, 월 코드(06·09·11 외), 번호 범위(공통 1~22, 확통 23~30) 밖, strategy_notes `db_code_candidate`와 충돌, solutions.json 누락·정답 불일치·끊긴 `concept_refs`, themes.json 미배정·중복 배정 → `excluded.json` |
 | check_book.py | book.json 규칙 검사(아래) |
 | verify_answers.py | 문항별 `verify` 코드(SymPy 등) 실행 → 정답·숏컷·정석 답 일치 확인 |
 | render_figs.py | 그림 명세 JSON → SVG (실제 함수로 그림) |
@@ -93,7 +102,7 @@ render_figs → build → check_layout → report
 - 테마마다 2~3 DAY 할애, 테마당 총 8~13문항(예제 포함, 기출+창작) / 기출:창작은 책 전체 기준 ≈ 7:3
 - 창작: [3점], 객관식 5지선다, 단답형은 3자리 이하 자연수
 - 기출: [4점], 22~27학년도
-- 테마 id가 64개 고정 목록 안 (`수학Ⅰ-01`~`21`, `수학Ⅱ-01`~`21`, `확률과 통계-01`~`22`)
+- 테마 id가 themes.json의 28개 안, 기출은 themes.json에서 그 테마에 배정된 문항만
 - strategy id가 strategy_notes.json에 존재, 개념 참조(`{테마}-C{n}`)가 solutions.json에 존재
 - 야구 용어 금지어 검사(코너 이름 제외): 초구, 타석, 구종, 안타, 삼진, 덕아웃, 배터리, 스트라이크 등
 - 행동 영역(계산/이해/추론/문제해결) 분포 집계
@@ -101,7 +110,7 @@ render_figs → build → check_layout → report
 ## 해설 규칙
 - **기출 해설**: solutions.json의 `study_solution`을 사용. 208문항 모두 작성·검산 완료.
   - 풀이 1이 스킬(숏컷) 풀이, 풀이 2가 있으면 정석 비교 풀이다.
-  - 테마 도입부에는 해당 테마의 `overview`·`core_concepts`·`decision_flow`를 싣는다.
+  - 테마 도입부에는 themes.json `old_themes`에 해당하는 solutions.json 테마의 `overview`·`core_concepts`·`decision_flow`를 합쳐 싣고, `kice_intent`·`signals`를 출제 구조(STRATEGY)에 쓴다.
 - **PDF 원문 해설은 교재에 싣지 않는다** (출판사 해설, 저작권). `solution_ref`는 참고·검산용.
 - 새로 쓰는 해설은 `solutions/SPEC.md` 규격과 `pilot/pilot_v2.json` 수준을 따른다: 단순 계산 대신 스킬, 모든 단계에 근거, 개념 번호 참조.
 - 고난도 번호(수학Ⅰ·Ⅱ: 14, 15, 21, 22 / 확통: 28, 30, `config.json`에서 수정)는 해설 분량·강조를 우선 배정한다.
