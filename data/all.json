@@ -2657,9 +2657,7 @@
   "check": {
    "answer_match": null,
    "excluded": false,
-   "needs_review": [
-    "원문 해설의 a_20+a_21+a_22 계산은 25+27+28=80으로 표기됨(정답 85는 p+q+r=1+4+80)"
-   ]
+   "needs_review": []
   }
  },
  {
@@ -3774,9 +3772,7 @@
   "check": {
    "answer_match": null,
    "excluded": false,
-   "needs_review": [
-    "해설 중간 표(a_{4n+1}~a_{4n+4})는 요약함"
-   ]
+   "needs_review": []
   }
  },
  {
