@@ -22,12 +22,16 @@
     "확률과 통계": 22
   },
 
-  "day": {
-    "past": 5,
-    "created": [2, 3],
-    "total": [8, 13],
-    "past_ratio": 0.7,
-    "past_ratio_tolerance": 0.05
+  "theme_plan": {
+    "days": [2, 3],
+    "problems": [8, 13],
+    "count_example": true
+  },
+
+  "ratio": {
+    "scope": "book",
+    "past": 0.7,
+    "tolerance": 0.05
   },
 
   "points": {
