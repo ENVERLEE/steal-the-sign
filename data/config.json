@@ -1,0 +1,65 @@
+{
+  "hard_numbers": {
+    "수학Ⅰ": [14, 15, 21, 22],
+    "수학Ⅱ": [14, 15, 21, 22],
+    "확률과 통계": [28, 30]
+  },
+
+  "sources": {
+    "years": [2022, 2027],
+    "months": ["06", "09", "11"],
+    "number_range": {
+      "수학Ⅰ": [1, 22],
+      "수학Ⅱ": [1, 22],
+      "확률과 통계": [23, 30]
+    },
+    "shared_number_space": ["수학Ⅰ", "수학Ⅱ"]
+  },
+
+  "themes": {
+    "수학Ⅰ": 21,
+    "수학Ⅱ": 21,
+    "확률과 통계": 22
+  },
+
+  "day": {
+    "past": 5,
+    "created": [2, 3],
+    "total": [8, 13],
+    "past_ratio": 0.7,
+    "past_ratio_tolerance": 0.05
+  },
+
+  "points": {
+    "past": 4,
+    "created": 3
+  },
+
+  "created_rules": {
+    "choices": 5,
+    "short_answer_max": 999
+  },
+
+  "difficulty_labels": ["기본 적용", "조건 변형", "복합 사고", "고난도"],
+  "behaviors": ["계산", "이해", "추론", "문제해결"],
+
+  "banned_terms": ["초구", "타석", "구종", "안타", "삼진", "덕아웃", "배터리", "스트라이크",
+                   "홈런", "투수", "타자", "포수", "볼카운트", "이닝", "출루", "도루"],
+  "corner_names": ["THE SIGN", "FIRST PITCH", "SIGN READING", "SCOUTING REPORT",
+                   "REPLAY", "DUGOUT NOTE", "SIGN BOOK"],
+
+  "page": {
+    "width": 794,
+    "height": 1123
+  },
+
+  "paths": {
+    "db": "data/db.json",
+    "solutions": "data/solutions.json",
+    "strategy_notes": "data/strategy_notes.json",
+    "template": "data/STS_template.html",
+    "book": "work/book.json",
+    "out": "out",
+    "katex": "vendor/katex"
+  }
+}
