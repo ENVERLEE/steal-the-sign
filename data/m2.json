@@ -1,0 +1,3953 @@
+[
+ {
+  "id": "M2-270611",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "270611",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2026년 6월 고3 11번"
+  },
+  "question": "일차함수 $f(x)$에 대하여 $\\displaystyle\\lim_{x\\to a}\\frac{f(x+2)}{x\\{f(x)-3\\}}$의 값이 $a=0$일 때 존재하고 $a=3$일 때 존재하지 않는다. $f(4)$의 값은?",
+  "condition": null,
+  "choices": [
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "answer": "1",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-03",
+   "primary_name": "극한값과 인수결정",
+   "links": [
+    "수학Ⅱ-01"
+   ]
+  },
+  "first_judgment": "$a=0$에서 분모$\\to0$이므로 분자$\\to0$($f(2)=0$); $a=3$에서 존재하지 않으려면 분모가 $0$이 되어야 한다($f(3)=3$).",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S13"
+  ],
+  "solution_ref": "$a=0$: $f(2)=0$. $a=3$: $f(5)\\ne0$이므로 $3\\{f(3)-3\\}=0$, $f(3)=3$. $f(x)=3(x-2)$, $f(4)=6$",
+  "legacy": {
+   "category": "미정계수의 결정",
+   "book_no": 1,
+   "question_page": 1,
+   "solution_page": 41
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260913",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260913",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2025년 9월 고3 13번"
+  },
+  "question": "함수 $f(x)=x^2+6x+12$에 대하여 다음 조건을 만족시키는 모든 정수 $k$의 개수는?",
+  "condition": "모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a}\\frac{x^2}{\\{f(x)\\}^2-k(x+2)f(x)}$의 값이 존재한다.",
+  "choices": [
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "answer": "4",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-03",
+   "primary_name": "극한값과 인수결정",
+   "links": [
+    "수학Ⅱ-01"
+   ]
+  },
+  "first_judgment": "분모가 $0$이 되는 $a$가 없거나, 있다면 분자도 $0$($a=0$)이어야 한다 — 두 경우로 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S13"
+  ],
+  "solution_ref": "$f(x)=(x+3)^2+3>0$. (i) 분모$\\ne0$: $f(x)=k(x+2)$가 실근 없음 → $(6-k)^2-4(12-2k)<0$ → $-2<k<6$. (ii) 분모$=0$인 $a$가 있으면 $a=0$: $f(0)=2k$ → $k=6$, 이때 극한 $\\frac1{12}$ 존재. $k=-1,0,\\dots,6$로 8개",
+  "legacy": {
+   "category": "미정계수의 결정",
+   "book_no": 2,
+   "question_page": 1,
+   "solution_page": 41
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-251121",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "251121",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 21,
+   "points": 4,
+   "label": "2024년 11월 고3 21번"
+  },
+  "question": "함수 $f(x)=x^3+ax^2+bx+4$가 다음 조건을 만족시키도록 하는 두 정수 $a,b$에 대하여 $f(1)$의 최댓값을 구하시오.",
+  "condition": "모든 실수 $\\alpha$에 대하여 $\\displaystyle\\lim_{x\\to\\alpha}\\frac{f(2x+1)}{f(x)}$의 값이 존재한다.",
+  "choices": null,
+  "answer": "16",
+  "answer_value": "16",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-03",
+   "primary_name": "극한값과 인수결정",
+   "links": [
+    "수학Ⅱ-01"
+   ]
+  },
+  "first_judgment": "$f(\\beta)=0$이면 $f(2\\beta+1)=0$이 되어 근이 $\\beta,2\\beta+1,4\\beta+3,\\dots$로 늘어나므로, 삼차방정식의 근은 $\\beta=2\\beta+1$, 즉 $-1$뿐이어야 한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S13"
+  ],
+  "solution_ref": "$f(\\beta)=0\\Rightarrow f(2\\beta+1)=0$. 근이 무한히 생기지 않으려면 실근은 $-1$뿐. $f(-1)=0$ → $b=a+3$, $f(x)=(x+1)\\{x^2+(a-1)x+4\\}$. 이차식 실근 없음: $(a-1)^2<16$ → $-3<a<5$. $f(1)=2a+8$, $a=4$일 때 최댓값 $16$",
+  "legacy": {
+   "category": "미정계수의 결정",
+   "book_no": 3,
+   "question_page": 2,
+   "solution_page": 42
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260621",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260621",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2025년 6월 고3 21번"
+  },
+  "question": "함수 $f(x)=(x-1)(x-2)$와 최고차항의 계수가 $1$인 사차함수 $g(x)$가 다음 조건을 만족시킨다. $g(-1)$의 값을 구하시오.",
+  "condition": "모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a}\\frac{g(x)\\times|f(x)|}{f(x)}$의 값과 $\\displaystyle\\lim_{x\\to a}\\frac{|g(x)-f(x)|}{g(x)}$의 값이 모두 존재한다.",
+  "choices": null,
+  "answer": "42",
+  "answer_value": "42",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-03",
+   "primary_name": "극한값과 인수결정",
+   "links": [
+    "수학Ⅱ-01"
+   ]
+  },
+  "first_judgment": "$\\frac{|f|}{f}$는 $x=1,2$에서 부호가 바뀌므로 첫 극한에서 $g(1)=g(2)=0$, 즉 $g=f\\cdot h$로 둔다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S13"
+  ],
+  "solution_ref": "첫 조건: $x=1,2$에서 좌우극한 일치 → $g(1)=g(2)=0$, $g(x)=f(x)h(x)$ ($h$: 최고차항 1인 이차). 둘째: $\\frac{|f||h-1|}{fh}$ → $h(a)\\ne0$이고 $x=1,2$에서 $|h-1|$도 부호 전환 흡수 → $h(1)=h(2)=1$, $h(x)=f(x)+1$. $g(-1)=6\\cdot7=42$",
+  "legacy": {
+   "category": "다항함수의 결정",
+   "book_no": 4,
+   "question_page": 2,
+   "solution_page": 42
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230912",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230912",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 12,
+   "points": 4,
+   "label": "2022년 9월 고3 12번"
+  },
+  "question": "실수 $t$ $(t>0)$에 대하여 직선 $y=x+t$와 곡선 $y=x^2$이 만나는 두 점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y=x^2$과 만나는 점 중 $\\mathrm{A}$가 아닌 점을 $\\mathrm{C}$, 점 $\\mathrm{B}$에서 선분 $\\mathrm{AC}$에 내린 수선의 발을 $\\mathrm{H}$라 하자. $\\displaystyle\\lim_{t\\to0+}\\frac{\\overline{\\mathrm{AH}}-\\overline{\\mathrm{CH}}}{t}$의 값은? (단, 점 $\\mathrm{A}$의 $x$좌표는 양수이다.)",
+  "condition": null,
+  "choices": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": "2",
+  "answer_value": "2",
+  "figure": {
+   "description": "포물선 $y=x^2$과 직선 $y=x+t$의 교점 A(오른쪽), B(왼쪽 아래), A와 같은 높이의 C, B에서 AC에 내린 수선의 발 H",
+   "source_page": 3
+  },
+  "theme": {
+   "primary": "수학Ⅱ-02",
+   "primary_name": "도형에 대한 극한",
+   "links": [
+    "수학Ⅱ-01"
+   ]
+  },
+  "first_judgment": "교점의 $x$좌표 $a,b$를 근과 계수의 관계($a+b=1$, $ab=-t$)로 다루면 길이가 $t$의 식이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S13"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AH}}=a-b=\\sqrt{1+4t}$, $\\overline{\\mathrm{CH}}=b+a=1$. $\\lim_{t\\to0+}\\frac{\\sqrt{1+4t}-1}{t}=\\lim\\frac{4}{\\sqrt{1+4t}+1}=2$",
+  "legacy": {
+   "category": "함수의 극한의 활용",
+   "book_no": 5,
+   "question_page": 3,
+   "solution_page": 44
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-261121",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "261121",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 21,
+   "points": 4,
+   "label": "2025년 11월 고3 21번"
+  },
+  "question": "최고차항의 계수가 양수인 삼차함수 $f(x)$와 실수 $t$에 대하여 함수 $g(x)=\\begin{cases}-f(x) & (x<t)\\\\ f(x) & (x\\ge t)\\end{cases}$는 실수 전체의 집합에서 연속이고 다음 조건을 만족시킨다. $g(-5)$의 값을 구하시오. $\\left(\\text{단, }g(-1)\\ne-\\dfrac72g(1)\\right)$",
+  "condition": "(가) 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a+}\\frac{g(x)}{x(x-2)}$의 값이 존재한다.\\\\(나) $\\displaystyle\\lim_{x\\to m+}\\frac{g(x)}{x(x-2)}$의 값이 음수가 되도록 하는 자연수 $m$의 집합은 $\\left\\{g(-1),\\,-\\dfrac72g(1)\\right\\}$이다.",
+  "choices": null,
+  "answer": "65",
+  "answer_value": "65",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-04",
+   "primary_name": "함수의 연속",
+   "links": [
+    "수학Ⅱ-03",
+    "수학Ⅱ-05"
+   ]
+  },
+  "first_judgment": "연속 조건으로 $f(t)=0$, (가)로 $f(0)=f(2)=0$ → $f(x)=\\alpha x(x-2)(x-k)$로 두고 (나)의 자연수 집합 조건으로 $t$, $k$를 좁힌다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S14",
+   "S15"
+  ],
+  "solution_ref": "$f(t)=0$, $f(0)=f(2)=0$, $f(x)=\\alpha x(x-2)(x-k)$. (나)에서 $m=1$ 불가, $m=2$와 $m>2$인 $g(m)<0$ 필요 → $k>3$, $t=2$, $3<k\\le4$. $g(-1)=3\\alpha(k+1)$, $g(1)=-\\alpha(k-1)$. $\\{g(-1),-\\frac72g(1)\\}=\\{3,2\\}$ 중 $3<k\\le4$를 만족하는 경우: $g(-1)=3$, $-\\frac72g(1)=2$ → $k=\\frac{11}3$, $\\alpha=\\frac3{14}$. $g(-5)=-\\frac3{14}\\cdot(-5)(-7)\\left(-\\frac{26}3\\right)=65$",
+  "legacy": {
+   "category": "함수가 연속일 조건(1) : 구간별로 주어진 함수가 연속일 조건",
+   "book_no": 6,
+   "question_page": 3,
+   "solution_page": 44
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250609",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250609",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2024년 6월 고3 9번"
+  },
+  "question": "함수 $f(x)=\\begin{cases}x-\\dfrac12 & (x<0)\\\\ -x^2+3 & (x\\ge0)\\end{cases}$에 대하여 함수 $\\{f(x)+a\\}^2$이 실수 전체의 집합에서 연속일 때, 상수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+   "-\\frac94",
+   "-\\frac74",
+   "-\\frac54",
+   "-\\frac34",
+   "-\\frac14"
+  ],
+  "answer": "3",
+  "answer_value": "-\\frac54",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-04",
+   "primary_name": "함수의 연속",
+   "links": []
+  },
+  "first_judgment": "불연속점은 $x=0$뿐이므로 $x=0$에서 좌극한과 함숫값의 제곱이 같도록 식을 세운다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S14"
+  ],
+  "solution_ref": "$\\left(-\\frac12+a\\right)^2=(3+a)^2$ → $7a=-\\frac{35}4$, $a=-\\frac54$",
+  "legacy": {
+   "category": "함수가 연속일 조건(1) : 구간별로 주어진 함수가 연속일 조건",
+   "book_no": 7,
+   "question_page": 4,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-221112",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "221112",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 12,
+   "points": 4,
+   "label": "2021년 11월 고3 12번"
+  },
+  "question": "실수 전체의 집합에서 연속인 함수 $f(x)$가 모든 실수 $x$에 대하여 $\\{f(x)\\}^3-\\{f(x)\\}^2-x^2f(x)+x^2=0$을 만족시킨다. 함수 $f(x)$의 최댓값이 $1$이고 최솟값이 $0$일 때, $f\\left(-\\dfrac43\\right)+f(0)+f\\left(\\dfrac12\\right)$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac12",
+   "1",
+   "\\frac32",
+   "2",
+   "\\frac52"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac32",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-04",
+   "primary_name": "함수의 연속",
+   "links": []
+  },
+  "first_judgment": "식을 인수분해해 $f(x)\\in\\{1,-x,x\\}$로 바꾸고, 연속성·최대최소 조건으로 구간별 선택을 정한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S14"
+  ],
+  "solution_ref": "$\\{f-1\\}\\{f+x\\}\\{f-x\\}=0$. $f(0)=1$이면 $f\\equiv1$ (최솟값 0 불가). $f(0)=0$ → $f(x)=|x|$ ($|x|\\le1$), $1$ ($|x|>1$). $1+0+\\frac12=\\frac32$",
+  "legacy": {
+   "category": "연속함수의 성질",
+   "book_no": 8,
+   "question_page": 4,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230622",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230622",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2022년 6월 고3 22번"
+  },
+  "question": "두 양수 $a,b$ $(b>3)$과 최고차항의 계수가 $1$인 이차함수 $f(x)$에 대하여 함수 $g(x)=\\begin{cases}(x+3)f(x) & (x<0)\\\\ (x+a)f(x-b) & (x\\ge0)\\end{cases}$이 실수 전체의 집합에서 연속이고 다음 조건을 만족시킬 때, $g(4)$의 값을 구하시오.",
+  "condition": "$\\displaystyle\\lim_{x\\to-3}\\frac{\\sqrt{|g(x)|+\\{g(t)\\}^2}-|g(t)|}{(x+3)^2}$의 값이 존재하지 않는 실수 $t$의 값은 $-3$과 $6$뿐이다.",
+  "choices": null,
+  "answer": "19",
+  "answer_value": "19",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-05",
+   "primary_name": "곱함수의 연속",
+   "links": [
+    "수학Ⅱ-04",
+    "수학Ⅱ-03"
+   ]
+  },
+  "first_judgment": "유리화하면 $\\frac{|g(x)|}{(x+3)^2(\\cdots+2|g(t)|)}$ 꼴이므로 $g(t)=0$인 $t$에서만 존재하지 않을 수 있다 → $g$의 영점이 $-3, 6$뿐이다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S15",
+   "S13"
+  ],
+  "solution_ref": "극한이 $t\\ne-3,6$에서 존재하려면 $f(x)=(x+3)(x+k)$. $g$의 영점은 $-3,6$뿐 → $g(6)=0$, $(6+a)f(6-b)=0$ → $b=9$ 또는 $k-b=-6$. (i) $b=9$: $x<0$ 영점 조건으로 $k=3$, 연속 $27=36a$ → $a=\\frac34$, $g(x)=\\left(x+\\frac34\\right)(x-6)^2$ ($x\\ge0$), $g(4)=19$. (ii) 같은 결과. $g(4)=19$",
+  "legacy": {
+   "category": "함수의 연속과 불연속(6) : (x-a)f(x)꼴의 함수",
+   "book_no": 9,
+   "question_page": 5,
+   "solution_page": 45
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240915",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240915",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2023년 9월 고3 15번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $g(x)$를 $g(x)=\\begin{cases}\\dfrac{f(x+3)\\{f(x)+1\\}}{f(x)} & (f(x)\\ne0)\\\\ 3 & (f(x)=0)\\end{cases}$이라 하자. $\\displaystyle\\lim_{x\\to3}g(x)=g(3)-1$일 때, $g(5)$의 값은?",
+  "condition": null,
+  "choices": [
+   "14",
+   "16",
+   "18",
+   "20",
+   "22"
+  ],
+  "answer": "4",
+  "answer_value": "20",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-04",
+   "primary_name": "함수의 연속",
+   "links": [
+    "수학Ⅱ-03"
+   ]
+  },
+  "first_judgment": "$f(3)\\ne0$이면 $g$가 $x=3$에서 연속이라 모순이므로 $f(3)=0$; 그러면 분모$\\to0$이므로 분자 $f(6)\\{f(3)+1\\}=0$ → $f(6)=0$.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S14",
+   "S13"
+  ],
+  "solution_ref": "$f(3)=0$, $f(6)=0$, $f(x)=(x-3)(x-6)(x-k)$. $\\lim_{x\\to3}g=\\frac{3(6-k)}{-3(3-k)}=\\frac{6-k}{k-3}=3-1$ → $k=4$. $f(8)=40,\\ f(5)=-2$ → $g(5)=\\frac{40\\cdot(-1)}{-2}=20$",
+  "legacy": {
+   "category": "함수가 불연속일 조건(2) : 다양한 형태의 함수가 불연속일 조건",
+   "book_no": 10,
+   "question_page": 5,
+   "solution_page": 46
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250921",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250921",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2024년 9월 고3 21번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 모든 정수 $k$에 대하여 $2k-8\\le\\dfrac{f(k+2)-f(k)}2\\le4k^2+14k$를 만족시킬 때, $f'(3)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "31",
+  "answer_value": "31",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-06",
+   "primary_name": "미분계수와 미분법",
+   "links": []
+  },
+  "first_judgment": "양쪽 경계가 같아지는 정수 $k$($2k-8=4k^2+14k$ → $k=-1,-2$)에서 부등식이 등식으로 바뀐다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "단순화·특수화로 규칙성 찾기"
+  ],
+  "strategy_ids": [
+   "S16"
+  ],
+  "solution_ref": "$k=-1$: $f(1)-f(-1)=-20$, $k=-2$: $f(0)-f(-2)=-24$. $f=x^3+ax^2+bx+c$: $2+2b=-20$ → $b=-11$; $8-4a-22=-24$... → $a=\\frac52$. $f'(3)=27+15-11=31$",
+  "legacy": {
+   "category": "관계식이 주어질 때 도함수 구하기",
+   "book_no": 11,
+   "question_page": 6,
+   "solution_page": 47
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-261113",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "261113",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 13,
+   "points": 4,
+   "label": "2025년 11월 고3 13번"
+  },
+  "question": "함수 $f(x)=x^2-4x-3$에 대하여 곡선 $y=f(x)$ 위의 점 $(1,-6)$에서의 접선을 $l$이라 하고, 함수 $g(x)=(x^3-2x)f(x)$에 대하여 곡선 $y=g(x)$ 위의 점 $(1,6)$에서의 접선을 $m$이라 하자. 두 직선 $l$, $m$과 $y$축으로 둘러싸인 도형의 넓이는?",
+  "condition": null,
+  "choices": [
+   "21",
+   "28",
+   "35",
+   "42",
+   "49"
+  ],
+  "answer": "5",
+  "answer_value": "49",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-08",
+   "primary_name": "접선의 활용",
+   "links": [
+    "수학Ⅱ-06"
+   ]
+  },
+  "first_judgment": "곱의 미분법으로 $g'(1)$을 구해 두 접선을 확정하고, 교점과 $y$절편으로 삼각형 넓이를 계산한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S16"
+  ],
+  "solution_ref": "$l: y=-2x-4$. $g'(1)=(3-2)(-6)+(-1)(-2)=-4$, $m: y=-4x+10$. 교점 $x=7$. 넓이 $\\frac12\\cdot14\\cdot7=49$",
+  "legacy": {
+   "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+   "book_no": 12,
+   "question_page": 6,
+   "solution_page": 48
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250611",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250611",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2024년 6월 고3 11번"
+  },
+  "question": "최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수 $f(x)$가 $\\displaystyle\\lim_{x\\to a}\\frac{f(x)-1}{x-a}=3$을 만족시킨다. 곡선 $y=f(x)$ 위의 점 $(a,f(a))$에서의 접선의 $y$절편이 $4$일 때, $f(1)$의 값은? (단, $a$는 상수이다.)",
+  "condition": null,
+  "choices": [
+   "-1",
+   "-2",
+   "-3",
+   "-4",
+   "-5"
+  ],
+  "answer": "5",
+  "answer_value": "-5",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-08",
+   "primary_name": "접선의 활용",
+   "links": [
+    "수학Ⅱ-06"
+   ]
+  },
+  "first_judgment": "극한 조건은 곧 $f(a)=1$, $f'(a)=3$이므로 접선 $y=3x-3a+1$의 $y$절편에서 $a$를 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S16",
+   "S19"
+  ],
+  "solution_ref": "$f(a)=1$, $f'(a)=3$. 접선 $y=3x-3a+1$, $-3a+1=4$ → $a=-1$. $f=x^3+px^2+qx$: $-1+p-q=1$, $3-2p+q=3$ → $p=-2$, $q=-4$. $f(1)=-5$",
+  "legacy": {
+   "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+   "book_no": 13,
+   "question_page": 7,
+   "solution_page": 48
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-241120",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "241120",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 20,
+   "points": 4,
+   "label": "2023년 11월 고3 20번"
+  },
+  "question": "$a>\\sqrt2$인 실수 $a$에 대하여 함수 $f(x)$를 $f(x)=-x^3+ax^2+2x$라 하자. 곡선 $y=f(x)$ 위의 점 $\\mathrm{O}(0,0)$에서의 접선이 곡선 $y=f(x)$와 만나는 점 중 $\\mathrm{O}$가 아닌 점을 $\\mathrm{A}$라 하고, 곡선 $y=f(x)$ 위의 점 $\\mathrm{A}$에서의 접선이 $x$축과 만나는 점을 $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$가 선분 $\\mathrm{OB}$를 지름으로 하는 원 위의 점일 때, $\\overline{\\mathrm{OA}}\\times\\overline{\\mathrm{AB}}$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "25",
+  "answer_value": "25",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-08",
+   "primary_name": "접선의 활용",
+   "links": []
+  },
+  "first_judgment": "원점에서의 접선 $y=2x$와 곡선의 교점이 $\\mathrm A(a,2a)$이고, 지름 위 원주각 조건은 $\\mathrm{OA}\\perp\\mathrm{AB}$, 즉 기울기 곱 $-1$이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S19"
+  ],
+  "solution_ref": "$f'(0)=2$, 접선 $y=2x$, $x^2(x-a)=0$ → $\\mathrm A(a,2a)$. $f'(a)=-a^2+2$, $2(-a^2+2)=-1$ → $a=\\frac{\\sqrt{10}}2$. 접선 $y=-\\frac12\\left(x-\\frac{\\sqrt{10}}2\\right)+\\sqrt{10}$, $\\mathrm B\\left(\\frac{5\\sqrt{10}}2,0\\right)$. $\\overline{\\mathrm{OA}}=\\frac{5\\sqrt2}2$, $\\overline{\\mathrm{AB}}=5\\sqrt2$, 곱 $25$",
+  "legacy": {
+   "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+   "book_no": 14,
+   "question_page": 7,
+   "solution_page": 48
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240910",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240910",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2023년 9월 고3 10번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 곡선 $y=f(x)$ 위의 점 $(-2,f(-2))$에서의 접선과 곡선 $y=f(x)$ 위의 점 $(2,3)$에서의 접선이 점 $(1,3)$에서 만날 때, $f(0)$의 값은?",
+  "condition": null,
+  "choices": [
+   "31",
+   "33",
+   "35",
+   "37",
+   "39"
+  ],
+  "answer": "3",
+  "answer_value": "35",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-08",
+   "primary_name": "접선의 활용",
+   "links": []
+  },
+  "first_judgment": "$(2,3)$에서의 접선이 $(1,3)$을 지나므로 수평선 $y=3$이고, $f(x)-3=(x-a)(x-2)^2$으로 둔다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S19"
+  ],
+  "solution_ref": "$f(x)=(x-a)(x-2)^2+3$. $(-2,f(-2))$에서 접선이 $(1,3)$ 지남: $3-f(-2)=3f'(-2)$ → $32+16a=96+24a$, $a=-8$. $f(0)=8\\cdot4+3=35$",
+  "legacy": {
+   "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+   "book_no": 15,
+   "question_page": 8,
+   "solution_page": 49
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-221110",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "221110",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 10,
+   "points": 4,
+   "label": "2021년 11월 고3 10번"
+  },
+  "question": "삼차함수 $f(x)$에 대하여 곡선 $y=f(x)$ 위의 점 $(0,0)$에서의 접선과 곡선 $y=xf(x)$ 위의 점 $(1,2)$에서의 접선이 일치할 때, $f'(2)$의 값은?",
+  "condition": null,
+  "choices": [
+   "-18",
+   "-17",
+   "-16",
+   "-15",
+   "-14"
+  ],
+  "answer": "5",
+  "answer_value": "-14",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-08",
+   "primary_name": "접선의 활용",
+   "links": [
+    "수학Ⅱ-06"
+   ]
+  },
+  "first_judgment": "두 접선의 기울기와 $y$절편을 각각 같다고 놓으면 $f'(0)$, $f'(1)$과 $f(1)$에 대한 조건이 나온다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S16",
+   "S19"
+  ],
+  "solution_ref": "$f(0)=0$, 접선 $y=f'(0)x$. $f(1)=2$, $y=xf(x)$의 $(1,2)$ 접선 $y=\\{f'(1)+2\\}x-f'(1)$. 일치 → $f'(1)=0$, $f'(0)=2$. $f=ax^3+bx^2+cx$: $c=2$, $3a+2b+2=0$, $a+b+c=2$ → $a=-2$, $b=2$. $f'(2)=-24+8+2=-14$",
+  "legacy": {
+   "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+   "book_no": 16,
+   "question_page": 8,
+   "solution_page": 49
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240611",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240611",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2023년 6월 고3 11번"
+  },
+  "question": "그림과 같이 실수 $t$ $(0<t<1)$에 대하여 곡선 $y=x^2$ 위의 점 중에서 직선 $y=2tx-1$과의 거리가 최소인 점을 $\\mathrm{P}$라 하고 직선 $\\mathrm{OP}$가 직선 $y=2tx-1$과 만나는 점을 $\\mathrm{Q}$라 할 때, $\\displaystyle\\lim_{t\\to1-}\\frac{\\overline{\\mathrm{PQ}}}{1-t}$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+   "\\sqrt6",
+   "\\sqrt7",
+   "2\\sqrt2",
+   "3",
+   "\\sqrt{10}"
+  ],
+  "answer": "3",
+  "answer_value": "2\\sqrt2",
+  "figure": {
+   "description": "포물선 $y=x^2$, 직선 $y=2tx-1$, 원점 O, 포물선 위 P, 직선 OP와 $y=2tx-1$의 교점 Q",
+   "source_page": 9
+  },
+  "theme": {
+   "primary": "수학Ⅱ-08",
+   "primary_name": "접선의 활용",
+   "links": [
+    "수학Ⅱ-02"
+   ]
+  },
+  "first_judgment": "직선과 거리가 최소인 점은 접선의 기울기가 $2t$인 점이므로 $\\mathrm P(t,t^2)$이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S19",
+   "S13"
+  ],
+  "solution_ref": "$\\mathrm P(t,t^2)$, 직선 $\\mathrm{OP}$: $y=tx$, $tx=2tx-1$ → $\\mathrm Q\\left(\\frac1t,1\\right)$. $\\overline{\\mathrm{PQ}}=(1-t^2)\\sqrt{\\frac1{t^2}+1}$. $\\lim\\frac{\\overline{\\mathrm{PQ}}}{1-t}=\\lim(1+t)\\sqrt{\\frac1{t^2}+1}=2\\sqrt2$",
+  "legacy": {
+   "category": "곡선 위의 점과 직선 사이의 거리",
+   "book_no": 17,
+   "question_page": 9,
+   "solution_page": 50
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-231114",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "231114",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 14,
+   "points": 4,
+   "label": "2022년 11월 고3 14번"
+  },
+  "question": "다항함수 $f(x)$에 대하여 함수 $g(x)$를 다음과 같이 정의한다. $g(x)=\\begin{cases}x & (x<-1\\text{ 또는 }x>1)\\\\ f(x) & (-1\\le x\\le1)\\end{cases}$ 함수 $h(x)=\\displaystyle\\lim_{t\\to0+}g(x+t)\\times\\lim_{t\\to2+}g(x+t)$에 대하여 <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $h(1)=3$\\\\ㄴ. 함수 $h(x)$는 실수 전체의 집합에서 연속이다.\\\\ㄷ. 함수 $g(x)$가 닫힌구간 $[-1,1]$에서 감소하고 $g(-1)=-2$이면 함수 $h(x)$는 실수 전체의 집합에서 최솟값을 갖는다.",
+  "choices": [
+   "ㄱ",
+   "ㄴ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ"
+  ],
+  "answer": "1",
+  "answer_value": "ㄱ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": [
+    "수학Ⅱ-04",
+    "수학Ⅱ-21"
+   ]
+  },
+  "first_judgment": "$h(x)$는 $g$의 $x$에서의 우극한과 $x+2$에서의 우극한의 곱이므로, 구간을 $x<-3$, $x=-3$, $-3<x<-1$, … 로 나눠 식으로 쓴다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S14",
+   "S17"
+  ],
+  "solution_ref": "ㄱ: $h(1)=1\\cdot3=3$ (참). ㄴ: $h(-3)=-3f(-1)$이지만 $x\\to-3-$에서 $x(x+2)\\to3$; $f(-1)\\ne-1$이면 불연속 (거짓). ㄷ: $-1<x<1$에서 $h(x)=f(x)(x+2)$, $h'<0$이고 $h(1)=3$이지만 $x\\to1-$에서 더 작아져 최솟값 없음 (거짓). 답 ㄱ",
+  "legacy": {
+   "category": "함수의 증가와 감소",
+   "book_no": 18,
+   "question_page": 9,
+   "solution_page": 50
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240913",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240913",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2023년 9월 고3 13번"
+  },
+  "question": "두 실수 $a,b$에 대하여 함수 $f(x)=\\begin{cases}-\\dfrac13x^3-ax^2-bx & (x<0)\\\\ \\dfrac13x^3+ax^2-bx & (x\\ge0)\\end{cases}$이 구간 $(-\\infty,-1]$에서 감소하고 구간 $[-1,\\infty)$에서 증가할 때, $a+b$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $M-m$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac32+3\\sqrt2",
+   "3+3\\sqrt2",
+   "\\frac92+3\\sqrt2",
+   "6+3\\sqrt2",
+   "\\frac{15}2+3\\sqrt2"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac92+3\\sqrt2",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": [
+    "수학Ⅱ-07"
+   ]
+  },
+  "first_judgment": "$x=-1$에서 증감이 바뀌므로 $f'(-1)=0$ → $b=2a-1$; 이후 $x<0$, $x>0$ 각 구간에서 $f'$의 부호 조건을 $a$의 범위로 바꾼다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S17",
+   "S18"
+  ],
+  "solution_ref": "$b=2a-1$. $x<0$: $f'=-(x+1)(x+2a-1)$, $-2a+1\\ge-1$... → $a\\le\\frac12$. $x>0$: $f'=(x+a)^2-a^2-2a+1\\ge0$; $a>0$이면 $f'(0)\\ge0$ → $0<a\\le\\frac12$; $a\\le0$이면 $-a^2-2a+1\\ge0$ → $-1-\\sqrt2\\le a\\le0$. $a+b=3a-1$: 최댓값 $\\frac12$, 최솟값 $-4-3\\sqrt2$. $M-m=\\frac92+3\\sqrt2$",
+  "legacy": {
+   "category": "삼차함수의 증가 · 감소의 조건(2) : 주어진 구간에서",
+   "book_no": 19,
+   "question_page": 10,
+   "solution_page": 50
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-261109",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "261109",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 9,
+   "points": 4,
+   "label": "2025년 11월 고3 9번"
+  },
+  "question": "양수 $a$에 대하여 함수 $f(x)$를 $f(x)=x^3+3ax^2-9a^2x+4$라 하자. 직선 $y=5$가 곡선 $y=f(x)$에 접할 때, $f(2)$의 값은?",
+  "condition": null,
+  "choices": [
+   "11",
+   "12",
+   "13",
+   "14",
+   "15"
+  ],
+  "answer": "4",
+  "answer_value": "14",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": [
+    "수학Ⅱ-08"
+   ]
+  },
+  "first_judgment": "$y=5$가 접하면 극댓값 또는 극솟값이 $5$이다; $f(0)=4<5$이므로 극솟값이 아니라 극댓값 $f(-3a)=5$이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S18",
+   "S19"
+  ],
+  "solution_ref": "$f'=3(x+3a)(x-a)$. $f(0)=4<5$ → $f(-3a)=27a^3+4=5$, $a=\\frac13$. $f(x)=x^3+x^2-x+4$, $f(2)=14$",
+  "legacy": {
+   "category": "함수의 극대 · 극소를 이용한 미정계수의 결정",
+   "book_no": 20,
+   "question_page": 10,
+   "solution_page": 51
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-251115",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "251115",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 15,
+   "points": 4,
+   "label": "2024년 11월 고3 15번"
+  },
+  "question": "상수 $a$ $(a\\ne3\\sqrt5)$와 최고차항의 계수가 음수인 이차함수 $f(x)$에 대하여 함수 $g(x)=\\begin{cases}x^3+ax^2+15x+7 & (x\\le0)\\\\ f(x) & (x>0)\\end{cases}$이 다음 조건을 만족시킨다. $g(-2)+g(2)$의 값은?",
+  "condition": "(가) 함수 $g(x)$는 실수 전체의 집합에서 미분가능하다.\\\\(나) $x$에 대한 방정식 $g'(x)\\times g'(x-4)=0$의 서로 다른 실근의 개수는 $4$이다.",
+  "choices": [
+   "30",
+   "32",
+   "34",
+   "36",
+   "38"
+  ],
+  "answer": "2",
+  "answer_value": "32",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": [
+    "수학Ⅱ-07"
+   ]
+  },
+  "first_judgment": "(가)로 $f(x)=px^2+15x+7$ ($p<0$)이 정해지고, (나)에서 $g'$의 근 $\\alpha,\\beta,\\gamma$와 그것을 $4$ 평행이동한 근이 겹쳐 총 4개가 되어야 한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "대칭성·주기성 활용",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S16",
+   "S18"
+  ],
+  "solution_ref": "$f(x)=px^2+15x+7$, $f'$의 근 $-\\frac{15}{2p}>0$. $x<0$에서 $g'=0$의 두 근 $\\alpha<\\beta<0$과 $\\beta=\\alpha+4$, $-\\frac{15}{2p}=\\beta+4$. $3x^2+2ax+15=0$: $2\\alpha+4=-\\frac{2a}3$, $\\alpha(\\alpha+4)=5$ → $\\alpha=-5$, $a=9$, $\\beta=-1$, $p=-\\frac52$. $g(-2)=5$, $g(2)=27$, 합 $32$",
+  "legacy": {
+   "category": "함수의 극대 · 극소를 이용한 미정계수의 결정",
+   "book_no": 21,
+   "question_page": 11,
+   "solution_page": 51
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-241122",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "241122",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 22,
+   "points": 4,
+   "label": "2023년 11월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f'\\left(-\\dfrac14\\right)=-\\dfrac14$, $f'\\left(\\dfrac14\\right)<0$일 때, $f(8)$의 값을 구하시오.",
+  "condition": "함수 $f(x)$에 대하여 $f(k-1)f(k+1)<0$을 만족시키는 정수 $k$는 존재하지 않는다.",
+  "choices": null,
+  "answer": "483",
+  "answer_value": "483",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-13",
+   "primary_name": "다항함수와 정수조건",
+   "links": [
+    "수학Ⅱ-09",
+    "수학Ⅱ-10"
+   ]
+  },
+  "first_judgment": "조건은 '간격 2인 정수쌍에서 부호가 바뀌지 않는다'이므로, $f(x)=0$의 실근 개수(1, 2, 3)로 나눠 근이 연속한 정수 사이에 몰려 있어야 함을 본다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "정수 조건으로 후보 좁히기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S09",
+   "S19"
+  ],
+  "solution_ref": "모든 정수 $k$에 대해 $f(k-1)f(k+1)\\ge0$. (i) 실근 1개: 불가. (ii) 실근 2개: $f=x(x-1)^2$ 또는 $x^2(x-1)$ — $f'\\left(-\\frac14\\right)=-\\frac14$ 불만족. (iii) 실근 3개: $b=m+1$, $c=m+2$, $m=-1$ → $f=(x-a)(x^2-x)$, $f'\\left(-\\frac14\\right)=\\frac{11}{16}+\\frac32a=-\\frac14$ → $a=-\\frac58$. $f(8)=\\frac{69}8\\cdot56=483$",
+  "legacy": {
+   "category": "함수의 그래프 그리기",
+   "book_no": 22,
+   "question_page": 11,
+   "solution_page": 52
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220614",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220614",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2021년 6월 고3 14번"
+  },
+  "question": "두 양수 $p,q$와 함수 $f(x)=x^3-3x^2-9x-12$에 대하여 실수 전체의 집합에서 연속인 함수 $g(x)$가 다음 조건을 만족시킬 때, $p+q$의 값은?",
+  "condition": "(가) 모든 실수 $x$에 대하여 $xg(x)=|xf(x-p)+qx|$이다.\\\\(나) 함수 $g(x)$가 $x=a$에서 미분가능하지 않은 실수 $a$의 개수는 $1$이다.",
+  "choices": [
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "answer": "3",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-07",
+   "primary_name": "미분가능성",
+   "links": [
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "$g(x)=\\pm|f(x-p)+q|$ ($x\\gtrless0$)이므로 연속 조건으로 $f(-p)+q=0$이고, 꺾이는 점이 1개가 되도록 극값 위치를 맞춘다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S16"
+  ],
+  "solution_ref": "$f$: 극댓값 $f(-1)=-7$, 극솟값 $f(3)=-39$. 연속 → $f(-p)+q=0$. $|f(x-p)+q|$의 그래프는 평행이동 후 $x$축 아래를 뒤집은 것; 미분불가능점 1개 → 원점이 극대점($p=1$, $q=7$). $p+q=8$",
+  "legacy": {
+   "category": "함수의 그래프 그리기",
+   "book_no": 23,
+   "question_page": 12,
+   "solution_page": 53
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260615",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260615",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2025년 6월 고3 15번"
+  },
+  "question": "상수 $k$와 $f'(0)=6$인 삼차함수 $f(x)$에 대하여 함수 $g(x)=\\begin{cases}f(x)+k & (|x|>1)\\\\ -f(x) & (|x|\\le1)\\end{cases}$이 다음 조건을 만족시킬 때, $k+f\\left(\\dfrac12\\right)$의 값은?",
+  "condition": "(가) 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a+}\\frac{g(x)-g(a)}{x-a}$의 값이 존재하고 그 값은 $0$ 이하이다.\\\\(나) $x$에 대한 방정식 $g(x)=t$의 서로 다른 실근의 개수가 $2$가 되도록 하는 실수 $t$의 최댓값은 $13$이다.",
+  "choices": [
+   "\\frac{15}4",
+   "\\frac{27}4",
+   "\\frac{39}4",
+   "\\frac{51}4",
+   "\\frac{63}4"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{15}4",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": [
+    "수학Ⅱ-07",
+    "수학Ⅱ-04"
+   ]
+  },
+  "first_judgment": "(가)는 우미분계수가 모두 $0$ 이하라는 뜻이므로 $|x|>1$에서 $f'\\le0$, $|x|<1$에서 $f'\\ge0$ → $f'(\\pm1)=0$.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S16",
+   "S18"
+  ],
+  "solution_ref": "$f'(x)=3a(x+1)(x-1)$, $f'(0)=6$ → $a=-2$, $b=0$, $f=-2x^3+6x+d$. $x=1$ 우극한 존재 → $f(1)+k=-f(1)$, $f(1)=-\\frac k2$. (나) $g(-1)=-f(-1)=13$ → $d=-9$. $f(1)=-5=-\\frac k2$ → $k=10$. $f\\left(\\frac12\\right)=-\\frac{25}4$. $k+f\\left(\\frac12\\right)=\\frac{15}4$",
+  "legacy": {
+   "category": "삼차함수의 극값(3) : 주어진 구간에서 삼차함수가 극값을 가질 조건",
+   "book_no": 24,
+   "question_page": 12,
+   "solution_page": 53
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240622",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240622",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2023년 6월 고3 22번"
+  },
+  "question": "정수 $a$ $(a\\ne0)$에 대하여 함수 $f(x)$를 $f(x)=x^3-2ax^2$이라 하자. 다음 조건을 만족시키는 모든 정수 $k$의 값의 곱이 $-12$가 되도록 하는 $a$에 대하여 $f'(10)$의 값을 구하시오.",
+  "condition": "함수 $f(x)$에 대하여 $\\left\\{\\dfrac{f(x_1)-f(x_2)}{x_1-x_2}\\right\\}\\times\\left\\{\\dfrac{f(x_2)-f(x_3)}{x_2-x_3}\\right\\}<0$을 만족시키는 세 실수 $x_1,x_2,x_3$이 열린구간 $\\left(k,k+\\dfrac32\\right)$에 존재한다.",
+  "choices": null,
+  "answer": "380",
+  "answer_value": "380",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": []
+  },
+  "first_judgment": "두 평균변화율의 부호가 다르다는 것은 구간 안에 극값을 갖는 점($x=0$ 또는 $x=\\frac43a$)이 있다는 뜻이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기",
+   "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+   "S18"
+  ],
+  "solution_ref": "극점 $x=0$, $\\frac43a$. $x=0$을 포함하는 정수 $k$는 $-1$. (i) $a>0$: $k=3,4$ 필요 → $3<a<\\frac{27}8$, 정수 없음. (ii) $a<0$: $k=-4,-3$ 필요 → $-\\frac94<a<-\\frac{15}8$, $a=-2$. $f'(x)=3x^2+8x$, $f'(10)=380$",
+  "legacy": {
+   "category": "삼차함수의 극값(3) : 주어진 구간에서 삼차함수가 극값을 가질 조건",
+   "book_no": 25,
+   "question_page": 13,
+   "solution_page": 54
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-270621",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "270621",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2026년 6월 고3 21번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 있다. 실수 $t$에 대하여 $f(\\alpha)=f'(t)-4t^2+4$를 만족시키는 실수 $\\alpha$의 최댓값을 $g(t)$라 하자. 함수 $g(t)$가 $t=3$에서만 불연속이고 $g(3)=1$일 때, $f(2)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "11",
+  "answer_value": "11",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-21",
+   "primary_name": "새롭게 정의된 함수",
+   "links": [
+    "수학Ⅱ-09",
+    "수학Ⅱ-04"
+   ]
+  },
+  "first_judgment": "우변 $h(t)=-t^2+2at+b+4$는 $t=a$ 대칭인 위로 볼록한 포물선이고, $g$가 불연속인 곳은 $h(t)$가 $f$의 극솟값과 같아지는 곳이다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "치환·보조함수 도입",
+   "그래프·도형 해석",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S18",
+   "S19"
+  ],
+  "solution_ref": "$h(t)=-t^2+2at+b+4$. $g$는 $h(t_1)$이 극솟값일 때 불연속; $h$가 $t=a$ 대칭이므로 불연속점이 하나이려면 $a=3$, $h(3)$=극솟값. $g(3)=x_2=1$ → $f'(1)=0$ → $b=-9$. $f(1)=h(3)$: $c-5=4$, $c=9$. $f(x)=x^3+3x^2-9x+9$, $f(2)=11$",
+  "legacy": {
+   "category": "함수의 최대 · 최소를 이용한 미정계수의 결정",
+   "book_no": 26,
+   "question_page": 13,
+   "solution_page": 55
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-231122",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "231122",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 22,
+   "points": 4,
+   "label": "2022년 11월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$와 실수 전체의 집합에서 연속인 함수 $g(x)$가 다음 조건을 만족시킬 때, $f(4)$의 값을 구하시오.",
+  "condition": "(가) 모든 실수 $x$에 대하여 $f(x)=f(1)+(x-1)f'(g(x))$이다.\\\\(나) 함수 $g(x)$의 최솟값은 $\\dfrac52$이다.\\\\(다) $f(0)=-3$, $f(g(1))=6$",
+  "choices": null,
+  "answer": "13",
+  "answer_value": "13",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": [
+    "수학Ⅱ-08",
+    "수학Ⅱ-06",
+    "수학Ⅱ-10"
+   ]
+  },
+  "first_judgment": "(가)는 평균값 정리 꼴이다: 점 $(1,f(1))$과 $(x,f(x))$를 잇는 직선의 기울기가 $f'(g(x))$이므로, $g$의 최솟값 $\\frac52$에서의 접선이 $(1,f(1))$을 지난다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S19",
+   "S21"
+  ],
+  "solution_ref": "$f=x^3+ax^2+bx-3$. 점 $\\left(\\frac52,f\\left(\\frac52\\right)\\right)$의 접선이 $(1,f(1))$을 지남 → $a=-6$. $x\\to1$ 극한: $3k^2-12k+b=b-9$ ($k=g(1)$) → $k=1$ 또는 $3$; $g\\ge\\frac52$이므로 $g(1)=3$. $f(3)=6$ → $b=12$. $f(4)=64-96+48-3=13$",
+  "legacy": {
+   "category": "함수의 최대 · 최소를 이용한 미정계수의 결정",
+   "book_no": 27,
+   "question_page": 14,
+   "solution_page": 56
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220922",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220922",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2021년 9월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $g(x)=f(x-3)\\times\\displaystyle\\lim_{h\\to0+}\\frac{|f(x+h)|-|f(x-h)|}{h}$가 다음 조건을 만족시킬 때, $f(5)$의 값을 구하시오.",
+  "condition": "(가) 함수 $g(x)$는 실수 전체의 집합에서 연속이다.\\\\(나) 방정식 $g(x)=0$은 서로 다른 네 실근 $\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4$를 갖고 $\\alpha_1+\\alpha_2+\\alpha_3+\\alpha_4=7$이다.",
+  "choices": null,
+  "answer": "108",
+  "answer_value": "108",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-07",
+   "primary_name": "미분가능성",
+   "links": [
+    "수학Ⅱ-10",
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "극한 부분은 $|f|$의 우·좌미분계수 합이므로 $f\\ne0$에서는 $\\pm2f'(x)$이고, $f$의 근에서 부호가 바뀐다 — 연속이 되려면 그 근에서 $f(x-3)=0$ 또는 $f'=0$이어야 한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S16",
+   "S18"
+  ],
+  "solution_ref": "$i(x)=|f(x)|$로 두면 $g=f(x-3)\\{i'_+(x)-i'_-(x)\\}$ 꼴. 경우 (i)~(v)는 연속 또는 근 개수 조건 위배. (vi) $f(k)=0$, $f(\\alpha)=0$, $f'(\\alpha)=f'(\\beta)=0$: $f(k-3)=0$ → $k=\\alpha+3$; 근의 합 $\\alpha+\\beta+k+k+3=7$; $f=(x-\\alpha)^2(x-k)$, $\\beta=\\frac{\\alpha+2k}3$ → $\\alpha+2k=3$ → $\\alpha=-1$, $k=2$. $f=(x+1)^2(x-2)$, $f(5)=108$",
+  "legacy": {
+   "category": "방정식 f(x)=0의 실근",
+   "book_no": 28,
+   "question_page": 14,
+   "solution_page": 57
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220622",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220622",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2021년 6월 고3 22번"
+  },
+  "question": "삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f(1)=4$, $f'(1)=1$, $f'(0)>1$일 때, $f(0)=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "(가) 방정식 $f(x)=0$의 서로 다른 실근의 개수는 $2$이다.\\\\(나) 방정식 $f(x-f(x))=0$의 서로 다른 실근의 개수는 $3$이다.",
+  "choices": null,
+  "answer": "61",
+  "answer_value": "61",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-10",
+   "primary_name": "방정식에의 활용",
+   "links": [
+    "수학Ⅱ-12",
+    "수학Ⅱ-08"
+   ]
+  },
+  "first_judgment": "(가)의 두 근을 $\\alpha,\\beta$로 두면 (나)는 $f(x)=x-\\alpha$ 또는 $x-\\beta$의 교점 수가 3 — 평행한 두 직선과의 교점 문제로 바꾼다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "치환·보조함수 도입",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S20",
+   "S19"
+  ],
+  "solution_ref": "$f=k(x-\\alpha)^2(x-\\beta)$. $(1,4)$에서 접선 $y=x+3$; 교점 3개 조건으로 접선 $y=x+3$이 $y=x-\\alpha$ 중 하나이고 $x=-3$에서 접함 → $f(x)-(x+3)=k(x+3)(x-1)^2$, $f'(-3)=0$ → $k=-\\frac1{16}$. $f(0)=\\frac{45}{16}$, $p+q=61$",
+  "legacy": {
+   "category": "방정식 f(x)=0의 실근",
+   "book_no": 29,
+   "question_page": 15,
+   "solution_page": 58
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-241114",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "241114",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 14,
+   "points": 4,
+   "label": "2023년 11월 고3 14번"
+  },
+  "question": "두 자연수 $a,b$에 대하여 함수 $f(x)$는 $f(x)=\\begin{cases}2x^3-6x+1 & (x\\le2)\\\\ a(x-2)(x-b)+9 & (x>2)\\end{cases}$이다. 실수 $t$에 대하여 함수 $y=f(x)$의 그래프와 직선 $y=t$가 만나는 점의 개수를 $g(t)$라 하자. $g(k)+\\displaystyle\\lim_{t\\to k-}g(t)+\\lim_{t\\to k+}g(t)=9$를 만족시키는 실수 $k$의 개수가 $1$이 되도록 하는 두 자연수 $a,b$의 순서쌍 $(a,b)$에 대하여 $a+b$의 최댓값은?",
+  "condition": null,
+  "choices": [
+   "51",
+   "52",
+   "53",
+   "54",
+   "55"
+  ],
+  "answer": "1",
+  "answer_value": "51",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-10",
+   "primary_name": "방정식에의 활용",
+   "links": [
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "$x\\le2$ 부분은 극댓값 $5$, 극솟값 $-3$으로 고정이므로, $x>2$ 포물선의 극솟값 $m$과 $-3$, $5$의 대소로 나눠 $g$의 값 표를 만든다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S19",
+   "S21"
+  ],
+  "solution_ref": "(i) $b=1,2$: $-3<k<5$ 전부 만족 → 불가. (ii) $b\\ge3$, 극솟값 $m=f\\left(1+\\frac b2\\right)$: $m>-3$, $m<-3$은 불가, $m=-3$일 때 $k=-3$만 만족. $a\\left(\\frac b2-1\\right)\\left(1-\\frac b2\\right)+9=-3$ → $a(b-2)^2=48$ → $(a,b)=(48,3),(12,4),(3,6)$. 최댓값 $51$",
+  "legacy": {
+   "category": "방정식 f(x)=g(x)의 실근",
+   "book_no": 30,
+   "question_page": 15,
+   "solution_page": 58
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220920",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220920",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2021년 9월 고3 20번"
+  },
+  "question": "함수 $f(x)=\\dfrac12x^3-\\dfrac92x^2+10x$에 대하여 $x$에 대한 방정식 $f(x)+|f(x)+x|=6x+k$의 서로 다른 실근의 개수가 $4$가 되도록 하는 모든 정수 $k$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "21",
+  "answer_value": "21",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-10",
+   "primary_name": "방정식에의 활용",
+   "links": [
+    "수학Ⅱ-11"
+   ]
+  },
+  "first_judgment": "$g(x)=f(x)+|f(x)+x|-6x$로 두고 $y=g(x)$와 $y=k$의 교점으로 본다; $f(x)=-x$의 근이 원점뿐임을 먼저 확인한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "치환·보조함수 도입",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S21",
+   "S23"
+  ],
+  "solution_ref": "$f(x)=-x$ → $x=0$만. $g(x)=-7x$ ($x<0$), $h(x)=x^3-9x^2+15x$ ($x\\ge0$). $h$: 극댓값 $h(1)=7$, 극솟값 $h(5)=-25$. 교점 4개 → $0<k<7$. 합 $21$",
+  "legacy": {
+   "category": "두 그래프의 교점의 개수",
+   "book_no": 31,
+   "question_page": 16,
+   "solution_page": 60
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230609",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230609",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2022년 6월 고3 9번"
+  },
+  "question": "두 함수 $f(x)=x^3-x+6$, $g(x)=x^2+a$가 있다. $x\\ge0$인 모든 실수 $x$에 대하여 부등식 $f(x)\\ge g(x)$가 성립할 때, 실수 $a$의 최댓값은?",
+  "condition": null,
+  "choices": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": "5",
+  "answer_value": "5",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-11",
+   "primary_name": "함수의 그래프와 부등식",
+   "links": [
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "$h(x)=f(x)-g(x)$로 두고 $x\\ge0$에서의 최솟값이 $0$ 이상일 조건으로 바꾼다.",
+  "behavior": "계산",
+  "reasoning": [
+   "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+   "S23"
+  ],
+  "solution_ref": "$h=x^3-x^2-x+6-a$, $h'=(3x+1)(x-1)$. $x\\ge0$ 최솟값 $h(1)=5-a\\ge0$ → $a\\le5$",
+  "legacy": {
+   "category": "주어진 구간에서 부등식이 항상 성립할 조건(2) : 최대 · 최소의 활용",
+   "book_no": 32,
+   "question_page": 16,
+   "solution_page": 60
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260921",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260921",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2025년 9월 고3 21번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킬 때, $f'(10)$의 값을 구하시오.",
+  "condition": "$0$이 아닌 모든 실수 $x$에 대하여 $\\dfrac{f'(x)}2+x^2-2\\le\\dfrac{f(2x)-f(0)}{2x}\\le x^4$이다.",
+  "choices": null,
+  "answer": "296",
+  "answer_value": "296",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-11",
+   "primary_name": "함수의 그래프와 부등식",
+   "links": [
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "$f=x^3+ax^2+bx+c$를 대입하면 $-3x^2-4\\le2ax+b\\le x^4-4x^2$ — 직선 $y=2ax+b$가 포물선과 사차곡선 사이에 끼는 조건이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S23"
+  ],
+  "solution_ref": "$-3x^2-4\\le2ax+b\\le x^4-4x^2$. $g=-3x^2-4$ 꼭짓점 $(0,-4)$, $h=x^4-4x^2$ 극솟값 $-4$ ($x=\\pm\\sqrt2$). 사이에 끼는 직선은 $y=-4$뿐 → $a=0$, $b=-4$. $f'(10)=300-4=296$",
+  "legacy": {
+   "category": "부등식이 항상 성립할 조건",
+   "book_no": 33,
+   "question_page": 17,
+   "solution_page": 61
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250911",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250911",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2024년 9월 고3 11번"
+  },
+  "question": "수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 위치가 각각 $x_1=t^2+t-6$, $x_2=-t^3+7t^2$이다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 위치가 같아지는 순간 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 가속도를 각각 $p,q$라 할 때, $p-q$의 값은?",
+  "condition": null,
+  "choices": [
+   "24",
+   "27",
+   "30",
+   "33",
+   "36"
+  ],
+  "answer": "1",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": [
+    "수학Ⅱ-06"
+   ]
+  },
+  "first_judgment": "$x_1=x_2$를 풀어 시각을 먼저 구하고, 위치를 두 번 미분해 가속도를 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$t^3-6t^2+t-6=(t-6)(t^2+1)=0$ → $t=6$. $a_1=2$, $a_2=-6t+14=-22$. $p-q=24$",
+  "legacy": {
+   "category": "가속도",
+   "book_no": 34,
+   "question_page": 17,
+   "solution_page": 61
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260611",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260611",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2025년 6월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$가 있다. 시각이 $t$ $(t\\ge0)$일 때 점 $\\mathrm{P}$의 위치 $x$가 $x=t^3-t^2-t+1$이다. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. 시각 $t=1$일 때 점 $\\mathrm{P}$의 위치는 $1$이다.\\\\ㄴ. 시각 $t=1$일 때 점 $\\mathrm{P}$의 속도는 $0$이다.\\\\ㄷ. 출발한 후 점 $\\mathrm{P}$의 운동 방향이 바뀌는 시각에 점 $\\mathrm{P}$의 가속도는 $4$이다.",
+  "choices": [
+   "ㄱ",
+   "ㄴ",
+   "ㄷ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ"
+  ],
+  "answer": "5",
+  "answer_value": "ㄴ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "운동 방향이 바뀌는 시각은 속도의 부호가 바뀌는 시각이므로 $v=0$의 근과 그 좌우 부호를 확인한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "ㄱ: $x(1)=0$ (거짓). ㄴ: $v=3t^2-2t-1$, $v(1)=0$ (참). ㄷ: $t=1$ 좌우에서 부호 변화, $a=6t-2=4$ (참). 답 ㄴ, ㄷ",
+  "legacy": {
+   "category": "속도 · 가속도와 운동 방향",
+   "book_no": 35,
+   "question_page": 18,
+   "solution_page": 61
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-251111",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "251111",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 11,
+   "points": 4,
+   "label": "2024년 11월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t\\ge0)$에서의 위치 $x$가 $x=t^3-\\dfrac32t^2-6t$이다. 출발한 후 점 $\\mathrm{P}$의 운동 방향이 바뀌는 시각에서의 점 $\\mathrm{P}$의 가속도는?",
+  "condition": null,
+  "choices": [
+   "6",
+   "9",
+   "12",
+   "15",
+   "18"
+  ],
+  "answer": "2",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "운동 방향이 바뀌는 시각 = 속도 $v=0$이면서 부호가 바뀌는 시각이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$v=3t^2-3t-6=3(t-2)(t+1)$ → $t=2$. $a=6t-3=9$",
+  "legacy": {
+   "category": "속도 · 가속도와 운동 방향",
+   "book_no": 36,
+   "question_page": 18,
+   "solution_page": 62
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260909",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260909",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2025년 9월 고3 9번"
+  },
+  "question": "다항함수 $f(x)$의 한 부정적분을 $F(x)$라 하고, 함수 $2f(x)+1$의 한 부정적분을 $G(x)$라 하자. $G(3)=2F(3)$일 때, $G(5)-2F(5)$의 값은?",
+  "condition": null,
+  "choices": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": "2",
+  "answer_value": "2",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-14",
+   "primary_name": "적분 연산",
+   "links": []
+  },
+  "first_judgment": "$H(x)=G(x)-2F(x)$로 묶으면 $H'(x)=1$이 되어 $H$가 일차함수로 정해진다.",
+  "behavior": "계산",
+  "reasoning": [
+   "치환·보조함수 도입"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$H'=2f+1-2f=1$ → $H=x+C$, $H(3)=0$ → $C=-3$. $H(5)=2$",
+  "legacy": {
+   "category": "부정적분의 정의",
+   "book_no": 37,
+   "question_page": 19,
+   "solution_page": 62
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250621",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250621",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 21,
+   "points": 4,
+   "label": "2024년 6월 고3 21번"
+  },
+  "question": "최고차항의 계수가 $1$인 사차함수 $f(x)$가 다음 조건을 만족시킨다. $f(0)=0$, $f'(1)=0$일 때, $f(3)$의 값을 구하시오.",
+  "condition": "(가) $f'(a)\\le0$인 실수 $a$의 최댓값은 $2$이다.\\\\(나) 집합 $\\{x\\mid f(x)=k\\}$의 원소의 개수가 $3$ 이상이 되도록 하는 실수 $k$의 최솟값은 $\\dfrac83$이다.",
+  "choices": null,
+  "answer": "15",
+  "answer_value": "15",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-09",
+   "primary_name": "증가/감소, 극대/극소, 최대/최소",
+   "links": [
+    "수학Ⅱ-14"
+   ]
+  },
+  "first_judgment": "(나)에서 $f'=0$이 서로 다른 세 실근을 가지고, (가)에서 가장 큰 근이 $2$이므로 $f'(x)=4(x-1)(x-2)(x-b)$로 두고 $b$의 위치로 나눈다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S17",
+   "S18"
+  ],
+  "solution_ref": "$f'=4(x-1)(x-2)(x-b)$, $f(0)=0$으로 $f=x^4-\\frac43(b+3)x^3+2(3b+2)x^2-8bx$. (i) $b<1$, $f(b)<f(2)$: $f(2)=\\frac83$ → $b=-1$, $f(-1)=-\\frac{19}3<\\frac83$ 적합. (ii) $b<1$, $f(2)<f(b)$: 최솟값 음수 → 불가. (iii) $1<b<2$: 불가. $f(3)=81-72-18+24=15$",
+  "legacy": {
+   "category": "도함수가 주어진 경우의 부정적분 : f'(x)로부터 f(x)구하기",
+   "book_no": 38,
+   "question_page": 19,
+   "solution_page": 62
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230922",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230922",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2022년 9월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $1$이고 $x=3$에서 극댓값 $8$을 갖는 삼차함수 $f(x)$가 있다. 실수 $t$에 대하여 함수 $g(x)$를 $g(x)=\\begin{cases}f(x) & (x\\ge t)\\\\ -f(x)+2f(t) & (x<t)\\end{cases}$라 할 때, 방정식 $g(x)=0$의 서로 다른 실근의 개수를 $h(t)$라 하자. 함수 $h(t)$가 $t=a$에서 불연속인 $a$의 값이 두 개일 때, $f(8)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "58",
+  "answer_value": "58",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-10",
+   "primary_name": "방정식에의 활용",
+   "links": [
+    "수학Ⅱ-09",
+    "수학Ⅱ-06"
+   ]
+  },
+  "first_judgment": "$x<t$ 부분은 $f$를 $y=f(t)$에 대해 대칭이동한 것이므로, 극솟점 $x=k$에서의 값 $f(k)$의 부호에 따라 $g$의 그래프를 그려 교점 수 변화를 본다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "경우 나누기",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S19",
+   "S21"
+  ],
+  "solution_ref": "$g$는 연속. $f(k)<0$이면 불연속점이 5개 이상 → 위배. 불연속점 2개인 경우는 $t=k$일 때 $g(3)=0$뿐: $-8+2f(k)=0$ → $f(k)=4$. $f'=3(x-3)(x-k)$, $f(3)=8$로 $C=\\frac{43}2-\\frac{27}2k$, $f(k)=4$ → $(k-5)(k^2-4k+7)=0$, $k=5$. $f=x^3-12x^2+45x-46$, $f(8)=58$",
+  "legacy": {
+   "category": "함수의 연속과 부정적분",
+   "book_no": 39,
+   "question_page": 20,
+   "solution_page": 63
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-221122",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "221122",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 22,
+   "points": 4,
+   "label": "2021년 11월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $\\dfrac12$인 삼차함수 $f(x)$와 실수 $t$에 대하여 방정식 $f'(x)=0$이 닫힌구간 $[t,t+2]$에서 갖는 실근의 개수를 $g(t)$라 할 때, 함수 $g(t)$는 다음 조건을 만족시킨다. $f(5)$의 값을 구하시오.",
+  "condition": "(가) 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{t\\to a+}g(t)+\\lim_{t\\to a-}g(t)\\le2$이다.\\\\(나) $g(f(1))=g(f(4))=2$, $g(f(0))=1$",
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-21",
+   "primary_name": "새롭게 정의된 함수",
+   "links": [
+    "수학Ⅱ-09",
+    "수학Ⅱ-14"
+   ]
+  },
+  "first_judgment": "$f'=0$의 두 근 $\\alpha<\\beta$의 간격이 $2$보다 크거나 작거나 같은지로 $g(t)$의 그래프 모양이 달라지므로, (가)로 $\\beta=\\alpha+2$를 먼저 확정한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S18",
+   "S19"
+  ],
+  "solution_ref": "$f'=0$ 근 없음/중근 → (나) 모순. 서로 다른 두 근 $\\alpha,\\beta$: $\\beta>\\alpha+2$ → (나) 모순, $\\beta<\\alpha+2$ → (가) 모순, 따라서 $\\beta=\\alpha+2$ ($g=2$는 $t=\\alpha$에서만). $f(1)=f(4)=\\alpha$ → $\\alpha=1$ 또는 $2$. $\\alpha=1$: $f=\\frac12x^3-3x^2+\\frac92x-1$, $g(f(0))=g(-1)=1$ 적합. $\\alpha=2$: $g(f(0))=0$ 부적합. $f(5)=9$",
+  "legacy": {
+   "category": "함수의 연속과 부정적분",
+   "book_no": 40,
+   "question_page": 20,
+   "solution_page": 64
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250909",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250909",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2024년 9월 고3 9번"
+  },
+  "question": "함수 $f(x)=x^2+x$에 대하여 $5\\displaystyle\\int_0^1f(x)\\,dx-\\int_0^1(5x+f(x))\\,dx$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac16",
+   "\\frac13",
+   "\\frac12",
+   "\\frac23",
+   "\\frac56"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac56",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-14",
+   "primary_name": "적분 연산",
+   "links": []
+  },
+  "first_judgment": "적분 구간이 같으므로 피적분함수를 하나로 합쳐 $\\int_0^1(4x^2-x)\\,dx$로 계산한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_0^1(4x^2+4x-5x)\\,dx=\\frac43-\\frac12=\\frac56$",
+  "legacy": {
+   "category": "정적분의 계산(1) : 적분 구간이 같은 경우",
+   "book_no": 41,
+   "question_page": 21,
+   "solution_page": 65
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-251109",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "251109",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 9,
+   "points": 4,
+   "label": "2024년 11월 고3 9번"
+  },
+  "question": "함수 $f(x)=3x^2-16x-20$에 대하여 $\\displaystyle\\int_{-2}^{a}f(x)\\,dx=\\int_{-2}^{0}f(x)\\,dx$일 때, 양수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+   "16",
+   "14",
+   "12",
+   "10",
+   "8"
+  ],
+  "answer": "4",
+  "answer_value": "10",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-14",
+   "primary_name": "적분 연산",
+   "links": []
+  },
+  "first_judgment": "구간을 나누면 조건은 $\\int_0^af(x)\\,dx=0$과 같다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_0^a f=a^3-8a^2-20a=a(a+2)(a-10)=0$ → $a=10$",
+  "legacy": {
+   "category": "정적분의 계산(2) : 피적분함수가 같은 경우",
+   "book_no": 42,
+   "question_page": 21,
+   "solution_page": 65
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250615",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250615",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2024년 6월 고3 15번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$와 상수 $k$ $(k\\ge0)$에 대하여 함수 $g(x)=\\begin{cases}2x-k & (x\\le k)\\\\ f(x) & (x>k)\\end{cases}$가 다음 조건을 만족시킨다. $g(k+1)$의 최솟값은?",
+  "condition": "(가) 함수 $g(x)$는 실수 전체의 집합에서 증가하고 미분가능하다.\\\\(나) 모든 실수 $x$에 대하여 $\\displaystyle\\int_0^x g(t)\\{|t(t-1)|+t(t-1)\\}\\,dt\\ge0$이고 $\\displaystyle\\int_3^x g(t)\\{|(t-1)(t+2)|-(t-1)(t+2)\\}\\,dt\\ge0$이다.",
+  "choices": [
+   "4-\\sqrt6",
+   "5-\\sqrt6",
+   "6-\\sqrt6",
+   "7-\\sqrt6",
+   "8-\\sqrt6"
+  ],
+  "answer": "2",
+  "answer_value": "5-\\sqrt6",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-15",
+   "primary_name": "정적분으로 정의된 함수",
+   "links": [
+    "수학Ⅱ-16",
+    "수학Ⅱ-07"
+   ]
+  },
+  "first_judgment": "$h_1(t)=|t(t-1)|+t(t-1)\\ge0$, $h_2\\ge0$이 $0$인 구간을 확인하면 (나)는 $g$의 부호가 특정 점에서 바뀌어야 한다는 조건 → $g$의 근 $\\frac k2$의 위치로 $k$를 확정한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S24"
+  ],
+  "solution_ref": "$\\int_p^x h(t)dt\\ge0$ 꼴 조건 → (i) $0\\le\\frac k2\\le1$, (ii) $\\frac k2\\ge1$ → $k=2$. $g'(2)=f'(2)=2$, $g(2)=f(2)=2$ → $b=-4a-10$, $c=4a+14$. $x\\ge2$에서 $f'\\ge0$: $-\\frac a3<2$이면 성립, 아니면 $(a+6)^2\\le6$ → $a\\ge-6-\\sqrt6$. $g(3)=a+11\\ge5-\\sqrt6$",
+  "legacy": {
+   "category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+   "book_no": 43,
+   "question_page": 22,
+   "solution_page": 65
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220914",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220914",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2021년 9월 고3 14번"
+  },
+  "question": "최고차항의 계수가 $1$이고 $f'(0)=f'(2)=0$인 삼차함수 $f(x)$와 양수 $p$에 대하여 함수 $g(x)$를 $g(x)=\\begin{cases}f(x)-f(0) & (x\\le0)\\\\ f(x+p)-f(p) & (x>0)\\end{cases}$이라 하자. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $p=1$일 때, $g'(1)=0$이다.\\\\ㄴ. $g(x)$가 실수 전체의 집합에서 미분가능하도록 하는 양수 $p$의 개수는 $1$이다.\\\\ㄷ. $p\\ge2$일 때, $\\displaystyle\\int_{-1}^{1}g(x)\\,dx\\ge0$이다.",
+  "choices": [
+   "ㄱ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ",
+   "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "5",
+  "answer_value": "ㄱ, ㄴ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-14",
+   "primary_name": "적분 연산",
+   "links": [
+    "수학Ⅱ-07",
+    "수학Ⅱ-20"
+   ]
+  },
+  "first_judgment": "$f'=3x(x-2)$로 $f(x)-f(0)=x^3-3x^2$이 확정되고, $x>0$ 부분은 이를 $p$만큼 평행이동한 식이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S16"
+  ],
+  "solution_ref": "$g=x^3-3x^2$ ($x\\le0$), $x^3+(3p-3)x^2+(3p^2-6p)x$ ($x>0$). ㄱ: $p=1$ → $g'(1)=3-3=0$ (참). ㄴ: 연속이고 미분가능 → $3p^2-6p=0$, $p=2$ (참). ㄷ: $\\int_{-1}^1g=\\frac12(3p+2)(p-2)\\ge0$ ($p\\ge2$) (참)",
+  "legacy": {
+   "category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+   "book_no": 44,
+   "question_page": 22,
+   "solution_page": 66
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220611",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220611",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2021년 6월 고3 11번"
+  },
+  "question": "닫힌구간 $[0,1]$에서 연속인 함수 $f(x)$가 $f(0)=0$, $f(1)=1$, $\\displaystyle\\int_0^1f(x)\\,dx=\\frac16$을 만족시킨다. 실수 전체의 집합에서 정의된 함수 $g(x)$가 다음 조건을 만족시킬 때, $\\displaystyle\\int_{-3}^{2}g(x)\\,dx$의 값은?",
+  "condition": "(가) $g(x)=\\begin{cases}-f(x+1)+1 & (-1<x<0)\\\\ f(x) & (0\\le x\\le1)\\end{cases}$\\\\(나) 모든 실수 $x$에 대하여 $g(x+2)=g(x)$이다.",
+  "choices": [
+   "\\frac52",
+   "\\frac{17}6",
+   "\\frac{19}6",
+   "\\frac72",
+   "\\frac{23}6"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{17}6",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-20",
+   "primary_name": "적분구간의 평행이동",
+   "links": [
+    "수학Ⅱ-14"
+   ]
+  },
+  "first_judgment": "$-f(x+1)+1$은 $f$를 대칭·평행이동한 것이므로 한 주기 $[-1,1]$의 적분을 먼저 구하고 주기성으로 확장한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_{-1}^0g=1-\\frac16=\\frac56$, $\\int_0^1g=\\frac16$, 한 주기 합 $1$. $\\int_{-3}^2g=2\\cdot1+\\int_{-1}^0g=\\frac{17}6$",
+  "legacy": {
+   "category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+   "book_no": 45,
+   "question_page": 23,
+   "solution_page": 67
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-270615",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "270615",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2026년 6월 고3 15번"
+  },
+  "question": "상수항이 $0$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f(6)$의 값은?",
+  "condition": "(가) $\\displaystyle\\int_p^{p+3}|f(x)|\\,dx\\ne\\left|\\int_p^{p+3}f(x)\\,dx\\right|$가 되도록 하는 모든 실수 $p$의 값의 범위는 $0<p<3$이다.\\\\(나) $\\displaystyle\\int_0^3|f(x)+q|\\,dx\\ne\\left|\\int_0^3\\{f(x)+q\\}\\,dx\\right|$가 되도록 하는 모든 실수 $q$의 값의 범위는 $0<q<1$이다.",
+  "choices": [
+   "18",
+   "21",
+   "24",
+   "27",
+   "30"
+  ],
+  "answer": "4",
+  "answer_value": "27",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": [
+    "수학Ⅱ-16"
+   ]
+  },
+  "first_judgment": "$\\int|f|\\ne|\\int f|$ ⇔ 구간 안에서 $f$의 부호가 바뀐다. (가)로 부호가 바뀌는 근이 $x=3$뿐이고 $x=0$에서는 접함을 끌어낸다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S24"
+  ],
+  "solution_ref": "$f(0)=0$, (가) → $f(3)=0$이고 $x=0$에서 접함 → $f=ax^2(x-3)$. (나): $a>0$이어야 하고 $[0,3]$ 최솟값 $f(2)=-4a$, $-4a+q<0<q$ 범위가 $0<q<1$ → $a=\\frac14$. $f(6)=\\frac14\\cdot36\\cdot3=27$",
+  "legacy": {
+   "category": "정적분의 계산(5) : 다양한 조건이 주어진 경우",
+   "book_no": 46,
+   "question_page": 23,
+   "solution_page": 67
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-221120",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "221120",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 20,
+   "points": 4,
+   "label": "2021년 11월 고3 20번"
+  },
+  "question": "실수 전체의 집합에서 미분가능한 함수 $f(x)$가 다음 조건을 만족시킨다. $60\\displaystyle\\int_1^2f(x)\\,dx$의 값을 구하시오.",
+  "condition": "(가) 닫힌구간 $[0,1]$에서 $f(x)=x$이다.\\\\(나) 어떤 상수 $a,b$에 대하여 구간 $[0,\\infty)$에서 $f(x+1)-xf(x)=ax+b$이다.",
+  "choices": null,
+  "answer": "110",
+  "answer_value": "110",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-20",
+   "primary_name": "적분구간의 평행이동",
+   "links": [
+    "수학Ⅱ-14",
+    "수학Ⅱ-07"
+   ]
+  },
+  "first_judgment": "(나)에 $x=0$을 넣어 $b$를 구하고, $[0,1]$의 식을 $x+1=t$로 옮겨 $[1,2]$에서의 $f$를 얻은 뒤 $x=1$에서 미분가능 조건으로 $a$를 정한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "치환·보조함수 도입",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S16"
+  ],
+  "solution_ref": "$x=0$: $f(1)=b=1$. $0\\le x\\le1$: $f(x+1)=x^2+ax+1$ → $f(t)=t^2+(a-2)t+2-a$. $f'(1)=1$ → $a=1$. $[1,2]$에서 $f=x^2-x+1$, $\\int_1^2=\\frac{11}6$. $60\\cdot\\frac{11}6=110$",
+  "legacy": {
+   "category": "정적분의 계산(5) : 다양한 조건이 주어진 경우",
+   "book_no": 47,
+   "question_page": 24,
+   "solution_page": 68
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260609",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260609",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2025년 6월 고3 9번"
+  },
+  "question": "함수 $f(x)=x^2+ax$에 대하여 $\\displaystyle\\int_{-3}^{3}(x+1)f(x)\\,dx=36+\\int_{-3}^{3}f(x)\\,dx$일 때, 상수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": "2",
+  "answer_value": "2",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-14",
+   "primary_name": "적분 연산",
+   "links": []
+  },
+  "first_judgment": "양변의 $\\int f$가 소거되어 $\\int_{-3}^3xf(x)\\,dx=36$만 남고, 기함수 부분은 $0$이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_{-3}^3(x^3+ax^2)\\,dx=2\\int_0^3ax^2\\,dx=18a=36$ → $a=2$",
+  "legacy": {
+   "category": "우함수 · 기함수의 정적분(1) : 피적분함수가 주어진 경우",
+   "book_no": 48,
+   "question_page": 24,
+   "solution_page": 68
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250915",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250915",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2024년 9월 고3 15번"
+  },
+  "question": "두 다항함수 $f(x)$, $g(x)$는 모든 실수 $x$에 대하여 다음 조건을 만족시킨다. $\\displaystyle\\int_0^3g(x)\\,dx$의 값은?",
+  "condition": "(가) $\\displaystyle\\int_1^x tf(t)\\,dt+\\int_{-1}^x tg(t)\\,dt=3x^4+8x^3-3x^2$\\\\(나) $f(x)=xg'(x)$",
+  "choices": [
+   "72",
+   "76",
+   "80",
+   "84",
+   "88"
+  ],
+  "answer": "1",
+  "answer_value": "72",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-15",
+   "primary_name": "정적분으로 정의된 함수",
+   "links": [
+    "수학Ⅱ-14"
+   ]
+  },
+  "first_judgment": "(가)를 미분하고 (나)를 대입하면 $\\{xg(x)\\}'$가 나오는 꼴이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+   "S22"
+  ],
+  "solution_ref": "$x\\{f+g\\}=12x^3+24x^2-6x$ → $xg'+g=12x^2+24x-6$ → $xg=4x^3+12x^2-6x$ → $g=4x^2+12x-6$. $\\int_0^3g=36+54-18=72$",
+  "legacy": {
+   "category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+   "book_no": 49,
+   "question_page": 25,
+   "solution_page": 69
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240922",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240922",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 22,
+   "points": 4,
+   "label": "2023년 9월 고3 22번"
+  },
+  "question": "두 다항함수 $f(x)$, $g(x)$에 대하여 $f(x)$의 한 부정적분을 $F(x)$라 하고 $g(x)$의 한 부정적분을 $G(x)$라 할 때, 이 함수들은 모든 실수 $x$에 대하여 다음 조건을 만족시킨다. $\\displaystyle\\int_1^3g(x)\\,dx$의 값을 구하시오.",
+  "condition": "(가) $\\displaystyle\\int_1^x f(t)\\,dt=xf(x)-2x^2-1$\\\\(나) $f(x)G(x)+F(x)g(x)=8x^3+3x^2+1$",
+  "choices": null,
+  "answer": "10",
+  "answer_value": "10",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-15",
+   "primary_name": "정적분으로 정의된 함수",
+   "links": [
+    "수학Ⅱ-14"
+   ]
+  },
+  "first_judgment": "(가)에 $x=1$ 대입과 미분으로 $f$를 구하고, (나)의 좌변이 $\\{F(x)G(x)\\}'$임을 알아본다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S22"
+  ],
+  "solution_ref": "$f(1)=3$, 미분 → $f'=4$, $f=4x-1$, $F=2x^2-x+C_2$. $FG=2x^4+x^3+x+C_3$, $G=x^2+ax+b$ → $2a-1=1$, $a=1$. $\\int_1^3g=G(3)-G(1)=10$",
+  "legacy": {
+   "category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+   "book_no": 50,
+   "question_page": 25,
+   "solution_page": 69
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220911",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220911",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2021년 9월 고3 11번"
+  },
+  "question": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $xf(x)=2x^3+ax^2+3a+\\displaystyle\\int_1^xf(t)\\,dt$를 만족시킨다. $f(1)=\\displaystyle\\int_0^1f(t)\\,dt$일 때, $a+f(3)$의 값은? (단, $a$는 상수이다.)",
+  "condition": null,
+  "choices": [
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "answer": "4",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-15",
+   "primary_name": "정적분으로 정의된 함수",
+   "links": [
+    "수학Ⅱ-14"
+   ]
+  },
+  "first_judgment": "$x=1$, $x=0$을 대입해 $f(1)$과 $\\int_0^1f$를 $a$로 나타내고, 미분해 $f'$을 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+   "S22"
+  ],
+  "solution_ref": "$x=1$: $f(1)=2+4a$. $x=0$: $\\int_0^1f=3a$. $2+4a=3a$ → $a=-2$, $f(1)=-6$. 미분: $f'=6x-4$, $f=3x^2-4x-5$. $f(3)=10$, $a+f(3)=8$",
+  "legacy": {
+   "category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+   "book_no": 51,
+   "question_page": 26,
+   "solution_page": 69
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-261115",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "261115",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 15,
+   "points": 4,
+   "label": "2025년 11월 고3 15번"
+  },
+  "question": "함수 $f(x)=\\begin{cases}-x^2 & (x<0)\\\\ x^2-x & (x\\ge0)\\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)=\\begin{cases}ax+a & (x<-1)\\\\ 0 & (-1\\le x<1)\\\\ ax-a & (x\\ge1)\\end{cases}$이라 하자. 함수 $h(x)=\\displaystyle\\int_0^x(g(t)-f(t))\\,dt$가 오직 하나의 극값을 갖도록 하는 $a$의 최댓값을 $k$라 하자. $a=k$일 때, $k+h(3)$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac92",
+   "\\frac{11}2",
+   "\\frac{13}2",
+   "\\frac{15}2",
+   "\\frac{17}2"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{15}2",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-16",
+   "primary_name": "정적분으로 정의된 함수의 활용",
+   "links": [
+    "수학Ⅱ-15"
+   ]
+  },
+  "first_judgment": "$h'=g-f$이므로 극값은 두 그래프가 교차하는 점; $x=1$에서의 교차 하나만 남도록 $x<-1$ 부분에서 직선이 포물선에 접하는 경우가 경계다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "그래프·도형 해석",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S22"
+  ],
+  "solution_ref": "$a\\le1$: $x=1$에서만 극값. $a>1$: $x>1$ 교점 $b$에서 극값 → $x<-1$에서 $f>g$인 구간이 없어야 → $y=ax+a$가 $y=-x^2$에 접할 때 최대. 접점 $(-2,-4)$, $a=4=k$. $h(3)=\\int_0^1(-t^2+t)dt+\\int_1^3(-t^2+5t-4)dt=\\frac16+\\frac{10}3=\\frac72$. $k+h(3)=\\frac{15}2$",
+  "legacy": {
+   "category": "정적분으로 정의된 함수의 극대 · 극소",
+   "book_no": 52,
+   "question_page": 26,
+   "solution_page": 69
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260915",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260915",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 15,
+   "points": 4,
+   "label": "2025년 9월 고3 15번"
+  },
+  "question": "최고차항의 계수가 양수이고 $f(0)=0$인 삼차함수 $f(x)$에 대하여 함수 $g(x)=\\displaystyle\\int_0^x(|f(t)|-|t|)\\,dt$가 다음 조건을 만족시킨다. $f(6)g(2)<0$일 때, $f(8)$의 값은?",
+  "condition": "(가) 방정식 $g'(x)=0$의 서로 다른 실근의 개수는 $4$이다.\\\\(나) 함수 $g(x)$는 $x=2$, $x=6$에서 극값을 갖는다.",
+  "choices": [
+   "16",
+   "22",
+   "28",
+   "34",
+   "40"
+  ],
+  "answer": "5",
+  "answer_value": "40",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-16",
+   "primary_name": "정적분으로 정의된 함수의 활용",
+   "links": [
+    "수학Ⅱ-15",
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "$g'=|f|-|x|$이므로 (나)에서 $|f(2)|=2$, $|f(6)|=6$ — 부호 조합 4가지로 나누고 (가)의 근 개수로 거른다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S18"
+  ],
+  "solution_ref": "$f(2)=\\pm2$, $f(6)=\\pm6$. (i) $(2,6)$: $g(2)>0$, $f(6)g(2)>0$ 모순. (ii) $(2,-6)$: 극값 조건 모순. (iii) $(-2,-6)$: 판별식 → $k<0$ 모순. (iv) $(-2,6)$: $f=kx^3+px^2+qx$, 원점에서 $y=x$에 접함 → $q=1$, $k=\\frac14$, $p=-\\frac32$. $f(8)=128-96+8=40$",
+  "legacy": {
+   "category": "정적분으로 정의된 함수의 극대 · 극소",
+   "book_no": 53,
+   "question_page": 27,
+   "solution_page": 70
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230620",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230620",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2022년 6월 고3 20번"
+  },
+  "question": "최고차항의 계수가 $2$인 이차함수 $f(x)$에 대하여 함수 $g(x)=\\displaystyle\\int_x^{x+1}|f(t)|\\,dt$는 $x=1$과 $x=4$에서 극소이다. $f(0)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "13",
+  "answer_value": "13",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-16",
+   "primary_name": "정적분으로 정의된 함수의 활용",
+   "links": [
+    "수학Ⅱ-20",
+    "수학Ⅱ-15"
+   ]
+  },
+  "first_judgment": "$g'(x)=|f(x+1)|-|f(x)|$이므로 극소 조건은 $x=1$, $x=4$에서 이 값이 $0$이 되는 것이고, 근 $\\alpha,\\beta$가 구간 $[x,x+1]$에 걸치는 두 경우로 나눈다.",
+  "behavior": "문제해결",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S24"
+  ],
+  "solution_ref": "$f\\ge0$이면 $g$ 이차함수로 극소 1개 → 불가. $f=2(x-\\alpha)(x-\\beta)$. (i) $x<\\alpha<x+1$: $g'(1)=0$ → $3\\alpha+3\\beta-2\\alpha\\beta-5=0$. (ii) $x<\\beta<x+1$: $g'(4)=0$ → $9\\alpha+9\\beta-2\\alpha\\beta-41=0$. 연립 → $\\alpha\\beta=\\frac{13}2$. $f(0)=2\\alpha\\beta=13$",
+  "legacy": {
+   "category": "정적분으로 정의된 함수의 극대 · 극소",
+   "book_no": 54,
+   "question_page": 27,
+   "solution_page": 71
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220620",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220620",
+   "year": 2022,
+   "exam": "6월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2021년 6월 고3 20번"
+  },
+  "question": "실수 $a$와 함수 $f(x)=x^3-12x^2+45x+3$에 대하여 함수 $g(x)=\\displaystyle\\int_a^x\\{f(x)-f(t)\\}\\times\\{f(t)\\}^4\\,dt$가 오직 하나의 극값을 갖도록 하는 모든 $a$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-16",
+   "primary_name": "정적분으로 정의된 함수의 활용",
+   "links": [
+    "수학Ⅱ-15",
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "$g(x)=f(x)\\int_a^x f^4\\,dt-\\int_a^x f^5\\,dt$로 분리해 미분하면 $g'(x)=f'(x)\\int_a^x\\{f(t)\\}^4dt$가 되어 근이 $3,5,a$이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S18"
+  ],
+  "solution_ref": "$g'=f'(x)\\int_a^x f^4\\,dt$, $f'=3(x-3)(x-5)$. $a\\ne3,5$: 극값 3개. $a=3$: $x=3$은 부호 변화 없음, $x=5$에서만 극값. $a=5$: $x=3$에서만 극값. 합 $8$",
+  "legacy": {
+   "category": "정적분으로 정의된 함수의 극대 · 극소",
+   "book_no": 55,
+   "question_page": 28,
+   "solution_page": 72
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240620",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240620",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2023년 6월 고3 20번"
+  },
+  "question": "최고차항의 계수가 $1$인 이차함수 $f(x)$에 대하여 함수 $g(x)=\\displaystyle\\int_0^x f(t)\\,dt$가 다음 조건을 만족시킬 때, $f(9)$의 값을 구하시오.",
+  "condition": "$x\\ge1$인 모든 실수 $x$에 대하여 $g(x)\\ge g(4)$이고 $|g(x)|\\ge|g(3)|$이다.",
+  "choices": null,
+  "answer": "39",
+  "answer_value": "39",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-17",
+   "primary_name": "정적분과 최대/최소",
+   "links": [
+    "수학Ⅱ-15"
+   ]
+  },
+  "first_judgment": "$g$는 최고차항 $\\frac13$인 삼차함수이고 $x\\ge1$에서 $x=4$가 최소·극소이므로 $f(4)=0$; $g(4)$의 부호로 나눠 $|g|$ 조건을 해석한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S22"
+  ],
+  "solution_ref": "$f=(x-4)(x-a)$. (i) $g(4)\\ge0$: $g(3)>g(4)$로 모순. (ii) $g(4)<0$: $g(3)=0$ 필요. $g=\\frac13x^3-\\frac{a+4}2x^2+4ax$, $g(3)=9-\\frac92(a+4)+12a=0$ → $a=\\frac65$. $f(9)=5\\cdot\\frac{39}5=39$",
+  "legacy": {
+   "category": "정적분으로 정의된 함수의 최대 · 최소",
+   "book_no": 56,
+   "question_page": 28,
+   "solution_page": 73
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230914",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230914",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2022년 9월 고3 14번"
+  },
+  "question": "최고차항의 계수가 $1$이고 $f(0)=0$, $f(1)=0$인 삼차함수 $f(x)$에 대하여 함수 $g(t)$를 $g(t)=\\displaystyle\\int_t^{t+1}f(x)\\,dx-\\int_0^1|f(x)|\\,dx$라 할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $g(0)=0$이면 $g(-1)<0$이다.\\\\ㄴ. $g(-1)>0$이면 $f(k)=0$을 만족시키는 $k<-1$인 실수 $k$가 존재한다.\\\\ㄷ. $g(-1)>1$이면 $g(0)<-1$이다.",
+  "choices": [
+   "ㄱ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ",
+   "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "5",
+  "answer_value": "ㄱ, ㄴ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-16",
+   "primary_name": "정적분으로 정의된 함수의 활용",
+   "links": [
+    "수학Ⅱ-18"
+   ]
+  },
+  "first_judgment": "$f=x(x-1)(x-a)$로 두고, $g(0)=\\int_0^1f-\\int_0^1|f|$가 $0$이면 $[0,1]$에서 $f\\ge0$임을 이용한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S24"
+  ],
+  "solution_ref": "ㄱ: $g(0)=0$ → $[0,1]$에서 $f\\ge0$ ($a\\ge1$) → $\\int_{-1}^0f<0$, $g(-1)<0$ (참). ㄴ: $g(-1)>0$이면 $[0,1]$에서 $f\\le0$, $g(-1)=\\int_{-1}^1f=-\\frac{2(a+1)}3>0$ → $a<-1$ (참). ㄷ: $g(-1)>1$ → $a<-\\frac52$, $g(0)=2\\int_0^1f=\\frac13a-\\frac16<-1$ (참)",
+  "legacy": {
+   "category": "정적분으로 정의된 함수의 그래프",
+   "book_no": 57,
+   "question_page": 29,
+   "solution_page": 73
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230614",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230614",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2022년 6월 고3 14번"
+  },
+  "question": "실수 전체의 집합에서 연속인 함수 $f(x)$와 최고차항의 계수가 $1$인 삼차함수 $g(x)$가 $g(x)=\\begin{cases}-\\displaystyle\\int_0^x f(t)\\,dt & (x<0)\\\\ \\displaystyle\\int_0^x f(t)\\,dt & (x\\ge0)\\end{cases}$을 만족시킬 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $f(0)=0$\\\\ㄴ. 함수 $f(x)$는 극댓값을 갖는다.\\\\ㄷ. $2<f(1)<4$일 때, 방정식 $f(x)=x$의 서로 다른 실근의 개수는 $3$이다.",
+  "choices": [
+   "ㄱ",
+   "ㄷ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "4",
+  "answer_value": "ㄱ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-15",
+   "primary_name": "정적분으로 정의된 함수",
+   "links": [
+    "수학Ⅱ-07",
+    "수학Ⅱ-10"
+   ]
+  },
+  "first_judgment": "$g'(x)=\\mp f(x)$이고 $g$는 미분가능하므로 $x=0$에서 $-f(0)=f(0)$; $g(0)=0$이라 $g=x^2(x-a)$로 두고 $a$의 부호로 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S16"
+  ],
+  "solution_ref": "ㄱ: $f(0)=0$ (참). ㄴ: $g=x^2(x-a)$, $f=\\mp x(3x-2a)$; $a=0$이면 $f=-3x^2$/$3x^2$로 극댓값 없음 (거짓). ㄷ: $f(1)=3-2a$, 각 경우 $2<f(1)<4$에서 $y=f(x)$와 $y=x$가 세 점에서 만남 (참). 답 ㄱ, ㄷ",
+  "legacy": {
+   "category": "정적분으로 정의된 함수의 그래프",
+   "book_no": 58,
+   "question_page": 29,
+   "solution_page": 74
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250913",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250913",
+   "year": 2025,
+   "exam": "9월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2024년 9월 고3 13번"
+  },
+  "question": "함수 $f(x)=\\begin{cases}-x^2-2x+6 & (x<0)\\\\ -x^2+2x+6 & (x\\ge0)\\end{cases}$의 그래프가 $x$축과 만나는 서로 다른 두 점을 $\\mathrm{P}$, $\\mathrm{Q}$라 하고, 상수 $k$ $(k>4)$에 대하여 직선 $x=k$가 $x$축과 만나는 점을 $\\mathrm{R}$이라 하자. 곡선 $y=f(x)$와 선분 $\\mathrm{PQ}$로 둘러싸인 부분의 넓이를 $A$, 곡선 $y=f(x)$와 직선 $x=k$ 및 선분 $\\mathrm{QR}$로 둘러싸인 부분의 넓이를 $B$라 하자. $A=2B$일 때, $k$의 값은? (단, 점 $\\mathrm{P}$의 $x$좌표는 음수이다.)",
+  "condition": null,
+  "choices": [
+   "\\frac92",
+   "5",
+   "\\frac{11}2",
+   "6",
+   "\\frac{13}2"
+  ],
+  "answer": "4",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": []
+  },
+  "first_judgment": "$f$는 $y$축 대칭이므로 $A$의 절반이 $\\int_0^{x_Q}f$이고, $A=2B$는 곧 $\\int_0^kf(x)\\,dx=0$이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "대칭성·주기성 활용",
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S24",
+   "S25"
+  ],
+  "solution_ref": "$\\int_0^k(-x^2+2x+6)\\,dx=-\\frac13k(k+3)(k-6)=0$ → $k=6$",
+  "legacy": {
+   "category": "곡선과 x축 사이의 넓이",
+   "book_no": 59,
+   "question_page": 30,
+   "solution_page": 75
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240610",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240610",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2023년 6월 고3 10번"
+  },
+  "question": "양수 $k$에 대하여 함수 $f(x)$는 $f(x)=kx(x-2)(x-3)$이다. 곡선 $y=f(x)$와 $x$축이 원점 $\\mathrm{O}$와 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ $(\\overline{\\mathrm{OP}}<\\overline{\\mathrm{OQ}})$에서 만난다. 곡선 $y=f(x)$와 선분 $\\mathrm{OP}$로 둘러싸인 영역을 $A$, 곡선 $y=f(x)$와 선분 $\\mathrm{PQ}$로 둘러싸인 영역을 $B$라 하자. $(A\\text{의 넓이})-(B\\text{의 넓이})=3$일 때, $k$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac76",
+   "\\frac43",
+   "\\frac32",
+   "\\frac53",
+   "\\frac{11}6"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac43",
+  "figure": {
+   "description": "곡선 $y=kx(x-2)(x-3)$과 $x$축; 0~2 사이 위쪽 영역 A, 2~3 사이 아래쪽 영역 B 색칠",
+   "source_page": 30
+  },
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": []
+  },
+  "first_judgment": "넓이의 차 $A-B$는 부호를 살린 정적분 $\\int_0^3f(x)\\,dx$와 같다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S24"
+  ],
+  "solution_ref": "$\\int_0^3f=k\\left[\\frac14x^4-\\frac53x^3+3x^2\\right]_0^3=\\frac94k=3$ → $k=\\frac43$",
+  "legacy": {
+   "category": "곡선과 x축 사이의 넓이",
+   "book_no": 60,
+   "question_page": 30,
+   "solution_page": 75
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-231112",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "231112",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 12,
+   "points": 4,
+   "label": "2022년 11월 고3 12번"
+  },
+  "question": "실수 전체의 집합에서 연속인 함수 $f(x)$가 다음 조건을 만족시킨다. 열린구간 $(0,4)$에서 정의된 함수 $g(x)=\\displaystyle\\int_0^x f(t)\\,dt-\\int_x^4 f(t)\\,dt$가 $x=2$에서 최솟값 $0$을 가질 때, $\\displaystyle\\int_{\\frac12}^{4}f(x)\\,dx$의 값은?",
+  "condition": "$n-1\\le x<n$일 때, $|f(x)|=|6(x-n+1)(x-n)|$이다. (단, $n$은 자연수이다.)",
+  "choices": [
+   "-\\frac32",
+   "-\\frac12",
+   "\\frac12",
+   "\\frac32",
+   "\\frac52"
+  ],
+  "answer": "2",
+  "answer_value": "-\\frac12",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-17",
+   "primary_name": "정적분과 최대/최소",
+   "links": [
+    "수학Ⅱ-18",
+    "수학Ⅱ-15"
+   ]
+  },
+  "first_judgment": "$g'(x)=2f(x)$이므로 $x=2$에서 최소가 되려면 $f$가 $x=2$ 좌우에서 음→양으로 바뀌어야 하고, $g(2)=0$은 $\\int_0^2f=\\int_2^4f$이다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S24"
+  ],
+  "solution_ref": "각 구간에서 $f=\\pm6(x-n+1)(x-n)$. $g(2)=0$, $x=2$ 최솟값 → $[0,4]$에서 $f$의 부호 배치가 양,음,양,음 형태로 결정. $\\int_{1/2}^4f=-\\int_0^{1/2}f=-\\int_0^{1/2}\\{-6x(x-1)\\}dx=\\left[2x^3-3x^2\\right]_0^{1/2}=-\\frac12$",
+  "legacy": {
+   "category": "곡선과 x축 사이의 넓이",
+   "book_no": 61,
+   "question_page": 31,
+   "solution_page": 76
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260613",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260613",
+   "year": 2026,
+   "exam": "6월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2025년 6월 고3 13번"
+  },
+  "question": "그림과 같이 함수 $f(x)=3x^2-7x+2$에 대하여 곡선 $y=f(x)$와 직선 $y=\\dfrac13x-\\dfrac23$ 및 $y$축으로 둘러싸인 영역을 $A$, 곡선 $y=f(x)$와 직선 $y=\\dfrac13x-\\dfrac23$로 둘러싸인 영역을 $B$, 곡선 $y=f(x)$와 두 직선 $y=\\dfrac13x-\\dfrac23$, $x=k$ $(k>2)$로 둘러싸인 영역을 $C$라 하자. $(A\\text{의 넓이})+(C\\text{의 넓이})=(B\\text{의 넓이})$일 때, 상수 $k$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{29}{12}",
+   "\\frac52",
+   "\\frac{31}{12}",
+   "\\frac83",
+   "\\frac{11}4"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac83",
+  "figure": {
+   "description": "포물선 $y=3x^2-7x+2$와 직선 $y=\\frac13x-\\frac23$, $y$축, $x=k$; 영역 A(왼쪽 작은 부분), B(아래 큰 부분), C(오른쪽) 색칠",
+   "source_page": 31
+  },
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": []
+  },
+  "first_judgment": "넓이 조건 $A+C=B$는 부호를 살린 적분 $\\int_0^k\\{f(x)-(\\text{직선})\\}dx=0$과 같다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S24",
+   "S25"
+  ],
+  "solution_ref": "$\\int_0^k\\left(3x^2-\\frac{22}3x+\\frac83\\right)dx=k^3-\\frac{11}3k^2+\\frac83k=\\frac13k(k-1)(3k-8)=0$ → $k=\\frac83$",
+  "legacy": {
+   "category": "곡선과 직선 사이의 넓이",
+   "book_no": 62,
+   "question_page": 31,
+   "solution_page": 76
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-251113",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "251113",
+   "year": 2025,
+   "exam": "대학수학능력시험",
+   "number": 13,
+   "points": 4,
+   "label": "2024년 11월 고3 13번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 $f(1)=f(2)=0$, $f'(0)=-7$을 만족시킨다. 원점 $\\mathrm{O}$와 점 $\\mathrm{P}(3,f(3))$에 대하여 선분 $\\mathrm{OP}$가 곡선 $y=f(x)$와 만나는 점 중 $\\mathrm{P}$가 아닌 점을 $\\mathrm{Q}$라 하자. 곡선 $y=f(x)$와 $y$축 및 선분 $\\mathrm{OQ}$로 둘러싸인 부분의 넓이를 $A$, 곡선 $y=f(x)$와 선분 $\\mathrm{PQ}$로 둘러싸인 부분의 넓이를 $B$라 할 때, $B-A$의 값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{37}4",
+   "\\frac{39}4",
+   "\\frac{41}4",
+   "\\frac{43}4",
+   "\\frac{45}4"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{45}4",
+  "figure": {
+   "description": "삼차곡선 $y=f(x)$와 원점 O, P(3, f(3)), 선분 OP 위 교점 Q; 영역 A(y축 쪽), B(Q~P) 색칠",
+   "source_page": 32
+  },
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": []
+  },
+  "first_judgment": "$B-A$는 $\\int_0^3\\{4x-f(x)\\}dx$로 한 번에 계산된다(부호 있는 넓이).",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S24"
+  ],
+  "solution_ref": "$f=(x-1)(x-2)(x-k)$, $f'(0)=2k+k+2=-7$ → $k=-3$. $f(3)=12$, 직선 $y=4x$. $B-A=\\int_0^3(-x^3+11x-6)dx=-\\frac{81}4+\\frac{99}2-18=\\frac{45}4$",
+  "legacy": {
+   "category": "곡선과 직선 사이의 넓이",
+   "book_no": 63,
+   "question_page": 32,
+   "solution_page": 76
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-250613",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "250613",
+   "year": 2025,
+   "exam": "6월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2024년 6월 고3 13번"
+  },
+  "question": "곡선 $y=\\dfrac14x^3+\\dfrac12x$와 직선 $y=mx+2$ 및 $y$축으로 둘러싸인 부분의 넓이를 $A$, 곡선 $y=\\dfrac14x^3+\\dfrac12x$와 두 직선 $y=mx+2$, $x=2$로 둘러싸인 부분의 넓이를 $B$라 하자. $B-A=\\dfrac23$일 때, 상수 $m$의 값은? (단, $m<-1$)",
+  "condition": null,
+  "choices": [
+   "-\\frac32",
+   "-\\frac{17}{12}",
+   "-\\frac43",
+   "-\\frac54",
+   "-\\frac76"
+  ],
+  "answer": "3",
+  "answer_value": "-\\frac43",
+  "figure": {
+   "description": "곡선 $y=\\frac14x^3+\\frac12x$와 직선 $y=mx+2$, $y$축, $x=2$; 영역 A(왼쪽), B(오른쪽) 색칠",
+   "source_page": 32
+  },
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": []
+  },
+  "first_judgment": "$B-A=\\int_0^2\\{f(x)-g(x)\\}dx$로 교점 좌표 없이 계산한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S24"
+  ],
+  "solution_ref": "$\\int_0^2\\left(\\frac14x^3+\\frac12x-mx-2\\right)dx=1+1-2m-4=-2m-2=\\frac23$ → $m=-\\frac43$",
+  "legacy": {
+   "category": "곡선과 직선 사이의 넓이",
+   "book_no": 64,
+   "question_page": 32,
+   "solution_page": 77
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230920",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230920",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 20,
+   "points": 4,
+   "label": "2022년 9월 고3 20번"
+  },
+  "question": "상수 $k$ $(k<0)$에 대하여 두 함수 $f(x)=x^3+x^2-x$, $g(x)=4|x|+k$의 그래프가 만나는 점의 개수가 $2$일 때, 두 함수의 그래프로 둘러싸인 부분의 넓이를 $S$라 하자. $30S$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "80",
+  "answer_value": "80",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": [
+    "수학Ⅱ-10",
+    "수학Ⅱ-08"
+   ]
+  },
+  "first_judgment": "교점이 2개가 되려면 $x>0$ 부분에서 $y=4x+k$가 곡선에 접해야 한다 → $f'(x)=4$인 접점을 찾는다.",
+  "behavior": "추론",
+  "reasoning": [
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S19",
+   "S24"
+  ],
+  "solution_ref": "$f'=3x^2+2x-1=4$ → $x=1$, 접점 $(1,1)$, $k=-3$. $x<0$: $x^3+x^2+3x+3=0$ → $x=-1$. $S=\\int_{-1}^0(x^3+x^2+3x+3)dx+\\int_0^1(x^3+x^2-5x+3)dx=\\frac{19}{12}+\\frac{13}{12}=\\frac83$. $30S=80$",
+  "legacy": {
+   "category": "곡선과 직선 사이의 넓이",
+   "book_no": 65,
+   "question_page": 33,
+   "solution_page": 77
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-270613",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "270613",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 13,
+   "points": 4,
+   "label": "2026년 6월 고3 13번"
+  },
+  "question": "두 다항함수 $f(x)$와 $g(x)$가 모든 실수 $x$에 대하여 $f(x)>g(x)$를 만족시키고, $f(1)=g(1)+1$이다. 양수 $t$에 대하여 두 곡선 $y=f(x)$, $y=g(x)$와 두 직선 $x=0$, $x=t$로 둘러싸인 도형의 넓이를 $S(t)$라 할 때, $S'(t)=t^2-2t+a$이다. <보기>에서 옳은 것만을 있는 대로 고른 것은? (단, $a$는 상수이다.)",
+  "condition": "ㄱ. $a=1$\\\\ㄴ. $S(3)=6$\\\\ㄷ. 두 곡선 $y=f(x)$, $y=g(x)$와 두 직선 $x=-2$, $x=2$로 둘러싸인 도형의 넓이는 $S(4)$의 값과 같다.",
+  "choices": [
+   "ㄴ",
+   "ㄷ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ"
+  ],
+  "answer": "5",
+  "answer_value": "ㄴ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": [
+    "수학Ⅱ-15"
+   ]
+  },
+  "first_judgment": "$S'(t)=f(t)-g(t)$이므로 $f(1)-g(1)=1$에서 $a$가 정해지고, $h=f-g=(x-1)^2+1$의 대칭축 $x=1$을 쓴다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S24"
+  ],
+  "solution_ref": "ㄱ: $1-2+a=1$ → $a=2$ (거짓). ㄴ: $S(3)=\\int_0^3(x^2-2x+2)dx=6$ (참). ㄷ: $h=(x-1)^2+1$은 $x=1$ 대칭이므로 $[-2,2]$ 넓이 $=[0,4]$ 넓이 (참). 답 ㄴ, ㄷ",
+  "legacy": {
+   "category": "두 곡선 사이의 넓이",
+   "book_no": 66,
+   "question_page": 33,
+   "solution_page": 78
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-231110",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "231110",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 10,
+   "points": 4,
+   "label": "2022년 11월 고3 10번"
+  },
+  "question": "두 곡선 $y=x^3+x^2$, $y=-x^2+k$와 $y$축으로 둘러싸인 부분의 넓이를 $A$, 두 곡선 $y=x^3+x^2$, $y=-x^2+k$와 직선 $x=2$로 둘러싸인 부분의 넓이를 $B$라 하자. $A=B$일 때, 상수 $k$의 값은? (단, $4<k<5$)",
+  "condition": null,
+  "choices": [
+   "\\frac{25}6",
+   "\\frac{13}3",
+   "\\frac92",
+   "\\frac{14}3",
+   "\\frac{29}6"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{14}3",
+  "figure": {
+   "description": "곡선 $y=x^3+x^2$, $y=-x^2+k$, $y$축, $x=2$; 영역 A(왼쪽), B(오른쪽) 색칠",
+   "source_page": 34
+  },
+  "theme": {
+   "primary": "수학Ⅱ-18",
+   "primary_name": "정적분과 넓이",
+   "links": []
+  },
+  "first_judgment": "$A=B$는 $\\int_0^2\\{(x^3+x^2)-(-x^2+k)\\}dx=0$과 같다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S24"
+  ],
+  "solution_ref": "$\\int_0^2(x^3+2x^2-k)dx=4+\\frac{16}3-2k=0$ → $k=\\frac{14}3$",
+  "legacy": {
+   "category": "두 도형의 넓이가 같을 조건",
+   "book_no": 67,
+   "question_page": 34,
+   "solution_page": 78
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-241112",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "241112",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 12,
+   "points": 4,
+   "label": "2023년 11월 고3 12번"
+  },
+  "question": "함수 $f(x)=\\dfrac19x(x-6)(x-9)$와 실수 $t$ $(0<t<6)$에 대하여 함수 $g(x)$는 $g(x)=\\begin{cases}f(x) & (x<t)\\\\ -(x-t)+f(t) & (x\\ge t)\\end{cases}$이다. 함수 $y=g(x)$의 그래프와 $x$축으로 둘러싸인 영역의 넓이의 최댓값은?",
+  "condition": null,
+  "choices": [
+   "\\frac{125}4",
+   "\\frac{127}4",
+   "\\frac{129}4",
+   "\\frac{131}4",
+   "\\frac{133}4"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{129}4",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-17",
+   "primary_name": "정적분과 최대/최소",
+   "links": [
+    "수학Ⅱ-18",
+    "수학Ⅱ-16"
+   ]
+  },
+  "first_judgment": "넓이를 $t$의 함수 $S(t)=\\int_0^tf+\\frac12\\{f(t)\\}^2$으로 세우고 미분해 최대를 찾는다.",
+  "behavior": "추론",
+  "reasoning": [
+   "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+   "S22",
+   "S24"
+  ],
+  "solution_ref": "$S'(t)=f(t)\\{1+f'(t)\\}$, $1+f'(t)=\\frac13(t-3)(t-7)$ → $t=3$에서 최대. $S(3)=\\frac19\\int_0^3x(x-6)(x-9)dx+\\frac12\\cdot36=\\left(\\frac94-15+27\\right)+18=\\frac{129}4$",
+  "legacy": {
+   "category": "두 곡선 사이의 넓이의 활용(2) : 넓이의 최솟값",
+   "book_no": 68,
+   "question_page": 34,
+   "solution_page": 78
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-270609",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "270609",
+   "year": 2027,
+   "exam": "6월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2026년 6월 고3 9번"
+  },
+  "question": "시각 $t=0$일 때 동시에 원점을 출발하여 수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$가 있다. 시각 $t$ $(t\\ge0)$일 때 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 속도가 각각 $v_1(t)=t^2-t$, $v_2(t)=t$이다. 출발한 후 시각 $t=k$에서 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 위치가 같아질 때, 양수 $k$의 값은?",
+  "condition": null,
+  "choices": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": "3",
+  "answer_value": "3",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": [
+    "수학Ⅱ-14"
+   ]
+  },
+  "first_judgment": "같은 원점에서 출발했으므로 위치가 같다는 것은 $\\int_0^k v_1=\\int_0^k v_2$이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$\\frac13k^3-\\frac12k^2=\\frac12k^2$ → $\\frac13k^2(k-3)=0$, $k=3$",
+  "legacy": {
+   "category": "위치와 위치의 변화량",
+   "book_no": 69,
+   "question_page": 35,
+   "solution_page": 79
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240614",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240614",
+   "year": 2024,
+   "exam": "6월 모의평가",
+   "number": 14,
+   "points": 4,
+   "label": "2023년 6월 고3 14번"
+  },
+  "question": "실수 $a$ $(a\\ge0)$에 대하여 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t\\ge0)$에서의 속도 $v(t)$를 $v(t)=-t(t-1)(t-a)(t-2a)$라 하자. 점 $\\mathrm{P}$가 시각 $t=0$일 때 출발한 후 운동 방향을 한 번만 바꾸도록 하는 $a$에 대하여 시각 $t=0$에서 $t=2$까지 점 $\\mathrm{P}$의 위치의 변화량의 최댓값은?",
+  "condition": null,
+  "choices": [
+   "\\frac15",
+   "\\frac7{30}",
+   "\\frac4{15}",
+   "\\frac3{10}",
+   "\\frac13"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac4{15}",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "근 $0,1,a,2a$ 중 중근이 생겨야 부호 변화가 한 번이 되므로 $a=0,\\frac12,1$ 세 경우만 본다.",
+  "behavior": "추론",
+  "reasoning": [
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$a\\ne0,\\frac12,1$이면 방향 3번 전환. (i) $a=0$: $\\int_0^2-t^3(t-1)dt=-\\frac{12}5$. (ii) $a=\\frac12$: $-\\frac{11}{15}$. (iii) $a=1$: $\\int_0^2-t(t-1)^2(t-2)dt=\\frac4{15}$. 최댓값 $\\frac4{15}$",
+  "legacy": {
+   "category": "위치와 위치의 변화량",
+   "book_no": 70,
+   "question_page": 35,
+   "solution_page": 79
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-261111",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "261111",
+   "year": 2026,
+   "exam": "대학수학능력시험",
+   "number": 11,
+   "points": 4,
+   "label": "2025년 11월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 원점을 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$가 있다. 실수 $k$에 대하여 시각 $t$ $(t\\ge0)$일 때 점 $\\mathrm{P}$의 속도 $v(t)$가 $v(t)=t^2-kt+4$이다. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $k=0$이면, 시각 $t=1$일 때 점 $\\mathrm{P}$의 위치는 $\\dfrac{13}3$이다.\\\\ㄴ. $k=3$이면, 출발한 후 점 $\\mathrm{P}$의 운동 방향이 한 번 바뀐다.\\\\ㄷ. $k=5$이면, 시각 $t=0$에서 $t=2$까지 점 $\\mathrm{P}$가 움직인 거리는 $3$이다.",
+  "choices": [
+   "ㄱ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ",
+   "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "3",
+  "answer_value": "ㄱ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "위치는 $\\int v$, 움직인 거리는 $\\int|v|$ — ㄷ은 $v=(t-1)(t-4)$의 부호가 $t=1$에서 바뀌는 것을 반영한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "ㄱ: $\\int_0^1(t^2+4)dt=\\frac{13}3$ (참). ㄴ: $v=\\left(t-\\frac32\\right)^2+\\frac74>0$ (거짓). ㄷ: $\\int_0^1v-\\int_1^2v=\\frac{11}6+\\frac76=3$ (참). 답 ㄱ, ㄷ",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 71,
+   "question_page": 36,
+   "solution_page": 80
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-260911",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "260911",
+   "year": 2026,
+   "exam": "9월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2025년 9월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 원점에서 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$가 있다. 시각이 $t$ $(t\\ge0)$일 때 점 $\\mathrm{P}$의 속도 $v(t)$가 $v(t)=3t^2-10t+7$이다. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. 시각 $t=1$일 때 점 $\\mathrm{P}$의 운동 방향이 바뀐다.\\\\ㄴ. 시각 $t=1$일 때 점 $\\mathrm{P}$의 위치는 $3$이다.\\\\ㄷ. 시각 $t=0$에서 $t=2$까지 점 $\\mathrm{P}$가 움직인 거리는 $4$이다.",
+  "choices": [
+   "ㄱ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ",
+   "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "5",
+  "answer_value": "ㄱ, ㄴ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "$v=(t-1)(3t-7)$로 부호 변화 지점을 먼저 찾는다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "ㄱ: $t=1$ 좌우 부호 변화 (참). ㄴ: $\\int_0^1v=1-5+7=3$ (참). ㄷ: $3-\\{(8-20+14)-3\\}=4$ (참)",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 72,
+   "question_page": 36,
+   "solution_page": 81
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-241110",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "241110",
+   "year": 2024,
+   "exam": "대학수학능력시험",
+   "number": 10,
+   "points": 4,
+   "label": "2023년 11월 고3 10번"
+  },
+  "question": "시각 $t=0$일 때 동시에 원점을 출발하여 수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 속도가 각각 $v_1(t)=t^2-6t+5$, $v_2(t)=2t-7$이다. 시각 $t$에서의 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ 사이의 거리를 $f(t)$라 할 때, 함수 $f(t)$는 구간 $[0,a]$에서 증가하고, 구간 $[a,b]$에서 감소하고, 구간 $[b,\\infty)$에서 증가한다. 시각 $t=a$에서 $t=b$까지 점 $\\mathrm{Q}$가 움직인 거리는? (단, $0<a<b$)",
+  "condition": null,
+  "choices": [
+   "\\frac{15}2",
+   "\\frac{17}2",
+   "\\frac{19}2",
+   "\\frac{21}2",
+   "\\frac{23}2"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{17}2",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": [
+    "수학Ⅱ-09"
+   ]
+  },
+  "first_judgment": "$f(t)=|x_1-x_2|=\\left|\\frac13t^3-4t^2+12t\\right|$이 $t\\ge0$에서 음이 아니므로 절댓값 없이 증감을 보고 $a=2$, $b=6$을 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$g=\\frac13t^3-4t^2+12t\\ge0$, $g'=(t-2)(t-6)$ → $a=2$, $b=6$. $\\int_2^6|2t-7|dt=\\frac94+\\frac{25}4=\\frac{17}2$",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 73,
+   "question_page": 37,
+   "solution_page": 81
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-240911",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "240911",
+   "year": 2024,
+   "exam": "9월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2023년 9월 고3 11번"
+  },
+  "question": "두 점 $\\mathrm{P}$와 $\\mathrm{Q}$는 시각 $t=0$일 때 각각 점 $\\mathrm{A}(1)$과 점 $\\mathrm{B}(8)$에서 출발하여 수직선 위를 움직인다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 속도는 각각 $v_1(t)=3t^2+4t-7$, $v_2(t)=2t+4$이다. 출발한 시각부터 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ 사이의 거리가 처음으로 $4$가 될 때까지 점 $\\mathrm{P}$가 움직인 거리는?",
+  "condition": null,
+  "choices": [
+   "10",
+   "14",
+   "19",
+   "25",
+   "32"
+  ],
+  "answer": "5",
+  "answer_value": "32",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "두 위치 함수를 세워 $|s_1-s_2|=4$의 가장 작은 양의 근을 구하고, 그때까지 $v_1$의 부호 변화를 반영해 거리를 계산한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역",
+   "경우 나누기"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$s_1=t^3+2t^2-7t+1$, $s_2=t^2+4t+8$. $|t^3+t^2-11t-7|=4$ → $t=\\sqrt{11}$ 또는 $t=3$; 처음은 $t=3$. $v_1=(3t+7)(t-1)$. 거리 $=-(-4)+28=32$",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 74,
+   "question_page": 37,
+   "solution_page": 82
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-231120",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "231120",
+   "year": 2023,
+   "exam": "대학수학능력시험",
+   "number": 20,
+   "points": 4,
+   "label": "2022년 11월 고3 20번"
+  },
+  "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t\\ge0)$에서의 속도 $v(t)$와 가속도 $a(t)$가 다음 조건을 만족시킨다. 시각 $t=0$에서 $t=3$까지 점 $\\mathrm{P}$가 움직인 거리를 구하시오.",
+  "condition": "(가) $0\\le t\\le2$일 때, $v(t)=2t^3-8t$이다.\\\\(나) $t\\ge2$일 때, $a(t)=6t+4$이다.",
+  "choices": null,
+  "answer": "17",
+  "answer_value": "17",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "$t\\ge2$의 속도는 가속도를 적분하고 $v(2)=0$(연속)으로 적분상수를 정한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$t\\ge2$: $v=3t^2+4t-20$ ($v(2)=0$). $\\int_0^3|v|=-\\int_0^2(2t^3-8t)dt+\\int_2^3(3t^2+4t-20)dt=8+9=17$",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 75,
+   "question_page": 38,
+   "solution_page": 82
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230910",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230910",
+   "year": 2023,
+   "exam": "9월 모의평가",
+   "number": 10,
+   "points": 4,
+   "label": "2022년 9월 고3 10번"
+  },
+  "question": "수직선 위의 점 $\\mathrm{A}(6)$과 시각 $t=0$일 때 원점을 출발하여 이 수직선 위를 움직이는 점 $\\mathrm{P}$가 있다. 시각 $t$ $(t\\ge0)$에서의 점 $\\mathrm{P}$의 속도 $v(t)$를 $v(t)=3t^2+at$ $(a>0)$이라 하자. 시각 $t=2$에서 점 $\\mathrm{P}$와 점 $\\mathrm{A}$ 사이의 거리가 $10$일 때, 상수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "answer": "4",
+  "answer_value": "4",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "$t=2$에서의 위치 $\\int_0^2v=8+2a$와 $6$의 거리가 $10$이다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$x(2)=8+2a$, $|2a+2|=10$, $a>0$ → $a=4$",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 76,
+   "question_page": 38,
+   "solution_page": 82
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-230611",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "230611",
+   "year": 2023,
+   "exam": "6월 모의평가",
+   "number": 11,
+   "points": 4,
+   "label": "2022년 6월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 동시에 원점을 출발하여 수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 속도가 각각 $v_1(t)=2-t$, $v_2(t)=3t$이다. 출발한 시각부터 점 $\\mathrm{P}$가 원점으로 돌아올 때까지 점 $\\mathrm{Q}$가 움직인 거리는?",
+  "condition": null,
+  "choices": [
+   "16",
+   "18",
+   "20",
+   "22",
+   "24"
+  ],
+  "answer": "5",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "$\\mathrm P$의 위치 $2t-\\frac12t^2=0$에서 복귀 시각 $t=4$를 먼저 구한다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$2t-\\frac12t^2=0$ → $t=4$. $\\int_0^4 3t\\,dt=24$",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 77,
+   "question_page": 39,
+   "solution_page": 83
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-221114",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "221114",
+   "year": 2022,
+   "exam": "대학수학능력시험",
+   "number": 14,
+   "points": 4,
+   "label": "2021년 11월 고3 14번"
+  },
+  "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 위치 $x(t)$가 두 상수 $a,b$에 대하여 $x(t)=t(t-1)(at+b)$ $(a\\ne0)$이다. 점 $\\mathrm{P}$의 시각 $t$에서의 속도 $v(t)$가 $\\displaystyle\\int_0^1|v(t)|\\,dt=2$를 만족시킬 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $\\displaystyle\\int_0^1v(t)\\,dt=0$\\\\ㄴ. $|x(t_1)|>1$인 $t_1$이 열린구간 $(0,1)$에 존재한다.\\\\ㄷ. $0\\le t\\le1$인 모든 $t$에 대하여 $|x(t)|<1$이면 $x(t_2)=0$인 $t_2$가 열린구간 $(0,1)$에 존재한다.",
+  "choices": [
+   "ㄱ",
+   "ㄱ, ㄴ",
+   "ㄱ, ㄷ",
+   "ㄴ, ㄷ",
+   "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "3",
+  "answer_value": "ㄱ, ㄷ",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "$x(0)=x(1)=0$이므로 변위는 $0$이고, 움직인 거리 $2$와 원점으로부터 거리의 관계로 ㄴ·ㄷ을 판단한다.",
+  "behavior": "추론",
+  "reasoning": [
+   "조건의 식 번역",
+   "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "ㄱ: 변위 $x(1)-x(0)=0$ (참). ㄴ: $|x(t_1)|>1$이면 거리 $>2$로 모순 (거짓). ㄷ: $|x|<1$인데 거리 2이면 적어도 한 번 원점을 지남 (참). 답 ㄱ, ㄷ",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 78,
+   "question_page": 39,
+   "solution_page": 83
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ },
+ {
+  "id": "M2-220909",
+  "subject": "수학Ⅱ",
+  "source": {
+   "code": "220909",
+   "year": 2022,
+   "exam": "9월 모의평가",
+   "number": 9,
+   "points": 4,
+   "label": "2021년 9월 고3 9번"
+  },
+  "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t>0)$에서의 속도 $v(t)$가 $v(t)=-4t^3+12t^2$이다. 시각 $t=k$에서 점 $\\mathrm{P}$의 가속도가 $12$일 때, 시각 $t=3k$에서 $t=4k$까지 점 $\\mathrm{P}$가 움직인 거리는? (단, $k$는 상수이다.)",
+  "condition": null,
+  "choices": [
+   "23",
+   "25",
+   "27",
+   "29",
+   "31"
+  ],
+  "answer": "3",
+  "answer_value": "27",
+  "figure": null,
+  "theme": {
+   "primary": "수학Ⅱ-19",
+   "primary_name": "위치, 속도, 가속도",
+   "links": []
+  },
+  "first_judgment": "가속도 $a=-12t^2+24t=12$에서 $k=1$을 얻고, $[3,4]$에서 $v\\le0$이므로 절댓값을 벗긴다.",
+  "behavior": "계산",
+  "reasoning": [
+   "조건의 식 번역"
+  ],
+  "strategy_ids": [
+   "S26"
+  ],
+  "solution_ref": "$-12k^2+24k=12$ → $k=1$. $v=-4t^2(t-3)\\le0$ ($3\\le t\\le4$). $\\int_3^4(4t^3-12t^2)dt=[t^4-4t^3]_3^4=27$",
+  "legacy": {
+   "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+   "book_no": 79,
+   "question_page": 40,
+   "solution_page": 83
+  },
+  "check": {
+   "answer_match": null,
+   "excluded": false,
+   "needs_review": []
+  }
+ }
+]

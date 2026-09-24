@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "book.schema.json",
+  "title": "교재 한 권(WEEK) 구성 — AI가 쓰는 내용만. HTML 금지, 텍스트 + $LaTeX$",
+  "description": "문항은 id로만 참조한다(기출: db.json id, 창작: C-… 문제은행 id). 본문·정답·해설은 build가 db.json·solutions.json·문제은행에서 가져온다. 텍스트 안 줄바꿈은 \\n.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["week", "total_weeks", "year_label", "subject_label", "days"],
+  "properties": {
+    "week": {"type": "integer", "minimum": 1, "maximum": 99},
+    "total_weeks": {"type": "integer", "minimum": 1, "maximum": 99},
+    "year_label": {"type": "string", "description": "표지·뒤표지 [[ 학년도 ]] 예: 2027학년도"},
+    "subject_label": {"type": "string", "description": "표지 [[ 과목 ]] 예: 수학Ⅰ"},
+    "figures": {
+      "type": "object",
+      "description": "기출 문항 그림 명세 {db id: 그림 명세}. 그림이 있는 기출(db.json figure)을 쓰면 필수",
+      "additionalProperties": {"$ref": "figure.schema.json"}
+    },
+    "days": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/day"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "ref": {"type": "string", "pattern": "^((M1|M2|PS)-\\d{6}|C-(M1|M2|PS)-\\d{2}-\\d{3}|T-[A-Z0-9]{1,8}-\\d{3})$",
+            "description": "기출 db id | 창작 C-… | 교재 T-…"},
+    "pastref": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{6}$"},
+    "day": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["day", "theme", "title", "concept", "strategy", "first_pitch", "sign_reading",
+                   "practice", "replay", "sign_book"],
+      "properties": {
+        "day": {"type": "integer", "minimum": 1, "maximum": 999},
+        "theme": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{2}$"},
+        "title": {"$ref": "#/$defs/text", "description": "챕터 제목 (헤더 한 줄, 20자 안팎)"},
+        "concept": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["core", "analogy", "analogy_limit", "map"],
+          "properties": {
+            "core": {"$ref": "#/$defs/text", "description": "핵심 개념 2~4문장: 정의 → 왜 → 어디에"},
+            "figures": {"type": "array", "maxItems": 2, "items": {"$ref": "figure.schema.json"}},
+            "analogy": {"$ref": "#/$defs/text", "description": "일상 비유 2~3문장, 요소별 대응"},
+            "analogy_limit": {"$ref": "#/$defs/text", "description": "비유가 맞지 않는 곳 한 줄"},
+            "map": {
+              "type": "array", "minItems": 1, "maxItems": 5,
+              "items": {
+                "type": "object", "additionalProperties": false, "required": ["k", "v"],
+                "properties": {"k": {"$ref": "#/$defs/text"}, "v": {"$ref": "#/$defs/text"}}
+              }
+            }
+          }
+        },
+        "strategy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "structure": {"type": "string", "description": "출제 구조. 비우면 themes.json kice_intent + signals"},
+            "figure": {"$ref": "figure.schema.json"},
+            "concept_ids": {
+              "type": "array", "items": {"type": "string"},
+              "description": "실전 개념 행으로 넣을 solutions.json 개념 id({기존테마}-C{n}). 이름·내용·쓰는 때를 build가 채운다"
+            },
+            "tools": {
+              "type": "array",
+              "description": "직접 쓰는 실전 개념 행(concept_ids 뒤에 붙는다)",
+              "items": {
+                "type": "object", "additionalProperties": false, "required": ["name", "body"],
+                "properties": {"name": {"$ref": "#/$defs/text"}, "body": {"$ref": "#/$defs/text"}}
+              }
+            }
+          }
+        },
+        "first_pitch": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["signal", "ref", "type"],
+          "properties": {
+            "signal": {"$ref": "#/$defs/text", "description": "THE SIGN: 이 챕터에서 읽을 신호와 핵심 질문 1~2문장"},
+            "ref": {"$ref": "#/$defs/ref"},
+            "type": {"$ref": "#/$defs/text", "description": "헤더의 [[ 유형 ]]"},
+            "reuse_note": {"type": "string"}
+          }
+        },
+        "sign_reading": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hint", "analysis", "points", "verdict", "scouting"],
+          "properties": {
+            "hint": {"$ref": "#/$defs/text", "description": "첫 판단·막히는 곳의 실마리. 풀이 금지"},
+            "analysis": {"$ref": "#/$defs/text"},
+            "points": {"type": "array", "minItems": 2, "maxItems": 4, "items": {"$ref": "#/$defs/text"}},
+            "verdict": {"$ref": "#/$defs/text", "description": "측정 능력과 자주 나오는 오답"},
+            "scouting": {
+              "type": "array", "minItems": 1, "maxItems": 2,
+              "items": {
+                "type": "object", "additionalProperties": false, "required": ["ref", "note"],
+                "properties": {"ref": {"$ref": "#/$defs/pastref"}, "note": {"$ref": "#/$defs/text"}}
+              }
+            }
+          }
+        },
+        "practice": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ref", "difficulty"],
+            "properties": {
+              "ref": {"$ref": "#/$defs/ref"},
+              "difficulty": {"enum": ["기본 적용", "조건 변형", "복합 사고", "고난도"]},
+              "reuse_note": {"type": "string", "description": "다른 테마 기출을 가져올 때 이 테마에서 읽을 신호 한 줄"},
+              "reason": {"type": "string", "description": "후보(problem_ids·related_ids) 밖의 기출을 쓸 때 이유"}
+            }
+          }
+        },
+        "replay": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["no", "wrong", "stuck", "fix"],
+            "properties": {
+              "no": {"type": "integer", "minimum": 1, "description": "이 DAY의 문항 번호(예제 1, 연습 2~)"},
+              "wrong": {"$ref": "#/$defs/text"}, "stuck": {"$ref": "#/$defs/text"}, "fix": {"$ref": "#/$defs/text"}
+            }
+          }
+        },
+        "sign_book": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["next"],
+          "properties": {
+            "rows": {
+              "type": "array",
+              "description": "문항별 행 덮어쓰기. 없는 번호는 build가 first_judgment·개념 이름으로 채운다",
+              "items": {
+                "type": "object", "additionalProperties": false, "required": ["no", "signal", "method"],
+                "properties": {"no": {"type": "integer", "minimum": 1},
+                               "signal": {"$ref": "#/$defs/text"}, "method": {"$ref": "#/$defs/text"}}
+              }
+            },
+            "next": {"$ref": "#/$defs/text", "description": "다음 챕터로: 이 판단이 다음 DAY에서 어떻게 확장되는가"}
+          }
+        },
+        "notes": {
+          "type": "object",
+          "description": "해설지 덮어쓰기 {문항 ref: {...}}",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "tip": {"type": "string", "description": "실전 개념 줄"},
+              "error": {"type": "string", "description": "오답 첨삭 줄"},
+              "shortcut": {"type": "string", "description": "새 숏컷 풀이(기존 풀이 1을 대체). verify 필수"},
+              "verify": {"type": "string", "description": "skill()이 정답 값을 돌려주는 코드"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

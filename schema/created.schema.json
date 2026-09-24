@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "created.schema.json",
+  "title": "창작 문항 레코드 (work/created/{테마}/{id}.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "theme", "origin", "target", "difficulty", "behavior", "question",
+               "answer", "solution", "verify"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^C-(M1|M2|PS)-\\d{2}-\\d{3}$"},
+    "theme": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{2}$"},
+    "status": {"enum": ["draft", "verified"], "description": "check_created만 쓴다"},
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["variant", "original"]},
+        "parent_id": {"type": "string", "description": "variant면 필수: db.json id"},
+        "variation": {"type": "string", "description": "variant면 필수: config created.variations 중 하나"},
+        "note": {"type": "string"}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["concept_ids", "first_judgment"],
+      "properties": {
+        "concept_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "strategy_ids": {"type": "array", "items": {"type": "string"}},
+        "first_judgment": {"type": "string", "minLength": 5}
+      }
+    },
+    "difficulty": {"enum": ["기본 적용", "조건 변형", "복합 사고", "고난도"]},
+    "behavior": {"enum": ["계산", "이해", "추론", "문제해결"]},
+    "question": {"type": "string", "minLength": 5},
+    "condition": {"type": ["string", "null"]},
+    "choices": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "array", "minItems": 5, "maxItems": 5, "items": {"type": "string"}}
+      ]
+    },
+    "choice_values": {
+      "type": "array", "minItems": 5, "maxItems": 5, "items": {"type": "string"},
+      "description": "객관식이면 필수: 각 선지의 sympy 값 (예: \"9*pi/7\"). ㄱㄴㄷ형은 선지 문자열 그대로"
+    },
+    "answer": {"type": "string", "pattern": "^[0-9]+$", "description": "객관식은 1~5, 단답형은 1~999"},
+    "answer_value": {"type": "string", "description": "정답 값(sympy). 객관식이면 필수, 단답형은 answer와 같다"},
+    "distractors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["choice", "error_path"],
+        "properties": {
+          "choice": {"type": "integer", "minimum": 1, "maximum": 5},
+          "error_path": {"type": "string", "minLength": 5}
+        }
+      }
+    },
+    "figure": {"oneOf": [{"type": "null"}, {"$ref": "figure.schema.json"}]},
+    "solution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guide", "solutions", "skill_point"],
+      "properties": {
+        "concept_refs": {"type": "array", "items": {"type": "string"}},
+        "guide": {"type": "string", "minLength": 5},
+        "solutions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "[0] 풀이 1 = 스킬 풀이, [1] 풀이 2 = 정석 풀이",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["title", "steps"],
+            "properties": {
+              "title": {"type": "string"},
+              "steps": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["label", "body"],
+                  "properties": {"label": {"type": "string"}, "body": {"type": "string"}}
+                }
+              }
+            }
+          }
+        },
+        "supplement": {"type": "string"},
+        "skill_point": {"type": "string", "minLength": 3}
+      }
+    },
+    "verify": {
+      "type": "string",
+      "description": "파이썬 코드. skill()·standard()는 정답 값, unique()는 조건을 만족하는 모든 답의 리스트를 돌려준다. sympy·numpy·math·itertools·Fraction 사용 가능, print 금지"
+    },
+    "review": {
+      "type": "object",
+      "description": "check_created만 쓴다",
+      "properties": {
+        "checked_at": {"type": ["string", "null"]},
+        "hash": {"type": ["string", "null"]},
+        "errors": {"type": "array"},
+        "warnings": {"type": "array"}
+      }
+    }
+  }
+}

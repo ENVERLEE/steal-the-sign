@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source.schema.json",
+  "title": "교재 판독 파일 (work/source/{교재id}.json) — 올린 교재 PDF를 AI가 판독·분류한 결과",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["book", "problems"],
+  "properties": {
+    "book": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Z0-9]{1,8}$", "description": "교재 id (문항 id 접두어)"},
+        "title": {"type": "string", "minLength": 1, "description": "교재 이름 (출처 표기에 쓰인다)"},
+        "pdf": {"type": "string", "description": "원본 PDF 파일 이름"},
+        "note": {"type": "string"}
+      }
+    },
+    "problems": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/problem"}}
+  },
+  "$defs": {
+    "problem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "page", "number", "subject", "theme", "question", "answer", "points",
+                   "first_judgment", "behavior", "difficulty", "solution", "verify"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^T-[A-Z0-9]{1,8}-\\d{3}$"},
+        "page": {"type": "integer", "minimum": 1, "description": "PDF 쪽 번호 (pages/p001.png의 번호)"},
+        "number": {"type": "string", "minLength": 1, "description": "교재에 적힌 문항 번호"},
+        "subject": {"enum": ["수학Ⅰ", "수학Ⅱ", "확률과 통계"]},
+        "theme": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{2}$", "description": "themes.json 테마"},
+        "question": {"type": "string", "minLength": 3, "description": "판독한 본문 ($LaTeX$)"},
+        "condition": {"type": ["string", "null"]},
+        "choices": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "array", "minItems": 5, "maxItems": 5, "items": {"type": "string"}}
+          ]
+        },
+        "answer": {"type": "string", "pattern": "^[0-9]+$", "description": "객관식은 1~5, 단답형은 수"},
+        "answer_value": {"type": "string", "description": "객관식이면 필수: 정답 선지의 sympy 값 (ㄱㄴㄷ형은 선지 글자)"},
+        "answer_source": {"enum": ["교재 정답", "AI 풀이"], "description": "정답 출처. 교재 정답지가 없으면 AI 풀이"},
+        "points": {"type": "integer", "minimum": 2, "maximum": 4},
+        "figure": {"oneOf": [{"type": "null"}, {"$ref": "figure.schema.json"}]},
+        "figure_note": {"type": "string", "description": "원본 그림에 대한 메모 (그림 명세를 못 쓸 때)"},
+        "first_judgment": {"type": "string", "minLength": 5},
+        "behavior": {"enum": ["계산", "이해", "추론", "문제해결"]},
+        "difficulty": {"enum": ["기본 적용", "조건 변형", "복합 사고", "고난도"]},
+        "similar": {
+          "type": "array", "maxItems": 8, "items": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{6}$"},
+          "description": "판단 구조가 같은 기출(db id), 가까운 순"
+        },
+        "solution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["guide", "solutions", "skill_point"],
+          "properties": {
+            "concept_refs": {"type": "array", "items": {"type": "string"}},
+            "guide": {"type": "string", "minLength": 5},
+            "solutions": {
+              "type": "array", "minItems": 1, "maxItems": 2,
+              "description": "[0] 풀이 1 = 스킬 풀이, [1] 풀이 2 = 정석 비교(선택)",
+              "items": {
+                "type": "object", "additionalProperties": false, "required": ["title", "steps"],
+                "properties": {
+                  "title": {"type": "string"},
+                  "steps": {
+                    "type": "array", "minItems": 1,
+                    "items": {
+                      "type": "object", "additionalProperties": false, "required": ["label", "body"],
+                      "properties": {"label": {"type": "string"}, "body": {"type": "string"}}
+                    }
+                  }
+                }
+              }
+            },
+            "supplement": {"type": "string"},
+            "skill_point": {"type": "string", "minLength": 3}
+          }
+        },
+        "verify": {"type": "string", "description": "skill()이 정답 값을 돌려주는 코드 (standard()·unique()는 선택)"},
+        "status": {"enum": ["draft", "verified"], "description": "check_source만 쓴다"},
+        "review": {"type": "object", "description": "check_source만 쓴다"}
+      }
+    }
+  }
+}

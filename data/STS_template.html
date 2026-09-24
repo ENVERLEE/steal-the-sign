@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+ STEAL THE SIGN : KICE — 정적 판면 템플릿 (채우기 전용)
+
+ 사용 규칙
+ 1. 이 파일의 head(글꼴 링크, style, script)를 결과물에 그대로 복사한다. CSS는 수정하지 않는다.
+ 2. PAGE:START 이름 ~ PAGE:END 이름 주석 사이가 한 페이지 블록이다.
+    페이지가 더 필요하면 블록을 통째로 복제한다.
+ 3. REPEAT:START 이름 ~ REPEAT:END 이름 주석 사이는 항목 수만큼 반복한다.
+ 4. [[ 슬롯 ]] 은 모두 실제 내용으로 바꾼다. 결과물에 [[ 나 ]] 가 남으면 안 된다.
+    좁은 칸의 번호는 data-slot 속성이 붙은 가짜 값(00, 000, 0)으로 표시되어 있다.
+      data-slot="WEEK" → 권 번호 2자리   data-slot="DAY" → 챕터 번호 2자리
+      data-slot="PAGE" → 쪽 번호 3자리   data-slot="NO"  → 문항·항목 번호 2자리
+      data-slot="ANS"  → 정답
+    data-slot 요소의 내용은 반드시 실제 값으로 바꾼다. 00·000·0이 그대로 남으면 안 된다.
+ 5. OPTION 주석이 붙은 블록은 해당될 때만 남기고, 아니면 삭제한다.
+ 6. 한 페이지는 A4(794×1123px) 한 장이다. 내용이 넘치면 글자 크기를 줄이지 말고
+    같은 페이지 블록을 하나 더 만들어 이어서 쓴다.
+ 7. 결과물에서는 body 태그의 data-template="true" 속성을 지운다.
+    그러면 화면에서 넘침·빈 슬롯 경고가 켜진다(인쇄에는 나오지 않는다).
+ 8. 야구 용어는 코너 이름(THE SIGN, FIRST PITCH, SIGN READING, SCOUTING REPORT,
+    REPLAY, DUGOUT NOTE, SIGN BOOK)에만 쓴다. 소제목·본문·설명에는 쓰지 않는다.
+
+ 글자 크기 위계 (CSS 변수로 고정, 임의로 바꾸지 않는다)
+   챕터 제목 28 > 섹션 제목 15(굵게) > 문제 본문 16.5 > 설명 본문 15.5
+   > 항목 이름·태그·그림 설명 12.5 > 영문 코너 표시·쪽 번호·바닥글 10
+   해설지(SOLUTION)만 예외: 본문 11, 2단 압축
+ 색: 칠하는 면은 --red, 밝은 바탕 위 작은 빨간 글씨는 --red-text(더 어두운 빨강)
+
+ 구조: WEEK = 교재 한 권, DAY = 챕터
+ 책 순서:  COVER → CONTENTS
+          → [DAY마다] CONCEPT → STRATEGY → FIRST_PITCH → SIGN_READING
+                      → PRACTICE×N → REPLAY → DUGOUT_NOTE → SIGN_BOOK
+          → QUICK_ANSWER → SOLUTION×N → BACK_COVER
+ 페이지 번호: 표지를 001로 보고 3자리로 매긴다 (예: 017).
+================================================================================
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STEAL THE SIGN : KICE — WEEK [[ WEEK ]]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=JetBrains+Mono:wght@500;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- SLOT: 미리 조판한 KaTeX 수식을 쓰면 KaTeX CSS를 이 자리에 style로 넣는다. -->
+<style>
+:root{
+  --red:#F0503A; --red-text:#C0351F; --ink:#111; --paper:#F4F1EA; --canvas:#D9D6CF;
+  --paper-20:rgba(244,241,234,0.2); --paper-15:rgba(244,241,234,0.15);
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --display:'Black Han Sans','Noto Sans KR',sans-serif;
+  --sans:'Noto Sans KR',sans-serif;
+  /* type scale */
+  --fs-title:28px; --fs-sec:15px; --fs-q:16.5px; --fs-body:15.5px;
+  --fs-small:12.5px; --fs-micro:10px; --fs-sol:11px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:var(--ink)} a:hover{color:var(--red)}
+.book{display:flex;flex-direction:column;align-items:center;gap:48px;padding:48px 16px}
+.en{font-family:var(--mono);font-size:var(--fs-micro);font-weight:800;letter-spacing:0.16em;color:var(--red-text)}
+.box-label .en,.inkhead .hd .en,.dark .en{color:var(--red)}
+b,strong{font-weight:800}
+.hl{color:var(--red-text);font-weight:800}
+
+/* ---------- page ---------- */
+.page{width:794px;height:1123px;background:var(--paper);position:relative;overflow:hidden;border:2px solid var(--ink);flex:none;display:flex;flex-direction:column}
+.page.dark{background:var(--ink)}
+.page.red{background:var(--red)}
+
+/* ---------- header ---------- */
+.hd{display:flex;align-items:stretch;border-bottom:2.5px solid var(--ink);height:76px;flex:none}
+.hd-day{background:var(--red);border-right:2px solid var(--ink);padding:0 18px;display:flex;flex-direction:column;justify-content:center;min-width:76px}
+.hd-day .k{font-family:var(--mono);font-size:var(--fs-micro);font-weight:800;letter-spacing:0.2em}
+.hd-day .v{font-family:var(--display);font-size:34px;line-height:0.95}
+.hd-title{flex:1;padding:0 24px;display:flex;flex-direction:column;justify-content:center;min-width:0;gap:3px}
+.hd-title .k{font-size:13px;font-weight:700;display:flex;align-items:baseline;gap:8px;white-space:nowrap;overflow:hidden}
+.hd-title .meta{font-weight:500;color:#555}
+.dark .hd-title .meta,.inkhead .hd-title .meta{color:rgba(244,241,234,0.7)}
+.hd-title .v{font-family:var(--display);font-size:var(--fs-title);letter-spacing:-0.01em;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd-no{background:var(--ink);color:var(--paper);width:80px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:18px;font-weight:800;flex:none}
+.dark .hd{border-bottom-color:var(--paper)}
+.inkhead .hd{background:var(--ink)}
+.dark .hd-day,.inkhead .hd-day{border-right-color:var(--paper)}
+.dark .hd-title .k,.inkhead .hd-title .k{color:var(--paper)}
+.dark .hd-title .v,.inkhead .hd-title .v{color:var(--paper)}
+.dark .hd-no,.inkhead .hd-no{background:var(--red);color:var(--ink);border-left:2px solid var(--paper)}
+/* slim header (solution pages) */
+.hd.slim{height:40px;border-bottom-width:2px}
+.hd.slim .hd-day{min-width:0;flex-direction:row;align-items:center;gap:6px;padding:0 12px}
+.hd.slim .hd-day .v{font-size:20px}
+.hd.slim .hd-title{flex-direction:row;align-items:center;justify-content:flex-start;gap:12px;padding:0 16px}
+.hd.slim .hd-title .v{font-size:17px}
+.hd.slim .hd-no{width:64px;font-size:13px}
+
+/* ---------- footer ---------- */
+.ft{border-top:2px solid var(--ink);flex:none;display:flex;justify-content:space-between;align-items:center;padding:8px 44px;font-family:var(--mono);font-size:var(--fs-micro);font-weight:800;letter-spacing:0.14em}
+.ft .nav{display:flex;gap:6px;align-items:center}
+.ft .tri{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid var(--ink)}
+.ft .pg{background:var(--red);padding:3px 9px;border:1.5px solid var(--ink)}
+.dark .ft{border-top-color:var(--paper);color:var(--paper)}
+.dark .ft .tri{border-top-color:var(--paper)}
+.dark .ft .pg{color:var(--ink);border-color:var(--red)}
+.ft.slim{padding:5px 24px;border-top-width:1.5px}
+
+/* ---------- body areas ---------- */
+.pad{padding:30px 44px 0;flex:none}
+.fill{flex:1;min-height:0;padding:30px 44px 26px;display:flex;flex-direction:column;gap:26px;overflow:hidden}
+.dark .fill,.inkhead .fill{gap:22px}
+
+/* light box */
+.box{border:2px solid var(--ink);background:#fff;position:relative;box-shadow:4px 4px 0 var(--ink);flex:none}
+.box.grow{flex:1;min-height:0}
+.box-label{position:absolute;top:-2px;left:-2px;background:var(--ink);color:var(--paper);font-size:var(--fs-sec);font-weight:900;padding:5px 12px 6px;display:flex;align-items:baseline;gap:8px;line-height:1.2}
+.box-body{padding:44px 22px 18px;font-size:var(--fs-body);line-height:1.75;font-weight:500;text-wrap:pretty}
+.box-body p{margin:0 0 8px} .box-body p:last-child{margin:0}
+
+/* analysis boxes (SIGN READING) */
+.dbox{border:2px solid var(--ink);background:#fff;position:relative;flex:none}
+.dbox .box-label{background:var(--ink);color:var(--paper)}
+.dbox.red{border-color:var(--red)}
+.dbox.red .box-label{background:var(--red);color:var(--ink)}
+.dbox.red .box-label .en{color:var(--ink)}
+.dbox.dim{border-color:rgba(17,17,17,0.35);background:transparent}
+.dbox.dim .box-label{background:#E4DFD3;color:var(--ink)}
+.dbox.dim .box-label .en{color:var(--red-text)}
+.dbox.grow{flex:1;min-height:0}
+.dbox .box-body{color:var(--ink)}
+
+/* numbered rows */
+.steps{border-top:1.5px solid var(--ink);display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:36px 1fr;border-top:1px solid rgba(17,17,17,0.15);padding:11px 22px;gap:12px}
+.step:first-child{border-top:none}
+.step .n{font-family:var(--mono);font-weight:800;font-size:15px;color:var(--red-text);padding-top:1px}
+.step .t{font-size:var(--fs-body);line-height:1.65;font-weight:500;color:var(--ink)}
+.step.verdict{grid-template-columns:48px 1fr;background:rgba(240,80,58,0.09)}
+.step.verdict .n{font-family:var(--sans);font-size:14px;font-weight:900}
+.step.scout{grid-template-columns:150px 1fr}
+.step.scout .n{font-family:var(--sans);font-size:var(--fs-small);font-weight:800;line-height:1.5}
+
+/* labelled rows (light) */
+.rows{margin-top:44px}
+.row{display:grid;grid-template-columns:104px 1fr;border-top:1px solid var(--ink);padding:10px 22px;gap:14px;font-size:var(--fs-body);line-height:1.65;font-weight:500}
+.row:first-child{border-top:1.5px solid var(--ink)}
+.box-body + .rows{margin-top:0}
+.row .k{font-size:var(--fs-small);font-weight:800;padding-top:3px;line-height:1.45}
+.row .k.red{color:var(--red-text)}
+
+/* ---------- figures & analogy ---------- */
+.viz-row{display:flex;gap:14px;padding:0 22px 18px}
+.viz{flex:1;min-width:0;margin:0;border:1px solid var(--ink);background:#fff;padding:10px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.viz svg{width:100%;height:auto;max-height:230px}
+.viz figcaption{font-size:var(--fs-small);font-weight:500;line-height:1.5;text-align:center;color:#333}
+.analogy{display:grid;grid-template-columns:1fr;gap:10px}
+.analogy .limit{border-top:1px dashed var(--ink);padding-top:10px;font-size:var(--fs-small);line-height:1.6}
+.analogy .limit b{color:var(--red-text)}
+
+/* ---------- problem ---------- */
+.q{display:grid;grid-template-columns:64px 1fr;border-top:2.5px solid var(--ink)}
+.q-no{font-family:var(--display);font-size:44px;line-height:1;padding-top:12px;color:var(--red);-webkit-text-stroke:1px var(--ink)}
+.q-main{padding-top:16px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.q-text{font-size:var(--fs-q);line-height:1.85;font-weight:500;text-wrap:pretty}
+.q-text .pt{font-weight:700;white-space:nowrap}
+.cond{border:1.5px solid var(--ink);background:#fff;padding:12px 16px;font-size:var(--fs-q);line-height:1.8;font-weight:500}
+.fig{display:flex;justify-content:center;padding:4px 0}
+.fig svg{max-width:100%;height:auto;max-height:250px}
+.choices{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:4px}
+.choices>div{font-size:var(--fs-q);font-weight:500}
+.choices.stack{grid-template-columns:1fr;gap:6px}
+.choices.two{grid-template-columns:repeat(3,1fr);row-gap:8px}
+
+/* work space */
+.ws{flex:1;margin:26px 44px 26px;border:1.5px solid var(--ink);position:relative;min-height:0}
+.ws::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--ink) 1px,transparent 1px),linear-gradient(90deg,var(--ink) 1px,transparent 1px);background-size:22px 22px;opacity:0.08}
+.ws-label{position:absolute;top:0;left:0;background:var(--ink);color:var(--paper);font-size:var(--fs-small);font-weight:700;padding:3px 10px}
+
+/* ---------- SIGN BOOK table ---------- */
+.tbl{border:2px solid var(--ink);width:100%;border-collapse:collapse;color:var(--ink);background:#fff}
+.tbl th{background:var(--ink);color:var(--paper);font-size:13px;font-weight:900;text-align:left;padding:8px 14px}
+.tbl td{font-size:14px;line-height:1.6;font-weight:500;padding:9px 14px;border-top:1px solid rgba(17,17,17,0.15);vertical-align:top}
+.tbl td.no{font-family:var(--mono);font-weight:800;color:var(--red-text);width:60px}
+
+/* ---------- DUGOUT NOTE (handwriting page) ---------- */
+.lines{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 27px,rgba(17,17,17,0.22) 27px,rgba(17,17,17,0.22) 28px)}
+.bs-grid{display:grid;grid-template-columns:repeat(7,1fr);margin-top:44px;border-top:1.5px solid var(--ink)}
+.bs-cell{border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:6px 4px 8px;text-align:center}
+.bs-cell:nth-child(7n){border-right:none}
+.bs-cell .n{font-family:var(--mono);font-size:13px;font-weight:800}
+.bs-cell .mk{display:flex;justify-content:center;gap:8px;margin-top:3px;font-size:14px;font-weight:700;opacity:0.5}
+.bs-legend{display:flex;gap:20px;padding:8px 22px;font-size:var(--fs-small);font-weight:700}
+.ab-row{display:grid;grid-template-columns:104px 1fr;gap:14px;border-top:1px solid var(--ink);padding:6px 22px 4px}
+.ab-row:first-child{border-top:1.5px solid var(--ink)}
+.ab-row .k{font-size:var(--fs-small);font-weight:800;padding-top:8px}
+.ab-row .k.red{color:var(--red-text)}
+.ab-row .lines{height:56px}
+.ab-no{display:inline-block;width:48px;border-bottom:1.5px solid var(--red);height:14px;margin-left:4px}
+
+/* ---------- QUICK ANSWER ---------- */
+.qa-day{border:1.5px solid var(--ink);background:#fff;flex:none}
+.qa-day .k{background:var(--ink);color:var(--paper);font-size:var(--fs-small);font-weight:800;padding:4px 12px}
+.qa-grid{display:grid;grid-template-columns:repeat(10,1fr)}
+.qa-cell{border-right:1px solid var(--ink);border-top:1px solid var(--ink);padding:4px 2px;text-align:center;display:flex;justify-content:center;align-items:baseline;gap:5px}
+.qa-cell:nth-child(10n){border-right:none}
+.qa-cell .n{font-family:var(--mono);font-size:var(--fs-micro);font-weight:800;color:#666}
+.qa-cell .a{font-size:15px;font-weight:900}
+
+/* ---------- SOLUTION (compact, 2 columns, no boxes) ---------- */
+.sol-wrap{flex:1;min-height:0;padding:14px 24px 10px;display:flex}
+.sol-cols{flex:1;min-height:0;min-width:0;column-count:2;column-gap:22px;column-rule:1px solid rgba(17,17,17,0.35);column-fill:auto;font-size:var(--fs-sol);line-height:1.55;font-weight:400;overflow:hidden}
+.s{margin:0 0 10px}
+.s-hd{display:flex;align-items:baseline;gap:6px;border-top:1px solid var(--ink);padding-top:3px;margin-bottom:3px;break-after:avoid}
+.s-no{font-family:var(--mono);font-size:12px;font-weight:800}
+.s-kind{font-size:10px;font-weight:700;border:1px solid var(--ink);padding:0 4px}
+.s-src{font-size:10px;color:#555;flex:1;min-width:0}
+.s-ans{font-size:12.5px;font-weight:900;color:var(--red-text)}
+.s p{margin:0 0 3px;text-wrap:pretty}
+.lb{display:inline-block;font-size:9.5px;font-weight:900;background:var(--ink);color:var(--paper);padding:0 4px;margin-right:5px;line-height:1.5;vertical-align:1px}
+.lb.alt{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.lb.red{background:var(--red);color:var(--ink)}
+.s-fig{float:right;width:46%;margin:2px 0 4px 8px;break-inside:avoid}
+.s-fig svg{display:block;width:100%;height:auto;max-height:100px}
+.s::after{content:"";display:block;clear:both}
+.s-tip,.s-err{font-size:10.5px;color:#222}
+
+/* ---------- math (KaTeX) : 한글 본문과 크기를 맞춘다 ---------- */
+.katex{font-size:1.02em}
+.katex-display{margin:6px 0}
+.sol-cols .katex{font-size:1em}
+.sol-cols .katex-display{margin:2px 0}
+
+/* ---------- on-screen checks (never printed) ---------- */
+.chk-flag{outline:4px solid #e00;outline-offset:-4px}
+.chk-note{position:absolute;right:8px;top:90px;z-index:9;background:#e00;color:#fff;font:700 11px/1.4 var(--sans);padding:4px 8px}
+
+/* ---------- print ---------- */
+@page{size:A4;margin:0}
+@media print{
+  body{background:none}
+  .book{display:block;padding:0}
+  .page{width:210mm;height:297mm;page-break-after:always;break-after:page;border:none}
+  .chk-note{display:none} .chk-flag{outline:none}
+}
+@media screen and (max-width:830px){ .book{align-items:flex-start;overflow-x:auto} }
+</style>
+<script>
+/* 화면 점검: 넘치는 페이지와 남은 슬롯을 빨간 표시로 알려 준다. 인쇄에는 나오지 않는다. */
+window.addEventListener('load',function(){
+  var tpl=document.body.getAttribute('data-template')==='true';
+  document.querySelectorAll('.page').forEach(function(pg){
+    var why=[];
+    pg.querySelectorAll('.fill,.pad,.sol-wrap').forEach(function(el){ if(el.scrollHeight>el.clientHeight+2) why.push('내용 넘침'); });
+    var sc=pg.querySelector('.sol-cols'); if(sc&&sc.scrollWidth>sc.clientWidth+2) why.push('해설 넘침 → 다음 SOLUTION 페이지로');
+    var ws=pg.querySelector('.ws'); if(ws&&ws.clientHeight<160) why.push('풀이 공간 부족');
+    if(!tpl){
+      if(pg.innerHTML.indexOf('[[')>-1) why.push('빈 슬롯 [[ ]]');
+      pg.querySelectorAll('[data-slot]').forEach(function(s){ if(/^0+$/.test(s.textContent.trim())) why.push('가짜 번호 '+s.getAttribute('data-slot')); });
+    }
+    if(why.length){ pg.classList.add('chk-flag'); var n=document.createElement('div'); n.className='chk-note'; n.textContent='⚠ '+Array.from(new Set(why)).join(' · '); pg.appendChild(n); }
+  });
+});
+</script>
+</head>
+<body data-template="true">
+<div class="book">
+
+<!-- PAGE:START COVER (책 맨 앞 1장) -->
+<div class="page red" data-page="COVER" style="display:block">
+  <div style="position:absolute;left:0;top:0;bottom:0;width:28px;background:var(--ink)"></div>
+  <div style="margin-left:28px;height:64px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 32px;font-family:var(--mono);font-weight:800;font-size:13px;letter-spacing:0.26em">
+    <div style="display:flex;align-items:center;gap:14px"><div style="width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:15px solid var(--red)"></div>STEAL THE SIGN</div>
+    <div style="font-weight:500;letter-spacing:0.1em;font-size:12px;opacity:0.7">VOL.<span data-slot="WEEK">00</span> / [[ 학년도 ]]</div>
+  </div>
+  <div style="margin-left:28px;padding:36px 36px 0;display:flex;flex-direction:column">
+    <div style="font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:0.3em;opacity:0.75;margin-bottom:8px">KICE MATHEMATICS · [[ 과목 ]]</div>
+    <div style="font-family:var(--display);font-size:96px;line-height:0.88;letter-spacing:-0.02em">STEAL<br>THE<br>SIGN</div>
+    <div style="font-size:16px;font-weight:700;margin-top:16px;border-left:2.5px solid var(--ink);padding-left:14px;line-height:1.6"><span style="font-family:var(--mono);letter-spacing:0.14em">KICE</span><br>평가원 사인 훔치기</div>
+  </div>
+  <div style="margin-left:28px;padding:0 36px;display:flex;align-items:flex-end;margin-top:20px">
+    <div style="font-family:var(--mono);font-weight:800;font-size:36px;letter-spacing:0.1em;writing-mode:vertical-rl;transform:rotate(180deg);padding-bottom:20px;opacity:0.5">WEEK</div>
+    <div style="font-family:var(--display);font-size:420px;line-height:0.78;letter-spacing:-0.06em;margin-right:-80px"><span data-slot="WEEK">00</span></div>
+  </div>
+  <div style="position:absolute;left:28px;right:0;bottom:0;border-top:2.5px solid var(--ink);background:var(--paper)">
+    <div style="display:flex;justify-content:space-between;padding:10px 20px;border-bottom:1.5px solid var(--ink);font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:0.16em">
+      <div>SIGN INDEX — [[ 전체 권 수 ]] WEEKS</div><div>▽ <span data-slot="WEEK">00</span> / [[ 전체 권 수 ]]</div>
+    </div>
+    <!-- 전체 권 수만큼 칸을 만든다. 현재 권 칸에만 class="wk now"를 붙인다. -->
+    <style>.wk{height:56px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:15px;font-weight:500;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}.wk.now{background:var(--ink);color:var(--red);font-family:var(--display);font-size:26px}</style>
+    <div style="display:grid;grid-template-columns:repeat(10,1fr)">
+      <div class="wk now">01</div><div class="wk">02</div><div class="wk">03</div><div class="wk">04</div><div class="wk">05</div>
+      <div class="wk">06</div><div class="wk">07</div><div class="wk">08</div><div class="wk">09</div><div class="wk">10</div>
+      <div class="wk">11</div><div class="wk">12</div><div class="wk">13</div><div class="wk">14</div><div class="wk">15</div>
+      <div class="wk">16</div><div class="wk">17</div><div class="wk">18</div><div class="wk">19</div><div class="wk">20</div>
+    </div>
+  </div>
+</div>
+<!-- PAGE:END COVER -->
+
+<!-- PAGE:START CONTENTS (DAY 5개마다 한 장. 넘치면 복제) -->
+<div class="page" data-page="CONTENTS">
+  <div style="background:var(--ink);color:var(--paper);padding:20px 48px 16px;flex:none">
+    <div style="font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:0.3em;opacity:0.55;margin-bottom:4px">STEAL THE SIGN : KICE / WEEK <span data-slot="WEEK">00</span></div>
+    <div style="font-family:var(--display);font-size:72px;line-height:0.88">CONTENTS</div>
+    <div style="font-size:14px;font-weight:700;margin-top:8px;color:var(--red)">평가원 사인 훔치기</div>
+  </div>
+  <div style="display:grid;grid-template-columns:64px 1fr;font-size:12px;font-weight:800;padding:7px 48px;border-bottom:2px solid var(--ink);background:var(--red);flex:none">
+    <div>DAY</div><div>챕터와 코너</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;min-height:0;background-image:repeating-linear-gradient(135deg,rgba(17,17,17,0.18) 0px,rgba(17,17,17,0.18) 2px,transparent 2px,transparent 14px)">
+    <!-- REPEAT:START CONTENTS_DAY (DAY마다) -->
+    <div style="display:grid;grid-template-columns:64px 1fr;border-bottom:2px solid var(--ink);flex:none;background:var(--paper)">
+      <div style="border-right:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:36px"><span data-slot="DAY">00</span></div>
+      <div style="display:flex;flex-direction:column">
+        <div style="padding:9px 20px 7px;font-size:17px;font-weight:900">[[ 챕터 제목 ]]</div>
+        <!-- REPEAT:START CONTENTS_CORNER (THE SIGN / FIRST PITCH / PRACTICE / DUGOUT NOTE / SIGN BOOK) -->
+        <div style="display:grid;grid-template-columns:1fr 56px;align-items:center;padding:5px 20px;border-top:1px solid var(--ink)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="font-family:var(--mono);font-size:10px;font-weight:800;letter-spacing:0.12em;background:var(--ink);color:var(--paper);padding:3px 7px;min-width:112px;text-align:center">[[ 코너명 ]]</div>
+            <div style="font-size:14px;font-weight:500">[[ 코너 내용 한 줄 ]]</div>
+          </div>
+          <div style="text-align:right;font-family:var(--mono);font-size:13px;font-weight:800"><span data-slot="PAGE">000</span></div>
+        </div>
+        <!-- REPEAT:END CONTENTS_CORNER -->
+      </div>
+    </div>
+    <!-- REPEAT:END CONTENTS_DAY -->
+  </div>
+  <div class="ft"><div>STEAL THE SIGN : KICE</div><div class="pg"><span data-slot="PAGE">000</span></div></div>
+</div>
+<!-- PAGE:END CONTENTS -->
+
+<!-- PAGE:START CONCEPT (DAY 첫 장: 핵심 개념을 그림과 비유로. 넘치면 복제) -->
+<div class="page" data-page="CONCEPT">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">THE SIGN</span>개념</div><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="fill">
+    <div class="box">
+      <div class="box-label">핵심 개념</div>
+      <div class="box-body">[[ 개념을 2~4문장으로. 정의 → 왜 그런지 → 어디에 쓰는지 ]]</div>
+      <div class="viz-row">
+        <!-- REPEAT:START VIZ (그림 1~2개. 2개면 나란히) -->
+        <figure class="viz">[[ SVG 그림 ]]<figcaption>[[ 그림에서 볼 곳 한 줄 ]]</figcaption></figure>
+        <!-- REPEAT:END VIZ -->
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-label">비유로 이해하기</div>
+      <div class="box-body analogy">
+        <div>[[ 일상 비유 2~3문장. 비유의 각 요소가 수학의 무엇에 대응하는지 밝힌다 ]]</div>
+        <div class="limit"><b>비유가 맞지 않는 곳</b> [[ 이 비유로 생각하면 틀리는 지점 한 줄 ]]</div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-label">개념 지도</div>
+      <div class="rows">
+        <!-- REPEAT:START CONCEPT_ROW (성립 조건 / 등호 조건 / 헷갈리는 명제 / 반례 중 해당하는 것) -->
+        <div class="row"><div class="k">[[ 항목 ]]</div><div>[[ 내용 ]]</div></div>
+        <!-- REPEAT:END CONCEPT_ROW -->
+      </div>
+    </div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div>
+    <div class="pg"><span data-slot="PAGE">000</span></div>
+  </div>
+</div>
+<!-- PAGE:END CONCEPT -->
+
+<!-- PAGE:START STRATEGY (CONCEPT 다음 1장: 출제 구조와 실전 개념) -->
+<div class="page" data-page="STRATEGY">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">THE SIGN</span>출제 구조와 실전 개념</div><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="fill">
+    <div class="box">
+      <div class="box-label">출제 구조</div>
+      <div class="box-body">[[ 조건이 주는 정보, 출제자가 요구하는 첫 판단, 주로 측정하는 능력 ]]</div>
+      <!-- OPTION: 구조를 그림으로 보여 줄 때 (흐름도 등) -->
+      <div class="viz-row"><figure class="viz">[[ SVG 그림 ]]<figcaption>[[ 한 줄 ]]</figcaption></figure></div>
+    </div>
+    <div class="box grow">
+      <div class="box-label">실전 개념</div>
+      <div class="rows">
+        <!-- REPEAT:START TOOL_ROW (이 챕터 해설의 숏컷 풀이에 쓰는 실전 개념 전부) -->
+        <div class="row"><div class="k red">[[ 실전 개념 이름 ]]</div><div>[[ 내용(식 포함) · 쓸 수 있는 조건 · 이런 문제에서 떠올린다 ]]</div></div>
+        <!-- REPEAT:END TOOL_ROW -->
+      </div>
+    </div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div>
+    <div class="nav"><div class="tri"></div><div>FIRST PITCH</div></div>
+  </div>
+</div>
+<!-- PAGE:END STRATEGY -->
+
+<!-- PAGE:START FIRST_PITCH (DAY마다 1장: THE SIGN + 예제 + 풀이 공간) -->
+<div class="page" data-page="FIRST_PITCH">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">FIRST PITCH</span>예제 <span class="meta">· [[ 유형 ]] · [[ 출처 예: 2026학년도 9월 모의평가 14번 ]]</span></div><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="pad">
+    <div class="box" style="margin-bottom:26px">
+      <div class="box-label"><span class="en">THE SIGN</span>이 문제에서 읽을 신호</div>
+      <div class="box-body">[[ 이 챕터에서 읽어야 할 신호와 핵심 질문 1~2문장 ]]</div>
+    </div>
+    <div class="q">
+      <div class="q-no"><span data-slot="NO">00</span></div>
+      <div class="q-main">
+        <!-- 문제 영역에는 본문, 조건 박스, 그림, 선지만 둔다. 배점: 기출 [4점], 창작 [3점] -->
+        <div class="q-text">[[ 문제 본문 (수식은 미리 조판) ]] <span class="pt">[4점]</span></div>
+        <!-- OPTION: 조건 박스가 있을 때 -->
+        <div class="cond">[[ 조건 박스 내용 ]]</div>
+        <!-- OPTION: 그림이 있을 때 (figure 필드로 SVG 재현, 테두리 없음) -->
+        <div class="fig">[[ SVG ]]</div>
+        <!-- OPTION: 객관식. 한 줄에 안 들어가면 class="choices two"(3+2), 길면 class="choices stack"(한 줄에 하나).
+             단답형이면 이 줄을 지운다(칸을 따로 두지 않는다) -->
+        <div class="choices"><div>① [[ ]]</div><div>② [[ ]]</div><div>③ [[ ]]</div><div>④ [[ ]]</div><div>⑤ [[ ]]</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ws"><div class="ws-label">풀이 공간</div></div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div>
+    <div class="nav"><div class="tri"></div><div>SIGN READING</div></div>
+  </div>
+</div>
+<!-- PAGE:END FIRST_PITCH -->
+
+<!-- PAGE:START SIGN_READING (FIRST_PITCH 바로 다음. 완전한 풀이는 넣지 않는다) -->
+<div class="page inkhead" data-page="SIGN_READING">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">SIGN READING</span>예제 분석</div><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="fill">
+    <div class="dbox red">
+      <div class="box-label">풀이 힌트</div>
+      <div class="box-body">[[ 첫 번째로 해야 할 판단, 막히는 지점의 실마리. 쓸 실전 개념의 이름은 말해도 되지만 풀이는 쓰지 않는다 ]]</div>
+    </div>
+    <div class="dbox">
+      <div class="box-label">문항 분석</div>
+      <div class="box-body" style="padding-bottom:14px">[[ 어떤 조건이 왜 핵심인지 한두 문장 ]]</div>
+      <div class="steps">
+        <!-- REPEAT:START ANALYSIS_STEP (판단 포인트 2~4개) -->
+        <div class="step"><div class="n"><span data-slot="NO">00</span></div><div class="t">[[ 판단 포인트 ]]</div></div>
+        <!-- REPEAT:END ANALYSIS_STEP -->
+        <div class="step verdict"><div class="n">총평</div><div class="t">[[ 이 문항이 측정하는 능력과 자주 나오는 오답 ]]</div></div>
+      </div>
+    </div>
+    <div class="dbox dim grow">
+      <div class="box-label"><span class="en">SCOUTING REPORT</span>유사 기출</div>
+      <div class="steps" style="margin-top:44px;border-top:none">
+        <!-- REPEAT:START SCOUT_ITEM (유사 기출 1~2개) -->
+        <div class="step scout"><div class="n">[[ 출처 ]]</div><div class="t">[[ 예제와 같은 점 / 다른 점 ]]</div></div>
+        <!-- REPEAT:END SCOUT_ITEM -->
+      </div>
+    </div>
+  </div>
+  <div class="ft">
+    <div class="nav"><div>FIRST PITCH ←</div></div>
+    <div class="pg"><span data-slot="PAGE">000</span></div>
+  </div>
+</div>
+<!-- PAGE:END SIGN_READING -->
+
+<!-- PAGE:START PRACTICE (연습 문항 1문제당 1장. 문항 수만큼 복제) -->
+<div class="page" data-page="PRACTICE">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k">연습 문항 <span class="meta">· [[ 난도 ]] · [[ 기출/창작 ]] · [[ 출처 ]]</span></div><!-- 난도: 기본 적용/조건 변형/복합 사고/고난도. 창작이면 출처 대신 "STEAL THE SIGN 창작" --><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="pad">
+    <div class="q">
+      <div class="q-no"><span data-slot="NO">00</span></div>
+      <div class="q-main">
+        <!-- 문제 영역에는 본문, 조건 박스, 그림, 선지만 둔다. 배점: 기출 [4점], 창작 [3점] -->
+        <div class="q-text">[[ 문제 본문 ]] <span class="pt">[4점]</span></div>
+        <!-- OPTION: 조건 박스가 있을 때 -->
+        <div class="cond">[[ 조건 박스 내용 ]]</div>
+        <!-- OPTION: 그림이 있을 때 (figure 필드로 SVG 재현, 테두리 없음) -->
+        <div class="fig">[[ SVG ]]</div>
+        <!-- OPTION: 객관식. 한 줄에 안 들어가면 class="choices two"(3+2), 길면 class="choices stack"(한 줄에 하나).
+             단답형이면 이 줄을 지운다(칸을 따로 두지 않는다) -->
+        <div class="choices"><div>① [[ ]]</div><div>② [[ ]]</div><div>③ [[ ]]</div><div>④ [[ ]]</div><div>⑤ [[ ]]</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ws"><div class="ws-label">풀이 공간</div></div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div>
+    <div class="pg"><span data-slot="PAGE">000</span></div>
+  </div>
+</div>
+<!-- PAGE:END PRACTICE -->
+
+<!-- PAGE:START REPLAY (연습 문항 뒤. 항목이 넘치면 복제) -->
+<div class="page" data-page="REPLAY">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">REPLAY</span>오답 진단</div><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="fill">
+    <!-- REPEAT:START REPLAY_ITEM (한 장에 2~3개) -->
+    <div class="box">
+      <div class="box-label"><span data-slot="NO">00</span>번 문항</div>
+      <div class="rows">
+        <div class="row"><div class="k">잘못된 접근</div><div>[[ 학생이 흔히 택하는 접근 ]]</div></div>
+        <div class="row"><div class="k red">막히는 지점</div><div>[[ 정확히 어디서, 왜 막히는가 ]]</div></div>
+        <div class="row"><div class="k">고치는 법</div><div>[[ 어떤 신호를 보고 무엇으로 바꾸는가 ]]</div></div>
+      </div>
+    </div>
+    <!-- REPEAT:END REPLAY_ITEM -->
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div>
+    <div class="nav"><div class="tri"></div><div>DUGOUT NOTE</div></div>
+  </div>
+</div>
+<!-- PAGE:END REPLAY -->
+
+<!-- PAGE:START DUGOUT_NOTE (REPLAY 다음 1장. 학생이 직접 쓰는 페이지.
+     AI는 DAY·챕터 제목·쪽 번호·채점 기록의 문항 번호만 채우고 나머지는 비워 둔다) -->
+<div class="page" data-page="DUGOUT_NOTE">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">DUGOUT NOTE</span>나의 복기</div><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="fill">
+    <div class="box">
+      <div class="box-label">채점 기록</div>
+      <div class="bs-grid">
+        <!-- REPEAT:START BS_CELL (예제 + 연습 문항 번호. 순서대로) -->
+        <div class="bs-cell"><div class="n"><span data-slot="NO">00</span></div><div class="mk"><span>○</span><span>△</span><span>✕</span></div></div>
+        <!-- REPEAT:END BS_CELL -->
+      </div>
+      <div class="bs-legend"><div>○ 맞음</div><div>△ 헷갈림·찍음</div><div style="color:var(--red-text)">✕ 틀림</div></div>
+    </div>
+    <!-- 다시 볼 문항 칸은 2개 고정. 학생이 직접 쓴다 -->
+    <div class="box">
+      <div class="box-label">다시 볼 문항 <span class="ab-no"></span>번</div>
+      <div style="margin-top:44px">
+        <div class="ab-row"><div class="k">내가 본 신호</div><div class="lines"></div></div>
+        <div class="ab-row"><div class="k red">놓친 신호</div><div class="lines"></div></div>
+        <div class="ab-row"><div class="k">다음엔 이렇게</div><div class="lines"></div></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-label">다시 볼 문항 <span class="ab-no"></span>번</div>
+      <div style="margin-top:44px">
+        <div class="ab-row"><div class="k">내가 본 신호</div><div class="lines"></div></div>
+        <div class="ab-row"><div class="k red">놓친 신호</div><div class="lines"></div></div>
+        <div class="ab-row"><div class="k">다음엔 이렇게</div><div class="lines"></div></div>
+      </div>
+    </div>
+    <div class="box grow">
+      <div class="box-label">다음 챕터에서 신경 쓸 점</div>
+      <div class="lines" style="position:absolute;inset:44px 22px 10px"></div>
+    </div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div>
+    <div class="nav"><div class="tri"></div><div>SIGN BOOK</div></div>
+  </div>
+</div>
+<!-- PAGE:END DUGOUT_NOTE -->
+
+<!-- PAGE:START SIGN_BOOK (DAY 마지막 1장) -->
+<div class="page inkhead" data-page="SIGN_BOOK">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">SIGN BOOK</span>챕터 정리</div><div class="v">[[ 챕터 제목 ]]</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="fill">
+    <table class="tbl">
+      <thead><tr><th>문항</th><th>문제에서 본 신호</th><th>고른 개념·방법</th></tr></thead>
+      <tbody>
+        <!-- REPEAT:START SIGNBOOK_ROW (예제 + 연습 문항 전부) -->
+        <tr><td class="no"><span data-slot="NO">00</span></td><td>[[ 신호 ]]</td><td>[[ 개념·방법 ]]</td></tr>
+        <!-- REPEAT:END SIGNBOOK_ROW -->
+      </tbody>
+    </table>
+    <div class="dbox red">
+      <div class="box-label">다음 챕터로</div>
+      <div class="box-body">[[ 이 챕터의 판단이 다음 DAY에서 어떻게 확장되는가 ]]</div>
+    </div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div>
+    <div class="pg"><span data-slot="PAGE">000</span></div>
+  </div>
+</div>
+<!-- PAGE:END SIGN_BOOK -->
+
+<!-- PAGE:START QUICK_ANSWER (모든 DAY 뒤. 정답표. 넘치면 복제) -->
+<div class="page" data-page="QUICK_ANSWER">
+  <div class="hd slim">
+    <div class="hd-day"><div class="v">정답</div></div>
+    <div class="hd-title"><div class="v">빠른 정답</div><div class="k"><span class="en">WEEK <span data-slot="WEEK">00</span></span></div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="fill" style="gap:12px;padding:18px 24px">
+    <!-- REPEAT:START QA_DAY -->
+    <div class="qa-day">
+      <div class="k">DAY <span data-slot="DAY">00</span> · [[ 챕터 제목 ]]</div>
+      <div class="qa-grid">
+        <!-- REPEAT:START QA_CELL (예제 포함 전 문항) -->
+        <div class="qa-cell"><div class="n"><span data-slot="NO">00</span></div><div class="a"><span data-slot="ANS">0</span></div></div>
+        <!-- REPEAT:END QA_CELL -->
+      </div>
+    </div>
+    <!-- REPEAT:END QA_DAY -->
+  </div>
+  <div class="ft slim"><div>STEAL THE SIGN : KICE</div><div class="pg"><span data-slot="PAGE">000</span></div></div>
+</div>
+<!-- PAGE:END QUICK_ANSWER -->
+
+<!-- PAGE:START SOLUTION (해설지. 2단 압축. 표·상자 없이 작은 글과 작은 그림만.
+     한 장에 들어가는 만큼 담고, 화면에 "해설 넘침" 경고가 뜨면 남은 문항을 다음 SOLUTION 장으로 옮긴다) -->
+<div class="page" data-page="SOLUTION">
+  <div class="hd slim">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">00</span></div></div>
+    <div class="hd-title"><div class="v">[[ 챕터 제목 ]]</div><div class="k">해설</div></div>
+    <div class="hd-no"><span data-slot="PAGE">000</span></div>
+  </div>
+  <div class="sol-wrap"><div class="sol-cols">
+    <!-- REPEAT:START SOL_ITEM (예제 해설을 맨 앞에. 문항 순서대로) -->
+    <article class="s">
+      <div class="s-hd"><span class="s-no"><span data-slot="NO">00</span></span><span class="s-kind">[[ 예제/연습 ]]</span><span class="s-src">[[ 출처 ]]</span><span class="s-ans">[[ 정답 ]]</span></div>
+      <p><b class="lb">숏컷</b>[[ 실전 개념을 쓴 빠른 풀이. 식 위주 2~5줄 ]]</p>
+      <!-- OPTION: 이해에 꼭 필요할 때만 작은 그림 (오른쪽에 붙고 글이 감싼다) -->
+      <figure class="s-fig">[[ 작은 SVG ]]</figure>
+      <p><b class="lb alt">정석</b>[[ 교과서 방법의 풀이. 식 위주, 핵심 단계만 ]]</p>
+      <p class="s-tip"><b class="lb alt">실전 개념</b>[[ 개념 이름 — 한 줄 요약 · 팁 ]]</p>
+      <p class="s-err"><b class="lb red">오답 첨삭</b>[[ 많이 고르는 오답 → 왜 그렇게 틀리는지 → 한 줄 교정 ]]</p>
+    </article>
+    <!-- REPEAT:END SOL_ITEM -->
+  </div></div>
+  <div class="ft slim"><div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">00</span></div><div class="pg"><span data-slot="PAGE">000</span></div></div>
+</div>
+<!-- PAGE:END SOLUTION -->
+
+<!-- PAGE:START BACK_COVER (책 맨 끝 1장. 코너 안내 겸용, 내용 고정) -->
+<div class="page dark" data-page="BACK_COVER" style="display:block">
+  <div style="position:absolute;right:0;top:0;bottom:0;width:28px;background:var(--red);border-left:2px solid var(--paper)"></div>
+  <div style="position:absolute;bottom:-60px;left:-20px;font-family:var(--display);font-size:340px;line-height:0.8;letter-spacing:-0.06em;color:rgba(244,241,234,0.04);pointer-events:none;user-select:none">SIGN</div>
+  <div style="padding:52px 60px 52px 52px;display:flex;flex-direction:column;height:100%;box-sizing:border-box">
+    <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--paper-20);padding-bottom:20px;margin-bottom:36px">
+      <div style="font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:0.3em;color:var(--red)">STEAL THE SIGN : KICE</div>
+      <div style="width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:17px solid var(--red)"></div>
+    </div>
+    <style>.ci{padding:14px 20px;border-bottom:1px solid var(--paper-15)}.ci:nth-child(odd){border-right:1px solid var(--paper-15)}.ci .k{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--red);letter-spacing:0.14em;margin-bottom:5px}.ci .t{font-size:14px;color:rgba(244,241,234,0.8)}</style>
+    <div style="border:2px solid var(--paper-20);margin-bottom:32px">
+      <div style="background:rgba(244,241,234,0.07);padding:10px 20px;font-size:14px;font-weight:900;color:var(--paper);border-bottom:1.5px solid var(--paper-20)">코너 안내</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr">
+        <div class="ci"><div class="k">THE SIGN</div><div class="t">개념과 출제 구조, 실전 개념</div></div>
+        <div class="ci"><div class="k">FIRST PITCH</div><div class="t">챕터의 판단 흐름을 보여 주는 예제</div></div>
+        <div class="ci"><div class="k">SIGN READING</div><div class="t">예제의 풀이 힌트, 문항 분석, 총평</div></div>
+        <div class="ci"><div class="k">SCOUTING REPORT</div><div class="t">예제와 판단 구조가 같은 기출</div></div>
+        <div class="ci"><div class="k">REPLAY</div><div class="t">자주 틀리는 접근과 고치는 법</div></div>
+        <div class="ci"><div class="k">DUGOUT NOTE</div><div class="t">직접 채점하고 쓰는 복기</div></div>
+        <div class="ci" style="grid-column:1 / -1;border-right:none;border-bottom:none"><div class="k">SIGN BOOK</div><div class="t">문항별 신호와 고른 방법 정리</div></div>
+      </div>
+    </div>
+    <div style="margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between">
+      <div>
+        <div style="font-family:var(--display);font-size:52px;line-height:0.9;color:var(--paper);letter-spacing:-0.01em">STEAL<br>THE SIGN</div>
+        <div style="font-size:14px;font-weight:700;color:var(--red);margin-top:10px">평가원 사인 훔치기 · WEEK <span data-slot="WEEK">00</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+        <div style="background:var(--red);color:var(--ink);font-family:var(--mono);font-size:32px;font-weight:800;padding:10px 18px;border:2px solid var(--paper)">W<span data-slot="WEEK">00</span></div>
+        <div style="font-family:var(--mono);font-size:11px;font-weight:500;color:rgba(244,241,234,0.45);letter-spacing:0.14em">KICE MATHEMATICS [[ 학년도 ]]</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- PAGE:END BACK_COVER -->
+
+</div>
+</body>
+</html>

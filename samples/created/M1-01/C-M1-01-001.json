@@ -1,0 +1,72 @@
+{
+  "id": "C-M1-01-001",
+  "theme": "M1-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-220621",
+    "variation": "조건 변형",
+    "note": "x^n=64의 실근 개수 → 부호가 바뀌는 식의 n제곱근 개수 합"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-01-C1"
+    ],
+    "strategy_ids": [
+      "S01"
+    ],
+    "first_judgment": "$n$의 홀짝으로 먼저 나누고, 짝수일 때만 $n^2-8n+12$의 부호를 본다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "이해",
+  "question": "$2$ 이상 $10$ 이하의 자연수 $n$에 대하여 $n^2-8n+12$의 $n$제곱근 중 실수인 것의 개수를 $f(n)$이라 하자. $f(2)+f(3)+f(4)+\\cdots+f(10)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "10",
+  "answer_value": "10",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-01-C1"
+    ],
+    "guide": "'$n$제곱근 중 실수'는 방정식 $x^n=a$의 실근이다. $n$이 홀수면 항상 1개, 짝수면 $a$의 부호가 개수를 정한다(수학Ⅰ-01-C1). 그러니 $a=n^2-8n+12=(n-2)(n-6)$의 부호만 보면 된다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 홀짝 먼저, 짝수만 부호 확인",
+        "steps": [
+          {
+            "label": "홀수",
+            "body": "$n=3,5,7,9$는 항상 1개씩 → $4$"
+          },
+          {
+            "label": "짝수",
+            "body": "$(n-2)(n-6)$: $n=2,6$은 $0$ → 1개씩, $n=4$는 음수 → 0개, $n=8,10$은 양수 → 2개씩 → $2+0+4=6$"
+          },
+          {
+            "label": "합",
+            "body": "$4+6=10$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 값을 하나씩 계산 (비교용)",
+        "steps": [
+          {
+            "label": "값 계산",
+            "body": "$n=2,3,\\dots,10$일 때 $n^2-8n+12$는 차례로 $0,-3,-4,-3,0,5,12,21,32$이다."
+          },
+          {
+            "label": "개수 판정",
+            "body": "$x^2=0$ → 1개, $x^3=-3$ → 1개, $x^4=-4$ → 0개, $x^5=-3$ → 1개, $x^6=0$ → 1개, $x^7=5$ → 1개, $x^8=12$ → 2개, $x^9=21$ → 1개, $x^{10}=32$ → 2개"
+          },
+          {
+            "label": "합",
+            "body": "$1+1+0+1+1+1+2+1+2=10$"
+          }
+        ]
+      }
+    ],
+    "supplement": "짝수 $n$에서 $a=0$인 경우를 2개로 세는 실수가 가장 흔하다. $x^n=0$의 실근은 $0$ 하나뿐이다. 또 홀수 $n$은 부호와 관계없이 1개이므로 값을 계산할 필요가 없다 — 이것이 계산량을 절반으로 줄이는 판단이다.",
+    "skill_point": "홀수 제곱근은 무조건 1개, 짝수는 부호(양 2 · 영 1 · 음 0)."
+  },
+  "verify": "def f_real(n):\n    x = Symbol('x')\n    a = n*n - 8*n + 12\n    return len(set(real_roots(x**n - a)))\n\ndef skill():\n    tot = 0\n    for n in range(2, 11):\n        a = (n - 2)*(n - 6)\n        if n % 2:\n            tot += 1\n        else:\n            tot += 2 if a > 0 else (1 if a == 0 else 0)\n    return tot\n\ndef standard():\n    return sum(f_real(n) for n in range(2, 11))\n\ndef unique():\n    return [standard()]\n"
+}

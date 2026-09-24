@@ -1,0 +1,95 @@
+{
+  "hard_numbers": {
+    "수학Ⅰ": [14, 15, 21, 22],
+    "수학Ⅱ": [14, 15, 21, 22],
+    "확률과 통계": [28, 30]
+  },
+
+  "sources": {
+    "years": [2022, 2027],
+    "months": ["06", "09", "11"],
+    "number_range": {
+      "수학Ⅰ": [1, 22],
+      "수학Ⅱ": [1, 22],
+      "확률과 통계": [23, 30]
+    },
+    "shared_number_space": ["수학Ⅰ", "수학Ⅱ"]
+  },
+
+  "themes": {
+    "file": "data/themes.json",
+    "count": {"수학Ⅰ": 11, "수학Ⅱ": 10, "확률과 통계": 7}
+  },
+
+  "theme_plan": {
+    "days": [2, 3],
+    "problems": [8, 13],
+    "count_example": true
+  },
+
+  "reuse": {
+    "allowed": true,
+    "max_uses": 3,
+    "outside_candidates": "warn"
+  },
+
+  "composition": {
+    "past_min_per_theme": 5,
+    "created_max_share_per_theme": 0.5,
+    "count_by": "appearance",
+    "report_ratio": true
+  },
+
+  "points": {
+    "past": 4,
+    "created": 3
+  },
+
+  "created": {
+    "dir": "work/created",
+    "id_format": "C-{theme}-{nnn}",
+    "choices": 5,
+    "short_answer_max": 999,
+    "variations": ["수치 변형", "조건 변형", "역방향", "일반화", "결합"],
+    "original_per_theme_max": 1,
+    "batch_max": 4,
+    "skill_length_ratio_max": 0.7,
+    "require_distractor_paths": true,
+    "near_copy_warn": 0.9,
+    "statuses": ["draft", "verified"],
+    "usable_status": "verified",
+    "verify_timeout_sec": 30
+  },
+
+  "textbook": {
+    "examples_per_theme": [2, 3],
+    "similar_max": 8,
+    "pages_scale": 2.0
+  },
+
+  "difficulty_labels": ["기본 적용", "조건 변형", "복합 사고", "고난도"],
+  "behaviors": ["계산", "이해", "추론", "문제해결"],
+
+  "banned_terms": ["초구", "타석", "구종", "안타", "삼진", "덕아웃", "배터리", "스트라이크",
+                   "홈런", "투수", "타자", "포수", "볼카운트", "이닝", "출루", "도루"],
+  "corner_names": ["THE SIGN", "FIRST PITCH", "SIGN READING", "SCOUTING REPORT",
+                   "REPLAY", "DUGOUT NOTE", "SIGN BOOK"],
+
+  "page": {
+    "width": 794,
+    "height": 1123
+  },
+
+  "paths": {
+    "db": "data/db.json",
+    "themes": "data/themes.json",
+    "solutions": "data/solutions.json",
+    "strategy_notes": "data/strategy_notes.json",
+    "template": "data/STS_template.html",
+    "book": "work/book.json",
+    "created": "work/created",
+    "source": "work/source",
+    "out": "out",
+    "katex": "vendor/katex"
+  }
+}
