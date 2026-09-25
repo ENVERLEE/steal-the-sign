@@ -9,10 +9,10 @@ from collections import defaultdict
 from scripts.common import Context, Log, now, read_json
 
 ORDER = ["pdf_pages", "validate_sources", "check_created", "check_source", "curate", "check_book", "verify_answers",
-         "render_figs", "build", "check_layout"]
+         "render_figs", "build", "check_layout", "export_pdf"]
 NAMES = {"pdf_pages": "PDF 쪽 변환", "validate_sources": "원천 검증", "check_created": "창작 검문",
          "check_source": "교재 판독 검사", "curate": "큐레이션", "check_book": "교재 규칙",
-         "verify_answers": "정답 검산", "render_figs": "그림", "build": "조판", "check_layout": "판면 점검"}
+         "verify_answers": "정답 검산", "render_figs": "그림", "build": "조판", "check_layout": "판면 점검", "export_pdf": "PDF"}
 
 
 def run(ctx: Context) -> Log:

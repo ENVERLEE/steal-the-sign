@@ -20,16 +20,16 @@ python -m playwright install chromium        # 처음 한 번 (브라우저가 �
 python run.py pages --pdf 교재.pdf --id KB1   # 교재 PDF → work/source/KB1/pages/p001.png·p001.txt (판독용)
 python run.py source          # 교재 판독 검사 + 큐레이션 초안 → out/curation.md, out/plan.json
 python run.py created         # 창작 문제은행 검문만
-python run.py                 # 전체: validate → created → source → check → verify → figs → build → layout → report
+python run.py                 # 전체: validate → created → source → check → verify → figs → build → layout → pdf → report
 python run.py check           # 검사만 (조판 없이)
-python run.py build           # 조판만: figs → build → layout → report
-python run.py <단계>          # validate | created | check | verify | figs | layout | report
+python run.py build           # 조판만: figs → build → layout → pdf → report
+python run.py <단계>          # validate | created | check | verify | figs | layout | pdf | report
   --book PATH --created DIR --source DIR --out DIR   다른 책·문제은행·교재 판독·출력 폴더
   --recheck                             창작·교재 전체 재검사
   --force                               검사 오류가 있어도 조판
 python -m unittest discover tests       # 테스트
 ```
-- 결과: `out/book.html`(한 파일, KaTeX 글꼴 내장), `out/report.md`, `out/excluded.json`, `out/pages.json`, `out/logs/*.json`
+- 결과: `out/book.html`(한 파일, KaTeX 글꼴 내장), `out/book.pdf`(A4, 쪽마다 한 장), `out/report.md`, `out/excluded.json`, `out/pages.json`, `out/logs/*.json`
 - 검사 단계(validate·created·source·check·verify)에 오류가 있으면 조판하지 않는다(`--force` 제외). 오류가 하나라도 있으면 종료 코드 1.
 - 판면 측정은 템플릿의 웹 글꼴(Google Fonts)을 불러와 잰다. 글꼴을 못 불러오면 경고를 남기고 대체 글꼴로 잰다. 그 밖의 외부 요청(스크립트 CDN 등)은 모두 막는다.
 
@@ -39,7 +39,7 @@ python -m unittest discover tests       # 테스트
 2. **판독·분류**: 쪽 이미지를 보고 모든 문제를 `work/source/<교재id>.json`에 적는다(아래 '교재 판독 파일'). 문항마다 테마(28개 중 하나), 첫 판단, 유사 기출(`similar`), 해설(새로 씀), `verify`. 한 번에 10~20문항씩 쓰고 `python run.py source`로 검사 → 오류만 고친다.
 3. **큐레이션**: `python run.py source`가 만든 `out/curation.md`·`out/plan.json`을 본다. 테마마다 2~3 DAY, 교재 문항 2~3개가 예제, 나머지 교재 문항·유사 기출·창작이 연습. '창작 N개 더 필요'가 뜨면 그 테마 창작을 **4문항 이하**로 `work/created/{테마}/{id}.json`에 쓰고 `python run.py created` → 통과할 때까지 → 다시 `python run.py source`.
 4. **교재 구성**: plan.json의 문항 배정을 `work/book.json`에 옮기고 글(개념·비유·THE SIGN·분석·REPLAY·다음 챕터)을 쓴다. 한 권(WEEK)에 담을 테마를 정해 권을 나눈다. 그림 있는 기출은 `figures` 명세.
-5. `python run.py` → `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 오류 0이면 `out/book.html`을 사용자에게 보낸다.
+5. `python run.py` → `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 오류 0이면 `out/book.html`(과 `out/book.pdf`)을 사용자에게 보낸다.
 
 교재 PDF 없이 만들 때는 3~5만 한다(예제도 기출·창작에서 고른다).
 
@@ -82,6 +82,7 @@ out/                   결과물 (git 제외)
 | `tex.py` | KaTeX 일괄 조판 (Playwright에 `vendor/katex` 로드, 결과 캐시 `out/.cache/tex.json`). 글꼴은 woff2 base64로 CSS에 내장 |
 | `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 매핑이 빠지면 오류(템플릿이 바뀌면 `SLOTS`·`REPEATS`·`OPTIONS` 수정) |
 | `build.py` | 모델 구성 → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔 → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
+| `export_pdf.py` | 결과 HTML을 템플릿 인쇄 CSS 그대로 Chromium으로 인쇄 → `out/book.pdf`. 쪽 수 = HTML `.page` 수, A4 크기 확인 |
 | `check_layout.py` | 결과 HTML을 열어 페이지마다 794×1123 크기, 넘침, `[[`·`]]`, 가짜 번호, KaTeX 오류, 수식 기호 노출(`\frac`·`$`), 순서·쪽 번호 연속 검사 |
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 교재 구성·비율·행동 영역·난도, 문제은행 현황, 판면) |
 | `mathval.py` · `verify_runner.py` | LaTeX 정답 → sympy 비교, verify 코드를 별도 프로세스에서 시간 제한 실행 |

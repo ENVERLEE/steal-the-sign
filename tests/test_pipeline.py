@@ -11,7 +11,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts import (build, check_book, check_created, check_layout, check_source, curate, pdf_pages,
+from scripts import (build, check_book, check_created, check_layout, check_source, curate, export_pdf, pdf_pages,
                      render_figs, report, validate_sources, verify_answers)
 from scripts.common import ROOT, Context, launch_chromium, read_json, write_json
 from scripts.mathval import run_verify, same_value, tex_to_sympy
@@ -290,7 +290,7 @@ class TestBuild(unittest.TestCase):
             for mod in (validate_sources, check_created, check_source):
                 self.assertEqual(mod.run(ctx).errors, [], mod.__name__)
             ctx = sb.ctx()
-            for mod in (check_book, verify_answers, render_figs, build, check_layout):
+            for mod in (check_book, verify_answers, render_figs, build, check_layout, export_pdf):
                 log = mod.run(ctx)
                 log.save(ctx)
                 self.assertEqual(log.errors, [], f"{mod.__name__}: {log.errors[:3]}")
@@ -301,6 +301,8 @@ class TestBuild(unittest.TestCase):
             pages = read_json(sb.out / "pages.json")
             self.assertEqual(pages[0]["kind"], "COVER")
             self.assertTrue((sb.out / "report.md").exists())
+            import pypdfium2 as pdfium
+            self.assertEqual(len(pdfium.PdfDocument(str(sb.out / "book.pdf"))), len(pages))
         finally:
             sb.close()
 
