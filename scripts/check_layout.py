@@ -10,13 +10,13 @@ from scripts.common import Context, Log, launch_chromium, route_network
 
 CHECK_JS = """async () => {
   await document.fonts.ready;
-  const fonts = document.fonts.check('500 16px "Noto Sans KR"');
+  const fonts = (await document.fonts.load('16px "Noto Sans KR"', '가A')).length > 0;
   const out = [];
   document.querySelectorAll('.page').forEach((pg, i) => {
     const why = [];
     const r = pg.getBoundingClientRect();
     if (Math.round(r.width) !== 794 || Math.round(r.height) !== 1123) why.push(`크기 ${Math.round(r.width)}×${Math.round(r.height)}`);
-    pg.querySelectorAll('.fill,.pad,.sol-wrap,[style*="flex:1"]').forEach(el => { if (el.scrollHeight > el.clientHeight + 2) why.push('내용 넘침'); });
+    pg.querySelectorAll('.fill,.pad,.sol-wrap,.x-body,[style*="flex:1"]').forEach(el => { if (el.scrollHeight > el.clientHeight + 2) why.push('내용 넘침'); });
     const sc = pg.querySelector('.sol-cols'); if (sc && sc.scrollWidth > sc.clientWidth + 2) why.push('해설 넘침');
     const ws = pg.querySelector('.ws'); const small = ws && ws.clientHeight < 160;
     if (pg.innerHTML.indexOf('[[') > -1 || pg.innerHTML.indexOf(']]') > -1) why.push('빈 슬롯 [[ ]]');

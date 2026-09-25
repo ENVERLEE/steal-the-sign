@@ -16,6 +16,8 @@ from sympy.parsing.sympy_parser import (convert_xor, implicit_multiplication_app
 from scripts.common import Context, Log, content_hash, is_created_id, is_textbook_id
 from scripts.schemas import validate
 
+SVG_VERSION = 2  # SVG 출력 형식이 바뀌면 올린다(캐시 무효화)
+
 X = sympy.Symbol("x", real=True)
 T = sympy.Symbol("t", real=True)
 _TR = standard_transformations + (implicit_multiplication_application, convert_xor)
@@ -132,10 +134,15 @@ class Canvas:
                  f'text-anchor="{anchor}" font-family="\'Times New Roman\',serif"{italic}>{_rich(s)}</text>')
 
     def svg(self) -> str:
-        clip = (f'<clipPath id="CLIP"><rect x="{self.m - 2}" y="{self.m - 2}" '
+        # 한 HTML에 SVG가 여러 개 들어가므로 clipPath id는 그림마다 달라야 한다
+        # (같은 id가 여럿이면 브라우저는 문서의 첫 번째 것을 써서 다른 그림의 곡선이 잘린다)
+        body = "".join(self.parts)
+        cid = "CLIP" + content_hash({"W": self.W, "H": self.H, "body": body})[:12]
+        body = body.replace("url(#CLIP)", f"url(#{cid})")
+        clip = (f'<clipPath id="{cid}"><rect x="{self.m - 2}" y="{self.m - 2}" '
                 f'width="{self.W - 2 * self.m + 4}" height="{self.H - 2 * self.m + 4}"/></clipPath>')
         return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.W} {self.H}" '
-                f'width="{self.W}" height="{self.H}" role="img"><defs>{clip}</defs>{"".join(self.parts)}</svg>')
+                f'width="{self.W}" height="{self.H}" role="img"><defs>{clip}</defs>{body}</svg>')
 
 
 def _rich(s: str) -> str:
@@ -370,6 +377,10 @@ def collect(ctx: Context) -> list[tuple[str, dict]]:
     for i, d in enumerate(book.get("days") or []):
         for j, f in enumerate((d.get("concept") or {}).get("figures") or []):
             out.append((f"DAY {d.get('day')} concept/figures/{j}", f))
+        for j, sec in enumerate((d.get("concept") or {}).get("sections") or []):
+            for k, b in enumerate(sec.get("blocks") or []):
+                for f in ([b["figure"]] if b.get("figure") else []) + (b.get("figures") or []):
+                    out.append((f"DAY {d.get('day')} concept/sections/{j}/blocks/{k}", f))
         if (d.get("strategy") or {}).get("figure"):
             out.append((f"DAY {d.get('day')} strategy/figure", d["strategy"]["figure"]))
         refs = [(d.get("first_pitch") or {}).get("ref")] + [p.get("ref") for p in d.get("practice") or []]
@@ -385,7 +396,7 @@ def collect(ctx: Context) -> list[tuple[str, dict]]:
 
 def svg_for(spec: dict, ctx: Context) -> str:
     """캐시(out/figs)를 거쳐 SVG를 돌려준다"""
-    key = content_hash(spec)
+    key = content_hash({"v": SVG_VERSION, "spec": spec})
     path = ctx.out_dir / "figs" / f"{key}.svg"
     if path.exists():
         return path.read_text(encoding="utf-8")

@@ -1,0 +1,121 @@
+{
+  "book_id": "V11",
+  "pdf": "vol11.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "image": "p001.png",
+      "text_chars": 0
+    },
+    {
+      "page": 2,
+      "image": "p002.png",
+      "text_chars": 0
+    },
+    {
+      "page": 3,
+      "image": "p003.png",
+      "text_chars": 0
+    },
+    {
+      "page": 4,
+      "image": "p004.png",
+      "text_chars": 0
+    },
+    {
+      "page": 5,
+      "image": "p005.png",
+      "text_chars": 0
+    },
+    {
+      "page": 6,
+      "image": "p006.png",
+      "text_chars": 0
+    },
+    {
+      "page": 7,
+      "image": "p007.png",
+      "text_chars": 0
+    },
+    {
+      "page": 8,
+      "image": "p008.png",
+      "text_chars": 0
+    },
+    {
+      "page": 9,
+      "image": "p009.png",
+      "text_chars": 0
+    },
+    {
+      "page": 10,
+      "image": "p010.png",
+      "text_chars": 0
+    },
+    {
+      "page": 11,
+      "image": "p011.png",
+      "text_chars": 0
+    },
+    {
+      "page": 12,
+      "image": "p012.png",
+      "text_chars": 0
+    },
+    {
+      "page": 13,
+      "image": "p013.png",
+      "text_chars": 0
+    },
+    {
+      "page": 14,
+      "image": "p014.png",
+      "text_chars": 0
+    },
+    {
+      "page": 15,
+      "image": "p015.png",
+      "text_chars": 0
+    },
+    {
+      "page": 16,
+      "image": "p016.png",
+      "text_chars": 0
+    },
+    {
+      "page": 17,
+      "image": "p017.png",
+      "text_chars": 0
+    },
+    {
+      "page": 18,
+      "image": "p018.png",
+      "text_chars": 0
+    },
+    {
+      "page": 19,
+      "image": "p019.png",
+      "text_chars": 0
+    },
+    {
+      "page": 20,
+      "image": "p020.png",
+      "text_chars": 0
+    },
+    {
+      "page": 21,
+      "image": "p021.png",
+      "text_chars": 0
+    },
+    {
+      "page": 22,
+      "image": "p022.png",
+      "text_chars": 0
+    },
+    {
+      "page": 23,
+      "image": "p023.png",
+      "text_chars": 0
+    }
+  ]
+}

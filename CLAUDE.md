@@ -20,16 +20,16 @@ python -m playwright install chromium        # 처음 한 번 (브라우저가 �
 python run.py pages --pdf 교재.pdf --id KB1   # 교재 PDF → work/source/KB1/pages/p001.png·p001.txt (판독용)
 python run.py source          # 교재 판독 검사 + 큐레이션 초안 → out/curation.md, out/plan.json
 python run.py created         # 창작 문제은행 검문만
-python run.py                 # 전체: validate → created → source → check → verify → figs → build → layout → report
+python run.py                 # 전체: validate → created → source → check → verify → figs → build → layout → pdf → report
 python run.py check           # 검사만 (조판 없이)
-python run.py build           # 조판만: figs → build → layout → report
-python run.py <단계>          # validate | created | check | verify | figs | layout | report
+python run.py build           # 조판만: figs → build → layout → pdf → report
+python run.py <단계>          # validate | created | check | verify | figs | layout | pdf | report
   --book PATH --created DIR --source DIR --out DIR   다른 책·문제은행·교재 판독·출력 폴더
   --recheck                             창작·교재 전체 재검사
   --force                               검사 오류가 있어도 조판
 python -m unittest discover tests       # 테스트
 ```
-- 결과: `out/book.html`(한 파일, KaTeX 글꼴 내장), `out/report.md`, `out/excluded.json`, `out/pages.json`, `out/logs/*.json`
+- 결과: `out/book.html`(한 파일, KaTeX 글꼴 내장), `out/book.pdf`(A4, 쪽마다 한 장), `out/report.md`, `out/excluded.json`, `out/pages.json`, `out/logs/*.json`
 - 검사 단계(validate·created·source·check·verify)에 오류가 있으면 조판하지 않는다(`--force` 제외). 오류가 하나라도 있으면 종료 코드 1.
 - 판면 측정은 템플릿의 웹 글꼴(Google Fonts)을 불러와 잰다. 글꼴을 못 불러오면 경고를 남기고 대체 글꼴로 잰다. 그 밖의 외부 요청(스크립트 CDN 등)은 모두 막는다.
 
@@ -39,7 +39,7 @@ python -m unittest discover tests       # 테스트
 2. **판독·분류**: 쪽 이미지를 보고 모든 문제를 `work/source/<교재id>.json`에 적는다(아래 '교재 판독 파일'). 문항마다 테마(28개 중 하나), 첫 판단, 유사 기출(`similar`), 해설(새로 씀), `verify`. 한 번에 10~20문항씩 쓰고 `python run.py source`로 검사 → 오류만 고친다.
 3. **큐레이션**: `python run.py source`가 만든 `out/curation.md`·`out/plan.json`을 본다. 테마마다 2~3 DAY, 교재 문항 2~3개가 예제, 나머지 교재 문항·유사 기출·창작이 연습. '창작 N개 더 필요'가 뜨면 그 테마 창작을 **4문항 이하**로 `work/created/{테마}/{id}.json`에 쓰고 `python run.py created` → 통과할 때까지 → 다시 `python run.py source`.
 4. **교재 구성**: plan.json의 문항 배정을 `work/book.json`에 옮기고 글(개념·비유·THE SIGN·분석·REPLAY·다음 챕터)을 쓴다. 한 권(WEEK)에 담을 테마를 정해 권을 나눈다. 그림 있는 기출은 `figures` 명세.
-5. `python run.py` → `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 오류 0이면 `out/book.html`을 사용자에게 보낸다.
+5. `python run.py` → `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 오류 0이면 `out/book.html`(과 `out/book.pdf`)을 사용자에게 보낸다.
 
 교재 PDF 없이 만들 때는 3~5만 한다(예제도 기출·창작에서 고른다).
 
@@ -53,6 +53,7 @@ data/
   themes.json          교재 테마 체계 28개와 기출 배정 (확정)
   strategy_notes.json  실전 개념 (S01~S26, S12 없음, 수학Ⅰ·Ⅱ만)
   STS_template.html    판면 템플릿 (PAGE/REPEAT/OPTION 마커, [[슬롯]], data-slot 가짜 번호) — 수정하지 않는다
+  STS_ext.html         확장 판면: head에 덧붙일 CSS·웹 글꼴(Noto Serif KR) + 교과서형 CONCEPT·STRATEGY·SIGN_READING 페이지(Jinja)
   config.json          설정 (고난도 번호, 테마 구성, 창작 검문 기준, 금지어, 경로)
 work/
   book.json            AI가 쓰는 교재 한 권(WEEK) 구성
@@ -73,15 +74,16 @@ out/                   결과물 (git 제외)
 |---|---|
 | `validate_sources.py` | id·code·월(06·09·11)·번호 범위(공통 1~22, 확통 23~30)·학년도(22~27)·배점, 수학Ⅰ·Ⅱ 같은 code 충돌, 선지·정답 형식, strategy_notes 예시(`db_code_candidate`) 대조, solutions.json 누락·정답 불일치·끊긴 `concept_refs`, themes.json 미배정·중복·끊긴 참조, **제어문자(깨진 LaTeX 이스케이프)**, **전체 수식 KaTeX 조판 오류** → `out/excluded.json` |
 | `pdf_pages.py` | 교재 PDF → 쪽 PNG·텍스트 층 (pypdfium2). 판독은 AI가 이미지를 보고 한다 |
-| `check_source.py` | 교재 판독 파일 검사: 스키마, id·쪽, 테마·과목, 개념·유사 기출 참조, `$` 짝, 그림 명세, `verify` 검산 → 문항별 `status: verified` |
+| `check_source.py` | 교재 판독 파일 검사: 스키마, id·쪽, 테마·과목, 개념·유사 기출 참조, `$` 짝, 제어문자(깨진 LaTeX), 그림 명세, `verify` 검산 → 문항별 `status: verified` |
 | `curate.py` | 교재 문항 → 테마별 DAY·예제·연습·SCOUTING 배정 초안 → `out/curation.md`, `out/plan.json` |
 | `check_created.py` | 창작 문제은행 검문(아래) → 통과 시 `status: verified`, 결과는 레코드 `review`에 기록 |
 | `check_book.py` | book.json 규칙 검사(아래) |
 | `verify_answers.py` | 기출: DB 정답 = 풀이 정답 = 정답 선지 값. 새 숏컷(`notes[ref].verify`)의 `skill()` 검산. 창작: `skill`·`standard`·`unique` 재실행 |
 | `render_figs.py` | 그림 명세 → SVG (sympy·numpy로 실제 함수를 계산해 그림). `out/figs/`에 캐시 |
 | `tex.py` | KaTeX 일괄 조판 (Playwright에 `vendor/katex` 로드, 결과 캐시 `out/.cache/tex.json`). 글꼴은 woff2 base64로 CSS에 내장 |
-| `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 매핑이 빠지면 오류(템플릿이 바뀌면 `SLOTS`·`REPEATS`·`OPTIONS` 수정) |
-| `build.py` | 모델 구성 → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔 → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
+| `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 매핑이 빠지면 오류(템플릿이 바뀌면 `SLOTS`·`REPEATS`·`OPTIONS` 수정). `load_ext`: STS_ext.html의 HEAD·XPAGE 블록 |
+| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html 페이지, 개념 쪽은 블록 단위로 재며 여러 장으로 흐름) → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔(해설은 한 장에 `config.json` `solution.per_page_max`문항까지) → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
+| `export_pdf.py` | 결과 HTML을 템플릿 인쇄 CSS 그대로 Chromium으로 인쇄 → `out/book.pdf`. 쪽 수 = HTML `.page` 수, A4 크기 확인 |
 | `check_layout.py` | 결과 HTML을 열어 페이지마다 794×1123 크기, 넘침, `[[`·`]]`, 가짜 번호, KaTeX 오류, 수식 기호 노출(`\frac`·`$`), 순서·쪽 번호 연속 검사 |
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 교재 구성·비율·행동 영역·난도, 문제은행 현황, 판면) |
 | `mathval.py` · `verify_runner.py` | LaTeX 정답 → sympy 비교, verify 코드를 별도 프로세스에서 시간 제한 실행 |
@@ -202,6 +204,10 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
     "notes"?: {"<ref>": {"tip"?, "error"?, "shortcut"?, "verify"?}}
   }]}
 ```
+- **concept는 두 형식**: 기존형(`core`·`analogy`·`analogy_limit`·`map[k,v]`) 또는 **교과서형**(현재 교재의 기본).
+  교과서형 = `sections[{title, blocks}]`(블록: `{"p": 문단}`·`{"eq": $ 없는 LaTeX}`·`{"table": {head, rows, hl}}`·`{"figure": 명세, "beside": [p·eq 블록]}`·`{"figures": [명세, 명세]}`) + `card{title?, body}`(개념 정리) + `banner`(한 줄 요약) + `example{q, textbook, skill, note?}`(확인 예제: 교과서적 해법 vs 실전 해법) + `map[{k, v, f}]`(문제에서 보이는 것 / 이렇게 판단한다 / 식으로 쓰면). 비유는 쓰지 않는다.
+  교과서형 DAY는 `strategy.tools[{name, body, eq?, when?}]`(eq는 $ 없는 LaTeX), `sign_reading.points[{title, text}]`로 쓰고, 문항 분석·총평은 줄글 문단.
+- 텍스트 강조: `**굵게**`, `__밑줄(형광)__`. 수식 바로 뒤의 조사($x$에)는 build가 수식과 한 덩어리로 묶는다.
 - 문항 번호는 DAY마다 예제 1, 연습 2부터. `replay.no`·`sign_book.rows.no`는 이 번호.
 - **build가 자동으로 채우는 것**: 목차, 쪽 번호, 정답표, DUGOUT NOTE, STRATEGY 출제 구조(비우면 `kice_intent`+`signals`)·실전 개념 행(`concept_ids` → 이름·내용·쓰는 때), SIGN BOOK 행(없는 번호는 `first_judgment`·개념 이름), 해설지(숏컷 = 조건 번역 + 풀이 1, 정석 = 풀이 2, 실전 개념 = 개념 이름 — skill_point, 오답 첨삭 = supplement). `notes`로 덮어쓴다(`shortcut`은 `verify` 필수).
 - 샘플: `samples/book.sample.json` (M1-01, 2 DAY, 10문항).
@@ -235,7 +241,7 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
 - 고난도 번호(수학Ⅰ·Ⅱ 14·15·21·22, 확통 28·30, `config.json`)는 해설 분량·강조를 우선한다.
 
 ## 판면 규칙
-- 템플릿의 head(글꼴 링크·CSS·스크립트)는 그대로 복사한다. CSS 수정 금지. 결과물 body에는 `data-template` 속성이 없다(화면 점검 켜짐).
+- 템플릿의 head(글꼴 링크·CSS·스크립트)는 그대로 복사한다. STS_template.html의 CSS는 수정하지 않는다. 추가 스타일(교과서형 페이지, 본문 명조 Noto Serif KR, 낱말 단위 줄바꿈 `word-break: keep-all`)은 `data/STS_ext.html`의 HEAD 블록에만 두고 build가 head 끝에 덧붙인다. 해설지(11px)는 고딕 그대로. 결과물 body에는 `data-template` 속성이 없다(화면 점검 켜짐).
 - 한 페이지 = A4 794×1123px. 목차(5 DAY까지)·REPLAY(3개까지)·정답표·해설은 build가 재면서 나눈다. 그 밖의 페이지(CONCEPT·STRATEGY·FIRST_PITCH·SIGN_READING·PRACTICE·SIGN_BOOK)가 넘치면 **글자를 줄이지 말고 내용을 줄인다**(보고서 오류로 온다). STRATEGY는 넘치면 먼저 '떠올릴 때' 줄을 자동으로 뺀다.
 - 책 순서: COVER → CONTENTS → [DAY: CONCEPT → STRATEGY → FIRST_PITCH → SIGN_READING → PRACTICE×N → REPLAY → DUGOUT_NOTE → SIGN_BOOK] → QUICK_ANSWER → SOLUTION×N → BACK_COVER. 쪽 번호는 표지 001부터 3자리.
 

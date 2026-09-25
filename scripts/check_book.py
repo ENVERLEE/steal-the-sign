@@ -4,7 +4,7 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 
 from scripts import check_source
-from scripts.check_created import banned_hits, body_hash
+from scripts.check_created import CTRL_RE, LITERAL_NL_MSG, LITERAL_NL_RE, banned_hits, body_hash, ctrl_msg
 from scripts.common import Context, Log, is_created_id, is_textbook_id
 from scripts.schemas import validate
 
@@ -14,7 +14,7 @@ SKIP_KEYS = {"ref", "theme", "verify", "concept_ids", "difficulty"}
 def iter_texts(node, where=""):
     """book.json 안의 AI 작성 텍스트 (그림 명세는 caption·라벨만)"""
     if isinstance(node, dict):
-        is_fig = any(k in node for k in ("fns", "fn", "points", "polygons", "param", "shade"))
+        is_fig = "x" in node and "y" in node and any(k in node for k in ("fns", "fn", "points", "polygons", "param", "shade"))
         for k, v in node.items():
             if k in SKIP_KEYS:
                 continue
@@ -218,6 +218,10 @@ def run(ctx: Context) -> Log:
     for where, text in iter_texts(book):
         if text.count("$") % 2:
             log.error(where, "$ 짝이 맞지 않음")
+        if LITERAL_NL_RE.search(text):
+            log.error(where, LITERAL_NL_MSG)
+        if CTRL_RE.search(text):
+            log.error(where, ctrl_msg(text))
         hits = banned_hits(text, cfg)
         if hits:
             log.error(where, f"야구 용어 {hits} (코너 이름 외 금지)")

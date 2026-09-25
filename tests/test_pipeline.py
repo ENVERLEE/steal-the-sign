@@ -11,7 +11,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts import (build, check_book, check_created, check_layout, check_source, curate, pdf_pages,
+from scripts import (build, check_book, check_created, check_layout, check_source, curate, export_pdf, pdf_pages,
                      render_figs, report, validate_sources, verify_answers)
 from scripts.common import ROOT, Context, launch_chromium, read_json, write_json
 from scripts.mathval import run_verify, same_value, tex_to_sympy
@@ -81,6 +81,15 @@ class TestMath(unittest.TestCase):
         self.assertEqual(res["results"]["unique"], ["1", "2"])
         self.assertIn("standard", res["errors"])
         self.assertIn("*", run_verify("while True:\n    pass\n", ["skill"], 2)["errors"])
+
+    def test_rich_markup(self):
+        # **굵게**·__밑줄__은 수식을 사이에 두어도 태그가 되고, 수식 뒤 조사는 수식과 한 덩어리로 묶인다
+        from scripts.tex import Math
+        h = Math().rich("가 **굵게 $x$에** 그리고 __$y$가 축__")
+        self.assertIn("<b>굵게 <span class=\"nw\">", h)
+        self.assertIn("에</span></b>", h)
+        self.assertIn("<u><span class=\"nw\">", h)
+        self.assertNotIn("**", h)
 
     def test_split_math(self):
         parts = split_math(r"넓이 $S=\int_0^t f\,dx+(\text{$t$에 따라})$ 끝 $$x^2$$ \$5")
@@ -225,6 +234,30 @@ class TestTextbook(unittest.TestCase):
         self.assertIn("M1-999999", by["T-SMP-002"])
         self.assertIn("과목", by["T-SMP-003"])
 
+    def test_literal_newline_detected(self):
+        # 줄바꿈을 두 번 이스케이프하면 교재에 '\n'이 글자 그대로 찍힌다. LaTeX \ne는 허용
+        f = self.sb.source / "SMP.json"
+        data = read_json(f)
+        data["problems"][0]["solution"]["guide"] = "첫 줄\\n둘째 줄, $a\\ne0$"
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx())
+        msgs = [e["msg"] for e in log.errors if e["where"] == "T-SMP-001"]
+        self.assertTrue(any("\\n" in m and "solution/guide" in m for m in msgs), msgs)
+        data["problems"][0]["solution"]["guide"] = "첫 줄\n둘째 줄, $a\\ne0$"
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx(), recheck=True)
+        self.assertEqual([e for e in log.errors if e["where"] == "T-SMP-001"], [])
+
+    def test_control_char_detected(self):
+        # r-문자열이 아닌 곳에서 \rfloor·\theta가 \r·\t로 깨진다. 풀이 제목·단계 이름도 검사
+        f = self.sb.source / "SMP.json"
+        data = read_json(f)
+        data["problems"][0]["solution"]["solutions"][0]["title"] = "풀이 1 · $\\lfloor x\rfloor$"
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx())
+        msgs = [e["msg"] for e in log.errors if e["where"] == "T-SMP-001"]
+        self.assertTrue(any("제어문자" in m and "title" in m for m in msgs), msgs)
+
     def test_curate_plan(self):
         ctx = self.sb.ctx()
         check_created.run(ctx)
@@ -276,7 +309,7 @@ class TestBuild(unittest.TestCase):
             for mod in (validate_sources, check_created, check_source):
                 self.assertEqual(mod.run(ctx).errors, [], mod.__name__)
             ctx = sb.ctx()
-            for mod in (check_book, verify_answers, render_figs, build, check_layout):
+            for mod in (check_book, verify_answers, render_figs, build, check_layout, export_pdf):
                 log = mod.run(ctx)
                 log.save(ctx)
                 self.assertEqual(log.errors, [], f"{mod.__name__}: {log.errors[:3]}")
@@ -284,9 +317,18 @@ class TestBuild(unittest.TestCase):
             html = (sb.out / "book.html").read_text(encoding="utf-8")
             self.assertNotIn("[[", html.split("<body>", 1)[1])
             self.assertIn('data-page="BACK_COVER"', html)
+            # DAY 1은 기존형, DAY 2는 교과서형(STS_ext.html) — 두 형식이 한 책에 함께 조판된다
+            self.assertIn('class="x-body"', html)
+            self.assertIn("Noto+Serif+KR", html)
+            self.assertIn('<div class="box-label">비유로 이해하기</div>', html)
             pages = read_json(sb.out / "pages.json")
             self.assertEqual(pages[0]["kind"], "COVER")
             self.assertTrue((sb.out / "report.md").exists())
+            import pypdfium2 as pdfium
+            self.assertEqual(len(pdfium.PdfDocument(str(sb.out / "book.pdf"))), len(pages))
+            cap = ctx.config["solution"]["per_page_max"]
+            for chunk in html.split('data-page="SOLUTION"')[1:]:
+                self.assertLessEqual(chunk.split('data-page=')[0].count('<article class="s"'), cap)
         finally:
             sb.close()
 
@@ -296,6 +338,17 @@ class TestBuild(unittest.TestCase):
         self.assertTrue(svg.startswith("<svg"))
         with self.assertRaises(Exception):
             render_figs.render_svg({"fn": "x^^", "domain": [0, 1]})
+
+    def test_figure_clip_ids_unique(self):
+        # 한 HTML에 여러 그림이 들어가므로 clipPath id가 겹치면 뒤 그림의 곡선이 잘린다
+        import re
+        a = render_figs.render_svg({"fn": "x^2", "domain": [-2, 2]})
+        b = render_figs.render_svg({"fn": "x^3", "domain": [-1, 3], "size": [600, 170]})
+        ids = [re.search(r'<clipPath id="([^"]+)"', s).group(1) for s in (a, b)]
+        self.assertNotEqual(ids[0], ids[1])
+        for s, cid in zip((a, b), ids):
+            self.assertNotIn("url(#CLIP)", s)
+            self.assertIn(f"url(#{cid})", s)
 
 
 if __name__ == "__main__":
