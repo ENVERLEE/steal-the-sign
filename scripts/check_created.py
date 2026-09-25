@@ -32,7 +32,9 @@ def iter_texts(rec: dict):
         if sol.get(f):
             yield f"solution/{f}", sol[f]
     for i, s in enumerate(sol.get("solutions") or []):
+        yield f"solution/solutions/{i}/title", s.get("title", "")
         for j, st in enumerate(s.get("steps") or []):
+            yield f"solution/solutions/{i}/steps/{j}/label", st.get("label", "")
             yield f"solution/solutions/{i}/steps/{j}", st.get("body", "")
     for i, d in enumerate(rec.get("distractors") or []):
         yield f"distractors/{i}", d.get("error_path", "")
@@ -44,6 +46,11 @@ def iter_texts(rec: dict):
 # 뒤에 영문자가 오면 LaTeX 명령(\ne, \neq, \nmid, \notin …)이므로 제외
 LITERAL_NL_RE = re.compile(r"\\n(?![A-Za-z])")
 LITERAL_NL_MSG = "글자 그대로의 '\\n' — 줄바꿈은 JSON에서 \\n 한 번(실제 개행)으로 쓴다"
+CTRL_RE = re.compile(r"[\x00-\x09\x0b-\x1f]")  # 줄바꿈(\n) 외 제어문자 — \rfloor→\r 같은 깨진 LaTeX
+
+
+def ctrl_msg(text: str) -> str:
+    return f"제어문자 {sorted({repr(ch) for ch in CTRL_RE.findall(text)})} — 이스케이프가 깨진 LaTeX 명령(\\frac→\\f, \\rfloor→\\r 등)"
 
 
 def banned_hits(text: str, cfg: dict) -> list[str]:
@@ -148,6 +155,8 @@ def check_record(rec: dict, path, ctx: Context) -> tuple[list[str], list[str]]:
             errs.append(f"{where}: $ 짝이 맞지 않음")
         if LITERAL_NL_RE.search(text):
             errs.append(f"{where}: {LITERAL_NL_MSG}")
+        if CTRL_RE.search(text):
+            errs.append(f"{where}: {ctrl_msg(text)}")
         hits = banned_hits(text, cfg)
         if hits:
             errs.append(f"{where}: 야구 용어 {hits}")

@@ -39,38 +39,38 @@
           "수학Ⅰ-10-C1",
           "수학Ⅰ-09-C2"
         ],
-        "guide": "두 곡선의 교점은 $f(x)=g(x)$의 해다. $\\sin$과 $\\cos$가 섞이면 나눠서 $\\tan$ 하나로 만든다. 거리만 묻고 있으므로 두 교점의 좌표 차(가로 차, 세로 차)만 알면 된다.",
+        "guide": "$\\sin\\pi x=\\frac12\\cos\\pi x$ → $\\tan\\pi x=\\frac12$. 좌표 대신 가로 차·세로 차만.",
         "solutions": [
           {
             "title": "풀이 1 · 좌표 차만 구하기",
             "steps": [
               {
                 "label": "교점 식",
-                "body": "$\\sin\\pi x=\\frac12\\cos\\pi x$. $\\cos\\pi x=0$이면 $\\sin\\pi x=\\pm1\\ne0$이므로 나눌 수 있다: $\\tan\\pi x=\\frac12$."
+                "body": "$\\cos\\pi x\\ne0$ → $\\tan\\pi x=\\frac12$"
               },
               {
-                "label": "두 해",
-                "body": "$\\pi x\\in[0,2\\pi]$에서 $\\tan\\theta=\\frac12$인 예각 $\\theta$에 대해 해는 $\\theta$, $\\theta+\\pi$. 두 교점의 $x$좌표 차는 $1$."
+                "label": "가로 차",
+                "body": "해 $\\theta$, $\\theta+\\pi$ → $x$좌표 차 $1$"
               },
               {
                 "label": "세로 차",
-                "body": "$\\sin(\\theta+\\pi)=-\\sin\\theta$이므로 두 교점의 $y$좌표는 $\\pm\\sin\\theta$, 차는 $2\\sin\\theta=\\frac2{\\sqrt5}$ ($\\tan\\theta=\\frac12$ → $\\sin\\theta=\\frac1{\\sqrt5}$)."
+                "body": "$y=\\pm\\sin\\theta$ → $2\\sin\\theta=\\frac2{\\sqrt5}$"
               },
               {
                 "label": "답",
-                "body": "$\\sqrt{1^2+\\frac45}=\\frac3{\\sqrt5}=\\frac{3\\sqrt5}5$ ③"
+                "body": "$\\sqrt{1+\\frac45}=\\frac{3\\sqrt5}5$ ③"
               }
             ]
           }
         ],
-        "supplement": "$\\theta=\\tan^{-1}\\frac12$은 특수각이 아니라 좌표를 직접 구할 수 없다. 그래서 '주기 → 가로 차', '$\\sin(\\theta+\\pi)=-\\sin\\theta$ → 세로 차'처럼 차만 구하는 것이 핵심이다. 두 교점은 점 $\\left(\\frac\\theta\\pi+\\frac12,\\,0\\right)$에 대해 대칭인 위치에 있다.",
-        "skill_point": "교점의 좌표가 특수각이 아니면 주기·대칭으로 두 교점의 '차'만 구한다."
+        "supplement": "$\\theta$는 특수각이 아니다 — 근삿값으로 가지 말 것.",
+        "skill_point": "특수각이 아니면 차만 구한다."
       },
       "verify": "def skill():\n    return sqrt(1 + Rational(4, 5))\n\ndef standard():\n    x = symbols('x')\n    r1 = nsolve(sin(pi*x) - cos(pi*x)/2, x, 0.15)\n    r2 = nsolve(sin(pi*x) - cos(pi*x)/2, x, 1.15)\n    d = sqrt((r2 - r1)**2 + (sin(pi*r2) - sin(pi*r1))**2)\n    return nsimplify(round(float(d), 12), [sqrt(5)])\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:12:59",
-        "hash": "ca145a89f66754b6",
+        "checked_at": "2026-09-25T02:48:01",
+        "hash": "f88a0dc4c7e3e190",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -109,38 +109,38 @@
         "concept_refs": [
           "수학Ⅰ-09-C1"
         ],
-        "guide": "정의역이 자연수인 삼각함수는 주기로 값을 모두 나열한다. $\\sin\\frac{\\pi x}2$의 주기는 $4$, $\\cos\\pi x$의 주기는 $2$이므로 $x=1,2,3,4$의 값이 반복된다.",
+        "guide": "주기 $4$와 $2$ → $x=1,2,3,4$의 네 값만 나열.",
         "solutions": [
           {
             "title": "풀이 1 · 네 값 나열",
             "steps": [
               {
                 "label": "나열",
-                "body": "$x=1$: $\\cos k\\cdot(-\\cos k)=-\\cos^2k$\n$x=2$: $(-\\sin k)\\cos k=-\\sin k\\cos k$\n$x=3$: $(-\\cos k)(-\\cos k)=\\cos^2k$\n$x=4$: $\\sin k\\cos k$"
+                "body": "$-\\cos^2k$, $-\\sin k\\cos k$, $\\cos^2k$, $\\sin k\\cos k$"
               },
               {
                 "label": "구조",
-                "body": "치역은 $\\{\\pm\\cos^2k\\}\\cup\\{\\pm\\sin k\\cos k\\}$. 각 쌍은 값이 $0$이면 원소 $1$개, 아니면 $2$개다. 두 쌍이 원소를 하나만 공유하는 일은 없다($c^2=\\pm sc$이면 $-c^2=\\mp sc$도 같아진다)."
+                "body": "$\\{\\pm\\cos^2k\\}\\cup\\{\\pm\\sin k\\cos k\\}$ — $\\pm$ 쌍 두 개"
               },
               {
-                "label": "원소 3개",
-                "body": "한 쌍은 $0$, 다른 쌍은 $0$이 아닌 두 값. $\\cos k=0$이면 둘 다 $0$ → $1$개 ✗. 따라서 $\\sin k=0$, $\\cos k\\ne0$: 치역 $\\{-1,\\,0,\\,1\\}$ ✓"
+                "label": "$3$개",
+                "body": "한 쌍이 $0$ → $\\sin k=0$, $\\cos k\\ne0$"
               },
               {
                 "label": "답",
-                "body": "$0<k<4\\pi$에서 $k=\\pi,\\,2\\pi,\\,3\\pi$ → 합 $6\\pi$ ②"
+                "body": "$k=\\pi,\\,2\\pi,\\,3\\pi$ → $6\\pi$ ②"
               }
             ]
           }
         ],
-        "supplement": "원소가 $3$개가 되는 경우를 '두 값이 같아지는 경우'로만 찾으면 $\\tan k=\\pm1$을 떠올리게 되는데, 그때는 두 쌍이 통째로 겹쳐 $2$개가 된다. $\\pm$ 쌍 구조에서 홀수 개가 나오려면 반드시 $0$이 끼어야 한다.",
-        "skill_point": "정의역이 자연수인 주기함수는 한 주기 값을 나열한다. $\\pm$ 쌍으로 이루어진 집합의 원소 수가 홀수면 $0$이 들어 있다."
+        "supplement": "$\\tan k=\\pm1$이면 두 쌍이 통째로 겹쳐 $2$개 — 홀수 개는 $0$이 있을 때뿐.",
+        "skill_point": "$\\pm$ 쌍 집합이 홀수 개 → $0$ 포함."
       },
       "verify": "def skill():\n    return pi + 2*pi + 3*pi\n\ndef standard():\n    tot = 0\n    for n in range(1, 96):\n        k = n*pi/24\n        vals = set()\n        for xv in range(1, 9):\n            vals.add(nsimplify(simplify(sin(pi*xv/2 + k)*cos(pi*xv + k))))\n        if len(vals) == 3:\n            tot += k\n    return tot\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:07",
-        "hash": "41508117a946375e",
+        "checked_at": "2026-09-25T02:48:09",
+        "hash": "e64b153d80356005",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -179,38 +179,38 @@
         "concept_refs": [
           "수학Ⅰ-09-C3"
         ],
-        "guide": "최댓값·최솟값이 주어지면 '중심 $\\pm$ 진폭'으로 번역한다: 중심 $=\\frac{\\max+\\min}2$, 진폭 $=\\frac{\\max-\\min}2$. $a\\sin x+p\\cos x$ 꼴의 진폭은 $\\sqrt{a^2+p^2}$이다.",
+        "guide": "(가)를 중심·진폭으로: 진폭 $\\sqrt{a^2-2a\\sin c+1}$. $c$가 정해지면 (나)는 $\\sin x$의 이차식.",
         "solutions": [
           {
             "title": "풀이 1 · 진폭으로 $c$ 결정",
             "steps": [
               {
-                "label": "정리",
-                "body": "$f+g=(a-\\sin c)\\sin x+\\cos c\\cos x+b$. 진폭 $R=\\sqrt{(a-\\sin c)^2+\\cos^2c}=\\sqrt{a^2-2a\\sin c+1}$."
-              },
-              {
                 "label": "(가)",
-                "body": "$b+R=2a+2$, $b-R=0$ → $b=R=a+1$.\n$a^2-2a\\sin c+1=(a+1)^2$ → $\\sin c=-1$ → $c=\\frac32\\pi$, $g(x)=\\cos\\left(x+\\frac32\\pi\\right)=\\sin x$."
+                "body": "$b+R=2a+2$, $b-R=0$ → $b=R=a+1$ → $\\sin c=-1$, $g=\\sin x$"
               },
               {
                 "label": "(나)",
-                "body": "$t=\\sin x\\in[-1,1]$: $f(x)g(x)=at^2+(a+1)t=h(t)$. 축 $t=-\\frac{a+1}{2a}<0$이므로 최댓값은 $h(1)=2a+1$.\n$a\\ge1$이면 축이 $[-1,0)$ 안: 최솟값 $-\\frac{(a+1)^2}{4a}$. 차 $2a+1+\\frac{(a+1)^2}{4a}=\\frac{25}3$ → $27a^2-82a+3=0$ → $a=3$ ($a=\\frac1{27}<1$ 제외).\n$a<1$이면 최솟값 $h(-1)=-1$, 차 $2a+2=\\frac{25}3$ → $a=\\frac{19}6>1$ 모순."
+                "body": "$t=\\sin x$: $h(t)=at^2+(a+1)t$, 최댓값 $h(1)=2a+1$"
+              },
+              {
+                "label": "축",
+                "body": "$a\\ge1$: $2a+1+\\frac{(a+1)^2}{4a}=\\frac{25}3$ → $a=3$\n$a<1$: $2a+2=\\frac{25}3$ → 모순"
               },
               {
                 "label": "답",
-                "body": "$a=3$, $b=4$, $c=\\frac32\\pi$ → $abc=18\\pi$ ⑤"
+                "body": "$3\\times4\\times\\frac32\\pi=18\\pi$ ⑤"
               }
             ]
           }
         ],
-        "supplement": "$\\cos(x+c)$를 그대로 두고 $f\\cdot g$의 최대·최소를 구하려 하면 두 함수의 위상이 달라 막힌다. (가)가 먼저 $c$를 확정해 $g=\\sin x$로 만들어 준다는 것이 설계다. 조건을 쓰는 순서를 정하는 것이 첫 판단이다.\n이차함수 최솟값은 축이 구간 안인지 확인해야 한다. $a\\ge1$과 $a<1$을 나누지 않으면 $a=\\frac1{27}$을 답으로 착각할 수 있다.",
-        "skill_point": "최댓값·최솟값 → 중심과 진폭. $a\\sin x+p\\cos x$의 진폭은 $\\sqrt{a^2+p^2}$; 곱은 $\\sin x$의 이차식으로 바꾼다."
+        "supplement": "축 위치를 안 보면 $a=\\frac1{27}$을 답으로 착각한다.",
+        "skill_point": "최대·최소 → 중심과 진폭."
       },
       "verify": "def skill():\n    return 3*4*Rational(3, 2)*pi\n\ndef standard():\n    a = symbols('a', positive=True)\n    cs = [cn*pi/24 for cn in range(1, 48)\n          if simplify(a**2 - 2*a*sin(cn*pi/24) + 1 - (a + 1)**2) == 0]\n    assert cs == [3*pi/2]\n    F = Fraction\n    res = set()\n    for k in range(1, 400):\n        av = F(k, 27); b = av + 1\n        h = lambda tt: av*tt*tt + b*tt\n        cands = [h(F(-1)), h(F(1))]\n        v = -b/(2*av)\n        if -1 <= v <= 1: cands.append(h(v))\n        if max(cands) - min(cands) == F(25, 3):\n            res.add(av*b)\n    assert len(res) == 1\n    return Rational(res.pop())*cs[0]\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:08",
-        "hash": "07a54146a018dab1",
+        "checked_at": "2026-09-25T02:48:11",
+        "hash": "dd7bd074fd26966e",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -250,42 +250,42 @@
           "수학Ⅰ-09-C1",
           "수학Ⅰ-09-C2"
         ],
-        "guide": "주기 $12$, 진폭 $2$인 코사인 곡선이다. 격자처럼 $x=3$ 간격으로 $0$, $\\pm2$가 찍히고 $x=2,4,8,10,\\dots$에서 $\\pm1$이다. $\\mathrm A(4,-1)$, $\\mathrm B(6,-2)$를 찍고, $(9,0)$이 어느 변 위에 올 수 있는지부터 나눈다.",
+        "guide": "주기 $12$의 격자점을 찍는다. $(9,0)$도 그래프 위 — 꼭짓점일 수 있다.",
         "solutions": [
           {
             "title": "풀이 1 · 변 별로 나누기",
             "steps": [
               {
-                "label": "점 찍기",
-                "body": "$\\mathrm A(4,\\,-1)$, $\\mathrm B(6,\\,-2)$. 변 $\\mathrm{AB}$는 $4\\le x\\le6$이므로 $(9,0)$은 변 $\\mathrm{AC}$ 또는 $\\mathrm{BC}$ 위(꼭짓점 포함)."
+                "label": "점",
+                "body": "$\\mathrm A(4,-1)$, $\\mathrm B(6,-2)$. $(9,0)$은 변 $\\mathrm{AC}$ 또는 $\\mathrm{BC}$ 위"
               },
               {
-                "label": "C가 (9,0)",
-                "body": "$2\\cos\\frac{3\\pi}2=0$이므로 $(9,0)$은 그래프 위. $\\mathrm C=(9,0)$이면 조건 만족: $a+b=\\frac{4+6+9}3+\\frac{-1-2+0}3=\\frac{16}3$."
+                "label": "$\\mathrm C=(9,0)$",
+                "body": "$a+b=\\frac{16}3$"
               },
               {
-                "label": "변 AC 위",
-                "body": "$\\mathrm A$와 $(9,0)$을 지나는 직선 $y=\\frac{x-9}5$가 $x>9$에서 그래프와 만나는 점: $x=14$에서 $2\\cos\\frac{7\\pi}3=1=\\frac{14-9}5$ ✓ → $\\mathrm C(14,1)$, $a+b=\\frac{24}3+\\frac{-2}3=\\frac{22}3$."
+                "label": "변 $\\mathrm{AC}$",
+                "body": "$y=\\frac{x-9}5$ → $\\mathrm C(14,1)$, $a+b=\\frac{22}3$"
               },
               {
-                "label": "변 BC 위",
-                "body": "$\\mathrm B$와 $(9,0)$을 지나는 직선 $y=\\frac23(x-9)$: $x=12$에서 $2=\\frac23\\cdot3$ ✓ → $\\mathrm C(12,2)$, $a+b=\\frac{22}3+\\frac{-1}3=7$."
+                "label": "변 $\\mathrm{BC}$",
+                "body": "$y=\\frac23(x-9)$ → $\\mathrm C(12,2)$, $a+b=7$"
               },
               {
-                "label": "유일성·답",
-                "body": "$[9,12]$에서 곡선은 위로 볼록하고 두 직선보다 기울기가 크게 출발하므로 그 사이에 다른 교점이 없고, $x>12$에서는 곡선이 감소·직선이 증가해 교점이 하나뿐이다.\n$\\frac{16}3+\\frac{22}3+\\frac{21}3=\\frac{59}3$ ②"
+                "label": "답",
+                "body": "$\\frac{16}3+\\frac{22}3+7=\\frac{59}3$ ②"
               }
             ]
           }
         ],
-        "supplement": "가장 많이 놓치는 경우는 $\\mathrm C=(9,0)$ 자체다. '변 위에 점이 있다'는 양 끝점(꼭짓점)을 포함한다. 이 경우를 빼면 $\\frac{43}3$이 되어 선지에 없다.\n교점을 방정식으로 풀려 하면 $2\\cos\\frac{\\pi x}6=\\frac{x-9}5$처럼 풀 수 없는 식이 나온다. 주기 격자점($x$가 $3$의 배수, 짝수)에서 값을 대입해 보는 것이 이 유형의 정석이다.",
-        "skill_point": "삼각함수 그래프 위의 점은 주기 격자점에서 찾는다. '변 위'는 꼭짓점을 포함한다."
+        "supplement": "$\\mathrm C=(9,0)$을 빼면 $\\frac{43}3$ — 선지에 없다.",
+        "skill_point": "격자점 대입, '변 위'는 꼭짓점 포함."
       },
       "verify": "def skill():\n    return Rational(16, 3) + Rational(22, 3) + 7\n\ndef standard():\n    x = symbols('x')\n    y = lambda v: 2*cos(pi*v/6)\n    A = (4, y(4)); B = (6, y(6))\n    tot = 0\n    import numpy\n    xs = numpy.linspace(0.001, 17.999, 180000)\n    cands = set()\n    for P0 in (A, B):\n        # line through P0 and (9,0)\n        m = (0 - P0[1])/(9 - P0[0])\n        g = lambda v: 2*numpy.cos(numpy.pi*v/6) - float(m)*(v - 9)\n        vals = g(xs)\n        for i in range(len(xs) - 1):\n            if vals[i] == 0 or vals[i]*vals[i + 1] < 0:\n                r = nsolve(2*cos(pi*x/6) - m*(x - 9), x, xs[i])\n                if r > 9 - 1e-9:\n                    cands.add(round(float(r), 9))\n    cands.add(9.0)\n    for cx in cands:\n        cxs = nsimplify(cx)\n        tot += (4 + 6 + cxs + A[1] + B[1] + y(cxs))/3\n    return nsimplify(tot)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:09",
-        "hash": "cc4c5bafdb8756cb",
+        "checked_at": "2026-09-25T02:48:11",
+        "hash": "58e7155ee32092a3",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -319,38 +319,38 @@
           "수학Ⅰ-10-C1",
           "수학Ⅰ-10-C3"
         ],
-        "guide": "방정식의 근은 수평선 $y=a+1$과 그래프의 교점이다. 절댓값 식은 $\\tan x-a=\\pm(a+1)$로 풀어 놓는다. 등차수열 조건은 '가운데 항 $\\times2=$ 양 끝의 합'으로 번역한다.",
+        "guide": "근을 모두 나열한다. $\\tan x=-1$의 근 $\\frac34\\pi$가 가운데에 고정.",
         "solutions": [
           {
             "title": "풀이 1 · 가운데 근 고정",
             "steps": [
               {
-                "label": "근 나열",
-                "body": "$0\\le x<\\frac\\pi2$: $3\\tan x=a+1$ → $x_1=\\alpha$, $\\tan\\alpha=\\frac{a+1}3$.\n$\\frac\\pi2<x<\\frac{3\\pi}2$: $\\tan x=-1$ 또는 $\\tan x=2a+1$ → $x_2=\\frac34\\pi$, $x_3=\\pi+\\beta$ ($\\tan\\beta=2a+1$, $0<\\beta<\\frac\\pi2$)."
+                "label": "근",
+                "body": "$\\alpha$ ($\\tan\\alpha=\\frac{a+1}3$), $\\frac34\\pi$, $\\pi+\\beta$ ($\\tan\\beta=2a+1$)"
               },
               {
                 "label": "등차",
-                "body": "$x_1+x_3=2x_2$ → $\\alpha+\\pi+\\beta=\\frac32\\pi$ → $\\alpha+\\beta=\\frac\\pi2$."
+                "body": "$\\alpha+\\beta=\\frac\\pi2$ → $\\tan\\alpha\\tan\\beta=1$"
               },
               {
-                "label": "여각 관계",
-                "body": "두 예각의 합이 $\\frac\\pi2$이면 $\\tan\\alpha\\tan\\beta=1$: $\\frac{a+1}3(2a+1)=1$ → $2a^2+3a-2=0$ → $a=\\frac12$."
+                "label": "$a$",
+                "body": "$\\frac{a+1}3(2a+1)=1$ → $a=\\frac12$"
               },
               {
                 "label": "답",
-                "body": "$f\\left(\\frac54\\pi\\right)=\\left|1-\\frac12\\right|=\\frac12$ → $60\\times\\frac12=30$"
+                "body": "$f\\left(\\frac54\\pi\\right)=\\frac12$ → $30$"
               }
             ]
           }
         ],
-        "supplement": "$\\alpha$, $\\beta$는 특수각이 아니어서 구할 수 없다. 대신 '합이 $\\frac\\pi2$ ⇔ 탄젠트의 곱이 $1$'이라는 여각 관계로 $a$만 뽑아낸다.\n흔한 실수: $\\left(\\frac\\pi2,\\frac{3\\pi}2\\right)$에서 $\\tan x=-1$의 해를 $\\frac74\\pi$로 적는 것. 이 구간에서 탄젠트가 음수인 곳은 $\\left(\\frac\\pi2,\\pi\\right)$이다.",
-        "skill_point": "등차수열 근 조건은 가운데 근을 고정하고 양 끝 합으로. 합이 $\\frac\\pi2$인 두 예각은 $\\tan$의 곱이 $1$."
+        "supplement": "이 구간에서 $\\tan x=-1$의 해는 $\\frac34\\pi$ ($\\frac74\\pi$ 아님).",
+        "skill_point": "가운데 근 고정 → 여각 → $\\tan$ 곱 $1$."
       },
       "verify": "def skill():\n    a = Rational(1, 2)\n    return 60*Abs(tan(5*pi/4) - a)\n\ndef standard():\n    a = symbols('a', positive=True)\n    al = atan((a + 1)/3); be = atan(2*a + 1)\n    sol = nsolve(al + pi + be - Rational(3, 2)*pi, a, 0.4)\n    a0 = nsimplify(round(float(sol), 12))\n    return 60*Abs(tan(5*pi/4) - a0)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:09",
-        "hash": "57ccdd32c51f2801",
+        "checked_at": "2026-09-25T02:48:11",
+        "hash": "c86ef2fc4e61c12a",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -384,42 +384,42 @@
           "수학Ⅰ-10-C3",
           "수학Ⅰ-09-C2"
         ],
-        "guide": "'$f(\\theta)=k$인 모든 $\\theta$에 대하여'는 수평선 $y=k$와의 교점을 하나도 빠짐없이 검사하라는 뜻이다. 교점이 무한히 많은 $x\\ge0$ 쪽이 $a$의 모양을 먼저 강하게 제한한다.",
+        "guide": "교점이 무한히 많은 $x\\ge0$ 쪽이 $a$를 먼저 정한다.",
         "solutions": [
           {
             "title": "풀이 1 · 두 구간 나눠 번역",
             "steps": [
               {
-                "label": "$\theta\\ge0$ 쪽",
-                "body": "$u=a\\theta$, $\\sin u=k$ ($0<k<1$)의 해는 $u=\\gamma+2n\\pi$, $\\pi-\\gamma+2n\\pi$ ($\\gamma=\\sin^{-1}k$). 둘 다 $\\sin(u+a\\pi)=-k$이려면 $\\sin(\\gamma+a\\pi)=\\sin(\\gamma-a\\pi)=-\\sin\\gamma$.\n앞의 두 식을 빼면 $2\\cos\\gamma\\sin a\\pi=0$ → $a$는 정수, 그리고 $(-1)^a=-1$ → $a$는 홀수. ($a$가 홀수가 아니면 만족하는 $k$는 많아야 $k=0$ 하나)"
+                "label": "$\\theta\\ge0$",
+                "body": "$\\sin(u+a\\pi)=-\\sin u$가 모든 근에서 → $a$는 홀수"
               },
               {
-                "label": "$\theta<0$ 쪽",
-                "body": "$\\theta=-t$ ($0<t\\le\\pi$), $\\sin t=k$. $a$가 홀수이면 $f(\\theta+\\pi)=\\sin(a\\pi-at)=\\sin at$. 조건: $\\sin at=-\\sin t$ ($t$와 $\\pi-t$에서 같은 식)."
+                "label": "$\\theta<0$",
+                "body": "$\\theta=-t$: 조건 $\\sin at=-\\sin t$ ($\\sin t=k$)"
               },
               {
                 "label": "$k$ 세기",
-                "body": "$k=0$($t=\\pi$): 항상 ✓. $k=1$($t=\\frac\\pi2$): $\\sin\\frac{a\\pi}2=-1$ ⇔ $a\\equiv3\\pmod4$.\n$0<k<1$: $\\sin at+\\sin t=2\\sin\\frac{(a+1)t}2\\cos\\frac{(a-1)t}2=0$의 해 $t\\in\\left(0,\\frac\\pi2\\right)$ 개수."
+                "body": "$k=0$: 항상. $k=1$: $a\\equiv3\\pmod4$\n$0<k<1$: $2\\sin\\frac{(a+1)t}2\\cos\\frac{(a-1)t}2=0$의 해 $t\\in\\left(0,\\frac\\pi2\\right)$"
               },
               {
-                "label": "$a$ 결정",
-                "body": "$a=3$: $0$개 → 총 $2$. $a=5$: $t=\\frac\\pi3,\\frac\\pi4$ → 총 $3$.\n$a=7$: $\\sin4t=0$ → $\\frac\\pi4$, $\\cos3t=0$ → $\\frac\\pi6$, $7\\equiv3$ → 총 $1+2+1=4$ ✓. $a=9$: 총 $5$ (이후 증가)."
+                "label": "$a$",
+                "body": "$a=3$: $2$개, $a=5$: $3$개, $a=7$: $4$개 ✓"
               },
               {
                 "label": "답",
-                "body": "$a=7$, $f\\left(\\frac{5\\pi}6\\right)=\\sin\\frac{35\\pi}6=\\sin\\left(-\\frac\\pi6\\right)=-\\frac12$.\n$7-\\frac12=\\frac{13}2$ → $p+q=2+13=15$"
+                "body": "$7+\\sin\\frac{35\\pi}6=\\frac{13}2$ → $15$"
               }
             ]
           }
         ],
-        "supplement": "$x\\ge0$ 쪽을 먼저 보지 않고 $x<0$ 쪽부터 풀면 $a$에 대한 정보가 하나도 없어 막힌다. 해가 무한히 많은 쪽이 매개변수를 먼저 확정한다 — 조건을 쓰는 순서가 풀이의 절반이다.\n$\\sin A+\\sin B=2\\sin\\frac{A+B}2\\cos\\frac{A-B}2$는 교육과정 밖 공식처럼 보이지만, 그래프로 '$y=\\sin at$와 $y=-\\sin t$의 교점'을 세도 같은 개수가 나온다.",
-        "skill_point": "'$f(\\theta)=k$인 모든 $\\theta$' 조건은 교점이 무한히 많은 쪽이 매개변수를 먼저 확정한다. $\\sin(u+a\\pi)=-\\sin u$가 항등식 ⇔ $a$는 홀수."
+        "supplement": "$x<0$ 쪽부터 풀면 $a$에 대한 정보가 없어 막힌다.",
+        "skill_point": "센 조건(무한히 많은 쪽)부터."
       },
       "verify": "def skill():\n    a = 7\n    q, p = fraction(Rational(a) + sin(a*5*pi/6))\n    return p + q\n\ndef standard():\n    t = symbols('t', real=True)\n    good = []\n    for a in range(1, 16, 2):\n        cnt = 1  # k = 0\n        if simplify(sin(a*pi/2) + 1) == 0:\n            cnt += 1\n        ts = np.linspace(1e-9, float(pi)/2 - 1e-9, 200001)\n        v = np.sin(a*ts) + np.sin(ts)\n        cnt += int(np.sum(v[:-1]*v[1:] < 0))\n        if cnt == 4:\n            good.append(a)\n    assert good == [7]\n    val = Rational(good[0]) + sin(good[0]*5*pi/6)\n    q, p = fraction(nsimplify(val))\n    return p + q\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:10",
-        "hash": "60bef152d0b0b405",
+        "checked_at": "2026-09-25T02:48:12",
+        "hash": "967c518ca9bac1e4",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -459,42 +459,42 @@
           "수학Ⅱ-16-C4",
           "수학Ⅱ-15-C1"
         ],
-        "guide": "$|A|+A=\\begin{cases}2A&(A>0)\\\\0&(A\\le0)\\end{cases}$ — 부호 스위치다. 두 스위치가 동시에 켜지는 범위가 $(3,6)$. $F(x)=\\int_0^xf(t)\\,dt$는 $F'=f$이므로 $f>0$인 구간에서 증가한다는 것만으로 경계가 정해진다.",
+        "guide": "$|A|+A\\ne0$ ⇔ $A>0$. 조건은 '$f>0$이고 $F>0$'인 범위가 $(3,6)$.",
         "solutions": [
           {
             "title": "풀이 1 · 두 스위치의 경계",
             "steps": [
               {
-                "label": "번역",
-                "body": "$F(x)=\\int_0^xf(t)\\,dt$. 조건 ⇔ $f(x)>0$이고 $F(x)>0$인 $x$의 집합이 $(3,6)$."
+                "label": "볼록",
+                "body": "아래로 볼록이면 범위가 유계가 아니다 → 위로 볼록"
               },
               {
-                "label": "볼록 방향",
-                "body": "$f$가 아래로 볼록이면 $f>0$인 곳이 한없이 오른쪽으로 이어지고 $F$도 결국 양수라 범위가 유계가 아니다. 따라서 위로 볼록, $f>0$인 곳은 두 근 사이 $(r,s)$."
+                "label": "오른쪽 끝",
+                "body": "$f>0$에서 $F$ 증가 → $f(6)=0$"
               },
               {
-                "label": "경계",
-                "body": "$(r,s)$에서 $F$는 증가하므로 $\\{F>0\\}\\cap(r,s)$는 $(\\max(r,z),\\,s)$ 꼴($z$는 $F$의 근). 따라서 $s=6$.\n$r=3$이면 $f=-\\frac19(x-3)(x-6)$ ($|f(0)|=2$)인데 $F(3)=-\\frac52<0$, $F(6)=-2<0$이라 범위가 비어 ✗.\n그러므로 $r<3$이고 $F(3)=0$."
+                "label": "왼쪽 끝",
+                "body": "$f(3)=0$이면 $F(3)<0$ ✗ → $F(3)=0$"
               },
               {
                 "label": "계산",
-                "body": "$f(x)=-c(x-r)(x-6)$, $F(3)=-c\\int_0^3\\{t^2-(r+6)t+6r\\}dt=-c\\left(\\frac{27}2r-18\\right)=0$ → $r=\\frac43$.\n$|f(0)|=6cr=8c=2$ → $c=\\frac14$."
+                "body": "$f=-c(x-r)(x-6)$, $F(3)=0$ → $r=\\frac43$, $8c=2$ → $c=\\frac14$"
               },
               {
                 "label": "답",
-                "body": "$f(3)=-\\frac14\\cdot\\frac53\\cdot(-3)=\\frac54$ ⑤"
+                "body": "$f(3)=\\frac54$ ⑤"
               }
             ]
           }
         ],
-        "supplement": "$f$의 근을 $3$, $6$으로 바로 잡는 것이 가장 흔한 오답이다. 왼쪽 경계 $3$은 '$F$가 $0$에서 양수로 바뀌는 점'일 수도 있다 — 두 스위치 중 어느 것이 경계를 만드는지 둘 다 검사해야 한다.\n검산: $r=\\frac43<x<3$에서는 $f>0$이지만 $F<0$이라 식이 $0$이다. $x>6$에서는 $f<0$.",
-        "skill_point": "$|A|+A\\ne0$ ⇔ $A>0$. 두 조건이 겹치는 범위의 경계마다 '어느 쪽이 $0$이 되는가'를 따로 확인한다."
+        "supplement": "$f$의 근을 $3$, $6$으로 바로 잡으면 틀린다 — 경계마다 어느 스위치가 꺼지는지.",
+        "skill_point": "경계마다 어느 쪽이 $0$인지 확인."
       },
       "verify": "def skill():\n    r = Rational(4, 3); c = Rational(1, 4)\n    return -c*(3 - r)*(3 - 6)\n\ndef standard():\n    x, t, r, c = symbols('x t r c', real=True)\n    f = -c*(x - r)*(x - 6)\n    F = integrate(f.subs(x, t), (t, 0, x))\n    rv = solve(F.subs(x, 3), r)\n    res = set()\n    for rr in rv:\n        for cc in solve(Eq(Abs(f.subs({r: rr, x: 0})), 2), c):\n            if cc <= 0: continue\n            ff = f.subs({r: rr, c: cc}); FF = F.subs({r: rr, c: cc})\n            pts = [Rational(k, 20) for k in range(-100, 200)]\n            S = [p for p in pts if ff.subs(x, p) > 0 and FF.subs(x, p) > 0]\n            if S and min(S) > 3 and max(S) < 6 and min(S) <= 3 + Rational(1, 20) and max(S) >= 6 - Rational(1, 20):\n                res.add(ff.subs(x, 3))\n    assert len(res) == 1\n    return res.pop()\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:10",
-        "hash": "d84343d939742820",
+        "checked_at": "2026-09-25T02:48:12",
+        "hash": "fde65400415e7f35",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -528,42 +528,42 @@
           "수학Ⅱ-15-C1",
           "수학Ⅱ-07-C1"
         ],
-        "guide": "미분가능한 $G$에 대해 $|G|$가 $G(p)=0$인 점 $p$에서 미분가능 ⇔ $G'(p)=0$. 여기서 $G=F-c$, $G'=f$이므로 수평선 $y=c$가 $y=F(x)$와 만나는 곳은 모두 $F$의 극점(접하는 점)이어야 한다. $F$의 개형을 $f$의 부호로 먼저 그린다.",
+        "guide": "$|F-c|$ 미분가능 ⇔ $F=c$인 점에서 $f=0$ ⇔ $c\\ge\\max F$.",
         "solutions": [
           {
-            "title": "풀이 1 · F의 개형과 수평선",
+            "title": "풀이 1 · $F$의 개형과 수평선",
             "steps": [
               {
-                "label": "미분가능 조건",
-                "body": "$c=f(s)$. $|F-c|$가 미분가능 ⇔ $F(x)=c$인 모든 $x$에서 $f(x)=0$."
-              },
-              {
-                "label": "$a>0$ 제외",
-                "body": "$a>0$이면 $F$는 $(-\\infty,0)$ 증가, $(0,1)$ 감소, $(1,\\infty)$ 증가하고 $F\\to\\pm\\infty$. 어떤 수평선도 $F$가 단조인 곳을 가로지르므로 $s$가 없다 ✗."
+                "label": "$a>0$",
+                "body": "$F\\to\\pm\\infty$ → 어떤 수평선도 가로지른다 ✗"
               },
               {
                 "label": "$a<0$",
-                "body": "$b=\\sqrt{-a}$. $F$: $(-\\infty,-b)$ 증가, $(-b,0)$ 감소, $(0,1)$ 증가, $(1,\\infty)$ 감소, 양 끝 $-\\infty$.\n$F(-b)=-\\frac{b^4}4-\\frac{ab^2}2=\\frac{a^2}4$, $F(1)=\\frac a3-\\frac a2=-\\frac a6$.\n조건 ⇔ $c\\ge M=\\max\\left(\\frac{a^2}4,-\\frac a6\\right)$ (최댓값에서 접하거나 아예 안 만남)."
+                "body": "$b=\\sqrt{-a}$: 봉우리 $F(-b)=\\frac{a^2}4$, $F(1)=-\\frac a6$"
               },
               {
-                "label": "$s$ 개수",
-                "body": "$x>0$에서 $f(s)=as(s-1)$의 최댓값은 $f\\left(\\frac12\\right)=-\\frac a4$. $f(s)\\ge M$인 양수 $s$가 하나 ⇔ $-\\frac a4=M$.\n$-\\frac a4>-\\frac a6$이므로 $\\frac{a^2}4=-\\frac a4$ → $a=-1$ ($M=\\frac14$ ✓)."
+                "label": "$s$ 하나",
+                "body": "$x>0$에서 $f$의 최댓값 $-\\frac a4=\\max F$"
+              },
+              {
+                "label": "$a$",
+                "body": "$\\frac{a^2}4=-\\frac a4$ → $a=-1$"
               },
               {
                 "label": "답",
-                "body": "$f(-4)=-(-4)^3-(-1)(-4)=64-4=60$"
+                "body": "$f(-4)=64-4=60$"
               }
             ]
           }
         ],
-        "supplement": "'$|G|$가 미분가능'을 '$G$가 $0$이 되지 않음'으로만 읽으면 최댓값보다 큰 $c$만 남는다. 최댓값과 같은 $c$도 된다(접점에서 $G'=0$). 이 경계가 '$s$가 정확히 하나'를 만드는 장치다.\n$F$의 두 극댓값 $\\frac{a^2}4$와 $-\\frac a6$ 중 작은 쪽에 수평선을 그으면 큰 쪽 봉우리를 가로질러 실패한다 — 반드시 전체 최댓값이어야 한다.",
-        "skill_point": "$|F-c|$가 미분가능 ⇔ $y=c$가 $y=F$를 가로지르지 않음(접하거나 안 만남). $F'=f$로 개형부터."
+        "supplement": "최댓값과 같은 $c$도 된다(접점) — 이것이 '$s$가 하나'를 만든다.",
+        "skill_point": "$y=c$가 $y=F$를 가로지르지 않음."
       },
       "verify": "def skill():\n    a = -1\n    return -(-4)**3 - a*(-4)\n\ndef standard():\n    x, t = symbols('x t', real=True)\n    res = set()\n    for a in [Rational(k, 4) for k in range(-40, 41) if k != 0]:\n        fl = -x**3 - a*x; fr = a*x**2 - a*x\n        Fl = integrate(fl, (x, 0, t)); Fr = integrate(fr, (x, 0, t))\n        # candidates for max of F: critical points\n        crit = [0, 1] + [r for r in solve(fl, x) if r.is_real and r < 0]\n        vals = [Fl.subs(t, r) if r < 0 else Fr.subs(t, r) for r in crit]\n        # F unbounded above?\n        if limit(Fr, t, oo) == oo or limit(Fl, t, -oo) == oo:\n            continue\n        M = max(vals)\n        # positive s with f(s) >= M\n        fmax = fr.subs(x, Rational(1, 2)) if a < 0 else None\n        if fmax is not None and fmax == M:\n            res.add(fl.subs(x, -4))\n    assert len(res) == 1\n    return res.pop()\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:12",
-        "hash": "e7743ab931145e19",
+        "checked_at": "2026-09-25T02:48:14",
+        "hash": "6b9c6c2f39859d0f",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -596,42 +596,42 @@
         "concept_refs": [
           "수학Ⅱ-14-C1"
         ],
-        "guide": "적분 구간을 함수가 바뀌는 점에서 나누면 식이 두 변수의 합으로 분리된다. 두 독립 변수의 합이 음수인 순서쌍이 딱 하나라는 조건은 '가장 작은 두 값의 합만 음수'라는 뜻이다.",
+        "guide": "$0$에서 잘라 $A(a)+B(b)$로 분리. 순서쌍 하나 → 가장 작은 두 값만 비교.",
         "solutions": [
           {
             "title": "풀이 1 · 분리된 합의 최솟값",
             "steps": [
               {
                 "label": "분리",
-                "body": "$\\int_{-a}^0(-3x-5)dx=\\frac32a^2-5a=A(a)$, $\\int_0^b(mx-5)dx=\\frac m2b^2-5b=B(b)$."
+                "body": "$A(a)=\\frac32a^2-5a$, $B(b)=\\frac m2b^2-5b$"
               },
               {
-                "label": "$A$의 값",
-                "body": "$A(1)=-\\frac72$, $A(2)=-4$, $A(3)=-\\frac32$, $A(a)>0$ ($a\\ge4$). 최소 $-4$, 둘째 $-\\frac72$."
+                "label": "$A$ 값",
+                "body": "$-\\frac72$, $-4$, $-\\frac32$, 이후 양수"
               },
               {
-                "label": "조건 번역",
-                "body": "$A+B<0$인 순서쌍이 하나 ⇔ $(2,\\,b^*)$만 음수: $-4+B_{\\min}<0$, $-\\frac72+B_{\\min}\\ge0$, $-4+(\\text{둘째로 작은 }B)\\ge0$.\n즉 $\\frac72\\le B_{\\min}<4$이고 다른 $B(b)\\ge4$."
+                "label": "번역",
+                "body": "$\\frac72\\le B_{\\min}<4$, 다른 $B\\ge4$"
               },
               {
-                "label": "$m$ 범위",
-                "body": "$m\\le0$이면 $B\\to-\\infty$ ✗. $B(1)=\\frac m2-5\\ge\\frac72$ → $m\\ge17$, 이때 $B$는 증가하므로 $B_{\\min}=B(1)$: $17\\le m<18$ ($B(2)=2m-10\\ge24$ ✓)."
+                "label": "$m$",
+                "body": "$B_{\\min}=B(1)=\\frac m2-5$ → $17\\le m<18$"
               },
               {
                 "label": "답",
-                "body": "$f(2)=2m-5\\in[29,\\,31)$, 정수 $29$, $30$ → 합 $59$"
+                "body": "$f(2)=2m-5\\in\\{29,30\\}$ → $59$"
               }
             ]
           }
         ],
-        "supplement": "$\\int_{-a}^bf$를 $a$, $b$에 대한 식 하나로 뭉쳐 두면 순서쌍을 셀 방법이 보이지 않는다. 구간을 $0$에서 자르는 순간 '$a$ 쪽 값 표 + $b$ 쪽 값 표'로 바뀐다.\n경계 $m=17$은 포함된다: $A(1)+B(1)=0$은 '$<0$'이 아니므로 세지 않는다. 부등호의 등호 처리가 답을 가른다.",
-        "skill_point": "적분 구간을 식이 바뀌는 점에서 자르면 두 변수가 분리된다. '합이 음수인 쌍이 하나' → 가장 작은 두 값만 비교."
+        "supplement": "$A(1)+B(1)=0$은 음수가 아니다 — $m=17$ 포함.",
+        "skill_point": "경계에서 잘라 변수 분리."
       },
       "verify": "def skill():\n    return 29 + 30\n\ndef standard():\n    F = Fraction\n    res = set()\n    for mm in range(-200, 801):\n        m = F(mm, 20)\n        cnt = 0\n        for a in range(1, 30):\n            A = F(3, 2)*a*a - 5*a\n            for b in range(1, 60):\n                if A + m/2*b*b - 5*b < 0:\n                    cnt += 1\n                    if cnt > 1: break\n            if cnt > 1: break\n        if cnt == 1 and (2*m - 5).denominator == 1:\n            res.add(2*m - 5)\n    return sum(res)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:15",
-        "hash": "a276be8f722b3f5a",
+        "checked_at": "2026-09-25T02:48:17",
+        "hash": "0ca34a15ddd525d5",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -665,42 +665,42 @@
           "수학Ⅱ-15-C1",
           "수학Ⅱ-07-C1"
         ],
-        "guide": "정적분으로 정의된 부분은 '대입해서 $0$, 미분해서 적분 제거'. $x<1$에서 $g(x)=\\int_1^xf$이면 $g(1^-)=0$, $g'=f$. 그 결과 $f$는 $x<1$에서 이차함수 $g'$, $x\\ge1$에서 삼차함수 $g$로 이어 붙인 함수다.",
+        "guide": "$x<1$: $g'=f$, $x\\ge1$: $g=f$ → $g(1)=0$, $g'(1)=0$.",
         "solutions": [
           {
-            "title": "풀이 1 · 이어 붙인 f의 개형",
+            "title": "풀이 1 · 이어 붙인 $f$의 개형",
             "steps": [
               {
-                "label": "g 결정",
-                "body": "$g$는 다항함수라 연속: $g(1)=\\lim_{x\\to1-}\\int_1^xf=0$. $f$의 연속: $g'(1)=f(1)=g(1)=0$.\n$g(x)=(x-1)^2(px+q)$, $g(5)=16(5p+q)=-4$ → $q=-\\frac14-5p$, $p>0$."
+                "label": "$g$",
+                "body": "$g=(x-1)^2(px+q)$, $g(5)=-4$"
               },
               {
-                "label": "f의 개형",
-                "body": "$x<1$: $f=g'$ — 근이 $1$과 $r=\\frac{11}3+\\frac1{6p}>1$인 이차식이라 $x<1$에서 양수, $1$로 감소.\n$x\\ge1$: $f=g$ — $1$에서 $0$, $(1,r)$에서 감소, 이후 증가, 근 $x_0=5+\\frac1{4p}$.\n$x=1$에서 왼쪽 기울기 $g''(1)=2(p+q)<0$, 오른쪽 기울기 $0$ → 꺾인 점."
+                "label": "꺾임",
+                "body": "$x=1$에서 왼쪽 기울기 $<0$, 오른쪽 $0$ → 항상 미분불가능"
               },
               {
-                "label": "미분불가능점 세기",
-                "body": "$c=f(k)$. 꺾인 점 $x=1$은 항상 $|f-c|$의 미분불가능점이다.\n$c>0$: 가로지르는 점 $2$개 + $1$ → $3$. $f(r)<c<0$: $2$개 + $1$ → $3$. $c\\le f(r)$: $1$ → $1$개.\n$c=0$: $x=1$과 $x=x_0$ → $2$ ✓"
+                "label": "개수",
+                "body": "$c>0$ 또는 $f(r)<c<0$: $3$개, $c\\le f(r)$: $1$개, $c=0$: $2$개 ✓"
               },
               {
-                "label": "k의 합",
-                "body": "$f(k)=0$ ⇔ $k=1$ 또는 $k=x_0$. $1+x_0=8$ → $x_0=7$ → $p=\\frac18$, $q=-\\frac78$.\n$g(x)=\\frac18(x-1)^2(x-7)$"
+                "label": "$k$",
+                "body": "$f(k)=0$ ⇔ $k=1$, $x_0$ → $x_0=7$ → $g=\\frac18(x-1)^2(x-7)$"
               },
               {
                 "label": "답",
-                "body": "$f(-3)=g'(-3)=\\frac18(x-1)(3x-15)\\big|_{x=-3}=\\frac18(-4)(-24)=12$"
+                "body": "$f(-3)=g'(-3)=12$"
               }
             ]
           }
         ],
-        "supplement": "$x=1$에서 $f$가 꺾인다는 것을 놓치면 $c>0$에서도 미분불가능점이 $2$개라고 착각해 $k$가 무수히 많아진다. 꺾인 점에서 $f(1)\\ne c$이면 $|f-c|$는 그 근처에서 $\\pm(f-c)$라 꺾임이 그대로 남는다.\n$c=0$일 때 $x=1$은 꺾인 점이자 $f$의 근이다: 왼쪽에서 양수, 오른쪽에서 음수로 부호가 바뀌어 미분불가능하다.",
-        "skill_point": "$\\int_1^x f$로 정의된 조각은 $g(1)=0$, $g'=f$. 이어 붙인 함수의 꺾인 점은 $|f-c|$에서도 항상 미분불가능점으로 남는다."
+        "supplement": "$x=1$의 꺾임을 놓치면 $k$가 무수히 많아진다.",
+        "skill_point": "이음매의 꺾임은 $|f-c|$에도 남는다."
       },
       "verify": "def skill():\n    x = symbols('x')\n    g = Rational(1, 8)*(x - 1)**2*(x - 7)\n    return diff(g, x).subs(x, -3)\n\ndef standard():\n    x, p = symbols('x p', real=True)\n    q = -Rational(1, 4) - 5*p\n    g = (x - 1)**2*(p*x + q)\n    x0 = solve(p*x + q, x)[0]\n    pv = [v for v in solve(Eq(1 + x0, 8), p) if v > 0][0]\n    G = g.subs(p, pv)\n    # numeric check: count nondiff points of |f - f(k)| for sample k, expecting only k in {1, 7}\n    fL = diff(G, x); fR = G\n    f = lambda v: fL.subs(x, v) if v < 1 else fR.subs(x, v)\n    assert f(1) == 0 and f(7) == 0\n    return fL.subs(x, -3)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:16",
-        "hash": "6d2f17d2b6df4f43",
+        "checked_at": "2026-09-25T02:48:18",
+        "hash": "b60732ad88ca1cfb",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -740,38 +740,38 @@
           "확률과 통계-14-C1",
           "확률과 통계-10-C2"
         ],
-        "guide": "점의 이동이 두 방향으로 갈리면 '직선까지의 거리'에 해당하는 양 하나로 요약한다. $y=x+2$ 위 ⇔ $y-x=2$. 도달 여부는 경로에 달려 있으므로 '적어도 한 번 도달'을 여사건으로 잡고 처음 도달하는 시각으로 나눈다.",
+        "guide": "$d=y-x$ 하나로 요약. 직선 위 ⇔ $d=2$. 여사건을 첫 도달 시각별로.",
         "solutions": [
           {
             "title": "풀이 1 · 첫 도달 시각으로 나누기",
             "steps": [
               {
                 "label": "요약",
-                "body": "$d=y-x$. $6$의 약수($1,2,3,6$)가 나오면 $d-1$ (확률 $\\frac23$), 아니면 $d+1$ (확률 $\\frac13$). 처음 $d=0$, 목표는 $d=2$를 한 번도 밟지 않기."
+                "body": "$d$: $-1$ (확률 $\\frac23$), $+1$ (확률 $\\frac13$)"
               },
               {
                 "label": "홀짝",
-                "body": "$d$는 매번 $\\pm1$이므로 $d=2$는 짝수 번째 시행 후에만 가능: $2$번째 또는 $4$번째."
+                "body": "$d=2$는 $2$번째 또는 $4$번째에만"
               },
               {
                 "label": "첫 도달",
-                "body": "$2$번째: $++$ → $\\left(\\frac13\\right)^2=\\frac9{81}$.\n$4$번째에 처음: 네 번 중 $+$ 세 번, $-$ 한 번이면서 $2$번째에 도달하지 않음 → $-+++$, $+-++$: $2\\times\\left(\\frac13\\right)^3\\frac23=\\frac4{81}$."
+                "body": "$2$번째: $\\frac9{81}$ · $4$번째 처음: $-+++$, $+-++$ → $\\frac4{81}$"
               },
               {
                 "label": "답",
-                "body": "$1-\\frac{9+4}{81}=\\frac{68}{81}$ ③"
+                "body": "$1-\\frac{13}{81}=\\frac{68}{81}$ ③"
               }
             ]
           }
         ],
-        "supplement": "'$4$번 후에 직선 위에 있지 않을 확률'로 잘못 읽으면 $d=2$인 최종 상태만 빼게 되어 $2$번째에 닿았다가 내려온 경로($++-\\,\\cdot$)를 놓친다. '반복할 동안 만나지 않음'은 경로 전체에 대한 조건이다.\n$+++-$처럼 $2$번째에 이미 도달한 경로를 $4$번째 첫 도달에 다시 세지 않도록 주의한다.",
-        "skill_point": "두 방향 이동은 한 변수($y-x$)로 요약하고, '동안 만나지 않음'은 여사건을 첫 도달 시각별로 센다."
+        "supplement": "최종 위치만 보면 $2$번째에 닿았다 내려온 경로를 놓친다.",
+        "skill_point": "한 변수로 요약, 경로 조건은 첫 도달."
       },
       "verify": "def skill():\n    return 1 - Rational(1, 9) - 2*Rational(1, 27)*Rational(2, 3)\n\ndef standard():\n    tot = Rational(0)\n    for s in itertools.product([0, 1], repeat=4):\n        x = y = 0; p = Rational(1); hit = False\n        for m in s:\n            if m: y += 1; p *= Rational(1, 3)\n            else: x += 1; p *= Rational(2, 3)\n            if y == x + 2: hit = True\n        if not hit: tot += p\n    return tot\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:16",
-        "hash": "3c6800d6219de8a2",
+        "checked_at": "2026-09-25T02:48:18",
+        "hash": "f9f468a96a34d23b",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -805,38 +805,38 @@
           "확률과 통계-14-C1",
           "확률과 통계-14-C3"
         ],
-        "guide": "여러 개수의 합은 시행 하나하나가 몇씩 보태는지로 다시 셀 수 있다(더하는 순서 바꾸기). 모든 눈이 같은 양을 보태고 몇몇 눈만 더 보태면, 합은 '특별한 눈이 나온 횟수'의 일차식이 된다.",
+        "guide": "$a+b+c$를 눈 하나하나의 기여로 다시 센다.",
         "solutions": [
           {
             "title": "풀이 1 · 눈별 기여",
             "steps": [
               {
-                "label": "기여 표",
-                "body": "눈 $1$: 홀수·$4$의 약수 → $2$\n눈 $2$: $4$의 약수 → $1$\n눈 $3$: 홀수·$3$의 배수 → $2$\n눈 $4$: $4$의 약수 → $1$ / 눈 $5$: 홀수 → $1$ / 눈 $6$: $3$의 배수 → $1$"
+                "label": "기여",
+                "body": "눈 $1$, $3$ → $2$ · 눈 $2$, $4$, $5$, $6$ → $1$"
               },
               {
                 "label": "일차식",
-                "body": "모든 눈이 $1$씩, 눈 $1$, $3$만 $1$ 더 → $a+b+c=6+N$ ($N$: $1$ 또는 $3$이 나온 횟수)."
+                "body": "$a+b+c=6+N$ ($N$: $1$ 또는 $3$의 횟수)"
               },
               {
                 "label": "확률",
-                "body": "$N=2$: ${}_6\\mathrm C_2\\left(\\frac13\\right)^2\\left(\\frac23\\right)^4=15\\cdot\\frac{16}{729}=\\frac{80}{243}$"
+                "body": "$N=2$: ${}_6\\mathrm C_2\\left(\\frac13\\right)^2\\left(\\frac23\\right)^4=\\frac{80}{243}$"
               },
               {
                 "label": "답",
-                "body": "$p+q=243+80=323$"
+                "body": "$323$"
               }
             ]
           }
         ],
-        "supplement": "$a$, $b$, $c$를 각각의 분포로 따로 구해 합이 $8$인 경우를 나열하면 세 변수가 서로 얽혀 있어(같은 눈이 두 개수에 동시에 들어감) 경우가 폭발한다. 개수를 '눈별 기여'로 바꿔 세는 것이 핵심이다.\n약분 확인: $\\frac{240}{729}=\\frac{80}{243}$ — $p$, $q$가 서로소가 되도록 반드시 약분한다.",
-        "skill_point": "여러 개수의 합은 시행별 기여로 다시 센다 — 기여가 둘로만 갈리면 성공 횟수의 일차식이 된다."
+        "supplement": "$a$, $b$, $c$를 따로 구하면 같은 눈이 겹쳐 얽힌다.",
+        "skill_point": "합은 시행별 기여로."
       },
       "verify": "def skill():\n    pr = binomial(6, 2)*Rational(1, 3)**2*Rational(2, 3)**4\n    q, p = fraction(pr)\n    return p + q\n\ndef standard():\n    cnt = 0\n    for s in itertools.product(range(1, 7), repeat=6):\n        a = sum(v % 2 for v in s); b = sum(v in (1, 2, 4) for v in s); c = sum(v % 3 == 0 for v in s)\n        if a + b + c == 8: cnt += 1\n    q, p = fraction(Rational(cnt, 6**6))\n    return p + q\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:17",
-        "hash": "07d082732c7cbcbd",
+        "checked_at": "2026-09-25T02:48:19",
+        "hash": "861ae0ed2b3716e3",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -870,38 +870,38 @@
           "확률과 통계-12-C1",
           "확률과 통계-11-C1"
         ],
-        "guide": "조건부확률은 분모 사건을 먼저 센다. '또는'이 들어간 사건은 여사건이 '그리고'가 되어 세기 쉬워진다. 모든 결과가 같은 확률($6^3$가지)이므로 확률 대신 개수의 비로 계산한다.",
+        "guide": "분모 '$a\\le b$ 또는 $a\\le c$'의 여사건은 '$a$가 가장 큼'. 개수비로 계산.",
         "solutions": [
           {
             "title": "풀이 1 · 여사건으로 분모·분자",
             "steps": [
               {
                 "label": "분모",
-                "body": "여사건 $a>b$, $a>c$: $a$를 고정하면 $b,c\\in\\{1,\\dots,a-1\\}$ → $\\sum_{a=1}^6(a-1)^2=55$.\n$n(A)=216-55=161$"
+                "body": "여사건 $\\sum(a-1)^2=55$ → $n(A)=161$"
               },
               {
-                "label": "분자 준비",
-                "body": "$(a-b)(b-c)(c-a)=0$ ⇔ 세 수 중 같은 것이 있음: $216-6\\cdot5\\cdot4=96$."
+                "label": "분자",
+                "body": "같은 수 있음 $216-120=96$"
               },
               {
-                "label": "겹침 제거",
-                "body": "이 중 $A$의 여사건($a$가 가장 큼)에 속하는 것: $a\\ne b$, $a\\ne c$이므로 $b=c<a$ → $\\sum_{a}(a-1)=15$.\n$n(A\\cap B)=96-15=81$"
+                "label": "겹침",
+                "body": "여사건 쪽 $b=c<a$: $15$ → $81$"
               },
               {
                 "label": "답",
-                "body": "$\\frac{81}{161}$ → $p+q=161+81=242$"
+                "body": "$\\frac{81}{161}$ → $242$"
               }
             ]
           }
         ],
-        "supplement": "'$a\\le b$ 또는 $a\\le c$'를 두 사건의 합으로 포함배제하면 $a\\le b$, $a\\le c$, 둘 다를 각각 세야 한다($126+126-91=161$). 여사건은 한 줄이다.\n분자에서 흔한 실수: 같은 수가 있는 경우 $96$을 그대로 쓰는 것. 조건부확률의 분자는 반드시 분모 사건 안에서 센다.",
-        "skill_point": "'또는'이 든 분모 사건은 여사건('모두 아님')으로 세고, 분자는 전체에서 여사건 쪽 겹침만 뺀다."
+        "supplement": "분자를 $96$으로 두면 분모 사건 밖까지 센 것.",
+        "skill_point": "'또는' 분모 → 여사건."
       },
       "verify": "def skill():\n    nA = 216 - sum((a - 1)**2 for a in range(1, 7))\n    nAB = (216 - 120) - sum(a - 1 for a in range(1, 7))\n    q, p = fraction(Rational(nAB, nA))\n    return p + q\n\ndef standard():\n    A = B = 0\n    for a, b, c in itertools.product(range(1, 7), repeat=3):\n        if a <= b or a <= c:\n            A += 1\n            if (a - b)*(b - c)*(c - a) == 0: B += 1\n    q, p = fraction(Rational(B, A))\n    return p + q\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:17",
-        "hash": "65e56d7abf5517e8",
+        "checked_at": "2026-09-25T02:48:19",
+        "hash": "8220a5480f7422d0",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -935,34 +935,34 @@
           "확률과 통계-12-C3",
           "확률과 통계-12-C1"
         ],
-        "guide": "같은 확률의 결과열이면 $\\mathrm P(B\\mid A)=\\frac{n(A\\cap B)}{n(A)}$. 합이 정해진 순서쌍의 개수는 음이 아닌 정수해의 개수(중복조합)이고, 상한($5$)을 넘는 경우만 뺀다.",
+        "guide": "같은 확률의 결과열 → 개수비. 합이 정해진 순서쌍은 중복조합에서 상한 초과만 뺀다.",
         "solutions": [
           {
             "title": "풀이 1 · 순서쌍 세기",
             "steps": [
               {
                 "label": "분모",
-                "body": "$x_1+\\cdots+x_6=6$, $0\\le x_i\\le5$: ${}_6\\mathrm H_6={}_{11}\\mathrm C_6=462$에서 한 칸이 $6$인 $6$가지를 빼 $456$."
+                "body": "${}_6\\mathrm H_6=462$ − 한 칸 $6$인 $6$ → $456$"
               },
               {
                 "label": "분자",
-                "body": "$x_1+x_2=3$: $4$가지. $x_3+\\cdots+x_6=3$: ${}_4\\mathrm H_3=20$ (상한 문제 없음). $4\\times20=80$."
+                "body": "$x_1+x_2=3$: $4$ · 나머지 합 $3$: ${}_4\\mathrm H_3=20$ → $80$"
               },
               {
                 "label": "답",
-                "body": "$\\frac{80}{456}=\\frac{10}{57}$ → $p+q=67$"
+                "body": "$\\frac{80}{456}=\\frac{10}{57}$ → $67$"
               }
             ]
           }
         ],
-        "supplement": "$S_6=6$의 확률을 구한 뒤 $S_2=3$과의 교집합 확률을 따로 구해 나누어도 되지만, 결과열이 모두 같은 확률이라는 것을 알면 분모 $6^6$은 약분되어 사라진다. 처음부터 개수로 센다.\n상한 $5$ 때문에 빼는 경우는 분모에만 있다. 분자는 각 부분의 합이 $3$ 이하라서 상한에 걸리지 않는다.",
-        "skill_point": "결과열이 같은 확률이면 조건부확률은 개수비. 합이 정해진 순서쌍은 중복조합에서 상한 초과만 뺀다."
+        "supplement": "분모 $6^6$은 약분되어 사라진다 — 처음부터 개수로.",
+        "skill_point": "개수비 + 중복조합."
       },
       "verify": "def skill():\n    nA = binomial(11, 6) - 6\n    nAB = 4*binomial(6, 3)\n    q, p = fraction(Rational(nAB, nA))\n    return p + q\n\ndef standard():\n    A = B = 0\n    for s in itertools.product(range(6), repeat=6):\n        if sum(s) == 6:\n            A += 1\n            if s[0] + s[1] == 3: B += 1\n    q, p = fraction(Rational(B, A))\n    return p + q\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:17",
-        "hash": "5a8afa7e8f24a79e",
+        "checked_at": "2026-09-25T02:48:20",
+        "hash": "4d85d1ae710b6550",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1130,38 +1130,38 @@
           "확률과 통계-14-C1",
           "확률과 통계-10-C2"
         ],
-        "guide": "두 변수의 합 조건은 각 변수의 범위를 먼저 적어 가능한 조합을 좁힌다. 한 번의 시행 결과 $9$가지($(\\mathrm A,\\mathrm B)$ 쌍)를 '$\\mathrm B>\\mathrm A$'인 것 $3$가지와 나머지 $6$가지로 표에 나눠 두면 두 조건을 동시에 볼 수 있다.",
+        "guide": "$m$, $n\\le3$ → $(m,n)=(3,2)$, $(2,3)$. 한 시행의 결과표를 먼저 나눈다.",
         "solutions": [
           {
             "title": "풀이 1 · 한 시행 표로 나누기",
             "steps": [
               {
-                "label": "한 시행",
-                "body": "$\\mathrm B>\\mathrm A$인 쌍: $(1,2)$, $(1,3)$, $(2,3)$ — 모두 $\\mathrm A\\le2$. 나머지 $6$쌍 중 $\\mathrm A=3$인 쌍은 $(3,1)$, $(3,2)$, $(3,3)$."
+                "label": "결과표",
+                "body": "$\\mathrm B>\\mathrm A$: $(1,2)$, $(1,3)$, $(2,3)$ — 모두 $\\mathrm A\\le2$"
               },
               {
-                "label": "$(m,n)=(3,2)$",
-                "body": "세 번 모두 성공 쌍에서, $\\mathrm A=2$인 $(2,3)$이 적어도 한 번: $3^3-2^3=19$."
+                "label": "$(3,2)$",
+                "body": "세 번 성공, $\\mathrm A=2$가 한 번 이상: $3^3-2^3=19$"
               },
               {
-                "label": "$(m,n)=(2,3)$",
-                "body": "$n=3$은 실패한 시행에서만 가능하므로 실패한 한 번은 $\\mathrm A=3$인 쌍($3$가지), 위치 $3$가지, 성공 두 번 $3^2=9$: $3\\times3\\times9=81$."
+                "label": "$(2,3)$",
+                "body": "실패 한 번은 $\\mathrm A=3$: $3\\times3\\times9=81$"
               },
               {
                 "label": "답",
-                "body": "$\\frac{19+81}{9^3}=\\frac{100}{729}$ ④"
+                "body": "$\\frac{100}{729}$ ④"
               }
             ]
           }
         ],
-        "supplement": "$n$의 분포를 따로 구해 $m$과 곱하면 틀린다 — $m$과 $n$은 독립이 아니다($\\mathrm B>\\mathrm A$이면 $\\mathrm A\\ne3$). 두 변수를 한 시행의 결과 표 위에서 함께 보는 것이 정석이다.\n$(3,2)$에서 '$\\mathrm A$의 최댓값이 $2$'를 '$\\mathrm A=2$가 정확히 한 번'으로 세면 $19$ 대신 $12$가 나온다. 최댓값 조건은 '$\\le2$ 전체 $-$ $\\le1$ 전체'로 센다.",
-        "skill_point": "두 변수가 한 시행에서 함께 정해지면 한 시행의 결과 표를 먼저 나누고, 최댓값 조건은 '이하 $-$ 미만'으로 센다."
+        "supplement": "$m$, $n$은 독립이 아니다. 최댓값 조건은 '이하 − 미만'.",
+        "skill_point": "두 변수가 얽히면 결과표부터."
       },
       "verify": "def skill():\n    return Rational(3**3 - 2**3 + 3*3*9, 9**3)\n\ndef standard():\n    cnt = 0\n    for t in itertools.product(itertools.product([1, 2, 3], repeat=2), repeat=3):\n        m = sum(b > a for a, b in t); n = max(a for a, b in t)\n        if m + n == 5: cnt += 1\n    return Rational(cnt, 9**3)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:18",
-        "hash": "c3bbd93388d22a69",
+        "checked_at": "2026-09-25T02:48:20",
+        "hash": "9da812c5f38fb447",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1200,34 +1200,30 @@
         "concept_refs": [
           "확률과 통계-14-C1"
         ],
-        "guide": "이동량이 두 가지뿐이면 최종 위치는 '성공 횟수'의 일차식이다. 부등식을 성공 횟수 $k$의 범위로 바꾸고 ${}_n\\mathrm C_kp^kq^{n-k}$를 더한다.",
+        "guide": "성공 $k$번이면 위치 $3k-5$. 거리 조건을 $k$의 범위로.",
         "solutions": [
           {
             "title": "풀이 1 · 위치 = 성공 횟수의 일차식",
             "steps": [
               {
-                "label": "번역",
-                "body": "성공($3$의 배수) 확률 $\\frac13$. 성공 $k$번이면 위치 $2k-(5-k)=3k-5$."
-              },
-              {
                 "label": "범위",
-                "body": "$|3k-5|\\le2$ → $1\\le k\\le\\frac73$ → $k=1,2$."
+                "body": "$|3k-5|\\le2$ → $k=1,2$"
               },
               {
                 "label": "계산",
-                "body": "${}_5\\mathrm C_1\\frac13\\left(\\frac23\\right)^4+{}_5\\mathrm C_2\\left(\\frac13\\right)^2\\left(\\frac23\\right)^3=\\frac{80}{243}+\\frac{80}{243}=\\frac{160}{243}$ ③"
+                "body": "$\\frac{80}{243}+\\frac{80}{243}=\\frac{160}{243}$ ③"
               }
             ]
           }
         ],
-        "supplement": "$k=1$과 $k=2$의 확률이 둘 다 $\\frac{80}{243}$으로 같다. $5\\cdot16=10\\cdot8$이라 우연히 같아지는 것이지, 대칭 때문이 아니다(성공 확률이 $\\frac12$가 아니므로).\n거리 '$2$ 이하'에는 위치 $-2$도 포함된다($k=1$). 위치 $\\le2$로만 읽으면 $k=0$(위치 $-5$)까지 넣는 실수가 나온다.",
-        "skill_point": "두 가지 이동량 → 위치는 성공 횟수의 일차식. 거리 조건은 절댓값 부등식으로 $k$ 범위를 잡는다."
+        "supplement": "거리는 절댓값 — 위치 $\\le2$로 읽으면 $k=0$까지 넣는다.",
+        "skill_point": "위치 = 성공 횟수의 일차식."
       },
       "verify": "def skill():\n    p = Rational(1, 3); q = Rational(2, 3)\n    return binomial(5, 1)*p*q**4 + binomial(5, 2)*p**2*q**3\n\ndef standard():\n    tot = Rational(0)\n    for s in itertools.product([0, 1], repeat=5):\n        pos = sum(2 if v else -1 for v in s)\n        pr = Rational(1)\n        for v in s: pr *= Rational(1, 3) if v else Rational(2, 3)\n        if abs(pos) <= 2: tot += pr\n    return tot\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:18",
-        "hash": "88f63a802f926fe0",
+        "checked_at": "2026-09-25T02:48:20",
+        "hash": "223c970224ca0d77",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1267,38 +1263,38 @@
           "확률과 통계-12-C1",
           "확률과 통계-10-C2"
         ],
-        "guide": "분모 사건 $A$를 먼저 센다. 배수 조건은 소인수 포함 여부로(여사건·포함배제), 세 점이 한 직선 위라는 것은 등차수열 조건으로 번역한다. 목표 사건이 두 값의 대소 비교이고 조건이 그 두 값에 대해 대칭이면, 대칭으로 절반을 취한다.",
+        "guide": "(가) 포함배제, (나) 등차 조건. 두 조건이 $f(1)\\leftrightarrow f(3)$에 대칭 → 반으로.",
         "solutions": [
           {
             "title": "풀이 1 · 포함배제 + 대칭",
             "steps": [
               {
                 "label": "(가)",
-                "body": "$10$의 배수 ⇔ $5$가 있고 짝수가 있음. $9^3-8^3-5^3+4^3=729-512-125+64=156$."
+                "body": "$729-512-125+64=156$"
               },
               {
-                "label": "(나) 빼기",
-                "body": "한 직선 위 ⇔ $f(1)+f(3)=2f(2)$ (등차). (가)를 만족하려면 공차가 홀수여야 짝수·홀수가 섞인다.\n가운데가 $5$: $(4,5,6)$, $(6,5,4)$, $(2,5,8)$, $(8,5,2)$. 끝이 $5$: $(5,4,3)$, $(3,4,5)$, $(5,6,7)$, $(7,6,5)$ → $8$개.\n$n(A)=156-8=148$"
+                "label": "(나)",
+                "body": "공차 홀수인 등차 $8$개 → $n(A)=148$"
               },
               {
                 "label": "대칭",
-                "body": "$f(1)\\leftrightarrow f(3)$ 교환은 두 조건을 모두 보존한다. $f(1)=f(3)$인 것: $(x,y,x)$에서 $\\{x,y\\}$가 $5$와 짝수 → $4+4=8$ (이때 $x\\ne y$라 한 직선 위가 아님).\n$n(f(1)>f(3))=\\frac{148-8}2=70$"
+                "body": "$f(1)=f(3)$: $8$ → $\\frac{148-8}2=70$"
               },
               {
                 "label": "답",
-                "body": "$\\frac{70}{148}=\\frac{35}{74}$ ⑤"
+                "body": "$\\frac{35}{74}$ ⑤"
               }
             ]
           }
         ],
-        "supplement": "$f(1)>f(3)$을 직접 세려면 $(f(1),f(3))$ 쌍마다 $f(2)$의 가능한 값을 따져야 해서 수십 갈래가 된다. 조건이 대칭이면 '같은 경우'만 세고 나머지를 반으로 나눈다.\n(나)에서 공차가 짝수인 등차수열은 세 수의 홀짝이 같아 (가)를 만족할 수 없다 — 빼야 할 경우가 $8$개로 줄어드는 이유다.",
-        "skill_point": "조건이 두 값의 교환에 대해 대칭이면 대소 비교 확률은 $\\frac{\\text{전체}-\\text{같음}}2$."
+        "supplement": "공차가 짝수면 홀짝이 같아 (가)를 못 만족한다.",
+        "skill_point": "대칭이면 $\\frac{\\text{전체}-\\text{같음}}2$."
       },
       "verify": "def skill():\n    nA = 9**3 - 8**3 - 5**3 + 4**3 - 8\n    return Rational((nA - 8)//2, nA)\n\ndef standard():\n    A = B = 0\n    for f in itertools.product(range(1, 10), repeat=3):\n        if (f[0]*f[1]*f[2]) % 10: continue\n        if f[0] + f[2] == 2*f[1]: continue\n        A += 1\n        if f[0] > f[2]: B += 1\n    return Rational(B, A)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:19",
-        "hash": "3cbd05f7c8475f60",
+        "checked_at": "2026-09-25T02:48:21",
+        "hash": "c01691337eef207e",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1332,38 +1328,38 @@
           "확률과 통계-12-C1",
           "확률과 통계-13-C1"
         ],
-        "guide": "$7$개를 모두 꺼내므로 결과는 $7$개의 공을 일렬로 세운 순열이고 모두 같은 확률이다. '$\\mathrm A$에 있다' = 검은 공보다 먼저, '$\\mathrm B$에 있다' = 검은 공보다 나중. 최솟값·최댓값 조건을 몇 개 공의 상대적 순서로 번역하면 전체 순열을 셀 필요가 없다.",
+        "guide": "결과는 $7$개 공의 순열. '$\\mathrm A$에 있음' = 검은 공보다 먼저. 관련된 공의 상대 순서만.",
         "solutions": [
           {
             "title": "풀이 1 · 상대 순서로 번역",
             "steps": [
               {
-                "label": "차이 번역",
-                "body": "$\\mathrm A\\cup\\mathrm B=\\{1,\\dots,6\\}$이므로 $\\min\\mathrm A>\\max\\mathrm B+3$이면 사이의 수가 들어갈 곳이 없어 불가능. 따라서 $\\max\\mathrm B-\\min\\mathrm A\\ge4$:\n$(\\min\\mathrm A,\\max\\mathrm B)=(1,6)$, $(1,5)$, $(2,6)$."
+                "label": "번역",
+                "body": "$(\\min\\mathrm A,\\max\\mathrm B)=(1,6)$, $(1,5)$, $(2,6)$"
               },
               {
-                "label": "순서 조건",
-                "body": "$(1,6)$: $1$이 검은 공 앞, $6$이 뒤 → 세 공의 순서 중 $1$가지: $\\frac16$.\n$(1,5)$: $1$, $6$이 앞, $5$가 뒤 → 네 공의 순서 중 $2$가지: $\\frac1{12}$.\n$(2,6)$: $2$가 앞, $1$, $6$이 뒤 → $\\frac1{12}$."
+                "label": "순서",
+                "body": "$(1,6)$: $\\frac16$ · $(1,5)$: $\\frac1{12}$ · $(2,6)$: $\\frac1{12}$"
               },
               {
-                "label": "조건부",
-                "body": "세 경우는 서로 배반이고 모두 $\\mathrm A$, $\\mathrm B$가 비어 있지 않다. 분모: 검은 공이 처음·마지막이 아닐 확률 $\\frac57$.\n$p=\\dfrac{\\frac16+\\frac1{12}+\\frac1{12}}{\\frac57}=\\frac13\\cdot\\frac75=\\frac7{15}$"
+                "label": "분모",
+                "body": "검은 공이 처음·끝이 아님: $\\frac57$"
               },
               {
                 "label": "답",
-                "body": "$120p=56$"
+                "body": "$p=\\frac13\\cdot\\frac75=\\frac7{15}$ → $56$"
               }
             ]
           }
         ],
-        "supplement": "'차이'는 크기 순서가 정해지지 않은 거리다. $\\min\\mathrm A-\\max\\mathrm B$만 보면 확률이 $0$이 되어 이상하다는 신호가 온다 — 반대 방향을 봐야 한다.\n$(1,5)$를 '$1$ 앞, $5$ 뒤'로만 적으면 $6$도 뒤에 있는 경우가 섞여 $(1,6)$과 중복된다. 최댓값이 $5$이려면 $6$은 반드시 $\\mathrm A$(검은 공 앞)에 있어야 한다.",
-        "skill_point": "'먼저 꺼냄/나중에 꺼냄'은 관련된 몇 개 공의 상대 순서만 본다 — $k$개의 순서는 모두 같은 확률."
+        "supplement": "$(1,5)$이면 $6$은 반드시 $\\mathrm A$ — 빼먹으면 $(1,6)$과 겹친다.",
+        "skill_point": "상대 순서만 본다."
       },
       "verify": "def skill():\n    p = (Rational(1, 6) + Rational(1, 12) + Rational(1, 12))/Rational(5, 7)\n    return 120*p\n\ndef standard():\n    A = B = 0\n    for perm in itertools.permutations(['K', 1, 2, 3, 4, 5, 6]):\n        i = perm.index('K'); SA = perm[:i]; SB = perm[i + 1:]\n        if not SA or not SB: continue\n        A += 1\n        if abs(min(SA) - max(SB)) >= 4: B += 1\n    return 120*Rational(B, A)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:19",
-        "hash": "8f9c6af4f6d4e66d",
+        "checked_at": "2026-09-25T02:48:21",
+        "hash": "18f94a687ebec909",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1403,22 +1399,22 @@
           "확률과 통계-12-C1",
           "확률과 통계-03-C2"
         ],
-        "guide": "여러 조건에 동시에 등장하는 원소($f(2)$, $f(4)$)를 먼저 고정하면 나머지($f(1)$, $f(3)$)는 독립적으로 셀 수 있다. (나)의 '적어도 하나는 짝수'는 여사건 '모두 홀수'로 센다.",
+        "guide": "(가)가 걸린 $(f(2),f(4))$ 쌍부터. (나)는 쌍의 홀짝 유형으로 판정.",
         "solutions": [
           {
             "title": "풀이 1 · 연결 원소 먼저",
             "steps": [
               {
-                "label": "서로소 쌍",
-                "body": "$(f(2),f(4))$: $f(2)=2$: $\\{3,5,7\\}$ $3$ / $3$: $\\{2,4,5,7\\}$ $4$ / $4$: $3$ / $5$: $\\{2,3,4,6,7\\}$ $5$ / $6$: $\\{5,7\\}$ $2$ / $7$: $5$ → $22$쌍.\n그중 둘 다 홀수: $(3,5),(3,7),(5,3),(5,7),(7,3),(7,5)$ → $6$쌍."
+                "label": "쌍",
+                "body": "서로소 쌍 $22$개, 둘 다 홀수 $6$개"
               },
               {
                 "label": "분모",
-                "body": "짝수가 있는 쌍 $16$개: $f(1),f(3)$ 자유 $36$ → $576$.\n둘 다 홀수인 쌍 $6$개: $f(1),f(3)$ 중 짝수 필요 $36-9=27$ → $162$.\n$n(A)=738$"
+                "body": "$16\\times36+6\\times27=738$"
               },
               {
                 "label": "분자",
-                "body": "$f(2)$가 홀수인 쌍: $4+5+5=14$개, 그중 둘 다 홀수 $6$개, $f(4)$ 짝수 $8$개.\n$8\\times36+6\\times27=288+162=450$"
+                "body": "$f(2)$ 홀수: $8\\times36+6\\times27=450$"
               },
               {
                 "label": "답",
@@ -1427,14 +1423,14 @@
             ]
           }
         ],
-        "supplement": "(나)를 '$f(1)$~$f(4)$ 중 짝수가 있음'으로 바로 여사건 처리하면 (가)의 쌍 조건과 섞여 계산이 꼬인다. 쌍을 '짝수 포함'과 '모두 홀수'로 나누면 (나)가 쌍마다 자동으로 판정된다.\n서로소 판정에서 $(4,6)$, $(6,4)$, $(2,4)$처럼 짝수끼리는 모두 서로소가 아니고, $(3,6)$도 공약수 $3$이 있다.",
-        "skill_point": "여러 조건에 걸친 원소 쌍을 먼저 표로 세고, 나머지 조건은 쌍의 유형별로 판정해 곱한다."
+        "supplement": "(나)를 전체 여사건으로 먼저 처리하면 (가)와 섞인다.",
+        "skill_point": "연결 원소 쌍 → 유형별로 곱."
       },
       "verify": "def skill():\n    nA = 16*36 + 6*27\n    nAB = 8*36 + 6*27\n    return Rational(nAB, nA)\n\ndef standard():\n    A = B = 0\n    for f in itertools.product(range(2, 8), repeat=4):\n        if math.gcd(f[1], f[3]) != 1: continue\n        if all(v % 2 for v in f): continue\n        A += 1\n        if f[1] % 2: B += 1\n    return Rational(B, A)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-24T23:13:20",
-        "hash": "ee7ce7cc948e0cfd",
+        "checked_at": "2026-09-25T02:48:22",
+        "hash": "ebef472fbe316583",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"

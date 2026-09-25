@@ -364,7 +364,8 @@ def run(ctx: Context) -> Log:
         for P in flow("QUICK_ANSWER", {}, "days", [d["qa"] for d in model.days], "정답표"):
             seq.append(("QUICK_ANSWER", P, None))
         for d in model.days:
-            for P in flow("SOLUTION", d["base"], "entries", d["sols"], f"DAY {d['day']} 해설"):
+            sol_cap = (ctx.config.get("solution") or {}).get("per_page_max")  # 해설 한 장에 담을 최대 문항 수
+            for P in flow("SOLUTION", d["base"], "entries", d["sols"], f"DAY {d['day']} 해설", cap=sol_cap):
                 seq.append(("SOLUTION", P, None))
         seq.append(("BACK_COVER", {}, None))
 

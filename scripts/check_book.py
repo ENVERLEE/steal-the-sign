@@ -4,7 +4,7 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 
 from scripts import check_source
-from scripts.check_created import LITERAL_NL_MSG, LITERAL_NL_RE, banned_hits, body_hash
+from scripts.check_created import CTRL_RE, LITERAL_NL_MSG, LITERAL_NL_RE, banned_hits, body_hash, ctrl_msg
 from scripts.common import Context, Log, is_created_id, is_textbook_id
 from scripts.schemas import validate
 
@@ -220,6 +220,8 @@ def run(ctx: Context) -> Log:
             log.error(where, "$ 짝이 맞지 않음")
         if LITERAL_NL_RE.search(text):
             log.error(where, LITERAL_NL_MSG)
+        if CTRL_RE.search(text):
+            log.error(where, ctrl_msg(text))
         hits = banned_hits(text, cfg)
         if hits:
             log.error(where, f"야구 용어 {hits} (코너 이름 외 금지)")

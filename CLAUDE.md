@@ -73,7 +73,7 @@ out/                   결과물 (git 제외)
 |---|---|
 | `validate_sources.py` | id·code·월(06·09·11)·번호 범위(공통 1~22, 확통 23~30)·학년도(22~27)·배점, 수학Ⅰ·Ⅱ 같은 code 충돌, 선지·정답 형식, strategy_notes 예시(`db_code_candidate`) 대조, solutions.json 누락·정답 불일치·끊긴 `concept_refs`, themes.json 미배정·중복·끊긴 참조, **제어문자(깨진 LaTeX 이스케이프)**, **전체 수식 KaTeX 조판 오류** → `out/excluded.json` |
 | `pdf_pages.py` | 교재 PDF → 쪽 PNG·텍스트 층 (pypdfium2). 판독은 AI가 이미지를 보고 한다 |
-| `check_source.py` | 교재 판독 파일 검사: 스키마, id·쪽, 테마·과목, 개념·유사 기출 참조, `$` 짝, 그림 명세, `verify` 검산 → 문항별 `status: verified` |
+| `check_source.py` | 교재 판독 파일 검사: 스키마, id·쪽, 테마·과목, 개념·유사 기출 참조, `$` 짝, 제어문자(깨진 LaTeX), 그림 명세, `verify` 검산 → 문항별 `status: verified` |
 | `curate.py` | 교재 문항 → 테마별 DAY·예제·연습·SCOUTING 배정 초안 → `out/curation.md`, `out/plan.json` |
 | `check_created.py` | 창작 문제은행 검문(아래) → 통과 시 `status: verified`, 결과는 레코드 `review`에 기록 |
 | `check_book.py` | book.json 규칙 검사(아래) |
@@ -81,7 +81,7 @@ out/                   결과물 (git 제외)
 | `render_figs.py` | 그림 명세 → SVG (sympy·numpy로 실제 함수를 계산해 그림). `out/figs/`에 캐시 |
 | `tex.py` | KaTeX 일괄 조판 (Playwright에 `vendor/katex` 로드, 결과 캐시 `out/.cache/tex.json`). 글꼴은 woff2 base64로 CSS에 내장 |
 | `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 매핑이 빠지면 오류(템플릿이 바뀌면 `SLOTS`·`REPEATS`·`OPTIONS` 수정) |
-| `build.py` | 모델 구성 → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔 → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
+| `build.py` | 모델 구성 → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔(해설은 한 장에 `config.json` `solution.per_page_max`문항까지) → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
 | `export_pdf.py` | 결과 HTML을 템플릿 인쇄 CSS 그대로 Chromium으로 인쇄 → `out/book.pdf`. 쪽 수 = HTML `.page` 수, A4 크기 확인 |
 | `check_layout.py` | 결과 HTML을 열어 페이지마다 794×1123 크기, 넘침, `[[`·`]]`, 가짜 번호, KaTeX 오류, 수식 기호 노출(`\frac`·`$`), 순서·쪽 번호 연속 검사 |
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 교재 구성·비율·행동 영역·난도, 문제은행 현황, 판면) |

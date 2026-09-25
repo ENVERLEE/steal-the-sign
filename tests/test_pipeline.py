@@ -239,6 +239,16 @@ class TestTextbook(unittest.TestCase):
         log = check_source.run(self.sb.ctx(), recheck=True)
         self.assertEqual([e for e in log.errors if e["where"] == "T-SMP-001"], [])
 
+    def test_control_char_detected(self):
+        # r-문자열이 아닌 곳에서 \rfloor·\theta가 \r·\t로 깨진다. 풀이 제목·단계 이름도 검사
+        f = self.sb.source / "SMP.json"
+        data = read_json(f)
+        data["problems"][0]["solution"]["solutions"][0]["title"] = "풀이 1 · $\\lfloor x\rfloor$"
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx())
+        msgs = [e["msg"] for e in log.errors if e["where"] == "T-SMP-001"]
+        self.assertTrue(any("제어문자" in m and "title" in m for m in msgs), msgs)
+
     def test_curate_plan(self):
         ctx = self.sb.ctx()
         check_created.run(ctx)
@@ -303,6 +313,9 @@ class TestBuild(unittest.TestCase):
             self.assertTrue((sb.out / "report.md").exists())
             import pypdfium2 as pdfium
             self.assertEqual(len(pdfium.PdfDocument(str(sb.out / "book.pdf"))), len(pages))
+            cap = ctx.config["solution"]["per_page_max"]
+            for chunk in html.split('data-page="SOLUTION"')[1:]:
+                self.assertLessEqual(chunk.split('data-page=')[0].count('<article class="s"'), cap)
         finally:
             sb.close()
 
