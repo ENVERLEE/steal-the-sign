@@ -5,7 +5,7 @@
 """
 from __future__ import annotations
 
-from scripts.common import Context, Log, launch_chromium, route_network
+from scripts.common import FONTS_LOADED_JS, Context, Log, launch_chromium, route_network
 
 
 def run(ctx: Context) -> Log:
@@ -21,8 +21,8 @@ def run(ctx: Context) -> Log:
         page = browser.new_page(viewport={"width": 900, "height": 1300})
         route_network(page, allow_fonts=True)
         page.goto(src.resolve().as_uri(), wait_until="load")
-        fonts = page.evaluate("async () => { await document.fonts.ready;"
-                              " return document.fonts.check('500 16px \"Noto Sans KR\"'); }")
+        page.evaluate("async () => { await document.fonts.ready; }")
+        fonts = page.evaluate(FONTS_LOADED_JS, ["Noto Sans KR", "Black Han Sans"])
         n_html = page.evaluate("() => document.querySelectorAll('.page').length")
         page.emulate_media(media="print")
         page.pdf(path=str(dst), prefer_css_page_size=True, print_background=True,

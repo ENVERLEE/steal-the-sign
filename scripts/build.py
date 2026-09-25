@@ -12,7 +12,7 @@ import re
 
 from scripts import render_figs
 from scripts.check_book import day_refs
-from scripts.common import (CIRCLED, Context, Log, answer_display, choice_text, has_choices, is_created_id,
+from scripts.common import (CIRCLED, FONTS_LOADED_JS, Context, Log, answer_display, choice_text, has_choices, is_created_id,
                             is_textbook_id, kind_of,
                             launch_chromium, route_network, source_label, strip_tex, write_json)
 from scripts.template import WEEK_TOKEN, load
@@ -270,8 +270,8 @@ class Measurer:
         self.count = 0
 
     def fonts_ok(self) -> bool:
-        return self.page.evaluate("""async () => { await document.fonts.ready;
-            return document.fonts.check('500 16px "Noto Sans KR"') && document.fonts.check('16px "Black Han Sans"'); }""")
+        self.page.evaluate("async () => { await document.fonts.ready; }")
+        return self.page.evaluate(FONTS_LOADED_JS, ["Noto Sans KR", "Black Han Sans"])
 
     def issues(self, page_html: str) -> list[str]:
         self.count += 1

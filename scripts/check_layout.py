@@ -10,7 +10,7 @@ from scripts.common import Context, Log, launch_chromium, route_network
 
 CHECK_JS = """async () => {
   await document.fonts.ready;
-  const fonts = document.fonts.check('500 16px "Noto Sans KR"');
+  const fonts = (await document.fonts.load('16px "Noto Sans KR"', '가A')).length > 0;
   const out = [];
   document.querySelectorAll('.page').forEach((pg, i) => {
     const why = [];
