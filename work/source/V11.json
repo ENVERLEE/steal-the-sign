@@ -39,38 +39,51 @@
           "수학Ⅰ-06-C1",
           "수학Ⅰ-03-C2"
         ],
-        "guide": "$a^{-x}$에 $x$ 대신 $2-x$를 넣으면 $a^{x-2}$ → 두 곡선은 직선 $x=1$ 대칭.",
+        "guide": "같은 높이의 두 점이 서로 다른 곡선 위에 있으면 먼저 두 곡선의 관계를 본다. $a^{-x}$에서 $x$ 대신 $2-x$를 넣으면 $a^{x-2}$가 되므로 두 곡선은 직선 $x=1$에 대하여 대칭이다. 대칭축 위의 점까지의 거리는 대칭인 두 점에서 같다.",
         "solutions": [
           {
             "title": "풀이 1 · 대칭으로 꺾인 선 펴기",
             "steps": [
               {
                 "label": "대칭",
-                "body": "$\\mathrm P(p,\\,a^{-p})$, $\\mathrm Q(2-p,\\,a^{-p})$ $(p<1)$"
+                "body": "$\\mathrm P(p,\\,a^{-p})$이면 같은 높이의 $\\mathrm Q$는 $x=1$에 대한 대칭점 $(2-p,\\,a^{-p})$이다. 조건에서 $p<1$."
               },
               {
-                "label": "거리",
-                "body": "$\\mathrm A$는 축 위 → $\\overline{\\mathrm{AQ}}=\\overline{\\mathrm{AP}}$ → $\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PB}}\\ge\\overline{\\mathrm{AB}}$, 최소는 $\\mathrm P$가 선분 $\\mathrm{AB}$ 위"
+                "label": "거리 바꾸기",
+                "body": "$\\mathrm A(1,0)$은 대칭축 위에 있으므로 $\\overline{\\mathrm{AQ}}=\\overline{\\mathrm{AP}}$.\n$\\overline{\\mathrm{AQ}}+\\overline{\\mathrm{BP}}=\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PB}}\\ge\\overline{\\mathrm{AB}}$이고, 등호는 $\\mathrm P$가 선분 $\\mathrm{AB}$ 위에 있을 때 성립한다. 곧 $\\mathrm{P_0}$은 곡선과 선분 $\\mathrm{AB}$의 교점이다."
               },
               {
-                "label": "$a$",
-                "body": "$2-2p=1$ → $p=\\frac12$. $\\mathrm{AB}$: $y=-a(x-1)$ → $a^{-\\frac12}=\\frac a2$ → $a=2^{\\frac23}$"
+                "label": "$a$ 결정",
+                "body": "$\\overline{\\mathrm{P_0Q_0}}=(2-p)-p=1$에서 $p=\\frac12$.\n직선 $\\mathrm{AB}$는 $y=-a(x-1)$이므로 $\\mathrm{P_0}$의 높이는 $\\frac a2$. 곡선 위의 점이므로 $a^{-\\frac12}=\\frac a2$, 즉 $a^{\\frac32}=2$, $a=2^{\\frac23}$."
               },
               {
                 "label": "넓이",
-                "body": "밑변 $\\overline{\\mathrm{P_0Q_0}}=1$, 높이 합 $2a$ → $\\frac12\\cdot1\\cdot2a=2^{\\frac23}$ ④"
+                "body": "$\\mathrm{P_0Q_0}$은 높이 $\\frac a2$인 가로 선분이고 $\\mathrm{P_0}$이 변 $\\mathrm{AB}$ 위에 있으므로 삼각형 $\\mathrm{ABQ_0}$은 $\\mathrm{P_0Q_0}$에 의해 두 삼각형으로 나뉜다. 밑변 $1$, 높이의 합은 $\\mathrm A$와 $\\mathrm B$의 높이 차 $2a$:\n$\\frac12\\times1\\times2a=a=2^{\\frac23}$ ④"
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 좌표로 확인",
+            "steps": [
+              {
+                "label": "한 직선 조건",
+                "body": "$p=\\frac12$이면 $\\mathrm{P_0}\\left(\\frac12,\\,a^{-\\frac12}\\right)$. 세 점 $\\mathrm A$, $\\mathrm{P_0}$, $\\mathrm B$가 한 직선 위에 있으므로 기울기가 같다:\n$\\dfrac{a^{-\\frac12}}{\\frac12-1}=\\dfrac{2a}{-2}$ → $a^{-\\frac12}=\\frac a2$ → $a=2^{\\frac23}$."
+              },
+              {
+                "label": "신발끈",
+                "body": "$\\mathrm A(1,0)$, $\\mathrm B(-1,2a)$, $\\mathrm{Q_0}\\left(\\frac32,\\frac a2\\right)$:\n$\\frac12\\left|1\\cdot\\left(2a-\\frac a2\\right)+(-1)\\cdot\\frac a2+\\frac32\\cdot(0-2a)\\right|=\\frac12|{-2a}|=a$"
               }
             ]
           }
         ],
-        "supplement": "거리 합을 $p$의 식으로 세우면 막힌다. 거리 합의 최소는 대칭으로 꺾인 선을 편다.",
-        "skill_point": "같은 높이의 두 점 → 대칭축부터."
+        "supplement": "대칭을 보지 못하면 $\\overline{\\mathrm{AQ}}+\\overline{\\mathrm{BP}}$를 $p$의 식으로 세워 최솟값을 찾게 되는데, 지수가 들어간 제곱근 두 개의 합이라 계산이 막힌다. '두 점까지 거리의 합의 최소'는 한 점을 대칭이동해 꺾인 선을 펴는 것이 정석이고, 이 문제는 두 곡선의 대칭이 그 대칭이동을 대신한다.\n흔한 실수: $\\mathrm{P_0Q_0}=1$을 $\\mathrm{P_0}$의 $x$좌표가 $1$이라고 읽는 것. 두 점은 $x=1$을 가운데 두고 벌어지므로 각각 $\\frac12$씩 떨어진다.",
+        "skill_point": "같은 높이의 두 점이 두 곡선 위에 있으면 두 곡선의 대칭축부터 — 축 위의 점까지 거리는 대칭점끼리 같다."
       },
       "verify": "def skill():\n    a = 2**Rational(2, 3)\n    return a\n\ndef standard():\n    a = symbols('a', positive=True)\n    a0 = [s for s in solve(Eq(a**Rational(-1, 2), a/2), a) if s.is_real][0]\n    A = Matrix([1, 0]); B = Matrix([-1, 2*a0]); Q = Matrix([Rational(3, 2), a0/2])\n    u = B - A; v = Q - A\n    return simplify(Abs(u[0]*v[1] - u[1]*v[0])/2)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:47",
-        "hash": "60bdce993ef97924",
+        "checked_at": "2026-09-25T03:31:24",
+        "hash": "8ad8e6670d37134e",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -191,38 +204,38 @@
           "수학Ⅰ-03-C2",
           "수학Ⅰ-03-C1"
         ],
-        "guide": "가로 이동 → 높이 유지, 세로 이동 → $x$좌표 유지. $\\mathrm A(s,\\,a^s)$ 하나로 모은다.",
+        "guide": "가로·세로로 옮겨 다니는 점은 '같은 높이', '같은 $x$좌표'를 식으로 적으면 좌표가 한 문자로 모인다. $\\mathrm A(s,\\,a^s)$로 두고 $\\mathrm B$, $\\mathrm C$를 차례로 $s$로 나타낸다.",
         "solutions": [
           {
             "title": "풀이 1 · 한 문자로 모으기",
             "steps": [
               {
                 "label": "좌표",
-                "body": "$\\mathrm A(s,\\,a^s)$, $\\mathrm B\\left(\\frac sm,\\,a^s\\right)$, $\\mathrm C\\left(\\frac sm,\\,a^{\\frac sm}\\right)$"
+                "body": "$\\mathrm A(s,\\,a^s)$. $\\mathrm B$는 같은 높이의 $y=a^{mx}$ 위의 점이므로 $a^{mx}=a^s$에서 $\\mathrm B\\left(\\frac sm,\\,a^s\\right)$. $\\mathrm C$는 같은 $x$좌표의 $y=a^x$ 위의 점: $\\mathrm C\\left(\\frac sm,\\,a^{\\frac sm}\\right)$."
               },
               {
                 "label": "$x$좌표",
-                "body": "$\\frac sm=\\frac{s+\\frac sm}{3}$ → $m=2$"
+                "body": "무게중심의 $x$좌표: $\\frac sm=\\frac{0+s+\\frac sm}{3}$ → $\\frac{2s}{m}=s$ → $m=2$."
               },
               {
                 "label": "$y$좌표",
-                "body": "$a^{\\frac s2}=\\frac23a^s$. $u=a^{\\frac s2}$ → $u=\\frac32$, $a^s=\\frac94$"
+                "body": "$a^{\\frac s2}=\\frac{0+a^s+a^s}{3}=\\frac23a^s$. $u=a^{\\frac s2}\\,(>1)$로 두면 $u=\\frac23u^2$, $u=\\frac32$, $a^s=\\frac94$."
               },
               {
-                "label": "직선",
-                "body": "$\\frac94=1+\\frac s2$ → $s=\\frac52$ → $a^{\\frac52}=\\frac94$ → $a^5=\\frac{81}{16}$ ②"
+                "label": "직선 조건",
+                "body": "$\\mathrm A$는 직선 $y=1+\\frac x2$ 위에 있으므로 $\\frac94=1+\\frac s2$, $s=\\frac52$.\n$a^{\\frac52}=\\frac94$ → $a^5=\\frac{81}{16}$ ②"
               }
             ]
           }
         ],
-        "supplement": "$y$좌표 조건부터 쓰면 $a$, $m$, $s$가 엉킨다. 곡선과 무관한 $x$좌표 조건이 먼저.",
-        "skill_point": "가로·세로 이동 → 한 문자로, $x$좌표 조건 먼저."
+        "supplement": "$m$을 모르는 채로 $y$좌표 조건부터 쓰면 미지수 세 개($a,m,s$)가 엉킨다. 무게중심은 $x$좌표 식이 곡선과 무관한 일차식이라 $m$을 먼저 확정해 준다 — 가벼운 조건부터 쓰는 순서가 핵심이다.\n$a^5$을 묻는 이유: $a^{\\frac52}=\\frac94$을 제곱하면 바로 나오도록 설계되어 있다. $a$ 자체를 구할 필요가 없다.",
+        "skill_point": "'같은 높이'·'같은 $x$좌표'로 점을 한 문자로 모으고, 곡선과 무관한 좌표 조건(무게중심의 $x$좌표)부터 쓴다."
       },
       "verify": "def skill():\n    return Rational(9, 4)**2\n\ndef standard():\n    a, s, m = symbols('a s m', positive=True)\n    # m from x-coordinate of centroid\n    m0 = solve(Eq(s/m, (s + s/m)/3), m)[0]\n    u = symbols('u', positive=True)\n    u0 = [r for r in solve(Eq(u, Rational(2, 3)*u**2), u) if r > 0][0]\n    As = u0**2\n    s0 = solve(Eq(As, 1 + s/m0), s)[0]\n    a0 = As**(1/s0)\n    return nsimplify(a0**5)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:48",
-        "hash": "dadad3653bd93e0b",
+        "checked_at": "2026-09-25T03:31:25",
+        "hash": "7f24c855a1665380",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -262,38 +275,38 @@
           "수학Ⅰ-04-C3",
           "수학Ⅰ-07-C1"
         ],
-        "guide": "교점은 하나(증가 × 감소). 고정된 로그 곡선 위에서 교점이 갈 구간을 정하고 양 끝만 비교한다.",
+        "guide": "매개변수 $n$이 한쪽 곡선에만 있으면, 고정된 곡선(로그 곡선) 위에서 교점이 움직일 수 있는 구간을 먼저 정하고 그 구간 양 끝에서 대소를 비교한다. 증가 곡선과 감소 곡선의 교점은 하나뿐이므로 부호 판정 두 번으로 끝난다.",
         "solutions": [
           {
             "title": "풀이 1 · 구간 끝 부호 판정",
             "steps": [
               {
-                "label": "번역",
-                "body": "$\\overline{\\mathrm{OP}}=3$ 고정 → 조건은 $0<x_{\\mathrm A}\\le3$, $y_{\\mathrm A}<\\frac{28}3$"
+                "label": "교점",
+                "body": "$y=n(2^x-1)$은 원점을 지나는 증가 곡선, $y=-5\\log_8(x+1)+11$은 $(0,11)$을 지나는 감소 곡선이므로 교점 $\\mathrm A$는 하나이고 $x_{\\mathrm A}>0$, $y_{\\mathrm A}>0$."
               },
               {
-                "label": "구간",
-                "body": "로그 곡선에서 $y<\\frac{28}3$ ⇔ $x>1$ → 교점은 $1<x\\le3$"
+                "label": "직사각형 번역",
+                "body": "$\\mathrm A$는 $x$축 위쪽에 있으므로 직사각형은 $x$축 위, 높이 $h<\\frac{28}3$. $\\mathrm A$가 둘레 위에 있으려면 윗변($0\\le x\\le3$, $y=h$) 또는 오른쪽 변($x=3$, $0\\le y\\le h$) 위에 있어야 한다. 곧\n$0<x_{\\mathrm A}\\le3$ 그리고 $y_{\\mathrm A}<\\frac{28}3$."
               },
               {
-                "label": "양 끝",
-                "body": "로그 곡선 값: $x=1$에서 $\\frac{28}3$, $x=3$에서 $\\frac{23}3$\n$n<\\frac{28}3$, $7n\\ge\\frac{23}3$ → $2\\le n\\le9$"
+                "label": "로그 곡선 위 구간",
+                "body": "$y_{\\mathrm A}<\\frac{28}3$ ⇔ $-5\\log_8(x+1)+11<\\frac{28}3$ ⇔ $\\log_8(x+1)>\\frac13$ ⇔ $x>1$.\n따라서 조건은 교점이 $1<x\\le3$에 있는 것. 로그 곡선의 값은 $x=1$에서 $\\frac{28}3$, $x=3$에서 $-\\frac{10}3+11=\\frac{23}3$."
               },
               {
-                "label": "답",
-                "body": "$2+3+\\cdots+9=44$ ②"
+                "label": "부호 판정",
+                "body": "교점이 $(1,3]$에 있으려면 $x=1$에서 지수 곡선이 아래, $x=3$에서 위(또는 같음):\n$n<\\frac{28}3$, $7n\\ge\\frac{23}3$ → $2\\le n\\le9$.\n합 $2+3+\\cdots+9=44$ ②"
               }
             ]
           }
         ],
-        "supplement": "넓이를 $x_{\\mathrm A}y_{\\mathrm A}<28$로 두면 틀린다 — 가로는 $3$.",
-        "skill_point": "교점 위치 → 고정 곡선 위 구간 → 양 끝 비교."
+        "supplement": "$n$마다 교점을 직접 구하려 하면 지수·로그가 섞인 방정식이라 풀 수 없다. 교점을 구하지 않고 '구간 양 끝에서 어느 곡선이 위인가'만 보면 된다(중간값 정리).\n흔한 실수: 넓이 조건을 $x_{\\mathrm A}\\times y_{\\mathrm A}<28$로 번역하는 것. 한 변이 $\\overline{\\mathrm{OP}}=3$으로 고정되어 있으므로 넓이 조건은 높이 조건 $y<\\frac{28}3$이다. 또 $x=1$에서 등호가 되면 $y_{\\mathrm A}=\\frac{28}3$이라 넓이가 정확히 $28$이 되어 제외된다.",
+        "skill_point": "매개변수 곡선과 고정 곡선의 교점 위치 조건 → 고정 곡선 위의 구간으로 바꾸고, 구간 양 끝에서 위아래만 비교한다."
       },
       "verify": "def skill():\n    return sum(range(2, 10))\n\ndef standard():\n    x = symbols('x')\n    L = lambda t: -5*log(t + 1, 8) + 11\n    total = 0\n    for n in range(1, 40):\n        h = lambda t: n*(2**t - 1) - L(t)\n        # unique root (h increasing); locate by bisection\n        lo, hi = 0.0, 200.0\n        for _ in range(200):\n            mid = (lo + hi)/2\n            if float(h(mid)) < 0: lo = mid\n            else: hi = mid\n        xa = lo; ya = float(L(xa))\n        if 0 < xa <= 3 + 1e-12 and ya < 28/3 - 1e-12:\n            total += n\n    return total\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:51",
-        "hash": "538ef6b70d74ed61",
+        "checked_at": "2026-09-25T03:31:27",
+        "hash": "a88e539af91ecd52",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -416,38 +429,42 @@
           "수학Ⅰ-06-C1",
           "수학Ⅰ-04-C2"
         ],
-        "guide": "$g=f^{-1}$ → $y=x$ 대칭. $y=-x$ 위의 $\\mathrm A$, $\\mathrm B$는 원점 대칭, 평행사변형 → $\\mathrm D=-\\mathrm C$.",
+        "guide": "$y=a\\cdot3^x$를 $x$에 대해 풀면 $x=\\log_3\\frac ya$ — $g$는 $f$의 역함수다. 역함수 쌍이 대칭축 $y=x$에 수직인 직선과 만나는 두 점은 대칭축 위의 점(여기서는 원점)을 중점으로 갖는다. 평행사변형은 '대각선이 서로를 이등분'으로 번역한다.",
         "solutions": [
           {
             "title": "풀이 1 · 대칭과 거리",
             "steps": [
               {
-                "label": "대칭",
-                "body": "$\\mathrm A(-t,\\,t)$, $\\mathrm B(t,\\,-t)$, $\\mathrm C(c,\\,f(c))$ → $\\mathrm D(-c,\\,-f(c))$"
+                "label": "A, B",
+                "body": "$f$, $g$는 서로 역함수 → $y=x$ 대칭. $y=-x$는 $y=x$에 수직이고 원점에서 만나므로 $\\mathrm A(-t,\\,t)$, $\\mathrm B(t,\\,-t)$ $(t>0)$, 중점은 원점."
               },
               {
-                "label": "넓이",
-                "body": "넓이 $=\\overline{\\mathrm{AB}}\\times d$ → $\\overline{\\mathrm{AB}}=\\sqrt2\\,\\overline{\\mathrm{AB}}\\,d$ → $d=\\frac1{\\sqrt2}$\n$d=\\frac{|c+f(c)|}{\\sqrt2}$, $c+f(c)<0$ → $a\\cdot3^c=-1-c$"
+                "label": "D의 위치",
+                "body": "평행사변형 $\\mathrm{ACBD}$의 대각선 $\\mathrm{AB}$, $\\mathrm{CD}$는 서로를 이등분하므로 $\\mathrm{CD}$의 중점도 원점: $\\mathrm C(c,\\,f(c))$이면 $\\mathrm D(-c,\\,-f(c))$."
               },
               {
-                "label": "$\\mathrm D$",
-                "body": "$\\log_3\\frac{-c}a=1+c$ → $-c=3(-1-c)$ → $c=-\\frac32$"
+                "label": "넓이 번역",
+                "body": "넓이 $=2\\times\\triangle\\mathrm{ABC}=\\overline{\\mathrm{AB}}\\times d$ ($d$는 $\\mathrm C$에서 직선 $\\mathrm{AB}$까지의 거리).\n$\\overline{\\mathrm{AB}}=\\sqrt2\\,\\overline{\\mathrm{AB}}\\,d$ → $d=\\frac1{\\sqrt2}$.\n$d=\\frac{|c+f(c)|}{\\sqrt2}$이고 $c<-t$에서 $c+f(c)<0$이므로 $c+f(c)=-1$, 즉 $a\\cdot3^c=-1-c$."
+              },
+              {
+                "label": "D 조건",
+                "body": "$\\mathrm D$가 $y=g(x)$ 위: $\\log_3\\frac{-c}{a}=-f(c)=1+c$ → $-c=a\\cdot3^{c+1}=3(-1-c)$ → $c=-\\frac32$."
               },
               {
                 "label": "답",
-                "body": "$a\\cdot3^{-\\frac32}=\\frac12$ → $a=\\frac{3\\sqrt3}2$, $4a^2=27$"
+                "body": "$a\\cdot3^{-\\frac32}=-1+\\frac32=\\frac12$ → $a=\\frac{3\\sqrt3}{2}$, $4a^2=27$"
               }
             ]
           }
         ],
-        "supplement": "$t$는 구할 수 없지만 필요 없다 — 넓이 조건에서 $\\overline{\\mathrm{AB}}$가 약분된다.",
-        "skill_point": "역함수 쌍 + 수직선 → 중점은 축 위."
+        "supplement": "$\\mathrm A$의 좌표 $t$는 $a\\cdot3^{-t}=t$라서 구할 수 없다. 그런데 답에는 $t$가 필요 없다 — 넓이 조건에서 $\\overline{\\mathrm{AB}}$가 양변에서 약분되기 때문이다. 구할 수 없는 좌표가 나오면 '약분되는 구조'를 먼저 의심한다.\n$c<-t$에서 $c+f(c)<0$인 이유: $h(x)=x+a\\cdot3^x$는 증가함수이고 $h(-t)=0$이다. 부호를 잘못 잡아 $c+f(c)=1$로 풀면 $\\mathrm D$ 조건과 모순된다.",
+        "skill_point": "역함수 쌍 + 대칭축에 수직인 직선 → 교점은 대칭축 위의 점을 중점으로. 평행사변형은 '대각선 이등분'으로 번역."
       },
       "verify": "def skill():\n    c = -Rational(3, 2)\n    a = (-1 - c)/3**c\n    return 4*a**2\n\ndef standard():\n    a, c = symbols('a c', real=True)\n    f = lambda x: a*3**x\n    eqs = [Eq(c + f(c), -1), Eq(log(-c/a, 3), -f(c))]\n    sols = nsolve([e.lhs - e.rhs for e in eqs], [a, c], [2.5, -1.4])\n    a0 = sols[0]\n    # check C is left of A: A=(-t,t) with a*3**(-t)=t\n    t = symbols('t')\n    t0 = nsolve(a0*3**(-t) - t, t, 0.9)\n    assert sols[1] < -t0\n    return nsimplify(round(float(4*a0**2), 9))\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:51",
-        "hash": "34a3b6fc9480f37a",
+        "checked_at": "2026-09-25T03:31:28",
+        "hash": "88d882819016c6f3",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -486,38 +503,42 @@
         "concept_refs": [
           "수학Ⅱ-03-C1"
         ],
-        "guide": "$x\\to\\infty$ → 최고차항, $t=\\frac1x\\to0$ → 최저차항. 양 끝으로 $f$를 세운다.",
+        "guide": "다항식 극한에서 $x\\to\\infty$는 최고차항끼리, $x\\to0$은 최저차항끼리 비교한다. $x^nf'\\left(\\frac1x\\right)$는 그대로 두면 낯설지만 $t=\\frac1x$로 바꾸면 $\\dfrac{f'(t)}{t^n}$ ($t\\to0+$) — 최저차항 판정이다.",
         "solutions": [
           {
             "title": "풀이 1 · 양 끝 차수로 세우기",
             "steps": [
               {
                 "label": "최고차",
-                "body": "$f=x^{n+3}+x^{n+2}+\\cdots$"
+                "body": "첫 극한이 $1$이므로 $f(x)-x^{n+3}$은 최고차항이 $x^{n+2}$: $f(x)=x^{n+3}+x^{n+2}+(\\text{$n+1$차 이하})$."
               },
               {
                 "label": "최저차",
-                "body": "$\\lim_{t\\to0+}\\frac{f'(t)}{t^n}=1$ → $f'$의 최저차항 $x^n$\n$f=x^{n+3}+x^{n+2}+\\frac1{n+1}x^{n+1}+c$"
+                "body": "$t=\\frac1x$로 두면 $\\displaystyle\\lim_{t\\to0+}\\frac{f'(t)}{t^n}=1$. 곧 $f'(x)$의 최저차항이 $x^n$이다. $f$에는 $1$차부터 $n$차까지의 항이 없고 $x^{n+1}$의 계수는 $\\frac1{n+1}$:\n$f(x)=x^{n+3}+x^{n+2}+\\frac1{n+1}x^{n+1}+c$"
               },
               {
-                "label": "(나)",
-                "body": "$f(0)=0$ → $c=0$. $xf=x^{n+2}\\left(x^2+x+\\frac1{n+1}\\right)\\ge0$\n$n$ 홀수 ✗, $n$ 짝수: $1-\\frac4{n+1}\\le0$ → $n=2$"
+                "label": "(나) ①",
+                "body": "$x>0$이면 $f(x)\\ge0$, $x<0$이면 $f(x)\\le0$이고 $f$는 연속이므로 $f(0)=0$, $c=0$.\n$xf(x)=x^{n+2}\\left(x^2+x+\\frac1{n+1}\\right)$"
+              },
+              {
+                "label": "(나) ②",
+                "body": "$n$이 홀수: $x\\to-\\infty$에서 $x^{n+2}<0$, 괄호 $>0$ → 음수 ✗.\n$n$이 짝수: $x^{n+2}\\ge0$이므로 괄호가 음수가 되는 구간이 없어야 한다. 판별식 $1-\\frac4{n+1}\\le0$ → $n\\le3$ → $n=2$."
               },
               {
                 "label": "답",
-                "body": "$f'(x)=5x^4+4x^3+x^2$, $f'(1)=10$ ③"
+                "body": "$f(x)=x^5+x^4+\\frac13x^3$, $f'(x)=5x^4+4x^3+x^2$, $f'(1)=10$ ③"
               }
             ]
           }
         ],
-        "supplement": "판별식을 빼면 $n=4,6,\\dots$도 남는다 — 괄호의 두 근이 음수라 그 사이에서 깨진다.",
-        "skill_point": "$\\infty$ ↔ 최고차, $0$ ↔ 최저차."
+        "supplement": "$x^nf'\\left(\\frac1x\\right)$에 $f'$을 통째로 대입해 전개하면 모든 항을 다뤄야 한다. 치환 하나로 '$\\infty$ ↔ 최고차, $0$ ↔ 최저차' 대응이 드러난다.\n흔한 실수: (나)에서 $f(0)=0$을 빠뜨려 상수항을 남기는 것, 그리고 $n$이 짝수일 때 판별식이 양수여도 괜찮다고 보는 것. 괄호의 두 근이 모두 음수라서 그 사이에서 $xf(x)<0$이 된다.",
+        "skill_point": "$x\\to\\infty$는 최고차항, $x\\to0$은 최저차항 — $\\frac1x$ 치환으로 양 끝 계수를 한꺼번에 잡는다."
       },
       "verify": "def skill():\n    return 5 + 4 + 1\n\ndef standard():\n    x = symbols('x')\n    for n in range(1, 9):\n        f = x**(n + 3) + x**(n + 2) + x**(n + 1)/(n + 1)\n        if limit((f - x**(n + 3))/(x**(n + 2) + 2), x, oo) != 1:\n            continue\n        if limit(x**n*diff(f, x).subs(x, 1/x), x, oo) != 1:\n            continue\n        g = x*f\n        pts = [Rational(k, 40) for k in range(-200, 201)]\n        if all(g.subs(x, v) >= 0 for v in pts):\n            return diff(f, x).subs(x, 1)\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:52",
-        "hash": "0fc70eac0925bd4d",
+        "checked_at": "2026-09-25T03:31:28",
+        "hash": "425fb747a9369efc",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -551,42 +572,46 @@
           "수학Ⅱ-03-C2",
           "수학Ⅱ-03-C1"
         ],
-        "guide": "분모의 근을 분자가 모두 흡수. $|kx|$는 $x\\ge0$, $x<0$으로 나눠 근을 적고, $g$의 근 $4$개를 예산으로.",
+        "guide": "'모든 $a$에서 극한 존재'는 분모의 근(중복도 포함)을 분자가 모두 갖는다는 뜻이다. 분모에 $|kx|$가 있으므로 근을 $x\\ge0$과 $x<0$으로 나눠 찾고, $g$가 가진 근 $4$개라는 '예산'으로 조건을 만족하는 $k$를 정확히 $4$개 만든다.",
         "solutions": [
           {
             "title": "풀이 1 · 근의 예산",
             "steps": [
               {
                 "label": "분자",
-                "body": "$f+5x=(x+2)^2$"
+                "body": "$f(x)+5x=x^2+4x+4=(x+2)^2$."
               },
               {
-                "label": "분모 근",
-                "body": "$x\\ge0$: $x^2-(k+1)x+4=0$ ($k\\ge3$) · $x<0$: $x^2+(k-1)x+4=0$ ($k\\ge5$)"
+                "label": "분모의 근",
+                "body": "$x\\ge0$: $x^2-(k+1)x+4=0$ → $k\\ge3$일 때 양근(곱 $4$).\n$x<0$: $x^2+(k-1)x+4=0$ → $k\\ge5$일 때 음근(곱 $4$)."
               },
               {
-                "label": "$k$별",
-                "body": "$k=1,2$: 항상 성립. $k=3$: $g(2)=10\\ne0$ ✗\n$k=4$: $g(1)=g(4)=0$ · $k=5$: $(x^2-6x+4)\\mid g$ (음근 $-2$는 분자가 흡수)\n$k\\ge6$: 근 $4$개 필요 → 다른 $k$ 불가"
+                "label": "항상 되는 $k$",
+                "body": "$k=1,2$는 분모가 $0$이 되지 않아 항상 성립. 나머지 $k\\ge3$ 중 정확히 두 개가 성립해야 한다."
               },
               {
-                "label": "결정",
-                "body": "$k=4,5$: $g=c(x-1)(x-4)(x^2-6x+4)$, $g(2)=8c=10$ → $c=\\frac54$"
+                "label": "$k$별 요구",
+                "body": "$k=3$: $(x-2)^2$ → $g(2)=0$이 필요한데 $g(2)=10$이므로 불가.\n$k=4$: $(x-1)(x-4)$ → $g(1)=g(4)=0$.\n$k=5$: 양근은 $x^2-6x+4=0$의 두 근, 음근은 $(x+2)^2$ — 음근은 분자가 흡수하므로 $(x^2-6x+4)\\mid g$.\n$k\\ge6$: 양근 두 개와 $-2$가 아닌 음근 두 개, 모두 $4$개를 $g$가 가져야 한다."
+              },
+              {
+                "label": "조합",
+                "body": "$k\\ge6$을 하나라도 고르면 $g$의 근 $4$개를 다 써서 다른 $k$가 들어갈 자리가 없다(양근의 곱이 $4$인 쌍 $1,4$는 $k=4$뿐이다). 따라서 $k=4,5$:\n$g(x)=c(x-1)(x-4)(x^2-6x+4)$"
               },
               {
                 "label": "답",
-                "body": "$g(6)=\\frac54\\cdot5\\cdot2\\cdot4=50$"
+                "body": "$g(2)=c\\cdot1\\cdot(-2)\\cdot(-4)=8c=10$ → $c=\\frac54$.\n$g(6)=\\frac54\\cdot5\\cdot2\\cdot4=50$"
               }
             ]
           }
         ],
-        "supplement": "$k=5$의 음근이 정확히 $-2$라 근을 두 개만 쓴다 — 이것이 설계의 핵심.",
-        "skill_point": "모든 점에서 극한 존재 → 근 흡수, 차수는 근의 예산."
+        "supplement": "$|kx|$를 보고 바로 구간을 나누지 않으면 $x<0$ 쪽 근을 놓친다. 설계의 핵심은 $k=5$에서 음근이 정확히 $-2$(중근)가 되어 분자의 $(x+2)^2$이 저절로 흡수한다는 점이다. 그래서 $k=5$는 $g$의 근을 두 개만 쓴다.\n$k=3$은 $g(2)=10$이라는 조건으로 처음부터 지워진다 — 주어진 함숫값이 '근이 아님'을 알려 주는 경우가 많다.",
+        "skill_point": "'모든 $a$에서 극한 존재' → 분모의 근을 분자가 전부 흡수. 절댓값은 구간별로 근을 나열하고, 다항식 차수를 근의 예산으로 쓴다."
       },
       "verify": "def skill():\n    return Rational(5, 4)*5*2*4\n\ndef standard():\n    x = symbols('x')\n    def den_roots(k):\n        rs = []\n        for r in roots(Poly(x**2 - (k + 1)*x + 4, x), multiple=True):\n            if r.is_real and r >= 0: rs.append(r)\n        for r in roots(Poly(x**2 + (k - 1)*x + 4, x), multiple=True):\n            if r.is_real and r < 0: rs.append(r)\n        return rs\n    def order(p, r):\n        m = 0\n        while simplify(p.subs(x, r)) == 0:\n            m += 1; p = diff(p, x)\n        return m\n    def works(g, k):\n        rs = den_roots(k)\n        return all(order((x + 2)**2*g, r) >= rs.count(r) for r in set(rs))\n    found = []\n    for k1 in range(3, 12):\n        for k2 in range(k1 + 1, 12):\n            need = {}\n            for k in (k1, k2):\n                rs = den_roots(k)\n                for r in set(rs):\n                    m = rs.count(r) - (2 if r == -2 else 0)\n                    if m > 0: need[r] = max(need.get(r, 0), m)\n            if sum(need.values()) != 4: continue\n            g = Mul(*[(x - r)**m for r, m in need.items()])\n            c = Rational(10)/g.subs(x, 2) if g.subs(x, 2) != 0 else None\n            if c is None: continue\n            g = expand(c*g)\n            if sum(1 for k in range(1, 40) if works(g, k)) == 4:\n                found.append(simplify(g.subs(x, 6)))\n    assert len(set(found)) == 1\n    return found[0]\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:54",
-        "hash": "cb51976b623b26c2",
+        "checked_at": "2026-09-25T03:31:31",
+        "hash": "5fcd36caa749408a",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -620,42 +645,42 @@
           "수학Ⅱ-03-C1",
           "수학Ⅱ-03-C4"
         ],
-        "guide": "$h=f+g$로 묶는다. 거의 모든 $t$에서 성립 → 성립 쪽 부호 규칙을 세우고, 실패하는 한 점을 찾는다.",
+        "guide": "'극한값이 존재하고 음수'인 $t$의 집합이 $\\{t\\mid t\\ne a\\}$ — 거의 모든 $t$에서 성립한다는 강한 조건이다. $h(x)=f(x)+g(x)$로 묶고, $h(t)\\ne0$이면 극한값은 $\\frac t{h(t)}$, $h(t)=0$이면 분자도 $0$이어야 한다는 두 경우로 나눈다.",
         "solutions": [
           {
             "title": "풀이 1 · 부호 지도 그리기",
             "steps": [
               {
                 "label": "$t=0$",
-                "body": "$h(0)=0$, $\\frac1{h'(0)}<0$ → $f'(0)=-4$"
+                "body": "$a\\ne0$이므로 $t=0$에서 성립해야 한다. $h(0)\\ne0$이면 극한값이 $0$이라 음수가 아니다. 따라서 $h(0)=2f(0)=0$이고, $\\displaystyle\\lim_{x\\to0}\\frac x{h(x)}=\\frac1{h'(0)}<0$.\n$h'(0)=2f'(0)<0$ → $f'(0)=-4$."
               },
               {
-                "label": "식",
-                "body": "$h=x\\,q(x)$, $q=ax^2+bx-8$"
+                "label": "식 세우기",
+                "body": "$f(0)=0$이므로 $f(x)=ax^3+bx^2-4x$, $g(x)=-4x$.\n$h(x)=ax^3+bx^2-8x=x\\,q(x)$, $q(x)=ax^2+bx-8$."
               },
               {
-                "label": "부호",
-                "body": "$t\\ne0,\\,a$에서 $q(t)<0$, $q(a)\\ge0$ → $q=a(x-a)^2$, $a<0$"
+                "label": "부호 조건",
+                "body": "$t\\ne0,\\,a$인 모든 $t$에서 $\\frac t{h(t)}=\\frac1{q(t)}<0$, 곧 $q(t)<0$. ($q(t)=0$인 $t\\ne0$이 있으면 극한이 발산한다.)\n$t=a$에서는 실패해야 하므로 $q(a)\\ge0$. 연속인 $q$가 $a$ 한 점에서만 $0$ 이상이려면 $q$의 최댓값이 $q(a)=0$:\n$q(x)=a(x-a)^2$, $a<0$"
               },
               {
-                "label": "계수",
-                "body": "$a^3=-8$ → $a=-2$, $b=-8$. $f=-2x^3-8x^2-4x$"
+                "label": "계수 비교",
+                "body": "$ax^2+bx-8=ax^2-2a^2x+a^3$ → $a^3=-8$, $a=-2$, $b=-2a^2=-8$.\n$f(x)=-2x^3-8x^2-4x$"
               },
               {
                 "label": "답",
-                "body": "$f\\left(-\\frac12\\right)=\\frac14$ → $25$"
+                "body": "$f\\left(-\\frac12\\right)=\\frac14-2+2=\\frac14$ → $100\\times\\frac14=25$"
               }
             ]
           }
         ],
-        "supplement": "$t=0$을 빼면 식이 하나 모자란다 — 분자 $x$가 $0$이 되는 유일한 점.",
-        "skill_point": "한 점만 실패 → 이차식이 $0$에 닿는 꼭짓점."
+        "supplement": "조건이 '$t\\ne a$인 모든 $t$'처럼 거의 전부에서 성립하면, 성립하는 곳의 부호 규칙(여기서는 $q<0$)을 먼저 세우고 실패하는 한 점을 '최댓값이 닿는 곳'으로 해석한다. 이차식이 한 점에서만 $0$에 닿으면 완전제곱식이다.\n흔한 실수: $t=0$을 빠뜨리는 것. 분자 $x$가 $0$이 되는 유일한 점이라 $h(0)=0$과 $f'(0)$의 부호를 동시에 정해 준다.",
+        "skill_point": "'$t\\ne a$인 모든 $t$에서 성립' → 성립 쪽 부호 규칙을 세우고, 실패하는 한 점은 이차식이 $0$에 닿는 꼭짓점으로."
       },
       "verify": "def skill():\n    x = symbols('x')\n    f = -2*x**3 - 8*x**2 - 4*x\n    return 100*f.subs(x, -Rational(1, 2))\n\ndef standard():\n    F = Fraction\n    res = set()\n    for fp0 in (4, -4):\n        for f0 in (-1, 0, 1):\n            for ka in range(-12, 13):\n                if ka == 0: continue\n                a = F(ka, 2)\n                for kb in range(-30, 31):\n                    b = F(kb, 2)\n                    h = lambda v: a*v**3 + b*v**2 + fp0*v + f0 + f0 + fp0*v\n                    hp0 = 2*fp0\n                    ok = True\n                    for kt in range(-24, 25):\n                        tv = F(kt, 4)\n                        hv = h(tv)\n                        if hv != 0:\n                            good = tv/hv < 0\n                        else:\n                            good = (tv == 0 and hp0 < 0)\n                        if good != (tv != a):\n                            ok = False; break\n                    if ok:\n                        v = F(-1, 2)\n                        res.add(100*(a*v**3 + b*v**2 + fp0*v + f0))\n    assert len(res) == 1\n    return res.pop()\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:55",
-        "hash": "770007dd8af3847f",
+        "checked_at": "2026-09-25T03:31:31",
+        "hash": "94ef0fd723675d2b",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -689,42 +714,42 @@
           "수학Ⅱ-03-C3",
           "수학Ⅱ-03-C2"
         ],
-        "guide": "$f(\\beta)=0$이면 새 근이 생긴다. 근은 유한하니 고정점이나 순환만 남는다.",
+        "guide": "$\\dfrac{f(\\varphi(x))}{f(x)}$ 꼴의 극한이 근마다 존재하면 $f(\\beta)=0\\Rightarrow f(\\varphi(\\beta))=0$이다. 근이 새 근을 계속 낳으면 삼차함수가 감당할 수 없으므로, 실근들은 규칙을 따라 돌다가 제자리로 돌아와야 한다(순환). 규칙이 두 개이고 적용 범위(근의 부호)가 다르다는 점이 이 문제의 설계다.",
         "solutions": [
           {
-            "title": "풀이 1 · 근의 순환",
+            "title": "풀이 1 · 근의 순환 찾기",
             "steps": [
               {
                 "label": "규칙",
-                "body": "$T(x)=4x-3$ ($x\\ge0$), $\\frac x2+1$ ($x\\le0$) — 실근 집합은 $T$로 닫혀 있다"
+                "body": "$\\alpha\\ge0$이고 $f(\\alpha)=0$이면 $f(4\\alpha-3)=0$.\n$s=-2\\alpha\\le0$이고 $f(s)=0$이면 $f\\left(\\frac s2+1\\right)=0$.\n이 규칙을 $T(x)=4x-3\\ (x\\ge0)$, $T(x)=\\frac x2+1\\ (x\\le0)$로 쓰면 실근 집합은 $T$로 닫혀 있어야 한다."
               },
               {
                 "label": "배제",
-                "body": "$0$이 근이면 근이 $4$개 이상 ✗. 고정점 $1$, $2$-주기 $\\left\\{\\frac12,-1\\right\\}$은 $f(\\pm1)\\ne0$으로 ✗ → $3$-주기"
+                "body": "$x=0$이 근이면 $-3$과 $1$이 모두 근, $-3$이면 $-\\frac12$도 근 → 근이 $4$개 이상 ✗.\n$T$의 고정점은 $x=1$, $2$-주기는 $\\frac12\\to-1\\to\\frac12$. 그런데 $f(-1)f(1)=-96\\ne0$이므로 $1$, $-1$은 근이 아니다. 실근이 $1$개뿐이면 그 근은 고정점이어야 하므로, 실근은 $3$개이고 $3$-주기를 이룬다."
               },
               {
                 "label": "$3$-주기",
-                "body": "양·양·음: $8x-\\frac{13}2=x$ → $\\frac{13}{14}\\to\\frac57\\to-\\frac17$"
+                "body": "양, 양, 음 순서: $x\\to4x-3\\to16x-15\\to8x-\\frac{13}2=x$ → $x=\\frac{13}{14}$.\n$\\frac{13}{14}\\to\\frac57\\to-\\frac17\\to\\frac{13}{14}$ (부호 조건 확인 ✓). 양, 음, 음 순서는 $x+\\frac34=x$로 해가 없다."
               },
               {
-                "label": "계수",
-                "body": "$f=k\\left(x-\\frac{13}{14}\\right)\\left(x-\\frac57\\right)\\left(x+\\frac17\\right)$\n$f(-1)f(1)=-\\frac{7776}{7^6}k^2=-96$ → $k=\\frac{343}9$"
+                "label": "식",
+                "body": "$f(x)=k\\left(x-\\frac{13}{14}\\right)\\left(x-\\frac57\\right)\\left(x+\\frac17\\right)$.\n$f(1)=k\\cdot\\frac1{14}\\cdot\\frac27\\cdot\\frac87$, $f(-1)=-k\\cdot\\frac{27}{14}\\cdot\\frac{12}7\\cdot\\frac67$\n$f(-1)f(1)=-\\frac{7776}{7^6}k^2=-96$ → $k=\\frac{343}9$"
               },
               {
                 "label": "답",
-                "body": "$f(2)=\\frac{225}2$ → $225$"
+                "body": "$f(2)=\\frac{343}9\\cdot\\frac{15}{14}\\cdot\\frac97\\cdot\\frac{15}7=\\frac{225}2$ → $2f(2)=225$"
               }
             ]
           }
         ],
-        "supplement": "규칙이 근의 부호로 갈린다 — $4x-3$만 쓰면 근이 끝없이 는다.",
-        "skill_point": "근이 근을 낳으면 고정점·순환만."
+        "supplement": "근마다 중복도도 따져야 한다: $\\frac{f(4x-3)}{f(x)}$에서 $x=\\alpha$ 근처의 분자 차수는 $4\\alpha-3$에서의 중복도이므로, 순환을 한 바퀴 돌면 중복도가 줄어들 수 없어 모두 같다. 세 근이 모두 단순근이면 자동으로 만족한다.\n허근은 실수 $\\alpha$에서의 극한과 무관하다. 그래서 '실근 $1$개 + 허근 $2$개'도 후보가 되지만, 실근 하나가 닫혀 있으려면 고정점 $1$이어야 해서 $f(1)\\ne0$에 막힌다.",
+        "skill_point": "근이 근을 낳으면 고정점·순환만 살아남는다. 규칙이 부호에 따라 갈리면 부호 순서(양·양·음 등)별로 순환을 푼다."
       },
       "verify": "def skill():\n    x = symbols('x')\n    k = Rational(343, 9)\n    f = k*(x - Rational(13, 14))*(x - Rational(5, 7))*(x + Rational(1, 7))\n    return 2*f.subs(x, 2)\n\ndef standard():\n    x = symbols('x')\n    T = lambda v: 4*v - 3 if v >= 0 else v/2 + 1\n    cands = set()\n    # all itineraries of length <= 3 (signs), solve fixed point of composition\n    for L in (1, 2, 3):\n        for signs in itertools.product([1, -1], repeat=L):\n            v = x\n            for sg in signs:\n                v = 4*v - 3 if sg > 0 else v/2 + 1\n            sol = solve(Eq(v, x), x)\n            for s0 in sol:\n                orbit = [s0]\n                ok = True\n                cur = s0\n                for sg in signs:\n                    if (sg > 0 and cur < 0) or (sg < 0 and cur > 0):\n                        ok = False; break\n                    cur = T(cur); orbit.append(cur)\n                if ok and cur == s0:\n                    cands.add(tuple(sorted(set(orbit))))\n    res = set()\n    k = symbols('k', positive=True)\n    for orb in cands:\n        if len(orb) != 3 or 1 in orb or -1 in orb:\n            continue\n        f = k*Mul(*[(x - r) for r in orb])\n        k0 = solve(Eq(f.subs(x, -1)*f.subs(x, 1), -96), k)\n        for kv in k0:\n            res.add(2*f.subs(k, kv).subs(x, 2))\n    assert len(res) == 1\n    return res.pop()\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:56",
-        "hash": "c52dd49ca9b80ffe",
+        "checked_at": "2026-09-25T03:31:32",
+        "hash": "1fd25261b6f9ef35",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -758,46 +783,46 @@
           "수학Ⅱ-03-C4",
           "수학Ⅱ-04-C1"
         ],
-        "guide": "$\\frac{xg}{|g|}$ → $g$가 부호를 바꾸는 $0$ 아닌 근. (나)는 근 흡수 + 경계 $x=0$의 좌우 일치.",
+        "guide": "$\\frac{|g|}{g}$ 꼴은 부호 스위치다. $x\\,\\mathrm{sgn}(g)$의 극한은 $g$가 부호를 바꾸는 $0$ 아닌 근에서만 사라진다($t=0$에서는 $x\\to0$이 곱해져 $0$으로 존재). (나)는 '분모의 근을 분자가 흡수'인데, $g$가 구간별로 정의되어 있으므로 경계 $x=0$이 분모의 근이면 좌극한과 우극한이 같아야 한다.",
         "solutions": [
           {
-            "title": "풀이 1 · 근 배치와 경계",
+            "title": "풀이 1 · 근 배치와 부호",
             "steps": [
               {
                 "label": "연속",
-                "body": "$f(0)=0$ → $f=kx(x-r)$"
+                "body": "$x=0$에서 연속: $4f(0)=0$ → $f(0)=0$. $f(x)=kx(x-r)$로 둔다($f=kx^2$이면 (가)에서 부호 바뀌는 근이 없어 제외)."
               },
               {
-                "label": "(나)",
-                "body": "$g(2)=0$ → $g=x(x-2)(x-s)$ ($x\\ge0$). $r+2$도 근 → $r=-4$, $r=-2$, $s=r+2$ 중 하나"
+                "label": "(나) 근 흡수",
+                "body": "$f(x-2)=k(x-2)(x-2-r)$의 근 $2$, $r+2$에서 $g$도 $0$.\n$x\\ge0$ 부분에 근 $2$ → $g(x)=x(x-2)(x-s)$ $(x\\ge0)$.\n$r+2$의 위치로 나누면: $r+2<0$이면 $(x+2)^2kx(x-r)$이 $r+2$에서 $0$이어야 해 $r=-4$; $r+2=0$이면 $r=-2$; $r+2>0$이면 $s=r+2$."
               },
               {
-                "label": "(가)",
-                "body": "부호가 바뀌는 근의 합 $0$ → $r=-2$, $s\\le0$"
+                "label": "(가) 거르기",
+                "body": "$x<0$ 부분 $k(x+2)^2x(x-r)$은 $-2$에서 부호가 안 바뀌고 음수 $r$에서 바뀐다. $x>0$ 부분은 $2$, $s$에서 바뀐다.\n· $r=-4$: 부호 변화 $-4$, $2$(, $s$) → 합이 $0$이 될 수 없다.\n· $r+2>0$: 부호 변화가 $2$, $r+2$(, $r$) → 셋이거나 둘 다 양수.\n· $r=-2$: $x<0$에서 $kx(x+2)^3$ → $-2$에서 부호 변화. $x>0$에서는 $2$만 바뀌어야 하므로 $s\\le0$. 부호 변화 $\\{-2,\\,2\\}$ ✓"
               },
               {
-                "label": "경계",
-                "body": "좌: $\\frac{kx(x+2)^3}{kx(x-2)}\\to-4$, 우: $\\frac{-s}k$ → $s=4k$"
+                "label": "경계 $x=0$",
+                "body": "$r=-2$이면 $f(x-2)=k(x-2)x$도 $x=0$에서 $0$. 좌우 극한이 같아야 한다:\n좌: $\\dfrac{kx(x+2)^3}{kx(x-2)}\\to\\dfrac{8}{-2}=-4$, 우: $\\dfrac{x(x-2)(x-s)}{kx(x-2)}\\to\\dfrac{-s}{k}$ → $s=4k$."
               },
               {
                 "label": "결정",
-                "body": "$-k(4k-1)=-\\frac12$, $s\\le0$ → $k=-\\frac14$, $s=-1$"
+                "body": "$g(-1)=k(-1)(1)^3=-k$, $g(1)=(1)(-1)(1-s)=s-1$.\n$-k(4k-1)=-\\frac12$ → $8k^2-2k-1=0$ → $k=\\frac12$ 또는 $-\\frac14$. $s=4k\\le0$이므로 $k=-\\frac14$, $s=-1$."
               },
               {
                 "label": "답",
-                "body": "$g(-4)=-8$, $g(5)=90$ → $82$"
+                "body": "$g(-4)=-\\frac14\\cdot(-4)\\cdot(-2)^3=-8$, $g(5)=5\\cdot3\\cdot6=90$ → $82$"
               }
             ]
           }
         ],
-        "supplement": "경계 $x=0$의 좌우 극한 비교를 빼면 $k$, $s$가 안 정해진다.",
-        "skill_point": "구간별 함수의 근 흡수 → 경계 좌우까지."
+        "supplement": "가장 놓치기 쉬운 곳은 경계 $x=0$에서의 극한이다. 다항함수끼리의 분수라면 근만 흡수하면 끝나지만, $g$가 구간별로 다른 식이면 약분 후 남은 값이 좌우에서 달라질 수 있다. 이 조건 하나가 $s$와 $k$를 묶어 답을 하나로 만든다.\n(가)에서 $t=0$은 절대 후보가 아니다. $x$가 곱해져 있어 $g$의 부호가 바뀌어도 극한은 $0$으로 존재한다.",
+        "skill_point": "$\\frac{x g}{|g|}$ → 부호가 바뀌는 $0$ 아닌 근. 구간별 함수의 근 흡수는 경계점의 좌우 극한 일치까지 확인한다."
       },
       "verify": "def skill():\n    k = -Rational(1, 4); s = 4*k\n    gm4 = k*(-4)*(-4 + 2)**3\n    g5 = 5*(5 - 2)*(5 - s)\n    return gm4 + g5\n\ndef standard():\n    x = symbols('x')\n    k = symbols('k')\n    res = set()\n    # case r=-2: g_left = k x (x+2)^3, g_right = x (x-2)(x-s)\n    for sv in [Rational(n, 4) for n in range(-40, 1)]:\n        ks = solve(Eq((k*(-1)*1**3)*(1*(1 - 2)*(1 - sv)), -Rational(1, 2)), k)\n        for kv in ks:\n            if not kv.is_real: continue\n            gl = kv*x*(x + 2)**3; gr = x*(x - 2)*(x - sv)\n            f = kv*x*(x + 2)\n            den = f.subs(x, x - 2)\n            lim_l = limit(gl/den, x, 0, '-'); lim_r = limit(gr/den, x, 0, '+')\n            if simplify(lim_l - lim_r) != 0: continue\n            # sign changes at nonzero roots\n            ch = set()\n            for r in [-2]:\n                ch.add(r)\n            for r in set(solve(gr, x)):\n                if r > 0 and gr.subs(x, r - Rational(1, 1000))*gr.subs(x, r + Rational(1, 1000)) < 0:\n                    ch.add(r)\n            if len(ch) == 2 and sum(ch) == 0:\n                res.add(gl.subs(x, -4) + gr.subs(x, 5))\n    assert len(res) == 1\n    return res.pop()\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:56",
-        "hash": "dc4bd37a1f9a5b41",
+        "checked_at": "2026-09-25T03:31:33",
+        "hash": "21a005267026616b",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -837,42 +862,46 @@
           "수학Ⅱ-04-C4",
           "수학Ⅱ-04-C1"
         ],
-        "guide": "연속점: 조건 → $g(t)=-9$. 경계는 극점 $p$, $q$뿐 — 따로 계산.",
+        "guide": "조건식은 점마다 모양이 달라진다. 연속인 점에서는 좌극한·우극한·함숫값이 모두 같아 $2g=4g+18$, 곧 $g(t)=-9$. 불연속이 생기는 곳은 $f'$의 부호가 바뀌는 극대·극소점뿐이므로 그 두 점만 따로 계산한다.",
         "solutions": [
           {
             "title": "풀이 1 · 점의 종류별 번역",
             "steps": [
               {
+                "label": "구조",
+                "body": "$f'(x)=0$의 두 근을 $p<q$라 하면 $[p,q]$에서 $g=f-6$, 밖에서 $g=f$. ($f'$이 부호를 바꾸지 않으면 구간이 없어 조건을 만족하는 $t$가 $3$개를 넘지 못한다.)"
+              },
+              {
                 "label": "경계점",
-                "body": "$t=p$: $2f(p)-6=4f(p)-6$ → $f(p)=0$. $t=q$도 $f(q)=0$"
+                "body": "$t=p$: 좌극한 $f(p)$, 우극한 $f(p)-6$, $g(p)=f(p)-6$ → $2f(p)-6=4f(p)-6$ → $f(p)=0$.\n$t=q$: 좌극한 $f(q)-6$, 우극한 $f(q)$, $g(q)=f(q)-6$ → 같은 식으로 $f(q)=0$."
               },
               {
                 "label": "연속점",
-                "body": "구간 밖 $f(t)=-9$, 구간 안 $f(t)=-3$"
+                "body": "그 밖의 $t$에서는 $g(t)=-9$: 구간 밖이면 $f(t)=-9$, 구간 안이면 $f(t)=-3$."
               },
               {
-                "label": "개수",
-                "body": "극댓값 $f(p)=0$ → $f(0)=0$, $f'(0)=0$, $f(1)=-3$, $f(3)=-9$"
+                "label": "개수 맞추기",
+                "body": "$f(q)=0$이면 극댓값 $>0$이라 만족하는 $t$가 $2$개뿐. 따라서 $f(p)=0$(극댓값 $0$)이고, $x<p$에서 $f=-9$ 한 점, $(p,q)$에서 $f=-3$ 한 점, $x>q$에서 $f=-9$ 한 점($f(q)<-9$)으로 모두 $4$개.\n크기 순서로 $a<0=p<1<3$: $f(0)=0$, $f'(0)=0$, $f(1)=-3$, $f(3)=-9$."
               },
               {
                 "label": "식",
-                "body": "$f=x^3-4x^2$ ($q=\\frac83$, $f(q)<-9$ ✓)"
+                "body": "$f(x)=x^3+cx^2$ 꼴: $1+c=-3$ → $c=-4$ (그때 $27-36=-9$ ✓). $f(x)=x^3-4x^2$, $q=\\frac83\\in(1,3)$, $f(q)=-\\frac{256}{27}<-9$ ✓"
               },
               {
                 "label": "답",
-                "body": "$(x-3)(x^2-x-3)=0$의 음근 $a=\\frac{1-\\sqrt{13}}2$ ②"
+                "body": "$x^3-4x^2+9=(x-3)(x^2-x-3)=0$의 음근: $a=\\dfrac{1-\\sqrt{13}}2$ ②"
               }
             ]
           }
         ],
-        "supplement": "$f=-9$의 다른 근 $\\frac{1+\\sqrt{13}}2$는 구간 안이라 세지 않는다.",
-        "skill_point": "연속점 / 극점으로 나눠 번역."
+        "supplement": "'좌극한 + 우극한 $=4g(t)+18$'을 한 가지 식으로만 보면 막힌다. 연속점·불연속점을 나눠 번역하는 것이 첫 판단이다.\n검산 포인트: $f(x)=-9$의 다른 근 $\\frac{1+\\sqrt{13}}2\\approx2.30$은 구간 $\\left[0,\\frac83\\right]$ 안이라 거기서는 $g=f-6=-15$이므로 세지 않는다. 구간 안에서 $f=-3$의 근도 $1$ 하나뿐이다.",
+        "skill_point": "좌극한·우극한 조건식은 연속점과 불연속점(극점)으로 나눠 번역한다. 연속점에서는 식이 '$g(t)=$상수'가 된다."
       },
       "verify": "def skill():\n    return (1 - sqrt(13))/2\n\ndef standard():\n    x = symbols('x')\n    c3, c2, c1, c0 = symbols('c3 c2 c1 c0')\n    f = c3*x**3 + c2*x**2 + c1*x + c0\n    sol = solve([f.subs(x, 0), diff(f, x).subs(x, 0), f.subs(x, 1) + 3, f.subs(x, 3) + 9], [c3, c2, c1, c0], dict=True)[0]\n    F = f.subs(sol)\n    q = max(solve(diff(F, x), x))\n    def g(v):\n        return F.subs(x, v) - 6 if diff(F, x).subs(x, v) <= 0 else F.subs(x, v)\n    cand = set()\n    e = Rational(1, 10**6)\n    for r in solve(Eq(F, -9), x) + solve(Eq(F, -3), x) + [Integer(0), q]:\n        if not r.is_real: continue\n        if abs(float(g(r - e) + g(r + e) - 4*g(r) - 18)) < 1e-3:\n            cand.add(r)\n    cand = sorted(cand, key=lambda v: float(v))\n    assert [float(v) for v in cand[1:]] == [0.0, 1.0, 3.0]\n    return simplify(cand[0])\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:57",
-        "hash": "3a262b81d0322ee3",
+        "checked_at": "2026-09-25T03:31:33",
+        "hash": "cff3f9e82526d29f",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -911,38 +940,42 @@
         "concept_refs": [
           "수학Ⅱ-03-C1"
         ],
-        "guide": "$x\\to n$ → 근의 중복도 $m_n$, $x\\to\\infty$ → 차수 $d$. $g(n)=\\min\\left(m_n,\\left\\lfloor\\frac nd\\right\\rfloor\\right)$",
+        "guide": "두 극한이 각각 무엇을 재는지 번역한다. $x\\to n$ 극한은 $f$가 $(x-n)$을 몇 번 인수로 갖는지(중복도 $m_n$), $x\\to\\infty$ 극한은 차수 비교다. 음이 아닌 $k$에서 둘 다 존재할 최대 조건은 $k\\le m_n$, $kd\\le n$ ($d=\\deg f$).",
         "solutions": [
           {
-            "title": "풀이 1 · 두 제약의 최솟값",
+            "title": "풀이 1 · $g(n)=\\min(m_n,\\lfloor n/d\\rfloor)$",
             "steps": [
               {
-                "label": "$g(5)$",
-                "body": "$g(5)\\ge1$ → $5$가 근, $d\\le5$, $f(6)\\ne0$"
+                "label": "번역",
+                "body": "$d=\\deg f\\ge1$, $m_n$을 $x=n$에서의 근의 중복도라 하면 $g(n)=\\min\\left(m_n,\\ \\left\\lfloor\\frac nd\\right\\rfloor\\right)$ ($k=0$은 항상 가능하므로 $g(n)\\ge0$)."
               },
               {
-                "label": "$d$",
-                "body": "$d=5$: 합 $\\le2$ ✗ · $d\\le3$: 남는 근 $\\le2$ ✗ → $d=4$, $m_7\\ge1$, $m_8\\ge2$"
+                "label": "$g(5)$",
+                "body": "$f(6)g(5)=2$ → $g(5)\\ge1$: $5$가 근이고 $\\left\\lfloor\\frac5d\\right\\rfloor\\ge1$ → $d\\le5$. 또 $f(6)\\ne0$."
+              },
+              {
+                "label": "$g(7)+g(8)=3$",
+                "body": "$d=5$: 각 항 $\\le1$ → 합 $\\le2$ ✗. $d\\le3$: $5$가 근이므로 $7$, $8$에 쓸 수 있는 근이 $d-1\\le2$개 → 합 $\\le2$ ✗.\n$d=4$: $\\left\\lfloor\\frac74\\right\\rfloor=1$, $\\left\\lfloor\\frac84\\right\\rfloor=2$ → $m_7\\ge1$, $m_8\\ge2$, $m_5\\ge1$로 근이 정확히 $4$개."
               },
               {
                 "label": "식",
-                "body": "$f=c(x-5)(x-7)(x-8)^2$, $f(6)=-4c=2$ → $c=-\\frac12$"
+                "body": "$f(x)=c(x-5)(x-7)(x-8)^2$, $g(5)=\\min(1,1)=1$.\n$f(6)=c\\cdot1\\cdot(-1)\\cdot4=-4c=2$ → $c=-\\frac12$"
               },
               {
                 "label": "답",
-                "body": "$f(4)=-24$ ①"
+                "body": "$f(4)=-\\frac12\\cdot(-1)\\cdot(-3)\\cdot16=-24$ ①"
               }
             ]
           }
         ],
-        "supplement": "차수를 먼저 고정하고 근을 예산으로 나눠 준다.",
-        "skill_point": "중복도와 차수 중 빡빡한 쪽."
+        "supplement": "$k$가 음수일 수도 있다는 점 때문에 헷갈릴 수 있지만, $k\\le0$이면 두 극한이 항상 존재하므로 최댓값은 $0$ 이상이다. 결국 $g(n)$은 '두 제약 중 더 빡빡한 쪽'이다.\n차수 $d$를 먼저 고정하고 '근의 개수 예산 $d$'로 $m_5$, $m_7$, $m_8$을 배분하면 경우가 거의 남지 않는다.",
+        "skill_point": "$x\\to n$ 극한은 근의 중복도, $x\\to\\infty$ 극한은 차수 — 두 제약의 최솟값으로 번역하고 근의 개수를 차수 예산으로 배분한다."
       },
       "verify": "def skill():\n    x = symbols('x')\n    f = -Rational(1, 2)*(x - 5)*(x - 7)*(x - 8)**2\n    return f.subs(x, 4)\n\ndef standard():\n    x = symbols('x')\n    res = set()\n    for d in range(1, 6):\n        for m5 in range(0, d + 1):\n            for m7 in range(0, d + 1 - m5):\n                for m8 in range(0, d + 1 - m5 - m7):\n                    extra = d - m5 - m7 - m8\n                    g = lambda n, m: min(m, n//d)\n                    if g(5, m5) < 1: continue\n                    if g(7, m7) + g(8, m8) != 3: continue\n                    if extra != 0:\n                        raise ValueError('extra root family also fits')\n                    base = (x - 5)**m5*(x - 7)**m7*(x - 8)**m8\n                    c = Rational(2)/(base.subs(x, 6)*g(5, m5))\n                    res.add((c*base).subs(x, 4))\n    assert len(res) == 1\n    return res.pop()\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:57",
-        "hash": "b59f1943908fd7c2",
+        "checked_at": "2026-09-25T03:31:34",
+        "hash": "76c4af186125d029",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -976,38 +1009,47 @@
           "확률과 통계-01-C3",
           "확률과 통계-01-C2"
         ],
-        "guide": "(나)의 여사건 '$1$의 양옆이 모두 비소수' → 후보가 $4$, $6$뿐이라 덩어리 $4$-$1$-$6$.",
+        "guide": "'이웃한다'는 조건은 여사건이 더 좁을 때가 많다. $1$의 이웃이 소수가 아니려면 양옆이 $\\{4,6\\}$에서 나와야 하는데, 두 자리를 채우려면 $4$와 $6$을 모두 써야 한다. 여사건이 덩어리 하나로 굳어지므로 뺄셈이 쉽다.",
         "solutions": [
           {
             "title": "풀이 1 · 여사건 덩어리",
             "steps": [
               {
                 "label": "(가)",
-                "body": "$720-2\\times5!=480$"
+                "body": "전체 $6!=720$. $3$, $4$가 이웃하는 경우: 덩어리($2$가지) + $5$장 → $2\\times5!=240$. (가)를 만족: $480$."
               },
               {
-                "label": "여사건",
-                "body": "덩어리 $4$-$1$-$6$: $2\\times4!=48$"
+                "label": "(나)의 여사건",
+                "body": "$1$의 양옆이 모두 소수가 아님 ⇔ 양옆이 $4$와 $6$: 덩어리 $4$-$1$-$6$ ($2$가지) + $3,2,5,7$ → $2\\times4!=48$."
               },
               {
-                "label": "겹침",
-                "body": "그중 $3$-$4$ 이웃: $2\\times3!=12$ → $48-12=36$"
+                "label": "겹침 제거",
+                "body": "이 $48$가지 중 (가)를 어기는 것($3$이 $4$의 바깥쪽 옆): 덩어리 $3$-$4$-$1$-$6$ ($2$가지) + $2,5,7$ → $2\\times3!=12$.\n(가)는 만족하고 (나)는 어기는 경우: $48-12=36$."
               },
               {
                 "label": "답",
                 "body": "$480-36=444$"
               }
             ]
+          },
+          {
+            "title": "풀이 2 · 직접 세기 비교",
+            "steps": [
+              {
+                "label": "방향",
+                "body": "$1$을 고정하고 양옆의 수를 소수/비소수로 나눠 직접 세면 '한쪽만 소수', '양쪽 소수'에 $3$, $4$의 위치까지 겹쳐 경우가 여섯 갈래 이상으로 늘어난다. 여사건은 덩어리 하나라 한 줄로 끝난다."
+              }
+            ]
           }
         ],
-        "supplement": "(나)를 직접 세면 $3$, $4$의 위치까지 겹쳐 여섯 갈래 이상이 된다.",
-        "skill_point": "'이웃한다'는 여사건 → 덩어리."
+        "supplement": "여사건을 '$1$의 이웃이 모두 비소수'로 잡은 뒤 비소수에 $1$ 자신을 넣으면 안 된다 — $1$은 자기 자신과 이웃할 수 없다. 비소수 후보는 $4$, $6$ 두 장뿐이라 양옆이 강제로 정해진다는 것이 이 문제의 설계다.",
+        "skill_point": "'이웃한다'는 여사건('양옆이 모두 아님')으로 — 후보가 적으면 덩어리가 하나로 굳는다."
       },
       "verify": "def skill():\n    total_ga = 720 - 2*120\n    bad_na = 2*24 - 2*6\n    return total_ga - bad_na\n\ndef standard():\n    primes = {2, 3, 5, 7}\n    cnt = 0\n    for p in itertools.permutations([2, 3, 4, 5, 6, 7]):\n        a = (1,) + p\n        n = 7\n        if any({a[i], a[(i + 1) % n]} == {3, 4} for i in range(n)):\n            continue\n        if a[1] in primes or a[-1] in primes:\n            cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:57",
-        "hash": "199435d14ece2646",
+        "checked_at": "2026-09-25T03:31:34",
+        "hash": "93b71c5299a58824",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1047,38 +1089,38 @@
           "확률과 통계-01-C2",
           "확률과 통계-01-C1"
         ],
-        "guide": "$\\mathrm{AB}$를 덩어리 $\\mathrm X$로, 조건의 주인공 $\\mathrm D$를 고정 → 양옆 두 자리만 본다.",
+        "guide": "이웃 조건은 묶어서 한 덩어리. 원순열은 한 자리를 고정해 일렬로 편다 — 여기서는 조건의 주인공 $\\mathrm D$를 고정하면 $\\mathrm D$의 양옆 두 자리만 보면 된다. 덩어리 $\\mathrm X$가 $\\mathrm D$ 옆에 오면 $\\mathrm A$, $\\mathrm B$ 중 정확히 한 명만 $\\mathrm D$와 이웃한다.",
         "solutions": [
           {
             "title": "풀이 1 · D 고정, 양옆 고르기",
             "steps": [
               {
                 "label": "묶기",
-                "body": "단위 $\\mathrm X$, $\\mathrm C$, $\\mathrm D$, $\\mathrm E$, $\\mathrm F$. $\\mathrm D$ 고정"
+                "body": "$\\mathrm{AB}$를 $\\mathrm X$로 묶으면($\\mathrm{AB}$, $\\mathrm{BA}$ $2$가지) 단위는 $\\mathrm X$, $\\mathrm C$, $\\mathrm D$, $\\mathrm E$, $\\mathrm F$ 다섯 개. $\\mathrm D$를 고정하면 나머지 $4$개를 네 자리에 놓는다."
               },
               {
                 "label": "번역",
-                "body": "$\\mathrm D$의 양옆 중 $\\{\\mathrm X,\\mathrm C\\}$가 정확히 하나"
+                "body": "$\\mathrm D$의 양옆 두 단위 중 $\\{\\mathrm X,\\mathrm C\\}$에 속하는 것이 정확히 하나. ($\\mathrm X$가 옆이면 $\\mathrm A$, $\\mathrm B$ 중 한 명만 $\\mathrm D$와 이웃한다.)"
               },
               {
                 "label": "세기",
-                "body": "양옆: $2\\times2\\times2!=8$, 나머지: $2!$ → $16$"
+                "body": "양옆 = ($\\mathrm X$ 또는 $\\mathrm C$) 하나 + ($\\mathrm E$ 또는 $\\mathrm F$) 하나: $2\\times2\\times2!=8$ (좌우 순서 포함). 남은 두 단위를 두 자리에: $2!$ → $16$."
               },
               {
                 "label": "답",
-                "body": "$\\mathrm{AB}$ 순서 $2$ → $32$ ④"
+                "body": "$\\mathrm{AB}$ 순서 $2$가지 → $16\\times2=32$ ④"
               }
             ]
           }
         ],
-        "supplement": "$\\mathrm X$와 $\\mathrm C$가 모두 $\\mathrm D$ 옆이면 이웃이 둘 — 빼야 한다.",
-        "skill_point": "주인공 고정 → 양옆 구성."
+        "supplement": "$\\mathrm A$, $\\mathrm B$, $\\mathrm C$를 따로따로 보고 '$\\mathrm D$와 이웃하는 사람 수'를 세려 하면 $\\mathrm A$와 $\\mathrm B$가 동시에 $\\mathrm D$ 옆에 올 수 있는지(불가능 — 둘은 서로 붙어 있다)를 매번 따져야 한다. 덩어리로 묶으면 그 걱정이 사라진다.\n흔한 실수: $\\mathrm X$와 $\\mathrm C$가 모두 $\\mathrm D$ 옆인 경우를 '이웃 $2$명'이 아니라 '$\\mathrm A$, $\\mathrm B$ 중 한 명 + $\\mathrm C$'로 세지 않아 포함시키는 것.",
+        "skill_point": "조건의 주인공을 고정하고 양옆 두 자리의 구성으로 번역한다. 이웃 쌍은 먼저 덩어리로."
       },
       "verify": "def skill():\n    return (2*2*2)*2*2\n\ndef standard():\n    cnt = 0\n    for p in itertools.permutations('BCDEF'):\n        a = ('A',) + p\n        pos = {v: i for i, v in enumerate(a)}\n        nb = lambda u, v: (pos[u] - pos[v]) % 6 in (1, 5)\n        if nb('A', 'B') and sum(nb(u, 'D') for u in 'ABC') == 1:\n            cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:58",
-        "hash": "d3b05c30e95a4a39",
+        "checked_at": "2026-09-25T03:31:34",
+        "hash": "c8218663b2482a78",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1239,34 +1281,34 @@
           "확률과 통계-01-C1",
           "확률과 통계-01-C3"
         ],
-        "guide": "$8$의 배수 = $2$의 개수 합 $\\ge3$. $2$를 두 개 가진 $4$만 문제 → $4$를 고정.",
+        "guide": "곱의 배수 조건은 소인수의 개수로 번역한다. $1\\sim7$에서 $2$를 인수로 갖는 수는 $2$(한 개), $4$(두 개), $6$(한 개)뿐이다. 두 수의 $2$의 개수 합이 $3$ 이상인 쌍만 금지된다.",
         "solutions": [
           {
             "title": "풀이 1 · 4를 고정",
             "steps": [
               {
                 "label": "금지 쌍",
-                "body": "$(4,2)$, $(4,6)$뿐 ($2\\times6=12$는 괜찮다)"
+                "body": "$2$의 개수: $2\\to1$, $4\\to2$, $6\\to1$. 합이 $3$ 이상인 이웃은 $(4,2)$, $(4,6)$뿐이다. ($2\\times6=12$는 $8$의 배수가 아니다.)"
               },
               {
                 "label": "고정",
-                "body": "$4$의 양옆은 홀수: $4\\times3=12$"
+                "body": "$4$를 한 자리에 고정하면(원순열을 일렬로 폄) 양옆은 홀수 $1,3,5,7$ 중에서: $4\\times3=12$."
               },
               {
-                "label": "답",
-                "body": "나머지 $4!=24$ → $12\\times24=288$ ③"
+                "label": "나머지",
+                "body": "남은 $4$장을 남은 네 자리에: $4!=24$.\n$12\\times24=288$ ③"
               }
             ]
           }
         ],
-        "supplement": "여사건 포함배제로도 $720-(240+240-48)=288$. 금지가 한 장에 몰리면 고정이 빠르다.",
-        "skill_point": "배수 조건 → 소인수 개수."
+        "supplement": "여사건(곱이 $8$의 배수인 이웃이 적어도 하나)으로 가면 '$4$-$2$ 이웃', '$4$-$6$ 이웃', '둘 다'를 포함배제해야 한다: $720-(240+240-48)=288$. 같은 답이지만 금지 대상이 $4$ 한 장에 몰려 있으면 그 카드를 고정하는 쪽이 빠르다.",
+        "skill_point": "곱의 배수 조건은 소인수 개수로 — 금지가 한 원소에 몰리면 그 원소를 고정하고 양옆부터 채운다."
       },
       "verify": "def skill():\n    return 4*3*math.factorial(4)\n\ndef standard():\n    cnt = 0\n    for p in itertools.permutations([2, 3, 4, 5, 6, 7]):\n        a = (1,) + p\n        if all((a[i]*a[(i + 1) % 7]) % 8 for i in range(7)):\n            cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:58",
-        "hash": "967a18a123642365",
+        "checked_at": "2026-09-25T03:31:35",
+        "hash": "9073c33a64a86168",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1306,22 +1348,22 @@
           "확률과 통계-02-C1",
           "확률과 통계-07-C1"
         ],
-        "guide": "횟수 구성 먼저 $\\{3,3,1\\}$, $\\{3,2,2\\}$. $\\mathrm C$는 $\\mathrm A$, $\\mathrm B$ 사이 칸에 넣는다.",
+        "guide": "구성 먼저, 배열은 나중에. 합이 $7$이고 최댓값이 $3$인 횟수 구성은 $\\{3,3,1\\}$, $\\{3,2,2\\}$ 두 종류다. 이웃 금지 조건이 있는 $\\mathrm C$는 나중에 칸에 끼워 넣는다: $\\mathrm A$, $\\mathrm B$ $m$개를 늘어놓으면 칸이 $m+1$개.",
         "solutions": [
           {
             "title": "풀이 1 · 구성별 칸 넣기",
             "steps": [
               {
                 "label": "공식",
-                "body": "$(a,b,c)$회: $\\frac{(a+b)!}{a!\\,b!}\\times{}_{a+b+1}\\mathrm C_c$"
+                "body": "$(a,b,c)$회일 때: $\\dfrac{(a+b)!}{a!\\,b!}\\times{}_{a+b+1}\\mathrm C_c$"
               },
               {
                 "label": "$\\{3,3,1\\}$",
-                "body": "$(3,3,1)$: $140$ · $(3,1,3)$, $(1,3,3)$: $40$씩"
+                "body": "$(3,3,1)$: $20\\times7=140$\n$(3,1,3)$, $(1,3,3)$: $4\\times10=40$씩 → $80$"
               },
               {
                 "label": "$\\{3,2,2\\}$",
-                "body": "$(3,2,2)$, $(2,3,2)$: $150$씩 · $(2,2,3)$: $60$"
+                "body": "$(3,2,2)$, $(2,3,2)$: $10\\times15=150$씩 → $300$\n$(2,2,3)$: $6\\times10=60$"
               },
               {
                 "label": "답",
@@ -1330,14 +1372,14 @@
             ]
           }
         ],
-        "supplement": "'가장 많이 $3$번' → 최댓값이 정확히 $3$. $(4,2,1)$은 제외.",
-        "skill_point": "구성 먼저, 이웃 금지는 칸에."
+        "supplement": "(가)를 '어떤 밴드가 $3$번 공연'으로만 읽으면 $(4,2,1)$처럼 최댓값이 $4$인 구성까지 섞인다. '가장 많이'라는 말은 최댓값이 정확히 $3$이라는 뜻이다.\n$\\mathrm C$가 $3$번일 때 $\\mathrm A$, $\\mathrm B$는 $4$일뿐이라 칸이 $5$개, ${}_5\\mathrm C_3=10$ — 구성마다 칸 수가 달라지는 것에 주의한다.",
+        "skill_point": "횟수 구성을 먼저 나열하고, 이웃 금지 대상은 나머지를 깔아 만든 칸에 끼운다."
       },
       "verify": "def skill():\n    C = math.comb\n    tot = 0\n    for a, b, c in [(3, 3, 1), (3, 1, 3), (1, 3, 3), (3, 2, 2), (2, 3, 2), (2, 2, 3)]:\n        tot += math.factorial(a + b)//(math.factorial(a)*math.factorial(b))*C(a + b + 1, c)\n    return tot\n\ndef standard():\n    cnt = 0\n    for s in itertools.product('ABC', repeat=7):\n        if max(s.count(ch) for ch in 'ABC') != 3: continue\n        if any(s[i] == 'C' == s[i + 1] for i in range(6)): continue\n        cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:59",
-        "hash": "2b9c4bbeaccbffd3",
+        "checked_at": "2026-09-25T03:31:35",
+        "hash": "a380e9429a276150",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1377,22 +1419,22 @@
           "확률과 통계-08-C1",
           "확률과 통계-06-C4"
         ],
-        "guide": "빨간색 구성을 먼저 고정. 홀수 개는 $2c+1$로 치환.",
+        "guide": "두 색이 조건 (나)로 얽혀 있으므로 빨간색 분배를 먼저 고정하고, 그에 따라 파란색 조건을 정한다. 홀수 개수 조건은 $b=2c+1$ ($c\\ge0$)로 바꾸면 표준 중복조합이 된다.",
         "solutions": [
           {
             "title": "풀이 1 · 빨간색 구성으로 나누기",
             "steps": [
               {
                 "label": "빨간색",
-                "body": "$(3,1,1,1)$ 꼴 $4$, $(2,2,1,1)$ 꼴 $6$"
+                "body": "합 $6$, 각 $1$ 이상: $(3,1,1,1)$ 꼴 $4$가지, $(2,2,1,1)$ 꼴 ${}_4\\mathrm C_2=6$가지. (합계 ${}_5\\mathrm C_3=10$ ✓)"
               },
               {
                 "label": "$(3,1,1,1)$",
-                "body": "파란색 모두 홀수: $\\sum c_i=3$ → ${}_4\\mathrm H_3=20$ → $80$"
+                "body": "네 명 모두 빨간색이 홀수 → 파란색도 모두 홀수: $b_i=2c_i+1$, $2\\sum c_i+4=10$ → $\\sum c_i=3$ → ${}_4\\mathrm H_3=20$.\n$4\\times20=80$"
               },
               {
                 "label": "$(2,2,1,1)$",
-                "body": "$2(c_1+c_2)+d_3+d_4=6$ → $7+10+9+4=30$ → $180$"
+                "body": "홀수 받은 두 명은 파란색 홀수, 나머지 둘은 $1$ 이상 자유: $2(c_1+c_2)+d_3+d_4=6$ ($d=b-1$).\n$c_1+c_2=s$일 때 $(s+1)(7-2s)$: $s=0,1,2,3$ → $7+10+9+4=30$.\n$6\\times30=180$"
               },
               {
                 "label": "답",
@@ -1401,14 +1443,14 @@
             ]
           }
         ],
-        "supplement": "(나)는 한 방향 — 빨간색이 짝수인 학생의 파란색은 자유.",
-        "skill_point": "얽힌 두 종류 → 한쪽 고정."
+        "supplement": "(나)는 '빨간색 홀수 → 파란색 홀수'라는 한쪽 방향 조건이다. 빨간색이 짝수인 학생의 파란색은 홀짝 제한이 없다 — 역방향까지 걸어 버리는 실수가 가장 흔하다.\n$(3,1,1,1)$에서 파란색 합 $10$이 짝수인데 홀수 $4$개의 합이므로 가능하다는 점도 확인하고 넘어간다.",
+        "skill_point": "두 종류가 조건으로 얽히면 한쪽 구성을 먼저 고정. 홀수 개수는 $2c+1$로 치환해 중복조합."
       },
       "verify": "def skill():\n    H = lambda n, r: math.comb(n + r - 1, r)\n    case1 = 4*H(4, 3)\n    case2 = 6*sum((s + 1)*(7 - 2*s) for s in range(4))\n    return case1 + case2\n\ndef standard():\n    cnt = 0\n    for r in itertools.product(range(1, 7), repeat=4):\n        if sum(r) != 6: continue\n        for b in itertools.product(range(1, 11), repeat=4):\n            if sum(b) != 10: continue\n            if all(ri % 2 == 0 or bi % 2 == 1 for ri, bi in zip(r, b)):\n                cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:59",
-        "hash": "580e9752e23b4c0e",
+        "checked_at": "2026-09-25T03:31:36",
+        "hash": "45217f98c242117f",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1442,38 +1484,38 @@
           "확률과 통계-08-C1",
           "확률과 통계-08-C2"
         ],
-        "guide": "흰 구슬이 연결고리. 흰 구슬 분배를 먼저 정하고, 하한만큼 깔고 나머지를 네 명에게.",
+        "guide": "'$A$의 개수 $\\ge$ $B$의 개수'는 $B$만큼 $A$를 먼저 나눠 준 뒤 남은 $A$를 자유롭게 나누는 것과 같다(하한 치환). 여러 색이 조건으로 얽히면 연결고리 색(흰색)을 먼저 고정한다.",
         "solutions": [
           {
             "title": "풀이 1 · 흰 구슬 먼저",
             "steps": [
               {
                 "label": "흰 구슬",
-                "body": "여학생 합 $g\\le2$: 여 $g+1$가지, 남 $4-g$가지"
+                "body": "여학생 둘이 받는 흰 구슬의 합을 $g$라 하면 남학생 합은 $3-g$. 파란 구슬이 $2$개뿐이므로 $g\\le2$. 여학생끼리 나누는 방법 $g+1$가지, 남학생끼리 $4-g$가지."
               },
               {
-                "label": "나머지",
-                "body": "파란 ${}_4\\mathrm H_{2-g}$, 빨간 ${}_4\\mathrm H_{1+g}$"
+                "label": "나머지 분배",
+                "body": "파란 구슬: 여학생에게 흰 구슬만큼 먼저 주고 남은 $2-g$개를 네 명에게 → ${}_4\\mathrm H_{2-g}$.\n빨간 구슬: 남학생에게 먼저 $3-g$개, 남은 $1+g$개를 네 명에게 → ${}_4\\mathrm H_{1+g}$."
               },
               {
                 "label": "합",
-                "body": "$g=0$: $160$ · $g=1$: $240$ · $g=2$: $120$"
+                "body": "$g=0$: $1\\times4\\times10\\times4=160$\n$g=1$: $2\\times3\\times4\\times10=240$\n$g=2$: $3\\times2\\times1\\times20=120$"
               },
               {
                 "label": "답",
-                "body": "$520$"
+                "body": "$160+240+120=520$"
               }
             ]
           }
         ],
-        "supplement": "남은 구슬은 네 명 모두에게 — 조건 학생에게만 주면 답이 줄어든다.",
-        "skill_point": "'개수 $\\ge$' → 하한 깔고 $\\mathrm H$."
+        "supplement": "조건은 여학생에게는 파란색, 남학생에게는 빨간색만 제한한다. 여학생도 빨간 구슬을, 남학생도 파란 구슬을 받을 수 있으므로 '남은 구슬'은 네 명 모두에게 나눈다. 여기서 두 명에게만 나누면 답이 크게 줄어든다.",
+        "skill_point": "'개수 $\\ge$ 다른 색 개수'는 하한만큼 먼저 깔고 나머지를 중복조합. 연결고리 색을 먼저 고정한다."
       },
       "verify": "def skill():\n    H = lambda n, r: math.comb(n + r - 1, r)\n    return sum((g + 1)*(4 - g)*H(4, 2 - g)*H(4, 1 + g) for g in range(3))\n\ndef standard():\n    def dist(n, k):\n        for c in itertools.product(range(n + 1), repeat=k):\n            if sum(c) == n: yield c\n    cnt = 0\n    for w in dist(3, 4):\n        for bl in dist(2, 4):\n            if bl[0] < w[0] or bl[1] < w[1]: continue\n            for rd in dist(4, 4):\n                if rd[2] >= w[2] and rd[3] >= w[3]:\n                    cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:47:59",
-        "hash": "a8ce0c5cbace20fa",
+        "checked_at": "2026-09-25T03:31:36",
+        "hash": "1cad7b484e6f48c7",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1507,22 +1549,26 @@
           "확률과 통계-06-C2",
           "확률과 통계-05-C1"
         ],
-        "guide": "(나)는 '또는' 세 개의 사슬. 두 번 나오는 $f(3)=3$, $f(5)=5$로 나눈다.",
+        "guide": "비감소 함수에서 $f(p)=p$, $f(q)=q$가 정해지면 사이의 값들은 $[p,q]$ 안에서 비감소 — 구간별로 ${}_n\\mathrm H_r$을 곱한다. 조건이 '또는'으로 사슬처럼 이어져 있으므로 여러 조건에 동시에 등장하는 $f(3)$, $f(5)$를 기준으로 나눈다.",
         "solutions": [
           {
             "title": "풀이 1 · 가운데 고정점으로 나누기",
             "steps": [
               {
-                "label": "둘 다",
-                "body": "${}_3\\mathrm H_2\\times3\\times{}_3\\mathrm H_2=108$"
+                "label": "번역",
+                "body": "$F_k$: $f(k)=k$. 조건은 $(F_1\\lor F_3)\\land(F_3\\lor F_5)\\land(F_5\\lor F_7)$."
+              },
+              {
+                "label": "$F_3$, $F_5$ 모두",
+                "body": "$f(1),f(2)\\in[1,3]$: ${}_3\\mathrm H_2=6$, $f(4)\\in[3,5]$: $3$, $f(6),f(7)\\in[5,7]$: $6$ → $108$"
               },
               {
                 "label": "$F_3$만",
-                "body": "$f(7)=7$ 필요. $6\\times(35-9)=156$"
+                "body": "$F_7$ 필요. $f(1),f(2)$: $6$. $f(4),f(5),f(6)\\in[3,7]$: ${}_5\\mathrm H_3=35$에서 $f(5)=5$인 $3\\times3=9$를 빼 $26$ → $156$"
               },
               {
                 "label": "$F_5$만",
-                "body": "대칭 $156$"
+                "body": "$F_1$ 필요. 대칭으로 $26\\times6=156$. (둘 다 아니면 가운데 조건이 깨져 $0$)"
               },
               {
                 "label": "답",
@@ -1531,14 +1577,14 @@
             ]
           }
         ],
-        "supplement": "'$f(5)\\ne5$'는 전체에서 $f(5)=5$를 뺀다.",
-        "skill_point": "고정점에서 끊고 구간마다 $\\mathrm H$."
+        "supplement": "'$f(5)\\ne5$'처럼 등호가 아닌 조건은 전체에서 빼는 편이 쉽다: $[3,7]$ 구간의 비감소 수열 전체에서 $f(5)=5$로 고정된 것만 뺀다.\n$F_1\\lor F_3$ 같은 '또는'을 포함배제로 한꺼번에 처리하려 하면 여덟 항이 생긴다. 연결고리 원소로 나누면 세 경우로 끝난다.",
+        "skill_point": "비감소 함수는 고정된 값 사이 구간마다 ${}_n\\mathrm H_r$. '또는'이 사슬처럼 이어지면 여러 조건에 걸친 원소로 나눈다."
       },
       "verify": "def skill():\n    H = lambda n, r: math.comb(n + r - 1, r)\n    both = H(3, 2)*3*H(3, 2)\n    only3 = H(3, 2)*(H(5, 3) - 3*3)\n    return both + 2*only3\n\ndef standard():\n    cnt = 0\n    for f in itertools.combinations_with_replacement(range(1, 8), 7):\n        if all((f[x - 1] - x)*(f[x + 1] - x - 2) == 0 for x in (1, 3, 5)):\n            cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:48:00",
-        "hash": "b88a5e9b718d0841",
+        "checked_at": "2026-09-25T03:31:36",
+        "hash": "3b72120f6e0aca02",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1578,22 +1624,22 @@
           "확률과 통계-08-C2",
           "확률과 통계-08-C1"
         ],
-        "guide": "흰 공 하한 $=\\max(0,\\ \\text{합}+1)$. 하한만큼 넣고 나머지를 $\\mathrm H$로.",
+        "guide": "'흰 공 $>$ 합'은 흰 공 $\\ge$ 합$+1$이라는 하한이다. 하한만큼 먼저 넣고 남은 흰 공을 세 상자에 중복조합으로 나눈다. 단, 하한이 음수가 되는 상자(합이 음수)는 하한이 $0$으로 바뀐다 — 여기서 경우가 갈린다.",
         "solutions": [
           {
             "title": "풀이 1 · 하한의 합으로 나누기",
             "steps": [
               {
                 "label": "검은 공",
-                "body": "$(2,1,1)$ 꼴 $36$가지, 합 $7$"
+                "body": "$4$개를 세 상자에 $1$개 이상씩: $(2,1,1)$ 꼴. 두 개 묶음 ${}_4\\mathrm C_2=6$가지 × 상자 배정 $3!=6$ → $36$가지. 네 수의 합은 $7$."
               },
               {
                 "label": "$-2$가 묶음 안",
-                "body": "하한 합 $10$, 남은 $5$ → $3\\times6\\times21=378$"
+                "body": "묶음이 $\\{-2,k\\}$ ($3$가지): 모든 상자의 합이 $0$ 이상 → 하한 합 $7+3=10$, 남은 흰 공 $5$ → ${}_3\\mathrm H_5=21$.\n$3\\times6\\times21=378$"
               },
               {
                 "label": "$-2$가 혼자",
-                "body": "하한 합 $11$, 남은 $4$ → $3\\times6\\times15=270$"
+                "body": "묶음이 $\\{2,3,4\\}$ 중 둘 ($3$가지): $-2$ 상자의 하한은 $-1$이 아니라 $0$. 나머지 두 상자 합 $9$ → 하한 합 $9+2=11$, 남은 $4$ → ${}_3\\mathrm H_4=15$.\n$3\\times6\\times15=270$"
               },
               {
                 "label": "답",
@@ -1602,14 +1648,14 @@
             ]
           }
         ],
-        "supplement": "$-2$ 혼자인 상자의 하한은 $-1$이 아니라 $0$.",
-        "skill_point": "하한이 달라지는 경우만 나눈다."
+        "supplement": "하한을 무심코 '합$+1$'로만 쓰면 $-2$ 혼자인 상자에 흰 공 $-1$개 이상이라는 식이 되어, 남은 흰 공을 $5$개로 계산하는 실수가 나온다. 개수는 음수가 될 수 없으므로 하한은 $\\max(0,\\ \\text{합}+1)$이다.",
+        "skill_point": "'$>$ 합' 조건은 하한 $\\max(0,\\text{합}+1)$을 먼저 넣고 나머지를 중복조합 — 하한이 달라지는 경우만 나눈다."
       },
       "verify": "def skill():\n    H = lambda n, r: math.comb(n + r - 1, r)\n    return 3*6*H(3, 5) + 3*6*H(3, 4)\n\ndef standard():\n    blacks = [-2, 2, 3, 4]\n    cnt = 0\n    for asg in itertools.product(range(3), repeat=4):\n        if len(set(asg)) < 3: continue\n        s = [sum(b for b, a in zip(blacks, asg) if a == j) for j in range(3)]\n        for w0 in range(16):\n            for w1 in range(16 - w0):\n                w2 = 15 - w0 - w1\n                if w0 > s[0] and w1 > s[1] and w2 > s[2]:\n                    cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:48:00",
-        "hash": "62d1417d3d184fff",
+        "checked_at": "2026-09-25T03:31:37",
+        "hash": "dfb8122dcd0eadb2",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
@@ -1995,42 +2041,42 @@
           "확률과 통계-07-C1",
           "확률과 통계-07-C2"
         ],
-        "guide": "$1$ 네 장을 먼저 깔면 칸 $5$개. $2$와 $3$은 칸을 나눠 갖는다(한 칸에 한 종류).",
+        "guide": "이웃 금지 조건이 없는 종류($1$)를 먼저 깔면 칸이 생긴다. $2$와 $3$은 서로 이웃하면 안 되므로 한 칸 안에는 한 종류만 들어간다. 칸 고르기(어느 칸에 $2$, 어느 칸에 $3$)와 칸마다 개수 나누기(각 칸 $1$개 이상)를 곱한다.",
         "solutions": [
           {
             "title": "풀이 1 · 칸 만들기",
             "steps": [
               {
                 "label": "구성",
-                "body": "$(2,3)$의 장수: $(1,4)$, $(2,3)$, $(3,2)$, $(4,1)$"
+                "body": "$1$ 네 장 외에 $2$, $3$을 합쳐 $5$장: $(2\\text{의 수},3\\text{의 수})=(1,4),(2,3),(3,2),(4,1)$."
               },
               {
                 "label": "칸",
-                "body": "칸 고르기 $\\frac{5!}{i!\\,j!\\,(5-i-j)!}$ × 칸별 분할 ${}_{m-1}\\mathrm C_{i-1}$"
+                "body": "$1$ 네 장이 만든 칸 $5$개 중 $2$가 들어갈 칸 $i$개, $3$이 들어갈 칸 $j$개를 고른다: $\\dfrac{5!}{i!\\,j!\\,(5-i-j)!}$.\n$2$ $m$장을 $i$칸에 $1$장 이상씩: ${}_{m-1}\\mathrm C_{i-1}$, $3$도 같은 방식."
               },
               {
-                "label": "$(1,4)$, $(4,1)$",
-                "body": "$20+90+60+5=175$씩 → $350$"
+                "label": "$(1,4)$·$(4,1)$",
+                "body": "$(1,4)$: $2$는 칸 $1$개($i=1$), $3$ 네 장은 $j$칸: $\\dfrac{5!}{1!\\,j!\\,(4-j)!}\\,{}_3\\mathrm C_{j-1}$.\n$j=1,2,3,4$ → $20+90+60+5=175$. $(4,1)$도 같으므로 $350$."
               },
               {
-                "label": "$(2,3)$, $(3,2)$",
-                "body": "$20+60+20+30+60+10=200$씩 → $400$"
+                "label": "$(2,3)$·$(3,2)$",
+                "body": "$(2,3)$: $(i,j)=(1,1),(1,2),(1,3),(2,1),(2,2),(2,3)$ → $20+60+20+30+60+10=200$. $(3,2)$도 같으므로 $400$."
               },
               {
                 "label": "답",
-                "body": "$750$"
+                "body": "$350+400=750$"
               }
             ]
           }
         ],
-        "supplement": "금지 없는 쪽($1$)을 먼저 깐다. $2$, $3$을 먼저 깔면 조건이 꼬인다.",
-        "skill_point": "칸 고르기 × 칸별 분할."
+        "supplement": "$2$, $3$을 먼저 늘어놓고 사이에 $1$을 끼우려 하면 '$2$와 $3$이 붙은 곳에는 반드시 $1$이 들어가야 한다'는 조건이 생겨 복잡해진다. 제한이 없는 쪽을 먼저 까는 것이 칸 만들기의 원칙이다.\n$1$끼리는 이웃해도 되므로 빈 칸이 있어도 된다. 대신 $2$와 $3$이 들어간 칸은 비어 있지 않아야 한다.",
+        "skill_point": "금지 없는 종류를 먼저 깔아 칸을 만들고, 서로 이웃하면 안 되는 두 종류는 칸을 나눠 갖는다: 칸 고르기 × 칸별 분할."
       },
       "verify": "def skill():\n    C = math.comb; fa = math.factorial\n    tot = 0\n    for m2 in range(1, 5):\n        m3 = 5 - m2\n        for i in range(1, m2 + 1):\n            for j in range(1, m3 + 1):\n                if i + j > 5: continue\n                tot += fa(5)//(fa(i)*fa(j)*fa(5 - i - j))*C(m2 - 1, i - 1)*C(m3 - 1, j - 1)\n    return tot\n\ndef standard():\n    cnt = 0\n    for k2 in range(1, 5):\n        ms = [1]*4 + [2]*k2 + [3]*(5 - k2)\n        for p in set(itertools.permutations(ms)):\n            if all(p[i] + p[i + 1] != 5 for i in range(8)):\n                cnt += 1\n    return cnt\n",
       "status": "verified",
       "review": {
-        "checked_at": "2026-09-25T02:48:01",
-        "hash": "6b920c0e2c7cc70b",
+        "checked_at": "2026-09-25T03:31:37",
+        "hash": "f99c0a1e3181b74f",
         "errors": [],
         "warnings": [
           "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"

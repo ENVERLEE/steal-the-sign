@@ -90,6 +90,7 @@
     "solutions": "data/solutions.json",
     "strategy_notes": "data/strategy_notes.json",
     "template": "data/STS_template.html",
+    "ext_template": "data/STS_ext.html",
     "book": "work/book.json",
     "created": "work/created",
     "source": "work/source",

@@ -15,7 +15,7 @@ from scripts.check_book import day_refs
 from scripts.common import (CIRCLED, FONTS_LOADED_JS, Context, Log, answer_display, choice_text, has_choices, is_created_id,
                             is_textbook_id, kind_of,
                             launch_chromium, route_network, source_label, strip_tex, write_json)
-from scripts.template import WEEK_TOKEN, load
+from scripts.template import WEEK_TOKEN, load, load_ext
 from scripts.tex import Math, katex_css
 
 CORNERS = ("THE SIGN", "FIRST PITCH", "PRACTICE", "DUGOUT NOTE", "SIGN BOOK")
@@ -166,6 +166,8 @@ class Model:
         notes = d.get("notes") or {}
 
         c = d["concept"]
+        if c.get("sections"):
+            return self.day_x(d, base, t, refs, diffs, reuse, notes)
         concept = {**base, "core": self.r(c["core"]),
                    "figures": [{"svg": self.svg(f, f"{w} concept"), "caption": self.r(f.get("caption"))}
                                for f in c.get("figures") or []],
@@ -201,6 +203,12 @@ class Model:
                    "scouting": [{"source": H.escape(source_label(ctx.db[x["ref"]])), "note": self.r(x["note"])}
                                 for x in sr["scouting"]]}
 
+        return {"day": d["day"], "base": base, "concept": concept, "strategy": strategy, "first": first,
+                "reading": reading, "style": "classic", **self.day_rest(d, base, t, refs, diffs, reuse, notes)}
+
+    def day_rest(self, d, base, t, refs, diffs, reuse, notes):
+        ctx = self.ctx
+        w = f"DAY {d['day']}"
         practice = [{**base, "q": self.question(ref, i, diffs[i - 1], f"{w} #{i} {ref}")}
                     for i, ref in enumerate(refs[1:], 2)]
         replay = [{"no2": two(x["no"]), "wrong": self.r(x["wrong"]), "stuck": self.r(x["stuck"]), "fix": self.r(x["fix"])}
@@ -237,9 +245,91 @@ class Model:
             "DUGOUT NOTE": "채점 기록과 나의 복기",
             "SIGN BOOK": "문항별 신호와 고른 방법 정리",
         }
-        return {"day": d["day"], "base": base, "concept": concept, "strategy": strategy, "first": first,
-                "reading": reading, "practice": practice, "replay": replay, "dugout": dugout,
+        return {"practice": practice, "replay": replay, "dugout": dugout,
                 "signbook": signbook, "qa": qa, "sols": sols, "corners": corners}
+
+    # ---- 교과서형 DAY (concept.sections): STS_ext.html의 XPAGE로 조판
+    def x_block(self, b, where):
+        if "p" in b:
+            return f'<p class="x-p">{self.r(b["p"])}</p>'
+        if "eq" in b:
+            return f'<div class="x-eq">{self.r("$" + b["eq"] + "$")}</div>'
+        if "table" in b:
+            tb = b["table"]
+            hl = set(tb.get("hl") or [])
+            head = "".join(f"<th>{self.r(h)}</th>" for h in tb["head"])
+            rows = "".join(('<tr class="hl">' if i in hl else "<tr>") + "".join(f"<td>{self.r(x)}</td>" for x in r) + "</tr>"
+                           for i, r in enumerate(tb["rows"]))
+            return f'<table class="x-tbl"><tr>{head}</tr>{rows}</table>'
+        if "figures" in b:  # 그림 두 개를 나란히
+            figs = "".join(f'<figure class="x-fig">{self.svg(f, where)}<figcaption>{self.r(f.get("caption"))}</figcaption></figure>'
+                           for f in b["figures"])
+            return f'<div class="x-figs">{figs}</div>'
+        if "figure" in b:
+            f = b["figure"]
+            fig = f'<figure class="x-fig">{self.svg(f, where)}<figcaption>{self.r(f.get("caption"))}</figcaption></figure>'
+            if b.get("beside"):
+                left = "".join(self.x_block(x, where) for x in b["beside"])
+                return f'<div class="x-split"><div style="display:flex;flex-direction:column;gap:10px">{left}</div>{fig}</div>'
+            return f'<div style="display:flex;justify-content:center">{fig}</div>'
+        raise ValueError(f"알 수 없는 블록 {list(b)}")
+
+    def day_x(self, d, base, t, refs, diffs, reuse, notes):
+        w = f"DAY {d['day']}"
+        c = d["concept"]
+        units, n = [], 0
+        for i, sec in enumerate(c["sections"]):
+            n += 1
+            h = f'<div class="x-h"><span class="n">{n}</span>{self.r(sec["title"])}</div>'
+            blocks = [self.x_block(b, f"{w} concept/sections/{i}") for b in sec["blocks"]]
+            units.append(h + (blocks[0] if blocks else ""))
+            units += blocks[1:]
+        if c.get("card"):
+            units.append(f'<div class="x-card"><div class="tag">{self.r(c["card"].get("title") or "개념 정리")}</div>'
+                         f'<div class="in">{self.r(c["card"]["body"])}</div></div>')
+        if c.get("banner"):
+            units.append(f'<div class="x-banner">{self.r(c["banner"])}</div>')
+        ex = c.get("example")
+        if ex:
+            units.append('<div class="x-h"><span class="n">+</span>확인 예제</div>'
+                         f'<div class="x-ex"><div class="lab">EXAMPLE<b>01</b></div><div class="t">{self.r(ex["q"])}</div></div>'
+                         '<div class="x-sol"><div class="bar"><div class="a">교과서적 해법</div><div class="b">실전 해법</div></div>'
+                         f'<div class="cols"><div>{self.r(ex["textbook"])}</div><div>{self.r(ex["skill"])}</div></div></div>')
+            if ex.get("note"):
+                units.append(f'<p class="x-p">{self.r(ex["note"])}</p>')
+        if c.get("map"):
+            n += 1
+            rows = "".join(f'<tr><td class="l">{self.r(x["k"])}</td><td class="l">{self.r(x["v"])}</td><td>{self.r(x.get("f") or "")}</td></tr>'
+                           for x in c["map"])
+            units.append(f'<div class="x-h"><span class="n">{n}</span>개념 지도 — 문제에서 이렇게 쓴다</div>'
+                         '<table class="x-tbl"><tr><th style="width:27%">문제에서 보이는 것</th><th style="width:40%">이렇게 판단한다</th>'
+                         f'<th>식으로 쓰면</th></tr>{rows}</table>')
+        concept = {**base, "units": units}
+
+        s = d["strategy"]
+        tools = [{"name": self.r(x["name"]), "body": self.r(x["body"]),
+                  "eq": self.r("$" + x["eq"] + "$") if x.get("eq") else None, "when": self.r(x.get("when"))}
+                 for x in s.get("tools") or []]
+        fig = s.get("figure")
+        strategy = {**base, "structure": self.r(s.get("structure") or f"{t['kice_intent']}"), "tools": tools,
+                    "figure": {"svg": self.svg(fig, f"{w} strategy"), "caption": self.r(fig.get("caption"))} if fig else None}
+
+        fp = d["first_pitch"]
+        first = {**base, "type": self.r(fp["type"]), "signal": self.r(fp["signal"]),
+                 "q": self.question(refs[0], 1, None, f"{w} #1 {refs[0]}")}
+        sr = d["sign_reading"]
+        pts = []
+        for i, x in enumerate(sr["points"], 1):
+            if isinstance(x, dict):
+                pts.append({"no2": two(i), "title": self.r(x.get("title")), "text": self.r(x["text"])})
+            else:
+                pts.append({"no2": two(i), "title": "", "text": self.r(x)})
+        reading = {**base, "hint": self.r(sr["hint"]), "analysis": self.r(sr["analysis"]), "points": pts,
+                   "verdict": self.r(sr["verdict"]),
+                   "scouting": [{"source": H.escape(source_label(self.ctx.db[x["ref"]])), "note": self.r(x["note"])}
+                                for x in sr["scouting"]]}
+        return {"day": d["day"], "base": base, "concept": concept, "strategy": strategy, "first": first,
+                "reading": reading, "style": "x", **self.day_rest(d, base, t, refs, diffs, reuse, notes)}
 
 
 # ---------------------------------------------------------------- 판면 측정
@@ -250,7 +340,7 @@ MEASURE_JS = """async (h) => {
   await document.fonts.ready;
   const why = [];
   B.querySelectorAll('.page').forEach(pg => {
-    pg.querySelectorAll('.fill,.pad,.sol-wrap,[style*="flex:1"]').forEach(el => { if (el.scrollHeight > el.clientHeight + 2) why.push('내용 넘침'); });
+    pg.querySelectorAll('.fill,.pad,.sol-wrap,.x-body,[style*="flex:1"]').forEach(el => { if (el.scrollHeight > el.clientHeight + 2) why.push('내용 넘침'); });
     const sc = pg.querySelector('.sol-cols'); if (sc && sc.scrollWidth > sc.clientWidth + 2) why.push('해설 넘침');
     const ws = pg.querySelector('.ws'); if (ws && ws.clientHeight < 160) why.push('풀이 공간 부족');
   });
@@ -271,7 +361,7 @@ class Measurer:
 
     def fonts_ok(self) -> bool:
         self.page.evaluate("async () => { await document.fonts.ready; }")
-        return self.page.evaluate(FONTS_LOADED_JS, ["Noto Sans KR", "Black Han Sans"])
+        return self.page.evaluate(FONTS_LOADED_JS, ["Noto Sans KR", "Noto Serif KR", "Black Han Sans"])
 
     def issues(self, page_html: str) -> list[str]:
         self.count += 1
@@ -296,12 +386,15 @@ def run(ctx: Context) -> Log:
     model.book = math.fill(model.book)
     model.days = math.fill(model.days)
     tpl = load(ctx.path("template"), katex_css(ctx))
+    ext_head, ext_pages = load_ext(ctx.path("ext_template"))
+    head = tpl.head.replace("</head>", ext_head + "\n</head>", 1)
+    pages_tpl = {**tpl.pages, **ext_pages}
     B = model.book
 
     def render(kind, P, pg="000"):
-        return tpl.pages[kind].render(book=B, pg=pg, P=P)
+        return pages_tpl[kind].render(book=B, pg=pg, P=P)
 
-    meas = Measurer(tpl.head, B["week2"])
+    meas = Measurer(head, B["week2"])
     try:
         if not meas.fonts_ok():
             log.warn("글꼴", "웹 글꼴(Noto Sans KR·Black Han Sans)을 불러오지 못해 대체 글꼴로 판면을 쟀습니다. "
@@ -341,17 +434,26 @@ def run(ctx: Context) -> Log:
 
         for d in model.days:
             w = f"DAY {d['day']}"
-            st = d["strategy"]
-            P = {**st}
-            if overflow(meas.issues(render("STRATEGY", P))):
-                P = {**st, "tools": st["tools_compact"]}
-                log.warn(w, "STRATEGY가 넘쳐 실전 개념의 '떠올릴 때' 줄을 뺐습니다")
-            fits_single("CONCEPT", d["concept"], w)
-            fits_single("STRATEGY", P, w)
-            fits_single("FIRST_PITCH", d["first"], w)
-            fits_single("SIGN_READING", d["reading"], w)
-            seq += [("CONCEPT", d["concept"], (d["day"], "THE SIGN")), ("STRATEGY", P, None),
-                    ("FIRST_PITCH", d["first"], (d["day"], "FIRST PITCH")), ("SIGN_READING", d["reading"], None)]
+            if d["style"] == "x":
+                cps = flow("CONCEPT_X", d["base"], "blocks", d["concept"]["units"], f"{w} 개념")
+                seq += [("CONCEPT_X", P, (d["day"], "THE SIGN") if i == 0 else None) for i, P in enumerate(cps)]
+                fits_single("STRATEGY_X", d["strategy"], w)
+                fits_single("FIRST_PITCH", d["first"], w)
+                fits_single("SIGN_READING_X", d["reading"], w)
+                seq += [("STRATEGY_X", d["strategy"], None), ("FIRST_PITCH", d["first"], (d["day"], "FIRST PITCH")),
+                        ("SIGN_READING_X", d["reading"], None)]
+            else:
+                st = d["strategy"]
+                P = {**st}
+                if overflow(meas.issues(render("STRATEGY", P))):
+                    P = {**st, "tools": st["tools_compact"]}
+                    log.warn(w, "STRATEGY가 넘쳐 실전 개념의 '떠올릴 때' 줄을 뺐습니다")
+                fits_single("CONCEPT", d["concept"], w)
+                fits_single("STRATEGY", P, w)
+                fits_single("FIRST_PITCH", d["first"], w)
+                fits_single("SIGN_READING", d["reading"], w)
+                seq += [("CONCEPT", d["concept"], (d["day"], "THE SIGN")), ("STRATEGY", P, None),
+                        ("FIRST_PITCH", d["first"], (d["day"], "FIRST PITCH")), ("SIGN_READING", d["reading"], None)]
             for i, pr in enumerate(d["practice"]):
                 fits_single("PRACTICE", pr, f"{w} #{i + 2}")
                 seq.append(("PRACTICE", pr, (d["day"], "PRACTICE") if i == 0 else None))
@@ -378,13 +480,13 @@ def run(ctx: Context) -> Log:
         out_pages, index = [], []
         for i, (kind, P, _) in enumerate(seq, 1):
             out_pages.append(render(kind, P, f"{i:03d}"))
-            index.append({"no": i, "kind": kind, "day": P.get("day2") if isinstance(P, dict) else None})
+            index.append({"no": i, "kind": kind.removesuffix("_X"), "day": P.get("day2") if isinstance(P, dict) else None})
         log.stats["measures"] = meas.count
     finally:
         meas.close()
 
     doc = ("<!DOCTYPE html>\n<!-- STEAL THE SIGN : KICE — build.py가 STS_template.html로 생성 -->\n"
-           '<html lang="ko">\n' + tpl.head.replace(WEEK_TOKEN, B["week2"]) + "\n<body>\n<div class=\"book\">\n\n"
+           '<html lang="ko">\n' + head.replace(WEEK_TOKEN, B["week2"]) + "\n<body>\n<div class=\"book\">\n\n"
            + "\n".join(out_pages) + "\n</div>\n</body>\n</html>\n")
     out = ctx.out_dir / "book.html"
     out.parent.mkdir(parents=True, exist_ok=True)

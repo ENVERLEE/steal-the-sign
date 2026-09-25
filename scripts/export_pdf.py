@@ -22,7 +22,7 @@ def run(ctx: Context) -> Log:
         route_network(page, allow_fonts=True)
         page.goto(src.resolve().as_uri(), wait_until="load")
         page.evaluate("async () => { await document.fonts.ready; }")
-        fonts = page.evaluate(FONTS_LOADED_JS, ["Noto Sans KR", "Black Han Sans"])
+        fonts = page.evaluate(FONTS_LOADED_JS, ["Noto Sans KR", "Noto Serif KR", "Black Han Sans"])
         n_html = page.evaluate("() => document.querySelectorAll('.page').length")
         page.emulate_media(media="print")
         page.pdf(path=str(dst), prefer_css_page_size=True, print_background=True,

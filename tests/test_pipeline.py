@@ -82,6 +82,15 @@ class TestMath(unittest.TestCase):
         self.assertIn("standard", res["errors"])
         self.assertIn("*", run_verify("while True:\n    pass\n", ["skill"], 2)["errors"])
 
+    def test_rich_markup(self):
+        # **굵게**·__밑줄__은 수식을 사이에 두어도 태그가 되고, 수식 뒤 조사는 수식과 한 덩어리로 묶인다
+        from scripts.tex import Math
+        h = Math().rich("가 **굵게 $x$에** 그리고 __$y$가 축__")
+        self.assertIn("<b>굵게 <span class=\"nw\">", h)
+        self.assertIn("에</span></b>", h)
+        self.assertIn("<u><span class=\"nw\">", h)
+        self.assertNotIn("**", h)
+
     def test_split_math(self):
         parts = split_math(r"넓이 $S=\int_0^t f\,dx+(\text{$t$에 따라})$ 끝 $$x^2$$ \$5")
         self.assertEqual([k for k, _ in parts], ["text", "inline", "text", "display", "text"])
@@ -308,6 +317,10 @@ class TestBuild(unittest.TestCase):
             html = (sb.out / "book.html").read_text(encoding="utf-8")
             self.assertNotIn("[[", html.split("<body>", 1)[1])
             self.assertIn('data-page="BACK_COVER"', html)
+            # DAY 1은 기존형, DAY 2는 교과서형(STS_ext.html) — 두 형식이 한 책에 함께 조판된다
+            self.assertIn('class="x-body"', html)
+            self.assertIn("Noto+Serif+KR", html)
+            self.assertIn('<div class="box-label">비유로 이해하기</div>', html)
             pages = read_json(sb.out / "pages.json")
             self.assertEqual(pages[0]["kind"], "COVER")
             self.assertTrue((sb.out / "report.md").exists())

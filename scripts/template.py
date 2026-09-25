@@ -209,3 +209,21 @@ def load(path, katex_css: str) -> PageTemplates:
     if need - set(pages):
         raise TemplateError(f"템플릿에 없는 페이지: {sorted(need - set(pages))}")
     return PageTemplates(head=head, pages=pages, sources=sources)
+
+
+XPAGE_RE = re.compile(r"<!-- XPAGE:START (\w+) -->\n?(.*?)<!-- XPAGE:END \1 -->", re.S)
+HEAD_RE = re.compile(r"<!-- HEAD:START -->\n?(.*?)<!-- HEAD:END -->", re.S)
+
+
+def load_ext(path) -> tuple[str, dict[str, Template]]:
+    """STS_ext.html: head 끝에 덧붙일 블록(웹 글꼴·확장 CSS)과 교과서형 페이지(Jinja)"""
+    raw = path.read_text(encoding="utf-8")
+    m = HEAD_RE.search(raw)
+    if not m:
+        raise TemplateError("확장 템플릿에 HEAD 블록이 없음")
+    env = Environment(undefined=StrictUndefined, autoescape=False, keep_trailing_newline=True)
+    pages = {pm.group(1): env.from_string(pm.group(2)) for pm in XPAGE_RE.finditer(raw)}
+    need = {"CONCEPT_X", "STRATEGY_X", "SIGN_READING_X"}
+    if need - set(pages):
+        raise TemplateError(f"확장 템플릿에 없는 페이지: {sorted(need - set(pages))}")
+    return m.group(1), pages

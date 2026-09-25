@@ -54,10 +54,25 @@ class Math:
         """텍스트 + $LaTeX$ → HTML(수식은 자리표시)"""
         if text is None:
             return ""
-        out = []
-        for kind, part in split_math(str(text)):
-            out.append(_plain(part) if kind == "text" else self._ph(part, kind == "display"))
-        return "".join(out)
+        # **굵게**·__밑줄__: 수식을 사이에 둘 수 있으므로 자르기 전에 표시 문자로 바꿔 두었다가 태그로 되돌린다
+        text = EMPH_U.sub("\x03\\1\x04", EMPH_B.sub("\x01\\1\x02", str(text)))
+        out, parts = [], split_math(text)
+        glue = ""
+        for i, (kind, part) in enumerate(parts):
+            if kind == "text":
+                part = part[len(glue):]
+                glue = ""
+                out.append(_plain(part))
+                continue
+            ph = self._ph(part, kind == "display")
+            nxt = parts[i + 1] if i + 1 < len(parts) else None
+            m = HANGUL_HEAD.match(nxt[1]) if kind == "inline" and nxt and nxt[0] == "text" else None
+            if m:  # 수식 바로 뒤의 조사(예: $x$에)가 다음 줄로 떨어지지 않게 묶는다
+                glue = m.group(0)
+                out.append(f'<span class="nw">{ph}{_plain(glue)}</span>')
+            else:
+                out.append(ph)
+        return "".join(out).translate(EMPH_TAGS)
 
     def render(self, ctx: Context, log: Log) -> None:
         cache_path = ctx.out_dir / ".cache" / "tex.json"
@@ -142,6 +157,12 @@ def split_math(text: str) -> list[tuple[str, str]]:
     if buf:
         parts.append(("text", "".join(buf)))
     return parts
+
+
+HANGUL_HEAD = re.compile(r"[가-힣]+")
+EMPH_B = re.compile(r"\*\*(.+?)\*\*", re.S)
+EMPH_U = re.compile(r"__(.+?)__", re.S)
+EMPH_TAGS = str.maketrans({"\x01": "<b>", "\x02": "</b>", "\x03": "<u>", "\x04": "</u>"})
 
 
 def _plain(s: str) -> str:

@@ -53,6 +53,7 @@ data/
   themes.json          교재 테마 체계 28개와 기출 배정 (확정)
   strategy_notes.json  실전 개념 (S01~S26, S12 없음, 수학Ⅰ·Ⅱ만)
   STS_template.html    판면 템플릿 (PAGE/REPEAT/OPTION 마커, [[슬롯]], data-slot 가짜 번호) — 수정하지 않는다
+  STS_ext.html         확장 판면: head에 덧붙일 CSS·웹 글꼴(Noto Serif KR) + 교과서형 CONCEPT·STRATEGY·SIGN_READING 페이지(Jinja)
   config.json          설정 (고난도 번호, 테마 구성, 창작 검문 기준, 금지어, 경로)
 work/
   book.json            AI가 쓰는 교재 한 권(WEEK) 구성
@@ -80,8 +81,8 @@ out/                   결과물 (git 제외)
 | `verify_answers.py` | 기출: DB 정답 = 풀이 정답 = 정답 선지 값. 새 숏컷(`notes[ref].verify`)의 `skill()` 검산. 창작: `skill`·`standard`·`unique` 재실행 |
 | `render_figs.py` | 그림 명세 → SVG (sympy·numpy로 실제 함수를 계산해 그림). `out/figs/`에 캐시 |
 | `tex.py` | KaTeX 일괄 조판 (Playwright에 `vendor/katex` 로드, 결과 캐시 `out/.cache/tex.json`). 글꼴은 woff2 base64로 CSS에 내장 |
-| `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 매핑이 빠지면 오류(템플릿이 바뀌면 `SLOTS`·`REPEATS`·`OPTIONS` 수정) |
-| `build.py` | 모델 구성 → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔(해설은 한 장에 `config.json` `solution.per_page_max`문항까지) → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
+| `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 매핑이 빠지면 오류(템플릿이 바뀌면 `SLOTS`·`REPEATS`·`OPTIONS` 수정). `load_ext`: STS_ext.html의 HEAD·XPAGE 블록 |
+| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html 페이지, 개념 쪽은 블록 단위로 재며 여러 장으로 흐름) → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔(해설은 한 장에 `config.json` `solution.per_page_max`문항까지) → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
 | `export_pdf.py` | 결과 HTML을 템플릿 인쇄 CSS 그대로 Chromium으로 인쇄 → `out/book.pdf`. 쪽 수 = HTML `.page` 수, A4 크기 확인 |
 | `check_layout.py` | 결과 HTML을 열어 페이지마다 794×1123 크기, 넘침, `[[`·`]]`, 가짜 번호, KaTeX 오류, 수식 기호 노출(`\frac`·`$`), 순서·쪽 번호 연속 검사 |
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 교재 구성·비율·행동 영역·난도, 문제은행 현황, 판면) |
@@ -203,6 +204,10 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
     "notes"?: {"<ref>": {"tip"?, "error"?, "shortcut"?, "verify"?}}
   }]}
 ```
+- **concept는 두 형식**: 기존형(`core`·`analogy`·`analogy_limit`·`map[k,v]`) 또는 **교과서형**(현재 교재의 기본).
+  교과서형 = `sections[{title, blocks}]`(블록: `{"p": 문단}`·`{"eq": $ 없는 LaTeX}`·`{"table": {head, rows, hl}}`·`{"figure": 명세, "beside": [p·eq 블록]}`·`{"figures": [명세, 명세]}`) + `card{title?, body}`(개념 정리) + `banner`(한 줄 요약) + `example{q, textbook, skill, note?}`(확인 예제: 교과서적 해법 vs 실전 해법) + `map[{k, v, f}]`(문제에서 보이는 것 / 이렇게 판단한다 / 식으로 쓰면). 비유는 쓰지 않는다.
+  교과서형 DAY는 `strategy.tools[{name, body, eq?, when?}]`(eq는 $ 없는 LaTeX), `sign_reading.points[{title, text}]`로 쓰고, 문항 분석·총평은 줄글 문단.
+- 텍스트 강조: `**굵게**`, `__밑줄(형광)__`. 수식 바로 뒤의 조사($x$에)는 build가 수식과 한 덩어리로 묶는다.
 - 문항 번호는 DAY마다 예제 1, 연습 2부터. `replay.no`·`sign_book.rows.no`는 이 번호.
 - **build가 자동으로 채우는 것**: 목차, 쪽 번호, 정답표, DUGOUT NOTE, STRATEGY 출제 구조(비우면 `kice_intent`+`signals`)·실전 개념 행(`concept_ids` → 이름·내용·쓰는 때), SIGN BOOK 행(없는 번호는 `first_judgment`·개념 이름), 해설지(숏컷 = 조건 번역 + 풀이 1, 정석 = 풀이 2, 실전 개념 = 개념 이름 — skill_point, 오답 첨삭 = supplement). `notes`로 덮어쓴다(`shortcut`은 `verify` 필수).
 - 샘플: `samples/book.sample.json` (M1-01, 2 DAY, 10문항).
@@ -236,7 +241,7 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
 - 고난도 번호(수학Ⅰ·Ⅱ 14·15·21·22, 확통 28·30, `config.json`)는 해설 분량·강조를 우선한다.
 
 ## 판면 규칙
-- 템플릿의 head(글꼴 링크·CSS·스크립트)는 그대로 복사한다. CSS 수정 금지. 결과물 body에는 `data-template` 속성이 없다(화면 점검 켜짐).
+- 템플릿의 head(글꼴 링크·CSS·스크립트)는 그대로 복사한다. STS_template.html의 CSS는 수정하지 않는다. 추가 스타일(교과서형 페이지, 본문 명조 Noto Serif KR, 낱말 단위 줄바꿈 `word-break: keep-all`)은 `data/STS_ext.html`의 HEAD 블록에만 두고 build가 head 끝에 덧붙인다. 해설지(11px)는 고딕 그대로. 결과물 body에는 `data-template` 속성이 없다(화면 점검 켜짐).
 - 한 페이지 = A4 794×1123px. 목차(5 DAY까지)·REPLAY(3개까지)·정답표·해설은 build가 재면서 나눈다. 그 밖의 페이지(CONCEPT·STRATEGY·FIRST_PITCH·SIGN_READING·PRACTICE·SIGN_BOOK)가 넘치면 **글자를 줄이지 말고 내용을 줄인다**(보고서 오류로 온다). STRATEGY는 넘치면 먼저 '떠올릴 때' 줄을 자동으로 뺀다.
 - 책 순서: COVER → CONTENTS → [DAY: CONCEPT → STRATEGY → FIRST_PITCH → SIGN_READING → PRACTICE×N → REPLAY → DUGOUT_NOTE → SIGN_BOOK] → QUICK_ANSWER → SOLUTION×N → BACK_COVER. 쪽 번호는 표지 001부터 3자리.
 

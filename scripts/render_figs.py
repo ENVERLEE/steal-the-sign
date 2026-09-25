@@ -377,6 +377,10 @@ def collect(ctx: Context) -> list[tuple[str, dict]]:
     for i, d in enumerate(book.get("days") or []):
         for j, f in enumerate((d.get("concept") or {}).get("figures") or []):
             out.append((f"DAY {d.get('day')} concept/figures/{j}", f))
+        for j, sec in enumerate((d.get("concept") or {}).get("sections") or []):
+            for k, b in enumerate(sec.get("blocks") or []):
+                for f in ([b["figure"]] if b.get("figure") else []) + (b.get("figures") or []):
+                    out.append((f"DAY {d.get('day')} concept/sections/{j}/blocks/{k}", f))
         if (d.get("strategy") or {}).get("figure"):
             out.append((f"DAY {d.get('day')} strategy/figure", d["strategy"]["figure"]))
         refs = [(d.get("first_pitch") or {}).get("ref")] + [p.get("ref") for p in d.get("practice") or []]
