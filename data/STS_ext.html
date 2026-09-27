@@ -1,0 +1,134 @@
+<!--
+ STEAL THE SIGN : KICE — 교과서형 확장 판면 (build.py가 읽는다)
+ STS_template.html은 그대로 두고, 여기의 HEAD 블록을 결과물 head 끝에 덧붙이고 XPAGE 블록으로
+ 새 형식 DAY(concept.sections)의 CONCEPT·STRATEGY·SIGN_READING 페이지를 만든다.
+ XPAGE는 Jinja 템플릿이다(P = 페이지 데이터, book, pg).
+-->
+<!-- HEAD:START -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* 교과서형 확장 스타일 (시안) */
+.x-body{flex:1;min-height:0;padding:26px 48px 20px;overflow:hidden;display:flex;flex-direction:column;gap:14px}
+.x-h{display:flex;align-items:baseline;gap:10px;margin:4px 0 0;padding-bottom:7px;border-bottom:2px solid var(--ink);font-size:18px;font-weight:900;line-height:1.35}
+.x-h .n{font-family:var(--display);font-size:22px;min-width:14px;color:var(--red);-webkit-text-stroke:0.6px var(--ink)}
+.x-p{margin:0;font-size:15px;line-height:1.85;font-weight:500;text-wrap:pretty;text-indent:0.5em}
+.x-p b{font-weight:800}
+.page u{text-decoration:none;box-shadow:inset 0 -7px 0 rgba(240,80,58,0.22)}
+.x-eq{text-align:center;font-size:16px;margin:2px 0}
+.x-eq .katex{font-size:1.1em}
+.x-split{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
+.x-fig{margin:0;border:1px solid var(--ink);background:#fff;padding:8px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.x-fig svg{width:100%;height:auto;max-height:210px}
+.x-fig figcaption{font-size:12px;line-height:1.45;text-align:center;color:#333}
+.x-tbl{width:100%;border-collapse:collapse;background:#fff;border:1.5px solid var(--ink);font-size:14px}
+.x-tbl th{background:var(--ink);color:var(--paper);font-weight:800;font-size:12.5px;padding:6px 10px;text-align:center}
+.x-tbl td{padding:7px 10px;border-top:1px solid rgba(17,17,17,0.2);border-left:1px solid rgba(17,17,17,0.12);line-height:1.55;text-align:center;font-weight:500}
+.x-tbl td:first-child{border-left:none}
+.x-tbl td.l{text-align:left}
+.x-tbl tr.hl td{background:rgba(240,80,58,0.08)}
+.x-card{border:2px solid var(--ink);background:#fff;position:relative;margin-top:10px;box-shadow:3px 3px 0 var(--ink)}
+.x-card .tag{position:absolute;top:-12px;left:14px;background:var(--red);color:var(--ink);border:1.5px solid var(--ink);font-size:12.5px;font-weight:900;padding:2px 10px}
+.x-card .tag.ink{background:var(--ink);color:var(--paper)}
+.x-card .in{padding:20px 18px 12px;font-size:14.5px;line-height:1.8;font-weight:500}
+.x-banner{background:rgba(240,80,58,0.13);border:1.5px solid var(--red);border-radius:14px;padding:10px 16px;text-align:center;font-size:15px;font-weight:800;color:var(--red-text);line-height:1.6}
+.x-ex{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:start}
+.x-ex .lab{font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:0.12em;color:var(--red-text)}
+.x-ex .lab b{display:block;font-family:var(--display);font-size:26px;letter-spacing:0;color:var(--red);-webkit-text-stroke:0.6px var(--ink);font-weight:400}
+.x-ex .t{font-size:15px;line-height:1.8;font-weight:500;border-top:1.5px solid var(--ink);padding-top:6px}
+.x-sol{border:1.5px solid var(--ink);background:#fff}
+.x-sol .bar{display:flex;border-bottom:1.5px solid var(--ink)}
+.x-sol .bar div{font-size:12.5px;font-weight:900;padding:4px 12px}
+.x-sol .bar .a{background:var(--ink);color:var(--paper)}
+.x-sol .bar .b{background:var(--red);color:var(--ink);border-left:1.5px solid var(--ink)}
+.x-sol .cols{display:grid;grid-template-columns:1fr 1fr}
+.x-sol .cols>div{padding:10px 14px;font-size:14px;line-height:1.75;font-weight:500}
+.x-sol .cols>div+div{border-left:1.5px dashed var(--ink);background:rgba(240,80,58,0.05)}
+.x-tool{border:2px solid var(--ink);background:#fff;display:grid;grid-template-columns:132px 1fr;box-shadow:3px 3px 0 var(--ink)}
+.x-tool .nm{background:var(--ink);color:var(--paper);padding:12px 12px;font-size:14.5px;font-weight:900;line-height:1.4}
+.x-tool .nm small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;color:var(--red);margin-bottom:4px;font-weight:800}
+.x-tool .bd{padding:10px 16px 10px;font-size:14.5px;line-height:1.75;font-weight:500}
+.x-tool .bd .eq{text-align:center;margin:4px 0}
+.x-tool .bd .when{margin-top:4px;padding-top:5px;border-top:1px dashed rgba(17,17,17,0.35);font-size:13px;color:#333}
+.x-tool .bd .when b{color:var(--red-text)}
+.x-pt{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px 0;border-top:1px solid rgba(17,17,17,0.18)}
+.x-pt:first-child{border-top:none}
+.x-pt .n{font-family:var(--mono);font-weight:800;font-size:15px;color:var(--red-text)}
+.x-pt .t{font-size:14.5px;line-height:1.75;font-weight:500}
+.x-pt .t b{display:block;font-size:15px}
+/* 줄바꿈: 낱말 중간에서 끊지 않는다. 수식과 뒤에 붙는 조사는 한 덩어리 */
+.page{word-break:keep-all;overflow-wrap:break-word;line-break:strict}
+.nw{white-space:nowrap}
+.x-p,.x-tbl td,.x-card .in,.x-tool .bd,.x-pt .t,.x-ex .t,.x-sol .cols>div,.x-eq,.box-body,.q-text,.cond,.choices>div,.row>div:not(.k),.step .t,.tbl td:not(.no){font-family:'Noto Serif KR',serif;font-weight:500}
+.x-p b,.x-pt .t b,.x-card .in b,.box-body b,.q-text b,.step .t b,.row b,.tbl td b,.x-tool .bd b,.x-tbl td b{font-family:'Noto Sans KR',sans-serif;font-weight:800}
+
+.x-fig.wide svg{max-height:230px}
+.x-pts{background:#fff;border:1.5px solid var(--ink);padding:4px 16px}
+.x-scout{margin-top:6px}
+.x-sec-gap{height:2px}
+.x-figs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.x-figs .x-fig svg{max-height:200px}
+</style>
+<!-- HEAD:END -->
+
+<!-- XPAGE:START CONCEPT_X -->
+<div class="page" data-page="CONCEPT">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">{{ P.day2 }}</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">THE SIGN</span>개념</div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body">
+    {% for b in P.blocks %}{{ b }}
+    {% endfor %}
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="pg"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+</div>
+<!-- XPAGE:END CONCEPT_X -->
+
+<!-- XPAGE:START STRATEGY_X -->
+<div class="page" data-page="STRATEGY">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">{{ P.day2 }}</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">THE SIGN</span>출제 구조와 실전 개념</div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body">
+    <div class="x-h"><span class="n">■</span>출제 구조</div>
+    <p class="x-p">{{ P.structure }}</p>
+    {% if P.figure %}<figure class="x-fig wide">{{ P.figure.svg }}<figcaption>{{ P.figure.caption }}</figcaption></figure>{% endif %}
+    <div class="x-h"><span class="n">■</span>실전 개념</div>
+    {% for t in P.tools %}<div class="x-tool"><div class="nm"><small>TOOL {{ loop.index }}</small>{{ t.name }}</div><div class="bd">{{ t.body }}{% if t.eq %}<div class="eq">{{ t.eq }}</div>{% endif %}{% if t.when %}<div class="when"><b>이런 문제에서</b> {{ t.when }}</div>{% endif %}</div></div>
+    {% endfor %}
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="nav"><div class="tri"></div><div>FIRST PITCH</div></div>
+  </div>
+</div>
+<!-- XPAGE:END STRATEGY_X -->
+
+<!-- XPAGE:START SIGN_READING_X -->
+<div class="page inkhead" data-page="SIGN_READING">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">{{ P.day2 }}</span></div></div>
+    <div class="hd-title"><div class="k"><span class="en">SIGN READING</span>예제 분석</div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body">
+    <div class="dbox red"><div class="box-label">풀이 힌트</div><div class="box-body">{{ P.hint }}</div></div>
+    <div class="x-h"><span class="n">■</span>문항 분석</div>
+    <p class="x-p">{{ P.analysis }}</p>
+    <div class="x-pts">{% for pt in P.points %}<div class="x-pt"><div class="n">{{ pt.no2 }}</div><div class="t">{% if pt.title %}<b>{{ pt.title }}</b>{% endif %}{{ pt.text }}</div></div>{% endfor %}</div>
+    <div class="x-card"><div class="tag ink">총평</div><div class="in">{{ P.verdict }}</div></div>
+    <div class="dbox dim x-scout"><div class="box-label"><span class="en">SCOUTING REPORT</span>유사 기출</div>
+      <div class="steps" style="margin-top:44px">{% for sc in P.scouting %}<div class="step scout"><div class="n">{{ sc.source }}</div><div class="t">{{ sc.note }}</div></div>{% endfor %}</div></div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="pg"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+</div>
+<!-- XPAGE:END SIGN_READING_X -->

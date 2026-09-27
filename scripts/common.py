@@ -258,14 +258,40 @@ def launch_chromium(playwright):
 FONT_HOSTS = ("https://fonts.googleapis.com/", "https://fonts.gstatic.com/")
 
 
+_FONT_CACHE: dict[str, tuple[int, str, bytes]] = {}
+
+# 웹 글꼴이 실제로 불러와지는지. document.fonts.check는 글꼴 선언이 없어도 true를 돌려주므로 쓰지 않고,
+# 한글 한 글자를 load해서 불러온 글꼴 면이 있는지 본다.
+FONTS_LOADED_JS = """async (names) => { for (const n of names) {
+  const faces = await document.fonts.load(`16px "${n}"`, '가A');
+  if (!faces.length) return false; } return true; }"""
+
+
+def _fetch_font(url: str, headers: dict) -> tuple[int, str, bytes]:
+    """글꼴 요청은 파이썬이 받아 넘긴다. 파이썬은 시스템 인증서 설정(SSL_CERT_FILE 등)을 따르므로
+    사내 프록시처럼 브라우저가 인증서를 믿지 못하는 환경에서도 글꼴을 불러올 수 있다."""
+    if url not in _FONT_CACHE:
+        import urllib.request
+        ua = headers.get("user-agent") or "Mozilla/5.0"
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": ua}), timeout=30) as r:
+            _FONT_CACHE[url] = (r.status, r.headers.get("Content-Type") or "application/octet-stream", r.read())
+    return _FONT_CACHE[url]
+
+
 def route_network(page, allow_fonts: bool = True) -> None:
     """외부 요청 차단. 판면 측정을 위해 템플릿의 웹 글꼴(Google Fonts)만 허용한다(스크립트 CDN 금지)."""
     def handle(route):
         url = route.request.url
-        if allow_fonts and url.startswith(FONT_HOSTS):
-            route.continue_()
-        else:
+        if not (allow_fonts and url.startswith(FONT_HOSTS)):
             route.abort()
+            return
+        try:
+            status, ctype, body = _fetch_font(url, route.request.headers)
+        except Exception:
+            route.abort()
+            return
+        route.fulfill(status=status, body=body,
+                      headers={"Content-Type": ctype, "Access-Control-Allow-Origin": "*"})
     page.route(re.compile(r"^https?://"), handle)
 
 

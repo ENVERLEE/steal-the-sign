@@ -3,10 +3,10 @@
   python run.py pages --pdf 교재.pdf --id KB1   교재 PDF → 쪽 이미지·텍스트 (AI 판독용)
   python run.py source       교재 판독 검사 + 큐레이션 초안: validate → source → curate → report
   python run.py created      창작 문제은행 검문: validate → created → report
-  python run.py              전체: validate → created → source → check → verify → figs → build → layout → report
+  python run.py              전체: validate → created → source → check → verify → figs → build → layout → pdf → report
   python run.py check        검사만: validate → created → source → check → verify → report
-  python run.py build        조판만: figs → build → layout → report
-  python run.py <단계>       validate | curate | check | verify | figs | layout | report 중 하나
+  python run.py build        조판만: figs → build → layout → pdf → report
+  python run.py <단계>       validate | curate | check | verify | figs | layout | pdf | report 중 하나
 
   옵션: --book PATH  --created DIR  --source DIR  --out DIR
         --recheck(창작·교재 전체 재검사)  --force(검사 오류가 있어도 조판)
@@ -31,12 +31,13 @@ STAGES = {
     "figs": ("render_figs", "render_figs"),
     "build": ("build", "build"),
     "layout": ("check_layout", "check_layout"),
+    "pdf": ("export_pdf", "export_pdf"),
     "report": ("report", "report"),
 }
 PLANS = {
-    "all": ["validate", "created", "source", "check", "verify", "figs", "build", "layout", "report"],
+    "all": ["validate", "created", "source", "check", "verify", "figs", "build", "layout", "pdf", "report"],
     "check": ["validate", "created", "source", "check", "verify", "report"],
-    "build": ["figs", "build", "layout", "report"],
+    "build": ["figs", "build", "layout", "pdf", "report"],
     "created": ["validate", "created", "report"],
     "source": ["validate", "source", "curate", "report"],
     "pages": ["pages"],
@@ -84,7 +85,7 @@ def main(argv=None) -> int:
     failed_gate = False
     any_error = False
     for key in plan:
-        if key in ("figs", "build", "layout") and failed_gate and not args.force:
+        if key in ("figs", "build", "layout", "pdf") and failed_gate and not args.force:
             print(f"[--] {key}: 검사 오류가 있어 건너뜀 (--force로 강제)")
             continue
         log = run_stage(key, ctx, args)

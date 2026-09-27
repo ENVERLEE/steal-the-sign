@@ -4,7 +4,7 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 
 from scripts import check_source
-from scripts.check_created import banned_hits, body_hash
+from scripts.check_created import CTRL_RE, LITERAL_NL_MSG, LITERAL_NL_RE, banned_hits, body_hash, ctrl_msg
 from scripts.common import Context, Log, is_created_id, is_textbook_id
 from scripts.schemas import validate
 
@@ -14,7 +14,7 @@ SKIP_KEYS = {"ref", "theme", "verify", "concept_ids", "difficulty"}
 def iter_texts(node, where=""):
     """book.json 안의 AI 작성 텍스트 (그림 명세는 caption·라벨만)"""
     if isinstance(node, dict):
-        is_fig = any(k in node for k in ("fns", "fn", "points", "polygons", "param", "shade"))
+        is_fig = "x" in node and "y" in node and any(k in node for k in ("fns", "fn", "points", "polygons", "param", "shade"))
         for k, v in node.items():
             if k in SKIP_KEYS:
                 continue
@@ -26,6 +26,28 @@ def iter_texts(node, where=""):
             yield from iter_texts(v, f"{where}/{i}")
     elif isinstance(node, str):
         yield where, node
+
+
+def writing_warnings(d: dict) -> list[str]:
+    """WRITING.md(교과서형) 분량 규격 — 어기면 경고"""
+    c, st, sr = d["concept"], d["strategy"], d["sign_reading"]
+    if not c.get("sections"):
+        return ["기존형 개념(비유) — 새 교재는 교과서형(concept.sections)으로 쓴다 (WRITING.md)"]
+    out = []
+    if len(c["sections"]) != 2:
+        out.append(f"개념 소제목 {len(c['sections'])}개 (규격 2개)")
+    for k, name in (("card", "개념 정리"), ("banner", "한 줄 요약"), ("example", "확인 예제")):
+        if not c.get(k):
+            out.append(f"{name}({k}) 없음")
+    if len(c.get("map") or []) != 5 or any(not x.get("f") for x in c.get("map") or []):
+        out.append("개념 지도는 5행, 행마다 '식으로 쓰면'(f)까지")
+    tools = st.get("tools") or []
+    if len(tools) != 3 or any(not (t.get("eq") and t.get("when")) for t in tools):
+        out.append("실전 개념은 3개, 개념마다 eq·when까지")
+    pts = sr["points"]
+    if len(pts) != 3 or any(not isinstance(x, dict) or not x.get("title") for x in pts):
+        out.append("문항 분석 요점은 3개, {title, text}로")
+    return out
 
 
 def day_refs(d: dict) -> list[str]:
@@ -59,6 +81,10 @@ def run(ctx: Context) -> Log:
             log.error(f"DAY {d['day']}", f"테마 {th}의 DAY가 연속되지 않음")
         seen_theme_end[th] = d["day"]
         prev = th
+
+    for d in days:
+        for msg in writing_warnings(d):
+            log.warn(f"DAY {d['day']}", msg)
 
     uses = Counter()
     theme_stats = defaultdict(lambda: {"days": 0, "problems": 0, "past": 0, "created": 0, "textbook": 0})
@@ -218,6 +244,10 @@ def run(ctx: Context) -> Log:
     for where, text in iter_texts(book):
         if text.count("$") % 2:
             log.error(where, "$ 짝이 맞지 않음")
+        if LITERAL_NL_RE.search(text):
+            log.error(where, LITERAL_NL_MSG)
+        if CTRL_RE.search(text):
+            log.error(where, ctrl_msg(text))
         hits = banned_hits(text, cfg)
         if hits:
             log.error(where, f"야구 용어 {hits} (코너 이름 외 금지)")

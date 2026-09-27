@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 
-from scripts.check_created import banned_hits
+from scripts.check_created import CTRL_RE, LITERAL_NL_MSG, LITERAL_NL_RE, banned_hits, ctrl_msg
 from scripts.common import Context, Log, content_hash, has_choices, now, read_json, write_json
 from scripts.mathval import run_verify, same_value
 from scripts.schemas import validate
@@ -24,7 +24,9 @@ def ai_texts(rec: dict):
     for f in ("guide", "supplement", "skill_point"):
         yield f"solution/{f}", sol.get(f) or ""
     for i, s in enumerate(sol.get("solutions") or []):
+        yield f"solution/solutions/{i}/title", s.get("title", "")
         for j, st in enumerate(s.get("steps") or []):
+            yield f"solution/solutions/{i}/steps/{j}/label", st.get("label", "")
             yield f"solution/solutions/{i}/steps/{j}", st.get("body", "")
 
 
@@ -86,6 +88,10 @@ def check_problem(rec: dict, book: dict, pages: int | None, ctx: Context) -> tup
     for where, text in all_texts(rec):
         if text.count("$") % 2:
             errs.append(f"{where}: $ 짝이 맞지 않음")
+        if LITERAL_NL_RE.search(text):
+            errs.append(f"{where}: {LITERAL_NL_MSG}")
+        if CTRL_RE.search(text):
+            errs.append(f"{where}: {ctrl_msg(text)}")
     for where, text in ai_texts(rec):
         hits = banned_hits(text, ctx.config)
         if hits:
