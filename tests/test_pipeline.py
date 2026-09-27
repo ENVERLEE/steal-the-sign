@@ -294,10 +294,25 @@ class TestTextbook(unittest.TestCase):
             pg.set_content("<h1>1</h1><div style='page-break-after:always'></div><h1>2</h1>")
             pg.pdf(path=str(pdf), format="A4")
             b.close()
-        log = pdf_pages.run(self.sb.ctx(), pdf=str(pdf), book_id="smp")
+        # 출처 표기는 사용자가 정한다: --title 없이는 거절
+        self.assertTrue(pdf_pages.run(self.sb.ctx(), pdf=str(pdf), book_id="smp").errors)
+        log = pdf_pages.run(self.sb.ctx(), pdf=str(pdf), book_id="smp", title="샘플 교재")
         self.assertEqual(log.errors, [])
         self.assertEqual(log.stats["pages"], 2)
         self.assertTrue((self.sb.source / "SMP" / "pages" / "p002.png").exists())
+        self.assertEqual(read_json(self.sb.source / "SMP" / "pages.json")["title"], "샘플 교재")
+
+    def test_source_title_is_user_input(self):
+        # 판독 파일의 book.title은 사용자가 입력한 표기(pages.json title)와 같아야 한다
+        f = self.sb.source / "SMP.json"
+        data = read_json(f)
+        data["book"]["title"] = "AI가 줄인 이름"
+        write_json(f, data)
+        log = check_source.run(self.sb.ctx())
+        self.assertTrue(any("표기" in e["msg"] for e in log.errors), log.errors)
+        pdf_pages.set_title(self.sb.ctx(), book_id="SMP", title="새 표기")
+        self.assertEqual(read_json(f)["book"]["title"], "새 표기")
+        self.assertEqual(check_source.run(self.sb.ctx()).errors, [])
 
 
 @unittest.skipUnless(HAS_BROWSER, "Chromium 없음")
