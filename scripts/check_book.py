@@ -82,6 +82,11 @@ def run(ctx: Context) -> Log:
         seen_theme_end[th] = d["day"]
         prev = th
 
+    # ---- 한 권 = 한 과목의 1주 분량
+    for d in days:
+        t = ctx.themes.get(d["theme"])
+        if t and t["subject"] != book["subject_label"]:
+            log.error(f"DAY {d['day']}", f"테마 {d['theme']}({t['subject']})가 이 권의 과목 {book['subject_label']}과 다름 — 한 권에는 한 과목만")
     for d in days:
         for msg in writing_warnings(d):
             log.warn(f"DAY {d['day']}", msg)

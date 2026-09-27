@@ -17,7 +17,8 @@
 pip install -r requirements.txt
 python -m playwright install chromium        # 처음 한 번 (브라우저가 이미 있으면 생략 가능)
 
-python run.py pages --pdf 교재.pdf --id KB1   # 교재 PDF → work/source/KB1/pages/p001.png·p001.txt (판독용)
+python run.py pages --pdf 교재.pdf --id KB1 --title "교재 이름"   # 교재 PDF → work/source/KB1/pages/p001.png·p001.txt (판독용)
+python run.py title --id KB1 --title "교재 이름"   # 교재 출처 표기 바꾸기
 python run.py source          # 교재 판독 검사 + 큐레이션 초안 → out/curation.md, out/plan.json
 python run.py created         # 창작 문제은행 검문만
 python run.py                 # 전체: validate → created → source → check → verify → figs → build → layout → pdf → report
@@ -35,10 +36,10 @@ python -m unittest discover tests       # 테스트
 
 ## AI 작업 순서 (채팅) — 교재 PDF를 받았을 때
 교재의 문제가 **예제**가 되고, 테마별로 유사 기출·창작을 붙여 드릴 교재를 만든다.
-1. **쪽 변환**: `python run.py pages --pdf <올린 파일> --id <교재id>` → `work/source/<교재id>/pages/p###.png`(+텍스트 층).
+1. **쪽 변환**: 교재 출처 표기(교재에 `{표기} {쪽}쪽 {번호}번`으로 찍힐 이름)를 **사용자에게 물어** 그대로 받는다 → `python run.py pages --pdf <올린 파일> --id <교재id> --title "<사용자가 정한 표기>"` → `work/source/<교재id>/pages/p###.png`(+텍스트 층). 표기를 AI가 줄이거나 바꾸지 않는다(바꿀 때는 `run.py title`).
 2. **판독·분류**: 쪽 이미지를 보고 모든 문제를 `work/source/<교재id>.json`에 적는다(아래 '교재 판독 파일'). 문항마다 테마(28개 중 하나), 첫 판단, 유사 기출(`similar`), 해설(새로 씀), `verify`. 한 번에 10~20문항씩 쓰고 `python run.py source`로 검사 → 오류만 고친다.
 3. **큐레이션**: `python run.py source`가 만든 `out/curation.md`·`out/plan.json`을 본다. 테마마다 2~3 DAY, 교재 문항 2~3개가 예제, 나머지 교재 문항·유사 기출·창작이 연습. '창작 N개 더 필요'가 뜨면 그 테마 창작을 **4문항 이하**로 `work/created/{테마}/{id}.json`에 쓰고 `python run.py created` → 통과할 때까지 → 다시 `python run.py source`.
-4. **교재 구성**: plan.json의 문항 배정을 `work/book.json`에 옮기고 글(개념·실전 개념·THE SIGN·분석·REPLAY·다음 챕터)을 **`WRITING.md`의 교과서형 규격**으로 쓴다. 새 형식·디자인은 DAY 1 시안을 먼저 보여 주고 확인받은 뒤 전체에 적용한다. 한 권(WEEK)에 담을 테마를 정해 권을 나눈다. 그림 있는 기출은 `figures` 명세.
+4. **교재 구성**: plan.json의 문항 배정을 `work/book.json`에 옮기고 글(개념·실전 개념·THE SIGN·분석·REPLAY·다음 챕터)을 **`WRITING.md`의 교과서형 규격**으로 쓴다. 새 형식·디자인은 DAY 1 시안을 먼저 보여 주고 확인받은 뒤 전체에 적용한다. **한 권 = 한 과목의 1주 분량(WEEK)**: 과목을 섞지 않고, 권 번호와 DAY 번호는 과목마다 따로 1부터 매긴다(수학Ⅰ WEEK 1 = DAY 1~8, 수학Ⅱ WEEK 1 = DAY 1~8). 파일은 `work/book_{m1|m2|ps}_w{주}.json`, 결과는 `STS_{과목}_WEEK{주}`. 그림 있는 기출은 `figures` 명세.
 5. `python run.py` → `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 오류 0이면 `out/book.html`(과 `out/book.pdf`)을 사용자에게 보낸다.
 
 교재 PDF 없이 만들 때는 3~5만 한다(예제도 기출·창작에서 고른다).
@@ -74,7 +75,7 @@ WRITING.md             교재 글 작성 규격(교과서형) — 글을 쓰기 
 | 파일 | 역할 |
 |---|---|
 | `validate_sources.py` | id·code·월(06·09·11)·번호 범위(공통 1~22, 확통 23~30)·학년도(22~27)·배점, 수학Ⅰ·Ⅱ 같은 code 충돌, 선지·정답 형식, strategy_notes 예시(`db_code_candidate`) 대조, solutions.json 누락·정답 불일치·끊긴 `concept_refs`, themes.json 미배정·중복·끊긴 참조, **제어문자(깨진 LaTeX 이스케이프)**, **전체 수식 KaTeX 조판 오류** → `out/excluded.json` |
-| `pdf_pages.py` | 교재 PDF → 쪽 PNG·텍스트 층 (pypdfium2). 판독은 AI가 이미지를 보고 한다 |
+| `pdf_pages.py` | 교재 PDF → 쪽 PNG·텍스트 층 (pypdfium2), `--title`(사용자가 정한 출처 표기) 필수. `title` 단계로 표기 변경. 판독은 AI가 이미지를 보고 한다 |
 | `check_source.py` | 교재 판독 파일 검사: 스키마, id·쪽, 테마·과목, 개념·유사 기출 참조, `$` 짝, 제어문자(깨진 LaTeX), 그림 명세, `verify` 검산 → 문항별 `status: verified` |
 | `curate.py` | 교재 문항 → 테마별 DAY·예제·연습·SCOUTING 배정 초안 → `out/curation.md`, `out/plan.json` |
 | `check_created.py` | 창작 문제은행 검문(아래) → 통과 시 `status: verified`, 결과는 레코드 `review`에 기록 |
@@ -182,7 +183,7 @@ WRITING.md             교재 글 작성 규격(교과서형) — 글을 쓰기 
    "verify": "def skill(): ...  (standard()·unique()는 선택)"
  }]}
 ```
-- 판독은 원문 그대로(수식은 `$…$`, 선지는 `$` 포함). 교재 번호·쪽을 그대로 적는다. 교재 출처는 `{교재 이름} {쪽}쪽 {번호}번`으로 찍힌다.
+- 판독은 원문 그대로(수식은 `$…$`, 선지는 `$` 포함). 교재 번호·쪽을 그대로 적는다. 교재 출처는 `{book.title} {쪽}쪽 {번호}번`으로 찍힌다. `book.title`은 사용자가 입력한 표기(`pages.json`의 `title`)와 같아야 한다(check_source 오류).
 - **교재 해설은 옮기지 않는다.** 해설은 AI가 새로 쓴다(풀이 1 = 스킬, 있으면 풀이 2 = 정석). `verify`의 `skill()`은 필수, 정답지가 없어 `answer_source: AI 풀이`면 `standard()`도 쓴다.
 - 테마는 themes.json의 `kice_intent`·`signals` 기준으로, `concept_refs`는 그 테마 `old_themes`의 개념에서 고른다. `similar`는 그 테마 `problem_ids`·`related_ids`에서 우선.
 - 교재 문항은 테마당 최대 8개(기출 5개 자리 확보)까지 한 테마에 넣는다. 넘치면 큐레이션이 다음 권·다른 테마로 돌리라고 알린다.
@@ -228,7 +229,7 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
 - 식은 sympy 문법(`x**2`, `sqrt(3)`, `log(x, 2)`, `Abs`, `Piecewise`), 숫자 자리에도 식 문자열 가능. 단축형 `{"fn": "x^3-3x", "domain": [-3, 3]}`도 된다. 라벨의 `^`·`_`는 위·아래첨자.
 
 ## check_book 검사 항목
-- 스키마, week ≤ total_weeks, DAY 번호 오름차순·중복 없음, 같은 테마 DAY는 연속
+- 스키마, week ≤ total_weeks, DAY 번호 오름차순·중복 없음, 같은 테마 DAY는 연속, 모든 테마가 `subject_label` 과목(한 권 = 한 과목)
 - 기출: db에 있고 excluded 아님, 22~27학년도·4점, 과목 = 테마 과목, 후보 밖이면 `reason`(없으면 오류), 홈 테마 밖이면 `reuse_note`, 그림 있는 기출은 `figures` 명세
 - 창작: 문제은행에 있고 `verified`(통과 후 수정되지 않음), 다른 테마 창작은 `reuse_note`
 - 교재 문항: 판독 파일에 있고 `verified`, 과목 = 테마 과목, 다른 테마로 분류된 문항은 `reuse_note`, `figure_note`만 있으면 오류(그림 명세 필요). 이 책의 테마로 분류된 교재 문항을 다 쓰지 않았거나 예제가 교재 문항이 아니면 경고

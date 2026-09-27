@@ -146,7 +146,12 @@ def run(ctx: Context, recheck: bool = False) -> Log:
         if f.stem != book["id"]:
             log.error(f.name, f"파일 이름은 {book['id']}.json 이어야 함")
         pages_json = ctx.source_dir / book["id"] / "pages.json"
-        pages = len(read_json(pages_json)["pages"]) if pages_json.exists() else None
+        meta = read_json(pages_json) if pages_json.exists() else {}
+        pages = len(meta["pages"]) if meta.get("pages") else None
+        if not meta.get("title"):
+            log.error(f.name, f"교재 출처 표기를 입력받지 않음 — 사용자에게 물어 python run.py title --id {book['id']} --title \"…\"")
+        elif meta["title"] != book["title"]:
+            log.error(f.name, f"book.title '{book['title']}'이 사용자가 입력한 표기 '{meta['title']}'와 다름 — 표기는 바꾸지 않는다")
         changed = False
         for rec in data["problems"]:
             ids[rec["id"]] += 1
