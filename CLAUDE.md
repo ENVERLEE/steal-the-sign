@@ -7,7 +7,7 @@
 교재의 목적: 테마별 **실전개념(스킬)을 드릴링**해서 그 테마는 무조건 맞히게 하는 자습용 교재. 해설은 과외받듯 이해되고 개념 보충이 되는 수준이어야 하며, 비효율적 단순계산 풀이를 지양한다.
 
 ## 역할 분담
-- **AI(채팅)**: 올린 교재 PDF 판독(OCR)·테마 분류·유사 기출 선정·해설, 창작문항, 교재 글(개념·비유·분석·오답 진단), 그림 명세 → `work/source/`(교재 판독), `work/created/`(창작 문제은행), `work/book.json`(교재 구성)
+- **AI(채팅)**: 올린 교재 PDF 판독(OCR)·테마 분류·유사 기출 선정·해설, 창작문항, 교재 글(개념·실전 개념·분석·오답 진단 — `WRITING.md` 규격), 그림 명세 → `work/source/`(교재 판독), `work/created/`(창작 문제은행), `work/book.json`(교재 구성)
 - **스크립트**: 원천 검증, 창작 검문, book.json 규칙 검사, 정답 검산, 그림 렌더링, 수식 조판, 템플릿 채우기, 판면 점검, 보고서
 - **사람 승인 단계 없음.** 스크립트 검문을 통과한 창작(`verified`)은 바로 교재에 쓸 수 있다.
 - **AI API 호출 금지**: 스크립트는 Claude API 등 어떤 AI API도 호출하지 않는다(API 키·SDK 의존성 추가 금지). AI 작업은 모두 채팅 세션에서 하고, 스크립트는 그 결과를 검사·조판만 한다.
@@ -38,7 +38,7 @@ python -m unittest discover tests       # 테스트
 1. **쪽 변환**: `python run.py pages --pdf <올린 파일> --id <교재id>` → `work/source/<교재id>/pages/p###.png`(+텍스트 층).
 2. **판독·분류**: 쪽 이미지를 보고 모든 문제를 `work/source/<교재id>.json`에 적는다(아래 '교재 판독 파일'). 문항마다 테마(28개 중 하나), 첫 판단, 유사 기출(`similar`), 해설(새로 씀), `verify`. 한 번에 10~20문항씩 쓰고 `python run.py source`로 검사 → 오류만 고친다.
 3. **큐레이션**: `python run.py source`가 만든 `out/curation.md`·`out/plan.json`을 본다. 테마마다 2~3 DAY, 교재 문항 2~3개가 예제, 나머지 교재 문항·유사 기출·창작이 연습. '창작 N개 더 필요'가 뜨면 그 테마 창작을 **4문항 이하**로 `work/created/{테마}/{id}.json`에 쓰고 `python run.py created` → 통과할 때까지 → 다시 `python run.py source`.
-4. **교재 구성**: plan.json의 문항 배정을 `work/book.json`에 옮기고 글(개념·비유·THE SIGN·분석·REPLAY·다음 챕터)을 쓴다. 한 권(WEEK)에 담을 테마를 정해 권을 나눈다. 그림 있는 기출은 `figures` 명세.
+4. **교재 구성**: plan.json의 문항 배정을 `work/book.json`에 옮기고 글(개념·실전 개념·THE SIGN·분석·REPLAY·다음 챕터)을 **`WRITING.md`의 교과서형 규격**으로 쓴다. 새 형식·디자인은 DAY 1 시안을 먼저 보여 주고 확인받은 뒤 전체에 적용한다. 한 권(WEEK)에 담을 테마를 정해 권을 나눈다. 그림 있는 기출은 `figures` 명세.
 5. `python run.py` → `out/report.md`의 **'AI에게 전달할 수정 목록'**만 고친다 → 오류 0이면 `out/book.html`(과 `out/book.pdf`)을 사용자에게 보낸다.
 
 교재 PDF 없이 만들 때는 3~5만 한다(예제도 기출·창작에서 고른다).
@@ -66,6 +66,7 @@ samples/               샘플 book.sample.json + 창작 2문항 + 가상 교재(
 tests/                 unittest
 vendor/katex/          로컬 KaTeX 0.18.9 (CDN 금지)
 out/                   결과물 (git 제외)
+WRITING.md             교재 글 작성 규격(교과서형) — 글을 쓰기 전에 반드시 읽는다
 참고: data/README.md(DB 스키마), solutions/SPEC.md(해설 작성 규격), pilot/pilot_v2.json(해설 모범)
 ```
 
@@ -194,17 +195,18 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
   "figures": {"M2-231110": 그림 명세, ...},          // 그림 있는 기출을 쓰면 필수
   "days": [{
     "day": 1, "theme": "M1-01", "title": "챕터 제목(24자 이하)",
-    "concept":  {"core", "figures": [그림 명세+caption, 최대 2], "analogy", "analogy_limit", "map": [{"k", "v"}]},
-    "strategy": {"structure"?, "figure"?, "concept_ids": ["수학Ⅰ-01-C1", ...], "tools"?: [{"name", "body"}]},
+    "concept":  {"sections": [{"title", "blocks": [{"p"}|{"eq"}|{"table"}|{"figure","beside"?}|{"figures"}]}] (2개),
+                 "card": {"body"}, "banner", "example": {"q", "textbook", "skill", "note"?}, "map": [{"k", "v", "f"}] (5행)},
+    "strategy": {"structure", "figure"?, "tools": [{"name", "body", "eq", "when"}] (3개)},
     "first_pitch": {"signal", "ref", "type", "reuse_note"?},
-    "sign_reading": {"hint", "analysis", "points": [2~4], "verdict", "scouting": [{"ref", "note"}] (1~2)},
+    "sign_reading": {"hint", "analysis"(한 문단), "points": [{"title", "text"}] (3개), "verdict", "scouting": [{"ref", "note"}] (1~2)},
     "practice": [{"ref", "difficulty", "reuse_note"?, "reason"?}],
     "replay": [{"no", "wrong", "stuck", "fix"}],
     "sign_book": {"rows"?: [{"no", "signal", "method"}], "next"},
     "notes"?: {"<ref>": {"tip"?, "error"?, "shortcut"?, "verify"?}}
   }]}
 ```
-- **concept는 두 형식**: 기존형(`core`·`analogy`·`analogy_limit`·`map[k,v]`) 또는 **교과서형**(현재 교재의 기본).
+- **concept는 두 형식**: **교과서형**(새 교재는 모두 이것, 글 규칙은 `WRITING.md`) 또는 기존형(`core`·`analogy`·`analogy_limit`·`map[k,v]`, 샘플 DAY 1에만 남김).
   교과서형 = `sections[{title, blocks}]`(블록: `{"p": 문단}`·`{"eq": $ 없는 LaTeX}`·`{"table": {head, rows, hl}}`·`{"figure": 명세, "beside": [p·eq 블록]}`·`{"figures": [명세, 명세]}`) + `card{title?, body}`(개념 정리) + `banner`(한 줄 요약) + `example{q, textbook, skill, note?}`(확인 예제: 교과서적 해법 vs 실전 해법) + `map[{k, v, f}]`(문제에서 보이는 것 / 이렇게 판단한다 / 식으로 쓰면). 비유는 쓰지 않는다.
   교과서형 DAY는 `strategy.tools[{name, body, eq?, when?}]`(eq는 $ 없는 LaTeX), `sign_reading.points[{title, text}]`로 쓰고, 문항 분석·총평은 줄글 문단.
 - 텍스트 강조: `**굵게**`, `__밑줄(형광)__`. 수식 바로 뒤의 조사($x$에)는 build가 수식과 한 덩어리로 묶는다.
@@ -232,6 +234,7 @@ HTML을 쓰지 않는다. 텍스트 + `$LaTeX$`만(줄바꿈 `\n`). 문항은 **
 - 교재 문항: 판독 파일에 있고 `verified`, 과목 = 테마 과목, 다른 테마로 분류된 문항은 `reuse_note`, `figure_note`만 있으면 오류(그림 명세 필요). 이 책의 테마로 분류된 교재 문항을 다 쓰지 않았거나 예제가 교재 문항이 아니면 경고
 - 같은 DAY 안 중복 금지, 책 전체 사용 3회 이하, SCOUTING은 db 기출(예제 자신 제외), REPLAY·SIGN BOOK 번호 범위, `notes` 대상·`shortcut`+`verify`, `concept_ids` 존재
 - 테마마다 2~3 DAY, 8~13문항(예제 포함), 기출 5개 이상, 창작 50% 이하. 기출:창작 비율·행동 영역·난도 분포는 report에 표시만
+- 글 규격(`WRITING.md`, 경고): 기존형 개념(비유) 사용, 개념 소제목 2개·개념 정리·한 줄 요약·확인 예제·개념 지도 5행(f 포함), 실전 개념 3개(eq·when), 문항 분석 요점 3개({title, text})
 - 텍스트: `$` 짝, HTML 태그 금지, 야구 용어 금지(코너 이름 THE SIGN·FIRST PITCH·SIGN READING·SCOUTING REPORT·REPLAY·DUGOUT NOTE·SIGN BOOK 제외; 목록은 `config.json` `banned_terms`)
 
 ## 해설 규칙
