@@ -44,7 +44,7 @@ python -m unittest discover tests       # 테스트
 
 교재 PDF 없이 만들 때는 3~5만 한다(예제도 기출·창작에서 고른다).
 
-**특강(`"special": true`)**: 실모 오답 테마 등 여러 과목을 한 권에 모은 1주 특강. `work/book_special.json` → `STS_특강`. 한 과목 제한을 풀고 테마당 1 DAY부터 허용(`config.json` `theme_plan.special_days`). 테마마다 예제 1(중상, 개념·발상을 가볍게 받는 문항) → 연습은 중간 → 킬러 순, 창작은 원본 바로 뒤나 난도 자리에 넣는다.
+**특강(`"special": true`)**: 실모 오답 테마 등 여러 과목을 한 권에 모은 1주 특강. `work/book_special.json` → `STS_특강`. 한 과목 제한을 풀고 테마당 1 DAY부터 허용(`config.json` `theme_plan.special_days`), 테마당 10문항 이상(창작 포함, `special_problems`). 결과물에서 DAY 표기는 챕터(CH.·CHAPTER)로 바뀌고 '평가원 사인 훔치기'는 빠진다. 글에도 DAY·일차를 쓰지 않는다(`다음 챕터`). 테마마다 예제 1(중상, 개념·발상을 가볍게 받는 문항) → 연습은 중간 → 킬러 순, 창작은 원본 바로 뒤나 난도 자리에 넣는다.
 
 ## 폴더 구조
 ```
@@ -86,7 +86,7 @@ WRITING.md             교재 글 작성 규격(교과서형) — 글을 쓰기 
 | `render_figs.py` | 그림 명세 → SVG (sympy·numpy로 실제 함수를 계산해 그림). `out/figs/`에 캐시 |
 | `tex.py` | KaTeX 일괄 조판 (Playwright에 `vendor/katex` 로드, 결과 캐시 `out/.cache/tex.json`). 글꼴은 woff2 base64로 CSS에 내장 |
 | `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 매핑이 빠지면 오류(템플릿이 바뀌면 `SLOTS`·`REPEATS`·`OPTIONS` 수정). `load_ext`: STS_ext.html의 HEAD·XPAGE 블록 |
-| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html 페이지, 개념 쪽은 블록 단위로 재며 여러 장으로 흐름) → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔(해설은 한 장에 `config.json` `solution.per_page_max`문항까지) → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
+| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html 페이지, 개념 쪽은 블록 단위로 재며 여러 장으로 흐름) → 수식 조판 → **실제 A4 판면을 재면서** 목차·REPLAY·정답표·해설을 페이지로 나눔(해설은 한 장에 `config.json` `solution.per_page_max`문항까지, 특강은 두 단을 끝까지 채움) → 쪽 번호(표지 001)·목차 쪽수·정답표 자동 → `out/book.html` |
 | `export_pdf.py` | 결과 HTML을 템플릿 인쇄 CSS 그대로 Chromium으로 인쇄 → `out/book.pdf`. 쪽 수 = HTML `.page` 수, A4 크기 확인 |
 | `check_layout.py` | 결과 HTML을 열어 페이지마다 794×1123 크기, 넘침, `[[`·`]]`, 가짜 번호, KaTeX 오류, 수식 기호 노출(`\frac`·`$`), 순서·쪽 번호 연속 검사 |
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 교재 구성·비율·행동 영역·난도, 문제은행 현황, 판면) |

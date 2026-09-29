@@ -108,7 +108,7 @@
   "verify": "def skill():\n    # 곱 = -3^(f/2) = -27 -> f(n) = 6 ; (n-3)^2 = k-6 , sqrt = 1, 2\n    return sum(6 + d*d for d in (1, 2))\n\ndef count(k):\n    return sum(1 for n in range(1, 200) if -(n-3)**2 + k == 6)\n\ndef standard():\n    x = Symbol('x')\n    ks = set()\n    for n in range(1, 60):\n        fn = 6  # product condition\n        roots = [r for r in real_roots(x**4 - Integer(3)**fn)]\n        assert simplify(roots[0]*roots[1] + 27) == 0\n        ks.add(fn + (n-3)**2)\n    return sum(k for k in ks if count(k) == 2)\n\ndef unique():\n    good = []\n    for k in range(-5, 150):\n        c = 0\n        for n in range(1, 40):\n            f = -(n-3)**2 + k\n            a = Integer(3)**f\n            rs = [a**Rational(1, 4), -a**Rational(1, 4)]  # 양수의 네제곱근 중 실수\n            if simplify(rs[0]*rs[1] + 27) == 0:\n                c += 1\n        if c == 2:\n            good.append(k)\n    return [sum(good)]\n",
   "status": "verified",
   "review": {
-    "checked_at": "2026-09-29T08:40:55",
+    "checked_at": "2026-09-29T09:06:26",
     "hash": "1148afffb035dce5",
     "errors": [],
     "warnings": []

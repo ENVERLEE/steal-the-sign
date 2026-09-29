@@ -237,11 +237,12 @@ def run(ctx: Context) -> Log:
     # ---- 테마 구성
     plan, comp = cfg["theme_plan"], cfg["composition"]
     dlo, dhi = plan["special_days"] if special else plan["days"]
+    plo, phi = plan["special_problems"] if special else plan["problems"]
     for th, s in theme_stats.items():
         if not dlo <= s["days"] <= dhi:
             log.error(th, f"DAY {s['days']}개 (테마당 {dlo}~{dhi})")
-        if not plan["problems"][0] <= s["problems"] <= plan["problems"][1]:
-            log.error(th, f"문항 {s['problems']}개 (테마당 {plan['problems'][0]}~{plan['problems'][1]}, 예제 포함)")
+        if not plo <= s["problems"] <= phi:
+            log.error(th, f"문항 {s['problems']}개 (테마당 {plo}~{phi}, 예제 포함)")
         if s["past"] < comp["past_min_per_theme"]:
             log.error(th, f"기출 {s['past']}개 (테마당 {comp['past_min_per_theme']}개 이상)")
         if s["problems"] and s["created"] / s["problems"] > comp["created_max_share_per_theme"]:

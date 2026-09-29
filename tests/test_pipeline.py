@@ -341,7 +341,7 @@ class TestBuild(unittest.TestCase):
             self.assertTrue((sb.out / "report.md").exists())
             import pypdfium2 as pdfium
             self.assertEqual(len(pdfium.PdfDocument(str(sb.out / "book.pdf"))), len(pages))
-            cap = ctx.config["solution"]["per_page_max"]
+            cap = ctx.config["solution"]["per_page_max"] or 99
             for chunk in html.split('data-page="SOLUTION"')[1:]:
                 self.assertLessEqual(chunk.split('data-page=')[0].count('<article class="s"'), cap)
         finally:

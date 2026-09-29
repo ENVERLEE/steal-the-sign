@@ -86,7 +86,7 @@
   "verify": "def skill():\n    tot = 0\n    for m in range(2, 11):\n        f = factorint(m)\n        for n in range(2, 11):\n            e = Rational(6, n) if n % 2 else Rational(12, n)\n            if all((a*e).q == 1 for a in f.values()):\n                tot += 1\n    return tot\n\ndef prod_real(m, n):\n    x = Symbol('x')\n    p = Integer(1)\n    for r in real_roots(x**n - Integer(m)**6):\n        p *= r\n    return nsimplify(p)\n\ndef standard():\n    return sum(1 for m in range(2, 11) for n in range(2, 11) if prod_real(m, n).is_integer)\n\ndef unique():\n    return [standard()]\n",
   "status": "verified",
   "review": {
-    "checked_at": "2026-09-29T08:40:57",
+    "checked_at": "2026-09-29T09:06:27",
     "hash": "e1ff01604f85be74",
     "errors": [],
     "warnings": []
