@@ -44,6 +44,8 @@ python -m unittest discover tests       # 테스트
 
 교재 PDF 없이 만들 때는 3~5만 한다(예제도 기출·창작에서 고른다).
 
+**특강(`"special": true`)**: 실모 오답 테마 등 여러 과목을 한 권에 모은 1주 특강. `work/book_special.json` → `STS_특강`. 한 과목 제한을 풀고 테마당 1 DAY부터 허용(`config.json` `theme_plan.special_days`). 테마마다 예제 1(중상, 개념·발상을 가볍게 받는 문항) → 연습은 중간 → 킬러 순, 창작은 원본 바로 뒤나 난도 자리에 넣는다.
+
 ## 폴더 구조
 ```
 run.py                 파이프라인 실행
