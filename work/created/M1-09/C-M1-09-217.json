@@ -1,0 +1,76 @@
+{
+  "id": "C-M1-09-217",
+  "theme": "M1-09",
+  "origin": {
+    "type": "original",
+    "note": "부분분수·시그마 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "각 항을 부분분수로 나누면 이웃한 항이 소거되고 양 끝의 항만 남는다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\displaystyle\\sum_{k=1}^{21}\\frac{1}{k(k+2)}$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "863",
+  "answer_value": "863",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C2"
+    ],
+    "guide": "각 항을 부분분수로 나누면 이웃한 항이 소거되고 양 끝의 항만 남는다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "소거",
+            "body": "$\\frac1{k(k+2)}=\\frac12\\left(\\frac1k-\\frac1{k+2}\\right)$: 남는 것은 앞의 두 항 $1,\\frac12$와 뒤의 두 항 $\\frac1{22},\\frac1{23}$"
+          },
+          {
+            "label": "계산",
+            "body": "$\\frac12\\left(1+\\frac12-\\frac1{22}-\\frac1{23}\\right)=\\frac{357}{506}$ → $p+q=863$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "항 계산",
+            "body": "$\\frac13+\\frac18+\\frac1{15}+\\cdots$를 하나씩 통분하며 더한다."
+          },
+          {
+            "label": "부분합",
+            "body": "처음 세 부분합은 $\\frac{1}{3},\\ \\frac{11}{24},\\ \\frac{21}{40}$이고 $21$개 항을 모두 더해야 한다."
+          },
+          {
+            "label": "규칙 발견",
+            "body": "두 칸 간격이므로 소거가 한 칸씩 어긋난다. 양 끝에 두 항씩 남는다는 것을 알아채야 한다."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{357}{506}$ → $p+q=863$"
+          }
+        ]
+      }
+    ],
+    "supplement": "항을 하나씩 더하면 분모가 계속 바뀐다. 소거되고 남는 양 끝만 적으면 통분은 마지막에 한 번뿐이다.",
+    "skill_point": "부분분수로 쪼갠 뒤 '남는 첫 항과 끝 항'만 적고 나머지는 쓰지 않는다."
+  },
+  "verify": "def skill():\n    v = Fraction(1, 2)*(1 + Fraction(1, 2) - Fraction(1, 22) - Fraction(1, 23))\n    return v.numerator + v.denominator\n\ndef standard():\n    k = Symbol('k', integer=True)\n    v = summation(Rational(1)/(k*(k + 2)), (k, 1, 21))\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "부분분수와 연쇄 소거",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:11:05",
+    "hash": "c2c5c49002a485f8",
+    "errors": [],
+    "warnings": []
+  }
+}

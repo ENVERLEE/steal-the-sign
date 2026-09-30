@@ -1,0 +1,80 @@
+{
+  "id": "C-M1-09-141",
+  "theme": "M1-09",
+  "origin": {
+    "type": "original",
+    "note": "분수 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "분수를 하나씩 이어 계산하지 않고, 공통 분모나 공통 인수를 먼저 정해 한 번에 정리한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\left(\\frac{3}{4}\\right)^2-\\left(\\frac{2}{10}\\right)^2$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "609",
+  "answer_value": "609",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C3"
+    ],
+    "guide": "분수를 하나씩 이어 계산하지 않고, 공통 분모나 공통 인수를 먼저 정해 한 번에 정리한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "합차",
+            "body": "$x^2-y^2=(x-y)(x+y)$: $\\left(\\frac{3}{4}-\\frac{1}{5}\\right)\\left(\\frac{3}{4}+\\frac{1}{5}\\right)=\\frac{11}{20}\\times\\frac{19}{20}$"
+          },
+          {
+            "label": "계산",
+            "body": "곱하면 $\\frac{209}{400}$ → $p+q=609$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "제곱",
+            "body": "$\\left(\\frac{3}{4}\\right)^2=\\frac{9}{16}$, $\\left(\\frac{2}{10}\\right)^2=\\frac{4}{100}$"
+          },
+          {
+            "label": "통분",
+            "body": "분모를 $400$로 맞춘다: $\\frac{225}{400}-\\frac{16}{400}$"
+          },
+          {
+            "label": "약분",
+            "body": "분자를 빼면 $\\frac{209}{400}$"
+          },
+          {
+            "label": "답",
+            "body": "$p=400$, $q=209$ → $p+q=609$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "두 항씩 통분하면 분모가 두 번 바뀌고 약분도 두 번 해야 한다. 공통 분모를 한 번에 잡으면 분자의 정수 계산만 남는다.",
+    "skill_point": "분모의 최소공배수(또는 공통 인수)를 먼저 정하고, 상수는 마지막에 한 번만 계산한다."
+  },
+  "verify": "def skill():\n    x, y = Fraction(3, 4), Fraction(2, 10)\n    v = (x - y)*(x + y)\n    return v.numerator + v.denominator\n\ndef standard():\n    v = Rational(3, 4)**2 - Rational(2, 10)**2\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "분수 계산 전처리",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:09:35",
+    "hash": "276cd9cfb5e0f79b",
+    "errors": [],
+    "warnings": []
+  }
+}

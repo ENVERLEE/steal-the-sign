@@ -60,7 +60,7 @@
     "variations": ["수치 변형", "조건 변형", "역방향", "일반화", "결합"],
     "original_per_theme_max": 1,
     "batch_max": 4,
-    "calc_batch_max": 10,
+    "calc_batch_max": 100,
     "skill_length_ratio_max": 0.7,
     "require_distractor_paths": true,
     "near_copy_warn": 0.9,
