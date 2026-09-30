@@ -19,6 +19,7 @@ from scripts.template import WEEK_TOKEN, load, load_ext
 from scripts.tex import Math, katex_css
 
 CORNERS = ("THE SIGN", "FIRST PITCH", "PRACTICE", "DUGOUT NOTE", "SIGN BOOK")
+LONG_SOL = 450  # 풀이 1 분량이 이보다 길면 긴 풀이로 본다(글자 수, 수식 기호 제외)
 STRUT = '<span style="display:inline-block;width:0;height:0;vertical-align:-24px"></span>'
 
 
@@ -146,8 +147,18 @@ class Model:
             "fig": fig, "choices": choices, "choices_class": cls,
             "points": self.points_of(ref, rec),
             "source": H.escape(self.source_of(ref, rec)), "kind": kind_of(ref),
+            "sol_len": self.solution_len(ref, rec),
             "difficulty": H.escape(difficulty or ""),
         }
+
+    def solution_len(self, ref, rec):
+        """풀이 1(스킬) 분량 — 풀이가 짧을 문항을 한 쪽에 더 많이 배치하는 데 쓴다"""
+        try:
+            sol = self.solution_of(ref, rec)
+            first = (sol.get("solutions") or [{}])[0]
+            return len(strip_tex(sol.get("guide") or "")) + sum(len(strip_tex(st.get("body", ""))) for st in first.get("steps") or [])
+        except Exception:  # noqa: BLE001
+            return 0
 
     def solution_item(self, ref, no, notes, reuse_note):
         rec = self.record(ref)
@@ -496,6 +507,18 @@ def run(ctx: Context) -> Log:
                     log.error(where, f"{kind} 항목 하나가 한 장을 넘음 — 내용을 줄일 것")
             return [{**base, key: chunk} for chunk in pages]
 
+        def weight(q):
+            """풀이가 길 것 같은 문항은 자리를 더 차지한다 (짧으면 1, 길면 1.34 → 긴 문항은 한 쪽에 3개까지)"""
+            return 1.0 if q.get("sol_len", 0) < LONG_SOL else 1.34
+
+        def split_cols(items):
+            """좌우 2단: 1~2문항은 한 단에 하나씩, 3문항은 왼쪽 2 + 오른쪽 1, 4문항은 2 + 2 (읽는 순서는 왼쪽 단 위→아래, 오른쪽 단)"""
+            n = len(items)
+            if n <= 2:
+                return [[q] for q in items]
+            h = (n + 1) // 2
+            return [items[:h], items[h:]]
+
         def balanced_pages(kind, base, key, items, where, cap):
             """cap 이하로 고르게 나눈다(5개 → 3+2). 한 장에 넘치면 마지막 문항을 다음 장으로 미룬다.
             4문항 쪽은 글자를 줄이고(dense) 문항마다 풀이 공간을 확보한 채로 재어 본다"""
@@ -510,10 +533,10 @@ def run(ctx: Context) -> Log:
             while queue or carry:
                 cur = carry + (queue.pop(0) if queue else [])
                 carry = []
-                while len(cur) > cap:
+                while len(cur) > cap or (len(cur) > 1 and cap > 2 and sum(weight(q) for q in cur) > cap + 0.01):
                     carry.insert(0, cur.pop())
                 while True:
-                    P = {**base, key: cur, "dense": len(cur) >= 4}
+                    P = {**base, key: cur, "cols": split_cols(cur)}
                     if len(cur) > 1 and overflow(meas.issues(render(kind, P))):
                         carry.insert(0, cur.pop())
                         continue
@@ -524,7 +547,7 @@ def run(ctx: Context) -> Log:
             # 마지막 쪽에 한 문항만 남았으면 앞 쪽에 합쳐 본다
             if len(out) > 1 and len(out[-1][key]) == 1 and len(out[-2][key]) < cap:
                 merged = out[-2][key] + out[-1][key]
-                P = {**base, key: merged, "dense": len(merged) >= 4}
+                P = {**base, key: merged, "cols": split_cols(merged)}
                 if not overflow(meas.issues(render(kind, P))):
                     out[-2:] = [P]
             return out
