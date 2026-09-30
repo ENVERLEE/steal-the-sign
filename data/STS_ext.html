@@ -183,3 +183,26 @@
   <div class="ft slim"><div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div><div class="pg"><span data-slot="PAGE">{{ pg }}</span></div></div>
 </div>
 <!-- XPAGE:END CALC_SOL -->
+
+<!-- XPAGE:START ADVICE -->
+<div class="page" data-page="ADVICE">
+  <div class="hd">
+    <div class="hd-day"><div class="k">먼저</div><div class="v">✓</div></div>
+    <div class="hd-title"><div class="k"><span class="en">COACHING</span>학습 조언</div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body">
+    <div class="x-h"><span class="n">1</span>지금 내 수학 실력</div>
+    <p class="x-p">{{ P.assessment }}</p>
+    {% if P.patterns %}<div class="x-h"><span class="n">2</span>계산이 폭주하는 패턴과 처방</div>
+    <table class="x-tbl"><tr><th style="width:26%">패턴</th><th>이렇게 나타난다</th><th style="width:34%">처방</th></tr>
+    {% for r in P.patterns %}<tr><td class="l"><b>{{ r.name }}</b></td><td class="l">{{ r.text }}</td><td class="l">{{ r.fix }}</td></tr>{% endfor %}</table>{% endif %}
+    <div class="x-h"><span class="n">{{ 3 if P.patterns else 2 }}</span>이 책으로 공부하는 방법</div>
+    <div class="x-pts">{% for m in P.methods %}<div class="x-pt"><div class="n">{{ '%02d' % loop.index }}</div><div class="t"><b>{{ m.title }}</b>{{ m.text }}</div></div>{% endfor %}</div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="pg"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+</div>
+<!-- XPAGE:END ADVICE -->

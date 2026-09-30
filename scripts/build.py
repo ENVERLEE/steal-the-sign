@@ -73,6 +73,7 @@ class Model:
         }
         self.days = [self.day(d) for d in b["days"]]
         self.appendix = self.build_appendix(b.get("appendix"))
+        self.advice = self.build_advice(b.get("advice"))
 
     # ---- 공통
     def r(self, text):
@@ -174,6 +175,15 @@ class Model:
         return {"no2": two(no), "kind": "예제" if no == 1 else "연습", "source": H.escape(self.source_of(ref, rec)),
                 "answer": H.escape(answer_display(rec)), "shortcut": shortcut, "fig": None,
                 "standard": standard, "tip": tip or None, "error": error}
+
+    # ---- 학습 조언 (표지 다음 첫 쪽)
+    def build_advice(self, a):
+        if not a:
+            return None
+        return {"title": self.r(a.get("title") or "내 실력과 공부 방법"), "assessment": self.r(a["assessment"]),
+                "patterns": [{"name": self.r(x["name"]), "text": self.r(x.get("text")), "fix": self.r(x["fix"])}
+                             for x in a.get("patterns") or []],
+                "methods": [{"title": self.r(x["title"]) + " ", "text": self.r(x["text"])} for x in a["methods"]]}
 
     # ---- 부록: 계산 연습 (창작 문항만)
     def calc_cell(self, ref, no):
@@ -446,6 +456,7 @@ def run(ctx: Context) -> Log:
     model.book = math.fill(model.book)
     model.days = math.fill(model.days)
     model.appendix = math.fill(model.appendix)
+    model.advice = math.fill(model.advice)
     tpl = load(ctx.path("template"), katex_css(ctx))
     ext_head, ext_pages = load_ext(ctx.path("ext_template"))
     head = tpl.head.replace("</head>", ext_head + "\n</head>", 1)
@@ -487,6 +498,9 @@ def run(ctx: Context) -> Log:
 
         seq = []  # (kind, P, tag)
         seq.append(("COVER", {}, None))
+        if model.advice:
+            fits_single("ADVICE", model.advice, "학습 조언")
+            seq.append(("ADVICE", model.advice, None))
         contents_items = [{"day2": d["base"]["day2"], "title": d["base"]["title"], "day": d["day"],
                            "corners": [{"name": c, "line": d["corners"][c], "page": "000"} for c in CORNERS]}
                           for d in model.days]

@@ -198,6 +198,27 @@ class TestMock(unittest.TestCase):
         self.assertEqual(m("T-MK1-001", rec), "실모 제1회 12번")
 
 
+class TestMockGroups(unittest.TestCase):
+    def test_korean_keys_group_by_exam_and_bad_backslash(self):
+        from scripts import mock_import
+        raw = ('{"종합_분석": {"x": 1}, "오답_노트": [{"모의고사_이름": "실모 A", "문항_번호": "확률과 통계 27번", '
+               '"문제_텍스트": "$\\pi < \\theta < 2\\pi$인 $\\theta$에 대하여 $\\tan\\theta=-\\frac{12}{5}$일 때 값은?", "틀린_이유": "부호"},'
+               '{"모의고사_이름": "실모 B", "문항_번호": "3번", "문제_텍스트": "짧다..."}]}')
+        with tempfile.TemporaryDirectory() as d:
+            src = Path(d) / "a.json"
+            src.write_text(raw, encoding="utf-8")
+            ctx = Context(source_dir=Path(d) / "source", out_dir=Path(d) / "out")
+            log = mock_import.run(ctx, json_path=str(src))
+            self.assertEqual(log.errors, [])
+            a = read_json(Path(d) / "mock" / "MK1_draft.json")
+            self.assertEqual(a["book"]["title"], "실모 A")
+            p = a["problems"][0]
+            self.assertEqual((p["number"], p["subject"], p["text_complete"]), ("27", "확률과 통계", True))
+            self.assertIn("\\tan", p["question"])
+            b = read_json(Path(d) / "mock" / "MK2_draft.json")
+            self.assertFalse(b["problems"][0]["text_complete"])
+
+
 class TestAppendix(unittest.TestCase):
     def test_calc_bank_rules(self):
         sb = Sandbox()
@@ -402,6 +423,7 @@ class TestBuild(unittest.TestCase):
             self.assertIn('data-page="CALC"', html)
             self.assertIn('data-page="CALC_SOL"', html)
             kinds = [p["kind"] for p in pages]
+            self.assertEqual(kinds[:3], ["COVER", "ADVICE", "CONTENTS"])
             self.assertLess(kinds.index("CALC"), kinds.index("BACK_COVER"))
             cap = ctx.config["solution"]["per_page_max"] or 99
             for chunk in html.split('data-page="SOLUTION"')[1:]:

@@ -115,6 +115,10 @@ globs:
 - `answer_source`: "교재 정답" | "AI 풀이". AI 풀이면 `verify`의 `standard()`도 필수.
 - 교재 문항은 테마당 최대 8개 (기출 5개 자리 확보).
 
+## book.advice — 학습 조언 (표지 다음 첫 쪽)
+
+`{title, assessment, patterns:[{name,text,fix}], methods:[{title,text}]}` — 실력 평가 + 폭주 패턴 처방 + 공부 방법. 한 쪽에 들어가야 함(넘치면 오류).
+
 ## book.appendix — 계산 연습 부록
 
 ```json

@@ -102,6 +102,69 @@
           }
         }
       }
+    },
+    "advice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assessment",
+        "methods"
+      ],
+      "description": "학습 조언(표지 다음 첫 쪽): 실력 평가 + 이 책을 쓰는 방법. 한 쪽에 들어가야 한다",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 24
+        },
+        "assessment": {
+          "type": "string",
+          "description": "내 수학 실력에 대한 평가 (3~5문장)"
+        },
+        "patterns": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "fix"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "fix": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methods": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "text"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "$defs": {

@@ -30,7 +30,7 @@ globs:
 ## 책 순서
 
 ```
-COVER → CONTENTS
+COVER → [ADVICE: 학습 조언 한 쪽, book.advice가 있을 때] → CONTENTS
 [DAY마다:
   CONCEPT
   STRATEGY
