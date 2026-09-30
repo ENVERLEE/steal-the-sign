@@ -1,0 +1,87 @@
+{
+  "id": "C-M1-08-001",
+  "theme": "M1-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-261112",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-13-C2"
+    ],
+    "strategy_ids": [
+      "S09"
+    ],
+    "first_judgment": "같은 간격으로 뽑은 항의 묶음은 서로 공비의 거듭제곱 배이므로, 첫째항을 구하기 전에 두 묶음의 비로 공비부터 확정한다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "공비가 양수인 등비수열 $\\{a_n\\}$이 $a_3+a_6+a_9=4(a_1+a_4+a_7)$, $a_2+a_4=30$을 만족시킬 때, $a_6$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "96",
+  "answer_value": "96",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-13-C2"
+    ],
+    "guide": "$a_3+a_6+a_9$는 $a_1+a_4+a_7$의 각 항에 $r^2$을 곱한 것이다(수학Ⅰ-13-C2). 첫째항은 나누는 순간 사라지므로 공비를 먼저 구하고, 남은 조건으로 첫째항을 정한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "묶음의 비",
+            "body": "$a_3+a_6+a_9=r^2(a_1+a_4+a_7)$이므로 $r^2=4$. 공비가 양수이므로 $r=2$."
+          },
+          {
+            "label": "첫째항",
+            "body": "$a_2+a_4=a_1(r+r^3)=10a_1=30$에서 $a_1=3$."
+          },
+          {
+            "label": "답",
+            "body": "$a_6=a_1r^5=3\\cdot32=96$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "일반항",
+            "body": "첫째항을 $a$, 공비를 $r$이라 하면 $a_n=ar^{n-1}$."
+          },
+          {
+            "label": "첫 조건",
+            "body": "$ar^2+ar^5+ar^8=4(a+ar^3+ar^6)$. 양변을 $a$로 나누고 $1+r^3+r^6$이 공통인 것을 확인하기 위해 좌변을 $r^2(1+r^3+r^6)$으로 묶는다."
+          },
+          {
+            "label": "공비",
+            "body": "$r^2(1+r^3+r^6)=4(1+r^3+r^6)$에서 $1+r^3+r^6>0$이므로 $r^2=4$, $r>0$이므로 $r=2$."
+          },
+          {
+            "label": "둘째 조건",
+            "body": "$a_2+a_4=2a+8a=10a=30$이므로 $a=3$."
+          },
+          {
+            "label": "답",
+            "body": "$a_6=3\\cdot2^5=96$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a_1$을 문자로 열어 두고 $r$의 6차식을 그대로 다루면 식이 길어진다. 세 항씩 묶은 두 식은 전체가 $r^2$배라는 사실만 알면 $r$이 바로 나온다. $r^2=4$에서 $r=-2$를 버리는 것은 '공비가 양수'라는 조건 덕분이다.",
+    "skill_point": "등비수열에서 같은 위치를 $k$칸 옮긴 묶음은 $r^k$배 — 나누어 첫째항을 지운다."
+  },
+  "verify": "def skill():\n    r = 2\n    a1 = Rational(30, r + r**3)\n    return a1*r**5\n\ndef standard():\n    r = Symbol('r')\n    poly = Poly(r**8 + r**5 + r**2 - 4*(1 + r**3 + r**6), r)\n    pos = [x for x in poly.nroots(n=30) if abs(im(x)) < 1e-12 and re(x) > 0]\n    assert len(pos) == 1\n    rv = nsimplify(round(float(re(pos[0])), 9))\n    a1 = Rational(30)/(rv + rv**3)\n    return a1*rv**5\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:30:19",
+    "hash": "d272324b15ef494d",
+    "errors": [],
+    "warnings": []
+  }
+}

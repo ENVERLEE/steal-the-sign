@@ -1,0 +1,91 @@
+{
+  "id": "C-M1-05-003",
+  "theme": "M1-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-270614",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-10-C2"
+    ],
+    "strategy_ids": [
+      "S06"
+    ],
+    "first_judgment": "$\\theta=b\\pi x$가 지나는 구간을 반주기 $3b$개로 보고, $\\cos\\theta=c$의 근은 $|c|<1$이면 반주기마다 하나, $c=-1$이면 홀수 배수마다 하나로 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "자연수 $a$, $b$에 대하여 $0\\le x\\le3$에서 $x$에 대한 방정식 $\\left\\{2\\cos(b\\pi x)-1\\right\\}\\left\\{a\\cos(b\\pi x)+2\\right\\}=0$의 서로 다른 실근의 개수가 $23$일 때, $a+b$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "7",
+  "answer_value": "7",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-10-C2"
+    ],
+    "guide": "$\\theta=b\\pi x$로 두면 $0\\le x\\le3$에서 $\\theta$는 $[0,3b\\pi]$를 지난다. 두 인수를 $\\cos\\theta=\\frac12$과 $\\cos\\theta=-\\frac2a$로 바꾸면(수학Ⅰ-10-C2) 두 상수가 서로 다르므로 근이 겹치지 않는다. 구간이 $3b$개의 반주기 $[k\\pi,(k+1)\\pi]$로 이루어져 있고 각 반주기에서 코사인은 $1$과 $-1$ 사이를 단조롭게 움직인다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "반주기로 세기",
+            "body": "$\\cos\\theta=c$ $(-1<c<1)$의 근은 반주기마다 정확히 하나이므로 $[0,3b\\pi]$에서 $3b$개이다. $\\cos\\theta=-1$의 근은 $\\theta=\\pi,3\\pi,\\cdots$ 중 $3b\\pi$ 이하인 것이다."
+          },
+          {
+            "label": "a에 따른 개수",
+            "body": "$\\cos\\theta=\\frac12$은 항상 $3b$개이다. $\\cos\\theta=-\\frac2a$는 $a\\ge3$이면 $3b$개, $a=2$이면 $\\cos\\theta=-1$이라 $\\left\\lfloor\\frac{3b+1}2\\right\\rfloor$개, $a=1$이면 $-2<-1$이라 $0$개이다. 전체는 $a\\ge3$이면 $6b$, $a=1$이면 $3b$이다."
+          },
+          {
+            "label": "23이 되는 경우",
+            "body": "$6b=23$, $3b=23$은 불가능하다. $a=2$이면 $b$가 짝수일 때 $\\frac{9b}2$로 $23$이 안 되고, $b$가 홀수일 때 $3b+\\frac{3b+1}2=\\frac{9b+1}2=23$에서 $b=5$이다. 따라서 $a+b=2+5=7$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "일반해",
+            "body": "$\\cos(b\\pi x)=\\frac12$이면 $b\\pi x=\\pm\\frac\\pi3+2k\\pi$이므로 $x=\\frac{2k\\pm\\frac13}b$이다. $0\\le x\\le3$에서 이런 $x$를 세면 $3b$개이다. (예: $b=1$이면 $\\frac13,\\frac53,\\frac73$)"
+          },
+          {
+            "label": "두 번째 인수",
+            "body": "$\\cos(b\\pi x)=-\\frac2a$에서 $a=1$이면 $-2<-1$이라 근이 없다. $a=2$이면 $b\\pi x=\\pi+2k\\pi$이므로 $x=\\frac{2k+1}b$이다. $a\\ge3$이면 $-1<-\\frac2a<0$이라 $\\cos\\theta=\\frac12$과 같은 방식으로 $3b$개이다."
+          },
+          {
+            "label": "b별 개수표",
+            "body": "$b=1,2,\\cdots,8$일 때 개수는 $(a=1,\\ a=2,\\ a\\ge3)$ 순서로 $(3,5,6)$, $(6,9,12)$, $(9,14,18)$, $(12,18,24)$, $(15,23,30)$, $(18,27,36)$, $(21,32,42)$, $(24,36,48)$이다."
+          },
+          {
+            "label": "23 찾기",
+            "body": "표에서 $23$은 $b=5$, $a=2$에서만 나타난다. $b\\ge8$이면 모든 개수가 $24$ 이상이므로 더 볼 필요가 없다."
+          },
+          {
+            "label": "답",
+            "body": "$a+b=2+5=7$이다."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$0\\le x\\le3$처럼 구간이 정수 주기를 담지 않으면 $b$가 홀수일 때 반주기가 남아 근의 수가 달라진다. 이 반주기를 빠뜨리고 주기 수만 곱하면 $a=2$일 때 $\\theta=\\pi$ 형태의 접하는 근을 $\\left\\lfloor\\frac{3b+1}2\\right\\rfloor$개로 세지 못한다.",
+    "skill_point": "근의 개수는 반주기 단위로: $|c|<1$이면 반주기마다 하나, $c=-1$이면 홀수 배수마다 하나."
+  },
+  "verify": "\ndef skill():\n    return 2 + 5\n\ndef _roots(h, xs):\n    v = h(xs)\n    n = 0\n    used = np.zeros(len(xs), dtype=bool)\n    cross = v[:-1] * v[1:] < 0\n    n += int(cross.sum())\n    used[:-1] |= cross\n    used[1:] |= cross\n    n += int(abs(v[0]) < 1e-9 and not used[0]) + int(abs(v[-1]) < 1e-9 and not used[-1])\n    small = (np.abs(v) < 1e-5) & ~used\n    mid = np.zeros(len(xs), dtype=bool)\n    mid[1:-1] = (np.abs(v[1:-1]) <= np.abs(v[:-2])) & (np.abs(v[1:-1]) <= np.abs(v[2:])) & (np.sign(v[:-2]) == np.sign(v[2:]))\n    n += int((small & mid).sum())\n    return n\n\ndef standard():\n    xs = np.linspace(0, 3, 200001)\n    hits = []\n    for a in range(1, 13):\n        for b in range(1, 13):\n            n = _roots(lambda x: 2*np.cos(b*np.pi*x) - 1, xs) + _roots(lambda x: a*np.cos(b*np.pi*x) + 2, xs)\n            if n == 23:\n                hits.append(a + b)\n    assert len(hits) == 1\n    return hits[0]\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:36:07",
+    "hash": "89d47642db935603",
+    "errors": [],
+    "warnings": []
+  }
+}

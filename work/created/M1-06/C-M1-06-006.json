@@ -1,0 +1,105 @@
+{
+  "id": "C-M1-06-006",
+  "theme": "M1-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-220912",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-12-C2",
+      "수학Ⅰ-12-C3"
+    ],
+    "strategy_ids": [
+      "S08"
+    ],
+    "first_judgment": "같은 외접원에서 현은 $2R\\sin(\\text{원주각})$이므로 $\\sin$의 비는 현의 비이고, 내접사각형의 대각 $\\angle\\mathrm{BDC}=\\dfrac{2\\pi}3$와 코사인법칙으로 현 하나를 확정한다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "반지름의 길이가 $2\\sqrt7$인 원에 내접하고 $\\angle\\mathrm{A}=\\dfrac\\pi3$인 삼각형 $\\mathrm{ABC}$가 있다. 점 $\\mathrm{A}$를 포함하지 않는 호 $\\mathrm{BC}$ 위의 점 $\\mathrm{D}$에 대하여 $\\sin(\\angle\\mathrm{BCD}):\\sin(\\angle\\mathrm{CBD})=2:1$일 때, $(\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}})^2$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "108",
+  "answer_value": "108",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-12-C2",
+      "수학Ⅰ-12-C3"
+    ],
+    "guide": "원 위의 현은 $2R\\sin(\\text{원주각})$이므로 $\\overline{\\mathrm{BD}}:\\overline{\\mathrm{CD}}=\\sin(\\angle\\mathrm{BCD}):\\sin(\\angle\\mathrm{CBD})=2:1$이다. 사각형 $\\mathrm{ABDC}$가 원에 내접하므로 $\\angle\\mathrm{BDC}=\\pi-\\dfrac\\pi3=\\dfrac{2\\pi}3$(수학Ⅰ-12-C2, C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "현의 비",
+            "body": "$\\overline{\\mathrm{BD}}=2R\\sin(\\angle\\mathrm{BCD})$, $\\overline{\\mathrm{CD}}=2R\\sin(\\angle\\mathrm{CBD})$이므로 $\\overline{\\mathrm{BD}}=2t$, $\\overline{\\mathrm{CD}}=t$로 둔다."
+          },
+          {
+            "label": "$\\overline{\\mathrm{BC}}$",
+            "body": "$\\overline{\\mathrm{BC}}=2R\\sin\\dfrac\\pi3=4\\sqrt7\\cdot\\dfrac{\\sqrt3}{2}=2\\sqrt{21}$."
+          },
+          {
+            "label": "대각",
+            "body": "내접사각형 $\\mathrm{ABDC}$에서 $\\angle\\mathrm{BDC}=\\dfrac{2\\pi}3$."
+          },
+          {
+            "label": "코사인법칙",
+            "body": "$84=4t^2+t^2-2\\cdot2t\\cdot t\\cos\\dfrac{2\\pi}3=7t^2$이므로 $t^2=12$."
+          },
+          {
+            "label": "답",
+            "body": "$(\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}})^2=(3t)^2=9t^2=108$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "각 정리",
+            "body": "$\\angle\\mathrm{BCD}=x$라 하면 $\\angle\\mathrm{CBD}=\\pi-\\dfrac{2\\pi}3-x=\\dfrac\\pi3-x$."
+          },
+          {
+            "label": "비를 방정식으로",
+            "body": "$\\sin x=2\\sin\\left(\\dfrac\\pi3-x\\right)=2\\left(\\dfrac{\\sqrt3}{2}\\cos x-\\dfrac12\\sin x\\right)$에서 $2\\sin x=\\sqrt3\\cos x$, $\\tan x=\\dfrac{\\sqrt3}{2}$."
+          },
+          {
+            "label": "$\\sin x$, $\\cos x$",
+            "body": "$\\sin x=\\dfrac{\\sqrt3}{\\sqrt7}$, $\\cos x=\\dfrac{2}{\\sqrt7}$."
+          },
+          {
+            "label": "$\\overline{\\mathrm{BD}}$",
+            "body": "$\\overline{\\mathrm{BD}}=2R\\sin x=4\\sqrt7\\cdot\\sqrt{\\dfrac37}=4\\sqrt3$."
+          },
+          {
+            "label": "$\\overline{\\mathrm{CD}}$",
+            "body": "$\\sin\\left(\\dfrac\\pi3-x\\right)=\\dfrac{\\sqrt3}{2}\\cdot\\dfrac{2}{\\sqrt7}-\\dfrac12\\cdot\\dfrac{\\sqrt3}{\\sqrt7}=\\dfrac{\\sqrt3}{2\\sqrt7}$이므로 $\\overline{\\mathrm{CD}}=4\\sqrt7\\cdot\\dfrac{\\sqrt3}{2\\sqrt7}=2\\sqrt3$."
+          },
+          {
+            "label": "답",
+            "body": "$(\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}})^2=(6\\sqrt3)^2=108$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "각 $x$를 직접 풀면 덧셈정리와 $\\tan$까지 필요하다. 그러나 $\\sin$의 비는 원 위에서 현의 비이므로 $\\overline{\\mathrm{BD}}=2t$, $\\overline{\\mathrm{CD}}=t$로 두면 각을 한 번도 구하지 않고 코사인법칙 한 줄로 끝난다.",
+    "skill_point": "같은 원에서 $\\sin$의 비 = 현의 비. 내접사각형의 대각은 보각."
+  },
+  "verify": "def skill():\n    R = 2*sqrt(7)\n    BC2 = (2*R*sin(pi/3))**2\n    t2 = symbols('t2', positive=True)\n    sol = solve(Eq(BC2, 4*t2 + t2 - 2*2*t2*cos(2*pi/3)), t2)[0]\n    return simplify(9*sol)\n\ndef standard():\n    R = 2*sqrt(7)\n    B = Matrix([R*cos(-pi/3), R*sin(-pi/3)]); C = Matrix([R*cos(pi/3), R*sin(pi/3)])\n    def pt(f):\n        return Matrix([R*cos(f), R*sin(f)])\n    def sinang(P, X, Y):\n        u = X - P; v = Y - P\n        return abs(u[0]*v[1] - u[1]*v[0])/(sqrt(u.dot(u))*sqrt(v.dot(v)))\n    def g(f):\n        D = pt(f)\n        return sinang(C, B, D)/sinang(B, C, D) - 2\n    f0 = nsolve(g(Symbol('f')), Symbol('f'), -0.2)\n    D = pt(f0)\n    bd = sqrt((B - D).dot(B - D)); cd = sqrt((C - D).dot(C - D))\n    return nsimplify(round(float((bd + cd)**2), 6))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:16",
+    "hash": "3b2c06305fd04383",
+    "errors": [],
+    "warnings": []
+  }
+}

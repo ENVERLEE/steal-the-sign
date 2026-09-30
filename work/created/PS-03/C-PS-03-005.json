@@ -1,0 +1,89 @@
+{
+  "id": "C-PS-03-005",
+  "theme": "PS-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-220630",
+    "variation": "수치 변형",
+    "note": "수치 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-10-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "곱이 $6$의 배수 ⇔ $2$의 배수와 $3$의 배수가 모두 등장. 여사건 '$3$이 없다 또는 짝수가 없다'를 덧셈정리로 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$1$부터 $4$까지의 자연수가 하나씩 적힌 카드 $4$장이 상자에 들어 있다. 상자에서 카드를 한 장 뽑아 적힌 수를 기록하고 제자리에 돌려놓는 일을 $5$번 되풀이할 때, 기록된 다섯 수의 곱이 $6$의 배수가 될 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "887",
+  "answer_value": "887",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-10-C2"
+    ],
+    "guide": "복원추출이므로 매번 확률이 같다. '$3$이 한 번도 안 나옴'과 '짝수가 한 번도 안 나옴'을 각각 세고 둘 다 일어나는 경우(오직 $1$만 나옴)를 한 번 되돌린다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "사건 정의",
+            "body": "$X$: $3$이 한 번도 나오지 않음, $Y$: 짝수($2,4$)가 한 번도 나오지 않음. 구하는 것은 $1-\\mathrm P(X\\cup Y)$."
+          },
+          {
+            "label": "확률",
+            "body": "$\\mathrm P(X)=(\\frac34)^5$, $\\mathrm P(Y)=(\\frac12)^5$, $\\mathrm P(X\\cap Y)=(\\frac14)^5$ (오직 $1$만 나옴)."
+          },
+          {
+            "label": "답",
+            "body": "$1-\\frac{243}{1024}-\\frac{32}{1024}+\\frac1{1024}=\\frac{750}{1024}=\\frac{375}{512}$이므로 $p+q=887$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "직접 분류",
+            "body": "곱이 $6$의 배수이려면 $3$이 하나 이상 있고, 짝수($2$ 또는 $4$)가 하나 이상 있어야 한다. 3의 개수 $k$와 짝수의 개수 $m$을 $k\\ge1$, $m\\ge1$, $k+m\\le5$로 나눈다."
+          },
+          {
+            "label": "각 경우",
+            "body": "나머지 자리는 $1$이다. $(k,m)$마다 $\\frac{5!}{k!\\,m!\\,(5-k-m)!}\\cdot2^m$개의 순서쌍이 있다."
+          },
+          {
+            "label": "합",
+            "body": "$(k,m)$이 가능한 $10$쌍에 대해 위 값을 모두 더해야 한다."
+          },
+          {
+            "label": "계산",
+            "body": "합은 $750$개이고 전체는 $4^5=1024$개이다."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{750}{1024}=\\frac{375}{512}$이므로 $p+q=887$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "'둘 다 등장'을 직접 세면 개수 $(k,m)$를 짝지어야 한다. 'X 없음 또는 Y 없음'의 덧셈정리는 세 개의 거듭제곱 세 줄이다.",
+    "skill_point": "'모두 등장'은 '하나라도 없음'의 여사건, 덧셈정리로 교집합을 되돌린다."
+  },
+  "verify": "def skill():\n    v = 1 - Fraction(3, 4)**5 - Fraction(1, 2)**5 + Fraction(1, 4)**5\n    return v.numerator + v.denominator\n\ndef standard():\n    from itertools import product\n    k = sum(1 for t in product(range(1, 5), repeat=5) if (t[0]*t[1]*t[2]*t[3]*t[4]) % 6 == 0)\n    v = Fraction(k, 4**5)\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:09",
+    "hash": "509d6cab6d4730f5",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "id": "C-PS-03-002",
+  "theme": "PS-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-270629",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-10-C2",
+      "확률과 통계-09-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "'~의 배수'는 여사건으로 돌려, 곱이 $4$의 배수가 아닌 경우(모두 홀수, 또는 짝수가 하나이고 그것이 $4$의 배수가 아님)를 센다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "한 개의 주사위를 세 번 던져 나온 눈의 수를 차례로 $a,\\,b,\\,c$라 할 때, 세 수의 곱 $abc$가 $4$의 배수일 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "13",
+  "answer_value": "13",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-10-C2",
+      "확률과 통계-09-C3"
+    ],
+    "guide": "곱이 $4$의 배수이려면 $2$가 두 번 이상 들어 있어야 한다. 눈 $2,6$은 $2$를 한 번, $4$는 두 번 갖는다. 여사건은 $2$가 한 번도 없거나 딱 한 번 들어 있는 경우이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "여사건",
+            "body": "$4$의 배수가 아니다 ⇔ ($2$의 개수가 $0$) 또는 ($2$의 개수가 $1$)."
+          },
+          {
+            "label": "세기",
+            "body": "모두 홀수: $3^3=27$. 짝수가 정확히 하나이고 그것이 $2$ 또는 $6$: 자리 $3$가지 $\\times$ 눈 $2$가지 $\\times$ 나머지 홀수 $3^2$ $=54$."
+          },
+          {
+            "label": "답",
+            "body": "$1-\\frac{27+54}{216}=\\frac{135}{216}=\\frac58$이므로 $p+q=13$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전체",
+            "body": "$6^3=216$가지이다. $abc$가 $4$의 배수인 경우를 직접 나누려면 $4$가 몇 개인지, $2$나 $6$이 몇 개인지로 나누어야 한다."
+          },
+          {
+            "label": "직접 세기",
+            "body": "$4$가 하나 이상 있는 경우, $4$가 없고 $2$나 $6$이 두 개 이상 있는 경우로 나눈다. 앞의 경우는 $4$가 나온 개수 $1,2,3$개로 다시 나누어 세고, 뒤의 경우는 $\\{2,6\\}$에서 정한 개수와 홀수 자리를 세어야 한다."
+          },
+          {
+            "label": "계산",
+            "body": "$4$가 하나 이상: $216-125=91$. $4$가 없고 $\\{2,6\\}$가 두 개 이상: 정확히 두 개일 때 $3\\cdot2^2\\cdot3=36$, 세 개일 때 $2^3=8$이므로 $44$."
+          },
+          {
+            "label": "답",
+            "body": "$91+44=135$, $\\frac{135}{216}=\\frac58$이므로 $p+q=13$."
+          }
+        ]
+      }
+    ],
+    "supplement": "'배수'를 직접 세면 $4$가 몇 개인가에 따라 갈라진다. 조건을 '$2$의 개수'라는 하나의 양으로 번역하면 여사건이 단 두 줄이 된다.",
+    "skill_point": "배수 조건은 소인수의 개수로 번역하고, 부족한 쪽(여사건)을 센다."
+  },
+  "verify": "def skill():\n    v = 1 - Fraction(27 + 3*2*9, 216)\n    return v.numerator + v.denominator\n\ndef standard():\n    from itertools import product\n    k = sum(1 for a, b, c in product(range(1, 7), repeat=3) if (a*b*c) % 4 == 0)\n    v = Fraction(k, 216)\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:56",
+    "hash": "7ae3f157ec3d4391",
+    "errors": [],
+    "warnings": []
+  }
+}

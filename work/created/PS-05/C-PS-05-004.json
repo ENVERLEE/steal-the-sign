@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-05-004",
+  "theme": "PS-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-270628",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-02-C3",
+      "확률과 통계-10-C4"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "카드마다 뒤집힌 횟수의 홀짝을 세면, 세 결과의 횟수 $x,y,z$가 모두 같은 홀짝이어야 한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "세 장의 카드가 모두 앞면이 보이도록 일렬로 놓여 있다. 이 $3$장의 카드와 한 개의 주사위를 사용하여 다음 시행을 한다. 주사위를 한 번 던져 나온 눈의 수가 $1$ 또는 $2$이면 $1$번째와 $2$번째 카드를, $3$ 또는 $4$이면 $2$번째와 $3$번째 카드를, $5$ 또는 $6$이면 $1$번째와 $3$번째 카드를 각각 한 번씩 뒤집어 제자리에 놓는다. 이 시행을 $4$번 반복한 후 $3$장의 카드가 모두 앞면이 보이도록 놓여 있을 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "34",
+  "answer_value": "34",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-02-C3",
+      "확률과 통계-10-C4"
+    ],
+    "guide": "세 종류의 결과가 나온 횟수를 $x$(눈 $1,2$), $y$(눈 $3,4$), $z$(눈 $5,6$)라 하면 $1$번째 카드는 $x+z$번, $2$번째는 $x+y$번, $3$번째는 $y+z$번 뒤집힌다(확률과 통계-02-C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "홀짝 조건",
+            "body": "모두 앞면 ⇔ $x+z,\\ x+y,\\ y+z$가 모두 짝수 ⇔ $x,y,z$의 홀짝이 같다. $x+y+z=4$는 짝수이므로 셋이 모두 짝수이다."
+          },
+          {
+            "label": "구성",
+            "body": "$(x,y,z)=(4,0,0)$ 꼴 $3$가지, $(2,2,0)$ 꼴 $3$가지. 각 결과의 확률은 $\\frac13$이므로 배열 수는 $(4,0,0)$: $1$, $(2,2,0)$: $\\frac{4!}{2!2!}=6$."
+          },
+          {
+            "label": "확률",
+            "body": "$\\dfrac{3\\cdot1+3\\cdot6}{3^4}=\\dfrac{21}{81}=\\dfrac7{27}$이므로 $p+q=34$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "카드별 조건",
+            "body": "세 카드가 모두 앞면이 되려면 각 카드가 짝수 번 뒤집혀야 한다. $x+z$, $x+y$, $y+z$가 모두 짝수라는 식을 세운다."
+          },
+          {
+            "label": "홀짝 판정",
+            "body": "세 식을 짝수 $\\pmod 2$로 두면 $x\\equiv y\\equiv z\\pmod 2$이다. $x+y+z=4$이므로 셋이 모두 홀수이면 합이 홀수가 되어 불가능하다. 따라서 모두 짝수이다."
+          },
+          {
+            "label": "순서쌍 나열",
+            "body": "합이 $4$인 짝수 세 수: $(4,0,0),(0,4,0),(0,0,4),(2,2,0),(2,0,2),(0,2,2)$."
+          },
+          {
+            "label": "배열 수",
+            "body": "$(4,0,0)$ 꼴은 각각 $1$가지 배열, $(2,2,0)$ 꼴은 각각 $6$가지 배열이므로 총 $3+18=21$. 한 결과의 확률이 $\\frac13$이므로 결과 배열 하나의 확률은 $\\frac1{81}$."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{21}{81}=\\frac7{27}$이므로 $p+q=34$."
+          }
+        ]
+      }
+    ],
+    "supplement": "카드를 하나하나 추적하며 '이번에 몇 번째 카드가 뒤집혔나'를 그리면 $3^4=81$가지가 얽힌다. 세 카드의 조건을 홀짝 식으로 쓰면 '세 횟수의 홀짝이 같다'는 한 줄로 줄어든다. 두 번 뒤집으면 제자리라는 점이 근거이다.",
+    "skill_point": "뒤집기 반복은 순서를 버리고, 각 결과의 횟수 벡터의 홀짝으로 쓴다."
+  },
+  "verify": "def skill():\n    from math import factorial as f\n    tot = 0\n    for x in range(5):\n        for y in range(5 - x):\n            z = 4 - x - y\n            if (x + z) % 2 == 0 and (x + y) % 2 == 0 and (y + z) % 2 == 0:\n                tot += f(4) // (f(x) * f(y) * f(z))\n    v = Fraction(tot, 3**4)\n    return v.numerator + v.denominator\n\ndef standard():\n    from itertools import product\n    c = 0\n    for t in product(range(1, 7), repeat=4):\n        s = [0, 0, 0]\n        for k in t:\n            a, b = {1: (0, 1), 2: (0, 1), 3: (1, 2), 4: (1, 2), 5: (0, 2), 6: (0, 2)}[k]\n            s[a] ^= 1\n            s[b] ^= 1\n        c += (sum(s) == 0)\n    v = Fraction(c, 6**4)\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:15",
+    "hash": "ed3e74fcde698d06",
+    "errors": [],
+    "warnings": []
+  }
+}

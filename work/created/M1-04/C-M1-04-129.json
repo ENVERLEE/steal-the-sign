@@ -1,0 +1,80 @@
+{
+  "id": "C-M1-04-129",
+  "theme": "M1-04",
+  "origin": {
+    "type": "original",
+    "note": "삼각함수 부호 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "직각삼각형으로 크기를 먼저 정하고, 사분면에서 sin·cos·tan의 부호를 붙인 뒤 계산한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\sin\\left(\\frac{11\\pi}{3}\\right)\\sin\\left(\\frac{3\\pi}{2}\\right)\\cos\\left(\\frac{7\\pi}{6}\\right)$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$, $q$는 서로소인 정수이고 $p>0$이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "1",
+  "answer_value": "1",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C1"
+    ],
+    "guide": "직각삼각형으로 크기를 먼저 정하고, 사분면에서 sin·cos·tan의 부호를 붙인 뒤 계산한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "기준각",
+            "body": "각을 $0\\sim2\\pi$로 줄이고 기준각(예각)의 크기에 사분면 부호를 붙인다: $\\sin\\left(\\frac{11\\pi}{3}\\right)=- \\frac{\\sqrt{3}}{2}$，$\\sin\\left(\\frac{3\\pi}{2}\\right)=-1$，$\\cos\\left(\\frac{7\\pi}{6}\\right)=- \\frac{\\sqrt{3}}{2}$"
+          },
+          {
+            "label": "곱",
+            "body": "곱하면 $-\\frac{3}{4}$ → $p+q=1$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "각 줄이기",
+            "body": "각의 분수를 $2\\pi$ 이하로 줄이고 단위원에서 좌표를 하나씩 읽는다: $\\sin\\left(\\frac{11\\pi}{3}\\right)=- \\frac{\\sqrt{3}}{2}$，$\\sin\\left(\\frac{3\\pi}{2}\\right)=-1$，$\\cos\\left(\\frac{7\\pi}{6}\\right)=- \\frac{\\sqrt{3}}{2}$"
+          },
+          {
+            "label": "무리수 처리",
+            "body": "$\\sqrt3$가 들어간 값은 $\\sqrt3\\times\\sqrt3=3$을 이용해 유리수로 바꾼다."
+          },
+          {
+            "label": "곱",
+            "body": "모두 곱하면 $-\\frac{3}{4}$"
+          },
+          {
+            "label": "답",
+            "body": "$p=4$, $q=-3$ → $p+q=1$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "부호를 정하지 않고 크기만으로 계산하면 다른 값이 나온다.",
+    "skill_point": "크기는 직각삼각형, 부호는 사분면. 두 일을 나누어 하면 분수 계산이 한 번으로 끝난다."
+  },
+  "verify": "def skill():\n    v = simplify((-sqrt(3)/2)*(-1)*(-sqrt(3)/2))\n    return v.p + v.q\n\ndef standard():\n    val = math.sin(math.pi*22/6)*math.sin(math.pi*9/6)*math.cos(math.pi*7/6)\n    v = Fraction(val).limit_denominator(1000)\n    assert abs(float(v) - val) < 1e-9\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "삼각함수 부호와 값",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:22:10",
+    "hash": "944e0917a021f674",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -44,7 +44,7 @@ def run(ctx: Context) -> Log:
         browser = launch_chromium(p)
         page = browser.new_page(viewport={"width": 900, "height": 1300})
         route_network(page, allow_fonts=True)
-        page.goto(path.resolve().as_uri(), wait_until="load")
+        page.goto(path.resolve().as_uri(), wait_until="load", timeout=900000)
         res = page.evaluate(CHECK_JS)
         browser.close()
 

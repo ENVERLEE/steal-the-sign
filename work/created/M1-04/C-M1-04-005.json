@@ -1,0 +1,89 @@
+{
+  "id": "C-M1-04-005",
+  "theme": "M1-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-221111",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C1",
+      "수학Ⅰ-09-C2"
+    ],
+    "strategy_ids": [
+      "S06"
+    ],
+    "first_judgment": "최고점·최저점은 주기의 $\\frac14,\\frac34$ 위치로 $(3,a)$, $(9,-a)$이고, 높이가 최댓값의 절반인 두 점은 대칭축 $x=3$에서 $\\pm2$ 떨어져 있다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "닫힌구간 $[0,12]$에서 정의된 함수 $f(x)=a\\sin\\dfrac{\\pi x}{6}$ $(a>0)$의 그래프의 최고점을 $\\mathrm{A}$, 최저점을 $\\mathrm{B}$라 하자. $\\overline{\\mathrm{AB}}=2\\sqrt{13}$이고, 곡선 $y=f(x)$가 직선 $y=1$과 만나는 두 점을 $x$좌표가 작은 것부터 $\\mathrm{C}$, $\\mathrm{D}$라 할 때, 삼각형 $\\mathrm{BCD}$의 넓이를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "6",
+  "answer_value": "6",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C1",
+      "수학Ⅰ-09-C2"
+    ],
+    "guide": "주기가 $12$이므로 최고점은 $x=3$, 최저점은 $x=9$에 있고 두 점의 좌표는 $a$로만 표현된다(수학Ⅰ-09-C1). $\\overline{\\mathrm{AB}}$로 $a$를 정하면 $y=1$은 최댓값 $2$의 절반이므로 사인 값이 $\\frac12$이고, 두 교점은 대칭축 $x=3$에서 같은 거리에 있다(수학Ⅰ-09-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "A, B와 a",
+            "body": "$\\mathrm{A}(3,a)$, $\\mathrm{B}(9,-a)$이므로 $\\overline{\\mathrm{AB}}^{\\,2}=6^2+(2a)^2=52$이고 $a=2$이다."
+          },
+          {
+            "label": "C, D",
+            "body": "$y=1$은 최댓값의 절반이므로 $\\sin\\frac{\\pi x}6=\\frac12$이다. 최고점 $x=3$에서 좌우로 $2$만큼 떨어진 $x=1,5$가 교점이고 $\\overline{\\mathrm{CD}}=4$이다."
+          },
+          {
+            "label": "넓이",
+            "body": "밑변 $\\mathrm{CD}$는 수평선분이고 $\\mathrm{B}$의 높이 $-2$에서 직선 $y=1$까지의 거리는 $3$이므로 넓이는 $\\frac12\\cdot4\\cdot3=6$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "극점",
+            "body": "$f'(x)=\\frac{a\\pi}6\\cos\\frac{\\pi x}6=0$에서 $x=3,9$이다. $f(3)=a$, $f(9)=-a$이므로 $\\mathrm{A}(3,a)$, $\\mathrm{B}(9,-a)$이다."
+          },
+          {
+            "label": "a의 값",
+            "body": "$\\overline{\\mathrm{AB}}^{\\,2}=(9-3)^2+(-a-a)^2=36+4a^2=52$에서 $a=2$이다."
+          },
+          {
+            "label": "교점",
+            "body": "$2\\sin\\frac{\\pi x}6=1$에서 $\\sin\\frac{\\pi x}6=\\frac12$이고 $\\frac{\\pi x}6=\\frac\\pi6,\\frac{5\\pi}6$이므로 $x=1,5$이다. 곧 $\\mathrm{C}(1,1)$, $\\mathrm{D}(5,1)$이다."
+          },
+          {
+            "label": "삼각형 BCD",
+            "body": "$\\overrightarrow{\\mathrm{CD}}=(4,0)$, $\\overrightarrow{\\mathrm{CB}}=(8,-3)$이므로 넓이는 $\\frac12\\left|4\\cdot(-3)-0\\cdot8\\right|=6$이다."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\mathrm{A}$, $\\mathrm{B}$의 좌표를 미분으로 구하고 $\\mathrm{C}$, $\\mathrm{D}$를 $\\arcsin$으로 구하면 같은 답이지만 식이 두 배로 길다. 주기 $12$를 눈금으로 읽으면 네 점의 $x$좌표가 모두 정수로 찍힌다.",
+    "skill_point": "최고점은 주기의 $\\frac14$, 최저점은 $\\frac34$ 위치; 최댓값의 절반 높이는 대칭축에서 $\\pm\\frac1{6}$주기."
+  },
+  "verify": "\ndef skill():\n    a = 2\n    return Rational(1, 2) * 4 * (1 + a)\n\ndef standard():\n    x = Symbol('x', real=True)\n    a = Symbol('a', positive=True)\n    f = a*sin(pi*x/6)\n    crit = sorted(solveset(Eq(diff(f, x), 0), x, Interval(0, 12)))\n    A = (crit[0], f.subs(x, crit[0])); B = (crit[1], f.subs(x, crit[1]))\n    a0 = solve(Eq((A[0]-B[0])**2 + (A[1]-B[1])**2, 52), a)[0]\n    g = a0*sin(pi*x/6)\n    xs = sorted(solveset(Eq(g, 1), x, Interval(0, 12)))\n    C = (xs[0], 1); D = (xs[1], 1)\n    Bp = (B[0], B[1].subs(a, a0))\n    area = Abs((D[0]-C[0])*(Bp[1]-C[1]) - (Bp[0]-C[0])*(D[1]-C[1])) / 2\n    return simplify(area)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:33:38",
+    "hash": "f9e585cfe2df39a4",
+    "errors": [],
+    "warnings": []
+  }
+}

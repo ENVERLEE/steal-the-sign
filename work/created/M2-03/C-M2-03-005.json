@@ -1,0 +1,87 @@
+{
+  "id": "C-M2-03-005",
+  "theme": "M2-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-221110",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-08-C2"
+    ],
+    "strategy_ids": [
+      "S23"
+    ],
+    "first_judgment": "접선이 정해지는 순간 '곡선$-$접선'을 접점에서 $(x-1)^2$, 다시 만나는 점에서 $(x+2)$를 인수로 갖는 삼차식으로 세운다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 곡선 $y=f(x)$ 위의 점 $(1,\\,f(1))$에서의 접선이 $y$축과 만나는 점의 $y$좌표는 $4$이고, 이 접선은 곡선 $y=f(x)$와 점 $(-2,\\,f(-2))$에서 다시 만난다. $f'(0)=1$일 때, $f(3)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "36",
+  "answer_value": "36",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-08-C2"
+    ],
+    "guide": "접선을 $l(x)=mx+4$로 두면 $f(x)-l(x)$는 $x=1$에서 접하므로 $(x-1)^2$, $x=-2$에서 만나므로 $(x+2)$를 인수로 갖는다. 최고차항의 계수가 $1$이므로 $f(x)-l(x)=(x-1)^2(x+2)$로 완성된다(수학Ⅱ-08-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "식 세우기",
+            "body": "접선 $y=mx+4$에 대하여 $f(x)-(mx+4)=(x-1)^2(x+2)=x^3-3x+2$."
+          },
+          {
+            "label": "미정계수",
+            "body": "$f(x)=x^3+(m-3)x+6$이므로 $f'(0)=m-3=1$, $m=4$."
+          },
+          {
+            "label": "답",
+            "body": "$f(x)=x^3+x+6$, $f(3)=27+3+6=36$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "일반형",
+            "body": "$f(x)=x^3+ax^2+bx+c$로 두면 $f'(x)=3x^2+2ax+b$, $f'(0)=b=1$."
+          },
+          {
+            "label": "접선의 $y$절편",
+            "body": "점 $(1,f(1))$에서의 접선은 $y=f'(1)(x-1)+f(1)$이고 $y$절편은 $f(1)-f'(1)=(1+a+1+c)-(3+2a+1)=c-a-2=4$, 곧 $c=a+6$."
+          },
+          {
+            "label": "재교점 조건",
+            "body": "점 $(-2,f(-2))$가 접선 위에 있으므로 $f(-2)=f'(1)(-3)+f(1)$. $f(-2)=-8+4a-2+c$, $f'(1)=4+2a$, $f(1)=2+a+c$를 대입하면 $4a+c-10=-12-6a+2+a+c$."
+          },
+          {
+            "label": "풀이",
+            "body": "정리하면 $9a=0$, $a=0$. 따라서 $c=6$이고 $f(x)=x^3+x+6$."
+          },
+          {
+            "label": "답",
+            "body": "$f(3)=27+3+6=36$."
+          }
+        ]
+      }
+    ],
+    "supplement": "미정계수 $a,b,c$와 접선의 기울기를 모두 열어 두면 접선 방정식의 전개가 길어지고 부호 실수가 잦다. 접선과 '다시 만나는 점'이 함께 주어지면 곡선$-$접선의 근이 $1,1,-2$로 완전히 정해지므로 식이 한 줄로 끝난다. 이때 접선의 $y$절편이 곧 $l(x)$의 상수항이라는 점을 놓치지 않는다.",
+    "skill_point": "접선 + 다시 만나는 점 = $f(x)-l(x)=(x-\\text{접점})^2(x-\\text{재교점})$."
+  },
+  "verify": "def skill():\n    x, m = symbols('x m')\n    f = (x - 1)**2*(x + 2) + m*x + 4\n    mm = solve(diff(f, x).subs(x, 0) - 1, m)[0]\n    return f.subs(m, mm).subs(x, 3)\n\ndef standard():\n    x, a, b, c = symbols('x a b c')\n    f = x**3 + a*x**2 + b*x + c\n    fp = diff(f, x)\n    eqs = [fp.subs(x, 0) - 1,\n           (f.subs(x, 1) - fp.subs(x, 1)) - 4,\n           f.subs(x, -2) - (fp.subs(x, 1)*(-2 - 1) + f.subs(x, 1))]\n    sol = solve(eqs, [a, b, c], dict=True)\n    assert len(sol) == 1\n    return f.subs(sol[0]).subs(x, 3)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:54",
+    "hash": "ad676a381a97ef4b",
+    "errors": [],
+    "warnings": []
+  }
+}

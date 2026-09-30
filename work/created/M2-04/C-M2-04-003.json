@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-04-003",
+  "theme": "M2-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-240913",
+    "variation": "결합",
+    "note": "결합"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-09-C1"
+    ],
+    "strategy_ids": [
+      "S18"
+    ],
+    "first_judgment": "구간에서 감소·증가는 그 구간에서 $f'$의 부호 조건이다. 아래로 볼록한 이차식 $f'$는 구간의 끝값과 꼭짓점 위치만 확인한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "함수 $f(x)=x^3+ax^2-24x+1$이 구간 $[1,\\,4]$에서 감소하고, 구간 $[5,\\,\\infty)$에서 증가하도록 하는 정수 $a$의 개수를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "3",
+  "answer_value": "3",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-09-C1"
+    ],
+    "guide": "구간 $[1,4]$에서 감소하려면 $f'(x)\\le0$, 구간 $[5,\\infty)$에서 증가하려면 $f'(x)\\ge0$이다(수학Ⅱ-09-C1). $f'(x)=3x^2+2ax-24$는 아래로 볼록하므로 닫힌구간에서 $f'\\le0$이면 양 끝값이 $0$ 이하이면 충분하다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "감소 조건",
+            "body": "아래로 볼록한 $f'$가 $[1,4]$에서 $\\le0$이려면 양 끝에서 $f'(1)=2a-21\\le0$, $f'(4)=8a+24\\le0$. 따라서 $a\\le-3$."
+          },
+          {
+            "label": "증가 조건",
+            "body": "$[5,\\infty)$에서 $f'\\ge0$이려면 $f'(5)=10a+51\\ge0$, 곧 $a\\ge-5.1$. ($a\\le-3$이면 꼭짓점 $x=-\\frac a3\\le5$이므로 충분하다.)"
+          },
+          {
+            "label": "개수",
+            "body": "$-5.1\\le a\\le-3$인 정수 $a=-5,-4,-3$의 개수는 $3$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "도함수",
+            "body": "$f'(x)=3x^2+2ax-24$. 아래로 볼록한 포물선이다."
+          },
+          {
+            "label": "감소 조건",
+            "body": "$[1,4]$에서 $f'(x)\\le0$이려면 구간 안의 최댓값이 $0$ 이하여야 한다. 아래로 볼록한 함수의 닫힌구간 최댓값은 양 끝 중 하나이므로 $f'(1)\\le0$이고 $f'(4)\\le0$."
+          },
+          {
+            "label": "계산",
+            "body": "$f'(1)=3+2a-24=2a-21\\le0$에서 $a\\le10.5$, $f'(4)=48+8a-24=8a+24\\le0$에서 $a\\le-3$. 합쳐서 $a\\le-3$."
+          },
+          {
+            "label": "증가 조건",
+            "body": "$[5,\\infty)$에서 $f'\\ge0$이려면 $f'(5)\\ge0$이고, 꼭짓점의 $x$좌표 $-\\dfrac a3$이 $5$ 이하이어야 한다. 그렇지 않으면 꼭짓점 근처에서 $f'<0$이 된다."
+          },
+          {
+            "label": "계산",
+            "body": "$f'(5)=75+10a-24=10a+51\\ge0$에서 $a\\ge-5.1$. 이때 $-\\dfrac a3\\le1.7<5$이므로 꼭짓점 조건은 자동으로 성립한다."
+          },
+          {
+            "label": "답",
+            "body": "정수 $a=-5,-4,-3$이므로 $3$개."
+          }
+        ]
+      }
+    ],
+    "supplement": "닫힌구간에서 이차함수의 부호를 볼 때 꼭짓점을 계산하려고 하기 쉽다. 그러나 아래로 볼록한 함수의 닫힌구간 최댓값은 양 끝 중 하나이므로 감소 조건은 끝값 두 개만 확인하면 된다. 증가 조건은 열린 끝($\\infty$)이므로 끝값과 꼭짓점 위치를 함께 확인한다.",
+    "skill_point": "구간 조건 → $f'$의 부호. 아래로 볼록: 닫힌구간 $\\le0$은 양 끝값, $[c,\\infty)$에서 $\\ge0$은 $f'(c)\\ge0$과 꼭짓점 $\\le c$."
+  },
+  "verify": "def skill():\n    cnt = 0\n    for a in range(-60, 61):\n        c1 = (2*a - 21 <= 0) and (8*a + 24 <= 0)\n        c2 = (10*a + 51 >= 0)\n        cnt += 1 if (c1 and c2) else 0\n    return cnt\n\ndef standard():\n    x = Symbol('x', real=True)\n    cnt = 0\n    for a in range(-40, 41):\n        fp = 3*x**2 + 2*a*x - 24\n        dec = solve_univariate_inequality(fp <= 0, x, relational=False)\n        inc = solve_univariate_inequality(fp >= 0, x, relational=False)\n        if Interval(1, 4).is_subset(dec) and Interval(5, oo).is_subset(inc):\n            cnt += 1\n    return cnt\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:25",
+    "hash": "22e0470db1245c79",
+    "errors": [],
+    "warnings": []
+  }
+}

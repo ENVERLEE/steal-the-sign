@@ -1,0 +1,97 @@
+{
+  "id": "C-M1-09-001",
+  "theme": "M1-09",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-240609",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C1",
+      "수학Ⅰ-16-C2"
+    ],
+    "strategy_ids": [
+      "S10"
+    ],
+    "first_judgment": "$\\sum$ 안 식 전체를 하나의 수열로 보고 $n$과 $n-1$의 합을 빼서 일반항을 꺼낸 뒤, 나온 $a_n$이 분수이면 부분분수로 쪼개 망원합으로 처리한다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}\\frac{1}{(k+1)a_k}=n^2+n$을 만족시킬 때, $\\displaystyle\\sum_{n=1}^{20}a_n=\\frac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "31",
+  "answer_value": "31",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C1",
+      "수학Ⅰ-16-C2"
+    ],
+    "guide": "$c_k=\\dfrac1{(k+1)a_k}$로 보면 $\\sum_{k=1}^{n}c_k=n^2+n$이다. $c_1=F(1)$, $c_n=F(n)-F(n-1)$로 $c_n$을 구하면 $a_n$이 나온다(수학Ⅰ-16-C1). $a_n$이 두 일차식의 곱의 역수이므로 부분분수로 쪼갠다(수학Ⅰ-16-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "일반항",
+            "body": "$c_1=2$, $n\\ge2$에서 $c_n=(n^2+n)-\\{(n-1)^2+(n-1)\\}=2n$. $c_1=2$도 같은 식이므로 $\\dfrac1{(n+1)a_n}=2n$."
+          },
+          {
+            "label": "$a_n$",
+            "body": "$a_n=\\dfrac1{2n(n+1)}=\\dfrac12\\left(\\dfrac1n-\\dfrac1{n+1}\\right)$."
+          },
+          {
+            "label": "망원합",
+            "body": "$\\sum_{n=1}^{20}a_n=\\dfrac12\\left(1-\\dfrac1{21}\\right)=\\dfrac12\\cdot\\dfrac{20}{21}=\\dfrac{10}{21}$."
+          },
+          {
+            "label": "답",
+            "body": "$p=21$, $q=10$이므로 $p+q=31$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "초항",
+            "body": "$n=1$을 대입하면 $\\dfrac1{2a_1}=2$이므로 $a_1=\\dfrac14$."
+          },
+          {
+            "label": "차 구하기",
+            "body": "$n\\ge2$에서 $\\sum_{k=1}^{n}-\\sum_{k=1}^{n-1}$을 하면 $\\dfrac1{(n+1)a_n}=(n^2+n)-(n^2-n)=2n$이므로 $a_n=\\dfrac1{2n(n+1)}$. $n=1$일 때 $\\dfrac14$로 초항과 일치한다."
+          },
+          {
+            "label": "항 나열",
+            "body": "$a_1=\\dfrac14$, $a_2=\\dfrac1{12}$, $a_3=\\dfrac1{24}$, $\\dots$, $a_{20}=\\dfrac1{840}$을 모두 더하려면 분모를 통분해야 한다."
+          },
+          {
+            "label": "부분분수",
+            "body": "통분이 너무 길어지므로 $\\dfrac1{2n(n+1)}=\\dfrac12\\left(\\dfrac1n-\\dfrac1{n+1}\\right)$로 쪼개어 이웃한 항이 지워지게 한다."
+          },
+          {
+            "label": "합",
+            "body": "$\\dfrac12\\left(1-\\dfrac1{21}\\right)=\\dfrac{10}{21}$."
+          },
+          {
+            "label": "답",
+            "body": "$p+q=21+10=31$."
+          }
+        ]
+      }
+    ],
+    "supplement": "20개의 분수를 통분해서 더하는 방법은 분모가 $840$ 안팎까지 커져 오류가 나기 쉽다. $a_n$이 $\\dfrac1{n(n+1)}$ 꼴이라는 것을 알아보면 합은 처음과 끝 두 항으로 끝난다. 또 $n=1$이 일반항 식에 포함되는지 확인하는 단계를 생략하지 않는다.",
+    "skill_point": "합 조건 → 일반항($n$과 $n-1$의 차) → 부분분수 → 처음과 끝만 남기기."
+  },
+  "verify": "def skill():\n    n = Symbol('n', integer=True, positive=True)\n    an = 1/(2*n*(n + 1))\n    tot = 0\n    for i in range(1, 21):\n        tot += an.subs(n, i)\n    v = nsimplify(tot)\n    return v.p + v.q\n\ndef standard():\n    # 조건에서 a_n을 직접 풀어 확인: F(n)-F(n-1)\n    F = lambda n: n**2 + n\n    a = {}\n    for n in range(1, 21):\n        c = F(n) - (F(n - 1) if n >= 2 else 0)\n        a[n] = Rational(1, 1)/((n + 1)*c)\n    for n in range(1, 21):\n        assert sum(Rational(1, 1)/((k + 1)*a[k]) for k in range(1, n + 1)) == F(n)\n    v = sum(a.values())\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:32:03",
+    "hash": "5aa389dedd7868d4",
+    "errors": [],
+    "warnings": []
+  }
+}

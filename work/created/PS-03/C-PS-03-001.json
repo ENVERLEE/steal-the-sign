@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-03-001",
+  "theme": "PS-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-230628",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-10-C1",
+      "확률과 통계-09-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "표본공간(세 자리 수 $120$개)을 먼저 정하고, '또는'은 덧셈정리로 두 사건과 교집합을 각각 센다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "숫자 $1,\\,2,\\,3,\\,4,\\,5,\\,6$ 중에서 서로 다른 $3$개를 택해 일렬로 나열하여 만들 수 있는 모든 세 자리의 자연수 중에서 임의로 하나의 수를 택할 때, 택한 수가 $3$의 배수 또는 $400$ 이상일 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "17",
+  "answer_value": "17",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-10-C1",
+      "확률과 통계-09-C1"
+    ],
+    "guide": "$A$: $3$의 배수, $B$: $400$ 이상. 두 조건을 따로 세면 겹치는 수를 두 번 세므로 $n(A\\cap B)$를 한 번 뺀다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "표본공간",
+            "body": "${}_6\\mathrm{P}_3=120$."
+          },
+          {
+            "label": "A, B",
+            "body": "$3$의 배수는 각 자리 숫자의 합이 $3$의 배수인 세 수의 집합 8개에 배열 $6$가지씩이므로 $n(A)=48$. $400$ 이상은 백의 자리가 $4,5,6$이므로 $n(B)=3\\times5\\times4=60$."
+          },
+          {
+            "label": "교집합",
+            "body": "$A\\cap B$는 백의 자리가 $4,5,6$인 $3$의 배수: $n(A\\cap B)=24$. $\\mathrm P=\\frac{48+60-24}{120}=\\frac{84}{120}$이므로 $p+q=17$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "표본공간",
+            "body": "서로 다른 세 숫자로 만든 세 자리 수는 $120$개이다."
+          },
+          {
+            "label": "A만 세기",
+            "body": "합이 $3$의 배수인 세 수의 집합: {1,2,3}, {1,2,6}, {1,3,5}, {1,5,6}, {2,3,4}, {2,4,6}, {3,4,5}, {4,5,6}의 8개. 각각 $3!=6$가지 배열이므로 $n(A)=48$."
+          },
+          {
+            "label": "B만 세기",
+            "body": "백의 자리를 $4,5,6$ 중 하나로 정하고 나머지 두 자리는 남은 $5$개에서 순서 있게 고른다: $3\\times5\\times4=60$."
+          },
+          {
+            "label": "A∩B 직접",
+            "body": "백의 자리가 $4,5,6$인 $A$의 원소를 집합마다 세어 더한다. 각 집합에서 $4,5,6$ 중 하나 이상을 포함한 수만 골라야 한다."
+          },
+          {
+            "label": "답",
+            "body": "$n(A\\cup B)=48+60-24=84$, $\\mathrm P=\\frac{84}{120}$, $p+q=17$."
+          }
+        ]
+      }
+    ],
+    "supplement": "'또는'을 보고 두 사건을 각각 센 뒤 그냥 더하면 겹친 수를 두 번 센다. 벤다이어그램의 겹치는 칸을 먼저 그려 두면 빼는 것을 잊지 않는다.",
+    "skill_point": "표본공간 → 두 사건 → 교집합 순서로 세 개의 숫자를 한 줄에 적는다."
+  },
+  "verify": "def skill():\n    A = 8 * 6\n    B = 3 * 5 * 4\n    AB = 24\n    v = Fraction(A + B - AB, 120)\n    return v.numerator + v.denominator\n\ndef standard():\n    from itertools import permutations\n    nums = [100*a + 10*b + c for a, b, c in permutations(range(1, 7), 3)]\n    k = sum(1 for x in nums if x % 3 == 0 or x >= 400)\n    v = Fraction(k, len(nums))\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:56",
+    "hash": "6b4a68e0c5da1cac",
+    "errors": [],
+    "warnings": []
+  }
+}

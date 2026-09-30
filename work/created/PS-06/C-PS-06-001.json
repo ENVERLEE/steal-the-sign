@@ -1,0 +1,85 @@
+{
+  "id": "C-PS-06-001",
+  "theme": "PS-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-220929",
+    "variation": "수치 변형",
+    "note": "수치 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-15-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "확률이 $3$에 대해 좌우 대칭이므로 $\\mathrm E(X)=3$이고, $\\mathrm E(X^2)=\\mathrm V(X)+9$에서 $\\mathrm V(X)$를 편차로 계산한다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "이산확률변수 $X$의 확률분포를 표로 나타내면 다음과 같을 때, $5\\,\\mathrm{E}(X^2)$의 값을 구하시오.",
+  "condition": "$X$: $1,2,3,4,5$의 확률이 각각 $\\frac1{10},\\ b,\\ \\frac15,\\ b,\\ \\frac1{10}$ (합계 1)",
+  "choices": null,
+  "answer": "52",
+  "answer_value": "52",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-15-C1"
+    ],
+    "guide": "분포표가 $3$에 대해 대칭이다(확률과 통계-15-C1). 그러므로 $b$를 구하지 않아도 평균은 $3$이고, 분산은 $\\sum p(x-3)^2$이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "평균",
+            "body": "대칭이므로 $\\mathrm E(X)=3$. 합계 $1$에서 $2b=1-\\frac15-\\frac15=\\frac35$, $b=\\frac3{10}$."
+          },
+          {
+            "label": "분산",
+            "body": "$\\mathrm V(X)=\\sum p(x-3)^2=2\\cdot\\frac1{10}\\cdot4+2\\cdot\\frac3{10}\\cdot1+\\frac15\\cdot0=\\frac45+\\frac35=\\frac75$."
+          },
+          {
+            "label": "이차 적률",
+            "body": "$\\mathrm E(X^2)=\\mathrm V(X)+\\{\\mathrm E(X)\\}^2=\\frac75+9=\\frac{52}5$이므로 $5\\mathrm E(X^2)=52$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$b$ 구하기",
+            "body": "확률의 합이 $1$이므로 $\\frac1{10}+b+\\frac15+b+\\frac1{10}=1$에서 $b=\\frac3{10}$."
+          },
+          {
+            "label": "평균",
+            "body": "$\\mathrm E(X)=1\\cdot\\frac1{10}+2\\cdot\\frac3{10}+3\\cdot\\frac15+4\\cdot\\frac3{10}+5\\cdot\\frac1{10}=\\frac{1+6+6+12+5}{10}=3$."
+          },
+          {
+            "label": "$\\mathrm E(X^2)$",
+            "body": "$\\mathrm E(X^2)=1\\cdot\\frac1{10}+4\\cdot\\frac3{10}+9\\cdot\\frac15+16\\cdot\\frac3{10}+25\\cdot\\frac1{10}=\\frac{1+12+18+48+25}{10}=\\frac{104}{10}$."
+          },
+          {
+            "label": "정리",
+            "body": "$\\frac{104}{10}=\\frac{52}5$이므로 $5\\,\\mathrm E(X^2)=52$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$x^2$을 곱해 다섯 항을 더하는 풀이도 옳지만, 큰 수($16$, $25$)가 섞인 분수 덧셈이 된다. 평균에서의 편차 $(x-3)$은 $0,\\pm1,\\pm2$로 작아 계산이 줄어든다.",
+    "skill_point": "대칭 분포: 평균은 대칭축, 분산은 $\\sum p\\times(\\text{편차})^2$."
+  },
+  "verify": "def skill():\n    b = (1 - Rational(1, 5) - Rational(1, 5)) / 2\n    var = 2*Rational(1, 10)*4 + 2*b*1\n    return 5*(var + 9)\n\ndef standard():\n    b = Symbol('b')\n    ps = [Rational(1, 10), b, Rational(1, 5), b, Rational(1, 10)]\n    bv = solve(Eq(sum(ps), 1), b)[0]\n    ps = [p.subs(b, bv) for p in ps]\n    return 5*sum(p*x**2 for p, x in zip(ps, range(1, 6)))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:32",
+    "hash": "926017512189ef65",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -20,7 +20,7 @@ def run(ctx: Context) -> Log:
         browser = launch_chromium(p)
         page = browser.new_page(viewport={"width": 900, "height": 1300})
         route_network(page, allow_fonts=True)
-        page.goto(src.resolve().as_uri(), wait_until="load")
+        page.goto(src.resolve().as_uri(), wait_until="load", timeout=900000)
         page.evaluate("async () => { await document.fonts.ready; }")
         fonts = page.evaluate(FONTS_LOADED_JS, ["Noto Sans KR", "Noto Serif KR", "Black Han Sans"])
         n_html = page.evaluate("() => document.querySelectorAll('.page').length")

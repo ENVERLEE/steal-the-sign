@@ -1,0 +1,97 @@
+{
+  "id": "C-M2-09-005",
+  "theme": "M2-09",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-240614",
+    "variation": "조건 변형",
+    "note": "근이 1, a, 2a에서 a, 2a, 3으로 바뀌고 위치 변화량 대신 움직인 거리를 묻는다"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-19-C2",
+      "수학Ⅱ-19-C3"
+    ],
+    "strategy_ids": [
+      "S26"
+    ],
+    "first_judgment": "방향 전환은 홀수 중근의 개수이므로 세 근 $a,\\,2a,\\,3$ 중 두 개가 겹쳐야 한다. 겹치는 $a$ 후보를 먼저 정하고, 각각의 부호로 거리를 센다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "양수 $a$에 대하여 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t\\ge0)$에서의 속도 $v(t)$가 $v(t)=(t-a)(t-2a)(t-3)$이다. 점 $\\mathrm{P}$가 출발한 후 운동 방향을 한 번만 바꾸도록 하는 $a$에 대하여, 시각 $t=0$에서 $t=6$까지 점 $\\mathrm{P}$가 움직인 거리의 최댓값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "54",
+  "answer_value": "54",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-19-C2",
+      "수학Ⅱ-19-C3"
+    ],
+    "guide": "세 근이 서로 다르면 방향이 세 번 바뀐다. 한 번만 바뀌려면 두 근이 일치해 짝수 중근이 생겨야 한다(수학Ⅱ-19-C2). 그런 $a$마다 $[0,6]$의 움직인 거리를 구해 비교한다(수학Ⅱ-19-C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "후보",
+            "body": "근 $a,\\,2a,\\,3$에서 $a=2a$는 불가능. $a=3$이면 근이 $3,\\,6,\\,3$, $2a=3$이면 근이 $\\frac32,\\,3,\\,3$. 따라서 $a=3$ 또는 $a=\\frac32$."
+          },
+          {
+            "label": "$a=3$",
+            "body": "$v=(t-3)^2(t-6)\\le0$ ($0\\le t\\le6$)이므로 거리 $=\\left|\\int_0^6(t-3)^2(t-6)dt\\right|=54$."
+          },
+          {
+            "label": "$a=\\frac32$",
+            "body": "$v=\\left(t-\\frac32\\right)(t-3)^2$은 $t=\\frac32$에서만 부호가 바뀐다. 거리 $=\\int_0^6v+2\\left|\\int_0^{3/2}v\\right|=27+\\frac{459}{32}=\\frac{1323}{32}<54$."
+          },
+          {
+            "label": "최댓값",
+            "body": "최댓값은 $54$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "근의 배치",
+            "body": "근이 $a,\\,2a,\\,3$이다. 세 근이 모두 다르면 세 번 방향이 바뀐다. $a=3$이면 $3$이 중근, $2a=3$이면 $3$이 중근이다. 두 경우가 아니면 근이 겹치지 않는다."
+          },
+          {
+            "label": "$a=3$의 식",
+            "body": "$v=(t-3)^2(t-6)=t^3-12t^2+45t-54$. 부정적분 $F=\\frac{t^4}4-4t^3+\\frac{45}2t^2-54t$."
+          },
+          {
+            "label": "$a=3$의 거리",
+            "body": "$F(6)=324-864+810-324=-54$, $F(0)=0$. $[0,6]$에서 $v\\le0$이므로 거리 $=|F(6)-F(0)|=54$."
+          },
+          {
+            "label": "$a=\\frac32$의 식",
+            "body": "$v=\\left(t-\\frac32\\right)(t-3)^2=t^3-\\frac{15}2t^2+18t-\\frac{27}2$. 부정적분 $F=\\frac{t^4}4-\\frac52t^3+9t^2-\\frac{27}2t$."
+          },
+          {
+            "label": "$a=\\frac32$의 거리",
+            "body": "$F(0)=0$, $F\\!\\left(\\frac32\\right)=-\\frac{459}{64}$, $F(6)=27$. 거리 $=\\frac{459}{64}+\\left(27+\\frac{459}{64}\\right)=\\frac{1323}{32}\\approx41.3$."
+          },
+          {
+            "label": "비교",
+            "body": "$54>\\frac{1323}{32}$이므로 최댓값은 $54$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a=\\frac32$의 경우를 끝까지 계산하지 않고도 $54$가 최대임을 짐작할 수 있지만, 그 계산은 분모 $64$가 나와 실수하기 쉽다. 그래서 크기 비교가 필요할 때는 위치 변화량(27)과 되돌아간 양(459/32)을 따로 줄에 써서 더한다. 한편 $a=3$은 $t=6$에서 방향이 바뀌므로 $[0,6]$에서는 방향을 바꾸는 순간이 구간의 끝이라는 점을 확인한다.",
+    "skill_point": "방향을 한 번만 바꾸려면 짝수 중근이 필요하다. 후보를 먼저 줄이고 각각의 거리를 비교한다."
+  },
+  "verify": "def skill():\n    t = Symbol('t')\n    best = None\n    for a in [Rational(3, 2), Integer(3)]:\n        v = (t - a)*(t - 2*a)*(t - 3)\n        F = integrate(v, t)\n        pts = [0] + sorted(set(r for r in solve(v, t) if 0 < r < 6 and v.subs(t, r - Rational(1, 100))*v.subs(t, r + Rational(1, 100)) < 0)) + [6]\n        d = sum(abs(F.subs(t, b) - F.subs(t, c)) for c, b in zip(pts[:-1], pts[1:]))\n        best = d if best is None else max(best, d)\n    return best\n\ndef standard():\n    t = Symbol('t')\n    def dist(v, lo, hi):\n        F = integrate(v, t)\n        cuts = sorted(r for r in real_roots(Poly(v, t)) if lo < r < hi)\n        pts = [lo] + cuts + [hi]\n        return sum(abs(F.subs(t, q) - F.subs(t, p)) for p, q in zip(pts[:-1], pts[1:]))\n    best = 0\n    cnt = 0\n    for k in range(1, 49):\n        a = Rational(k, 4)\n        v = expand((t - a)*(t - 2*a)*(t - 3))\n        rts = roots(Poly(v, t))\n        odd = [r for r, m in rts.items() if r > 0 and m % 2 == 1]\n        if len(odd) == 1:\n            cnt += 1\n            best = max(best, dist(v, 0, 6))\n    assert cnt == 2\n    return best\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:32:39",
+    "hash": "e6f6af65322bc70b",
+    "errors": [],
+    "warnings": []
+  }
+}

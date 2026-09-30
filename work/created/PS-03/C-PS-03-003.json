@@ -1,0 +1,89 @@
+{
+  "id": "C-PS-03-003",
+  "theme": "PS-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-250629",
+    "variation": "일반화",
+    "note": "일반화"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-09-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "같은 표본공간에서 확률의 관계 $q_1=2p_1$은 경우의 수의 관계이므로, 분수를 쓰지 않고 흰 공의 수 $w$에 대한 식으로 번역한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$37$개의 공이 들어 있는 주머니가 있다. 각각의 공은 흰 공 또는 검은 공 중 하나이다. 이 주머니에서 임의로 $2$개의 공을 동시에 꺼낼 때, 흰 공 $2$개를 꺼낼 확률을 $p_1$, 흰 공 $1$개와 검은 공 $1$개를 꺼낼 확률을 $q_1$, 검은 공 $2$개를 꺼낼 확률을 $r_1$이라 하자. $q_1=2p_1$일 때, $r_1=\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p_1>0$이고, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "91",
+  "answer_value": "91",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-09-C1"
+    ],
+    "guide": "세 확률의 분모는 모두 ${}_{37}\\mathrm{C}_2$로 같다. 따라서 $q_1=2p_1$은 $wb=2\\cdot{}_w\\mathrm{C}_2$이다 ($w$: 흰 공, $b$: 검은 공).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "경우의 수로",
+            "body": "분모가 같으므로 $wb=2\\cdot\\frac{w(w-1)}{2}=w(w-1)$이다. $p_1>0$에서 $w\\ge2$이므로 양변을 $w$로 나눌 수 있다."
+          },
+          {
+            "label": "일차식",
+            "body": "$b=w-1$, $w+b=37$이므로 $w=19$, $b=18$이다."
+          },
+          {
+            "label": "답",
+            "body": "$r_1=\\frac{{}_{18}\\mathrm{C}_2}{{}_{37}\\mathrm{C}_2}=\\frac{153}{666}=\\frac{17}{74}$이므로 $p+q=91$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "확률을 써서",
+            "body": "흰 공을 $w$개라 하면 $p_1=\\frac{{}_w\\mathrm{C}_2}{{}_{37}\\mathrm{C}_2}$, $q_1=\\frac{w(37-w)}{{}_{37}\\mathrm{C}_2}$이다."
+          },
+          {
+            "label": "식 세우기",
+            "body": "$q_1=2p_1$에 대입하면 $w(37-w)=2\\cdot\\frac{w(w-1)}{2}$이다."
+          },
+          {
+            "label": "전개",
+            "body": "$37w-w^2=w^2-w$, 곧 $2w^2-38w=0$이다."
+          },
+          {
+            "label": "인수분해",
+            "body": "$2w(w-19)=0$이므로 $w=0$ 또는 $w=19$인데 $p_1>0$이므로 $w=19$이다."
+          },
+          {
+            "label": "답",
+            "body": "$b=18$, $r_1=\\frac{153}{666}=\\frac{17}{74}$이므로 $p+q=91$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "분모가 같은 확률끼리의 관계는 분모를 지우고 경우의 수로 쓴다. 이차식을 전개하지 않아도 $w$가 공통 인수라서 곧바로 일차식이 된다.",
+    "skill_point": "같은 분모는 지우고, 공통 인수는 나누어 일차식으로 낮춘다."
+  },
+  "verify": "def skill():\n    w = 19\n    v = Fraction(binomial(37 - w, 2), binomial(37, 2))\n    return v.numerator + v.denominator\n\ndef standard():\n    sols = [w for w in range(2, 37) if Fraction(w * (37 - w), 1) == 2 * Fraction(binomial(w, 2), 1)]\n    w = sols[0]\n    v = Fraction(binomial(37 - w, 2), binomial(37, 2))\n    return v.numerator + v.denominator\n\ndef unique():\n    sols = [w for w in range(2, 37) if w * (37 - w) == 2 * binomial(w, 2)]\n    return [Fraction(binomial(37 - w, 2), binomial(37, 2)).numerator + Fraction(binomial(37 - w, 2), binomial(37, 2)).denominator for w in sols]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:57",
+    "hash": "c74e5fcfa3c54f94",
+    "errors": [],
+    "warnings": []
+  }
+}

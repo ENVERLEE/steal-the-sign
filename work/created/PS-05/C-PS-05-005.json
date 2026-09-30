@@ -1,0 +1,79 @@
+{
+  "id": "C-PS-05-005",
+  "theme": "PS-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-240929",
+    "variation": "역방향",
+    "note": "역방향"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-14-C2",
+      "확률과 통계-14-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "짝수 번 뒤집힐 확률 공식 $\\frac{1+(1-2p)^n}{2}$에서 $1-2p$를 먼저 구하면 $a$가 정해진다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "앞면에는 문자 $\\mathrm{A}$, 뒷면에는 문자 $\\mathrm{B}$가 적힌 한 장의 카드와 한 개의 주사위가 있다. $6$ 이하의 자연수 $a$에 대하여 다음 시행을 한다. 주사위를 한 번 던져 나온 눈의 수가 $a$ 이하이면 카드를 한 번 뒤집어 제자리에 놓고, $a$보다 크면 카드를 그대로 둔다. 처음에 문자 $\\mathrm{A}$가 보이도록 카드가 놓여 있을 때, 이 시행을 $3$번 반복한 후 문자 $\\mathrm{A}$가 보이도록 카드가 놓일 확률이 $\\dfrac{14}{27}$이다. 이 시행을 $5$번 반복한 후 문자 $\\mathrm{A}$가 보이도록 카드가 놓일 확률을 $\\dfrac qp$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "365",
+  "answer_value": "365",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-14-C2",
+      "확률과 통계-14-C1"
+    ],
+    "guide": "뒤집힐 확률을 $p=\\frac a6$이라 하면 $\\mathrm A$가 다시 보일 확률은 $\\frac{1+(1-2p)^n}{2}$이다(확률과 통계-14-C2). $n=3$일 때의 값이 주어져 있으므로 거꾸로 $1-2p$를 구한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "역산",
+            "body": "$\\dfrac{1+(1-2p)^3}{2}=\\dfrac{14}{27}$이면 $(1-2p)^3=\\dfrac{1}{27}$이므로 $1-2p=\\dfrac13$, $p=\\dfrac13$ ($a=2$)."
+          },
+          {
+            "label": "$n=5$",
+            "body": "$\\dfrac{1+\\left(\\frac13\\right)^5}{2}=\\dfrac{1}{2}\\cdot\\dfrac{244}{243}=\\dfrac{122}{243}$이므로 $p+q=365$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$a$ 후보",
+            "body": "$a=1,\\dots,6$일 때 뒤집힐 확률은 $\\frac a6$이고, $3$번 반복 후 $\\mathrm A$가 보일 확률은 짝수 번 뒤집힐 확률 $\\frac{1+(1-a/3)^3}{2}$이다."
+          },
+          {
+            "label": "값 대입",
+            "body": "$a=1$: $\\frac{1+(2/3)^3}{2}=\\frac{35}{54}$, $a=2$: $\\frac{1+(1/3)^3}{2}=\\frac{14}{27}$, $a=3$: $\\frac12$, $a=4$: $\\frac{1+(-1/3)^3}{2}=\\frac{13}{27}$, $a=5$: $\\frac{1+(-2/3)^3}{2}=\\frac{19}{54}$, $a=6$: $0$. 조건에 맞는 것은 $a=2$뿐이다."
+          },
+          {
+            "label": "$n=5$",
+            "body": "$a=2$이므로 뒤집힐 확률 $\\frac13$. 짝수 번 뒤집힐 확률은 $\\sum_{r=0,2,4}{}_5C_r\\left(\\frac13\\right)^r\\left(\\frac23\\right)^{5-r}=\\frac{32}{243}+\\frac{80}{243}+\\frac{10}{243}=\\frac{122}{243}$."
+          },
+          {
+            "label": "답",
+            "body": "$p+q=243+122=365$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a$를 하나씩 대입해도 풀리지만 여섯 번의 계산이 필요하다. 공식이 $1-2p$의 거듭제곱으로 정리되므로 세제곱근이 바로 정수 근을 준다는 것이 설계 의도이다. $(1-2p)^3=\\frac1{27}$에서 실수 세제곱근은 하나뿐이라 답이 유일하다.",
+    "skill_point": "확률이 주어지면 공식을 거꾸로 풀어 $1-2p$를 먼저 확정한다."
+  },
+  "verify": "def skill():\n    x = Symbol('x', real=True)\n    sol = solve(Eq((1 + x**3) / 2, Rational(14, 27)), x)\n    x0 = sol[0]\n    v = (1 + x0**5) / 2\n    return v.p + v.q\n\ndef standard():\n    from math import comb\n    good = [a for a in range(1, 7)\n            if sum(comb(3, r) * Fraction(a, 6)**r * Fraction(6 - a, 6)**(3 - r) for r in (0, 2)) == Fraction(14, 27)]\n    assert len(good) == 1\n    p = Fraction(good[0], 6)\n    v = sum(comb(5, r) * p**r * (1 - p)**(5 - r) for r in (0, 2, 4))\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:30",
+    "hash": "bbf7b620481a1b6d",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "id": "C-M2-01-005",
+  "theme": "M2-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-260621",
+    "variation": "조건 변형",
+    "note": "$f$의 근을 $1,2$로 유지하고 둘째 극한을 $|g-3f|/g$로 바꾼 변형(사차 $g$의 인수 $h$가 $f+3$)"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-03-C4",
+      "수학Ⅱ-03-C2"
+    ],
+    "strategy_ids": [
+      "S13",
+      "S14"
+    ],
+    "first_judgment": "$\\dfrac{|f|}{f}$는 $f$의 근에서 부호가 갈리는 스위치이므로, 곱해진 $g$가 그 근에서 $0$이어야 하고, 둘째 식은 $g=fh$로 묶어 $h$의 실근과 $f$의 근에서의 값을 따진다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "최고차항의 계수가 $1$인 사차함수 $g(x)$와 이차함수 $f(x)=(x-1)(x-2)$에 대하여, 두 함수 $\\dfrac{g(x)\\,|f(x)|}{f(x)}$, $\\dfrac{|g(x)-3f(x)|}{g(x)}$ 모두 모든 실수 $a$에서 $x\\to a$일 때의 극한값이 존재한다. $g(-1)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "54",
+  "answer_value": "54",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-03-C4",
+      "수학Ⅱ-03-C2"
+    ],
+    "guide": "$\\dfrac{|f|}{f}$는 $f$의 부호가 바뀌는 근에서 좌우 값이 $\\pm1$로 갈리는 부호 스위치이다(수학Ⅱ-03-C4). 곱해진 인수가 그 근에서 $0$이어야 하므로 $g=f\\cdot h$로 묶는다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "첫 극한",
+            "body": "$\\dfrac{|f|}{f}$는 $x=1,2$에서 부호가 갈리므로 $g(1)=g(2)=0$. 따라서 $g=f\\cdot h$ ($h$는 최고차항의 계수가 $1$인 이차식)."
+          },
+          {
+            "label": "둘째 극한 정리",
+            "body": "$\\dfrac{|g-3f|}{g}=\\dfrac{|f|\\,|h-3|}{f\\,h}=\\mathrm{sgn}(f)\\dfrac{|h-3|}{h}$. $h$의 실근에서는 $|h-3|\\to3$이라 발산하므로 $h$는 실근이 없다."
+          },
+          {
+            "label": "부호 스위치",
+            "body": "$\\mathrm{sgn}(f)$가 바뀌는 $x=1,2$에서 극한이 존재하려면 $|h-3|=0$, 곧 $h(1)=h(2)=3$이다."
+          },
+          {
+            "label": "결정",
+            "body": "$h=f+3$ (판별식 $9-20<0$이므로 실근 없음). $g(-1)=f(-1)\\{f(-1)+3\\}=6\\cdot9=54$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "첫 조건 해석",
+            "body": "$x=1$에서 $\\dfrac{|f(x)|}{f(x)}$는 좌극한이 $\\pm1$, 우극한이 그 반대이다. 따라서 $g(x)\\dfrac{|f(x)|}{f(x)}$의 좌·우극한은 $\\mp g(1)$과 $\\pm g(1)$이므로 극한이 존재하려면 $g(1)=0$이다. $x=2$도 같아 $g(2)=0$."
+          },
+          {
+            "label": "g의 꼴",
+            "body": "사차함수 $g$가 $x=1,2$를 근으로 가지므로 $g(x)=(x-1)(x-2)\\,h(x)=f(x)h(x)$이고 $h(x)$는 최고차항의 계수가 $1$인 이차식이다. 일반적으로 $h(x)=x^2+px+q$로 둘 수 있다."
+          },
+          {
+            "label": "둘째 식",
+            "body": "$g-3f=f(h-3)$이므로 $\\dfrac{|g-3f|}{g}=\\dfrac{|f|\\,|h-3|}{f\\,h}$. $f\\ne0$인 곳에서는 $\\mathrm{sgn}(f)\\dfrac{|h-3|}{h}$이다."
+          },
+          {
+            "label": "h의 실근 배제",
+            "body": "$h(r)=0$이 되는 실수 $r$이 있으면 $x\\to r$에서 분자는 $|h-3|\\to3$, 분모는 $0$으로 가서 극한이 발산한다. $r$이 $1$이나 $2$여도 $\\mathrm{sgn}(f)$가 유한하게 바뀔 뿐 발산은 그대로이다. 그러므로 $h$의 판별식은 음수."
+          },
+          {
+            "label": "x=1,2에서",
+            "body": "$h$의 값이 $0$이 아니므로 $x=1$ 좌우에서 $\\mathrm{sgn}(f)$가 $\\pm1$로 갈리고, 극한이 존재하려면 $\\dfrac{|h(1)-3|}{h(1)}=0$, 곧 $h(1)=3$. 마찬가지로 $h(2)=3$."
+          },
+          {
+            "label": "h 결정",
+            "body": "$h(x)-3$은 최고차항의 계수가 $1$이고 $x=1,2$를 근으로 가지는 이차식이므로 $h(x)=(x-1)(x-2)+3=x^2-3x+5$이고 판별식 $9-20<0$이다."
+          },
+          {
+            "label": "답",
+            "body": "$g(-1)=f(-1)h(-1)=(-2)(-3)\\cdot(1+3+5)=6\\cdot9=54$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$g$를 사차식 전체로 열면 계수 네 개가 생겨 절댓값을 처리할 수 없다. $g=fh$로 묶고 $\\dfrac{|f|}{f}$가 남는 꼴로 바꾸면 $h$에 대한 조건($h$의 실근 없음, $h(1)=h(2)=3$)만 남는다. $h$의 실근이 있는 경우를 배제하는 것을 빠뜨리기 쉽다.",
+    "skill_point": "$\\dfrac{|f|}{f}$ 꼴은 $f$의 근에서 부호가 갈리는 스위치이므로, 곱해진 식이 그 근에서 $0$이 되도록 인수를 묶는다."
+  },
+  "verify": "import numpy as np\n\ndef f(t):\n    return (t - 1)*(t - 2)\n\ndef check(p, q):\n    \"\"\"g = f*h, h = x^2+px+q 일 때 두 극한이 모든 실수 a 에서 존재하는가 (수치)\"\"\"\n    def g(t):\n        return f(t)*(t*t + p*t + q)\n    h = np.poly1d([1, p, q])\n    gp = np.poly1d([1, -3, 2])*h\n    crit = [1.0, 2.0] + [float(r.real) for r in np.roots(gp.coeffs) if abs(r.imag) < 1e-9]\n    e = 1e-6\n    def e1(t):\n        return g(t)*abs(f(t))/f(t)\n    def e2(t):\n        return abs(g(t) - 3*f(t))/g(t)\n    for a in crit:\n        for fn in (e1, e2):\n            try:\n                l, r = fn(a - e), fn(a + e)\n            except ZeroDivisionError:\n                return False\n            if abs(l) > 1e3 or abs(r) > 1e3 or abs(l - r) > 1e-2:\n                return False\n    return True\n\ndef cand():\n    out = set()\n    for p2 in range(-24, 25):\n        for q2 in range(-40, 61):\n            p, q = p2/2, q2/2\n            if check(p, q):\n                gm1 = (f(-1))*((-1)**2 + p*(-1) + q)\n                out.add(gm1)\n    return out\n\ndef skill():\n    return f(-1)*(f(-1) + 3)\n\ndef standard():\n    v = cand()\n    assert len(v) == 1\n    return list(v)[0]\n\ndef unique():\n    return sorted(cand())\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:47:15",
+    "hash": "7c5a50e6790193ff",
+    "errors": [],
+    "warnings": []
+  }
+}

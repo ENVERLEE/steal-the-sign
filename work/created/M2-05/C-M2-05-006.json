@@ -1,0 +1,104 @@
+{
+  "id": "C-M2-05-006",
+  "theme": "M2-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-220920",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-10-C1"
+    ],
+    "strategy_ids": [
+      "S21",
+      "S23"
+    ],
+    "first_judgment": "분수가 있는 사차식은 먼저 $3$배해서 정수로 만들고, 극값을 정수로 적은 뒤 마지막에 $3$으로 나눈다. 실근 $3$개는 수평선이 극점을 지나는 두 경우뿐이다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$x$에 대한 방정식 $x^4-\\dfrac43x^3-4x^2+4=a$의 서로 다른 실근의 개수가 $3$이 되도록 하는 모든 실수 $a$의 값의 합을 $\\dfrac qp$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "22",
+  "answer_value": "22",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-10-C1"
+    ],
+    "guide": "$h(x)=x^4-\\dfrac43x^3-4x^2+4$와 수평선 $y=a$의 교점이 세 개인 경우를 찾는다(수학Ⅱ-10-C1). 계산을 줄이려면 $3h(x)=3x^4-4x^3-12x^2+12$로 정수화하여 극값을 구한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "정수화",
+            "body": "$H(x)=3h(x)=3x^4-4x^3-12x^2+12$. $H'(x)=12x^3-12x^2-24x=12x(x-2)(x+1)$."
+          },
+          {
+            "label": "극값 표",
+            "body": "$H(-1)=3+4-12+12=7$, $H(0)=12$, $H(2)=48-32-48+12=-20$. 곧 극솟값 $7,\\,-20$, 극댓값 $12$."
+          },
+          {
+            "label": "실근 $3$개",
+            "body": "사차함수의 그래프는 W 꼴이므로 교점이 $3$개인 것은 수평선이 극댓값을 지나거나, 더 높은 극솟값을 지날 때이다. $3a=12$ 또는 $3a=7$이다."
+          },
+          {
+            "label": "답",
+            "body": "$a=4,\\ \\dfrac73$이므로 합 $\\dfrac{19}3$, $p+q=3+19=22$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "도함수",
+            "body": "$h'(x)=4x^3-4x^2-8x=4x(x-2)(x+1)$."
+          },
+          {
+            "label": "극값",
+            "body": "$h(-1)=1+\\dfrac43-4+4=\\dfrac73$, $h(0)=4$, $h(2)=16-\\dfrac{32}3-16+4=-\\dfrac{20}3$."
+          },
+          {
+            "label": "증감표",
+            "body": "$x<-1$에서 감소, $-1<x<0$에서 증가, $0<x<2$에서 감소, $x>2$에서 증가. 극소 $-1,\\,2$ / 극대 $0$."
+          },
+          {
+            "label": "경우별 개수",
+            "body": "$a>4$: $2$개, $a=4$: $3$개, $\\dfrac73<a<4$: $4$개, $a=\\dfrac73$: $3$개, $-\\dfrac{20}3<a<\\dfrac73$: $2$개, $a=-\\dfrac{20}3$: $1$개, $a<-\\dfrac{20}3$: $0$개."
+          },
+          {
+            "label": "합",
+            "body": "$a=4$ 또는 $a=\\dfrac73$이므로 합은 $4+\\dfrac73=\\dfrac{12}3+\\dfrac73=\\dfrac{19}3$."
+          },
+          {
+            "label": "답",
+            "body": "$p=3$, $q=19$이므로 $p+q=22$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          },
+          {
+            "label": "확인 2",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$h(-1)$, $h(2)$를 분수 그대로 계산하면 통분을 여러 번 하게 되어 값이 흔들린다. 식을 $3$배해 정수 계수로 바꾸면 극값이 정수 $7,\\,12,\\,-20$으로 나오고, 분수는 마지막 합에서 한 번만 나온다. 또 극솟값이 두 개일 때 '높은 쪽'이 $3$개 조건을 만든다는 점을 그래프로 반드시 확인한다.",
+    "skill_point": "분수 계수는 공통 분모를 곱해 정수식으로 바꾼 뒤 극값을 구한다. 사차 W꼴에서 실근 $3$개 = 극댓값과 높은 극솟값."
+  },
+  "verify": "def skill():\n    x = Symbol('x')\n    H = 3*x**4 - 4*x**3 - 12*x**2 + 12\n    vals = sorted(H.subs(x, c) for c in solve(diff(H, x), x))\n    a1, a2 = Rational(vals[-1], 3), Rational(vals[1], 3)\n    s = a1 + a2\n    return s.p + s.q\n\ndef standard():\n    x, a = symbols('x a')\n    h = x**4 - Rational(4, 3)*x**3 - 4*x**2 + 4\n    crit = sorted(h.subs(x, c) for c in solve(diff(h, x), x))\n    pts = crit[:]\n    mids = [(crit[i] + crit[i + 1])/2 for i in range(len(crit) - 1)] + [crit[0] - 1, crit[-1] + 1]\n    cnt = lambda v: len(set(real_roots(Poly(h - v, x))))\n    good = [v for v in set(pts + mids) if cnt(v) == 3]\n    s = sum(good)\n    return s.p + s.q\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:35:49",
+    "hash": "74b6d5b87a9de165",
+    "errors": [],
+    "warnings": []
+  }
+}

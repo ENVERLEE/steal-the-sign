@@ -1,0 +1,83 @@
+{
+  "id": "C-PS-07-001",
+  "theme": "PS-07",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-251129",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-18-C3",
+      "확률과 통계-18-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "'모든 $x$에 대하여 $\\mathrm P(X\\le x)=\\mathrm P(X\\ge30-x)$'는 곡선이 $x=15$에 대칭이라는 뜻이므로 $m=15$이고, 구간 $[9,m]$을 표준화한다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "추론",
+  "question": "확률변수 $X$는 정규분포 $\\mathrm{N}(m,\\sigma^2)$을 따르고, 모든 실수 $x$에 대하여 $\\mathrm{P}(X\\le x)=\\mathrm{P}(X\\ge30-x)$이다. $\\mathrm{P}(9\\le X\\le15)=0.4332$일 때, $m+\\sigma$의 값을 구하시오. (단, $\\sigma>0$이다.)",
+  "condition": "표준정규분포표: $z$: $\\mathrm P(0\\le Z\\le z)$ — $1.0$: $0.3413$, $1.5$: $0.4332$, $2.0$: $0.4772$, $2.5$: $0.4938$",
+  "choices": null,
+  "answer": "19",
+  "answer_value": "19",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-18-C3",
+      "확률과 통계-18-C1"
+    ],
+    "guide": "$x$와 $30-x$가 $15$에 대칭인 점이므로 곡선은 $x=15$에 대칭, $m=15$이다(확률과 통계-18-C3). 구간의 오른쪽 끝이 평균이므로 표준화하면 $[-\\frac6\\sigma,0]$이다(확률과 통계-18-C1).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "대칭축",
+            "body": "곡선이 $x=15$에 대칭이므로 $m=15$."
+          },
+          {
+            "label": "표준화",
+            "body": "$\\mathrm P(9\\le X\\le15)=\\mathrm P\\left(-\\frac6\\sigma\\le Z\\le0\\right)=\\mathrm P\\left(0\\le Z\\le\\frac6\\sigma\\right)=0.4332$. 표에서 $0.4332$는 $z=1.5$."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac6\\sigma=1.5$이므로 $\\sigma=4$, $m+\\sigma=19$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "조건 해석",
+            "body": "$\\mathrm P(X\\le x)=\\mathrm P(X\\ge30-x)$를 표준화하면 $\\mathrm P\\left(Z\\le\\frac{x-m}\\sigma\\right)=\\mathrm P\\left(Z\\ge\\frac{30-x-m}\\sigma\\right)$. 표준정규분포의 대칭성 $\\mathrm P(Z\\le a)=\\mathrm P(Z\\ge-a)$를 쓰면 $\\frac{x-m}\\sigma=-\\frac{30-x-m}\\sigma$."
+          },
+          {
+            "label": "$m$ 구하기",
+            "body": "양변에 $\\sigma$를 곱해 정리하면 $x-m=x+m-30$, 곧 $m=15$. $x$가 소거되어 모든 $x$에서 성립한다."
+          },
+          {
+            "label": "표준화",
+            "body": "$\\mathrm P(9\\le X\\le15)=\\mathrm P\\left(\\frac{9-15}\\sigma\\le Z\\le0\\right)=\\mathrm P\\left(-\\frac6\\sigma\\le Z\\le0\\right)$. $Z$의 대칭성으로 $\\mathrm P\\left(0\\le Z\\le\\frac6\\sigma\\right)=0.4332$."
+          },
+          {
+            "label": "표 읽기",
+            "body": "표에서 $\\mathrm P(0\\le Z\\le1.5)=0.4332$이므로 $\\frac6\\sigma=1.5$, $\\sigma=4$. $m+\\sigma=15+4=19$."
+          }
+        ]
+      }
+    ],
+    "supplement": "조건식을 표준화해 대수로 푸는 것보다 곡선을 그리고 '$x$와 $30-x$의 한가운데가 평균'이라고 읽는 편이 빠르다. 구간이 평균에서 끝나므로 표의 값 하나로 바로 읽힌다.",
+    "skill_point": "$\\mathrm P(X\\le x)=\\mathrm P(X\\ge c-x)$ ⇒ $m=\\frac c2$. 평균에서 끝나는 구간은 표의 값 하나."
+  },
+  "verify": "def skill():\n    m = Rational(30, 2)\n    tbl = {1.0: Rational('0.3413'), 1.5: Rational('0.4332'), 2.0: Rational('0.4772'), 2.5: Rational('0.4938')}\n    z = [k for k, v in tbl.items() if v == Rational('0.4332')][0]\n    sigma = (m - 9) / Rational(str(z))\n    return m + sigma\n\ndef standard():\n    tbl = {1.0: Rational('0.3413'), 1.5: Rational('0.4332'), 2.0: Rational('0.4772'), 2.5: Rational('0.4938')}\n    x = Symbol('x')\n    m, s = symbols('m s')\n    # 대칭 조건: x - m = -(30 - x - m)  (모든 x)\n    m0 = solve(Eq(x - m, -(30 - x - m)), m)[0]\n    cand = []\n    for k, v in tbl.items():\n        if v == Rational('0.4332'):\n            cand.append(m0 + (m0 - 9) / Rational(str(k)))\n    assert len(cand) == 1\n    return cand[0]\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:29",
+    "hash": "ebb056a2d304ce0d",
+    "errors": [],
+    "warnings": []
+  }
+}

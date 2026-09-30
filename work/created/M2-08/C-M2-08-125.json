@@ -1,0 +1,82 @@
+{
+  "id": "C-M2-08-125",
+  "theme": "M2-08",
+  "origin": {
+    "type": "original",
+    "note": "정적분 대입 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C1",
+      "수학Ⅱ-18-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "(x−α)ⁿ 꼴은 t=x−α로 옮겨 구간을 [0, d]로 만들면 대입이 사라진다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\displaystyle\\int_{1}^{4}(x-1)^2\\,dx$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C1",
+      "수학Ⅱ-18-C3"
+    ],
+    "guide": "(x−α)ⁿ 꼴은 t=x−α로 옮겨 구간을 [0, d]로 만들면 대입이 사라진다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "치환",
+            "body": "$t=x-(1)$로 치환하면 구간이 $[0,3]$이고 $dt=dx$"
+          },
+          {
+            "label": "계산",
+            "body": "$\\int_0^{3}t^2dt=\\frac{3^3}{3}=9$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "부정적분",
+            "body": "$F(x)=\\frac{(x-1)^3}{3}$"
+          },
+          {
+            "label": "위끝",
+            "body": "$F(4)=\\frac{3^3}{3}$ (괄호 안을 먼저 계산)"
+          },
+          {
+            "label": "아래끝",
+            "body": "$F(1)=0$"
+          },
+          {
+            "label": "답",
+            "body": "$9$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "그대로 전개하거나 (x−α)에 큰 수를 대입하면 계산이 길어진다. 괄호 속 값 하나로 치환한다.",
+    "skill_point": "치환으로 구간을 [0, d]로 옮기고 거듭제곱 하나만 계산."
+  },
+  "verify": "def skill():\n    v = Fraction(3**3, 3)\n    return int(v)\n\ndef standard():\n    x = Symbol('x')\n    v = Rational(integrate(expand((x - (1))**2), (x, 1, 4)))\n    return int(v)\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "정적분 대입과 넓이 공식",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:51",
+    "hash": "e8f71bd456643b90",
+    "errors": [],
+    "warnings": []
+  }
+}

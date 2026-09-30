@@ -1,0 +1,109 @@
+{
+  "id": "C-M1-10-006",
+  "theme": "M1-10",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-250922",
+    "variation": "조건 변형",
+    "note": "갈래 연산 (-2k/3, xk)를 (-4, x(-2))로 바꾸고 a_5=0의 k^2 합을 묻는다"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-21-C1",
+      "수학Ⅰ-21-C2"
+    ],
+    "strategy_ids": [
+      "S11"
+    ],
+    "first_judgment": "두 갈래 연산을 A, B로 적고 $a_2a_3<0$을 이른 단계에서 적용해 경로를 자른 뒤, 나머지 경로마다 $a_5=0$을 푼다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "수열 $\\{a_n\\}$은 $a_1=k$ ($k$는 양수)이고, 모든 자연수 $n$에 대하여 $(a_{n+1}-a_n+4)(a_{n+1}+2a_n)=0$이며 $a_2a_3<0$이다. $a_5=0$이 되도록 하는 서로 다른 모든 양수 $k$에 대하여 $k^2$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "66",
+  "answer_value": "66",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-21-C1",
+      "수학Ⅰ-21-C2"
+    ],
+    "guide": "곱이 $0$인 조건은 '$-4$' 또는 '$\\times(-2)$' 둘 중 하나이다(수학Ⅰ-21-C1). 경로는 $16$개이지만 $a_2a_3<0$이 앞쪽 단계의 조건이므로 먼저 적용하면 $4$개가 한 번에 사라진다(수학Ⅰ-21-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "연산 기호",
+            "body": "주어진 식은 A: $a_{n+1}=a_n-4$, B: $a_{n+1}=-2a_n$이다. $a_1=k$에서 네 번의 연산이 있어 경로는 $16$개이다."
+          },
+          {
+            "label": "$a_2a_3<0$으로 먼저 자르기",
+            "body": "$a_2a_3$은 AA이면 $(k-4)(k-8)<0$, AB이면 $-2(k-4)^2<0$, BA이면 $(-2k)(-2k-4)>0$, BB이면 $(-2k)(4k)<0$이다. **BA로 시작하는 $4$개 경로는 버리고**, AA는 $4<k<8$일 때만 남긴다."
+          },
+          {
+            "label": "남은 경로",
+            "body": "12개 경로 중 $a_5=0$의 해가 조건 $a_2a_3<0$의 범위에 드는 것만 적는다. AABA: $a_5=12-2k$ → $k=6$ ($4<6<8$). ABAB: $a_5=4k-8$ → $k=2$. ABBA: $a_5=4k-20$ → $k=5$. BBAA: $a_5=4k-8$ → $k=2$. BBAB: $a_5=8-8k$ → $k=1$. 나머지 경로는 양수 해가 없거나 $a_2a_3<0$의 범위 밖이다(예: AAAA는 $a_5=k-16$, $k=16$은 $4<k<8$ 밖)."
+          },
+          {
+            "label": "서로 다른 $k$",
+            "body": "경로 ABAB와 BBAA는 같은 $k=2$를 준다. 서로 다른 $k$는 $1,\\ 2,\\ 5,\\ 6$이다."
+          },
+          {
+            "label": "답",
+            "body": "$1+4+25+36=66$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "연산 기호",
+            "body": "A: $a_{n+1}=a_n-4$, B: $a_{n+1}=-2a_n$. $a_2,a_3,a_4,a_5$를 만드는 연산은 $2^4=16$가지이고, 경로마다 $a_5$는 $k$의 일차식이다."
+          },
+          {
+            "label": "경로별 방정식 (1)",
+            "body": "AAAA: $a_5=k - 16$ → $k=16$ (부호 조건 위반); AAAB: $a_5=24 - 2 k$ → $k=12$ (부호 조건 위반); AABA: $a_5=12 - 2 k$ → $k=6$ (부호 조건 만족); AABB: $a_5=4 k - 32$ → $k=8$ (부호 조건 위반)"
+          },
+          {
+            "label": "경로별 방정식 (2)",
+            "body": "ABAA: $a_5=- 2 k$ → 양수 해 없음; ABAB: $a_5=4 k - 8$ → $k=2$ (부호 조건 만족); ABBA: $a_5=4 k - 20$ → $k=5$ (부호 조건 만족); ABBB: $a_5=32 - 8 k$ → $k=4$ (부호 조건 위반)"
+          },
+          {
+            "label": "경로별 방정식 (3)",
+            "body": "BAAA: $a_5=- 2 k - 12$ → 양수 해 없음; BAAB: $a_5=4 k + 16$ → 양수 해 없음; BABA: $a_5=4 k + 4$ → 양수 해 없음; BABB: $a_5=- 8 k - 16$ → 양수 해 없음"
+          },
+          {
+            "label": "경로별 방정식 (4)",
+            "body": "BBAA: $a_5=4 k - 8$ → $k=2$ (부호 조건 만족); BBAB: $a_5=8 - 8 k$ → $k=1$ (부호 조건 만족); BBBA: $a_5=- 8 k - 4$ → 양수 해 없음; BBBB: $a_5=16 k$ → 양수 해 없음"
+          },
+          {
+            "label": "부호 조건 확인",
+            "body": "양수 해마다 $a_2,\\ a_3$의 부호를 직접 계산하여 곱이 음수인 것만 남긴다."
+          },
+          {
+            "label": "검산",
+            "body": "$k=6$: $6,2,-2,4,0$. $k=5$: $5,1,-2,4,0$. $k=2$: $2,-2,4,0,0$ 또는 $2,-4,8,4,0$. $k=1$: $1,-2,4,0,0$. 모두 $a_2a_3<0$이고 $a_5=0$이다."
+          },
+          {
+            "label": "답",
+            "body": "서로 다른 $k=1,\\ 2,\\ 5,\\ 6$이고 $k^2$의 합은 $1+4+25+36=66$"
+          }
+        ]
+      }
+    ],
+    "supplement": "$16$개 경로를 모두 끝까지 계산해도 답은 나오지만, 서로 다른 두 경로가 같은 $k$를 줄 때(ABAB, BBAA) 두 번 세는 실수가 나온다. '서로 다른 $k$'라는 표현을 놓치지 않는다.",
+    "skill_point": "경로가 두 배씩 늘어나는 수열은 앞 단계의 부호 조건으로 먼저 자른 다음 방정식을 푼다."
+  },
+  "verify": "def skill():\n    ks = []\n    for k in [Rational(1), Rational(2), Rational(5), Rational(6)]:\n        ks.append(k)\n    # 각 k에 대해 경로 AABA(6), ABAB(2), ABBA(5), BBAB(1) 확인\n    def run(k, path):\n        a = [k]\n        for o in path:\n            a.append(a[-1] - 4 if o == 'A' else -2 * a[-1])\n        return a\n    checks = [(6, 'AABA'), (2, 'ABAB'), (5, 'ABBA'), (1, 'BBAB')]\n    for k, p in checks:\n        a = run(Rational(k), p)\n        assert a[4] == 0 and a[1] * a[2] < 0\n    return sum(k * k for k, _ in checks)\n\ndef standard():\n    k = Symbol('k')\n    found = set()\n    for path in itertools.product('AB', repeat=4):\n        a = [k]\n        for o in path:\n            a.append(expand(a[-1] - 4 if o == 'A' else -2 * a[-1]))\n        for r in solve(Eq(a[4], 0), k):\n            if r.is_real and r > 0:\n                v = [x.subs(k, r) for x in a]\n                if v[1] * v[2] < 0:\n                    found.add(r)\n    return sum(r * r for r in found)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:44:21",
+    "hash": "19999711a948da68",
+    "errors": [],
+    "warnings": []
+  }
+}

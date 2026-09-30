@@ -1,0 +1,87 @@
+{
+  "id": "C-M1-04-001",
+  "theme": "M1-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-231109",
+    "variation": "수치 변형",
+    "note": "수치 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C3"
+    ],
+    "strategy_ids": [
+      "S06"
+    ],
+    "first_judgment": "$-2\\tan3x$는 점근선 사이에서 감소하므로 최댓값은 왼쪽 끝, 최솟값은 오른쪽 끝에서 나오고 구간이 점근선을 넘지 않는다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "함수 $f(x)=a-2\\tan3x$가 닫힌구간 $\\left[-\\dfrac{\\pi}{12},\\,b\\right]$에서 최댓값 $7$, 최솟값 $3$을 가질 때, $ab=\\dfrac qp\\pi$이다. $p+q$의 값을 구하시오. (단, $a$, $b$는 상수이고, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "17",
+  "answer_value": "17",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C3"
+    ],
+    "guide": "$\\tan3x$는 점근선 $x=\\frac\\pi6+\\frac{n\\pi}3$ 사이에서 증가하므로 $-2\\tan3x$는 그 안에서 감소한다(수학Ⅰ-09-C3). 최댓값과 최솟값이 모두 있다는 말은 구간이 점근선 $x=\\frac\\pi6$을 넘지 않는다는 뜻이고, 그러면 최댓값은 왼쪽 끝에서, 최솟값은 오른쪽 끝에서 나온다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "왼쪽 끝",
+            "body": "감소하므로 최댓값은 $x=-\\frac\\pi{12}$에서 나온다. $\\tan\\left(-\\frac\\pi4\\right)=-1$이므로 $a+2=7$, $a=5$이다."
+          },
+          {
+            "label": "오른쪽 끝",
+            "body": "최솟값은 $x=b$에서 나오므로 $5-2\\tan3b=3$, $\\tan3b=1$이다. 구간이 점근선 $x=\\frac\\pi6$ 앞에서 끝나므로 $-\\frac\\pi4<3b<\\frac\\pi2$이고, 따라서 $3b=\\frac\\pi4$, $b=\\frac\\pi{12}$이다."
+          },
+          {
+            "label": "답",
+            "body": "$ab=\\frac{5\\pi}{12}$이므로 $p=12$, $q=5$이고 $p+q=17$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "정의역",
+            "body": "$\\tan3x$는 $3x=\\frac\\pi2+n\\pi$에서 정의되지 않는다. 구간 안에 $x=\\frac\\pi6$이 있으면 $f$가 발산하여 최댓값과 최솟값이 없으므로 $b<\\frac\\pi6$이다."
+          },
+          {
+            "label": "증감",
+            "body": "$f'(x)=-6\\sec^2 3x<0$이므로 $f$는 구간에서 감소한다. 따라서 최댓값은 $f\\left(-\\frac\\pi{12}\\right)$, 최솟값은 $f(b)$이다."
+          },
+          {
+            "label": "미정계수 a",
+            "body": "$f\\left(-\\frac\\pi{12}\\right)=a-2\\tan\\left(-\\frac\\pi4\\right)=a+2=7$이므로 $a=5$이다."
+          },
+          {
+            "label": "b의 값",
+            "body": "$f(b)=5-2\\tan3b=3$에서 $\\tan3b=1$이고 $3b=\\frac\\pi4+n\\pi$이다. $-\\frac\\pi4<3b<\\frac\\pi2$를 만족하는 정수 $n$은 $0$뿐이므로 $b=\\frac\\pi{12}$이다."
+          },
+          {
+            "label": "답",
+            "body": "$ab=\\frac{5\\pi}{12}$이므로 $p+q=12+5=17$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a$와 $b$를 함께 미지수로 두고 최댓값·최솟값을 각각 방정식으로 세우면 어느 끝점이 어느 값인지 정해지지 않아 경우를 나누게 된다. 감소함수라는 사실 하나로 끝점의 역할이 정해진다. 구간의 오른쪽 끝이 점근선을 넘는지 확인하는 것을 잊기 쉽다.",
+    "skill_point": "tan은 점근선 사이에서 단조 — 끝값만 보되 구간이 점근선을 넘지 않는지 확인한다."
+  },
+  "verify": "\ndef skill():\n    a = 7 - 2\n    b = Rational(1, 12)\n    q = a * b\n    return q.p + q.q\n\ndef _pairs():\n    res = []\n    for a in range(1, 30):\n        for k in range(-9, 20):\n            b = math.pi * k / 120\n            xs = np.linspace(-math.pi/12, b, 4001)\n            f = a - 2*np.tan(3*xs)\n            if abs(f.max() - 7) < 1e-6 and abs(f.min() - 3) < 1e-6:\n                res.append((a, k))\n    return res\n\ndef standard():\n    a, k = _pairs()[0]\n    fr = Fraction(a * k, 120)\n    return fr.numerator + fr.denominator\n\ndef unique():\n    vals = sorted(set(Fraction(a * k, 120).numerator + Fraction(a * k, 120).denominator for a, k in _pairs()))\n    return vals\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:33:31",
+    "hash": "931511c9545f9e80",
+    "errors": [],
+    "warnings": []
+  }
+}

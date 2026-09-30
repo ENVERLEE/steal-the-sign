@@ -1,0 +1,83 @@
+{
+  "id": "C-PS-06-002",
+  "theme": "PS-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-220929",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-15-C2",
+      "확률과 통계-15-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "두 분포가 모두 $2$에 대해 대칭이라 평균이 $2$로 같으므로, 바뀐 확률에 편차의 제곱을 곱한 값만 $\\mathrm V(X)$에 더하면 된다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "두 이산확률변수 $X$, $Y$의 확률분포를 표로 나타내면 각각 다음과 같다. $\\mathrm{V}(X)=\\dfrac32$일 때, $10\\,\\mathrm{V}(Y)$의 값을 구하시오.",
+  "condition": "$X$: $0,1,2,3,4$의 확률이 각각 $a,\\ b,\\ c,\\ b,\\ a$ (합계 1)\\\\$Y$: $0,1,2,3,4$의 확률이 각각 $a+\\frac1{10},\\ b,\\ c-\\frac15,\\ b,\\ a+\\frac1{10}$ (합계 1)",
+  "choices": null,
+  "answer": "23",
+  "answer_value": "23",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-15-C2",
+      "확률과 통계-15-C1"
+    ],
+    "guide": "두 분포의 평균은 모두 $2$이다(확률과 통계-15-C1). 평균이 같으면 분산의 차는 바뀐 확률 $\\Delta_i$에 $(x_i-2)^2$을 곱해 더한 값이다(확률과 통계-15-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "변화량",
+            "body": "바뀐 칸: $x=0,4$에서 $+\\frac1{10}$씩(편차 $\\mp2$), $x=2$에서 $-\\frac15$(편차 $0$)."
+          },
+          {
+            "label": "분산의 차",
+            "body": "$\\mathrm V(Y)-\\mathrm V(X)=2\\cdot\\frac1{10}\\cdot4+\\left(-\\frac15\\right)\\cdot0=\\frac45$."
+          },
+          {
+            "label": "답",
+            "body": "$\\mathrm V(Y)=\\frac32+\\frac45=\\frac{23}{10}$이므로 $10\\mathrm V(Y)=23$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$\\mathrm E(X^2)$",
+            "body": "$X$의 분포가 $2$에 대칭이므로 $\\mathrm E(X)=2$이고 $\\mathrm E(X^2)=\\mathrm V(X)+2^2=\\frac32+4=\\frac{11}2$. (미지수 $a,b,c$ 자체는 구하지 않는다.)"
+          },
+          {
+            "label": "$\\mathrm E(Y^2)$",
+            "body": "$Y$는 $X$와 확률이 다른 칸만 $x^2$의 기여가 변한다. $x=0$: $\\frac1{10}\\cdot0^2=0$, $x=4$: $\\frac1{10}\\cdot4^2=\\frac85$, $x=2$: $-\\frac15\\cdot2^2=-\\frac45$. 합 $\\frac45$가 늘어나므로 $\\mathrm E(Y^2)=\\frac{11}2+\\frac45=\\frac{63}{10}$."
+          },
+          {
+            "label": "$\\mathrm V(Y)$",
+            "body": "$Y$의 분포도 $2$에 대칭이므로 $\\mathrm E(Y)=2$. $\\mathrm V(Y)=\\frac{63}{10}-4=\\frac{23}{10}$이고 $10\\mathrm V(Y)=23$."
+          },
+          {
+            "label": "점검",
+            "body": "평균을 잘못 두면(예: $\\mathrm E(Y)\\ne2$) 결과가 달라진다. 확률이 바뀐 칸이 대칭 위치이면 평균은 그대로이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\mathrm E(Y^2)$을 직접 전개하면 값 $0$과 $4$에서의 증가분이 서로 다른 크기($0$과 $16$)로 들어가 계산이 흔들린다. 편차로 세면 두 끝의 기여가 똑같이 $4$로 대칭이고 가운데는 $0$이라 한 줄로 끝난다.",
+    "skill_point": "평균이 같은 두 분포: $\\mathrm V(Y)-\\mathrm V(X)=\\sum\\Delta_i(x_i-m)^2$."
+  },
+  "verify": "def skill():\n    dv = 2*Rational(1, 10)*4 + (-Rational(1, 5))*0\n    return 10*(Rational(3, 2) + dv)\n\ndef standard():\n    a, b, c = symbols('a b c')\n    sol = solve([Eq(2*a + 2*b + c, 1), Eq(16*a + 10*b + 4*c - 4, Rational(3, 2))], [b, c], dict=True)[0]\n    a0 = Rational(1, 8)\n    vals = {a: a0}\n    pb = sol[b].subs(vals)\n    pc = sol[c].subs(vals)\n    py = [a0 + Rational(1, 10), pb, pc - Rational(1, 5), pb, a0 + Rational(1, 10)]\n    assert sum(py) == 1\n    m = sum(p*x for p, x in zip(py, range(5)))\n    return 10*sum(p*(x - m)**2 for p, x in zip(py, range(5)))\n\ndef unique():\n    # a를 바꿔도 값이 변하지 않음을 확인\n    out = set()\n    for a0 in (Rational(1, 16), Rational(1, 10), Rational(1, 8)):\n        b0 = None\n        # 2a+2b+c=1, 16a+10b+4c=11/2 → c=1-2a-2b, 8a+2b=3/2\n        b0 = (Rational(3, 2) - 8*a0) / 2\n        c0 = 1 - 2*a0 - 2*b0\n        py = [a0 + Rational(1, 10), b0, c0 - Rational(1, 5), b0, a0 + Rational(1, 10)]\n        m = sum(p*x for p, x in zip(py, range(5)))\n        out.add(10*sum(p*(x - m)**2 for p, x in zip(py, range(5))))\n    return sorted(out)\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:39",
+    "hash": "574f48166d70f1e5",
+    "errors": [],
+    "warnings": []
+  }
+}

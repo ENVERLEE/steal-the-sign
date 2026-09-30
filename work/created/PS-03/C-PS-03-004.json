@@ -1,0 +1,91 @@
+{
+  "id": "C-PS-03-004",
+  "theme": "PS-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-230928",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-10-C2",
+      "확률과 통계-09-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "합의 홀짝으로 먼저 표본공간을 줄이고, 그 안에서 '곱이 $3$의 배수'는 $3,6$이 하나도 없는 경우를 빼서 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "$1$부터 $8$까지의 자연수 중에서 임의로 서로 다른 $3$개의 수를 선택한다. 선택된 세 수의 곱이 $3$의 배수이고 합은 홀수일 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "37",
+  "answer_value": "37",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-10-C2",
+      "확률과 통계-09-C3"
+    ],
+    "guide": "합이 홀수인 조합을 홀수 개수로 분류하고, '곱이 $3$의 배수'는 $3$ 또는 $6$을 포함한다는 뜻이므로 여사건은 $3,6$을 모두 제외한 조합이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "합이 홀수",
+            "body": "홀수 $1,3,5,7$과 짝수 $2,4,6,8$이 각각 $4$개. 합이 홀수이려면 (홀수 $3$개) 또는 (홀수 $1$개, 짝수 $2$개): $\\binom43+4\\binom42=28$."
+          },
+          {
+            "label": "여사건",
+            "body": "$3,6$을 뺀 홀수 $\\{1,5,7\\}$, 짝수 $\\{2,4,8\\}$에서 같은 방식으로 세면 $\\binom33+3\\binom32=10$."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{28-10}{\\binom83}=\\frac{18}{56}=\\frac{9}{28}$이므로 $p+q=37$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "표본공간",
+            "body": "$\\binom83=56$개의 조합이다."
+          },
+          {
+            "label": "두 조건을 동시에",
+            "body": "곱이 $3$의 배수인 조합을 세려면 $3$만 있는 경우, $6$만 있는 경우, 둘 다 있는 경우로 나눈다."
+          },
+          {
+            "label": "각 경우",
+            "body": "각 경우마다 나머지 수의 합의 홀짝을 확인해야 한다. 예를 들어 $3$만 포함하면 나머지 두 수를 $\\{1,2,4,5,7,8\\}$에서 골라 합이 짝수여야 한다."
+          },
+          {
+            "label": "합산",
+            "body": "세 경우를 합하면 18개이다."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{18}{56}=\\frac{9}{28}$이므로 $p+q=37$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "'배수이고 합이 홀수'처럼 조건이 둘일 때, 세기 쉬운 조건(합의 홀짝)으로 전체를 먼저 줄이고 그 안에서 여사건을 쓴다. 곱의 조건은 소인수를 가진 수의 유무로 번역된다.",
+    "skill_point": "세기 쉬운 조건으로 먼저 줄이고, 배수 조건은 '그 수가 하나도 없음'을 뺀다."
+  },
+  "verify": "def skill():\n    a = binomial(4, 3) + 4 * binomial(4, 2)\n    b = binomial(3, 3) + 3 * binomial(3, 2)\n    v = Fraction(a - b, binomial(8, 3))\n    return v.numerator + v.denominator\n\ndef standard():\n    from itertools import combinations\n    S = list(combinations(range(1, 9), 3))\n    k = sum(1 for s in S if (s[0]*s[1]*s[2]) % 3 == 0 and sum(s) % 2 == 1)\n    v = Fraction(k, len(S))\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:57",
+    "hash": "c7b1daa7b006f225",
+    "errors": [],
+    "warnings": []
+  }
+}

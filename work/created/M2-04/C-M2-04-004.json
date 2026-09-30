@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-04-004",
+  "theme": "M2-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-261109",
+    "variation": "수치 변형",
+    "note": "수치 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-09-C2"
+    ],
+    "strategy_ids": [
+      "S17"
+    ],
+    "first_judgment": "삼차함수에 수평선이 접한다는 것은 그 높이가 극댓값 또는 극솟값이라는 말이다. $f(0)=20<36$이므로 극댓값이다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "양수 $a$에 대하여 함수 $f(x)=x^3-3a^2x+20$이 있다. 직선 $y=36$이 곡선 $y=f(x)$에 접할 때, $f(3)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "11",
+  "answer_value": "11",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-09-C2"
+    ],
+    "guide": "직선 $y=c$가 삼차함수의 그래프에 접하면 접점에서 $f'=0$이므로 $c$는 극값이다(수학Ⅱ-09-C2). 극댓값과 극솟값 중 어느 쪽인지는 $c$가 극값들과 어떻게 놓이는지로 정한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "극점",
+            "body": "$f'(x)=3x^2-3a^2=3(x+a)(x-a)$이므로 극대는 $x=-a$, 극소는 $x=a$이고 극댓값 $f(-a)=20+2a^3$, 극솟값 $f(a)=20-2a^3$."
+          },
+          {
+            "label": "어느 극값인가",
+            "body": "극솟값은 $20$보다 작으므로 $36$일 수 없다. 극댓값 $20+2a^3=36$에서 $a^3=8$, $a=2$."
+          },
+          {
+            "label": "답",
+            "body": "$f(x)=x^3-12x+20$이므로 $f(3)=27-36+20=11$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "접점 조건",
+            "body": "접점의 $x$좌표를 $t$라 하면 $f(t)=36$이고 $f'(t)=0$."
+          },
+          {
+            "label": "도함수",
+            "body": "$f'(t)=3t^2-3a^2=0$에서 $t=a$ 또는 $t=-a$."
+          },
+          {
+            "label": "대입 1",
+            "body": "$t=a$이면 $f(a)=a^3-3a^3+20=20-2a^3=36$에서 $a^3=-8$이지만 $a>0$이므로 불가능하다."
+          },
+          {
+            "label": "대입 2",
+            "body": "$t=-a$이면 $f(-a)=-a^3+3a^3+20=20+2a^3=36$에서 $a^3=8$, $a=2$."
+          },
+          {
+            "label": "답",
+            "body": "$f(x)=x^3-12x+20$이므로 $f(3)=27-36+20=11$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "수평선이 접한다는 조건을 접점 $t$와 두 식($f(t)=36$, $f'(t)=0$)으로 쓰면 항상 풀리지만, 극값이 두 개인 삼차함수에서는 두 경우를 모두 계산해야 한다. 극솟값이 $20$보다 작고 극댓값이 $20$보다 크다는 것을 알면 한 경우가 바로 지워진다.",
+    "skill_point": "수평 접선 = 극값. 극댓값·극솟값 중 어느 쪽인지는 $f(0)$ 같은 기준값과의 대소로 정한다."
+  },
+  "verify": "def skill():\n    a = Symbol('a', positive=True)\n    sol = solve(20 + 2*a**3 - 36, a)\n    assert len(sol) == 1\n    x = Symbol('x')\n    return (x**3 - 3*sol[0]**2*x + 20).subs(x, 3)\n\ndef standard():\n    a, t, x = symbols('a t x', real=True)\n    f = x**3 - 3*a**2*x + 20\n    sols = solve([f.subs(x, t) - 36, diff(f, x).subs(x, t)], [a, t], dict=True)\n    sols = [s for s in sols if s[a] > 0]\n    assert len(sols) == 1\n    return f.subs(a, sols[0][a]).subs(x, 3)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:26",
+    "hash": "aeee93a652502c4f",
+    "errors": [],
+    "warnings": []
+  }
+}

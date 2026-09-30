@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-01-002",
+  "theme": "PS-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-240930",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-06-C2",
+      "확률과 통계-05-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "사슬의 양 끝 $a,d$가 홀짝 조건에 묶여 있으므로 끝값을 먼저 고정하고, 사이의 $b,c$는 구간 안의 중복조합으로 센다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "$8$ 이하의 자연수 $a,\\,b,\\,c,\\,d$로 이루어진 순서쌍 $(a,\\,b,\\,c,\\,d)$ 중에서, 두 조건 (가), (나)를 모두 만족시키는 것의 개수를 구하시오.",
+  "condition": "(가) $a\\le b\\le c\\le d$\n(나) 양 끝의 수 $a$는 홀수, $d$는 짝수이다.",
+  "choices": null,
+  "answer": "120",
+  "answer_value": "120",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-06-C2",
+      "확률과 통계-05-C1"
+    ],
+    "guide": "(나)는 $a$와 $d$에만 걸려 있다. 끝값 $(a,d)$를 정하면 $b,c$는 $a\\le b\\le c\\le d$를 만족하는 구간 안의 두 수이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "끝값 고정",
+            "body": "$a$는 홀수, $d$는 짝수이므로 $a\\ne d$이고 $a<d$이다. 구간 $[a,d]$의 정수는 $d-a+1$개이다."
+          },
+          {
+            "label": "사이 두 수",
+            "body": "$a\\le b\\le c\\le d$인 $(b,c)$는 $d-a+1$개에서 중복을 허용해 두 개를 고르는 방법이므로 ${}_{d-a+1}\\mathrm{H}_2=\\binom{d-a+2}{2}$이다."
+          },
+          {
+            "label": "합",
+            "body": "$d=2,4,6,8$별로 $a$가 될 수 있는 홀수를 더하면 $3+13+34+70=120$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "조건 번역",
+            "body": "$a$가 홀수이면 $a=2u-1$, $d$가 짝수이면 $d=2v$로 놓을 수 있다. $a<d$이므로 $u\\le v$이다."
+          },
+          {
+            "label": "경우 나누기",
+            "body": "$d$를 $2,4,6,8$로 하나씩 고정하고, 각 $d$에서 가능한 홀수 $a$를 나열한다."
+          },
+          {
+            "label": "사이 두 수",
+            "body": "$b,c$가 $[a,d]$ 안에서 $b\\le c$인 쌍의 수를 $a$마다 세면 구간의 길이가 $k$일 때 $\\frac{k(k+1)}{2}$개이다."
+          },
+          {
+            "label": "표",
+            "body": "(a,d)별 개수: (1,2):3, (1,4):10, (1,6):21, (1,8):36, (3,4):3, (3,6):10, (3,8):21, (5,6):3, (5,8):10, (7,8):3."
+          },
+          {
+            "label": "합",
+            "body": "모두 더하면 $120$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a,b,c,d$ 네 개를 한꺼번에 중복조합으로 세려 하면 홀짝 조건 때문에 식이 갈라진다. 조건이 걸린 두 끝만 고정하면 남는 것은 순수한 사슬이다.",
+    "skill_point": "조건이 걸린 변수를 먼저 고정하면, 남은 사슬은 구간 길이만으로 센다."
+  },
+  "verify": "def skill():\n    tot = 0\n    for a in (1, 3, 5, 7):\n        for d in (2, 4, 6, 8):\n            if a < d:\n                tot += binomial(d - a + 2, 2)\n    return tot\n\ndef standard():\n    from itertools import product\n    return sum(1 for a, b, c, d in product(range(1, 9), repeat=4) if a <= b <= c <= d and a % 2 == 1 and d % 2 == 0)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:23:52",
+    "hash": "add4e1fd18e52775",
+    "errors": [],
+    "warnings": []
+  }
+}

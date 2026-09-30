@@ -1,0 +1,89 @@
+{
+  "id": "C-M1-04-003",
+  "theme": "M1-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-230909",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C1",
+      "수학Ⅰ-09-C2"
+    ],
+    "strategy_ids": [
+      "S06"
+    ],
+    "first_judgment": "주기가 $12$이므로 사인이 $\\frac12$, $-\\frac12$인 위치는 $x=1,5,7,11$로 바로 찍히고, 네 점이 평행사변형을 이룬다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "닫힌구간 $[0,12]$에서 정의된 함수 $f(x)=a\\sin\\dfrac{\\pi x}{6}$ $(a>0)$이 있다. 곡선 $y=f(x)$가 직선 $y=\\dfrac a2$와 만나는 두 점을 $x$좌표가 작은 것부터 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 직선 $y=-\\dfrac a2$와 만나는 두 점을 $x$좌표가 작은 것부터 $\\mathrm{C}$, $\\mathrm{D}$라 하자. 사각형 $\\mathrm{ABDC}$의 넓이가 $36$일 때, $a$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C1",
+      "수학Ⅰ-09-C2"
+    ],
+    "guide": "주기가 $12$이고 최대점은 $x=3$, 최소점은 $x=9$이다(수학Ⅰ-09-C1). 높이가 최댓값의 절반이면 사인 값이 $\\frac12$이므로 최대점 양쪽 $2$만큼 떨어진 $x=1,5$이고, 대칭중심 $(6,0)$에 대해 옮기면 높이 $-\\frac a2$의 점은 $x=7,11$이다(수학Ⅰ-09-C2). 네 점의 $x$좌표가 $a$와 무관하다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "좌표",
+            "body": "$\\sin\\frac{\\pi x}6=\\pm\\frac12$인 위치는 주기의 $\\frac1{12},\\frac5{12},\\frac7{12},\\frac{11}{12}$이므로 $\\mathrm{A}\\left(1,\\frac a2\\right)$, $\\mathrm{B}\\left(5,\\frac a2\\right)$, $\\mathrm{C}\\left(7,-\\frac a2\\right)$, $\\mathrm{D}\\left(11,-\\frac a2\\right)$이다."
+          },
+          {
+            "label": "넓이",
+            "body": "$\\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{CD}}$이고 두 변의 길이가 모두 $4$인 평행사변형이다. 높이는 $\\frac a2-\\left(-\\frac a2\\right)=a$이므로 넓이는 $4a=36$, $a=9$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "A, B",
+            "body": "$\\sin\\frac{\\pi x}6=\\frac12$이고 $0\\le x\\le12$이면 $\\frac{\\pi x}6=\\frac\\pi6,\\frac{5\\pi}6$이므로 $x=1,5$이다."
+          },
+          {
+            "label": "C, D",
+            "body": "$\\sin\\frac{\\pi x}6=-\\frac12$이면 $\\frac{\\pi x}6=\\frac{7\\pi}6,\\frac{11\\pi}6$이므로 $x=7,11$이다."
+          },
+          {
+            "label": "네 점",
+            "body": "$h=\\frac a2$라 하면 $\\mathrm{A}(1,h)$, $\\mathrm{B}(5,h)$, $\\mathrm{D}(11,-h)$, $\\mathrm{C}(7,-h)$이다."
+          },
+          {
+            "label": "신발끈 공식",
+            "body": "꼭짓점을 $\\mathrm{A},\\mathrm{B},\\mathrm{D},\\mathrm{C}$ 순서로 놓고 $x_iy_{i+1}-x_{i+1}y_i$를 더하면 $-4h-16h-4h+8h=-16h$이므로 넓이는 $\\frac12\\cdot16h=8h=4a$이다."
+          },
+          {
+            "label": "방정식",
+            "body": "$4a=36$이므로 $a=9$이다."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "각 교점의 좌표를 $\\arcsin$으로 쓰면 식이 길어진다. 사인이 $\\pm\\frac12$이 되는 위치는 주기를 $12$등분한 눈금 위에 있으므로 $x$좌표는 계산 없이 읽힌다. 사각형의 꼭짓점 순서를 $\\mathrm{ABDC}$로 읽지 않고 $\\mathrm{ABCD}$로 읽으면 다른 도형이 되니 주의한다.",
+    "skill_point": "사인 값이 $\\pm\\frac12$인 위치는 주기의 $\\frac1{12},\\frac5{12},\\frac7{12},\\frac{11}{12}$."
+  },
+  "verify": "\ndef skill():\n    return Rational(36, 4)\n\ndef _a():\n    x = Symbol('x', real=True)\n    a = Symbol('a', positive=True)\n    p1 = sorted(solveset(Eq(sin(pi*x/6), Rational(1, 2)), x, Interval(0, 12)))\n    p2 = sorted(solveset(Eq(sin(pi*x/6), -Rational(1, 2)), x, Interval(0, 12)))\n    A = (p1[0], a/2); B = (p1[1], a/2); C = (p2[0], -a/2); D = (p2[1], -a/2)\n    pts = [A, B, D, C]\n    s = sum(pts[i][0]*pts[(i+1) % 4][1] - pts[(i+1) % 4][0]*pts[i][1] for i in range(4))\n    return solve(Eq(Abs(s)/2, 36), a)\n\ndef standard():\n    return _a()[0]\n\ndef unique():\n    return sorted(set(_a()))\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:33:33",
+    "hash": "7dceaea46e88fffe",
+    "errors": [],
+    "warnings": []
+  }
+}

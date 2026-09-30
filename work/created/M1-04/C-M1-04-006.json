@@ -1,0 +1,83 @@
+{
+  "id": "C-M1-04-006",
+  "theme": "M1-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-220910",
+    "variation": "역방향",
+    "note": "역방향"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C2"
+    ],
+    "strategy_ids": [
+      "S06"
+    ],
+    "first_judgment": "같은 높이의 두 점은 사인 곡선의 대칭축 $x=3$ 또는 $x=9$에 대하여 대칭이므로, 한 변의 길이 $4$가 곧 축에서 좌우로 $2$씩이다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "곡선 $y=a\\sin\\dfrac{\\pi x}{6}$ $(0\\le x\\le12,\\ a>0)$ 위의 두 점 $\\mathrm{A}$, $\\mathrm{B}$의 $y$좌표가 서로 같고 $x$좌표는 $\\mathrm{A}$가 $\\mathrm{B}$보다 작다. 두 점 $\\mathrm{A}$, $\\mathrm{B}$에서 $x$축에 내린 수선의 발을 각각 $\\mathrm{D}$, $\\mathrm{C}$라 할 때, 사각형 $\\mathrm{ABCD}$는 넓이가 $16$인 정사각형이다. $a$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C2"
+    ],
+    "guide": "같은 높이의 서로 다른 두 점은 사인 곡선의 대칭축($x=3$ 또는 $x=9$)에 대하여 대칭이다(수학Ⅰ-09-C2). 정사각형의 한 변이 $4$이므로 $\\overline{\\mathrm{AB}}=4$이고, 두 점은 축에서 좌우로 $2$씩 떨어져 있다. 남은 한 변 $\\overline{\\mathrm{AD}}$는 점의 높이이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "점의 위치",
+            "body": "넓이가 $16$이므로 한 변은 $4$이다. $\\overline{\\mathrm{AB}}=4$이고 두 점은 대칭축 $x=3$에서 $\\pm2$이므로 $x=1,5$이다."
+          },
+          {
+            "label": "높이",
+            "body": "$\\overline{\\mathrm{AD}}$는 $\\mathrm{A}$의 높이이므로 $a\\sin\\frac\\pi6=\\frac a2=4$, $a=8$이다. 대칭축 $x=9$ 쪽인 $x=7,11$에서도 높이의 크기는 $\\frac a2$로 같으므로 답은 $8$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "같은 높이의 조건",
+            "body": "$\\sin\\frac{\\pi x_1}6=\\sin\\frac{\\pi x_2}6$이고 $x_1\\ne x_2$이면 $\\frac{\\pi x_2}6=\\pi-\\frac{\\pi x_1}6+2k\\pi$이다. $[0,12]$에서 $x_1+x_2=6$ 또는 $x_1+x_2=18$이다."
+          },
+          {
+            "label": "가로 길이",
+            "body": "정사각형의 넓이가 $16$이므로 한 변은 $4$이고 $x_2-x_1=4$이다."
+          },
+          {
+            "label": "두 경우",
+            "body": "$x_1+x_2=6$이면 $x_1=1$, $x_2=5$이고, $x_1+x_2=18$이면 $x_1=7$, $x_2=11$이다."
+          },
+          {
+            "label": "세로 길이",
+            "body": "$\\overline{\\mathrm{AD}}=\\left|a\\sin\\frac{\\pi x_1}6\\right|$이다. 두 경우 모두 $\\left|\\sin\\frac{\\pi x_1}6\\right|=\\frac12$이므로 $\\overline{\\mathrm{AD}}=\\frac a2$이다."
+          },
+          {
+            "label": "방정식",
+            "body": "정사각형이므로 $\\frac a2=4$, $a=8$이다. 두 경우가 같은 값을 주므로 답은 $8$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\mathrm{A}$의 $x$좌표를 $s$로 두고 $a\\sin\\frac{\\pi s}6=4$, $a\\sin\\frac{\\pi(s+4)}6=4$를 연립하면 삼각방정식이 된다. 대칭축으로 $x$좌표를 먼저 정하면 삼각함수 값 $\\sin\\frac\\pi6=\\frac12$ 하나만 남는다.",
+    "skill_point": "같은 높이의 두 점은 대칭축 기준 좌우 같은 거리 — 길이가 주어지면 $x$좌표부터 확정한다."
+  },
+  "verify": "\ndef skill():\n    return 8\n\ndef standard():\n    vals = set()\n    for k in range(0, 49):\n        x1 = k * 0.25\n        x2 = x1 + 4\n        if x2 > 12:\n            break\n        s1 = math.sin(math.pi*x1/6)\n        s2 = math.sin(math.pi*x2/6)\n        if abs(s1 - s2) < 1e-9 and abs(s1) > 1e-9:\n            vals.add(round(4 / abs(s1), 6))\n    assert len(vals) == 1\n    return round(list(vals)[0])\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:39:00",
+    "hash": "3a0041435149c7a3",
+    "errors": [],
+    "warnings": []
+  }
+}

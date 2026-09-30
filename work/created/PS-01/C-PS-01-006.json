@@ -1,0 +1,91 @@
+{
+  "id": "C-PS-01-006",
+  "theme": "PS-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-261130",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-08-C3",
+      "확률과 통계-07-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "개수 구성부터 확정한 뒤, 빈 상자를 먼저 놓아 칸을 만들고 $2$개짜리는 혼자 한 칸을 차지하게 한다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "문제해결",
+  "question": "비어 있는 상자 $8$개가 일렬로 놓여 있다. 서로 구별되지 않는 구슬 $6$개를 한 상자에 $2$개를 넘지 않게 상자에 남김없이 넣는 방법 중에서, 다음 조건을 만족시키는 것의 개수를 구하시오.",
+  "condition": "(가) 구슬이 $2$개 들어 있는 상자는 정확히 $2$개이다.\n(나) 구슬이 $2$개 들어 있는 상자의 양옆 상자는 모두 비어 있다.",
+  "choices": null,
+  "answer": "60",
+  "answer_value": "60",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-08-C3",
+      "확률과 통계-07-C1"
+    ],
+    "guide": "각 상자의 구슬은 $0,1,2$개이다. $2$개인 상자가 $2$개이면 $1$개인 상자는 $6-4=2$개, 빈 상자는 $8-2-2=4$개이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "구성",
+            "body": "$n_2=2$, $n_1=6-4=2$, $n_0=8-4=4$이다."
+          },
+          {
+            "label": "칸 만들기",
+            "body": "빈 상자 $4$개를 놓으면 칸이 $5$개이다. (나)에 의해 $2$개짜리는 혼자서 한 칸을 차지해야 하므로 $5$칸 중 $2$칸을 고르는 방법은 $\\binom52=10$."
+          },
+          {
+            "label": "나머지",
+            "body": "남은 $3$칸에 $1$개짜리 $2$개를 (한 칸에 여러 개 가능) 나누는 방법은 ${}_3\\mathrm{H}_2=6$이므로 $10\\times6=60$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "구성",
+            "body": "구슬이 $2$개인 상자가 $2$개이면 $1$개인 상자는 $2$개, 빈 상자는 $4$개이다."
+          },
+          {
+            "label": "배치를 직접",
+            "body": "상자 $8$개에서 $2$개짜리 두 자리를 고르는 방법은 $\\binom82=28$이지만, 이웃한 자리는 비어 있어야 하므로 고른 자리에 따라 남은 자리가 달라진다."
+          },
+          {
+            "label": "경우 나누기",
+            "body": "$2$개짜리 자리가 서로 이웃한 경우, 한 칸 떨어진 경우 등으로 나누어 각각 이웃 상자를 지우고 남은 자리에 $1$개짜리 $2$개를 배치해야 한다."
+          },
+          {
+            "label": "계산",
+            "body": "칸 방식으로 통일하면 $\\binom52\\times{}_3\\mathrm{H}_2=60$이다."
+          },
+          {
+            "label": "답",
+            "body": "$60$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "자리 번호로 세면 두 $2$개짜리의 간격에 따라 경우가 늘어난다. 빈 상자를 먼저 깔면 간격이 '칸'으로 바뀌어 분류가 사라진다.",
+    "skill_point": "구성 확정 → 빈 것 먼저 깔기 → 제한이 큰 것은 칸 하나를 독점."
+  },
+  "verify": "def skill():\n    return binomial(5, 2) * binomial(3 + 2 - 1, 2)\n\ndef standard():\n    from itertools import product\n    n = 0\n    for t in product(range(3), repeat=8):\n        if sum(t) != 6 or t.count(2) != 2:\n            continue\n        ok = True\n        for i in range(8):\n            if t[i] == 2:\n                for j in (i - 1, i + 1):\n                    if 0 <= j < 8 and t[j] != 0:\n                        ok = False\n        n += ok\n    return n\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:03",
+    "hash": "cff6bb233494830a",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "C-M1-02-002",
+  "theme": "M1-02",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-261110",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-03-C2"
+    ],
+    "strategy_ids": [
+      "S05"
+    ],
+    "first_judgment": "점근선이 $y=-1$이므로 세로선 위에서 $\\overline{\\mathrm{BC}}=1$은 상수이고, 이것으로 $\\mathrm{A}$의 높이가 바로 정해진다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "상수 $a$ $(a>1)$에 대하여 곡선 $y=a^{x}-1$ 위의 점 중 제$1$사분면에 있는 점 $\\mathrm{A}$를 지나고 $y$축에 평행한 직선이 $x$축과 만나는 점을 $\\mathrm{B}$, 이 곡선의 점근선과 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=3\\,\\overline{\\mathrm{BC}}$이고 삼각형 $\\mathrm{AOC}$의 넓이가 $12$일 때, $a^{\\overline{\\mathrm{OB}}}\\times\\overline{\\mathrm{OB}}$의 값을 구하시오. (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "24",
+  "answer_value": "24",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-03-C2"
+    ],
+    "guide": "점근선은 $y=-1$이다. 세로선 위에서 $x$축과 점근선 사이의 거리 $\\overline{\\mathrm{BC}}=1$은 $x$와 관계없는 상수이므로 $\\overline{\\mathrm{AB}}=3$, 곧 $\\mathrm{A}$의 $y$좌표가 바로 $3$이다(수학Ⅰ-03-C2). 삼각형 $\\mathrm{AOC}$는 세로변 $\\mathrm{AC}$와 원점에서 그 세로선까지의 가로 거리 $\\overline{\\mathrm{OB}}$로 넓이를 잰다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "높이 확정",
+            "body": "$\\mathrm{B}(p,0)$, $\\mathrm{C}(p,-1)$이므로 $\\overline{\\mathrm{BC}}=1$이고 $\\overline{\\mathrm{AB}}=3$이다. 따라서 $\\mathrm{A}(p,3)$이고 $a^{p}-1=3$에서 $a^{p}=4$이다."
+          },
+          {
+            "label": "넓이",
+            "body": "$\\overline{\\mathrm{AC}}=4$가 세로변이고 가로 거리는 $p=\\overline{\\mathrm{OB}}$이므로 $\\frac12\\cdot4\\cdot p=12$에서 $p=6$이다. 구하는 값은 $a^{6}\\times6=4\\times6=24$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "좌표 설정",
+            "body": "$\\mathrm{A}$의 $x$좌표를 $p$ $(p>0)$라 하면 $\\mathrm{A}(p,\\,a^{p}-1)$이고, $\\mathrm{B}(p,0)$이다. 점근선은 $y=-1$이므로 $\\mathrm{C}(p,-1)$이다."
+          },
+          {
+            "label": "길이 조건",
+            "body": "$\\overline{\\mathrm{BC}}=1$이므로 $\\overline{\\mathrm{AB}}=a^{p}-1=3$에서 $a^{p}=4$이다."
+          },
+          {
+            "label": "넓이 공식",
+            "body": "세 점 $\\mathrm{O}(0,0)$, $\\mathrm{A}(p,3)$, $\\mathrm{C}(p,-1)$에 대하여 $\\frac12\\left|p\\cdot(-1)-3\\cdot p\\right|=2p$이다."
+          },
+          {
+            "label": "방정식",
+            "body": "$2p=12$에서 $p=6$이다. 이때 $\\overline{\\mathrm{OB}}=6$이고 $a^{p}=4$이므로 $a^{\\overline{\\mathrm{OB}}}\\times\\overline{\\mathrm{OB}}=4\\times6=24$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a$의 값 $4^{\\frac16}$을 직접 구하려는 것이 가장 흔한 낭비이다. 물은 것이 $a^{\\overline{\\mathrm{OB}}}$이므로 $a^{p}=4$ 하나면 충분하다.",
+    "skill_point": "점근선까지의 거리는 상수 — 세로선 위의 두 길이 비로 점의 높이를 먼저 확정한다."
+  },
+  "verify": "\ndef skill():\n    ac = 3 + 1\n    p = Rational(12) / (Rational(ac, 2))\n    return (3 + 1) * p\n\ndef _sol():\n    p, y = symbols('p y', positive=True)\n    A = (p, y)\n    C = (p, -1)\n    area = Abs(A[0]*C[1] - A[1]*C[0]) / 2\n    return p, y, solve([Eq(y, 3*1), Eq(area, 12)], [p, y], dict=True)\n\ndef standard():\n    p, y, sols = _sol()\n    s = sols[0]\n    return (s[y] + 1) * s[p]\n\ndef unique():\n    p, y, sols = _sol()\n    return sorted(set((s[y] + 1) * s[p] for s in sols))\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:30:22",
+    "hash": "0636dddfca37261b",
+    "errors": [],
+    "warnings": []
+  }
+}

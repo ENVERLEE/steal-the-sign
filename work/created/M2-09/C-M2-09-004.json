@@ -1,0 +1,101 @@
+{
+  "id": "C-M2-09-004",
+  "theme": "M2-09",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-270609",
+    "variation": "조건 변형",
+    "note": "위치가 같아지는 시각 뒤에 두 점의 이동거리를 각각 묻고, 두 속도 모두 부호가 바뀌게 함"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-19-C1",
+      "수학Ⅱ-19-C3"
+    ],
+    "strategy_ids": [
+      "S26"
+    ],
+    "first_judgment": "같은 점에서 출발했으므로 위치가 같다는 것은 $\\int_0^k(v_1-v_2)=0$이다. 만나는 시각을 먼저 구하고, 그 시각까지 두 속도의 부호가 바뀌는 곳에서 각각 끊어 거리를 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "시각 $t=0$일 때 동시에 원점을 출발하여 수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 속도가 각각 $v_1(t)=3t^2-21t+30$, $v_2(t)=3t-6$이다. 출발한 후 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 위치가 처음으로 같아지는 시각까지 두 점 $\\mathrm{P}$, $\\mathrm{Q}$가 각각 움직인 거리의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "75",
+  "answer_value": "75",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-19-C1",
+      "수학Ⅱ-19-C3"
+    ],
+    "guide": "두 점의 위치가 같아지는 시각 $k$를 구하려면 위치의 차 $\\int_0^k(v_1-v_2)dt$를 본다(수학Ⅱ-19-C1). 그 뒤에 두 속도를 각각 $\\int|v|$로 계산한다(수학Ⅱ-19-C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "만나는 시각",
+            "body": "$v_1-v_2=3t^2-24t+36=3(t-2)(t-6)$이고 $\\int_0^k(v_1-v_2)=k(k-6)^2=0$이므로 처음 만나는 시각은 $k=6$."
+          },
+          {
+            "label": "P",
+            "body": "$v_1=3(t-2)(t-5)$, $F=t^3-\\frac{21}2t^2+30t$에서 $F(0)=0$, $F(2)=26$, $F(5)=\\frac{25}2$, $F(6)=18$. 거리 $=26+\\frac{27}2+\\frac{11}2=45$."
+          },
+          {
+            "label": "Q",
+            "body": "$v_2=3(t-2)$, $G=\\frac32t^2-6t$에서 $G(0)=0$, $G(2)=-6$, $G(6)=18$. 거리 $=6+24=30$."
+          },
+          {
+            "label": "합",
+            "body": "$45+30=75$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "위치 함수",
+            "body": "$x_1(t)=t^3-\\frac{21}2t^2+30t$, $x_2(t)=\\frac32t^2-6t$."
+          },
+          {
+            "label": "만남",
+            "body": "$x_1-x_2=t^3-12t^2+36t=t(t-6)^2=0$에서 $t=0,\\,6$. 처음으로 같아지는 양수 시각은 $t=6$."
+          },
+          {
+            "label": "P의 부호",
+            "body": "$v_1=3(t-2)(t-5)$이므로 $0<t<2$ 양수, $2<t<5$ 음수, $5<t<6$ 양수."
+          },
+          {
+            "label": "P의 거리",
+            "body": "$x_1(2)=8-42+60=26$, $x_1(5)=125-262.5+150=12.5$, $x_1(6)=216-378+180=18$. 거리 $=26+(26-12.5)+(18-12.5)=26+13.5+5.5=45$."
+          },
+          {
+            "label": "Q의 거리",
+            "body": "$v_2=3(t-2)$는 $t=2$에서 부호가 바뀐다. $x_2(2)=6-12=-6$, $x_2(6)=54-36=18$. 거리 $=6+(18+6)=30$."
+          },
+          {
+            "label": "합",
+            "body": "$45+30=75$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "만나는 시각을 구하지 않고 두 점을 각각 $[0,6]$으로 적분하면 어느 시각까지인지 정할 수 없다. $x_1(6)=x_2(6)=18$은 만난다는 검산이 된다. 위치의 차 $t(t-6)^2$은 $t=6$이 부호가 바뀌지 않는 중근이라, 두 점은 $t=6$에서 만났다가 다시 $\\mathrm{P}$가 앞선다.",
+    "skill_point": "같은 점에서 출발했으면 위치가 같다는 것은 $\\int(v_1-v_2)=0$. 이동거리는 각 점을 따로 끊는다."
+  },
+  "verify": "def skill():\n    t = Symbol('t')\n    v1 = 3*t**2 - 21*t + 30\n    v2 = 3*t - 6\n    D = integrate(v1 - v2, t)\n    k = [r for r in solve(D, t) if r > 0][0]\n    def dist(v, T):\n        F = integrate(v, t)\n        pts = [0] + sorted(r for r in solve(v, t) if 0 < r < T) + [T]\n        return sum(abs(F.subs(t, b) - F.subs(t, a)) for a, b in zip(pts[:-1], pts[1:]))\n    return dist(v1, k) + dist(v2, k)\n\ndef standard():\n    t = Symbol('t')\n    v1 = 3*t**2 - 21*t + 30\n    v2 = 3*t - 6\n    x1, x2 = integrate(v1, t), integrate(v2, t)\n    ks = [r for r in solve(x1 - x2, t) if r.is_real and r > 0]\n    k = min(ks)\n    return integrate(Abs(v1), (t, 0, k)) + integrate(Abs(v2), (t, 0, k))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:31:47",
+    "hash": "da408d6e9e4117a8",
+    "errors": [],
+    "warnings": []
+  }
+}

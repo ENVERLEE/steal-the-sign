@@ -1,0 +1,88 @@
+{
+  "id": "C-M2-02-002",
+  "theme": "M2-02",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-220614",
+    "variation": "조건 변형",
+    "note": "절댓값 한 개에 이차식을 곱한 함수의 미분가능 조건"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-07-C1"
+    ],
+    "strategy_ids": [
+      "S15",
+      "S16"
+    ],
+    "first_judgment": "절댓값 $|x-2|$가 꺾이는 점은 $x=2$ 하나이고, 곱해진 이차식이 그 점에서 $0$이면 꺾임이 사라진다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "추론",
+  "question": "두 상수 $a$, $b$에 대하여 함수 $f(x)=(x^2+ax+b)\\,|x-2|$가 실수 전체의 집합에서 미분가능하고 $f(0)=-12$일 때, $f(4)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "28",
+  "answer_value": "28",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-07-C1"
+    ],
+    "guide": "$|x-2|$는 단순근 $x=2$에서 꺾이고(수학Ⅱ-07-C1), 곱해진 함수가 그 점에서 $0$이면 좌우 미분계수가 모두 $0$이 되어 꺾임이 사라진다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "꺾임 후보",
+            "body": "$|x-2|$는 $x=2$에서만 꺾인다. 곱해진 이차식 $q(x)=x^2+ax+b$가 $x=2$에서 $0$이면 꺾임이 사라진다: $q(2)=0$."
+          },
+          {
+            "label": "계수 결정",
+            "body": "$f(0)=2b=-12$에서 $b=-6$, $q(2)=4+2a-6=0$에서 $a=1$. $q(x)=(x+3)(x-2)$."
+          },
+          {
+            "label": "값",
+            "body": "$f(4)=(16+4-6)\\cdot2=28$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "구간별로 쓰기",
+            "body": "$q(x)=x^2+ax+b$라 하면 $x>2$에서 $f=q(x)(x-2)$, $x<2$에서 $f=-q(x)(x-2)$이다."
+          },
+          {
+            "label": "미분계수",
+            "body": "$x=2$에서 우미분계수는 $q'(2)\\cdot0+q(2)=q(2)$, 좌미분계수는 $-q(2)$이다. 미분가능하면 두 값이 같으므로 $q(2)=0$."
+          },
+          {
+            "label": "조건 대입",
+            "body": "$q(2)=4+2a+b=0$, $f(0)=q(0)\\cdot|0-2|=2b=-12$. 연립하면 $b=-6$, $a=1$."
+          },
+          {
+            "label": "답",
+            "body": "$f(4)=q(4)\\cdot|4-2|=(16+4-6)\\cdot2=28$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$x>2$와 $x<2$를 나누어 좌·우미분계수를 직접 세우면 결국 $q(2)=0$이 나오지만, 처음부터 '곱해진 식의 근 = 꺾이는 점'으로 읽으면 한 줄이다. 이때 $f(0)=-12$의 절댓값 $|0-2|=2$를 놓쳐 $b=-12$로 두는 실수가 많다.",
+    "skill_point": "$q(x)\\,|x-c|$가 미분가능 $\\iff q(c)=0$. 곱해진 인수의 근이 꺾이는 점을 덮는다."
+  },
+  "verify": "def skill():\n    b = Rational(-12, 2)\n    a = (-4 - b)/2\n    return (16 + 4*a + b)*2\n\ndef standard():\n    x, a, b = symbols('x a b')\n    q = x**2 + a*x + b\n    right = diff(q*(x - 2), x).subs(x, 2)\n    left = diff(-q*(x - 2), x).subs(x, 2)\n    s = solve([right - left, 2*b + 12], [a, b])\n    return (q.subs(s)*abs(x - 2)).subs(x, 4)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:49:06",
+    "hash": "01952bb56717d0ec",
+    "errors": [],
+    "warnings": []
+  }
+}

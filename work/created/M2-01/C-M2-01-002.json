@@ -1,0 +1,88 @@
+{
+  "id": "C-M2-01-002",
+  "theme": "M2-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-260913",
+    "variation": "조건 변형",
+    "note": "분모가 항상 실근을 갖는 경우의 '분모의 근 = 분자의 근' 판정"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-03-C2"
+    ],
+    "strategy_ids": [
+      "S13",
+      "S14"
+    ],
+    "first_judgment": "분모를 인수분해하면 근 하나가 $x=1$로 고정되어 있으므로, 분모의 모든 실근이 분자의 근(중복도 이상)이 되도록 나머지 근의 위치와 중복도를 따진다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "추론",
+  "question": "정수 $k$에 대하여 모든 실수 $a$에서 $\\displaystyle\\lim_{x\\to a}\\dfrac{(x-1)(x-3)(x-5)(x-7)}{x^2-2kx+2k-1}$의 값이 존재하도록 하는 모든 $k$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-03-C2"
+    ],
+    "guide": "'모든 $a$에서 극한이 존재'는 분모의 실근을 분자가 모두 흡수한다는 뜻이다(수학Ⅱ-03-C2). 분모가 항상 인수분해되므로 실근이 없는 경우는 없고, 근의 위치와 중복도가 전부다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "분모 인수분해",
+            "body": "$x^2-2kx+2k-1=(x-1)\\{x-(2k-1)\\}$. 분모의 실근은 항상 $1$과 $2k-1$이다."
+          },
+          {
+            "label": "조건 번역",
+            "body": "분모의 실근마다 분자도 그 근을 가지며 중복도가 분모 이상이어야 한다. $x=1$은 분자에 한 번 있으므로 분모의 $1$이 중근이면 안 된다: $2k-1\\ne1$."
+          },
+          {
+            "label": "나머지 근",
+            "body": "$2k-1$은 분자의 근 $3,5,7$ 중 하나이므로 $k=2,3,4$. 합은 $9$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "판별식",
+            "body": "분모의 판별식은 $(2k)^2-4(2k-1)=4(k-1)^2\\ge0$이므로 모든 정수 $k$에서 분모는 실근을 갖는다. 그래서 '실근이 없는 경우'는 생각하지 않고 근을 하나씩 확인한다."
+          },
+          {
+            "label": "k=1",
+            "body": "분모가 $(x-1)^2$이고 분자에는 $(x-1)$이 한 번뿐이므로 약분 후에도 분모에 $(x-1)$이 남아 $a=1$에서 극한이 존재하지 않는다."
+          },
+          {
+            "label": "k가 다른 값일 때",
+            "body": "분모의 두 근은 $1$과 $2k-1$이다. $2k-1$이 분자의 근 $3,5,7$이 아니면 $x=2k-1$에서 분모만 $0$이 되어 극한이 존재하지 않는다. 예를 들어 $k=0$이면 근 $-1$, $k=5$이면 근 $9$가 분자에 없다."
+          },
+          {
+            "label": "k=2,3,4",
+            "body": "$k=2$: 분모 $(x-1)(x-3)$, $k=3$: $(x-1)(x-5)$, $k=4$: $(x-1)(x-7)$. 모두 분모가 분자의 인수이므로 약분되어 다항식이 되고 모든 $a$에서 극한이 존재한다."
+          },
+          {
+            "label": "답",
+            "body": "$2+3+4=9$."
+          }
+        ]
+      }
+    ],
+    "supplement": "판별식 $<0$인 경우만 떠올리면 답이 비어 버린다. 이 문제는 분모가 항상 실근을 가지므로, 근이 겹치는 $k=1$이 분자의 중복도에 걸려 탈락하는 것까지 확인해야 한다.",
+    "skill_point": "분모의 실근 하나하나에 대해 (분자의 중복도) $\\ge$ (분모의 중복도)를 확인한다. 중근이면 분자에도 두 번 있어야 한다."
+  },
+  "verify": "x = Symbol('x')\n\ndef nolim_at(N, D, a):\n    \"\"\"N/D 의 x->a 극한이 (유한값으로) 존재하지 않으면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    if Dp.is_zero:\n        return True\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.eval(a) == 0\n\ndef all_ok(N, D):\n    \"\"\"모든 실수 a 에서 극한이 존재하면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.count_roots() == 0\n\ndef ks():\n    out = []\n    for k in range(-20, 21):\n        N = (x - 1)*(x - 3)*(x - 5)*(x - 7)\n        D = x**2 - 2*k*x + 2*k - 1\n        if all_ok(N, D):\n            out.append(k)\n    return out\n\ndef skill():\n    return sum(k for k in [2, 3, 4] if 2*k - 1 in (3, 5, 7))\n\ndef standard():\n    return sum(ks())\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:45:38",
+    "hash": "9db3edc110f2eb2c",
+    "errors": [],
+    "warnings": []
+  }
+}

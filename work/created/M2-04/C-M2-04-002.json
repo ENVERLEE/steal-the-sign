@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-04-002",
+  "theme": "M2-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-251115",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-09-C1"
+    ],
+    "strategy_ids": [
+      "S18"
+    ],
+    "first_judgment": "삼차함수가 실수 전체에서 증가하면 $f'(x)\\ge0$이 항상 성립하므로, 이차식 $f'$의 판별식이 $0$ 이하이다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "이해",
+  "question": "함수 $f(x)=\\dfrac13x^3+ax^2+(3a+4)x+1$이 실수 전체의 집합에서 증가하도록 하는 모든 정수 $a$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-09-C1"
+    ],
+    "guide": "미분가능한 함수가 구간에서 증가하면 그 구간에서 $f'(x)\\ge0$이다(수학Ⅱ-09-C1). $f'(x)=x^2+2ax+3a+4$는 $x^2$의 계수가 양수이므로 모든 실수에서 $0$ 이상이려면 판별식 $D\\le0$이면 된다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "도함수",
+            "body": "$f'(x)=x^2+2ax+3a+4$."
+          },
+          {
+            "label": "판별식",
+            "body": "항상 $f'(x)\\ge0$이려면 $\\dfrac D4=a^2-(3a+4)=(a-4)(a+1)\\le0$이므로 $-1\\le a\\le4$."
+          },
+          {
+            "label": "답",
+            "body": "정수 $a=-1,0,1,2,3,4$의 합은 $9$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "도함수",
+            "body": "$f'(x)=x^2+2ax+3a+4=(x+a)^2-a^2+3a+4$."
+          },
+          {
+            "label": "최솟값",
+            "body": "$f'$의 최솟값은 꼭짓점에서의 값 $-a^2+3a+4$이다."
+          },
+          {
+            "label": "부등식",
+            "body": "실수 전체에서 $f'(x)\\ge0$이려면 이 최솟값이 $0$ 이상이어야 하므로 $a^2-3a-4\\le0$."
+          },
+          {
+            "label": "풀이",
+            "body": "$(a-4)(a+1)\\le0$에서 $-1\\le a\\le4$."
+          },
+          {
+            "label": "끝점 확인",
+            "body": "$a=-1$이면 $f'(x)=(x-1)^2$, $a=4$이면 $f'(x)=(x+4)^2$으로 한 점에서만 $0$이므로 $f$는 여전히 증가한다. 따라서 끝점도 포함한다."
+          },
+          {
+            "label": "답",
+            "body": "정수 $a=-1,0,1,2,3,4$의 합은 $9$."
+          }
+        ]
+      }
+    ],
+    "supplement": "'증가'에서 등호가 붙는 끝점 $a=-1,4$를 빼는 실수가 가장 흔하다. $f'$이 한 점에서만 $0$이고 나머지에서 양수이면 $f$는 실수 전체에서 증가한다. 그래서 극값이 없는 조건은 $D\\le0$이다.",
+    "skill_point": "실수 전체에서 증가 = $f'\\ge0$ 항상 = 판별식 $D\\le0$ (등호 포함)."
+  },
+  "verify": "def skill():\n    a = Symbol('a')\n    sol = [k for k in range(-60, 61) if k*k - (3*k + 4) <= 0]\n    return sum(sol)\n\ndef standard():\n    x = Symbol('x', real=True)\n    tot, cnt = 0, 0\n    for k in range(-40, 41):\n        fp = x**2 + 2*k*x + 3*k + 4\n        ok = solve_univariate_inequality(fp >= 0, x, relational=False) == S.Reals\n        if ok:\n            tot += k\n            cnt += 1\n    assert cnt == 6\n    return tot\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:02",
+    "hash": "bcb61bf38933e261",
+    "errors": [],
+    "warnings": []
+  }
+}

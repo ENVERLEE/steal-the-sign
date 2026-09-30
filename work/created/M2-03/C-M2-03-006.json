@@ -1,0 +1,93 @@
+{
+  "id": "C-M2-03-006",
+  "theme": "M2-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-231122",
+    "variation": "일반화",
+    "note": "일반화"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-08-C2",
+      "수학Ⅱ-08-C1"
+    ],
+    "strategy_ids": [
+      "S19"
+    ],
+    "first_judgment": "'접점 $1$, 재교점 $-3$'은 곡선$-$접선의 세 근이 $1,1,-3$이라는 말이므로, 근과 계수의 관계로 $x^2$의 계수를 먼저 정한다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수 $f(x)$가 있다. 곡선 $y=f(x)$ 위의 점 $\\mathrm{A}(1,\\,f(1))$에서의 접선이 이 곡선과 다시 만나는 점의 $x$좌표는 $-3$이고, 곡선 위의 점 $\\mathrm{B}(-3,\\,f(-3))$에서의 접선의 기울기는 $19$이다. $f(2)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-08-C2",
+      "수학Ⅱ-08-C1"
+    ],
+    "guide": "접선 $l(x)$가 일차식이므로 $f(x)-l(x)$의 $x^2$의 계수는 $f$의 $x^2$의 계수와 같다. $f(x)-l(x)=(x-1)^2(x+3)$이므로 $x^2$의 계수가 정해지고, 남은 미지수는 $f'(-3)=19$로 정한다(수학Ⅱ-08-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "이차항",
+            "body": "$f(x)-l(x)=(x-1)^2(x+3)=x^3+x^2-5x+3$. 일차식 $l$은 $x^2$의 계수를 바꾸지 못하므로 $f(x)=x^3+x^2+bx$."
+          },
+          {
+            "label": "일차항",
+            "body": "$f'(x)=3x^2+2x+b$이므로 $f'(-3)=27-6+b=19$, $b=-2$."
+          },
+          {
+            "label": "답",
+            "body": "$f(x)=x^3+x^2-2x$, $f(2)=8+4-4=8$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "일반형",
+            "body": "$f(x)=x^3+ax^2+bx$ ($f(0)=0$)로 두면 $f'(x)=3x^2+2ax+b$."
+          },
+          {
+            "label": "접선",
+            "body": "점 $\\mathrm{A}$에서의 접선은 $y=f'(1)(x-1)+f(1)$. 여기서 $f'(1)=3+2a+b$, $f(1)=1+a+b$."
+          },
+          {
+            "label": "재교점 조건",
+            "body": "점 $(-3,f(-3))$가 접선 위에 있으므로 $f(-3)=-27+9a-3b=(3+2a+b)(-4)+1+a+b$."
+          },
+          {
+            "label": "정리",
+            "body": "우변은 $-12-8a-4b+1+a+b=-11-7a-3b$. 등식 $-27+9a-3b=-11-7a-3b$에서 $16a=16$, $a=1$."
+          },
+          {
+            "label": "기울기 조건",
+            "body": "$f'(-3)=27-6a+b=19$에 $a=1$을 넣으면 $b=-2$."
+          },
+          {
+            "label": "답",
+            "body": "$f(2)=8+4-4=8$."
+          }
+        ]
+      }
+    ],
+    "supplement": "삼차함수와 접선을 연립하면 '접점에서 중근, 재교점에서 단순근'이 되고, 세 근의 합은 $x^2$의 계수의 부호를 바꾼 값이다. 곧 접점 $t$, 재교점 $r$에 대하여 $2t+r=-a$가 항상 성립한다. 이 관계를 쓰면 접선의 식을 세우지 않고도 $a$가 나온다.",
+    "skill_point": "삼차함수의 접선: 접점 $t$, 재교점 $r$이면 $2t+r=-(x^2\\text{의 계수})$."
+  },
+  "verify": "def skill():\n    x, a, b = symbols('x a b')\n    aa = solve(2*1 + (-3) + a, a)[0]\n    f = x**3 + aa*x**2 + b*x\n    bb = solve(diff(f, x).subs(x, -3) - 19, b)[0]\n    return f.subs(b, bb).subs(x, 2)\n\ndef standard():\n    x, a, b = symbols('x a b')\n    f = x**3 + a*x**2 + b*x\n    fp = diff(f, x)\n    eqs = [f.subs(x, -3) - (fp.subs(x, 1)*(-3 - 1) + f.subs(x, 1)), fp.subs(x, -3) - 19]\n    sol = solve(eqs, [a, b], dict=True)\n    assert len(sol) == 1\n    g = f.subs(sol[0])\n    # 접선과의 교점 확인: (x-1)^2 (x+3)\n    l = diff(g, x).subs(x, 1)*(x - 1) + g.subs(x, 1)\n    assert factor(g - l) == (x - 1)**2*(x + 3)\n    return g.subs(x, 2)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:55",
+    "hash": "33823d1f4c722537",
+    "errors": [],
+    "warnings": []
+  }
+}

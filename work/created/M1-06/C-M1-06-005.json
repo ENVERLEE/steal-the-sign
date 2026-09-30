@@ -1,0 +1,101 @@
+{
+  "id": "C-M1-06-005",
+  "theme": "M1-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-260614",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-12-C1",
+      "수학Ⅰ-12-C4"
+    ],
+    "strategy_ids": [
+      "S07"
+    ],
+    "first_judgment": "삼각형 $\\mathrm{APQ}$의 사인법칙으로 $\\overline{\\mathrm{PQ}}$를 구하면 $\\overline{\\mathrm{BC}}$가 확정되고, 그 뒤 세 변이 모두 정해진다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "삼각형 $\\mathrm{ABC}$의 변 $\\mathrm{BC}$ 위의 두 점 $\\mathrm{P}$, $\\mathrm{Q}$에 대하여 $\\mathrm{P}$는 $\\mathrm{BC}$의 중점이고 $\\overline{\\mathrm{BQ}}:\\overline{\\mathrm{QC}}=3:1$이다. $\\overline{\\mathrm{AB}}=8$, $\\overline{\\mathrm{AQ}}=7$이고 $\\sin(\\angle\\mathrm{APQ}):\\sin(\\angle\\mathrm{QAP})=7:3$일 때, 삼각형 $\\mathrm{ABC}$의 외접원의 넓이는 $k\\pi$이다. $k$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "36",
+  "answer_value": "36",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-12-C1",
+      "수학Ⅰ-12-C4"
+    ],
+    "guide": "$\\sin(\\angle\\mathrm{QAP}):\\sin(\\angle\\mathrm{APQ})$는 삼각형 $\\mathrm{APQ}$에서 각 $\\mathrm{QAP}$, $\\mathrm{APQ}$의 대변 $\\overline{\\mathrm{PQ}}$, $\\overline{\\mathrm{AQ}}$의 비이다. $\\overline{\\mathrm{AQ}}$를 알므로 $\\overline{\\mathrm{PQ}}$가 나오고, $\\overline{\\mathrm{BC}}=4\\overline{\\mathrm{PQ}}$이다(수학Ⅰ-12-C1, C4).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "사인법칙",
+            "body": "삼각형 $\\mathrm{APQ}$에서 $\\overline{\\mathrm{PQ}}:\\overline{\\mathrm{AQ}}=3:7$이므로 $\\overline{\\mathrm{PQ}}=3$."
+          },
+          {
+            "label": "$\\overline{\\mathrm{BC}}$",
+            "body": "$\\overline{\\mathrm{BQ}}:\\overline{\\mathrm{QC}}=3:1$이고 $\\mathrm{P}$는 중점이므로 $\\overline{\\mathrm{PQ}}=\\dfrac14\\overline{\\mathrm{BC}}$, 곧 $\\overline{\\mathrm{BC}}=12$."
+          },
+          {
+            "label": "$\\overline{\\mathrm{AC}}$",
+            "body": "스튜어트 정리: $\\overline{\\mathrm{AB}}^2\\cdot\\overline{\\mathrm{QC}}+\\overline{\\mathrm{AC}}^2\\cdot\\overline{\\mathrm{BQ}}=\\overline{\\mathrm{BC}}(\\overline{\\mathrm{AQ}}^2+\\overline{\\mathrm{BQ}}\\cdot\\overline{\\mathrm{QC}})$, $64\\cdot3+9\\overline{\\mathrm{AC}}^2=12(49+27)$이므로 $\\overline{\\mathrm{AC}}^2=80$."
+          },
+          {
+            "label": "반지름",
+            "body": "$\\cos B=\\dfrac{64+144-80}{2\\cdot8\\cdot12}=\\dfrac23$, $\\sin B=\\dfrac{\\sqrt5}{3}$. $2R=\\dfrac{\\sqrt{80}}{\\sqrt5/3}=12$, $R=6$이므로 $k=36$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "사인법칙",
+            "body": "삼각형 $\\mathrm{APQ}$에서 $\\dfrac{\\overline{\\mathrm{PQ}}}{\\sin(\\angle\\mathrm{QAP})}=\\dfrac{\\overline{\\mathrm{AQ}}}{\\sin(\\angle\\mathrm{APQ})}$, 곧 $\\overline{\\mathrm{PQ}}=7\\cdot\\dfrac37=3$."
+          },
+          {
+            "label": "길이 정리",
+            "body": "$\\overline{\\mathrm{BQ}}=3t$, $\\overline{\\mathrm{QC}}=t$라 하면 $\\overline{\\mathrm{BC}}=4t$, $\\overline{\\mathrm{BP}}=2t$, $\\overline{\\mathrm{PQ}}=t$이므로 $t=3$, $\\overline{\\mathrm{BC}}=12$, $\\overline{\\mathrm{BQ}}=9$."
+          },
+          {
+            "label": "$\\cos B$",
+            "body": "삼각형 $\\mathrm{ABQ}$에서 코사인법칙: $49=64+81-2\\cdot8\\cdot9\\cos B$, $\\cos B=\\dfrac{96}{144}=\\dfrac23$."
+          },
+          {
+            "label": "$\\overline{\\mathrm{AC}}$",
+            "body": "삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}^2=64+144-2\\cdot8\\cdot12\\cdot\\dfrac23=80$."
+          },
+          {
+            "label": "반지름",
+            "body": "$\\sin B=\\dfrac{\\sqrt5}{3}$이므로 사인법칙 $2R=\\dfrac{\\overline{\\mathrm{AC}}}{\\sin B}=\\dfrac{4\\sqrt5}{\\sqrt5/3}=12$."
+          },
+          {
+            "label": "답",
+            "body": "$R=6$, $k=R^2=36$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "'사인의 비'가 나오면 각을 구하려 하지 말고 대변의 비로 읽는다. 각 $\\mathrm{APQ}$를 직접 구하면 삼각함수 값이 무리수로 얽혀 식이 길어진다. 스튜어트 정리를 모르면 삼각형 $\\mathrm{ABQ}$의 코사인법칙으로 $\\cos B$를 구하는 풀이 2가 같은 계산량이다.",
+    "skill_point": "$\\sin$의 비 = 대변의 비. 한 삼각형에서 길이 하나가 나오면 나머지 삼각형이 연달아 결정된다."
+  },
+  "verify": "def skill():\n    PQ = 7*Rational(3, 7)\n    BC = 4*PQ\n    BQ, QC = 3*PQ, PQ\n    AC2 = (BC*(49 + BQ*QC) - 64*QC)/BQ\n    cB = Rational(64 + BC**2, 1) - AC2\n    cB = cB/(2*8*BC)\n    R2 = AC2/(4*(1 - cB**2))\n    return simplify(R2)\n\ndef standard():\n    w = Symbol('w', positive=True)\n    x = (Rational(64) - Rational(49) + (3*w)**2)/(2*3*w)\n    y2 = 64 - x**2\n    def ratio(wv):\n        Ax = x.subs(w, wv); Ay = sqrt(y2.subs(w, wv))\n        A = Matrix([Ax, Ay]); P = Matrix([2*wv, 0]); Q = Matrix([3*wv, 0])\n        u = P - A; v = Q - A\n        sinQAP = abs(u[0]*v[1] - u[1]*v[0])/(sqrt(u.dot(u))*sqrt(v.dot(v)))\n        p1 = A - P; p2 = Q - P\n        sinAPQ = abs(p1[0]*p2[1] - p1[1]*p2[0])/(sqrt(p1.dot(p1))*sqrt(p2.dot(p2)))\n        return sinQAP/sinAPQ\n    wv = nsolve(ratio(w) - Rational(3, 7), w, 2.5)\n    wv = nsimplify(wv, rational=True)\n    Ax = x.subs(w, wv); Ay = sqrt(y2.subs(w, wv))\n    B = Matrix([0, 0]); C = Matrix([4*wv, 0]); A = Matrix([Ax, Ay])\n    a = sqrt((B - C).dot(B - C)); b = sqrt((A - C).dot(A - C)); c = sqrt((A - B).dot(A - B))\n    S = abs((B - A)[0]*(C - A)[1] - (B - A)[1]*(C - A)[0])/2\n    R = a*b*c/(4*S)\n    return nsimplify(simplify(R**2))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:23",
+    "hash": "a53580050eadf672",
+    "errors": [],
+    "warnings": []
+  }
+}

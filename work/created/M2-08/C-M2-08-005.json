@@ -1,0 +1,89 @@
+{
+  "id": "C-M2-08-005",
+  "theme": "M2-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-270613",
+    "variation": "조건 변형",
+    "note": "f(1)-g(1) 조건을 f(2)-g(2)로, 구하는 구간을 [-2,2]로 바꿈"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C4",
+      "수학Ⅱ-14-C2"
+    ],
+    "strategy_ids": [
+      "S22"
+    ],
+    "first_judgment": "$S'(t)$가 곧 높이 차 $f(t)-g(t)$이므로 $f,g$를 따로 구하지 않고 $h=f-g$만 세운 뒤, 구간 $[-2,2]$의 대칭으로 홀수차 항을 지운다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "두 다항함수 $f(x)$, $g(x)$가 모든 실수 $x$에 대하여 $f(x)>g(x)$를 만족시키고 $f(2)=g(2)+7$이다. 양수 $t$에 대하여 두 곡선 $y=f(x)$, $y=g(x)$와 두 직선 $x=0$, $x=t$로 둘러싸인 도형의 넓이를 $S(t)$라 하면 $S'(t)=3t^2-6t+a$이다 ($a$는 상수). 두 곡선 $y=f(x)$, $y=g(x)$와 두 직선 $x=-2$, $x=2$로 둘러싸인 도형의 넓이를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "44",
+  "answer_value": "44",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C4",
+      "수학Ⅱ-14-C2"
+    ],
+    "guide": "$S(t)=\\int_0^t\\{f(x)-g(x)\\}dx$이므로 $S'(t)=f(t)-g(t)$이다(수학Ⅱ-18-C4). $f,g$가 다항함수이므로 $h(x)=f(x)-g(x)=3x^2-6x+a$가 모든 $x$에서 성립한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "높이 차",
+            "body": "$h(x)=f(x)-g(x)=S'(x)=3x^2-6x+a$. 조건 $h(2)=7$에서 $12-12+a=7$, $a=7$."
+          },
+          {
+            "label": "넓이",
+            "body": "$h(x)=3x^2-6x+7=3(x-1)^2+4>0$이므로 구하는 넓이는 $\\int_{-2}^2h(x)dx$."
+          },
+          {
+            "label": "대칭",
+            "body": "구간이 $[-2,2]$이므로 홀수차 항 $-6x$는 지워지고 $2\\int_0^2(3x^2+7)dx=2(8+14)=44$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "적분의 정의",
+            "body": "$S(t)=\\int_0^t\\{f(x)-g(x)\\}dx$의 양변을 미분하면 $S'(t)=f(t)-g(t)$."
+          },
+          {
+            "label": "$h$",
+            "body": "$h(x)=f(x)-g(x)$는 다항함수이고 $x>0$에서 $3x^2-6x+a$와 같으므로 모든 $x$에서 $h(x)=3x^2-6x+a$."
+          },
+          {
+            "label": "$a$",
+            "body": "$h(2)=f(2)-g(2)=7$이므로 $12-12+a=7$, $a=7$."
+          },
+          {
+            "label": "부호",
+            "body": "$h(x)=3x^2-6x+7$의 판별식은 $36-84<0$이므로 항상 양수. 넓이는 $\\int_{-2}^2h(x)dx$."
+          },
+          {
+            "label": "계산",
+            "body": "$H(x)=x^3-3x^2+7x$에서 $H(2)=8-12+14=10$, $H(-2)=-8-12-14=-34$이므로 $10-(-34)=44$."
+          }
+        ]
+      }
+    ],
+    "supplement": "부정적분 $H$에 $x=-2$를 넣으면 음수 세제곱과 음수 제곱이 섞여 부호를 틀리기 쉽다. 구간이 원점 대칭이면 짝수차 항만 남겨 $2\\int_0^2$로 계산하는 편이 실수가 적다. 이 문제에서 $f,g$ 자체는 구할 수도 없고 구할 필요도 없다.",
+    "skill_point": "넓이 함수 $S(t)$가 주어지면 $S'(t)$가 곧 두 곡선의 높이 차이다."
+  },
+  "verify": "def skill():\n    x, a = symbols('x a')\n    h = 3*x**2 - 6*x + a\n    a0 = solve(h.subs(x, 2) - 7, a)[0]\n    h = h.subs(a, a0)\n    even = 3*x**2 + a0\n    return 2*integrate(even, (x, 0, 2))\n\ndef standard():\n    t, x, a = symbols('t x a')\n    S = t**3 - 3*t**2 + a*t       # S'(t) = 3t^2 - 6t + a, S(0) = 0\n    h = diff(S, t).subs(t, x)\n    a0 = solve(h.subs(x, 2) - 7, a)[0]\n    return integrate(h.subs(a, a0), (x, -2, 2))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:29:36",
+    "hash": "6482de0294c43e8a",
+    "errors": [],
+    "warnings": []
+  }
+}

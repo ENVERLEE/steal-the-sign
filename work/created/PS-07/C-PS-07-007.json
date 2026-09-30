@@ -1,0 +1,93 @@
+{
+  "id": "C-PS-07-007",
+  "theme": "PS-07",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-261129",
+    "variation": "일반화",
+    "note": "일반화"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-20-C1",
+      "확률과 통계-20-C2",
+      "확률과 통계-20-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "기록값이 $2$가 되는 것은 동전을 $2$번 던지는 경우에서 앞면이 모두 나올 때뿐이므로 $p=\\frac a6\\cdot\\frac14$이고, 평균 조건으로 $a$를 정한 뒤 표준화한다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "문제해결",
+  "question": "$6$ 이하의 자연수 $a$에 대하여 한 개의 주사위와 한 개의 동전을 사용하여 아래 시행을 한다. 이 시행을 $448$번 반복하여 기록한 수가 $2$인 횟수를 확률변수 $X$라 하자. $\\mathrm{E}(X)=56$일 때, $\\mathrm{P}(49\\le X\\le70)$의 값을 표준정규분포표를 이용하여 구한 값이 $k$이다. $1000k$의 값을 구하시오.",
+  "condition": "[시행] 주사위를 한 번 던져 나온 눈의 수가 $a$ 이하이면 동전을 $2$번, $a$보다 크면 동전을 $1$번 던져 앞면이 나온 횟수를 기록한다.\\\\표준정규분포표: $z$: $\\mathrm P(0\\le Z\\le z)$ — $1.0$: $0.341$, $1.5$: $0.433$, $2.0$: $0.477$, $2.5$: $0.494$",
+  "choices": null,
+  "answer": "818",
+  "answer_value": "818",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-20-C1",
+      "확률과 통계-20-C2",
+      "확률과 통계-20-C3"
+    ],
+    "guide": "한 번의 시행에서 기록 $2$의 확률을 $a$로 나타내고(확률과 통계-20-C1), $\\mathrm E(X)=448p=56$에서 $a$를 확정한다. 그다음 $X\\approx\\mathrm N(np,npq)$로 근사한다(확률과 통계-20-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "$p$",
+            "body": "기록 $2$는 '눈 $\\le a$'이고 앞면 $2$번일 때만: $p=\\frac a6\\cdot\\frac14=\\frac a{24}$."
+          },
+          {
+            "label": "$a$",
+            "body": "$\\mathrm E(X)=448\\cdot\\frac a{24}=56$이므로 $a=3$, $p=\\frac18$."
+          },
+          {
+            "label": "근사",
+            "body": "$\\mathrm V(X)=448\\cdot\\frac18\\cdot\\frac78=49$이므로 $X\\approx\\mathrm N(56,7^2)$."
+          },
+          {
+            "label": "표준화",
+            "body": "$\\mathrm P(49\\le X\\le70)=\\mathrm P(-1\\le Z\\le2)=0.341+0.477=0.818$. $1000k=818$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$p$ 구하기",
+            "body": "눈이 $a$ 이하이면 동전을 $2$번 던지며 기록이 $2$일 확률은 $\\frac14$, 눈이 $a$보다 크면 동전을 $1$번 던져 기록은 $0$ 또는 $1$이므로 기록 $2$가 나올 수 없다. 따라서 $p=\\frac a6\\times\\frac14$."
+          },
+          {
+            "label": "$a$ 결정",
+            "body": "$X\\sim\\mathrm B(448,p)$이므로 $\\mathrm E(X)=448p=\\frac{448a}{24}=56$. $a=3$이고 이때 $a$는 $6$ 이하의 자연수이다."
+          },
+          {
+            "label": "분산",
+            "body": "$p=\\frac18$, $q=\\frac78$, $\\mathrm V(X)=448\\cdot\\frac18\\cdot\\frac78=49$, $\\sigma=7$."
+          },
+          {
+            "label": "표준화",
+            "body": "$z$값: $\\frac{49-56}7=-1$, $\\frac{70-56}7=2$."
+          },
+          {
+            "label": "표 사용",
+            "body": "$\\mathrm P(-1\\le Z\\le2)=\\mathrm P(0\\le Z\\le1)+\\mathrm P(0\\le Z\\le2)=0.341+0.477=0.818$이므로 $1000k=818$."
+          }
+        ]
+      }
+    ],
+    "supplement": "미지수 $a$가 남아 있어도 평균 조건이 곧 $a$를 정하는 식이다. 기록 $2$가 나오는 경우를 '동전을 $2$번 던지는 경우'로 한정하는 관찰이 $p=\\frac a{24}$의 근거이다.",
+    "skill_point": "한 번의 시행 $\\to$ $p$ $\\to$ 평균 조건으로 미지수 확정 $\\to$ 정규 근사."
+  },
+  "verify": "def skill():\n    tbl = {1.0: Rational('0.341'), 1.5: Rational('0.433'), 2.0: Rational('0.477'), 2.5: Rational('0.494')}\n    a = Symbol('a')\n    a0 = solve(Eq(448*a/24, 56), a)[0]\n    p = a0/24\n    n = 448\n    sd = sqrt(n*p*(1 - p))\n    mean = n*p\n    z1, z2 = (49 - mean)/sd, (70 - mean)/sd\n    return 1000*(tbl[abs(float(z1))] + tbl[abs(float(z2))])\n\ndef standard():\n    tbl = {1.0: Rational('0.341'), 1.5: Rational('0.433'), 2.0: Rational('0.477'), 2.5: Rational('0.494')}\n    cands = []\n    for a in range(1, 7):\n        # 한 번 시행에서 기록 2의 확률\n        p = Fraction(0)\n        for eye in range(1, 7):\n            if eye <= a:\n                p += Fraction(1, 6) * Fraction(1, 4)\n        if 448*p == 56:\n            cands.append((a, p))\n    assert len(cands) == 1\n    p = Rational(cands[0][1].numerator, cands[0][1].denominator)\n    n = 448\n    mean, sd = n*p, sqrt(n*p*(1 - p))\n    z1, z2 = (49 - mean)/sd, (70 - mean)/sd\n    return 1000*(tbl[abs(float(z1))] + tbl[abs(float(z2))])\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:38",
+    "hash": "ff4f45ca74b59184",
+    "errors": [],
+    "warnings": []
+  }
+}

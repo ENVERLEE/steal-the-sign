@@ -1,0 +1,83 @@
+{
+  "id": "C-PS-05-002",
+  "theme": "PS-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-260628",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-14-C3",
+      "확률과 통계-14-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "$2$개는 홀짝에 영향이 없으므로, 홀수 개($3$개)를 넣는 '눈 $1$'만 성공으로 보고 성공 횟수가 홀수일 확률을 구한다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "이해",
+  "question": "비어 있는 상자와 충분히 많은 공, 한 개의 주사위가 있다. 주사위를 한 번 던져 나온 눈의 수가 $1$이면 상자에 공을 $3$개 넣고, 나온 눈의 수가 $2$ 이상이면 상자에 공을 $2$개 넣는다. 이 시행을 $3$번 반복한 후 상자에 들어 있는 공의 개수가 홀수일 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "73",
+  "answer_value": "73",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-14-C3",
+      "확률과 통계-14-C2"
+    ],
+    "guide": "총 개수의 홀짝은 홀수 개를 넣는 횟수의 홀짝과 같다(확률과 통계-14-C3). 그러므로 눈 $1$이 나오는 것만 성공이고 $p=\\frac16$이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "성공 재정의",
+            "body": "총 개수 $=2\\times3+(\\text{눈 }1\\text{의 횟수})$. 짝수 $6$은 홀짝에 영향이 없으므로 총 개수가 홀수 ⇔ 눈 $1$이 홀수 번. $p=\\frac16$, $q=\\frac56$, $q-p=\\frac23$."
+          },
+          {
+            "label": "공식",
+            "body": "$\\dfrac{1-(q-p)^3}{2}=\\dfrac{1-\\frac{8}{27}}{2}=\\dfrac{19}{54}$."
+          },
+          {
+            "label": "답",
+            "body": "$p+q=54+19=73$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "총 개수 식",
+            "body": "눈 $1$이 $r$번 나오면 총 개수는 $3r+2(3-r)=6+r$이다. 홀수이려면 $r$이 홀수, 곧 $r=1,3$."
+          },
+          {
+            "label": "이항 확률",
+            "body": "$r=1$: ${}_3C_1\\cdot\\frac16\\cdot\\left(\\frac56\\right)^2=3\\cdot\\frac{25}{216}=\\frac{75}{216}$. $r=3$: $\\left(\\frac16\\right)^3=\\frac1{216}$."
+          },
+          {
+            "label": "합",
+            "body": "$\\frac{75}{216}+\\frac{1}{216}=\\frac{76}{216}=\\frac{19}{54}$이므로 $p+q=73$."
+          },
+          {
+            "label": "참고",
+            "body": "총 개수의 식을 세우는 단계가 없으면 '경우마다 공이 $2$개인지 $3$개인지'를 나열하게 된다. 총 개수를 $6+r$로 줄이는 것이 이 풀이의 핵심이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "결과가 두 가지 값(2개 또는 3개)으로 갈릴 때 값 자체를 추적하지 말고, 홀짝을 바꾸는 쪽을 성공으로 잡는다. 성공을 잘못 잡아 $p=\\frac56$으로 쓰면 $q-p$의 부호만 바뀌어 홀수 확률 공식의 답이 뒤바뀐다.",
+    "skill_point": "홀짝을 바꾸는 결과만 성공으로 세고, 나머지는 무시한다."
+  },
+  "verify": "def skill():\n    p, q = Rational(1, 6), Rational(5, 6)\n    v = (1 - (q - p)**3) / 2\n    return v.p + v.q\n\ndef standard():\n    from itertools import product\n    c = 0\n    for t in product(range(1, 7), repeat=3):\n        tot = sum(3 if k == 1 else 2 for k in t)\n        c += tot % 2\n    v = Fraction(c, 6**3)\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:14",
+    "hash": "9dc50533217c2503",
+    "errors": [],
+    "warnings": []
+  }
+}

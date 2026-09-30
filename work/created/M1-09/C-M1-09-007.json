@@ -1,0 +1,97 @@
+{
+  "id": "C-M1-09-007",
+  "theme": "M1-09",
+  "origin": {
+    "type": "original",
+    "note": "분모의 유리화로 소거되는 합의 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C2"
+    ],
+    "strategy_ids": [
+      "S10"
+    ],
+    "first_judgment": "분모의 무리식을 유리화하면 각 항이 두 제곱근의 차로 바뀌어 이웃한 항이 지워진다. 남는 처음과 끝만으로 '자연수'라는 조건을 정수 조건으로 옮긴다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}\\frac{1}{\\sqrt{2k-1}+\\sqrt{2k+1}}$의 값이 자연수가 되도록 하는 $2000$ 이하의 자연수 $n$의 개수를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "31",
+  "answer_value": "31",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C2"
+    ],
+    "guide": "$\\dfrac1{\\sqrt{2k-1}+\\sqrt{2k+1}}$의 분모·분자에 $\\sqrt{2k+1}-\\sqrt{2k-1}$을 곱하면 분모가 $2$가 된다. 각 항이 $\\dfrac12(\\sqrt{2k+1}-\\sqrt{2k-1})$이므로 망원합이다(수학Ⅰ-16-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "유리화",
+            "body": "$\\dfrac1{\\sqrt{2k+1}+\\sqrt{2k-1}}=\\dfrac{\\sqrt{2k+1}-\\sqrt{2k-1}}{(2k+1)-(2k-1)}=\\dfrac12\\left(\\sqrt{2k+1}-\\sqrt{2k-1}\\right)$."
+          },
+          {
+            "label": "망원합",
+            "body": "$\\sum_{k=1}^{n}=\\dfrac12\\left(\\sqrt{2n+1}-1\\right)$."
+          },
+          {
+            "label": "정수 조건",
+            "body": "이 값이 자연수 $m$이면 $\\sqrt{2n+1}=2m+1$, 곧 $2n+1=(2m+1)^2$, $n=2m(m+1)$."
+          },
+          {
+            "label": "범위",
+            "body": "$n\\le2000$에서 $m(m+1)\\le1000$. $31\\cdot32=992\\le1000<32\\cdot33=1056$이므로 $m=1,2,\\dots,31$."
+          },
+          {
+            "label": "답",
+            "body": "$31$개."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "작은 $n$",
+            "body": "$n=1$: $\\dfrac{1}{1+\\sqrt3}=\\dfrac{\\sqrt3-1}{2}$, $n=2$: 앞의 값에 $\\dfrac1{\\sqrt3+\\sqrt5}=\\dfrac{\\sqrt5-\\sqrt3}2$를 더하면 $\\dfrac{\\sqrt5-1}{2}$. 규칙이 $\\dfrac{\\sqrt{2n+1}-1}{2}$임을 추측한다."
+          },
+          {
+            "label": "증명",
+            "body": "각 항을 유리화하면 $\\dfrac12(\\sqrt{2k+1}-\\sqrt{2k-1})$이므로 합은 $\\dfrac12(\\sqrt{2n+1}-1)$이 맞다."
+          },
+          {
+            "label": "자연수 조건",
+            "body": "$\\dfrac{\\sqrt{2n+1}-1}{2}=m$이면 $\\sqrt{2n+1}=2m+1$. $2n+1=(2m+1)^2=4m^2+4m+1$이므로 $n=2m^2+2m$."
+          },
+          {
+            "label": "범위",
+            "body": "$2m^2+2m\\le2000$을 풀면 $m^2+m\\le1000$, $m\\le31$."
+          },
+          {
+            "label": "답",
+            "body": "$m=1,\\dots,31$이므로 $31$개."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$n=1,2,3,\\dots$을 하나씩 대입해 값이 자연수인지 확인하는 것은 $n\\le2000$에서 불가능하다. 합이 $\\dfrac{\\sqrt{2n+1}-1}{2}$로 정리되면 $2n+1$이 홀수의 제곱이라는 조건 하나만 남는다. $m=0$($n=0$)은 자연수 $n$이 아니므로 제외한다.",
+    "skill_point": "제곱근이 분모에 있으면 유리화 → 이웃한 항이 소거 → 남은 식의 정수 조건."
+  },
+  "verify": "def skill():\n    cnt = 0\n    m = 1\n    while 2*m*(m + 1) <= 2000:\n        cnt += 1\n        m += 1\n    return cnt\n\ndef standard():\n    cnt = 0\n    for n in range(1, 2001):\n        # 합 = (sqrt(2n+1) - 1)/2 가 자연수인지: 2n+1이 제곱수이고 그 근이 홀수(3 이상)\n        t = 2*n + 1\n        r = math.isqrt(t)\n        if r*r == t and (r - 1) % 2 == 0 and (r - 1)//2 >= 1:\n            cnt += 1\n    # 정의대로 합을 직접 계산해 몇 개만 확인\n    for n in (1, 4, 12):\n        s = sum(1/(sqrt(2*k - 1) + sqrt(2*k + 1)) for k in range(1, n + 1))\n        assert abs(N(s) - N((sqrt(2*n + 1) - 1)/2)) < 1e-12\n    return cnt\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:32:24",
+    "hash": "90fe1a66e9c17390",
+    "errors": [],
+    "warnings": []
+  }
+}
