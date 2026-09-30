@@ -31,6 +31,10 @@
       "type": "string",
       "description": "표지 [[ 과목 ]] 예: 수학Ⅰ"
     },
+    "special": {
+      "type": "boolean",
+      "description": "특강 모드: 여러 과목을 한 권에 담고 테마당 1 DAY부터 허용(config theme_plan.special_days)"
+    },
     "figures": {
       "type": "object",
       "description": "기출 문항 그림 명세 {db id: 그림 명세}. 그림이 있는 기출(db.json figure)을 쓰면 필수",

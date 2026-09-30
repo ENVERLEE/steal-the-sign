@@ -23,6 +23,8 @@
 
   "theme_plan": {
     "days": [2, 3],
+    "special_days": [1, 3],
+    "special_problems": [10, 16],
     "problems": [8, 13],
     "count_example": true
   },

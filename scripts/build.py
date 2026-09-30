@@ -41,6 +41,25 @@ def clean_refs(text, concepts: dict):
     return BARE.sub(lambda m: f"「{concepts[m.group(0)]['name']}」" if m.group(0) in concepts else "", text)
 
 
+# ---------------------------------------------------------------- 특강 표기
+
+SPECIAL_SUBS = [
+    ('<div class="k">DAY</div>', '<div class="k">CH.</div>'),        # 머리띠 번호
+    ("<div>DAY</div><div>챕터와 코너</div>", "<div>CH.</div><div>챕터와 코너</div>"),  # 목차 머리
+    ('DAY <span data-slot="DAY">', 'CHAPTER <span data-slot="DAY">'),  # 정답표
+    ("<br>평가원 사인 훔치기</div>", "</div>"),                          # 표지
+    ("평가원 사인 훔치기 · WEEK", "WEEK"),                               # 뒤표지
+    (">평가원 사인 훔치기</div>", "></div>"),                            # 목차
+]
+
+
+def special_labels(doc: str) -> str:
+    """특강: DAY 표기를 챕터로 바꾸고 '평가원 사인 훔치기'를 뺀다 (템플릿은 그대로 두고 결과물만 치환)."""
+    for a, b in SPECIAL_SUBS:
+        doc = doc.replace(a, b)
+    return re.sub(r"DAY (\d+)", r"CHAPTER \1", doc)
+
+
 # ---------------------------------------------------------------- 모델
 
 class Model:
@@ -466,7 +485,8 @@ def run(ctx: Context) -> Log:
         for P in flow("QUICK_ANSWER", {}, "days", [d["qa"] for d in model.days], "정답표"):
             seq.append(("QUICK_ANSWER", P, None))
         for d in model.days:
-            sol_cap = (ctx.config.get("solution") or {}).get("per_page_max")  # 해설 한 장에 담을 최대 문항 수
+            # 해설 한 장에 담을 최대 문항 수 (특강은 두 단을 끝까지 채운다)
+            sol_cap = None if ctx.book.get("special") else (ctx.config.get("solution") or {}).get("per_page_max")
             for P in flow("SOLUTION", d["base"], "entries", d["sols"], f"DAY {d['day']} 해설", cap=sol_cap):
                 seq.append(("SOLUTION", P, None))
         seq.append(("BACK_COVER", {}, None))
@@ -488,6 +508,8 @@ def run(ctx: Context) -> Log:
     doc = ("<!DOCTYPE html>\n<!-- STEAL THE SIGN : KICE — build.py가 STS_template.html로 생성 -->\n"
            '<html lang="ko">\n' + head.replace(WEEK_TOKEN, B["week2"]) + "\n<body>\n<div class=\"book\">\n\n"
            + "\n".join(out_pages) + "\n</div>\n</body>\n</html>\n")
+    if ctx.book.get("special"):
+        doc = special_labels(doc)
     out = ctx.out_dir / "book.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(doc, encoding="utf-8")
