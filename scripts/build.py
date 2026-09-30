@@ -72,6 +72,7 @@ class Model:
             "weeks": [{"label": two(i), "now": i == b["week"]} for i in range(1, b["total_weeks"] + 1)],
         }
         self.days = [self.day(d) for d in b["days"]]
+        self.appendix = self.build_appendix(b.get("appendix"))
 
     # ---- 공통
     def r(self, text):
@@ -92,7 +93,8 @@ class Model:
             return "STEAL THE SIGN 창작"
         if is_textbook_id(ref):
             e = self.ctx.source[ref]
-            return f"{e['book'].get('title', '교재')} {rec['page']}쪽 {rec['number']}번"
+            pg = f" {rec['page']}쪽" if rec.get("page") else ""
+            return f"{e['book'].get('title', '교재')}{pg} {rec['number']}번"
         return source_label(rec)
 
     def record(self, ref):
@@ -172,6 +174,40 @@ class Model:
         return {"no2": two(no), "kind": "예제" if no == 1 else "연습", "source": H.escape(self.source_of(ref, rec)),
                 "answer": H.escape(answer_display(rec)), "shortcut": shortcut, "fig": None,
                 "standard": standard, "tip": tip or None, "error": error}
+
+    # ---- 부록: 계산 연습 (창작 문항만)
+    def calc_cell(self, ref, no):
+        rec = self.record(ref)
+        q = self.question(ref, no, None, f"부록 #{no} {ref}")
+        ch = ""
+        if q["choices"]:
+            ch = '<div class="c-ch">' + "".join(f'<span>{c["label"]} {c["html"]}</span>' for c in q["choices"]) + "</div>"
+        cond = f'<div class="cond" style="margin:2px 0">{q["cond"]}</div>' if q["cond"] else ""
+        return (f'<div class="c-cell"><div class="no">{q["no2"]}</div><div>'
+                f'<div class="q">{q["text"]} <span class="pt">[{q["points"]}점]</span></div>{cond}{ch}</div></div>')
+
+    def build_appendix(self, app):
+        if not app:
+            return None
+        title = app.get("title") or "계산 연습"
+        tag = "A"
+        types, n = [], 0
+        for ti, ty in enumerate(app["types"], 1):
+            cells, sols = [], []
+            if ti == 1 and app.get("intro"):
+                cells.append(f'<div class="c-span c-intro">{self.r(app["intro"])}</div>')
+            trap = f'<div class="c-span c-trap"><b class="l">자주 하는 실수</b>{self.r(ty["trap"])}'
+            if ty.get("habit"):
+                trap += f'<br><b class="l k">검산 습관</b>{self.r(ty["habit"])}'
+            cells.append(trap + "</div>")
+            for ref in ty["refs"]:
+                n += 1
+                cells.append(self.calc_cell(ref, n))
+                item = self.solution_item(ref, n, {}, None)
+                item["kind"] = f"유형 {ti}"
+                sols.append(item)
+            types.append({"title": self.r(ty["title"]), "head": f"계산 연습 · 유형 {ti}", "cells": cells, "sols": sols})
+        return {"title": self.r(title), "tag": tag, "types": types}
 
     # ---- DAY
     def day(self, d):
@@ -391,6 +427,10 @@ class Measurer:
         self._pw.stop()
 
 
+def sol_cap_app(ctx):
+    return None if ctx.book.get("special") else (ctx.config.get("solution") or {}).get("per_page_max")
+
+
 def overflow(issues) -> bool:
     return any(x != "풀이 공간 부족" for x in issues)
 
@@ -404,6 +444,7 @@ def run(ctx: Context) -> Log:
     math.render(ctx, log)
     model.book = math.fill(model.book)
     model.days = math.fill(model.days)
+    model.appendix = math.fill(model.appendix)
     tpl = load(ctx.path("template"), katex_css(ctx))
     ext_head, ext_pages = load_ext(ctx.path("ext_template"))
     head = tpl.head.replace("</head>", ext_head + "\n</head>", 1)
@@ -448,6 +489,11 @@ def run(ctx: Context) -> Log:
         contents_items = [{"day2": d["base"]["day2"], "title": d["base"]["title"], "day": d["day"],
                            "corners": [{"name": c, "line": d["corners"][c], "page": "000"} for c in CORNERS]}
                           for d in model.days]
+        app = model.appendix
+        if app:
+            contents_items.append({"day2": app["tag"], "title": app["title"], "day": app["tag"], "corners": [
+                {"name": "계산 연습", "line": f"유형 {len(app['types'])}개 · {sum(len(t['sols']) for t in app['types'])}문항", "page": "000"},
+                {"name": "정답과 해설", "line": "부록 정답·해설", "page": "000"}]})
         contents_pages = flow("CONTENTS", {}, "days", contents_items, "목차", cap=5)
         seq += [("CONTENTS", P, None) for P in contents_pages]
 
@@ -489,6 +535,18 @@ def run(ctx: Context) -> Log:
             sol_cap = None if ctx.book.get("special") else (ctx.config.get("solution") or {}).get("per_page_max")
             for P in flow("SOLUTION", d["base"], "entries", d["sols"], f"DAY {d['day']} 해설", cap=sol_cap):
                 seq.append(("SOLUTION", P, None))
+        if app:
+            first_c = first_s = True
+            for t in app["types"]:
+                base = {"tag": app["tag"], "title": t["title"], "head": t["head"]}
+                for P in flow("CALC", base, "cells", t["cells"], f"부록 {t['head']}"):
+                    seq.append(("CALC", P, (app["tag"], "계산 연습") if first_c else None))
+                    first_c = False
+            for t in app["types"]:
+                base = {"tag": app["tag"], "title": app["title"]}
+                for P in flow("CALC_SOL", base, "entries", t["sols"], f"부록 {t['head']} 해설", cap=sol_cap_app(ctx)):
+                    seq.append(("CALC_SOL", P, (app["tag"], "정답과 해설") if first_s else None))
+                    first_s = False
         seq.append(("BACK_COVER", {}, None))
 
         # ---- 쪽 번호와 목차 쪽수

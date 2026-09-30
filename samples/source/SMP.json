@@ -60,7 +60,14 @@
         "supplement": "짝수 제곱근에서 '양수인 것'이라는 조건을 놓치면 $b=\\pm2$로 두 값을 모두 더하는 실수가 나온다.",
         "skill_point": "홀수 제곱근은 하나, 짝수 제곱근은 $\\pm$ 쌍."
       },
-      "verify": "def skill():\n    return -3 + 2\n\ndef standard():\n    x = Symbol('x')\n    a = [r for r in real_roots(x**3 + 27)][0]\n    b = max(real_roots(x**4 - 16))\n    return a + b\n"
+      "verify": "def skill():\n    return -3 + 2\n\ndef standard():\n    x = Symbol('x')\n    a = [r for r in real_roots(x**3 + 27)][0]\n    b = max(real_roots(x**4 - 16))\n    return a + b\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T06:37:22",
+        "hash": "5e00dd5db7cabd54",
+        "errors": [],
+        "warnings": []
+      }
     },
     {
       "id": "T-SMP-002",
@@ -105,7 +112,14 @@
         "supplement": "밑 변환 공식으로 모두 상용로그로 바꿔도 되지만, 역수 관계를 보면 한 줄이다.",
         "skill_point": "$\\log_a b\\times\\log_b a=1$ — 밑과 진수가 뒤바뀐 곱은 1."
       },
-      "verify": "def skill():\n    return 2*2\n\ndef standard():\n    return nsimplify(simplify(log(4, 3)*log(9, 2)))\n"
+      "verify": "def skill():\n    return 2*2\n\ndef standard():\n    return nsimplify(simplify(log(4, 3)*log(9, 2)))\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T06:37:23",
+        "hash": "8c0ee107a771f65d",
+        "errors": [],
+        "warnings": []
+      }
     },
     {
       "id": "T-SMP-003",
@@ -154,7 +168,14 @@
         "supplement": "진수 조건을 나중에 확인하면 $x=-3$을 답으로 남기는 실수가 생긴다.",
         "skill_point": "로그 방정식은 진수 조건부터."
       },
-      "verify": "def skill():\n    return 3\n\ndef standard():\n    x = Symbol('x', real=True)\n    sols = [s for s in solve(Eq(x**2 - 1, 8), x) if s > 1]\n    return sols[0]\n\ndef unique():\n    x = Symbol('x', real=True)\n    return [s for s in solve(Eq(x**2 - 1, 8), x) if s + 1 > 0 and s - 1 > 0]\n"
+      "verify": "def skill():\n    return 3\n\ndef standard():\n    x = Symbol('x', real=True)\n    sols = [s for s in solve(Eq(x**2 - 1, 8), x) if s > 1]\n    return sols[0]\n\ndef unique():\n    x = Symbol('x', real=True)\n    return [s for s in solve(Eq(x**2 - 1, 8), x) if s + 1 > 0 and s - 1 > 0]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T06:37:23",
+        "hash": "2a9f26eb4121c8df",
+        "errors": [],
+        "warnings": []
+      }
     }
   ]
 }

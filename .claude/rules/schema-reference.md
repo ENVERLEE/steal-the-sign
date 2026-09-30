@@ -115,6 +115,14 @@ globs:
 - `answer_source`: "교재 정답" | "AI 풀이". AI 풀이면 `verify`의 `standard()`도 필수.
 - 교재 문항은 테마당 최대 8개 (기출 5개 자리 확보).
 
+## book.appendix — 계산 연습 부록
+
+```json
+"appendix": {"title": "계산 연습", "intro": "", "types": [
+  {"title": "유형 이름(24자)", "trap": "자주 하는 실수", "habit": "검산 습관", "refs": ["C-M1-01-101", ...]}]}
+```
+- refs는 `calc_type`이 있는 verified 창작만. 유형당 4~20(`config.appendix.per_type`), 전체 30~50 권장(경고).
+
 ## created.json — 창작 문항
 
 `work/created/{테마}/{id}.json`
@@ -123,6 +131,7 @@ globs:
 - `target`: `concept_ids`·`strategy_ids`·`first_judgment` 필수.
 - `choices`: 5지선다 또는 null (단답형). 선지 값 모두 다름.
 - `answer`: 번호(객관식) 또는 값(단답형). `answer_value` 필수(객관식).
+- `calc_type`: 계산 연습 부록 전용 문항 표시(유형 이름). 신작 1개 제한 면제, curate·DAY 연습 제외.
 - `distractors`: 객관식이면 오답 4개 모두 기록.
 - `verify`: sympy(sp)·numpy(np)·math·itertools·Fraction 사용 가능. 30초 제한. `skill()`·`standard()`·`unique()` 필수.
 - **상태**: `draft`(미통과) → `verified`(통과). AI는 `status`·`review` 작성 금지.

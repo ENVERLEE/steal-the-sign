@@ -1,6 +1,7 @@
 """STEAL THE SIGN : KICE 교재 파이프라인
 
   python run.py pages --pdf 교재.pdf --id KB1 --title "교재 이름"   교재 PDF → 쪽 이미지·텍스트 (AI 판독용)
+  python run.py mock --json 분석.json --id MK1 --title "실모 제1회"  실모 오답 분석 JSON → 판독 뼈대
   python run.py title --id KB1 --title "교재 이름"                 교재 출처 표기 바꾸기
   python run.py source       교재 판독 검사 + 큐레이션 초안: validate → source → curate → report
   python run.py created      창작 문제은행 검문: validate → created → report
@@ -27,6 +28,7 @@ STAGES = {
     "source": ("check_source", "check_source"),
     "curate": ("curate", "curate"),
     "pages": ("pdf_pages", "pdf_pages"),
+    "mock": ("mock_import", "mock_import"),
     "title": ("pdf_pages", "pdf_pages"),
     "check": ("check_book", "check_book"),
     "verify": ("verify_answers", "verify_answers"),
@@ -43,6 +45,7 @@ PLANS = {
     "created": ["validate", "created", "report"],
     "source": ["validate", "source", "curate", "report"],
     "pages": ["pages"],
+    "mock": ["mock"],
     "title": ["title"],
 }
 NEEDS_BOOK = {"check", "verify", "figs", "build"}
@@ -61,6 +64,8 @@ def run_stage(key: str, ctx: Context, args) -> Log:
             return module.run(ctx, recheck=args.recheck)
         if key == "pages":
             return module.run(ctx, pdf=args.pdf, book_id=args.id, title=args.title)
+        if key == "mock":
+            return module.run(ctx, json_path=args.json, book_id=args.id, title=args.title)
         if key == "title":
             return module.set_title(ctx, book_id=args.id, title=args.title)
         return module.run(ctx)
@@ -79,6 +84,7 @@ def main(argv=None) -> int:
     ap.add_argument("--created")
     ap.add_argument("--source")
     ap.add_argument("--pdf")
+    ap.add_argument("--json", help="mock 단계: 실모 오답 분석 JSON")
     ap.add_argument("--id")
     ap.add_argument("--title", help="교재 출처 표기(사용자가 정한 이름 그대로)")
     ap.add_argument("--out")

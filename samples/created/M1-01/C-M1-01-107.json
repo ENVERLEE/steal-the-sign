@@ -1,0 +1,64 @@
+{
+  "id": "C-M1-01-107",
+  "theme": "M1-01",
+  "calc_type": "곱셈공식 전개와 대입",
+  "origin": {
+    "type": "original"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-01-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "거듭제곱근과 지수의 부호를 먼저 정리하고 계산한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$x=7$일 때 $(x+2)(x-5)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "18",
+  "answer_value": "18",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-01-C1"
+    ],
+    "guide": "부호와 지수 규칙을 먼저 정리하면 계산이 짧아진다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 규칙 먼저",
+        "steps": [
+          {
+            "label": "정리",
+            "body": "각 괄호를 먼저 계산: $(7+2)(7-5)=9\\times2$"
+          },
+          {
+            "label": "계산",
+            "body": "$=18$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 차례로 계산 (비교용)",
+        "steps": [
+          {
+            "label": "1단계",
+            "body": "전개하면 $(x+2)(x-5)=x^2-3x-10$이다."
+          },
+          {
+            "label": "2단계",
+            "body": "$x=7$을 대입하면 $49-21-10$이다."
+          },
+          {
+            "label": "3단계",
+            "body": "따라서 $18$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "부호를 마지막에 처리하면 홀수 제곱근에서 부호를 놓치기 쉽다. 계산 전에 부호부터 확정한다.",
+    "skill_point": "계산 전에 부호와 지수 규칙부터 확정한다."
+  },
+  "verify": "def skill():\n    return (7+2)*(7-5)\n\ndef standard():\n    return 7**2-3*7-10\n\ndef unique():\n    return [standard()]\n"
+}

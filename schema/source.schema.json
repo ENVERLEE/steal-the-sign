@@ -14,7 +14,8 @@
         "id": {"type": "string", "pattern": "^[A-Z0-9]{1,8}$", "description": "교재 id (문항 id 접두어)"},
         "title": {"type": "string", "minLength": 1, "description": "교재 이름 (출처 표기에 쓰인다)"},
         "pdf": {"type": "string", "description": "원본 PDF 파일 이름"},
-        "note": {"type": "string"}
+        "note": {"type": "string"},
+        "mock": {"type": "boolean", "description": "실전모의고사 오답 판독: PDF·쪽 번호 없음 (출처 표기 '{title} {번호}번')"}
       }
     },
     "problems": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/problem"}}
@@ -23,7 +24,7 @@
     "problem": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "page", "number", "subject", "theme", "question", "answer", "points",
+      "required": ["id", "number", "subject", "theme", "question", "answer", "points",
                    "first_judgment", "behavior", "difficulty", "solution", "verify"],
       "properties": {
         "id": {"type": "string", "pattern": "^T-[A-Z0-9]{1,8}-\\d{3}$"},
@@ -33,6 +34,11 @@
         "theme": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{2}$", "description": "themes.json 테마"},
         "question": {"type": "string", "minLength": 3, "description": "판독한 본문 ($LaTeX$)"},
         "condition": {"type": ["string", "null"]},
+        "mistake": {
+          "type": "object",
+          "description": "실모 오답 분석 원본 (틀린 이유·패턴). REPLAY·DUGOUT NOTE 작성 자료",
+          "additionalProperties": true
+        },
         "choices": {
           "oneOf": [
             {"type": "null"},

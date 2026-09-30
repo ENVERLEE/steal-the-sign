@@ -43,6 +43,7 @@ COVER → CONTENTS
 ]
 QUICK_ANSWER
 SOLUTION×N
+[부록이 있으면: CALC×N (유형마다) → CALC_SOL×N]
 BACK_COVER
 ```
 

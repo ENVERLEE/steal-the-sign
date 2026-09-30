@@ -14,6 +14,7 @@ python -m playwright install chromium    # 처음 한 번만
 
 python run.py pages --pdf 교재.pdf --id KB1 --title "교재 이름"   # PDF 판독용 변환
 python run.py title --id KB1 --title "교재 이름"                   # 출처 표기 변경
+python run.py mock --json 분석.json --id MK1 --title "실모 제1회"   # 실모 오답 분석 JSON → work/mock/MK1_draft.json (판독 뼈대)
 python run.py source          # 교재 판독 검사 + 큐레이션
 python run.py created         # 창작 문제은행 검문만
 python run.py                 # 전체: validate → created → source → check → verify → figs → build → layout → pdf → report

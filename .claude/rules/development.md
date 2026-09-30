@@ -39,6 +39,7 @@ python run.py --book samples/book.sample.json --created <복사본> --out <임�
 | 파일 | 역할 |
 |---|---|
 | `validate_sources.py` | id·code·번호·학년도·배점·충돌, 선지·정답 형식, strategy_notes 대조, solutions·themes 누락·불일치·참조, **제어문자**·**KaTeX 오류** → `out/excluded.json` |
+| `mock_import.py` | 실모 오답 분석 JSON(틀린 문제 본문·이유·패턴) → `work/mock/{id}_draft.json`(source 뼈대)·`{id}_analysis.json`·`source/{id}/pages.json`(표기). 필드 별칭 인식 |
 | `pdf_pages.py` | PDF → 쪽 PNG·텍스트 (pypdfium2). `--title` 필수. `title` 단계로 변경. |
 | `check_source.py` | 교재 판독 파일: 스키마, id·쪽, 테마·과목, 참조, `$` 짝, 제어문자, 그림명세, `verify` 검산 → `status: verified` |
 | `curate.py` | 교재 문항 → DAY·예제·연습·SCOUTING 배정 초안 → `out/curation.md`, `out/plan.json` |

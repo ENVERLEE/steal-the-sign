@@ -172,6 +172,63 @@ class TestCreated(unittest.TestCase):
         self.assertEqual(read_json(f)["status"], "draft")
 
 
+class TestMock(unittest.TestCase):
+    def test_import_makes_draft(self):
+        from scripts import mock_import
+        with tempfile.TemporaryDirectory() as d:
+            src = Path(d) / "a.json"
+            write_json(src, {"wrong": [{"no": 12, "text": "$x^2=4$의 실근의 합은?", "options": ["$0$", "$1$", "$2$", "$3$", "$4$"],
+                                        "correct": 1, "reason": "부호 실수", "tags": ["계산실수"], "subject": "수1"},
+                                       {"no": 13}], "patterns": ["지수 부호"]})
+            ctx = Context(source_dir=Path(d) / "source", out_dir=Path(d) / "out")
+            log = mock_import.run(ctx, json_path=str(src), book_id="mk1", title="실모 제1회")
+            self.assertEqual(log.errors, [])
+            draft = read_json(Path(d) / "mock" / "MK1_draft.json")
+            self.assertTrue(draft["book"]["mock"])
+            self.assertEqual(len(draft["problems"]), 1)          # 본문 없는 항목은 건너뜀
+            p = draft["problems"][0]
+            self.assertEqual((p["id"], p["number"], p["subject"]), ("T-MK1-001", "12", "수학Ⅰ"))
+            self.assertEqual(p["mistake"]["reason"], "부호 실수")
+            self.assertEqual(read_json(Path(d) / "source" / "MK1" / "pages.json")["title"], "실모 제1회")
+
+    def test_mock_problem_has_no_page_label(self):
+        rec = {"id": "T-MK1-001", "number": "12", "page": None}
+        # 쪽이 없으면 출처는 '{title} {번호}번'
+        m = build.Model.source_of.__get__(type("M", (), {"ctx": type("C", (), {"source": {"T-MK1-001": {"book": {"title": "실모 제1회"}}}})()})())
+        self.assertEqual(m("T-MK1-001", rec), "실모 제1회 12번")
+
+
+class TestAppendix(unittest.TestCase):
+    def test_calc_bank_rules(self):
+        sb = Sandbox()
+        try:
+            ctx = sb.ctx()
+            self.assertEqual(check_created.run(ctx).errors, [])
+            ctx = sb.ctx()
+            book = read_json(sb.book)
+            self.assertEqual(check_book.run(ctx).errors, [])
+            # DAY 연습에 부록 전용 창작을 쓰면 오류
+            book["days"][0]["practice"][0]["ref"] = "C-M1-01-101"
+            write_json(sb.book, book)
+            errs = check_book.run(sb.ctx()).errors
+            self.assertTrue(any("부록 전용" in m["msg"] if isinstance(m, dict) else "부록 전용" in str(m) for m in errs))
+        finally:
+            sb.close()
+
+    def test_calc_batch_is_separate(self):
+        sb = Sandbox()
+        try:
+            for f in sb.created.rglob("*.json"):   # 계산 8개 + 일반 창작을 모두 미검사로
+                rec = read_json(f)
+                rec.pop("status", None)
+                rec.pop("review", None)
+                write_json(f, rec)
+            log = check_created.run(sb.ctx())
+            self.assertEqual(log.errors, [])       # 일반 2개(한도 4)와 계산 8개(한도 10)가 따로 세어져 모두 통과
+        finally:
+            sb.close()
+
+
 class TestBook(unittest.TestCase):
     def run_checks(self, book):
         sb = Sandbox(book)
@@ -341,6 +398,11 @@ class TestBuild(unittest.TestCase):
             self.assertTrue((sb.out / "report.md").exists())
             import pypdfium2 as pdfium
             self.assertEqual(len(pdfium.PdfDocument(str(sb.out / "book.pdf"))), len(pages))
+            # 부록(계산 연습): 목차에 오르고 CALC·CALC_SOL 쪽이 있다
+            self.assertIn('data-page="CALC"', html)
+            self.assertIn('data-page="CALC_SOL"', html)
+            kinds = [p["kind"] for p in pages]
+            self.assertLess(kinds.index("CALC"), kinds.index("BACK_COVER"))
             cap = ctx.config["solution"]["per_page_max"] or 99
             for chunk in html.split('data-page="SOLUTION"')[1:]:
                 self.assertLessEqual(chunk.split('data-page=')[0].count('<article class="s"'), cap)

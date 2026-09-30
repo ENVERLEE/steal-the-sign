@@ -48,6 +48,60 @@
       "items": {
         "$ref": "#/$defs/day"
       }
+    },
+    "appendix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "types"
+      ],
+      "description": "부록: 계산 연습(창작 문항만). DAY와 별도 파트로 해설 뒤에 붙는다",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 24,
+          "description": "부록 제목(기본: 계산 연습)"
+        },
+        "intro": {
+          "type": "string",
+          "description": "부록 안내 글 (첫 유형 쪽 위에 실림)"
+        },
+        "types": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "trap",
+              "refs"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 24
+              },
+              "trap": {
+                "type": "string",
+                "description": "자주 하는 계산 실수(분석 JSON의 패턴)"
+              },
+              "habit": {
+                "type": "string",
+                "description": "검산 습관·실수 방지 한 줄"
+              },
+              "refs": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^C-(M1|M2|PS)-\\d{2}-\\d{3}$"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "$defs": {
