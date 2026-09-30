@@ -1,0 +1,239 @@
+{
+  "book": {
+    "id": "MK4",
+    "title": "서바이벌 모의고사 16회",
+    "mock": true
+  },
+  "problems": [
+    {
+      "id": "T-MK4-001",
+      "number": "6",
+      "subject": null,
+      "question": "\\sum_{k=1}^{m} \\frac{1}{k(k+1)} = \\frac{10}{11} 일 때... (가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "단순 분수 덧셈 과정에서 약분을 헤매어 꼬임 (쉬운 3점에서의 폭주)",
+        "concept": "수학I - 수열의 합 (부분분수)",
+        "missed": "부분분수 전개 후 연쇄 소거 규칙",
+        "best": "소거 후 남는 양 끝의 항만 적어두고, 분모를 하나로 깔끔하게 통분하여 방정식 1차 풀이.",
+        "intent": "부분분수를 활용한 수열의 합 연산",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "부분분수로 소거한 뒤 남은 분수식을 통분/약분하는 기초적인 과정에서 숫자를 썼다 지우며 멘탈이 흔들림."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK4-002",
+      "number": "10",
+      "subject": null,
+      "question": "함수 f(x) = x^2 - 4x + 3 에 대하여 곡선 y=f(x)와 x축으로 둘러싸인 부분의 넓이는?",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "분수 적분값 대입 후 산술 연산에서 폭주",
+        "concept": "수학II - 정적분의 활용",
+        "missed": "공통 분모 사전 통분",
+        "best": "대입 전 적분된 다항식의 괄호를 명확히 치고, 계수들끼리 먼저 빼서 연산을 간소화.",
+        "intent": "정적분을 이용한 도형의 넓이 계산",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "적분 후 상/하한선 대입 과정에서 무질서하게 식을 나열하여 분수 뺄셈 중 실수 유발."
+        }
+      },
+      "text_complete": true
+    },
+    {
+      "id": "T-MK4-003",
+      "number": "11",
+      "subject": null,
+      "question": "다항함수 f(x)가 다음 조건을 만족시킨다. f(0)=0, f'(0)=1...",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "초기 식 세팅 실패 후 무작정 계산하여 폭주",
+        "concept": "수학II - 미분과 적분",
+        "missed": "문제에 숨겨진 미분계수(접선 기울기) 힌트",
+        "best": "주어진 점에서의 접선이나 차수 조건을 통해 f(x)의 뼈대를 최대한 묶어서 세팅.",
+        "intent": "미분계수의 기하학적 의미와 다항식 추론",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "힌트를 기하학적으로 해석하지 못하고 미지수를 남발하여 식이 너무 길어짐."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK4-004",
+      "number": "13",
+      "subject": null,
+      "question": "최고차항의 계수가 1인 삼차함수 f(x)에 대하여... 극한값 lim_{x->...}",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "수식 전개가 중구난방으로 퍼져 연산 방향 상실",
+        "concept": "수학II - 함수의 극한과 연속",
+        "missed": "0분의 0꼴 극한에서 인수정리를 활용한 효율적인 다항식 세팅",
+        "best": "분자 0 조건을 통해 f(x) 인수를 확정하고, 약분하여 식을 최소화한 뒤 극한값 대입.",
+        "intent": "미정계수 결정 및 극한의 성질을 활용한 함수식 추론",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "극한 식을 묶어서 인수를 약분하지 않고 긴 다항식을 흩뿌려 적으며 폭주 발생."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK4-005",
+      "number": "15",
+      "subject": null,
+      "question": "수열 {a_n}이 다음 조건을 만족시킨다... (텍스트 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "풀이 흔적 전무 (찍어서 맞춤)",
+        "concept": "수학I - 수열의 귀납적 추론",
+        "missed": "초기항 대입을 통한 규칙성 파악",
+        "best": "n=1, 2, 3을 순차 대입하여 주기성이나 증가폭 규칙을 빠르게 눈으로 확인.",
+        "intent": "수열의 귀납적 정의 이해 및 역추적",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "13번 등에서 계산 폭주로 풀이 시간 증발"
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK4-006",
+      "number": "19",
+      "subject": null,
+      "question": "함수 f(x) = 2x^3 - 3x^2 - 12x + 1 에 대하여 f(x)의 극댓값과 극솟값의 합을 구하시오.",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "기본 연산 실수 및 공간 관리 실패",
+        "concept": "수학II - 도함수/정적분 주관식",
+        "missed": "마지막 상수 덧셈 뺄셈 검토",
+        "best": "계산 스텝마다 한 줄씩 깔끔하게 내려 쓰기.",
+        "intent": "미적분 기본 연산 능력",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "식을 급하게 전개하다 스스로 쓴 숫자를 잘못 읽고 오답 처리."
+        }
+      },
+      "text_complete": true
+    },
+    {
+      "id": "T-MK4-007",
+      "number": "20",
+      "subject": null,
+      "question": "그림과 같이 삼각형 ABC에서 선분 AC 위를... (일부 텍스트 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "식 정리를 하지 않고 무리하게 대입부터 하여 산수 마비",
+        "concept": "수학I - 사인법칙과 코사인법칙",
+        "missed": "코사인 법칙 수식 간소화(공통인수 약분)",
+        "best": "문자로 식을 먼저 세워서 최대한 약분하거나, 닮음비를 이용해 숫자의 크기를 줄인 뒤 코사인법칙 적용.",
+        "intent": "도형의 성질과 삼각함수 법칙의 융합 적용",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "도형에 표시된 큰 숫자와 제곱근을 식에 그대로 집어넣고 전개하다가 이차방정식 풀이에서 계산을 포기함."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK4-008",
+      "number": "21, 22",
+      "subject": null,
+      "question": "복합적 조건의 함수 방정식 해 추론 및 식 완성 (텍스트 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "접근 시도 및 풀이 흔적 전무 (빈 공간)",
+        "concept": "수학I/II - 고난도 주/객관식",
+        "missed": "해당 없음",
+        "best": "기하학적 상황(교점, 접선)을 그래프로 스케치하여 경계 지점의 식만 도출.",
+        "intent": "함수 그래프 해석적 융합 및 사고력 평가",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "시간 압박 및 고난도 심리적 장벽으로 미접근"
+        }
+      },
+      "text_complete": true
+    },
+    {
+      "id": "T-MK4-009",
+      "number": "27",
+      "subject": "확률과 통계",
+      "question": "정규분포 N(m, \\sigma^2)을 따르는 확률변수 X와 N(m, (6.5)^2)를 따르는 Y... (텍스트 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "표준화 수식을 난잡하게 전개하여 스스로 혼동함",
+        "concept": "확률과 통계 - 정규분포",
+        "missed": "정규분포 곡선의 직관적 대칭축 이동",
+        "best": "수식보다는 그래프의 넓이와 떨어진 '칸 수(표준편차 배수)'로 직관적 확률 파악.",
+        "intent": "표준화 공식 및 표를 이용한 확률 도출",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "벨커브는 그렸으나 분수로 된 표준화 식을 대수적으로 풀려다 꼬임."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK4-010",
+      "number": "29,30",
+      "subject": "확률과 통계",
+      "question": "조건이 걸린 경우의 수 분류 및 통계량 추론 (텍스트 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "완전한 빈 공간 (미접근)",
+        "concept": "확률과 통계 - 경우의 수 및 통계적 추정 주관식",
+        "missed": "해당 없음",
+        "best": "조건이 강한 순서대로 케이스를 분류하거나, 기호를 연산 법칙에 따라 기초 대수식으로 치환.",
+        "intent": "체계적 경우의 수 분류 및 통계량 연산 법칙 적용",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "앞선 문항 폭주 스노우볼로 인한 시간 증발"
+        }
+      },
+      "text_complete": true
+    }
+  ]
+}

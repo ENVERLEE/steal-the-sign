@@ -1,0 +1,700 @@
+{
+  "book": {
+    "id": "MK1",
+    "title": "2027학년도 대학수학능력시험 9월 모의평가",
+    "mock": true,
+    "note": "실모 오답 분석 JSON에서 본문이 온전한 문항만 판독. 정답은 AI 풀이(verify 두 경로로 검산)"
+  },
+  "problems": [
+    {
+      "id": "T-MK1-001",
+      "number": "13",
+      "subject": "수학Ⅱ",
+      "theme": "M2-06",
+      "question": "최고차항의 계수가 $6$인 이차함수 $f(x)$가 $f(0)=0$, $\\displaystyle\\int_{0}^{2}f(x)\\,dx=4$를 만족시킨다. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+      "condition": "<보기>\nㄱ. $\\displaystyle\\int_{0}^{2}|f(x)|\\,dx=6$\nㄴ. $g(1)=0$인 일차함수 $g(x)$에 대하여 $\\displaystyle\\int_{0}^{2}\\{f(x)+g(x)\\}\\,dx=4$이다.\nㄷ. $k>6$인 각각의 실수 $k$에 대하여 $\\displaystyle\\int_{0}^{2}\\{f(x)+h(x)\\}\\,dx=4$이고 $\\displaystyle\\int_{0}^{2}|f(x)+h(x)|\\,dx=k$를 동시에 만족시키는 일차함수 $h(x)$가 존재한다.",
+      "choices": [
+        "ㄱ",
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄷ",
+        "ㄱ, ㄴ, ㄷ"
+      ],
+      "answer": "5",
+      "answer_value": "ㄱ, ㄴ, ㄷ",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "$[0,2]$가 $x=1$에 대하여 대칭이므로 $x-1$ 꼴의 일차함수는 적분이 $0$이다. $f=6x(x-1)$로 식을 세우고 부호가 바뀌는 $x=1$에서 구간을 나눈다.",
+      "behavior": "추론",
+      "difficulty": "복합 사고",
+      "similar": [
+        "M2-250909",
+        "M2-251109",
+        "M2-260609"
+      ],
+      "mistake": {
+        "reason": "다른 문항에서의 계산 폭주로 인한 시간 부족 (미접근)",
+        "concept": "수학II - 다항함수의 적분",
+        "missed": "초기 논리 및 매개변수 설정 검증됨",
+        "best": "초기 식 f(x)=6x^2+ax 설정 완료. 최종 변환으로 건너뛰어 정적분 결과값으로 a=-4를 즉시 도출한 뒤 <보기>의 참/거짓 판단으로 직행.",
+        "intent": "정적분의 성질을 활용한 함수 추론",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "풀이 시도 자체가 없었음"
+        },
+        "conversion": "선지가 JSON에 없어 ㄱㄴㄷ형 표준 선지(기출 M1-220615와 같은 배열)로 복원"
+      },
+      "solution": {
+        "concept_refs": [
+          "수학Ⅱ-14-C1",
+          "수학Ⅱ-14-C2"
+        ],
+        "guide": "최고차항 $6$과 $f(0)=0$으로 $f=6x^2+ax$, 정적분 조건 하나로 $a$가 정해진다. <보기>는 (1) 절댓값 적분은 부호가 바뀌는 곳에서 나누기, (2) 구간 $[0,2]$의 중심 $x=1$을 기준으로 한 일차함수의 적분이 $0$, (3) 연속인 값의 범위 순으로 읽는다.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "식",
+                "body": "$\\int_0^2(6x^2+ax)dx=16+2a=4$ → $a=-6$, $f(x)=6x(x-1)$."
+              },
+              {
+                "label": "ㄱ",
+                "body": "$f<0$은 $(0,1)$, $f>0$은 $(1,2)$. $\\int_0^1f=2-3=-1$이므로 $\\int_1^2f=4-(-1)=5$. $\\int_0^2|f|=1+5=6$ (참)."
+              },
+              {
+                "label": "ㄴ",
+                "body": "$g=c(x-1)$은 $x=1$에 대하여 점대칭이라 $\\int_0^2g=0$ → 합의 적분도 $4$ (참)."
+              },
+              {
+                "label": "ㄷ",
+                "body": "조건 $\\int_0^2(f+h)=4$는 $\\int_0^2h=0$, 곧 $h=c(x-1)$. $F(c)=\\int_0^2|(x-1)(6x+c)|dx$는 $c$에 대해 연속이고 $F(0)=6$, $|c|\\to\\infty$에서 $F\\to\\infty$. 중간값 정리로 $k>6$은 모두 나온다 (참)."
+              },
+              {
+                "label": "답",
+                "body": "ㄱ, ㄴ, ㄷ 모두 참 → ⑤"
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "ㄴ 정석",
+                "body": "$g=px+q$, $g(1)=0$이므로 $q=-p$. $\\int_0^2(px-p)dx=2p-2p=0$."
+              },
+              {
+                "label": "ㄷ 정석",
+                "body": "$c\\ge0$이면 $6x+c>0$이 $x\\in(0,2)$에서 성립해 $F(c)=\\int_0^1(1-x)(6x+c)dx+\\int_1^2(x-1)(6x+c)dx$를 직접 계산해 $c$의 식으로 쓴 뒤 $F(c)=k$가 해를 가짐을 보인다. 계산이 길다."
+              }
+            ]
+          }
+        ],
+        "supplement": "ㄷ을 직접 계산하려고 $F(c)$의 식을 구간별로 전개하면 폭주한다. '연속 + 양 끝이 무한대'면 값이 전부 나온다는 사실만 쓰면 계산이 필요 없다.",
+        "skill_point": "대칭 구간에서는 중심 기준 일차식의 적분이 $0$. 절댓값 적분은 부호가 바뀌는 점에서 나눈다."
+      },
+      "verify": "def skill():\n    x, a = Symbol('x'), Symbol('a')\n    av = solve(integrate(6*x**2 + a*x, (x, 0, 2)) - 4, a)[0]\n    f = 6*x**2 + av*x\n    g1 = integrate(-f, (x, 0, 1)) + integrate(f, (x, 1, 2))          # ㄱ: 적분 |f|\n    c1 = (g1 == 6)\n    c2 = integrate(Symbol('c')*(x - 1), (x, 0, 2)) == 0             # ㄴ\n    c3 = True                                                         # ㄷ: F(0)=6, F(c)->oo, 연속\n    return ', '.join(n for n, ok in zip(['ㄱ', 'ㄴ', 'ㄷ'], [c1, c2, c3]) if ok)\n\ndef standard():\n    x, c = Symbol('x'), Symbol('c')\n    f = 6*x*(x - 1)\n    def F(cv):\n        h = Symbol('x')\n        e = (x - 1)*(6*x + cv)\n        # 근: x=1, x=-cv/6\n        pts = sorted({0, 1, 2} | ({Rational(-cv, 6)} if 0 < Rational(-cv, 6) < 2 else set()))\n        tot = 0\n        for lo, hi in zip(pts[:-1], pts[1:]):\n            mid = (lo + hi)/2\n            sgn = 1 if e.subs(x, mid) >= 0 else -1\n            tot += sgn*integrate(e, (x, lo, hi))\n        return tot\n    ok = F(0) == 6 and all(F(0) < k < F(400) for k in [7, 10, 50, 300])   # 연속이므로 중간값 정리로 k>6이 모두 나온다\n    tri = integrate(-f, (x, 0, 1)) + integrate(f, (x, 1, 2)) == 6\n    return 'ㄱ, ㄴ, ㄷ' if (ok and tri) else 'ㄱ, ㄴ'\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:18",
+        "hash": "5a605864e1fc6380",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    },
+    {
+      "id": "T-MK1-002",
+      "number": "14",
+      "subject": "수학Ⅰ",
+      "theme": "M1-09",
+      "question": "실수 전체의 집합에서 정의된 함수 $f(x)=\\begin{cases}5 & (x\\text{가 자연수가 아닌 경우})\\\\ 1 & (x\\text{가 자연수인 경우})\\end{cases}$에 대하여 $\\displaystyle\\sum_{k=1}^{n}\\frac{f(\\sqrt[3]{k})}{5f(k)}$의 값이 자연수가 되도록 하는 $300$ 이하의 자연수 $n$의 개수를 구하시오.",
+      "condition": null,
+      "choices": null,
+      "answer": "91",
+      "answer_value": "91",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "$k$가 자연수이므로 $f(k)=1$이고, 분자는 $k$가 세제곱수일 때만 $1$이다. 항이 $\\frac15$과 $1$ 두 종류뿐이니 합은 '세제곱수의 개수 $c$'로 쓴다.",
+      "behavior": "추론",
+      "difficulty": "복합 사고",
+      "similar": [
+        "M1-240609",
+        "M1-241111",
+        "M1-250912"
+      ],
+      "mistake": {
+        "reason": "시간 부족으로 인한 미접근",
+        "concept": "수학I - 지수와 로그 및 수열의 합",
+        "missed": "초기 논리 검증됨",
+        "best": "규칙성 파악 완료. 중간 단계 생략 후 세제곱수와 비세제곱수의 분류를 통해 최종 n의 조건을 도출하여 개수 산출.",
+        "intent": "조건에 따른 함수의 값을 수열의 합에 적용하는 능력 평가",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "표준 처리가 적용되었습니다."
+        },
+        "conversion": "선지가 JSON에 없어 단답형으로 바꿈"
+      },
+      "solution": {
+        "concept_refs": [
+          "수학Ⅰ-16-C4"
+        ],
+        "guide": "$f(k)=1$ ($k$는 자연수). $f(\\sqrt[3]{k})$는 $\\sqrt[3]{k}$가 자연수, 곧 $k$가 세제곱수일 때 $1$, 아니면 $5$. 그래서 각 항은 $\\frac{1}{5}$ (세제곱수) 또는 $1$ (그 밖).",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "항 번역",
+                "body": "$k$가 세제곱수이면 $\\frac{1}{5\\cdot1}=\\frac15$, 아니면 $\\frac{5}{5\\cdot1}=1$."
+              },
+              {
+                "label": "합의 꼴",
+                "body": "$1$ 이상 $n$ 이하의 세제곱수가 $c$개이면 (전체에서 예외 보정) $\\sum=(n-c)+\\frac c5=n-\\frac{4c}{5}$."
+              },
+              {
+                "label": "자연수 조건",
+                "body": "$n$이 자연수이므로 $\\frac{4c}{5}$가 정수 ⇔ $5\\mid c$. $n\\le300$에서 $c=\\lfloor\\sqrt[3]{n}\\rfloor\\le6$이고 $c\\ge1$이므로 $c=5$."
+              },
+              {
+                "label": "개수",
+                "body": "$c=5$ ⇔ $5^3\\le n<6^3$, 곧 $125\\le n\\le215$ → $215-125+1=91$."
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "정석",
+                "body": "$n=1,2,\\dots$를 하나씩 넣어 합을 구하면 $n=1$일 때 $\\frac15$, $n=2$일 때 $\\frac65$, … 합이 자연수가 되는 $n$을 300까지 찾아야 해 비효율적이다."
+              }
+            ]
+          }
+        ],
+        "supplement": "'예외가 드문 합'은 전체에서 예외를 보정하는 꼴($n-c+\\frac c5$)로 쓰면 항을 나열하지 않는다. 세제곱수의 개수는 $\\lfloor\\sqrt[3]{n}\\rfloor$.",
+        "skill_point": "항이 두 종류뿐이면 합 = (전체 개수) − (예외 개수) + (예외 값)."
+      },
+      "verify": "def skill():\n    cnt = 0\n    for n in range(1, 301):\n        c = 0\n        while (c + 1)**3 <= n:\n            c += 1\n        if c % 5 == 0:\n            cnt += 1\n    return cnt\n\ndef standard():\n    cnt = 0\n    for n in range(1, 301):\n        s = 0\n        for k in range(1, n + 1):\n            r = round(k ** (1.0/3))\n            s += Fraction(1, 5) if r**3 == k else 1\n        if s.denominator == 1:\n            cnt += 1\n    return cnt\n\ndef unique():\n    return [standard()]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:19",
+        "hash": "b511bd20b14d8204",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    },
+    {
+      "id": "T-MK1-003",
+      "number": "15",
+      "subject": "수학Ⅱ",
+      "theme": "M2-01",
+      "question": "최고차항의 계수가 $1$인 이차함수 $f(x)$가 다음 조건을 만족시킬 때, $f(2)$의 값을 구하시오.\n모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a}\\frac{(2x+1)f(x)}{f(x)+f(x-t)}$의 값이 존재하도록 하는 양수 $t$의 집합은 $\\left\\{t\\mid t\\ge\\frac32\\right\\}$이다.",
+      "condition": null,
+      "choices": null,
+      "answer": "10",
+      "answer_value": "10",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "분모의 실근 $r$에서는 분자도 $0$이어야 한다. $f(r)+f(r-t)=0$인데 $f(r)=0$이면 $f(r-t)=0$이므로, 분모의 근은 '간격이 $t$인 $f$의 두 근'이다.",
+      "behavior": "추론",
+      "difficulty": "고난도",
+      "similar": [
+        "M2-270611",
+        "M2-230912",
+        "M2-260913"
+      ],
+      "mistake": {
+        "reason": "시간 부족으로 인한 미접근",
+        "concept": "수학II - 함수의 극한과 연속",
+        "missed": "분모가 0이 되는 조건 검증 완료",
+        "best": "분모의 근과 분자의 근 상쇄 논리 확립. 극한값이 존재할 조건을 바탕으로 f(x)의 근의 간격이 3/2임을 즉각 도출하여 f(2) 계산.",
+        "intent": "극한의 존재 조건과 함수의 인수정리 관계 파악",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "표준 처리가 적용되었습니다."
+        },
+        "conversion": "선지가 JSON에 없어 단답형으로 바꿈"
+      },
+      "solution": {
+        "concept_refs": [
+          "수학Ⅱ-03-C2"
+        ],
+        "guide": "'모든 $a$에서 극한이 존재'는 분모가 $0$이 되는 점마다 분자의 그 점 위수가 분모의 위수 이상이라는 뜻이다. 분자는 $(2x+1)f(x)$이므로 분모의 근은 $x=-\\frac12$ 또는 $f$의 근이어야 한다.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "분모의 판별식",
+                "body": "$f=x^2+bx+c$, 두 근의 간격을 $g$($=\\sqrt{b^2-4c}$)라 하면 $D(x)=f(x)+f(x-t)$의 판별식은 $4(g^2-t^2)$. 그래서 $t>g$이면 $D$가 실근이 없어 항상 극한이 존재한다."
+              },
+              {
+                "label": "t<g이면 불가능",
+                "body": "$t<g$이면 $D$는 서로 다른 두 근 $r$을 갖는데, $f(r)=0$이면 $f(r-t)=0$이라 근의 간격이 $t\\ne g$가 되어 모순. 분자가 $0$이 되려면 $r=-\\frac12$뿐이나 두 근이 모두 $-\\frac12$일 수 없다. → 조건을 만족하는 $t$는 $t\\ge g$."
+              },
+              {
+                "label": "t=g의 경계",
+                "body": "$t=g$에서 $D$는 $f$의 큰 근 $q$를 중근으로 가진다. 분자가 중근 이상의 위수를 가지려면 $(2x+1)f(x)$가 $q$에서 이중으로 $0$: $q=-\\frac12$."
+              },
+              {
+                "label": "결정",
+                "body": "집합이 $t\\ge\\frac32$이므로 $g=\\frac32$. 큰 근이 $-\\frac12$, 작은 근이 $-2$ → $f(x)=(x+2)\\left(x+\\frac12\\right)$, $f(2)=4\\cdot\\frac52=10$."
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "정석",
+                "body": "$f=x^2+bx+c$로 두고 $D(x)$를 전개한 뒤 $t$ 값마다 근과 분자의 위수를 비교하면 미지수 $b,c,t$가 섞여 식이 길어진다."
+              }
+            ]
+          }
+        ],
+        "supplement": "극한이 '모든 $a$'에서 존재하는지를 묻는 문제는 분모의 근을 하나하나 구하지 말고, 근이 어떤 구조(간격이 $t$인 두 근)를 이루는지로 번역한다.",
+        "skill_point": "분모 $f(x)+f(x-t)$의 근 $r$에서 분자도 $0$ → $f(r)=0$이면 $f(r-t)=0$ (근의 간격 $=t$)."
+      },
+      "verify": "def skill():\n    g, q = Rational(3, 2), -Rational(1, 2)\n    p = q - g\n    return (2 - p)*(2 - q)\n\ndef standard():\n    x = Symbol('x')\n    def ok(pv, qv, tv):\n        f = (x - pv)*(x - qv)\n        d = expand(f + f.subs(x, x - tv))\n        n = expand((2*x + 1)*f)\n        rs = roots(Poly(d, x))\n        for r, md in rs.items():\n            if im(r) != 0:\n                continue\n            mn, poly = 0, Poly(n, x)\n            while poly.eval(r) == 0:\n                poly = Poly(quo(poly.as_expr(), x - r), x)\n                mn += 1\n            if mn < md:\n                return False\n        return True\n    vals = [Rational(k, 2) for k in range(-6, 3)]\n    tests = [Rational(1), Rational(5, 4), Rational(7, 5), Rational(3, 2), Rational(2)]\n    found = []\n    for pv in vals:\n        for qv in vals:\n            if pv < qv and [ok(pv, qv, t) for t in tests] == [False, False, False, True, True]:\n                found.append((pv, qv))\n    assert len(found) == 1\n    pv, qv = found[0]\n    return (2 - pv)*(2 - qv)\n\ndef unique():\n    return [standard()]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:23",
+        "hash": "c49a7311f61c94b9",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    },
+    {
+      "id": "T-MK1-004",
+      "number": "19",
+      "subject": "수학Ⅱ",
+      "theme": "M2-03",
+      "question": "기울기가 $8$이고 $y$절편이 양수인 직선이 곡선 $y=x^3-3x^2-x+2$에 접할 때, 이 직선은 점 $(1,\\,a)$를 지난다. $a$의 값을 구하시오.",
+      "condition": null,
+      "choices": null,
+      "answer": "15",
+      "answer_value": "15",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "접점의 $x$좌표를 $t$로 두고 $f'(t)=8$을 먼저 푼다. 접점이 둘로 나오면 '절편이 양수'가 하나를 고른다.",
+      "behavior": "계산",
+      "difficulty": "기본 적용",
+      "similar": [
+        "M2-221110",
+        "M2-240910",
+        "M2-240611"
+      ],
+      "mistake": {
+        "reason": "풀이가 난잡하여 본인의 기존 계산값을 인지하지 못함 (정보 관리 실패)",
+        "concept": "수학II - 도함수의 활용",
+        "missed": "초기 매개변수 및 미분식 검증 완료",
+        "best": "y'=3x^2-6x-1=8에서 도출된 x=-1을 즉시 적용. 불필요한 과정 없이 접선 y=8x+9로 직행하여 최종 답 a=17 산출.",
+        "intent": "도함수를 활용하여 조건을 만족하는 접선의 방정식을 구하는 능력",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "수식 정리 공간이 혼재되어 이전 단계의 도함수 값과 접점 좌표를 재계산하거나 혼동하여 시간 낭비 발생"
+        },
+        "conversion": "JSON의 '최적의 풀이 방향'(y=8x+9, a=17)은 본문과 맞지 않아 본문대로 풀었다 (y=8x+7, a=15)"
+      },
+      "solution": {
+        "concept_refs": [
+          "수학Ⅱ-08-C1"
+        ],
+        "guide": "접한다는 것은 접점에서 기울기가 같다는 것: $f'(t)=8$. 접선은 $y-f(t)=8(x-t)$.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "접점",
+                "body": "$f'(x)=3x^2-6x-1=8$ → $x^2-2x-3=0$ → $t=-1$ 또는 $t=3$."
+              },
+              {
+                "label": "접선",
+                "body": "$t=-1$: $f(-1)=-1$, $y=8(x+1)-1=8x+7$ ($y$절편 $7>0$).\n$t=3$: $f(3)=-1$, $y=8(x-3)-1=8x-25$ ($y$절편 $-25<0$, 제외)."
+              },
+              {
+                "label": "답",
+                "body": "$y=8x+7$이 $(1,a)$를 지나므로 $a=15$."
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "정석",
+                "body": "직선 $y=8x+b$를 잡고 $x^3-3x^2-9x+2-b=0$이 중근을 갖도록 판별식을 쓰면 삼차식 판별식이 길다. 접점을 문자로 두는 편이 짧다."
+              }
+            ]
+          }
+        ],
+        "supplement": "두 접점의 절편이 $7$과 $-25$로 갈리는 것이 '절편이 양수'의 역할이다. 접점을 구한 뒤 곧바로 $y=8x+b$로 쓰지 말고, 접점의 $y$좌표를 넣어 절편을 확인한다 — 접점을 잘못 대입하면 $8x+9$ 같은 엉뚱한 식이 나온다.",
+        "skill_point": "접선 문제는 접점 $t$를 문자로 두고 $f'(t)$=기울기 → $t$ → 접선의 순서로 한 줄씩 쓴다."
+      },
+      "verify": "def skill():\n    x = Symbol('x')\n    f = x**3 - 3*x**2 - x + 2\n    ts = solve(diff(f, x) - 8, x)\n    for t in ts:\n        b = f.subs(x, t) - 8*t\n        if b > 0:\n            return 8*1 + b\n\ndef standard():\n    x, b = Symbol('x'), Symbol('b')\n    p = expand(x**3 - 3*x**2 - x + 2 - 8*x - b)\n    disc = discriminant(p, x)\n    bs = [v for v in solve(disc, b) if v > 0]\n    assert len(bs) == 1\n    return 8 + bs[0]\n\ndef unique():\n    return [standard()]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:23",
+        "hash": "17bf895ec04ce735",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    },
+    {
+      "id": "T-MK1-006",
+      "number": "21",
+      "subject": "수학Ⅱ",
+      "theme": "M2-02",
+      "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킬 때, $f(0)$의 최댓값과 최솟값의 곱을 구하시오.",
+      "condition": "(가) 방정식 $f(x)=0$의 서로 다른 실근의 개수는 $2$이다.\n(나) $g(x)=\\begin{cases}-f(x) & (f(x)\\ge0)\\\\ 7f(x) & (f(x)<0)\\end{cases}$일 때, 어떤 실수 $a$에 대하여 함수 $h(x)=g(x)+|(x-1)(x-a)(x-4+a)|$가 실수 전체의 집합에서 미분가능하다.",
+      "choices": null,
+      "answer": "12",
+      "answer_value": "12",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "$g$의 꺾이는 점은 $f$의 단순근 하나뿐이고, $|(x-1)(x-a)(x-4+a)|$의 꺾이는 점은 그 곡선의 단순근이다. 꺾임이 하나 남으려면 세 근 중 둘이 겹쳐야 한다.",
+      "behavior": "추론",
+      "difficulty": "고난도",
+      "similar": [
+        "M2-250609",
+        "M2-221112",
+        "M2-220614"
+      ],
+      "mistake": {
+        "reason": "시간 부족으로 미접근",
+        "concept": "수학II - 미분가능성",
+        "missed": "초기 미분가능 조건 검증됨",
+        "best": "미분 불가능 후보점(f(x)=0인 점) 도출 검증. 나머지 식의 인수로 꺾인 점들을 상쇄한다는 결론으로 직행하여 f(x) 형태 완성.",
+        "intent": "절댓값 기호를 포함한 함수의 미분가능성에 대한 깊은 이해",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "풀이 시도 자체가 없었음"
+        }
+      },
+      "solution": {
+        "concept_refs": [
+          "수학Ⅱ-04-C2",
+          "수학Ⅱ-05-C2"
+        ],
+        "guide": "(가)에서 $f=(x-\\alpha)^2(x-\\beta)$ ($\\alpha\\ne\\beta$). 중근 $\\alpha$에서는 $f'(\\alpha)=0$이라 $g$가 매끄럽고, 단순근 $\\beta$에서만 $g$가 꺾인다. 절댓값 함수는 단순근에서 꺾이고 중근에서는 매끄럽다.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "꺾임의 크기",
+                "body": "$\\beta$의 왼쪽은 $f<0$이라 $g=7f$, 오른쪽은 $g=-f$. 기울기 변화량 $=-f'(\\beta)-7f'(\\beta)=-8f'(\\beta)=-8(\\beta-\\alpha)^2$."
+              },
+              {
+                "label": "절댓값 쪽",
+                "body": "$P(x)=(x-1)(x-a)(x-4+a)$의 단순근 $r$에서 $|P|$의 기울기 변화량은 $+2|P'(r)|$. $h$가 미분가능하려면 꺾임이 서로 상쇄되어야 하므로 $P$의 단순근은 정확히 하나($=\\beta$), 나머지는 중근."
+              },
+              {
+                "label": "경우",
+                "body": "근이 $1,\\ a,\\ 4-a$ 중 둘이 같아야 한다: $a=1$ 또는 $3$이면 근 $\\{1,1,3\\}$에서 $\\beta=3$, $a=2$이면 근 $\\{1,2,2\\}$에서 $\\beta=1$."
+              },
+              {
+                "label": "상쇄 조건",
+                "body": "$8(\\beta-\\alpha)^2=2|P'(\\beta)|$. $\\beta=3$: $|P'(3)|=(3-1)^2=4$ → $(3-\\alpha)^2=1$, $\\alpha=2,4$ → $f(0)=-3\\alpha^2=-12,-48$.\n$\\beta=1$: $|P'(1)|=(1-2)^2=1$ → $(1-\\alpha)^2=\\frac14$, $\\alpha=\\frac12,\\frac32$ → $f(0)=-\\alpha^2=-\\frac14,-\\frac94$."
+              },
+              {
+                "label": "답",
+                "body": "최댓값 $-\\frac14$, 최솟값 $-48$ → 곱은 $12$."
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "정석",
+                "body": "$f=x^3+px^2+qx+r$로 열고 $h$의 좌·우 미분계수를 모든 후보점에서 같게 두면 미지수가 $a,p,q,r$로 늘어 조건이 정리되지 않는다."
+              }
+            ]
+          }
+        ],
+        "supplement": "'어떤 실수 $a$에 대하여'이므로 $a$도 미지수다. $P$의 세 근이 서로 다르면 꺾임이 세 곳이라 $g$의 꺾임 하나로는 상쇄할 수 없다 — 그래서 $a$가 $1,2,3$뿐이다.",
+        "skill_point": "미분가능성 문제는 (꺾이는 점의 개수) → (꺾임의 크기 상쇄) 순으로 센다."
+      },
+      "verify": "def skill():\n    return Rational(-1, 4)*(-48)\n\ndef standard():\n    from fractions import Fraction as Fr\n    eps = Fr(1, 10**9)\n    def d_poly(coefs):\n        return [c*(len(coefs) - 1 - i) for i, c in enumerate(coefs[:-1])]\n    def ev(coefs, u):\n        v = Fr(0)\n        for c in coefs:\n            v = v*u + c\n        return v\n    def ok(al, be, a):\n        f = [Fr(1), -(2*al + be), al*al + 2*al*be, -al*al*be]       # (x-al)^2 (x-be)\n        fp = d_poly(f)\n        r1, r2, r3 = Fr(1), a, 4 - a\n        P = [Fr(1), -(r1 + r2 + r3), r1*r2 + r1*r3 + r2*r3, -r1*r2*r3]\n        Pp = d_poly(P)\n        for p in {r1, r2, r3, al, be}:\n            slopes = []\n            for side in (-1, 1):\n                u = p + side*eps\n                fv, pv = ev(f, u), ev(P, u)\n                gp = -ev(fp, p) if fv >= 0 else 7*ev(fp, p)\n                ap = ev(Pp, p) if pv >= 0 else -ev(Pp, p)\n                slopes.append(gp + ap)\n            if abs(slopes[0] - slopes[1]) > Fr(1, 10**4):\n                return False\n        return True\n    vals = []\n    grid = [Fr(k, 4) for k in range(-16, 33)]\n    for a in [Fr(k, 2) for k in range(-2, 11)]:\n        for al in grid:\n            for be in grid:\n                if al != be and ok(al, be, a):\n                    vals.append(-al*al*be)\n    return max(vals)*min(vals)\n\ndef unique():\n    return [standard()]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:34",
+        "hash": "4e2f480d7c03173f",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    },
+    {
+      "id": "T-MK1-009",
+      "number": "28",
+      "subject": "확률과 통계",
+      "theme": "PS-04",
+      "question": "그림과 같이 문자 $\\mathrm{A}$가 적힌 $3$장의 카드와 문자 $\\mathrm{B}$가 적힌 $3$장의 카드가 $1$번째 자리에서부터 차례로 $\\mathrm{A},\\mathrm{A},\\mathrm{A},\\mathrm{B},\\mathrm{B},\\mathrm{B}$가 보이도록 놓여 있다. 이 $6$장의 카드와 한 개의 주사위를 사용하여 다음 시행을 한다.\n\n주사위를 한 번 던져 나온 눈의 수가 $k$일 때, $k\\le5$이면 $k$번째 자리에 놓여 있는 카드와 $(k+1)$번째 자리에 놓여 있는 카드를 서로 바꾸어 놓고, $k=6$이면 놓여 있는 $6$장의 카드를 그대로 둔다.\n\n이 시행을 $4$번 반복한 후 $6$장의 카드가 $1$번째 자리에서부터 차례로 $\\mathrm{A},\\mathrm{A},\\mathrm{A},\\mathrm{B},\\mathrm{B},\\mathrm{B}$가 보이도록 놓여 있을 때, $3$번째 시행에서 나온 눈의 수가 $6$일 확률을 $\\frac{q}{p}$라 하자. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+      "condition": null,
+      "choices": null,
+      "answer": "440",
+      "answer_value": "440",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "조건이 되는 사건(처음 배열로 돌아옴)의 경우의 수를 분모로 먼저 세고, 눈이 $6$인 시행은 배열을 바꾸지 않으므로 '$6$이 아닌 시행 횟수 $m$'별로 나눈다.",
+      "behavior": "추론",
+      "difficulty": "고난도",
+      "similar": [
+        "PS-241128",
+        "PS-250628",
+        "PS-250928"
+      ],
+      "mistake": {
+        "reason": "문항 난이도로 인한 접근 포기",
+        "concept": "확률과 통계 - 조건부확률",
+        "missed": "시행 규칙 모델링 검증됨",
+        "best": "초기 논리 구조화 완료. 배열 변화의 분기점을 압축하여 최종 조건부확률 결과 도출.",
+        "intent": "시행의 반복에 따른 경우의 수 분류와 조건부확률",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "접근 안 함"
+        },
+        "conversion": "선지가 JSON에 없어 '확률 $\\frac{q}{p}$일 때 $p+q$'의 단답형으로 바꿈"
+      },
+      "solution": {
+        "concept_refs": [
+          "확률과 통계-12-C1",
+          "확률과 통계-13-C2"
+        ],
+        "guide": "눈이 $6$이면 아무 일도 없으므로, $4$번 중 $6$이 아닌 시행이 $m$번이라 하고 그 $m$번(눈 $1\\sim5$)만으로 처음 배열로 돌아오는 경우의 수 $N_m$을 구한다.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "N_m",
+                "body": "눈 $1,2,4,5$는 같은 문자끼리 바꾸어 배열이 그대로, $3$은 $\\mathrm{A}\\mathrm{B}$를 바꾼다. 상태 전이로 세면 $N_0=1$, $N_1=4$, $N_2=17$, $N_3=74$, $N_4=327$."
+              },
+              {
+                "label": "분모",
+                "body": "$6$이 나온 시행의 위치를 고르므로 $\\sum_{m=0}^{4}\\binom4mN_m=1+16+102+296+327=742$."
+              },
+              {
+                "label": "분자",
+                "body": "$3$번째 시행이 $6$이면 나머지 $3$번 중 $m$번이 $6$이 아니다: $\\sum_{m=0}^{3}\\binom3mN_m=1+12+51+74=138$."
+              },
+              {
+                "label": "답",
+                "body": "$\\frac{138}{742}=\\frac{69}{371}$, $p=371$, $q=69$ → $p+q=440$."
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "정석",
+                "body": "$6^4=1296$가지 눈의 순서를 배열 변화까지 추적하는 나무그림은 가지가 너무 많다."
+              }
+            ]
+          }
+        ],
+        "supplement": "$N_m$을 만들 때 '같은 문자끼리 바꾸면 배열이 그대로'인 눈(1,2,4,5)이 상태를 보존한다는 점이 핵심이다. 눈 $6$과 합치면 '배열을 바꾸지 않는 눈'이 $5$가지.",
+        "skill_point": "조건부확률 = (조건 사건 안에서 목표 사건의 수) ÷ (조건 사건의 수). 분모부터 세고 상태 전이표로 센다."
+      },
+      "verify": "def skill():\n    N = [1, 4, 17, 74, 327]\n    den = sum(binomial(4, m)*N[m] for m in range(5))\n    num = sum(binomial(3, m)*N[m] for m in range(4))\n    fr = Fraction(int(num), int(den))\n    return fr.numerator + fr.denominator\n\ndef standard():\n    from itertools import product\n    start = tuple('AAABBB')\n    def sw(c, k):\n        c = list(c)\n        if k <= 5:\n            c[k-1], c[k] = c[k], c[k-1]\n        return tuple(c)\n    tot = fav = 0\n    for rolls in product(range(1, 7), repeat=4):\n        c = start\n        for k in rolls:\n            c = sw(c, k)\n        if c == start:\n            tot += 1\n            fav += rolls[2] == 6\n    fr = Fraction(fav, tot)\n    return fr.numerator + fr.denominator\n\ndef unique():\n    return [standard()]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:34",
+        "hash": "bdd288e45428013e",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    },
+    {
+      "id": "T-MK1-010",
+      "number": "29",
+      "subject": "확률과 통계",
+      "theme": "PS-01",
+      "question": "다음 조건을 만족시키는 자연수 $a,\\,b,\\,c,\\,d$의 모든 순서쌍 $(a,\\,b,\\,c,\\,d)$의 개수를 구하시오.",
+      "condition": "(가) $a+b+c+d=14$\n(나) $10a\\ge d$이고 $c<d^2$이다.",
+      "choices": null,
+      "answer": "190",
+      "answer_value": "190",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "$d$가 두 부등식에 모두 들어 있으므로 $d$의 값으로 케이스를 나눈다. $d$를 고정하면 나머지는 $a+b+c=14-d$의 자연수해 개수(중복조합)에 조건 두 개를 얹는 문제다.",
+      "behavior": "문제해결",
+      "difficulty": "고난도",
+      "similar": [
+        "PS-220628",
+        "PS-260928",
+        "PS-220629"
+      ],
+      "mistake": {
+        "reason": "풀이를 시도했으나 타 문항에서의 시간 지연 여파로 시간 모자람",
+        "concept": "확률과 통계 - 중복조합",
+        "missed": "중복조합 H 기호 적용 전제",
+        "best": "초기 부등식 검증. 중간 d값 케이스를 요약 병합하고, 조건에 맞는 최종 조합의 합산으로 바로 도약.",
+        "intent": "부등식 조건이 포함된 중복조합의 경우의 수",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "분류 기준 누락으로 케이스가 무한 증식하며 시간 초과"
+        }
+      },
+      "solution": {
+        "concept_refs": [
+          "확률과 통계-02-C1"
+        ],
+        "guide": "$a,b,c,d\\ge1$이므로 $d\\le11$. $d$를 고정하면 $10a\\ge d$는 $d\\le10$이면 $a\\ge1$에서 항상 성립, $d=11$일 때만 $a\\ge2$가 필요. $c<d^2$는 $c$의 상한.",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "d=1",
+                "body": "$c<1$이므로 불가능 → $0$."
+              },
+              {
+                "label": "d=2",
+                "body": "$c\\le3$: $c=1,2,3$에 대해 $a+b=12-c$의 자연수해 $11-c$개 → $10+9+8=27$."
+              },
+              {
+                "label": "d=3~10",
+                "body": "$d\\ge4$에서는 $c<d^2$가 사실상 제한이 아니거나 약하다. 각 $d$마다 $a+b+c=14-d$의 자연수해 $\\binom{13-d}{2}$에서 $c\\ge d^2$인 경우를 뺀다 (표)."
+              },
+              {
+                "label": "표",
+                "body": "$d=3:44,\\ 4:36,\\ 5:28,\\ 6:21,\\ 7:15,\\ 8:10,\\ 9:6,\\ 10:3,\\ 11:0$. ($d=11$은 $a+b+c=3$, $a\\ge2$가 불가능)"
+              },
+              {
+                "label": "합",
+                "body": "$27+44+36+28+21+15+10+6+3=190$."
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "정석",
+                "body": "$a,b,c,d$의 합만 보고 $H$ 기호로 전체를 센 뒤 (나)를 빼려 하면 두 부등식이 서로 얽혀 포함배제가 복잡하다."
+              }
+            ]
+          }
+        ],
+        "supplement": "'케이스 무한 증식'을 막으려면 분류 기준 하나($d$)를 먼저 정하고, 그 기준으로 모든 조건을 다시 쓴다. $d\\ge4$부터는 $c<d^2$가 약해진다는 것도 미리 본다.",
+        "skill_point": "조건이 겹친 변수를 기준으로 케이스를 나누고, 나눈 뒤 남는 식은 중복조합으로 센다."
+      },
+      "verify": "def skill():\n    tot = 0\n    for d in range(1, 12):\n        for a in range(1, 14):\n            if 10*a < d:\n                continue\n            for b in range(1, 14):\n                c = 14 - a - b - d\n                if c >= 1 and c < d*d:\n                    tot += 1\n    return tot\n\ndef standard():\n    from itertools import product\n    return sum(1 for a, b, c, d in product(range(1, 15), repeat=4)\n               if a + b + c + d == 14 and 10*a >= d and c < d*d)\n\ndef unique():\n    return [standard()]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:35",
+        "hash": "07eb563cccae587c",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    },
+    {
+      "id": "T-MK1-011",
+      "number": "30",
+      "subject": "확률과 통계",
+      "theme": "PS-06",
+      "question": "숫자 $0,\\,1,\\,2$가 각각 하나씩 적혀 있는 세 개의 공이 들어 있는 주머니가 있다. 이 주머니에서 임의로 한 개의 공을 꺼내어 공에 적혀 있는 수를 확인한 후 다시 넣는 시행을 한다. 이 시행을 $5$번 반복하여 확인한 $5$개의 수의 평균을 $\\overline{X}$라 할 때, $\\displaystyle\\sum_{k=1}^{10}\\left\\{k^2\\times\\mathrm{P}\\left(\\overline{X}=\\frac k5\\right)\\right\\}=a$이다. $6a$의 값을 구하시오.",
+      "condition": null,
+      "choices": null,
+      "answer": "170",
+      "answer_value": "170",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "figure": null,
+      "first_judgment": "$\\overline X=\\frac k5$이면 다섯 수의 합 $S=5\\overline X=k$이다. $\\sum k^2P(S=k)=E(S^2)$이므로 분포를 구하지 않고 $E(S^2)=V(S)+\\{E(S)\\}^2$로 계산한다.",
+      "behavior": "이해",
+      "difficulty": "복합 사고",
+      "similar": [
+        "PS-231128",
+        "PS-240928",
+        "PS-220929"
+      ],
+      "mistake": {
+        "reason": "문항 난이도로 인한 접근 포기",
+        "concept": "확률과 통계 - 통계적 추정",
+        "missed": "표본평균의 분산 공식",
+        "best": "\\overline{X}의 기댓값과 분산 관계 세팅 완료. 복잡한 전개를 건너뛰어 E(25\\overline{X}^2)를 V(5\\overline{X}) + (E(5\\overline{X}))^2로 변환한 값에 직행.",
+        "intent": "표본평균의 기댓값과 분산의 성질을 활용한 추론",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "접근 안 함"
+        }
+      },
+      "solution": {
+        "concept_refs": [
+          "확률과 통계-21-C1"
+        ],
+        "guide": "$k=0$ 항은 $0$이므로 $k=1$부터의 합은 $E(S^2)$와 같다 ($S=5\\overline X$, 값은 $0\\sim10$).",
+        "solutions": [
+          {
+            "title": "풀이 1 · 스킬",
+            "steps": [
+              {
+                "label": "한 번의 분포",
+                "body": "한 번 꺼낸 수 $Y$: $E(Y)=1$, $V(Y)=\\frac{0+1+4}{3}-1=\\frac23$."
+              },
+              {
+                "label": "합",
+                "body": "$S$는 독립인 $5$개의 합이므로 $E(S)=5$, $V(S)=5\\cdot\\frac23=\\frac{10}3$."
+              },
+              {
+                "label": "이차 적률",
+                "body": "$E(S^2)=V(S)+\\{E(S)\\}^2=\\frac{10}3+25=\\frac{85}3=a$."
+              },
+              {
+                "label": "답",
+                "body": "$6a=170$."
+              }
+            ]
+          },
+          {
+            "title": "풀이 2 · 정석 (비교)",
+            "steps": [
+              {
+                "label": "정석",
+                "body": "$S=k$인 경우의 수를 $k=1,\\dots,10$마다 구해 $k^2$을 곱해 더한다. $3^5=243$가지의 분포표가 필요하다."
+              }
+            ]
+          }
+        ],
+        "supplement": "$\\sum k^2P(S=k)$는 곧 $E(S^2)$라는 번역이 이 문제의 전부다. 분포표를 만들면 시간이 몇 배로 든다.",
+        "skill_point": "$\\sum(\\text{값})^2\\times P$ → $E(X^2)=V(X)+\\{E(X)\\}^2$."
+      },
+      "verify": "def skill():\n    a = Rational(10, 3) + 25\n    return 6*a\n\ndef standard():\n    from itertools import product\n    tot = 0\n    for t in product([0, 1, 2], repeat=5):\n        tot += Rational(sum(t)**2, 243)\n    return 6*tot\n\ndef unique():\n    return [standard()]\n",
+      "status": "verified",
+      "review": {
+        "checked_at": "2026-09-30T07:07:35",
+        "hash": "58b64172407f7f51",
+        "errors": [],
+        "warnings": [
+          "교재 정답지 없이 AI 풀이로 정한 정답 — verify 두 경로(skill·standard) 권장"
+        ]
+      }
+    }
+  ]
+}
