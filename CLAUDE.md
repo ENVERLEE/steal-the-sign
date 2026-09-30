@@ -25,7 +25,7 @@ python -m unittest discover tests       # 테스트
 
 상세 문서:
 - [cli.md](.claude/rules/cli.md): 전체 실행 명령 및 옵션
-- [ai-workflow.md](.claude/rules/ai-workflow.md): AI 작업 순서
+- [ai-workflow.md](.claude/rules/ai-workflow.md): AI 작업 순서 (일반 교재·특강)
 - [schema-reference.md](.claude/rules/schema-reference.md): db·themes·solutions·book·figure 스키마
 - [created-problems.md](.claude/rules/created-problems.md): 창작 문항 규칙
 - [source-reading.md](.claude/rules/source-reading.md): 교재 판독 파일

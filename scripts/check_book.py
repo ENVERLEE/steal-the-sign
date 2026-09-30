@@ -82,8 +82,9 @@ def run(ctx: Context) -> Log:
         seen_theme_end[th] = d["day"]
         prev = th
 
-    # ---- 한 권 = 한 과목의 1주 분량
-    for d in days:
+    # ---- 한 권 = 한 과목의 1주 분량 (특강은 여러 과목)
+    special = bool(book.get("special"))
+    for d in days if not special else []:
         t = ctx.themes.get(d["theme"])
         if t and t["subject"] != book["subject_label"]:
             log.error(f"DAY {d['day']}", f"테마 {d['theme']}({t['subject']})가 이 권의 과목 {book['subject_label']}과 다름 — 한 권에는 한 과목만")
@@ -235,11 +236,13 @@ def run(ctx: Context) -> Log:
 
     # ---- 테마 구성
     plan, comp = cfg["theme_plan"], cfg["composition"]
+    dlo, dhi = plan["special_days"] if special else plan["days"]
+    plo, phi = plan["special_problems"] if special else plan["problems"]
     for th, s in theme_stats.items():
-        if not plan["days"][0] <= s["days"] <= plan["days"][1]:
-            log.error(th, f"DAY {s['days']}개 (테마당 {plan['days'][0]}~{plan['days'][1]})")
-        if not plan["problems"][0] <= s["problems"] <= plan["problems"][1]:
-            log.error(th, f"문항 {s['problems']}개 (테마당 {plan['problems'][0]}~{plan['problems'][1]}, 예제 포함)")
+        if not dlo <= s["days"] <= dhi:
+            log.error(th, f"DAY {s['days']}개 (테마당 {dlo}~{dhi})")
+        if not plo <= s["problems"] <= phi:
+            log.error(th, f"문항 {s['problems']}개 (테마당 {plo}~{phi}, 예제 포함)")
         if s["past"] < comp["past_min_per_theme"]:
             log.error(th, f"기출 {s['past']}개 (테마당 {comp['past_min_per_theme']}개 이상)")
         if s["problems"] and s["created"] / s["problems"] > comp["created_max_share_per_theme"]:
