@@ -496,6 +496,29 @@ def run(ctx: Context) -> Log:
                     log.error(where, f"{kind} 항목 하나가 한 장을 넘음 — 내용을 줄일 것")
             return [{**base, key: chunk} for chunk in pages]
 
+        def balanced_pages(kind, base, key, items, where, cap):
+            """cap 이하로 고르게 나눈다(5개 → 3+2). 한 장에 넘치면 그 장만 둘로 쪼갠다"""
+            k = -(-len(items) // cap)
+            sizes = [len(items) // k + (1 if i < len(items) % k else 0) for i in range(k)]
+            chunks, pos = [], 0
+            for sz in sizes:
+                chunks.append(items[pos:pos + sz])
+                pos += sz
+            out = []
+            stack = list(reversed(chunks))
+            while stack:
+                ch = stack.pop()
+                P = {**base, key: ch}
+                if len(ch) > 1 and overflow(meas.issues(render(kind, P))):
+                    h = (len(ch) + 1) // 2
+                    stack.append(ch[h:])
+                    stack.append(ch[:h])
+                    continue
+                if len(ch) == 1 and overflow(meas.issues(render(kind, P))):
+                    log.error(where, f"{kind} 항목 하나가 한 장을 넘음 — 내용을 줄일 것")
+                out.append(P)
+            return out
+
         seq = []  # (kind, P, tag)
         seq.append(("COVER", {}, None))
         if model.advice:
@@ -534,9 +557,28 @@ def run(ctx: Context) -> Log:
                 fits_single("SIGN_READING", d["reading"], w)
                 seq += [("CONCEPT", d["concept"], (d["day"], "THE SIGN")), ("STRATEGY", P, None),
                         ("FIRST_PITCH", d["first"], (d["day"], "FIRST PITCH")), ("SIGN_READING", d["reading"], None)]
-            for i, pr in enumerate(d["practice"]):
-                fits_single("PRACTICE", pr, f"{w} #{i + 2}")
-                seq.append(("PRACTICE", pr, (d["day"], "PRACTICE") if i == 0 else None))
+            if ctx.book.get("practice_layout") == "multi":
+                # 한 쪽에 3~4문항(고난도는 2문항). 난이도 순서를 지키며 같은 성격끼리 묶는다
+                runs, cur = [], []
+                for pr in d["practice"]:
+                    hard = pr["q"]["difficulty"] == "고난도"
+                    if cur and cur[0][0] != hard:
+                        runs.append(cur)
+                        cur = []
+                    cur.append((hard, pr["q"]))
+                if cur:
+                    runs.append(cur)
+                first_page = True
+                for run in runs:
+                    hard = run[0][0]
+                    for P in balanced_pages("PRACTICE_M", {**d["base"], "hard": hard}, "qs", [q for _, q in run],
+                                            f"{w} 연습", cap=2 if hard else 4):
+                        seq.append(("PRACTICE_M", P, (d["day"], "PRACTICE") if first_page else None))
+                        first_page = False
+            else:
+                for i, pr in enumerate(d["practice"]):
+                    fits_single("PRACTICE", pr, f"{w} #{i + 2}")
+                    seq.append(("PRACTICE", pr, (d["day"], "PRACTICE") if i == 0 else None))
             for P in flow("REPLAY", d["base"], "entries", d["replay"], f"{w} REPLAY", cap=3):
                 seq.append(("REPLAY", P, None))
             fits_single("DUGOUT_NOTE", d["dugout"], w)
@@ -573,7 +615,7 @@ def run(ctx: Context) -> Log:
         out_pages, index = [], []
         for i, (kind, P, _) in enumerate(seq, 1):
             out_pages.append(render(kind, P, f"{i:03d}"))
-            index.append({"no": i, "kind": kind.removesuffix("_X"), "day": P.get("day2") if isinstance(P, dict) else None})
+            index.append({"no": i, "kind": kind.removesuffix("_X").removesuffix("_M").replace("PRACTICE_M", "PRACTICE"), "day": P.get("day2") if isinstance(P, dict) else None})
         log.stats["measures"] = meas.count
     finally:
         meas.close()

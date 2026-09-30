@@ -79,6 +79,14 @@
 .c-trap b.l{display:inline-block;background:var(--red);border:1.5px solid var(--ink);font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:900;padding:0 8px;margin-right:6px}
 .c-trap b.l.k{background:var(--ink);color:var(--paper)}
 .c-intro{font-size:14px;line-height:1.8;font-weight:500;font-family:'Noto Serif KR',serif;margin-bottom:10px}
+/* 연습 문항 다문항 판면 */
+.pm{padding:0 44px;gap:0}
+.pm-item{flex:1 0 auto;display:grid;grid-template-columns:56px 1fr;border-top:2.5px solid var(--ink);padding:10px 0 14px}
+.pm-item:first-child{border-top:none}
+.pm-no{font-family:var(--display);font-size:38px;line-height:1;color:var(--red);-webkit-text-stroke:1px var(--ink);padding-top:6px}
+.pm-meta{font-family:var(--mono);font-size:10.5px;font-weight:800;letter-spacing:0.08em;color:#555;margin-bottom:2px}
+.pm-meta b{background:var(--ink);color:var(--paper);padding:1px 6px;margin-right:6px;font-weight:800}
+.pm-meta b.hard{background:var(--red);color:var(--ink)}
 </style>
 <!-- HEAD:END -->
 
@@ -206,3 +214,30 @@
   </div>
 </div>
 <!-- XPAGE:END ADVICE -->
+
+<!-- XPAGE:START PRACTICE_M -->
+<div class="page" data-page="PRACTICE">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">{{ P.day2 }}</span></div></div>
+    <div class="hd-title"><div class="k">연습 문항 <span class="meta">· {{ P.qs[0].no2 }}{% if P.qs|length > 1 %}~{{ P.qs[-1].no2 }}{% endif %}번{% if P.hard %} · 고난도{% endif %}</span></div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body pm">
+    {% for q in P.qs %}<div class="pm-item">
+      <div class="pm-no">{{ q.no2 }}</div>
+      <div class="pm-main">
+        <div class="pm-meta">{% if q.difficulty %}<b{% if q.difficulty == '고난도' %} class="hard"{% endif %}>{{ q.difficulty }}</b>{% endif %}{{ q.kind }}{% if q.source %} · {{ q.source }}{% endif %}</div>
+        <div class="q-text">{{ q.text }} <span class="pt">[{{ q.points }}점]</span></div>
+        {% if q.cond %}<div class="cond">{{ q.cond }}</div>{% endif %}
+        {% if q.fig %}<div class="fig">{{ q.fig }}</div>{% endif %}
+        {% if q.choices %}<div class="choices{{ q.choices_class }}">{% for c in q.choices %}<div>{{ c.label }} {{ c.html }}</div>{% endfor %}</div>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="pg"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+</div>
+<!-- XPAGE:END PRACTICE_M -->

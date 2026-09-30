@@ -165,6 +165,13 @@
           }
         }
       }
+    },
+    "practice_layout": {
+      "enum": [
+        "single",
+        "multi"
+      ],
+      "description": "연습 문항 판면: single(기본, 한 쪽에 한 문항) | multi(한 쪽에 3~4문항, 고난도는 2문항)"
     }
   },
   "$defs": {
