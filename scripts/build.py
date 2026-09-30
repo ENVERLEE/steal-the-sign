@@ -91,7 +91,7 @@ class Model:
 
     def source_of(self, ref, rec):
         if is_created_id(ref):
-            return "STEAL THE SIGN 창작"
+            return ""  # 창작 문항 출처는 비워 둔다
         if is_textbook_id(ref):
             e = self.ctx.source[ref]
             pg = f" {rec['page']}쪽" if rec.get("page") else ""
@@ -497,26 +497,36 @@ def run(ctx: Context) -> Log:
             return [{**base, key: chunk} for chunk in pages]
 
         def balanced_pages(kind, base, key, items, where, cap):
-            """cap 이하로 고르게 나눈다(5개 → 3+2). 한 장에 넘치면 그 장만 둘로 쪼갠다"""
+            """cap 이하로 고르게 나눈다(5개 → 3+2). 한 장에 넘치면 마지막 문항을 다음 장으로 미룬다.
+            4문항 쪽은 글자를 줄이고(dense) 문항마다 풀이 공간을 확보한 채로 재어 본다"""
             k = -(-len(items) // cap)
             sizes = [len(items) // k + (1 if i < len(items) % k else 0) for i in range(k)]
             chunks, pos = [], 0
             for sz in sizes:
                 chunks.append(items[pos:pos + sz])
                 pos += sz
-            out = []
-            stack = list(reversed(chunks))
-            while stack:
-                ch = stack.pop()
-                P = {**base, key: ch}
-                if len(ch) > 1 and overflow(meas.issues(render(kind, P))):
-                    h = (len(ch) + 1) // 2
-                    stack.append(ch[h:])
-                    stack.append(ch[:h])
-                    continue
-                if len(ch) == 1 and overflow(meas.issues(render(kind, P))):
-                    log.error(where, f"{kind} 항목 하나가 한 장을 넘음 — 내용을 줄일 것")
+            out, carry = [], []
+            queue = list(chunks)
+            while queue or carry:
+                cur = carry + (queue.pop(0) if queue else [])
+                carry = []
+                while len(cur) > cap:
+                    carry.insert(0, cur.pop())
+                while True:
+                    P = {**base, key: cur, "dense": len(cur) >= 4}
+                    if len(cur) > 1 and overflow(meas.issues(render(kind, P))):
+                        carry.insert(0, cur.pop())
+                        continue
+                    if len(cur) == 1 and overflow(meas.issues(render(kind, P))):
+                        log.error(where, f"{kind} 항목 하나가 한 장을 넘음 — 내용을 줄일 것")
+                    break
                 out.append(P)
+            # 마지막 쪽에 한 문항만 남았으면 앞 쪽에 합쳐 본다
+            if len(out) > 1 and len(out[-1][key]) == 1 and len(out[-2][key]) < cap:
+                merged = out[-2][key] + out[-1][key]
+                P = {**base, key: merged, "dense": len(merged) >= 4}
+                if not overflow(meas.issues(render(kind, P))):
+                    out[-2:] = [P]
             return out
 
         seq = []  # (kind, P, tag)

@@ -83,6 +83,12 @@
 .pm{padding:0 44px;gap:0}
 .pm-item{flex:1 0 auto;display:grid;grid-template-columns:56px 1fr;border-top:2.5px solid var(--ink);padding:10px 0 14px}
 .pm-item:first-child{border-top:none}
+.pm.dense .pm-item{padding:8px 0 84px}
+.pm.dense .pm-no{font-size:30px;padding-top:4px}
+.pm.dense .q-text{font-size:13.5px;line-height:1.7}
+.pm.dense .cond{font-size:12.5px}
+.pm.dense .choices>div{font-size:13px}
+.pm.dense .pm-meta{margin-bottom:0}
 .pm-no{font-family:var(--display);font-size:38px;line-height:1;color:var(--red);-webkit-text-stroke:1px var(--ink);padding-top:6px}
 .pm-meta{font-family:var(--mono);font-size:10.5px;font-weight:800;letter-spacing:0.08em;color:#555;margin-bottom:2px}
 .pm-meta b{background:var(--ink);color:var(--paper);padding:1px 6px;margin-right:6px;font-weight:800}
@@ -222,7 +228,7 @@
     <div class="hd-title"><div class="k">연습 문항 <span class="meta">· {{ P.qs[0].no2 }}{% if P.qs|length > 1 %}~{{ P.qs[-1].no2 }}{% endif %}번{% if P.hard %} · 고난도{% endif %}</span></div><div class="v">{{ P.title }}</div></div>
     <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
   </div>
-  <div class="x-body pm">
+  <div class="x-body pm{% if P.dense %} dense{% endif %}">
     {% for q in P.qs %}<div class="pm-item">
       <div class="pm-no">{{ q.no2 }}</div>
       <div class="pm-main">
