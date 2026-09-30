@@ -205,6 +205,7 @@ class Model:
                 cells.append(self.calc_cell(ref, n))
                 item = self.solution_item(ref, n, {}, None)
                 item["kind"] = f"유형 {ti}"
+                item["source"] = ""  # 창작 문항 출처는 비워 둔다
                 sols.append(item)
             types.append({"title": self.r(ty["title"]), "head": f"계산 연습 · 유형 {ti}", "cells": cells, "sols": sols})
         return {"title": self.r(title), "tag": tag, "types": types}

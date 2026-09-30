@@ -60,10 +60,13 @@ def check_appendix(app: dict | None, ctx: Context, log: Log) -> None:
         return
     seen = Counter()
     lo, hi = ctx.config.get("appendix", {}).get("per_type", [1, 99])
+    rec_n = ctx.config.get("appendix", {}).get("per_type_recommended", 0)
     for ti, ty in enumerate(app["types"], 1):
         w = f"부록 유형 {ti} {ty['title']}"
         if not lo <= len(ty["refs"]) <= hi:
             log.error(w, f"문항 {len(ty['refs'])}개 (유형당 {lo}~{hi})")
+        elif len(ty["refs"]) < rec_n:
+            log.warn(w, f"문항 {len(ty['refs'])}개 — 유형당 {rec_n}개 이상이 목표")
         for ref in ty["refs"]:
             seen[ref] += 1
             e = ctx.created.get(ref)
@@ -80,10 +83,6 @@ def check_appendix(app: dict | None, ctx: Context, log: Log) -> None:
                 log.warn(f"{w} {ref}", f"calc_type '{rec['calc_type']}'과 유형 이름이 다름")
             if rec.get("figure"):
                 log.warn(f"{w} {ref}", "부록 쪽은 짧은 계산 위주 — 그림 문항은 피할 것")
-    tlo, thi = ctx.config.get("appendix", {}).get("total", [1, 999])
-    total = sum(len(t["refs"]) for t in app["types"])
-    if not tlo <= total <= thi:
-        log.warn("부록", f"문항 {total}개 (권장 {tlo}~{thi})")
     for ref, n in seen.items():
         if n > 1:
             log.error(f"부록 {ref}", f"부록 안에서 {n}번 중복")

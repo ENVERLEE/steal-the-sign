@@ -121,7 +121,7 @@ globs:
 "appendix": {"title": "계산 연습", "intro": "", "types": [
   {"title": "유형 이름(24자)", "trap": "자주 하는 실수", "habit": "검산 습관", "refs": ["C-M1-01-101", ...]}]}
 ```
-- refs는 `calc_type`이 있는 verified 창작만. 유형당 4~20(`config.appendix.per_type`), 전체 30~50 권장(경고).
+- refs는 `calc_type`이 있는 verified 창작만. 유형당 40개 이상 목표(미만 경고, `config.appendix`). 창작 출처는 비운다.
 
 ## created.json — 창작 문항
 
