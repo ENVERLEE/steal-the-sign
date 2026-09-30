@@ -1,0 +1,83 @@
+{
+  "id": "C-PS-06-004",
+  "theme": "PS-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-221129",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-16-C3",
+      "확률과 통계-16-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "$f+g=k$를 $0$에서 $4$까지 적분하면 넓이 $2=4k$에서 $k$가 바로 나오고, $g$의 넓이는 직사각형에서 $f$의 넓이를 빼서 구한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "두 연속확률변수 $X$와 $Y$가 갖는 값의 범위는 $0\\le X\\le4$, $0\\le Y\\le4$이고, $X$와 $Y$의 확률밀도함수는 각각 $f(x)$, $g(x)$이다. $f(x)=\\dfrac x8\\ (0\\le x\\le4)$이고, $0\\le x\\le4$인 모든 $x$에 대하여 $f(x)+g(x)=k$ ($k$는 상수)를 만족시킬 때, $\\mathrm{P}(3k\\le Y\\le6k)=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "85",
+  "answer_value": "85",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-16-C3",
+      "확률과 통계-16-C1"
+    ],
+    "guide": "두 밀도함수의 넓이는 각각 $1$이므로 $f+g=k$의 넓이는 $2=4k$이다(확률과 통계-16-C3). 모르는 $g$는 $k-f$로 바꾸어 아는 $f$의 넓이로 계산한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "$k$",
+            "body": "$\\int_0^4(f+g)dx=1+1=4k$이므로 $k=\\frac12$. 구하는 구간은 $\\frac32\\le Y\\le3$."
+          },
+          {
+            "label": "$g$를 $f$로",
+            "body": "$\\mathrm P\\left(\\frac32\\le Y\\le3\\right)=k\\cdot\\left(3-\\frac32\\right)-\\int_{3/2}^{3}f(x)dx=\\frac34-\\frac1{16}\\left(9-\\frac94\\right)=\\frac34-\\frac{27}{64}$."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac34-\\frac{27}{64}=\\frac{21}{64}$이므로 $p+q=85$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$g$ 구하기",
+            "body": "$k$를 구하려고 넓이 조건 $\\int_0^4g(x)dx=1$을 쓰면 $\\int_0^4(k-f)dx=4k-1=1$, $k=\\frac12$. 따라서 $g(x)=\\frac12-\\frac x8$."
+          },
+          {
+            "label": "적분",
+            "body": "$\\mathrm P\\left(\\frac32\\le Y\\le3\\right)=\\int_{3/2}^3\\left(\\frac12-\\frac x8\\right)dx=\\left[\\frac x2-\\frac{x^2}{16}\\right]_{3/2}^3$."
+          },
+          {
+            "label": "계산",
+            "body": "$x=3$: $\\frac32-\\frac9{16}=\\frac{15}{16}$, $x=\\frac32$: $\\frac34-\\frac9{64}=\\frac{39}{64}$. 차는 $\\frac{60}{64}-\\frac{39}{64}=\\frac{21}{64}$."
+          },
+          {
+            "label": "답",
+            "body": "$p+q=64+21=85$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$g$를 식으로 쓴 뒤 적분하면 분수의 뺄셈이 겹쳐 값이 쉽게 틀어진다. 구간을 먼저 $\\left[\\frac32,3\\right]$로 확정하고 '직사각형 $-$ $f$의 넓이' 두 덩이만 계산하면 중간값이 $\\frac34$와 $\\frac{27}{64}$ 둘뿐이다.",
+    "skill_point": "$f+g=k$: 적분해 $k$를 정하고, $g$의 넓이는 (직사각형) $-$ ($f$의 넓이)."
+  },
+  "verify": "def skill():\n    x = Symbol('x')\n    k = Rational(2, 4)\n    v = k*(3 - Rational(3, 2)) - integrate(x/8, (x, Rational(3, 2), 3))\n    return v.p + v.q\n\ndef standard():\n    x, k = symbols('x k')\n    kv = solve(Eq(integrate(k - x/8, (x, 0, 4)), 1), k)[0]\n    g = kv - x/8\n    v = integrate(g, (x, 3*kv, 6*kv))\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:34",
+    "hash": "b469ec15b4d8d3e1",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "C-PS-07-002",
+  "theme": "PS-07",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-241130",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-18-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "두 확률을 각각 표준화해 $\\mathrm P(Z\\le1)=\\mathrm P(Z\\ge-1)$으로 맞추면, $k$는 $Y$가 평균보다 $1\\sigma$ 아래인 값이다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "이해",
+  "question": "확률변수 $X$는 정규분포 $\\mathrm{N}(10,2^2)$을, 확률변수 $Y$는 정규분포 $\\mathrm{N}(20,4^2)$을 따른다. $\\mathrm{P}(X\\le12)=\\mathrm{P}(Y\\ge k)$를 만족시키는 상수 $k$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "16",
+  "answer_value": "16",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-18-C1"
+    ],
+    "guide": "$X$의 확률은 표준화하면 $\\mathrm P(Z\\le1)$이다(확률과 통계-18-C1). 표준정규분포는 $0$에 대칭이므로 $\\mathrm P(Z\\le1)=\\mathrm P(Z\\ge-1)$이고, $Y$의 표준화 값이 $-1$인 곳이 $k$이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "표준화",
+            "body": "$\\mathrm P(X\\le12)=\\mathrm P\\left(Z\\le\\frac{12-10}2\\right)=\\mathrm P(Z\\le1)=\\mathrm P(Z\\ge-1)$."
+          },
+          {
+            "label": "$Y$의 위치",
+            "body": "$\\mathrm P(Y\\ge k)=\\mathrm P\\left(Z\\ge\\frac{k-20}4\\right)$이므로 $\\frac{k-20}4=-1$."
+          },
+          {
+            "label": "답",
+            "body": "$k=20-4=16$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$X$의 확률",
+            "body": "$\\mathrm P(X\\le12)=\\mathrm P(Z\\le1)$. 표에서 $\\mathrm P(0\\le Z\\le1)=0.3413$이므로 $\\mathrm P(Z\\le1)=0.5+0.3413=0.8413$."
+          },
+          {
+            "label": "$Y$의 표준화",
+            "body": "$\\mathrm P(Y\\ge k)=\\mathrm P\\left(Z\\ge\\frac{k-20}4\\right)=0.8413$."
+          },
+          {
+            "label": "역으로 읽기",
+            "body": "$\\mathrm P(Z\\ge a)=0.8413$이면 $a<0$이고 $\\mathrm P(a\\le Z\\le0)=0.3413$이므로 $a=-1$."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{k-20}4=-1$에서 $k=16$."
+          }
+        ]
+      }
+    ],
+    "supplement": "확률의 실제 값 $0.8413$을 구하지 않아도 풀린다. 두 확률이 같다는 것은 표준화한 경계 사이의 관계(같은 값이거나 부호만 반대)로 읽으면 된다. 곡선을 두 개 그리고 각각 $\\pm1\\sigma$ 표시를 하면 실수가 줄어든다.",
+    "skill_point": "확률이 같은 두 정규분포: 각각 표준화해 경계의 $z$값을 비교한다(같거나 부호 반대)."
+  },
+  "verify": "def skill():\n    return 20 + 4 * (-(12 - 10) / 2)\n\ndef standard():\n    k = Symbol('k')\n    # P(X<=12)=Phi(1) , P(Y>=k)=1-Phi((k-20)/4); 같으려면 (k-20)/4 = -1\n    from sympy import erf\n    Phi = lambda z: (1 + erf(z / sqrt(2))) / 2\n    target = Phi(Rational(12 - 10, 2))\n    val = nsolve(1 - Phi((k - 20) / 4) - target, k, 15)\n    return int(round(float(val)))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:30",
+    "hash": "9713e421e0f139e2",
+    "errors": [],
+    "warnings": []
+  }
+}

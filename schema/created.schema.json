@@ -9,6 +9,8 @@
   "properties": {
     "id": {"type": "string", "pattern": "^C-(M1|M2|PS)-\\d{2}-\\d{3}$"},
     "theme": {"type": "string", "pattern": "^(M1|M2|PS)-\\d{2}$"},
+    "calc_type": {"type": "string", "minLength": 1, "maxLength": 24,
+                  "description": "계산 연습 부록 문항이면 유형 이름. 부록 전용(DAY 연습에는 쓰지 않음, 신작 1개 제한 면제)"},
     "status": {"enum": ["draft", "verified"], "description": "check_created만 쓴다"},
     "origin": {
       "type": "object",

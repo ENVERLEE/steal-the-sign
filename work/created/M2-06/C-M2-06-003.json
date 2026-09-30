@@ -1,0 +1,101 @@
+{
+  "id": "C-M2-06-003",
+  "theme": "M2-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-260609",
+    "variation": "조건 변형",
+    "note": "적분 조건 하나를 두 개로 늘려 합·차로 성분을 분리하게 함"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-14-C2",
+      "수학Ⅱ-14-C1"
+    ],
+    "strategy_ids": [
+      "S22"
+    ],
+    "first_judgment": "구간 $[-3,3]$이 대칭이므로 두 식을 더하고 빼서 $\\int xf$와 $\\int f$를 따로 뽑고, 홀수차 항을 지워 계수를 정한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "이차함수 $f(x)=x^2+ax+b$ ($a$, $b$는 상수)가 $\\displaystyle\\int_{-3}^{3}(x+1)f(x)\\,dx=96$, $\\displaystyle\\int_{-3}^{3}(x-1)f(x)\\,dx=12$를 만족시킬 때, $f(2)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "14",
+  "answer_value": "14",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-14-C2",
+      "수학Ⅱ-14-C1"
+    ],
+    "guide": "두 조건의 구간은 $[-3,3]$이고 피적분함수는 $xf(x)\\pm f(x)$이다. 더하고 빼면 $\\int xf$와 $\\int f$가 분리되고(수학Ⅱ-14-C1), 대칭 구간에서는 홀수차 항이 사라진다(수학Ⅱ-14-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "분리",
+            "body": "두 식을 더하면 $2\\int_{-3}^3xf(x)dx=108$, 빼면 $2\\int_{-3}^3f(x)dx=84$. 곧 $\\int xf=54$, $\\int f=42$."
+          },
+          {
+            "label": "$a$",
+            "body": "$xf(x)=x^3+ax^2+bx$에서 짝수차 항은 $ax^2$뿐이므로 $\\int_{-3}^3xf=2a\\cdot\\frac{27}{3}=18a=54$ → $a=3$."
+          },
+          {
+            "label": "$b$",
+            "body": "$f(x)=x^2+ax+b$에서 짝수차 항은 $x^2+b$이므로 $\\int_{-3}^3f=2\\left(9+3b\\right)=18+6b=42$ → $b=4$."
+          },
+          {
+            "label": "값",
+            "body": "$f(x)=x^2+3x+4$이므로 $f(2)=14$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전개",
+            "body": "$(x+1)f(x)=x^3+(a+1)x^2+(a+b)x+b$, $(x-1)f(x)=x^3+(a-1)x^2+(b-a)x-b$."
+          },
+          {
+            "label": "첫째 조건",
+            "body": "$[-3,3]$에서 적분하면 홀수차 항이 사라져 $2\\left\\{\\frac{(a+1)\\cdot27}{3}+3b\\right\\}=18(a+1)+6b=96$, 곧 $3a+b=13$."
+          },
+          {
+            "label": "둘째 조건",
+            "body": "같은 방법으로 $18(a-1)-6b=12$, 곧 $3a-b=5$."
+          },
+          {
+            "label": "연립",
+            "body": "두 식을 더하면 $6a=18$, $a=3$이고 $b=13-9=4$."
+          },
+          {
+            "label": "값",
+            "body": "$f(x)=x^2+3x+4$, $f(2)=4+6+4=14$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          },
+          {
+            "label": "확인 2",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "피적분함수를 전개한 뒤 항마다 적분하면 $\\int x^3$, $\\int x$처럼 결과가 $0$인 항까지 계산하게 된다. 대칭 구간에서는 전개하기 전에 살아남는 항이 짝수차뿐임을 먼저 본다.",
+    "skill_point": "구간이 $[-a,a]$이면 짝수차 항만 남기고 $2\\int_0^a$로 계산한다."
+  },
+  "verify": "def skill():\n    P = Rational(96 + 12, 2)      # int x f : 두 식을 더해 2로 나눈다\n    Q = Rational(96 - 12, 2)      # int f   : 두 식을 빼서 2로 나눈다\n    x = Symbol('x')\n    a = P/(2*integrate(x**2, (x, 0, 3)))          # x f 의 짝수차 항 a x^2\n    b = (Q - 2*integrate(x**2, (x, 0, 3)))/6      # f 의 짝수차 항 x^2 + b\n    return (x**2 + a*x + b).subs(x, 2)\n\ndef standard():\n    x, a, b = symbols('x a b')\n    f = x**2 + a*x + b\n    s = solve([integrate((x + 1)*f, (x, -3, 3)) - 96, integrate((x - 1)*f, (x, -3, 3)) - 12], [a, b])\n    return f.subs(s).subs(x, 2)\n\ndef unique():\n    x, a, b = symbols('x a b')\n    f = x**2 + a*x + b\n    s = solve([integrate((x + 1)*f, (x, -3, 3)) - 96, integrate((x - 1)*f, (x, -3, 3)) - 12], [a, b], dict=True)\n    return sorted({f.subs(d).subs(x, 2) for d in s})\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:27:14",
+    "hash": "ece8bb94454dc0ea",
+    "errors": [],
+    "warnings": []
+  }
+}

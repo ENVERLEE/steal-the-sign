@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-08-004",
+  "theme": "M2-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-270615",
+    "variation": "조건 변형",
+    "note": "삼차함수 접점 조건에서 이차함수 상수항 k의 범위로 바꿈"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C2"
+    ],
+    "strategy_ids": [
+      "S24"
+    ],
+    "first_judgment": "$\\int|f|\\ne\\left|\\int f\\right|$은 구간 안에서 $f$의 부호가 바뀐다는 뜻이므로, 적분하지 않고 양 끝값과 최솟값의 부호로 $k$의 범위를 정한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "이차함수 $f(x)=x^2-8x+k$에 대하여 $\\displaystyle\\int_0^6|f(x)|\\,dx\\ne\\left|\\int_0^6f(x)\\,dx\\right|$를 만족시키는 정수 $k$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "120",
+  "answer_value": "120",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C2"
+    ],
+    "guide": "$\\int_0^6|f|=\\left|\\int_0^6f\\right|$이려면 $[0,6]$에서 $f\\ge0$이거나 $f\\le0$이어야 한다(수학Ⅱ-18-C2). 그러므로 부등호가 되는 경우는 $f$가 $[0,6]$에서 양·음을 모두 갖는 경우이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "번역",
+            "body": "조건은 $f$가 $(0,6)$에서 부호를 바꾼다는 뜻이다. $f(x)=(x-4)^2+k-16$은 아래로 볼록하고 최솟값은 $x=4$에서 $k-16$."
+          },
+          {
+            "label": "음수 부분",
+            "body": "음수인 곳이 있으려면 $k-16<0$."
+          },
+          {
+            "label": "양수 부분",
+            "body": "양수인 곳은 양 끝 중 큰 쪽 $f(0)=k>f(6)=k-12$를 보면 되므로 $k>0$."
+          },
+          {
+            "label": "합",
+            "body": "$0<k<16$의 정수 $k=1,2,\\cdots,15$의 합은 $120$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "근",
+            "body": "$f(x)=0$의 근은 $x=4\\pm\\sqrt{16-k}$ ($k\\le16$)이다. 부호가 바뀌려면 서로 다른 두 실근이 필요해 $k<16$."
+          },
+          {
+            "label": "구간 안의 근",
+            "body": "작은 근 $4-\\sqrt{16-k}$가 $0$보다 크려면 $\\sqrt{16-k}<4$, 곧 $k>0$. 큰 근 $4+\\sqrt{16-k}$가 $6$보다 작으려면 $16-k<4$, 곧 $k>12$."
+          },
+          {
+            "label": "정리",
+            "body": "두 조건 중 하나라도 성립하면 $(0,6)$ 안에 근이 있고 그 근의 좌우에서 부호가 바뀐다. 합집합은 $k>0$."
+          },
+          {
+            "label": "경계 확인",
+            "body": "$k=16$이면 $f=(x-4)^2\\ge0$, $k\\le0$이면 $f(0)\\le0$, $f(6)<0$이고 아래로 볼록하므로 $f\\le0$. 둘 다 등호."
+          },
+          {
+            "label": "합",
+            "body": "$k=1,\\cdots,15$이므로 $\\frac{15\\cdot16}2=120$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\int_0^6|f|$를 직접 구하려고 $k$마다 근을 계산하면 $\\sqrt{16-k}$가 무리수로 나오는 경우가 대부분이라 계산이 막힌다. 이 문제는 적분값이 필요한 것이 아니라 부호가 바뀌는지만 묻는다. 볼록한 함수는 끝값과 최솟값의 부호만 보면 된다.",
+    "skill_point": "$\\int|f|$와 $|\\int f|$가 함께 나오면 적분하지 말고 부호 변화 여부로 번역한다."
+  },
+  "verify": "def skill():\n    ks = [k for k in range(-60, 80) if (k - 16 < 0) and (k > 0)]\n    return sum(ks)\n\ndef standard():\n    x = Symbol('x')\n    tot = 0\n    for k in range(-60, 80):\n        f = x**2 - 8*x + k\n        pts = [Integer(0), Integer(6)]\n        for r in solve(f, x):\n            if r.is_real and 0 < r < 6:\n                pts.append(r)\n        pts = sorted(pts, key=lambda v: float(v))\n        absint = 0\n        for lo, hi in zip(pts[:-1], pts[1:]):\n            mid = (lo + hi)/2\n            val = integrate(f, (x, lo, hi))\n            absint += val if f.subs(x, mid) >= 0 else -val\n        total = integrate(f, (x, 0, 6))\n        if abs(N(absint - abs(total), 30)) > 1e-12:\n            tot += k\n    return tot\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:29:34",
+    "hash": "ada0e998cfa7dd5e",
+    "errors": [],
+    "warnings": []
+  }
+}

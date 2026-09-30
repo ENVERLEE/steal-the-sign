@@ -1,0 +1,100 @@
+{
+  "id": "C-M2-08-007",
+  "theme": "M2-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-260613",
+    "variation": "조건 변형",
+    "note": "숫자와 직선을 바꾸고 k 대신 C의 넓이를 구하게 함"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C1"
+    ],
+    "strategy_ids": [
+      "S24",
+      "S25"
+    ],
+    "first_judgment": "곡선이 위인 $A$, $C$와 직선이 위인 $B$의 부호가 반대이므로 $A+C=B$는 $\\int_0^k\\{f(x)-(x-2)\\}dx=0$이고, 이 이차식을 인수분해해 두 근으로 구간을 나눈다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "함수 $f(x)=3x^2-10x+4$에 대하여 곡선 $y=f(x)$와 직선 $y=x-2$ 및 $y$축으로 둘러싸인 부분의 넓이를 $A$, 곡선 $y=f(x)$와 직선 $y=x-2$로 둘러싸인 부분의 넓이를 $B$, 곡선 $y=f(x)$와 직선 $y=x-2$ 및 직선 $x=k$ $(k>3)$으로 둘러싸인 부분의 넓이를 $C$라 하자. $A+C=B$일 때, $12\\times C$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "54",
+  "answer_value": "54",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C1"
+    ],
+    "guide": "곡선에서 직선을 뺀 $q(x)=f(x)-(x-2)=3x^2-11x+6=(3x-2)(x-3)$는 $A$, $C$ 구간에서 양수, $B$ 구간에서 음수이다(수학Ⅱ-18-C1).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "조건 번역",
+            "body": "교점은 $x=\\frac23$, $3$. $A=\\int_0^{2/3}q$, $B=-\\int_{2/3}^3q$, $C=\\int_3^kq$이므로 $A+C=B$는 $\\int_0^kq(x)dx=0$."
+          },
+          {
+            "label": "$k$",
+            "body": "$Q(x)=x^3-\\frac{11}2x^2+6x=\\frac{x(2x-3)(x-4)}2$. $Q(k)=0$, $k>3$이므로 $k=4$."
+          },
+          {
+            "label": "$C$",
+            "body": "$C=Q(4)-Q(3)=0-\\left(27-\\frac{99}2+18\\right)=\\frac92$."
+          },
+          {
+            "label": "값",
+            "body": "$12C=54$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "교점",
+            "body": "$q(x)=0$에서 $x=\\frac23,\\,3$. 구간 $[0,\\frac23]$, $[\\frac23,3]$, $[3,k]$에서 $q$의 부호는 $+,-,+$."
+          },
+          {
+            "label": "$A$",
+            "body": "$Q(x)=x^3-\\frac{11}2x^2+6x$라 하면 $A=Q(\\tfrac23)-Q(0)=\\frac8{27}-\\frac{22}9+4=\\frac{50}{27}$."
+          },
+          {
+            "label": "$B$",
+            "body": "공식 $\\frac{|a|}6(\\beta-\\alpha)^3=\\frac36\\left(\\frac73\\right)^3=\\frac{343}{54}$."
+          },
+          {
+            "label": "$C$",
+            "body": "$A+C=B$에서 $C=\\frac{343}{54}-\\frac{100}{54}=\\frac{243}{54}=\\frac92$."
+          },
+          {
+            "label": "확인",
+            "body": "$C=\\int_3^kq=Q(k)-Q(3)=Q(k)+\\frac92=\\frac92$이므로 $Q(k)=0$, 곧 $k=4$ ($k>3$)."
+          },
+          {
+            "label": "값",
+            "body": "$12C=54$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$A$, $B$를 각각 구하면 $\\frac{50}{27}$과 $\\frac{343}{54}$처럼 분모가 다른 분수를 통분해 빼야 한다. 부호 있는 적분으로 묶으면 $Q(k)=0$ 한 줄로 $k$가 나오고, $C=-Q(3)$이므로 분수 계산은 $Q(3)$ 하나에서 끝난다.",
+    "skill_point": "$A+C=B$는 부호 있는 적분 $\\int_0^kq=0$이다. 남은 넓이는 부정적분 한 값에서 나온다."
+  },
+  "verify": "def skill():\n    x, k = symbols('x k')\n    q = 3*x**2 - 11*x + 6\n    Q = integrate(q, x)\n    kk = [s for s in solve(Q.subs(x, k), k) if s > 3][0]\n    C = Q.subs(x, kk) - Q.subs(x, 3)\n    return 12*C\n\ndef standard():\n    x, k = symbols('x k')\n    f = 3*x**2 - 10*x + 4\n    l = x - 2\n    q = expand(f - l)\n    r = sorted(solve(q, x), key=lambda v: float(v))\n    A = integrate(q, (x, 0, r[0]))\n    B = -integrate(q, (x, r[0], r[1]))\n    Ck = integrate(q, (x, r[1], k))\n    kk = [s for s in solve(A + Ck - B, k) if s.is_real and s > r[1]][0]\n    return 12*Ck.subs(k, kk)\n\ndef unique():\n    x, k = symbols('x k')\n    f = 3*x**2 - 10*x + 4\n    l = x - 2\n    q = expand(f - l)\n    r = sorted(solve(q, x), key=lambda v: float(v))\n    A = integrate(q, (x, 0, r[0]))\n    B = -integrate(q, (x, r[0], r[1]))\n    Ck = integrate(q, (x, r[1], k))\n    sols = [s for s in solve(A + Ck - B, k) if s.is_real and s > r[1]]\n    return sorted({12*Ck.subs(k, s) for s in sols})\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:29:37",
+    "hash": "daf140e11e03d5d8",
+    "errors": [],
+    "warnings": []
+  }
+}

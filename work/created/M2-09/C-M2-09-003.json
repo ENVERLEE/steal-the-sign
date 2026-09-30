@@ -1,0 +1,93 @@
+{
+  "id": "C-M2-09-003",
+  "theme": "M2-09",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-230611",
+    "variation": "조건 변형",
+    "note": "Q의 속도가 구간 안에서 부호를 두 번 바꾸도록 이차식으로 변경"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-19-C1",
+      "수학Ⅱ-19-C3"
+    ],
+    "strategy_ids": [
+      "S26"
+    ],
+    "first_judgment": "$\\mathrm{P}$의 위치 $\\int_0^tv_1=0$에서 복귀 시각을 먼저 구하고, $\\mathrm{Q}$는 $v_2$의 부호가 바뀌는 $t=1,4$에서 끊어 거리를 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "수직선 위의 원점에서 두 점 $\\mathrm{P}$, $\\mathrm{Q}$가 시각 $t=0$에 동시에 출발한다. 시각 $t$ $(t\\ge0)$에서 $\\mathrm{P}$의 속도는 $v_1(t)=6-2t$, $\\mathrm{Q}$의 속도는 $v_2(t)=2t^2-10t+8$이다. $\\mathrm{P}$가 출발한 뒤 처음으로 원점에 다시 도달하는 시각까지 $\\mathrm{Q}$가 움직인 거리를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "30",
+  "answer_value": "30",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-19-C1",
+      "수학Ⅱ-19-C3"
+    ],
+    "guide": "첫 번째 판단은 $\\mathrm{P}$가 원점으로 돌아오는 시각이다. 위치는 $\\int_0^tv_1$이므로 이것이 $0$인 $t>0$을 찾는다(수학Ⅱ-19-C1). 그 시각까지 $\\mathrm{Q}$의 움직인 거리는 $\\int|v_2|$이다(수학Ⅱ-19-C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "복귀 시각",
+            "body": "$x_1(t)=6t-t^2=t(6-t)=0$에서 $t=6$."
+          },
+          {
+            "label": "Q의 부호",
+            "body": "$v_2=2(t-1)(t-4)$이므로 $[0,1]$ 양, $[1,4]$ 음, $[4,6]$ 양."
+          },
+          {
+            "label": "한 값으로",
+            "body": "$G(t)=\\frac23t^3-5t^2+8t$에서 $G(0)=0$, $G(1)=\\frac{11}3$, $G(4)=-\\frac{16}3$, $G(6)=12$."
+          },
+          {
+            "label": "거리",
+            "body": "$\\frac{11}3+\\left|-\\frac{16}3-\\frac{11}3\\right|+\\left|12+\\frac{16}3\\right|=\\frac{11}3+9+\\frac{52}3=30$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "위치",
+            "body": "$x_1(t)=\\int_0^t(6-2s)ds=6t-t^2$. $x_1=0$, $t>0$이므로 $t=6$."
+          },
+          {
+            "label": "부호 조사",
+            "body": "$v_2(t)=2t^2-10t+8=2(t-1)(t-4)$이므로 $0<t<1$ 양수, $1<t<4$ 음수, $4<t<6$ 양수."
+          },
+          {
+            "label": "적분식",
+            "body": "$\\mathrm{Q}$가 움직인 거리 $=\\int_0^1v_2-\\int_1^4v_2+\\int_4^6v_2$."
+          },
+          {
+            "label": "각 구간",
+            "body": "$G(t)=\\frac23t^3-5t^2+8t$로 $\\int_0^1v_2=\\frac23-5+8=\\frac{11}3$. $\\int_1^4v_2=G(4)-G(1)=\\left(\\frac{128}3-80+32\\right)-\\frac{11}3=-\\frac{16}3-\\frac{11}3=-9$. $\\int_4^6v_2=G(6)-G(4)=(144-180+48)+\\frac{16}3=12+\\frac{16}3=\\frac{52}3$."
+          },
+          {
+            "label": "합",
+            "body": "$\\frac{11}3+9+\\frac{52}3=\\frac{63}3+9=21+9=30$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\mathrm{Q}$의 위치 변화량 $G(6)-G(0)=12$를 답으로 쓰면 안 된다. 또 복귀 시각을 구할 때 속도 $v_1=0$인 $t=3$을 복귀 시각으로 착각하기 쉽다. $t=3$은 $\\mathrm{P}$가 방향을 바꾸는 시각이고, 복귀 시각은 위치가 $0$인 시각이다.",
+    "skill_point": "'원점으로 돌아온다'는 위치 $=0$, '움직인 거리'는 부호가 바뀌는 시각에서 끊은 $\\int|v|$."
+  },
+  "verify": "def skill():\n    t = Symbol('t')\n    x1 = 6*t - t**2\n    T = [r for r in solve(x1, t) if r > 0][0]\n    G = integrate(2*t**2 - 10*t + 8, t)\n    pts = [0, 1, 4, T]\n    return sum(abs(G.subs(t, b) - G.subs(t, a)) for a, b in zip(pts[:-1], pts[1:]))\n\ndef standard():\n    t, s = symbols('t s')\n    x1 = integrate(6 - 2*s, (s, 0, t))\n    T = [r for r in solve(x1, t) if r > 0][0]\n    v2 = 2*t**2 - 10*t + 8\n    return integrate(Abs(v2), (t, 0, T))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:32:37",
+    "hash": "eb9359e9a6086209",
+    "errors": [],
+    "warnings": []
+  }
+}

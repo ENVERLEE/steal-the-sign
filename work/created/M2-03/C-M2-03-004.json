@@ -1,0 +1,95 @@
+{
+  "id": "C-M2-03-004",
+  "theme": "M2-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-261113",
+    "variation": "결합",
+    "note": "결합"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-08-C1"
+    ],
+    "strategy_ids": [
+      "S16"
+    ],
+    "first_judgment": "공통접선은 두 곡선의 접점을 각각 $s$, $u$로 두고, 접선의 기울기와 $y$절편이 같다는 두 식을 세운다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "문제해결",
+  "question": "두 곡선 $y=(x-1)^2$, $y=-(x-3)^2$에 모두 접하는 서로 다른 두 직선이 있다. 이 두 직선과 $y$축으로 둘러싸인 삼각형의 넓이를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-08-C1"
+    ],
+    "guide": "곡선 $y=f(x)$ 위의 점 $x=s$에서의 접선은 $y=f'(s)x+f(s)-sf'(s)$이다. 두 곡선의 접선이 같은 직선이려면 기울기와 $y$절편이 각각 같아야 한다(수학Ⅱ-08-C1).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "두 접선",
+            "body": "$y=(x-1)^2$의 $x=s$에서의 접선은 $y=2(s-1)x-s^2+1$, $y=-(x-3)^2$의 $x=u$에서의 접선은 $y=-2(u-3)x+u^2-9$."
+          },
+          {
+            "label": "일치 조건",
+            "body": "기울기: $s-1=-(u-3)$, 곧 $s=4-u$. $y$절편: $-s^2+1=u^2-9$에 대입하면 $u^2-4u+3=0$, $u=1$ 또는 $3$."
+          },
+          {
+            "label": "두 직선",
+            "body": "$u=3$이면 $s=1$, 직선 $y=0$. $u=1$이면 $s=3$, 직선 $y=4x-8$."
+          },
+          {
+            "label": "넓이",
+            "body": "꼭짓점은 $(0,0)$, $(0,-8)$, $(2,0)$이므로 넓이는 $\\dfrac12\\cdot8\\cdot2=8$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "직선 놓기",
+            "body": "공통접선을 $y=mx+n$으로 두면 $(x-1)^2=mx+n$, 곧 $x^2-(2+m)x+1-n=0$이 중근을 가져야 한다."
+          },
+          {
+            "label": "첫째 판별식",
+            "body": "$(2+m)^2-4(1-n)=0$이므로 $m^2+4m+4n=0$ … ①"
+          },
+          {
+            "label": "둘째 판별식",
+            "body": "$-(x-3)^2=mx+n$, 곧 $x^2+(m-6)x+9+n=0$도 중근이어야 하므로 $(m-6)^2-4(9+n)=0$, 곧 $m^2-12m-4n=0$ … ②"
+          },
+          {
+            "label": "연립",
+            "body": "①+②에서 $2m^2-8m=0$, $m=0$ 또는 $m=4$. ①에서 $m=0$이면 $n=0$, $m=4$이면 $n=-8$."
+          },
+          {
+            "label": "삼각형",
+            "body": "직선 $y=0$과 $y=4x-8$의 교점은 $(2,0)$이고, $y$축과의 교점은 각각 $(0,0)$, $(0,-8)$. 밑변 $8$, 높이 $2$이므로 넓이는 $8$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "직선 $y=mx+n$과 이차곡선이 접할 조건을 판별식으로 쓰면 미지수는 $m,n$ 둘이고 식도 둘이라 풀리지만, 두 판별식을 각각 전개해야 한다. 접점 $s,u$를 두면 기울기 일치가 일차식이라 $s=4-u$로 바로 소거된다. 넓이를 구할 때는 세 꼭짓점을 먼저 적어 두고 밑변과 높이를 읽는다.",
+    "skill_point": "공통접선 = 접점 두 개를 문자로 두고 '기울기 같다, $y$절편 같다' 두 줄."
+  },
+  "verify": "def skill():\n    s, u = symbols('s u')\n    sol = solve([s - 1 + (u - 3), (-s**2 + 1) - (u**2 - 9)], [s, u], dict=True)\n    lines = set()\n    for d in sol:\n        m = 2*(d[s] - 1)\n        n = -d[s]**2 + 1\n        lines.add((m, n))\n    assert len(lines) == 2\n    (m1, n1), (m2, n2) = sorted(lines)\n    xm = (n2 - n1)/(m1 - m2)\n    return abs(n1 - n2)*abs(xm)/2\n\ndef standard():\n    m, n, x = symbols('m n x')\n    e1 = discriminant(expand((x - 1)**2 - m*x - n), x)\n    e2 = discriminant(expand(-(x - 3)**2 - m*x - n), x)\n    sol = solve([e1, e2], [m, n], dict=True)\n    assert len(sol) == 2\n    (m1, n1), (m2, n2) = [(d[m], d[n]) for d in sol]\n    xm = (n2 - n1)/(m1 - m2)\n    return abs(n1 - n2)*abs(xm)/2\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:47",
+    "hash": "2a647d420c8b7771",
+    "errors": [],
+    "warnings": []
+  }
+}

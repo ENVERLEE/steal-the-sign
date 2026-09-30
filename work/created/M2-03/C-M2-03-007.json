@@ -1,0 +1,89 @@
+{
+  "id": "C-M2-03-007",
+  "theme": "M2-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-241120",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-08-C3",
+      "수학Ⅱ-08-C1"
+    ],
+    "strategy_ids": [
+      "S08"
+    ],
+    "first_judgment": "두 접점을 $a$, $b$로 두면 수직은 기울기의 곱 $4ab=-1$, 교점의 $x$좌표는 $\\frac{a+b}{2}$이므로 $a+b$와 $ab$가 곧바로 정해진다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "문제해결",
+  "question": "포물선 $y=x^2$ 위의 서로 다른 두 점 $\\mathrm{A}$, $\\mathrm{B}$에서의 접선이 서로 수직이고, 두 접선의 교점의 $x$좌표는 $1$이다. 선분 $\\mathrm{AB}$의 길이를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "5",
+  "answer_value": "5",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-08-C3",
+      "수학Ⅱ-08-C1"
+    ],
+    "guide": "$x=a$에서의 접선은 $y=2ax-a^2$이다. 두 접선 $y=2ax-a^2$, $y=2bx-b^2$이 수직이면 기울기의 곱 $4ab=-1$이고, 두 식을 연립하면 교점의 $x$좌표는 $\\dfrac{a+b}{2}$이다(수학Ⅱ-08-C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "합과 곱",
+            "body": "교점의 $x$좌표 $\\dfrac{a+b}2=1$에서 $a+b=2$, 수직이므로 $ab=-\\dfrac14$."
+          },
+          {
+            "label": "길이",
+            "body": "$\\overline{\\mathrm{AB}}^2=(b-a)^2+(b^2-a^2)^2=(b-a)^2\\{1+(a+b)^2\\}$이고 $(b-a)^2=(a+b)^2-4ab=5$."
+          },
+          {
+            "label": "답",
+            "body": "$\\overline{\\mathrm{AB}}^2=5\\times5=25$이므로 $\\overline{\\mathrm{AB}}=5$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "접선",
+            "body": "$\\mathrm{A}(a,a^2)$, $\\mathrm{B}(b,b^2)$ ($a<b$)에서의 접선은 각각 $y=2ax-a^2$, $y=2bx-b^2$."
+          },
+          {
+            "label": "교점",
+            "body": "두 식을 같게 놓으면 $2(a-b)x=a^2-b^2$이므로 $x=\\dfrac{a+b}2$. 이 값이 $1$이므로 $b=2-a$."
+          },
+          {
+            "label": "수직 조건",
+            "body": "기울기의 곱 $2a\\cdot2b=-1$에 $b=2-a$를 넣으면 $4a(2-a)=-1$, 곧 $4a^2-8a-1=0$."
+          },
+          {
+            "label": "두 점",
+            "body": "$a=\\dfrac{2-\\sqrt5}{2}$, $b=\\dfrac{2+\\sqrt5}{2}$ (또는 반대)이므로 $b-a=\\sqrt5$."
+          },
+          {
+            "label": "길이",
+            "body": "$b^2-a^2=(b-a)(b+a)=2\\sqrt5$이므로 $\\overline{\\mathrm{AB}}=\\sqrt{(\\sqrt5)^2+(2\\sqrt5)^2}=\\sqrt{25}=5$."
+          }
+        ]
+      }
+    ],
+    "supplement": "근을 직접 구해 점의 좌표를 쓰면 무리수를 두 번 제곱해야 한다. $a+b$와 $ab$만 알면 $(b-a)^2$은 곱셈 공식으로 바로 나오므로 근 자체는 필요 없다. 또 포물선 $y=x^2$에서 두 접선의 교점은 $\\left(\\dfrac{a+b}2,\\,ab\\right)$이므로 수직인 두 접선의 교점은 항상 준선 $y=-\\dfrac14$ 위에 있다.",
+    "skill_point": "포물선 두 접선: 교점 $\\left(\\frac{a+b}{2},\\,ab\\right)$, 수직이면 $ab=-\\frac14$. 근은 구하지 않고 합과 곱으로 끝낸다."
+  },
+  "verify": "def skill():\n    s = Rational(2)\n    pr = Rational(-1, 4)\n    d2 = (s**2 - 4*pr)*(1 + s**2)\n    return sqrt(d2)\n\ndef standard():\n    a, b = symbols('a b', real=True)\n    sol = solve([(a + b)/2 - 1, 4*a*b + 1], [a, b], dict=True)\n    assert len(sol) == 2\n    d = [sqrt((s[b] - s[a])**2 + (s[b]**2 - s[a]**2)**2) for s in sol]\n    assert simplify(d[0] - d[1]) == 0\n    return simplify(d[0])\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:59",
+    "hash": "2ebc688ba54ab4e6",
+    "errors": [],
+    "warnings": []
+  }
+}

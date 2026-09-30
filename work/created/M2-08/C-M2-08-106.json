@@ -1,0 +1,88 @@
+{
+  "id": "C-M2-08-106",
+  "theme": "M2-08",
+  "origin": {
+    "type": "original",
+    "note": "정적분 대입 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "이차식의 차가 두 교점에서 인수분해되면 넓이는 공식 |k|/6·(β−α)³ 하나로 끝난다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "곡선 $y=2x^2-4x-24$와 직선 $y=2x-4$로 둘러싸인 부분의 넓이를 $S$라 하자. $S=\\frac{q}{p}$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "346",
+  "answer_value": "346",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C1"
+    ],
+    "guide": "이차식의 차가 두 교점에서 인수분해되면 넓이는 공식 |k|/6·(β−α)³ 하나로 끝난다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "교점",
+            "body": "두 식의 차 $f(x)-g(x)$는 $k(x-\\alpha)(x-\\beta)$로 인수분해된다: $2x^2-6x-20=2(x+2)(x-5)$ → $\\alpha=-2,\\ \\beta=5,\\ |k|=2$"
+          },
+          {
+            "label": "공식",
+            "body": "$S=\\frac{|k|}{6}(\\beta-\\alpha)^3=\\frac{2}{6}\\times7^3=\\frac{686}{6}$"
+          },
+          {
+            "label": "답",
+            "body": "$S=\\frac{343}{3}$ → $p+q=346$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "차 함수",
+            "body": "윗 그래프에서 아랫 그래프를 뺀 함수는 $h(x)=2x^2-6x-20$"
+          },
+          {
+            "label": "구간",
+            "body": "$h(x)=0$을 풀어 교점 $x=-2,\\ 5$를 구한다."
+          },
+          {
+            "label": "부정적분",
+            "body": "$H(x)=\\int h(x)\\,dx=\\frac{2}{3}x^3-3x^2-20x$"
+          },
+          {
+            "label": "대입",
+            "body": "$H(5)=-\\frac{275}{3}$, $H(-2)=\\frac{68}{3}$이므로 위에서 아래를 빼면 $|H(5)-H(-2)|=\\frac{343}{3}$"
+          },
+          {
+            "label": "답",
+            "body": "$S=\\frac{343}{3}$ → $p+q=346$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "부정적분에 두 교점을 대입하면 분수가 세 번 이상 나온다. 공식은 정수만 쓰고 6으로 나누는 일을 마지막에 한 번 하거나 아예 6S로 묻는다.",
+    "skill_point": "이차식 둘러싸인 넓이는 (β−α)³ 하나로 끝낸다."
+  },
+  "verify": "def skill():\n    k, d = 2, 7\n    S = Fraction(abs(k)*d**3, 6)\n    return S.numerator + S.denominator\n\ndef standard():\n    x = Symbol('x')\n    h = expand((-20)*x**0+(-6)*x**1+(2)*x**2)\n    pts = [Integer(-2)] + sorted(set(r for r in solve(h, x) if r.is_real and -2 < r < 5)) + [Integer(5)]\n    tot = 0\n    for p_, q_ in zip(pts, pts[1:]):\n        tot += Abs(integrate(h, (x, p_, q_)))\n    tot = tot*Rational(1, 1)\n    tot = Rational(tot)\n    return tot.p + tot.q\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "정적분 대입과 넓이 공식",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:38",
+    "hash": "e940fe6f53bab4bd",
+    "errors": [],
+    "warnings": []
+  }
+}

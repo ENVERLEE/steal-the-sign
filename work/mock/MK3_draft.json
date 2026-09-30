@@ -1,0 +1,216 @@
+{
+  "book": {
+    "id": "MK3",
+    "title": "서바이벌 모의고사 15회",
+    "mock": true
+  },
+  "problems": [
+    {
+      "id": "T-MK3-001",
+      "number": "6",
+      "subject": null,
+      "question": "\\pi < \\theta < 2\\pi 인 \\theta 에 대하여 \\tan\\theta = -12/5 일 때, \\sin\\theta + \\cos\\theta 의 값은?",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "단순 삼각함수 부호 판별 및 분수 계산 실수 (쉬운 3점에서의 폭주)",
+        "concept": "수학I - 삼각함수의 뜻과 그래프",
+        "missed": "주어진 사분면(\\pi < \\theta < 2\\pi와 \\tan 음수 \\rightarrow 제4사분면)에 따른 \\sin, \\cos의 정확한 부호 판별",
+        "best": "직각삼각형(변 5, 12, 13)을 그려 절댓값을 빠르게 구하고, 제4사분면 조건에 따라 부호만 입혀서 바로 합산.",
+        "intent": "삼각함수의 사분면 부호 및 상호 관계 기본 연산",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "사분면 부호를 놓쳐 분수값을 썼다 지웠다를 반복하며 3점짜리 연산에서 멘탈이 흔들림."
+        }
+      },
+      "text_complete": true
+    },
+    {
+      "id": "T-MK3-002",
+      "number": "10",
+      "subject": null,
+      "question": "양수 a (a>1)에 대하여 함수 f(x) = |x-a| 의 그래프와 직선 y=4... (일부 텍스트 가려짐) 만나는 두 점 A, B ...",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "정적분 구간 대입 시 분수 사칙연산의 꼬임",
+        "concept": "수학II - 정적분의 활용",
+        "missed": "교점의 x좌표를 경계로 한 넓이 공식 활용",
+        "best": "이차함수와 직선 등 공식 적용이 가능한 형태인지 우선 확인하고, 공식을 적용해 분수 대입 연산을 원천 차단.",
+        "intent": "두 곡선(직선) 사이의 넓이를 효율적으로 정적분하는 능력",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "넓이 공식을 쓰지 않고 무작정 다항식을 적분한 뒤 분수를 대입하다가 계산식이 심하게 꼬여 오답 발생."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK3-003",
+      "number": "12",
+      "subject": null,
+      "question": "첫째항이 80이고 공차가 d인 등차수열 {a_n}이 다음 조건을 만족시키도록 하는 모든 정수 d의 값의 합은? (가) a_n > 0 (나) ... (조건 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "부등식을 정리하지 않은 채 무리하게 수식을 전개하여 폭주",
+        "concept": "수학I - 등차수열과 등비수열",
+        "missed": "공차 d의 부호 추론 및 등차수열의 일차함수적 해석",
+        "best": "등차수열을 dn + (80-d)의 직선 방정식 형태로 보고, x축과의 교점을 기준으로 d의 범위와 부호를 깔끔하게 추론.",
+        "intent": "등차수열의 일반항을 부등식에 적용하여 공차와 항의 관계를 파악",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "a_n = 80 + (n-1)d를 부등식에 대입하여 괄호를 다 풀다 보니 항이 너무 많아져 길을 잃음."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK3-004",
+      "number": "13",
+      "subject": null,
+      "question": "최고차항의 계수가 1인 사차함수 f(x)가 다음 조건을 만족시킬 때, f(4)의 값은? (조건 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "함수식을 세우는 과정에서 무리한 다항식 전개로 인한 계산 폭주",
+        "concept": "수학II - 도함수의 활용 (다항함수 추론)",
+        "missed": "인수정리와 비율 관계를 활용한 함수식 단축",
+        "best": "도함수의 근을 구해 극대/극소 위치를 특정하고 접하는 기하학적 성질을 이용해 미지수를 최소화한 식 구성.",
+        "intent": "그래프의 대칭성과 인수정리를 활용한 효율적인 다항함수 추론",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "그래프의 교점(접점)을 기준으로 f(x)-k=(x-\\alpha)^2(x-\\beta)^2 형태로 식을 묶지 않고 모두 전개하여 미분하려다 폭주함."
+        }
+      },
+      "text_complete": true
+    },
+    {
+      "id": "T-MK3-005",
+      "number": "15",
+      "subject": null,
+      "question": "최고차항의 계수가 1인 삼차함수 f(x)에 대하여... (조건 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "풀이 부재 (찍어서 맞춤)",
+        "concept": "수학II - 정적분 혹은 극한 추론",
+        "missed": "초기 접근 논리 미설정",
+        "best": "주어진 극한식이나 정적분 조건에서 차수와 최고차항 계수를 먼저 확정한 뒤, 나머지 인수를 세팅.",
+        "intent": "조건을 통한 함수의 차수 및 계수 결정 능력",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "앞선 폭주로 인한 시간 부족으로 찍음"
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK3-006",
+      "number": "19",
+      "subject": null,
+      "question": "x에 대한 방정식 x^4 - 8/3 x^3 - 4x^2 + 4 = a 의 서로 다른 실근의 개수가 3이 되도록 하는 모든 실수 a의 값의 합은 p/q 이다. p+q의 값을 구하시오.",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "분수 사칙연산 과정에서의 난잡한 풀이로 인한 계산 폭주",
+        "concept": "수학II - 미분 (방정식과 부등식에의 활용)",
+        "missed": "공통 인수로 묶기 등 산술 연산 테크닉",
+        "best": "공통되는 정수 인수로 먼저 묶어내거나, 상수를 마지막에 따로 더하여 분수 연산 비중 축소.",
+        "intent": "도함수를 활용한 사차함수의 극값 계산 및 방정식의 실근 개수 파악",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "대입 과정에서 분수 덧셈뺄셈을 여백에 산발적으로 적으며 연산 꼬임 발생."
+        }
+      },
+      "text_complete": true
+    },
+    {
+      "id": "T-MK3-007",
+      "number": "20",
+      "subject": null,
+      "question": "모든 항이 양수인 수열 {a_n}이 모든 자연수 n에 대하여... (박스 조건 일부 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "풀이 부재 (찍어서 맞춤)",
+        "concept": "수학I - 수열 (귀납적 추론 또는 증명 박스형)",
+        "missed": "앞뒤 문맥을 통한 대수적 관계 파악",
+        "best": "빈칸의 바로 윗줄과 아랫줄의 수식 변화만 대수적으로 연립하여 빠르게 값 추출.",
+        "intent": "수열의 귀납적 성질 및 논리적 흐름에 따른 수식 추론",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "19번 등 계산 폭주 여파로 시간 부족"
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK3-008",
+      "number": "27",
+      "subject": "확률과 통계",
+      "question": "두 사건 A, B에 대하여 P(A \\cup B) = 1, P(A) = P(B \\cup A^c) ... (일부 텍스트 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "확률 문제를 복잡한 2차 대수 방정식으로 변환하여 계산 폭주",
+        "concept": "확률과 통계 - 확률의 연산",
+        "missed": "확률합 1 및 여사건, 벤다이어그램 직관적 영역 분할",
+        "best": "집합의 벤다이어그램을 그리고 각 영역 확률을 단순 미지수로 둔 뒤 1차 방정식으로 마무리.",
+        "intent": "확률의 덧셈정리와 여사건을 활용한 확률 연산 능력",
+        "calc_error": {
+          "발생_여부": true,
+          "원인": "문제를 벤다이어그램으로 처리하지 않고 복잡한 이차식을 전개하는 심각한 대수학적 폭주 발생."
+        }
+      },
+      "text_complete": false
+    },
+    {
+      "id": "T-MK3-009",
+      "number": "28",
+      "subject": "확률과 통계",
+      "question": "숫자 0,1,2,3이 각각 하나씩 적혀 있는 4장의 카드와... (조건 텍스트 가려짐)",
+      "condition": null,
+      "choices": null,
+      "answer": "",
+      "answer_source": "AI 풀이",
+      "points": 4,
+      "mistake": {
+        "reason": "풀이 부재 (찍어서 맞춤)",
+        "concept": "확률과 통계 - 경우의 수 (카드 배열 등)",
+        "missed": "케이스 분류 기준",
+        "best": "제약 조건이 가장 많은 대상을 기준으로 2~3가지 큰 케이스로 나눈 후 순열/조합 배치.",
+        "intent": "복합적인 조건이 주어진 상황에서 누락과 중복 없이 케이스 분류",
+        "calc_error": {
+          "발생_여부": false,
+          "원인": "시간 부족 및 확통 27번 폭주 여파로 미접근"
+        }
+      },
+      "text_complete": false
+    }
+  ]
+}

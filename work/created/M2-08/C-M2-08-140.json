@@ -1,0 +1,84 @@
+{
+  "id": "C-M2-08-140",
+  "theme": "M2-08",
+  "origin": {
+    "type": "original",
+    "note": "정적분 대입 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "직선이 삼차함수에 접하는 점에서 f−(직선)이 중근을 가지므로 (x−α)²(x−β) 꼴 공식 d⁴/12를 쓴다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "계산",
+  "question": "삼차함수 $f(x)=x^3-5x^2-3$에 대하여 곡선 $y=f(x)$와 직선 $y=-3$로 둘러싸인 부분의 넓이를 $S$라 할 때, $12S$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "625",
+  "answer_value": "625",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C1"
+    ],
+    "guide": "직선이 삼차함수에 접하는 점에서 f−(직선)이 중근을 가지므로 (x−α)²(x−β) 꼴 공식 d⁴/12를 쓴다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "인수분해",
+            "body": "$f(x)--3=(x^3-5x^2)$은 $x=0$에서 중근을 가지므로 $f(x)--3=(x)^2(x-5)$ ($x=0$에서 직선에 접한다)"
+          },
+          {
+            "label": "공식",
+            "body": "$\\int_{\\alpha}^{\\beta}(x-\\alpha)^2(\\beta-x)\\,dx=\\frac{(\\beta-\\alpha)^4}{12}$이므로 $S=\\frac{1\\cdot5^4}{12}$"
+          },
+          {
+            "label": "답",
+            "body": "$12S=1\\times625=625$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "차 함수",
+            "body": "$h(x)=f(x)--3=x^3-5x^2$이고 $h(x)=0$의 근은 $x=0$(중근), $5$"
+          },
+          {
+            "label": "부정적분",
+            "body": "$H(x)=\\int h(x)\\,dx=\\frac{1}{4}x^4-\\frac{5}{3}x^3$"
+          },
+          {
+            "label": "대입",
+            "body": "$H(5)=-\\frac{625}{12}$, $H(0)=0$ (분모 4가 섞인 값을 정확히 빼야 한다)"
+          },
+          {
+            "label": "답",
+            "body": "$S=|H(5)-H(0)|=\\frac{625}{12}$이므로 $12S=625$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "부정적분에 두 끝점을 대입하면 4차 항의 분수가 섞여 계산이 무거워진다. 인수분해하면 d⁴/12 하나로 끝난다.",
+    "skill_point": "접점이면 (x−α)²(x−β), 근이 등간격이면 중심 이동 후 대칭."
+  },
+  "verify": "def skill():\n    k, d = 1, 5\n    return abs(k)*d**4\n\ndef standard():\n    x = Symbol('x')\n    h = expand((-5)*x**2+(1)*x**3)\n    pts = [Integer(0)] + sorted(set(r for r in solve(h, x) if r.is_real and 0 < r < 5)) + [Integer(5)]\n    tot = 0\n    for p_, q_ in zip(pts, pts[1:]):\n        tot += Abs(integrate(h, (x, p_, q_)))\n    tot = tot*Rational(12, 1)\n    return int(tot)\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "정적분 대입과 넓이 공식",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:02",
+    "hash": "7aba97cb4f0a0a07",
+    "errors": [],
+    "warnings": []
+  }
+}

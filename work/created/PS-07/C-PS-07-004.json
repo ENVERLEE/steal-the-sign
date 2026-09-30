@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-07-004",
+  "theme": "PS-07",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-241130",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-18-C2",
+      "확률과 통계-18-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "표준화하면 구간이 $[t-2,t+2]$로 길이 $4$가 고정되므로 확률은 중심 $t$가 $0$에 가까울수록 크고, $t$의 최솟값에서 최대이다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "양수 $t$에 대하여 확률변수 $X$가 정규분포 $\\mathrm{N}(4,t^2)$을 따른다. $\\mathrm{P}(X\\le8t)\\ge\\dfrac12$이 되도록 하는 모든 양수 $t$에 대하여 $\\mathrm{P}(t^2-2t+4\\le X\\le t^2+2t+4)$의 최댓값을 표준정규분포표를 이용하여 구한 값을 $k$라 하자. $1000k$의 값을 구하시오.",
+  "condition": "표준정규분포표: $z$: $\\mathrm P(0\\le Z\\le z)$ — $1.0$: $0.3413$, $1.5$: $0.4332$, $2.0$: $0.4772$, $2.5$: $0.4938$",
+  "choices": null,
+  "answer": "927",
+  "answer_value": "927",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-18-C2",
+      "확률과 통계-18-C1"
+    ],
+    "guide": "$\\mathrm P(X\\le8t)\\ge\\frac12$는 $8t\\ge4$(평균 이상)이므로 $t\\ge\\frac12$이다. 구간을 표준화하면 $\\left[\\frac{t^2-2t}t,\\frac{t^2+2t}t\\right]=[t-2,t+2]$로 폭이 고정된다(확률과 통계-18-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "범위",
+            "body": "$\\mathrm P(X\\le8t)\\ge\\frac12$ ⇔ $8t\\ge4$ ⇔ $t\\ge\\frac12$."
+          },
+          {
+            "label": "표준화",
+            "body": "$\\mathrm P(t^2-2t+4\\le X\\le t^2+2t+4)=\\mathrm P(t-2\\le Z\\le t+2)$. 폭이 $4$로 고정된 구간이므로 중심 $t$가 $0$에 가까울수록 크다."
+          },
+          {
+            "label": "최댓값",
+            "body": "$t\\ge\\frac12$에서 $t=\\frac12$일 때 최대: $\\mathrm P(-1.5\\le Z\\le2.5)=0.4332+0.4938=0.9270$. $1000k=927$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "범위",
+            "body": "$\\mathrm P(X\\le8t)=\\mathrm P\\left(Z\\le\\frac{8t-4}t\\right)\\ge\\frac12$이려면 $\\frac{8t-4}t\\ge0$, 곧 $t\\ge\\frac12$."
+          },
+          {
+            "label": "표준화",
+            "body": "구간의 두 끝을 $\\frac{(t^2\\mp2t+4)-4}{t}=t\\mp2$로 표준화하면 $h(t)=\\mathrm P(t-2\\le Z\\le t+2)$."
+          },
+          {
+            "label": "증감",
+            "body": "$h'(t)=\\varphi(t+2)-\\varphi(t-2)$이다. $t>0$이면 $|t+2|>|t-2|$이므로 $\\varphi(t+2)<\\varphi(t-2)$, 곧 $h'(t)<0$이고 $h$는 $t>0$에서 감소한다."
+          },
+          {
+            "label": "최댓값",
+            "body": "$t\\ge\\frac12$에서 감소하므로 $t=\\frac12$에서 최대. $h\\left(\\frac12\\right)=\\mathrm P\\left(-\\frac32\\le Z\\le\\frac52\\right)=0.4332+0.4938=0.9270$."
+          },
+          {
+            "label": "답",
+            "body": "$1000k=927$."
+          }
+        ]
+      }
+    ],
+    "supplement": "미분까지 가지 않아도 곡선 위에 폭 $4$짜리 창을 그리고, 창의 중심을 $0$에서 멀리 밀수록 꼭대기를 덜 덮는다고 읽으면 된다. $t$가 클수록 창이 오른쪽으로 밀려 확률이 줄어든다.",
+    "skill_point": "표준화 후 폭이 고정되면, 확률은 중심이 $0$에서 가까울수록 크다: 허용 범위의 경계값에서 최대."
+  },
+  "verify": "def skill():\n    tbl = {1.0: Rational('0.3413'), 1.5: Rational('0.4332'), 2.0: Rational('0.4772'), 2.5: Rational('0.4938')}\n    return 1000*(tbl[1.5] + tbl[2.5])\n\ndef standard():\n    tbl = {1.0: Rational('0.3413'), 1.5: Rational('0.4332'), 2.0: Rational('0.4772'), 2.5: Rational('0.4938')}\n    from sympy import erf\n    phi = lambda z: exp(-z**2 / 2) / sqrt(2*pi)\n    t = Symbol('t', positive=True)\n    H = lambda tt: integrate(phi(Symbol('u')), (Symbol('u'), tt - 2, tt + 2))\n    # 실제 정규분포로 t 후보에서 단조 감소를 수치 확인\n    Phi = lambda z: (1 + erf(z / sqrt(2))) / 2\n    ts = [Rational(1, 2) + Rational(i, 4) for i in range(0, 12)]\n    vals = [float(Phi(x + 2) - Phi(x - 2)) for x in ts]\n    assert all(vals[i] > vals[i + 1] for i in range(len(vals) - 1))\n    # t=1/2 → [-3/2, 5/2] : 표의 값으로\n    return 1000*(tbl[1.5] + tbl[2.5])\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:31",
+    "hash": "e45d85d386ca3150",
+    "errors": [],
+    "warnings": []
+  }
+}

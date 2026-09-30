@@ -1,0 +1,91 @@
+{
+  "id": "C-PS-01-007",
+  "theme": "PS-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-240930",
+    "variation": "결합",
+    "note": "결합"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-08-C2",
+      "확률과 통계-06-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "$d$가 (나)의 두 부등식에 모두 들어 있으므로 $d$로 경우를 나누고, $d$를 고정하면 하한을 미리 지워 합의 식으로 만든다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "문제해결",
+  "question": "다음 조건을 만족시키는 자연수 $a,\\,b,\\,c,\\,d$의 모든 순서쌍 $(a,\\,b,\\,c,\\,d)$의 개수를 구하시오.",
+  "condition": "(가) $a+b+c+d=15$\n(나) $a<d$이고 $c\\ge2d$이다.",
+  "choices": null,
+  "answer": "20",
+  "answer_value": "20",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-08-C2",
+      "확률과 통계-06-C2"
+    ],
+    "guide": "$a<d$는 $a$의 상한, $c\\ge2d$는 $c$의 하한이다. 두 조건이 공통으로 $d$를 쓰므로 $d$를 분류 기준으로 잡는다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "d의 범위",
+            "body": "$a\\ge1$, $b\\ge1$, $c\\ge2d$이므로 $1+1+2d+d\\le15$, 곧 $d\\le4$이고 $a<d$에서 $d\\ge2$이다: $d=2,3,4$."
+          },
+          {
+            "label": "d 고정",
+            "body": "$c=2d+c'$ ($c'\\ge0$)으로 놓으면 $a+b+c'=15-3d$이다. $a$를 $1\\le a\\le d-1$에서 정하면 $b\\ge1,\\ c'\\ge0$인 $(b,c')$는 $15-3d-a$개이다."
+          },
+          {
+            "label": "합",
+            "body": "$d=2:8,\\ 3:9,\\ 4:3$이므로 합은 $20$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전체에서",
+            "body": "$a+b+c+d=15$의 자연수해는 $\\binom{14}{3}=364$개이다. (나)를 만족하지 않는 경우를 빼려면 $a\\ge d$ 또는 $c<2d$를 세야 하는데 서로 겹친다."
+          },
+          {
+            "label": "변수 소거",
+            "body": "$d$를 정하지 않고 $a<d$, $c\\ge2d$를 동시에 처리하려면 $a,d$의 대소와 $c,d$의 관계가 얽혀 식이 갈라진다."
+          },
+          {
+            "label": "경우 나누기",
+            "body": "그래서 $d=1,2,3,\\dots$를 하나씩 고정한다. $d=1$이면 $a<1$이 불가능하고, $d\\ge5$이면 $2d+d+2>15$로 불가능하다."
+          },
+          {
+            "label": "각 d",
+            "body": "$d=2:8,\\ 3:9,\\ 4:3$."
+          },
+          {
+            "label": "답",
+            "body": "$20$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "'경우가 무한히 늘어난다'는 느낌은 분류 기준을 정하지 않아서 생긴다. 두 조건에 함께 들어 있는 변수를 먼저 찾아 범위를 부등식으로 바로 좁히면 유한한 몇 줄로 끝난다.",
+    "skill_point": "공통 변수 고정 → 범위를 부등식으로 좁힘 → 하한을 미리 지워 합의 식."
+  },
+  "verify": "def skill():\n    tot = 0\n    for d in range(2, 5):\n        for a in range(1, d):\n            r = 15 - 3 * d - a\n            if r >= 1:\n                tot += r\n    return tot\n\ndef standard():\n    from itertools import product\n    return sum(1 for a, b, c, d in product(range(1, 16), repeat=4) if a + b + c + d == 15 and a < d and c >= 2 * d)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:04",
+    "hash": "b2a608258aae2b68",
+    "errors": [],
+    "warnings": []
+  }
+}

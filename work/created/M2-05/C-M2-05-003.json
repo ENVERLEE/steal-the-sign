@@ -1,0 +1,92 @@
+{
+  "id": "C-M2-05-003",
+  "theme": "M2-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-220920",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-10-C1"
+    ],
+    "strategy_ids": [
+      "S21",
+      "S23"
+    ],
+    "first_judgment": "절댓값이 있는 방정식은 $y=|f(x)|$의 그래프와 수평선 $y=k$의 교점으로 보고, 그래프에서 $f\\ge0$인 부분과 $f<0$인 부분을 나누어 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "함수 $f(x)=x^3-3x^2$에 대하여 $x$에 대한 방정식 $|f(x)|=k$의 서로 다른 실근의 개수가 $4$가 되도록 하는 모든 정수 $k$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "6",
+  "answer_value": "6",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-10-C1"
+    ],
+    "guide": "$|f(x)|=k$ ($k>0$)는 $f(x)=k$ 또는 $f(x)=-k$이다. 두 방정식의 근은 서로 다른 $x$에서 나오므로 각각의 개수를 더한다(수학Ⅱ-10-C1). 개형은 $f'(x)=3x(x-2)$로 극댓값 $f(0)=0$, 극솟값 $f(2)=-4$.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "$f(x)=k$",
+            "body": "극댓값이 $0$이므로 $k>0$이면 $f(x)=k$는 실근이 $1$개."
+          },
+          {
+            "label": "$f(x)=-k$",
+            "body": "극솟값이 $-4$이므로 $0<k<4$일 때 $f(x)=-k$는 실근 $3$개, $k=4$일 때 $2$개, $k>4$일 때 $1$개."
+          },
+          {
+            "label": "합·답",
+            "body": "실근이 $4$개인 것은 $1+3$인 $0<k<4$. 정수 $k=1,2,3$의 합은 $6$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "개형",
+            "body": "$f(x)=x^2(x-3)$은 $x=0$에서 극대(값 $0$), $x=2$에서 극소(값 $-4$)이다."
+          },
+          {
+            "label": "경우 나누기",
+            "body": "$k<0$이면 실근이 없고 $k=0$이면 $f(x)=0$의 실근 $0,3$의 $2$개."
+          },
+          {
+            "label": "$k>0$",
+            "body": "$|f(x)|=k$ ⟺ $f(x)=k$ 또는 $f(x)=-k$."
+          },
+          {
+            "label": "$f(x)=k$",
+            "body": "$k>0$이면 극댓값 $0$보다 위에 있으므로 $x>3$에서 실근 $1$개."
+          },
+          {
+            "label": "$f(x)=-k$",
+            "body": "$-4<-k<0$이면 극솟값과 극댓값 사이이므로 $3$개, $-k=-4$이면 $2$개(중근 $x=2$와 $x=-1$), $-k<-4$이면 $1$개."
+          },
+          {
+            "label": "종합",
+            "body": "$0<k<4$: $1+3=4$개, $k=4$: $1+2=3$개, $k>4$: $1+1=2$개. 따라서 조건을 만족하는 정수는 $k=1,2,3$이고 합은 $6$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$k=4$에서 $f(x)=-4$의 중근 $x=2$를 두 개로 세면 $1+3$으로 착각해 $4$개라고 하기 쉽다. 서로 다른 실근이므로 $x=2$는 한 번만 센다. 또 $y=|f(x)|$의 그래프는 $x$축 아래 부분을 위로 접은 모양이므로 극솟값 $-4$가 극댓값 $4$가 된다는 그림으로도 확인된다.",
+    "skill_point": "$|f|=k$ → $f=k$와 $f=-k$의 실근 개수를 따로 세어 더한다. 중근은 한 번만."
+  },
+  "verify": "def skill():\n    tot = 0\n    for k in range(1, 100):\n        f1 = 1 if k > 0 else 0\n        f2 = 3 if k < 4 else (2 if k == 4 else 1)\n        if f1 + f2 == 4:\n            tot += k\n    return tot\n\ndef standard():\n    x = Symbol('x')\n    tot = 0\n    for k in range(-20, 21):\n        rts = set(real_roots(Poly(x**3 - 3*x**2 - k, x))) | set(real_roots(Poly(x**3 - 3*x**2 + k, x))) if k > 0 else set()\n        if len(rts) == 4:\n            tot += k\n    return tot\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:30:03",
+    "hash": "1a5fa7081c3d15d8",
+    "errors": [],
+    "warnings": []
+  }
+}

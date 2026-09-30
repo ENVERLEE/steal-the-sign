@@ -1,0 +1,95 @@
+{
+  "id": "C-M2-06-006",
+  "theme": "M2-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-220911",
+    "variation": "조건 변형",
+    "note": "아래끝 1을 0으로 바꾸고 상수 조건을 f(1)로 이동, 좌변 적분이 자기 소거되는 구조"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-15-C1"
+    ],
+    "strategy_ids": [
+      "S22"
+    ],
+    "first_judgment": "등식의 양변을 미분하면 적분이 사라지고 $xf'(x)$만 남으므로, $f'$을 먼저 구한 뒤 나머지 조건으로 상수를 정한다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $\\displaystyle\\int_0^{x}f(t)\\,dt=xf(x)-2x^3-x^2$을 만족시키고 $f(1)=10$이다. $f(2)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "21",
+  "answer_value": "21",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-15-C1"
+    ],
+    "guide": "등식에 $\\int_0^x$가 있으므로 미분해서 적분 기호를 없앤다(수학Ⅱ-15-C1). 우변의 $xf(x)$는 곱의 미분으로 처리한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "미분",
+            "body": "양변을 미분하면 $f(x)=f(x)+xf'(x)-6x^2-2x$. $f(x)$가 양변에서 지워져 $xf'(x)=6x^2+2x$."
+          },
+          {
+            "label": "도함수",
+            "body": "$x\\neq0$에서 $f'(x)=6x+2$이고 다항함수이므로 $f'(x)=6x+2$ 전체 성립. 따라서 $f(x)=3x^2+2x+C$."
+          },
+          {
+            "label": "상수",
+            "body": "$f(1)=5+C=10$ → $C=5$."
+          },
+          {
+            "label": "값",
+            "body": "$f(2)=12+4+5=21$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "가정",
+            "body": "$f$가 다항함수이므로 차수를 $n$이라 하면 우변 $xf(x)$의 차수는 $n+1$, 좌변 $\\int_0^xf$의 차수도 $n+1$이다. 계수를 비교하려고 $f(x)=ax^2+bx+c$로 둔다."
+          },
+          {
+            "label": "좌변",
+            "body": "$\\int_0^xf(t)dt=\\frac a3x^3+\\frac b2x^2+cx$."
+          },
+          {
+            "label": "우변",
+            "body": "$xf(x)-2x^3-x^2=(a-2)x^3+(b-1)x^2+cx$."
+          },
+          {
+            "label": "계수 비교",
+            "body": "$x^3$: $\\frac a3=a-2$ → $a=3$. $x^2$: $\\frac b2=b-1$ → $b=2$. $x$의 계수는 $c=c$로 항상 성립."
+          },
+          {
+            "label": "상수",
+            "body": "$f(1)=3+2+c=10$ → $c=5$. $f(2)=12+4+5=21$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "정석은 차수를 가정해 계수를 비교해야 하고, 차수를 잘못 가정하면 끝까지 풀고도 모순을 만난다. 미분하면 $f$ 자체가 소거되고 $xf'$만 남기 때문에 차수를 몰라도 곧바로 $f'$이 나온다. 이때 적분 상수는 미분으로 사라지므로 마지막 조건 $f(1)=10$으로 꼭 다시 정한다.",
+    "skill_point": "적분 구간에 변수가 있는 등식은 미분해서 적분을 지우고, 사라진 상수는 주어진 값으로 되찾는다."
+  },
+  "verify": "def skill():\n    x, C = symbols('x C')\n    fp = 6*x + 2\n    f = integrate(fp, x) + C\n    C0 = solve(f.subs(x, 1) - 10, C)[0]\n    return f.subs(C, C0).subs(x, 2)\n\ndef standard():\n    x, t = symbols('x t')\n    cs = symbols('c0:6')\n    f = sum(c*x**i for i, c in enumerate(cs))\n    eq = expand(integrate(f.subs(x, t), (t, 0, x)) - (x*f - 2*x**3 - x**2))\n    s = solve(Poly(eq, x).all_coeffs() + [f.subs(x, 1) - 10], cs, dict=True)\n    return f.subs(s[0]).subs(x, 2)\n\ndef unique():\n    x, t = symbols('x t')\n    cs = symbols('c0:6')\n    f = sum(c*x**i for i, c in enumerate(cs))\n    eq = expand(integrate(f.subs(x, t), (t, 0, x)) - (x*f - 2*x**3 - x**2))\n    s = solve(Poly(eq, x).all_coeffs() + [f.subs(x, 1) - 10], cs, dict=True)\n    return sorted({f.subs(d).subs(x, 2) for d in s})\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:27:19",
+    "hash": "1f273fc3b6021226",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -67,6 +67,33 @@
 .x-sec-gap{height:2px}
 .x-figs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .x-figs .x-fig svg{max-height:200px}
+/* 부록: 계산 연습 */
+.c-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:26px;align-content:start}
+.c-span{grid-column:1/-1;margin-bottom:12px}
+.c-cell{border-top:2px solid var(--ink);padding:6px 2px 0;min-height:132px;display:grid;grid-template-columns:38px 1fr;position:relative}
+.c-cell .no{font-family:var(--display);font-size:26px;line-height:1.1;color:var(--red);-webkit-text-stroke:0.8px var(--ink)}
+.c-cell .q{font-size:15px;line-height:1.85;font-weight:500;font-family:'Noto Serif KR',serif;border:none;display:block}
+.c-cell .q .pt{font-weight:700;white-space:nowrap}
+.c-ch{display:flex;flex-wrap:wrap;gap:2px 16px;margin-top:2px;font-size:14px;font-family:'Noto Serif KR',serif}
+.c-trap{border:2px solid var(--ink);background:#fff;box-shadow:3px 3px 0 var(--ink);padding:10px 16px;font-size:14px;line-height:1.75;font-weight:500;font-family:'Noto Serif KR',serif}
+.c-trap b.l{display:inline-block;background:var(--red);border:1.5px solid var(--ink);font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:900;padding:0 8px;margin-right:6px}
+.c-trap b.l.k{background:var(--ink);color:var(--paper)}
+.c-intro{font-size:14px;line-height:1.8;font-weight:500;font-family:'Noto Serif KR',serif;margin-bottom:10px}
+/* 연습 문항 판면: 쪽을 좌우 2단으로 나누고 단마다 1~2문항, 아래는 풀이 공간 */
+.pm2{padding:0 !important;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:0;align-items:stretch}
+.pm2-col{display:flex;flex-direction:column;min-width:0;padding:22px 26px 18px 40px}
+.pm2-col+.pm2-col{border-left:1px solid #9a968d;padding:22px 40px 18px 26px}
+.pm2-item{flex:1 1 0;display:flex;flex-direction:column;padding-bottom:12px}
+.pm2-item+.pm2-item{border-top:1px dashed #b9b5ab;padding-top:16px}
+.pi-hd{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #8d897f;margin-bottom:9px;padding-bottom:1px}
+.pi-no{font-family:'Noto Serif KR',serif;font-weight:900;font-size:19px;line-height:1.1;padding:0 12px 1px 4px;border-right:1px solid #8d897f;min-width:34px}
+.pi-tag{font-size:11.5px;font-weight:800;color:var(--red-text)}
+.pi-src{margin-left:auto;font-size:10.5px;color:#4a4740;font-family:'Noto Serif KR',serif}
+.pm2 .q-text{font-size:13.6px;line-height:1.85}
+.pm2 .cond{font-size:12.8px;margin:6px 0}
+.pm2 .fig svg{max-width:100%;height:auto}
+.pm2 .choices:not(.stack){grid-template-columns:repeat(3,1fr);row-gap:5px;column-gap:4px;margin-top:8px}
+.pm2 .choices>div{font-size:12.8px}
 </style>
 <!-- HEAD:END -->
 
@@ -132,3 +159,92 @@
   </div>
 </div>
 <!-- XPAGE:END SIGN_READING_X -->
+
+<!-- XPAGE:START CALC -->
+<div class="page" data-page="CALC">
+  <div class="hd">
+    <div class="hd-day"><div class="k">부록</div><div class="v">{{ P.tag }}</div></div>
+    <div class="hd-title"><div class="k"><span class="en">APPENDIX</span>{{ P.head }}</div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body">
+    <div class="c-grid">{% for b in P.cells %}{{ b }}
+    {% endfor %}</div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="pg"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+</div>
+<!-- XPAGE:END CALC -->
+
+<!-- XPAGE:START CALC_SOL -->
+<div class="page" data-page="CALC_SOL">
+  <div class="hd slim">
+    <div class="hd-day"><div class="k">부록</div><div class="v">{{ P.tag }}</div></div>
+    <div class="hd-title"><div class="v">{{ P.title }}</div><div class="k">정답과 해설</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="sol-wrap"><div class="sol-cols">
+    {% for s in P.entries %}<article class="s">
+      <div class="s-hd"><span class="s-no">{{ s.no2 }}</span><span class="s-kind">{{ s.kind }}</span><span class="s-src">{{ s.source }}</span><span class="s-ans">{{ s.answer }}</span></div>
+      <p><b class="lb">숏컷</b>{{ s.shortcut }}</p>
+      {% if s.standard %}<p><b class="lb alt">정석</b>{{ s.standard }}</p>{% endif %}
+      {% if s.tip %}<p class="s-tip"><b class="lb alt">실전 개념</b>{{ s.tip }}</p>{% endif %}
+      {% if s.error %}<p class="s-err"><b class="lb red">오답 첨삭</b>{{ s.error }}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </div></div>
+  <div class="ft slim"><div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div><div class="pg"><span data-slot="PAGE">{{ pg }}</span></div></div>
+</div>
+<!-- XPAGE:END CALC_SOL -->
+
+<!-- XPAGE:START ADVICE -->
+<div class="page" data-page="ADVICE">
+  <div class="hd">
+    <div class="hd-day"><div class="k">먼저</div><div class="v">✓</div></div>
+    <div class="hd-title"><div class="k"><span class="en">COACHING</span>학습 조언</div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body">
+    <div class="x-h"><span class="n">1</span>지금 내 수학 실력</div>
+    <p class="x-p">{{ P.assessment }}</p>
+    {% if P.patterns %}<div class="x-h"><span class="n">2</span>계산이 폭주하는 패턴과 처방</div>
+    <table class="x-tbl"><tr><th style="width:26%">패턴</th><th>이렇게 나타난다</th><th style="width:34%">처방</th></tr>
+    {% for r in P.patterns %}<tr><td class="l"><b>{{ r.name }}</b></td><td class="l">{{ r.text }}</td><td class="l">{{ r.fix }}</td></tr>{% endfor %}</table>{% endif %}
+    <div class="x-h"><span class="n">{{ 3 if P.patterns else 2 }}</span>이 책으로 공부하는 방법</div>
+    <div class="x-pts">{% for m in P.methods %}<div class="x-pt"><div class="n">{{ '%02d' % loop.index }}</div><div class="t"><b>{{ m.title }}</b>{{ m.text }}</div></div>{% endfor %}</div>
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="pg"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+</div>
+<!-- XPAGE:END ADVICE -->
+
+<!-- XPAGE:START PRACTICE_M -->
+<div class="page" data-page="PRACTICE">
+  <div class="hd">
+    <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">{{ P.day2 }}</span></div></div>
+    <div class="hd-title"><div class="k">연습 문항 <span class="meta">· {{ P.qs[0].no2 }}{% if P.qs|length > 1 %}~{{ P.qs[-1].no2 }}{% endif %}번{% if P.hard %} · 고난도{% endif %}</span></div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+  <div class="x-body pm2">
+    {% for col in P.cols %}<div class="pm2-col">
+      {% for q in col %}<div class="pm2-item">
+        <div class="pi-hd"><span class="pi-no">{{ q.no2 }}</span>{% if q.difficulty == '고난도' %}<span class="pi-tag">★ 고난도</span>{% endif %}<span class="pi-src">{{ q.source }}</span></div>
+        <div class="q-text">{{ q.text }} <span class="pt">[{{ q.points }}점]</span></div>
+        {% if q.cond %}<div class="cond">{{ q.cond }}</div>{% endif %}
+        {% if q.fig %}<div class="fig">{{ q.fig }}</div>{% endif %}
+        {% if q.choices %}<div class="choices{{ q.choices_class }}">{% for c in q.choices %}<div>{{ c.label }} {{ c.html }}</div>{% endfor %}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="ft">
+    <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
+    <div class="pg"><span data-slot="PAGE">{{ pg }}</span></div>
+  </div>
+</div>
+<!-- XPAGE:END PRACTICE_M -->

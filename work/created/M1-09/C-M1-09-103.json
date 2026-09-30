@@ -1,0 +1,80 @@
+{
+  "id": "C-M1-09-103",
+  "theme": "M1-09",
+  "origin": {
+    "type": "original",
+    "note": "분수 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "분수를 하나씩 이어 계산하지 않고, 공통 분모나 공통 인수를 먼저 정해 한 번에 정리한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\frac{9}{12}-\\frac{2}{10}+\\frac{7}{30}$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "107",
+  "answer_value": "107",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C3"
+    ],
+    "guide": "분수를 하나씩 이어 계산하지 않고, 공통 분모나 공통 인수를 먼저 정해 한 번에 정리한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "통분",
+            "body": "분모 $\\{12,10,30\\}$의 최소공배수 $60$로 한 번에 통분: $\\frac{45-12+14}{60}=\\frac{47}{60}$"
+          },
+          {
+            "label": "약분",
+            "body": "$47$와 $60$은 서로소이므로 이미 기약분수 → $p+q=107$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "앞 두 항",
+            "body": "$\\frac{9}{12}-\\frac{2}{10}$을 통분한다: 분모 $60$, 분자 $45-12$이므로 $\\frac{11}{20}$"
+          },
+          {
+            "label": "세 번째 항",
+            "body": "$\\frac{11}{20}+\\frac{7}{30}$을 다시 통분한다: 분모 $60$"
+          },
+          {
+            "label": "계산",
+            "body": "분자를 더하고 빼면 $\\frac{47}{60}$"
+          },
+          {
+            "label": "답",
+            "body": "$p=60$, $q=47$ → $p+q=107$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "두 항씩 통분하면 분모가 두 번 바뀌고 약분도 두 번 해야 한다. 공통 분모를 한 번에 잡으면 분자의 정수 계산만 남는다.",
+    "skill_point": "분모의 최소공배수(또는 공통 인수)를 먼저 정하고, 상수는 마지막에 한 번만 계산한다."
+  },
+  "verify": "def skill():\n    L = 60\n    X = 9*(L//12) - 2*(L//10) + 7*(L//30)\n    v = Fraction(X, L)\n    return v.numerator + v.denominator\n\ndef standard():\n    v = Rational(9, 12) - Rational(2, 10) + Rational(7, 30)\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "분수 계산 전처리",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:09:46",
+    "hash": "83ca5fa465171ba0",
+    "errors": [],
+    "warnings": []
+  }
+}

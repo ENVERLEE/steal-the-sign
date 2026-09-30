@@ -1,0 +1,91 @@
+{
+  "id": "C-PS-04-007",
+  "theme": "PS-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-231129",
+    "variation": "결합",
+    "note": "결합"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-13-C2",
+      "확률과 통계-12-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "분모는 '처음 배열로 돌아오는 시행'의 수이다. 눈 $4,5,6$은 배열을 바꾸지 않으므로 '이동하는 시행의 횟수 $m$'별로 나누어 상태 전이로 센다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "문자 $\\mathrm{A}$가 적힌 카드 $2$장과 문자 $\\mathrm{B}$가 적힌 카드 $2$장이 $1$번째 자리에서부터 차례로 $\\mathrm{A},\\mathrm{A},\\mathrm{B},\\mathrm{B}$가 보이도록 놓여 있다. 이 $4$장의 카드와 한 개의 주사위를 사용하여 다음 시행을 한다. 이 시행을 $3$번 반복한 후 $4$장의 카드가 $1$번째 자리에서부터 차례로 $\\mathrm{A},\\mathrm{A},\\mathrm{B},\\mathrm{B}$가 보이도록 놓여 있을 때, $2$번째 시행에서 나온 눈의 수가 $4$ 이상일 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $k$일 때, $k\\le3$이면 $k$번째 자리에 놓여 있는 카드와 $(k+1)$번째 자리에 놓여 있는 카드를 서로 바꾸어 놓고, $k\\ge4$이면 카드를 그대로 둔다.",
+  "choices": null,
+  "answer": "36",
+  "answer_value": "36",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-13-C2",
+      "확률과 통계-12-C3"
+    ],
+    "guide": "눈 $4\\sim6$은 아무것도 하지 않는 세 가지 눈이다. 이동하는 눈 $1,2,3$ 중 $1$은 $\\mathrm{AA}$를, $3$은 $\\mathrm{BB}$를 바꾸므로 배열이 그대로이고, $2$만 $\\mathrm{AB}$를 바꾼다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "N_m",
+            "body": "이동하는 눈만 $m$번 써서 처음 배열로 돌아오는 경우의 수를 $N_m$이라 하면 $N_0=1$, $N_1=2$, $N_2=5$, $N_3=12$."
+          },
+          {
+            "label": "분모",
+            "body": "그대로인 눈은 $3$가지. 세 번 중 이동이 $m$번인 자리 선택은 $\\binom3m$이므로 $\\sum\\binom3mN_m3^{3-m}=138$."
+          },
+          {
+            "label": "분자",
+            "body": "$2$번째가 $4$ 이상이면 그 시행은 그대로(눈 $3$가지)이므로 나머지 $2$번에서 $3\\sum\\binom2mN_m3^{2-m}=78$. $\\frac{78}{138}=\\frac{13}{23}$이므로 $p+q=36$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전체",
+            "body": "눈의 순서열은 $6^3=216$가지이고, 세 번 뒤 배열이 $\\mathrm{AABB}$인 것을 골라야 한다."
+          },
+          {
+            "label": "나무그림",
+            "body": "매 시행마다 배열이 몇 가지로 바뀌는지 추적한다. 배열은 $\\binom42=6$가지이고, 눈 $1,3$은 배열을 유지하며 눈 $2$는 $\\mathrm{AB}$ 자리를 바꾸는 식으로 전이한다."
+          },
+          {
+            "label": "상태별 세기",
+            "body": "$\\mathrm{AABB}$에서 출발하여 세 번 뒤 다시 $\\mathrm{AABB}$인 경로를 모든 중간 배열에 대해 더한다. 중간 배열이 달라질 때마다 다음 전이가 달라진다."
+          },
+          {
+            "label": "결과",
+            "body": "경로를 모두 더하면 분모 138, 그중 $2$번째 눈이 $4$ 이상인 것은 78."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{78}{138}=\\frac{13}{23}$이므로 $p+q=36$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "배열이 바뀌는 눈과 바뀌지 않는 눈을 먼저 나누면, 바뀌는 시행의 횟수 $m$ 하나로 분모가 정리된다. 나무그림은 이 분류 없이는 가지가 너무 많다.",
+    "skill_point": "바뀌지 않는 시행은 덤으로 떼어 내고, 바뀌는 시행만 상태 전이로 센다."
+  },
+  "verify": "def skill():\n    N = [1, 2, 5, 12]\n    den = sum(binomial(3, m) * N[m] * 3**(3 - m) for m in range(4))\n    num = 3 * sum(binomial(2, m) * N[m] * 3**(2 - m) for m in range(3))\n    v = Fraction(num, den)\n    return v.numerator + v.denominator\n\ndef standard():\n    from itertools import product\n    def sw(c, k):\n        c = list(c)\n        if k <= 3:\n            c[k-1], c[k] = c[k], c[k-1]\n        return tuple(c)\n    st = tuple(\"AABB\")\n    tot = fav = 0\n    for seq in product(range(1, 7), repeat=3):\n        c = st\n        for k in seq:\n            c = sw(c, k)\n        if c == st:\n            tot += 1\n            fav += seq[1] >= 4\n    v = Fraction(fav, tot)\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:29:04",
+    "hash": "291cb72052fb1cd8",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-06-007",
+  "theme": "PS-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-230929",
+    "variation": "일반화",
+    "note": "일반화"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-21-C1",
+      "확률과 통계-15-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "$\\overline X$의 분포표를 만들지 않고 $\\mathrm E(\\overline X^{2})=\\mathrm V(\\overline X)+\\{\\mathrm E(\\overline X)\\}^2$, $\\mathrm V(\\overline X)=\\frac{\\sigma^2}{n}$을 쓴다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "이해",
+  "question": "숫자 $1$이 적힌 공 $2$개, 숫자 $2$가 적힌 공 $1$개, 숫자 $4$가 적힌 공 $1$개가 들어 있는 주머니가 있다. 이 주머니에서 임의로 한 개의 공을 꺼내어 공에 적힌 수를 확인한 후 다시 넣는 시행을 한다. 이 시행을 $6$번 반복하여 확인한 $6$개의 수의 평균을 $\\overline{X}$라 할 때, $\\mathrm{E}\\left(\\overline{X}^{\\,2}\\right)=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "21",
+  "answer_value": "21",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-21-C1",
+      "확률과 통계-15-C2"
+    ],
+    "guide": "복원추출한 $n$개의 평균은 $\\mathrm E(\\overline X)=m$, $\\mathrm V(\\overline X)=\\frac{\\sigma^2}{n}$이다(확률과 통계-21-C1, 확률과 통계-15-C2). 한 번 꺼낸 수의 평균 $m$과 분산 $\\sigma^2$만 구하면 된다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "한 번의 분포",
+            "body": "$\\mathrm P(1)=\\frac12$, $\\mathrm P(2)=\\mathrm P(4)=\\frac14$. $\\mathrm E=\\frac12+\\frac12+1=2$, $\\mathrm E(Y^2)=\\frac12+1+4=\\frac{11}2$이므로 $\\sigma^2=\\frac{11}2-4=\\frac32$."
+          },
+          {
+            "label": "표본평균",
+            "body": "$\\mathrm E(\\overline X)=2$, $\\mathrm V(\\overline X)=\\dfrac{3/2}{6}=\\dfrac14$."
+          },
+          {
+            "label": "이차 적률",
+            "body": "$\\mathrm E(\\overline X^{2})=\\frac14+2^2=\\frac{17}4$이므로 $p+q=21$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "합의 분포",
+            "body": "$S=6\\overline X$는 $6\\sim24$의 값을 갖고 분포는 $4^6=4096$가지 경우로 정해진다. 값별 확률을 구해 $\\left(\\frac s6\\right)^2$을 곱하는 방법은 사실상 계산할 수 없다."
+          },
+          {
+            "label": "성질 이용",
+            "body": "그래서 결국 합의 평균과 분산을 쓴다. 한 번 꺼낸 수 $Y$의 $\\mathrm E(Y)=2$, $\\mathrm V(Y)=\\frac32$이고 $S$는 독립인 $6$개의 합이므로 $\\mathrm E(S)=12$, $\\mathrm V(S)=6\\cdot\\frac32=9$."
+          },
+          {
+            "label": "$\\mathrm E(S^2)$",
+            "body": "$\\mathrm E(S^2)=\\mathrm V(S)+\\{\\mathrm E(S)\\}^2=9+144=153$."
+          },
+          {
+            "label": "평균으로 환산",
+            "body": "$\\overline X=\\frac S6$이므로 $\\mathrm E(\\overline X^{2})=\\frac{153}{36}=\\frac{17}4$. $p+q=21$."
+          },
+          {
+            "label": "검산",
+            "body": "$\\mathrm V(\\overline X)=\\frac{9}{36}=\\frac14$, $\\mathrm E(\\overline X)=2$이므로 $\\frac14+4=\\frac{17}4$로 일치한다."
+          }
+        ]
+      }
+    ],
+    "supplement": "'표본평균의 분포'가 나오면 분포표를 그리고 싶어지지만, 묻는 것이 평균·분산·제곱의 기댓값이면 분포는 필요 없다. $\\overline X$의 분산은 모집단 분산의 $\\frac1n$이라는 사실 하나로 계산이 끝난다.",
+    "skill_point": "$\\mathrm E(\\overline X)=m$, $\\mathrm V(\\overline X)=\\dfrac{\\sigma^2}{n}$, $\\mathrm E(\\overline X^{2})=\\mathrm V+\\mathrm E^2$."
+  },
+  "verify": "def skill():\n    P = {1: Rational(1, 2), 2: Rational(1, 4), 4: Rational(1, 4)}\n    m = sum(p*x for x, p in P.items())\n    s2 = sum(p*x**2 for x, p in P.items()) - m**2\n    v = s2/6 + m**2\n    return v.p + v.q\n\ndef standard():\n    from itertools import product\n    vals = [1, 1, 2, 4]\n    tot = Fraction(0)\n    for t in product(vals, repeat=6):\n        tot += Fraction(sum(t), 6)**2\n    v = tot / 4**6\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:41",
+    "hash": "643550d719b69469",
+    "errors": [],
+    "warnings": []
+  }
+}

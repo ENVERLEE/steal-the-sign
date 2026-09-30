@@ -43,7 +43,9 @@ def check_problem(rec: dict, book: dict, pages: int | None, ctx: Context) -> tup
     rid = rec["id"]
     if not rid.startswith(f"T-{book.get('id')}-"):
         errs.append(f"id는 T-{book.get('id')}-NNN 형식")
-    if pages and rec["page"] > pages:
+    if not rec.get("page") and not book.get("mock"):
+        errs.append("page 필수 (실모 판독이면 book.mock: true)")
+    if pages and rec.get("page") and rec["page"] > pages:
         errs.append(f"page {rec['page']} > PDF {pages}쪽")
     t = ctx.themes.get(rec["theme"])
     if not t:

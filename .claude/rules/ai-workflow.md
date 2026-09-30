@@ -67,3 +67,9 @@ python run.py                   # 전체 파이프라인
 
 ## 교재 PDF 없이 만들 때
 3~5단계만 한다 (예제는 기출·창작에서 고름).
+
+## 실모 오답 특강 (분석 JSON을 받았을 때)
+1. 표기(`실모 제N회` 등)를 사용자에게 받아 `python run.py mock --json 분석.json --id MK1 --title "<표기>"`
+2. `work/mock/MK1_draft.json`(뼈대)에 `theme`·`first_judgment`·`similar`·`solution`·`verify` 등을 채워 `work/source/MK1.json`로 저장(`book.mock: true`, `page` 없음 → 출처 `{표기} {번호}번`). `python run.py source`로 검사. `mistake`(틀린 이유·패턴)는 REPLAY·DUGOUT NOTE·부록 유형 선정에 쓴다.
+3. 특강 모드(`book.special`) 책: 틀린 문제가 나온 테마만 챕터, 챕터당 약 20문항(`theme_plan.special_problems` [16,24]), 실모 문항이 예제.
+4. 계산 연습 부록(`book.appendix`): 계산실수 패턴 3~4개를 유형으로 정리, 유형당 40문항 이상, 전부 창작(`calc_type` 필드, `work/created/{테마}/`에 저장, 검문 한도 `created.calc_batch_max`=10). DAY 연습에는 쓰지 않는다. 해설 뒤·뒤표지 앞에 CALC·CALC_SOL 쪽으로 조판.

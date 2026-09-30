@@ -1,0 +1,80 @@
+{
+  "id": "C-M2-02-001",
+  "theme": "M2-02",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-250609",
+    "variation": "수치 변형",
+    "note": "이음매를 $x=2$로 옮기고 좌극한을 음수로 바꾼 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-04-C1"
+    ],
+    "strategy_ids": [
+      "S15",
+      "S16"
+    ],
+    "first_judgment": "불연속이 생길 수 있는 곳은 이음매 $x=2$뿐이므로, 좌극한과 함숫값의 제곱이 같도록 놓고 $L\\ne R$이므로 부호가 반대인 쪽을 고른다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "실수 전체의 집합에서 정의된 함수 $f(x)$가 $x<2$일 때 $f(x)=3x-16$, $x\\ge2$일 때 $f(x)=-x^2+6$이다. 함수 $\\{f(x)+a\\}^2$이 $x=2$에서 연속이 되도록 하는 상수 $a$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "4",
+  "answer_value": "4",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-04-C1"
+    ],
+    "guide": "조각함수의 연속은 이음매에서만 확인한다. 제곱이 씌워져 있으므로 $(L+a)^2=(R+a)^2$에서 $L\\ne R$이면 $L+a=-(R+a)$이다(수학Ⅱ-04-C1).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "불연속 후보",
+            "body": "각 조각은 다항식이라 연속이므로 이음매 $x=2$만 본다. 좌극한 $L=3\\cdot2-16=-10$, 함숫값 $R=f(2)=2$."
+          },
+          {
+            "label": "제곱 조건",
+            "body": "$(L+a)^2=(R+a)^2$이고 $L\\ne R$이므로 $L+a=-(R+a)$, 곧 $a=-\\dfrac{L+R}2=4$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "연속 조건",
+            "body": "$\\{f(x)+a\\}^2$은 조각마다 다항식의 합성이므로 $x=2$에서만 연속 여부가 갈린다. 연속이려면 좌극한, 우극한, 함숫값이 같아야 한다."
+          },
+          {
+            "label": "값 계산",
+            "body": "좌극한은 $\\{3\\cdot2-16+a\\}^2=(a-10)^2$이고, 함숫값과 우극한은 $\\{-4+6+a\\}^2=(a+2)^2$이다."
+          },
+          {
+            "label": "방정식",
+            "body": "$(a-10)^2=(a+2)^2$을 전개하면 $a^2-20a+100=a^2+4a+4$이므로 $24a=96$."
+          },
+          {
+            "label": "답",
+            "body": "$a=4$. 확인: $(4-10)^2=36=(4+2)^2$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$(a-10)^2=(a+2)^2$을 전개하면 $a^2$이 소거되어 일차방정식이 되지만, 처음부터 '$L+a=-(R+a)$'로 쓰면 전개할 필요가 없다. $L+a=R+a$로 놓으면 $L=R$이 되어 답이 없다는 것에서 실수를 알아챌 수 있다.",
+    "skill_point": "$A^2=B^2$이고 $A\\ne B$이면 $A=-B$. 제곱이 씌워진 연속 조건은 부호가 반대인 쪽으로 푼다."
+  },
+  "verify": "def skill():\n    L, R = 3*2 - 16, -2**2 + 6\n    return -Rational(L + R, 2)\n\ndef standard():\n    x, a = symbols('x a')\n    L = limit(3*x - 16, x, 2, '-')\n    R = (-x**2 + 6).subs(x, 2)\n    return solve((L + a)**2 - (R + a)**2, a)[0]\n\ndef unique():\n    x, a = symbols('x a')\n    L = limit(3*x - 16, x, 2, '-')\n    R = (-x**2 + 6).subs(x, 2)\n    return solve((L + a)**2 - (R + a)**2, a)\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:49:17",
+    "hash": "07f8585da1eaba77",
+    "errors": [],
+    "warnings": []
+  }
+}

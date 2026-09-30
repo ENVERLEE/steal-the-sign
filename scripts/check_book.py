@@ -54,6 +54,40 @@ def day_refs(d: dict) -> list[str]:
     return [d["first_pitch"]["ref"]] + [p["ref"] for p in d["practice"]]
 
 
+def check_appendix(app: dict | None, ctx: Context, log: Log) -> None:
+    """계산 연습 부록: 검문 통과(verified·해시 일치)한 calc_type 창작만, 부록 안 중복 금지"""
+    if not app:
+        return
+    seen = Counter()
+    lo, hi = ctx.config.get("appendix", {}).get("per_type", [1, 99])
+    rec_n = ctx.config.get("appendix", {}).get("per_type_recommended", 0)
+    for ti, ty in enumerate(app["types"], 1):
+        w = f"부록 유형 {ti} {ty['title']}"
+        if not lo <= len(ty["refs"]) <= hi:
+            log.error(w, f"문항 {len(ty['refs'])}개 (유형당 {lo}~{hi})")
+        elif len(ty["refs"]) < rec_n:
+            log.warn(w, f"문항 {len(ty['refs'])}개 — 유형당 {rec_n}개 이상이 목표")
+        for ref in ty["refs"]:
+            seen[ref] += 1
+            e = ctx.created.get(ref)
+            if not e:
+                log.error(f"{w} {ref}", "문제은행(work/created)에 없는 창작 id")
+                continue
+            rec = e["rec"]
+            rv = rec.get("review") or {}
+            if rec.get("status") != "verified" or rv.get("hash") != body_hash(rec):
+                log.error(f"{w} {ref}", "검문을 통과하지 않은 창작 (python run.py created)")
+            if not rec.get("calc_type"):
+                log.error(f"{w} {ref}", "부록에는 calc_type이 있는 계산 연습 창작만 쓴다")
+            elif rec["calc_type"] != ty["title"]:
+                log.warn(f"{w} {ref}", f"calc_type '{rec['calc_type']}'과 유형 이름이 다름")
+            if rec.get("figure"):
+                log.warn(f"{w} {ref}", "부록 쪽은 짧은 계산 위주 — 그림 문항은 피할 것")
+    for ref, n in seen.items():
+        if n > 1:
+            log.error(f"부록 {ref}", f"부록 안에서 {n}번 중복")
+
+
 def run(ctx: Context) -> Log:
     log = Log("check_book")
     cfg = ctx.config
@@ -131,6 +165,8 @@ def run(ctx: Context) -> Log:
                 rv = rec.get("review") or {}
                 if rec.get("status") != "verified" or rv.get("hash") != body_hash(rec):
                     log.error(where, "검문을 통과하지 않은 창작 (python run.py created)")
+                if rec.get("calc_type"):
+                    log.error(where, f"계산 연습 부록 전용 창작(calc_type={rec['calc_type']}) — DAY 연습에는 쓰지 않는다")
                 if rec.get("theme") != th and not reuse_notes.get(ref):
                     log.error(where, f"다른 테마({rec.get('theme')}) 창작을 쓰려면 reuse_note 필요")
                 behaviors[rec.get("behavior")] += 1
@@ -227,6 +263,9 @@ def run(ctx: Context) -> Log:
         need = min(len(tb_all), s["days"], hi)
         if tb_examples[th] < need:
             log.warn(th, f"교재 문항 예제 {tb_examples[th]}개 — 교재 문항을 예제로 {need}개 쓰는 것이 원칙")
+
+    # ---- 부록(계산 연습): 창작 문항만
+    check_appendix(book.get("appendix"), ctx, log)
 
     # ---- 사용 횟수
     mx = cfg["reuse"]["max_uses"]

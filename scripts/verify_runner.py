@@ -9,12 +9,15 @@ import io
 import itertools
 import json
 import math
+import re
 import sys
 from fractions import Fraction
 
 
 def _fmt(v):
     import sympy
+    if isinstance(v, str) and re.search("[\u3131-\u318e\uac00-\ud7a3]", v):
+        return v  # ㄱ, ㄴ, ㄷ 같은 보기 조합은 그대로
     if isinstance(v, (list, tuple, set, frozenset)):
         return [_fmt(x) for x in v]
     if isinstance(v, Fraction):

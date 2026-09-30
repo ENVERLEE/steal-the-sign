@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-04-005",
+  "theme": "PS-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-230630",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-12-C1",
+      "확률과 통계-12-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "분모는 '$b-a\\ge3$'을 만족하는 조합의 수이다. 간격 조건을 수를 당겨 놓는 치환으로 바꿔 일반 조합으로 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "문제해결",
+  "question": "$1$부터 $10$까지의 자연수가 하나씩 적힌 $10$장의 카드 중에서 임의로 $3$장을 한꺼번에 뽑는다. 뽑은 카드에 적힌 세 수를 작은 것부터 차례로 $a,\\,b,\\,c$라 하자. $b-a\\ge3$일 때, $c-b\\ge3$일 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "19",
+  "answer_value": "19",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-12-C1",
+      "확률과 통계-12-C2"
+    ],
+    "guide": "간격이 $3$ 이상이라는 조건은 두 수 사이에 최소 $2$개가 빈다는 뜻이다. $b'=b-2$로 놓으면 $b-a\\ge3\\iff a<b'$이므로 조합의 수를 바로 센다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "분모",
+            "body": "$b-a\\ge3$인 $(a,b,c)$: $b'=b-2$, $c'=c-2$로 놓으면 $a<b'<c'\\le8$이므로 $\\binom83=56$."
+          },
+          {
+            "label": "분자",
+            "body": "$c-b\\ge3$도 함께: $b'=b-2$, $c'=c-4$로 놓으면 $a<b'<c'\\le6$이므로 $\\binom63=20$."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{20}{56}=\\frac5{14}$이므로 $p+q=19$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "분모를 직접",
+            "body": "$a$를 정하고 $b\\ge a+3$인 $b$를 정한 뒤 $c>b$를 센다: $a=1$이면 $b=4,\\dots,9$에 대해 $c$가 $10-b$개, $a=2$이면 $b=5,\\dots,9$, …"
+          },
+          {
+            "label": "합",
+            "body": "$a=1$: $6+5+4+3+2+1=21$, $a=2$: $15$, $a=3$: $10$, $a=4$: $6$, $a=5$: $3$, $a=6$: $1$, 합 $56$."
+          },
+          {
+            "label": "분자를 직접",
+            "body": "$b-a\\ge3$이고 $c-b\\ge3$인 $(a,b,c)$를 $a=1$부터 $b$별로 센다: $a=1$: $b=4$에 $c=7,8,9,10$ 등."
+          },
+          {
+            "label": "합",
+            "body": "$a=1$: $4+3+2+1=10$, $a=2$: $6$, $a=3$: $3$, $a=4$: $1$이므로 $20$."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{20}{56}=\\frac5{14}$이므로 $p+q=19$."
+          }
+        ]
+      }
+    ],
+    "supplement": "간격 조건은 값에 상수를 빼서 '단순 대소 관계'로 바꾸는 것이 핵심이다. 분자는 분모 안에서 한 조건이 더해진 사건이라는 점에서 분모와 같은 치환을 한 번 더 쓴다.",
+    "skill_point": "간격 조건은 치환으로 눌러 조합 하나로, 분자는 분모 위에 조건을 더한다."
+  },
+  "verify": "def skill():\n    v = Fraction(binomial(6, 3), binomial(8, 3))\n    return v.numerator + v.denominator\n\ndef standard():\n    from itertools import combinations\n    A = [s for s in combinations(range(1, 11), 3) if s[1] - s[0] >= 3]\n    B = [s for s in A if s[2] - s[1] >= 3]\n    v = Fraction(len(B), len(A))\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:29:03",
+    "hash": "0b409f9d8329bec1",
+    "errors": [],
+    "warnings": []
+  }
+}

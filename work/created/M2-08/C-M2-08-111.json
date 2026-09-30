@@ -1,0 +1,90 @@
+{
+  "id": "C-M2-08-111",
+  "theme": "M2-08",
+  "origin": {
+    "type": "original",
+    "note": "정적분 대입 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-14-C2",
+      "수학Ⅱ-18-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "대칭구간 [-a, a]에서는 홀수 차수 항의 적분이 0이므로 짝수 차수 항만 두 배 한다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "$\\displaystyle\\int_{-1}^{1}\\left(x^2+x+2\\right)\\left(x+5\\right)dx$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "24",
+  "answer_value": "24",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-14-C2",
+      "수학Ⅱ-18-C3"
+    ],
+    "guide": "대칭구간 [-a, a]에서는 홀수 차수 항의 적분이 0이므로 짝수 차수 항만 두 배 한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "삭제",
+            "body": "구간이 $[-1,1]$이므로 홀수 차수 항은 적분하면 $0$이다. 남는 것은 짝수 차수 항 $6x^2+10$"
+          },
+          {
+            "label": "2배",
+            "body": "$2\\int_0^{1}\\left(6x^2+10\\right)dx=2\\left[2x^3+10x\\right]_0^{1}=2\\times12=24$"
+          },
+          {
+            "label": "답",
+            "body": "$24$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전개",
+            "body": "피적분함수를 전개하면 $x^3+6x^2+7x+10$"
+          },
+          {
+            "label": "부정적분",
+            "body": "$F(x)=\\frac{1}{4}x^4+2x^3+\\frac{7}{2}x^2+10x$"
+          },
+          {
+            "label": "위끝",
+            "body": "$F(1)=\\frac{63}{4}$"
+          },
+          {
+            "label": "아래끝",
+            "body": "$F(-1)=-\\frac{33}{4}$이고 음수를 대입할 때 부호와 분모를 함께 다룬다."
+          },
+          {
+            "label": "답",
+            "body": "$F(1)-F(-1)=24$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "전개한 뒤 −a를 대입하면 홀수 차수 항의 부호가 뒤집혀 같은 분수를 두 번 계산하게 된다. 구간이 대칭이면 상·하한 대입 자체를 하지 않는다.",
+    "skill_point": "대칭구간이면 홀수 차수 항은 적분하지 않고 짝수 차수 항만 두 배."
+  },
+  "verify": "def skill():\n    v = 2*(Fraction(10,1)*Fraction(1)**1/1+Fraction(6,1)*Fraction(1)**3/3)\n    return int(v)\n\ndef standard():\n    x = Symbol('x')\n    v = Rational(integrate((10)*x**0+(7)*x**1+(6)*x**2+(1)*x**3, (x, -1, 1)))\n    return int(v)\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "정적분 대입과 넓이 공식",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:42",
+    "hash": "3c1d9ea1979d09ce",
+    "errors": [],
+    "warnings": []
+  }
+}

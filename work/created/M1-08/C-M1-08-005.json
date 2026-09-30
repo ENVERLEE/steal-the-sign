@@ -1,0 +1,103 @@
+{
+  "id": "C-M1-08-005",
+  "theme": "M1-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-240612",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-13-C1"
+    ],
+    "strategy_ids": [
+      "S09"
+    ],
+    "first_judgment": "주어진 항 $a_2$를 기준으로 모든 항을 '$-5$ + (칸 수)$\\times d$'로 쓰고, $a_n+a_{n+2}=2a_{n+1}$임을 알아본 뒤 두 집합의 원소가 같다는 식을 $d$의 정수 배 관계로 바꾸어 센다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "공차가 $0$이 아닌 등차수열 $\\{a_n\\}$이 $a_2=-5$를 만족시킨다. $1\\le n\\le5$인 자연수 $n$에 대하여 $a_n$의 값을 원소로 하는 집합을 $X$, $a_n+a_{n+2}$의 값을 원소로 하는 집합을 $Y$라 하자. $X$의 원소 중 $Y$에도 속하는 것이 정확히 $3$개가 되도록 하는 모든 수열 $\\{a_n\\}$에 대하여 $a_{20}$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "123",
+  "answer_value": "123",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-13-C1"
+    ],
+    "guide": "$a_n+a_{n+2}=2a_{n+1}$이므로 $Y=\\{2a_2,2a_3,\\dots,2a_6\\}$이다. 기준 항 $a_2=-5$에서 $a_i=-5+(i-2)d$ 꼴로 쓰면 $a_i=2a_{j+1}$은 $d$의 정수 배가 $5$와 같다는 식이 된다(수학Ⅰ-13-C1).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "원소 표현",
+            "body": "$X$의 원소는 $a_i=-5+(i-2)d$ ($1\\le i\\le5$), $Y$의 원소는 $2a_{j+1}=-10+2(j-1)d$ ($1\\le j\\le5$)."
+          },
+          {
+            "label": "겹침 조건",
+            "body": "$a_i=2a_{j+1}$이면 $-5+(i-2)d=-10+2(j-1)d$, 곧 $(i-2j)\\,d=-5$. $k=2j-i$로 두면 $kd=5$."
+          },
+          {
+            "label": "$k$별 쌍의 수",
+            "body": "$1\\le i,j\\le5$에서 $k=2j-i$가 같은 쌍 $(i,j)$의 수를 세면 $k=1,3,5$일 때 각각 $3$쌍이고, $k=2,4,6,7,-1$은 $2$쌍, 그 밖은 $1$쌍이다. 쌍마다 서로 다른 원소이므로 $|X\\cap Y|=3$이 되는 것은 $k=1,3,5$."
+          },
+          {
+            "label": "$d$",
+            "body": "$d=\\dfrac5k=5,\\ \\dfrac53,\\ 1$."
+          },
+          {
+            "label": "답",
+            "body": "$a_{20}=-5+18d$의 합 $=(-5+90)+(-5+30)+(-5+18)=85+25+13=123$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "표로 정리",
+            "body": "$X$의 원소: $-5-d,\\ -5,\\ -5+d,\\ -5+2d,\\ -5+3d$. $Y$의 원소: $-10,\\ -10+2d,\\ -10+4d,\\ -10+6d,\\ -10+8d$."
+          },
+          {
+            "label": "한 쌍씩 비교",
+            "body": "25개의 쌍 $(i,j)$마다 $a_i=2a_{j+1}$이 되는 $d$를 구한다: $(i-2j)d=-5$이므로 $d=\\dfrac{5}{2j-i}$ ($2j\\ne i$)."
+          },
+          {
+            "label": "$d$ 후보",
+            "body": "$2j-i$의 값은 $-3,-2,-1,1,2,\\dots,9$이므로 $d$ 후보는 $5,\\ \\dfrac52,\\ \\dfrac53,\\ \\dfrac54,\\ 1,\\ \\dfrac56,\\ \\dfrac57,\\ \\dfrac58,\\ \\dfrac59,\\ -5,\\ -\\dfrac52,\\ -\\dfrac53$이다."
+          },
+          {
+            "label": "개수 세기",
+            "body": "각 후보 $d$에 대해 $X\\cap Y$의 원소를 실제로 나열해 세면 $d=5,\\ \\dfrac53,\\ 1$일 때만 $3$개이다."
+          },
+          {
+            "label": "답",
+            "body": "$a_{20}=-5+18d$이므로 $85+25+13=123$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          },
+          {
+            "label": "확인 2",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "두 집합의 원소를 하나씩 비교하면 25쌍을 모두 검사해야 한다. 모든 항을 기준 항 $a_2$와 $d$의 정수 배로 쓰면 '몇 칸 어긋나는가'가 $k=2j-i$ 하나로 요약되어 후보가 $d=\\dfrac5k$ 꼴로 한 번에 정리된다. 나온 $d$ 후보마다 겹침이 정확히 3개인지 세어 확인하는 단계를 빠뜨리지 않는다.",
+    "skill_point": "기준 항 + 칸 수 $\\times d$로 통일하면 '항이 같다'가 '$d$의 정수 배가 상수와 같다'로 바뀐다."
+  },
+  "verify": "def skill():\n    ds = set()\n    for i in range(1, 6):\n        for j in range(1, 6):\n            k = 2*j - i\n            if k != 0:\n                ds.add(Rational(5, k))\n    tot = 0\n    for d in ds:\n        X = {-5 + (i - 2)*d for i in range(1, 6)}\n        Y = {-10 + 2*(j - 1)*d for j in range(1, 6)}\n        if len(X & Y) == 3:\n            tot += -5 + 18*d\n    return tot\n\ndef standard():\n    d = Symbol('d')\n    def a(n):\n        return -5 + (n - 2)*d\n    cand = set()\n    for i in range(1, 6):\n        for j in range(1, 6):\n            yj = a(j) + a(j + 2)\n            for s in solve(Eq(a(i), yj), d):\n                if s != 0:\n                    cand.add(s)\n    tot = 0\n    for s in cand:\n        X = {simplify(a(i).subs(d, s)) for i in range(1, 6)}\n        Y = {simplify((a(j) + a(j + 2)).subs(d, s)) for j in range(1, 6)}\n        if len(X & Y) == 3:\n            tot += a(20).subs(d, s)\n    return tot\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:30:37",
+    "hash": "0c09f9045958f4b7",
+    "errors": [],
+    "warnings": []
+  }
+}

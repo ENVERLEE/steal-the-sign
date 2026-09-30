@@ -55,7 +55,8 @@ def plan_theme(th: str, tb: list[dict], ctx: Context) -> dict:
     past_total = past_n + past_examples
 
     created_pool = sorted(rid for rid, e in ctx.created.items()
-                          if e["rec"].get("theme") == th and e["rec"].get("status") == "verified")
+                          if e["rec"].get("theme") == th and e["rec"].get("status") == "verified"
+                          and not e["rec"].get("calc_type"))
     total = tb_used + past_total
     want_created = max(0, lo - total)
     created = created_pool[:want_created]
@@ -121,7 +122,7 @@ def run(ctx: Context) -> Log:
     order = list(ctx.themes)
     plans = []
     for th in sorted(by_theme, key=order.index):
-        tb = sorted(by_theme[th], key=lambda r: (r["page"], r["id"]))
+        tb = sorted(by_theme[th], key=lambda r: (r.get("page") or 0, r["id"]))
         p = plan_theme(th, tb, ctx)
         plans.append(p)
         for n in p["notes"]:
@@ -157,7 +158,7 @@ def describe(ref: str, ctx: Context) -> str:
     if ref.startswith("T-"):
         e = ctx.source[ref]
         r = e["rec"]
-        return f"`{ref}` 교재 {r['page']}쪽 {r['number']}번 — {_short(r['first_judgment'])}"
+        return f"`{ref}` 교재 {str(r['page']) + '쪽 ' if r.get('page') else ''}{r['number']}번 — {_short(r['first_judgment'])}"
     if ref.startswith("C-"):
         r = ctx.created[ref]["rec"]
         return f"`{ref}` 창작 — {_short(r['target']['first_judgment'])}"

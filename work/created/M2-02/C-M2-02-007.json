@@ -1,0 +1,98 @@
+{
+  "id": "C-M2-02-007",
+  "theme": "M2-02",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-230922",
+    "variation": "결합",
+    "note": "부호에 따라 계수가 달라지는 조각함수의 꺾임을 절댓값의 꺾임으로 상쇄"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-07-C1",
+      "수학Ⅱ-04-C2"
+    ],
+    "strategy_ids": [
+      "S15",
+      "S16"
+    ],
+    "first_judgment": "$g$의 꺾임은 단순근 $\\beta$ 한 곳뿐이고 그 크기는 $-(\\beta-\\alpha)^2$이므로, $8|x-3|$의 꺾임 $+16$과 상쇄되도록 $\\beta=3$, $(3-\\alpha)^2=16$으로 번역한다."
+  },
+  "difficulty": "고난도",
+  "behavior": "추론",
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킬 때, $f(0)$의 최댓값과 최솟값의 곱을 구하시오.\n(가) 방정식 $f(x)=0$의 서로 다른 실근의 개수는 $2$이다.\n(나) $g(x)=\\begin{cases}f(x) & (f(x)\\ge0)\\\\ 2f(x) & (f(x)<0)\\end{cases}$일 때, 함수 $h(x)=g(x)+8|x-3|$이 실수 전체의 집합에서 미분가능하다.",
+  "condition": null,
+  "choices": null,
+  "answer": "441",
+  "answer_value": "441",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-07-C1",
+      "수학Ⅱ-04-C2"
+    ],
+    "guide": "(가)로 $f=(x-\\alpha)^2(x-\\beta)$, 중근은 매끄럽고 단순근 $\\beta$에서만 $g$가 꺾인다(수학Ⅱ-07-C1). 기울기 변화량을 세어 $8|x-3|$의 꺾임과 크기가 같고 방향이 반대이게 만든다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "f의 꼴",
+            "body": "(가)에서 $f(x)=(x-\\alpha)^2(x-\\beta)$ ($\\alpha\\ne\\beta$). $f<0$인 곳은 $x<\\beta$이므로 $g$는 $\\beta$의 왼쪽에서 $2f$, 오른쪽에서 $f$."
+          },
+          {
+            "label": "g의 꺾임",
+            "body": "$g$는 중근 $\\alpha$에서 매끄럽고 $\\beta$에서만 꺾인다. 기울기 변화량은 $f'(\\beta)-2f'(\\beta)=-(\\beta-\\alpha)^2$."
+          },
+          {
+            "label": "상쇄",
+            "body": "$8|x-3|$의 기울기 변화량은 $+16$ ($x=3$). 꺾임이 하나씩 남지 않으려면 $\\beta=3$이고 $(3-\\alpha)^2=16$, $\\alpha=-1$ 또는 $7$."
+          },
+          {
+            "label": "f(0)",
+            "body": "$f(0)=-3\\alpha^2$이므로 $-3$ 또는 $-147$. 곱은 $441$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "f의 꼴",
+            "body": "삼차함수가 서로 다른 실근을 정확히 두 개 가지면 한 근은 중근이다. 중근을 $\\alpha$, 단순근을 $\\beta$라 하면 $f(x)=(x-\\alpha)^2(x-\\beta)$ ($\\alpha\\ne\\beta$)."
+          },
+          {
+            "label": "g 쓰기",
+            "body": "$(x-\\alpha)^2\\ge0$이므로 $f<0\\iff x<\\beta$ ($x\\ne\\alpha$). 그러므로 $g(x)=2f(x)$ ($x<\\beta$), $g(x)=f(x)$ ($x\\ge\\beta$)."
+          },
+          {
+            "label": "미분불가능 후보",
+            "body": "$g$의 꺾임 후보는 $x=\\beta$와 $x=\\alpha$. $x=\\alpha$ 근방에서는 $f\\ge0$이므로 $g=f$ 하나의 식이라 매끄럽다. $x=\\beta$의 좌미분계수는 $2f'(\\beta)$, 우미분계수는 $f'(\\beta)$이고 $f'(\\beta)=(\\beta-\\alpha)^2>0$이다."
+          },
+          {
+            "label": "h의 조건",
+            "body": "$8|x-3|$은 $x=3$에서 좌미분계수 $-8$, 우미분계수 $8$. $h$가 $x=3$에서 미분가능하려면 $\\beta=3$이어야 하고 (그렇지 않으면 $\\beta$와 $3$ 두 곳이 모두 꺾인다), 이때 좌·우미분계수가 같아야 하므로 $2f'(3)-8=f'(3)+8$, $f'(3)=16$."
+          },
+          {
+            "label": "α 결정",
+            "body": "$f'(3)=(3-\\alpha)^2=16$이므로 $\\alpha=-1$ 또는 $\\alpha=7$ (둘 다 $\\alpha\\ne3$)."
+          },
+          {
+            "label": "f(0)",
+            "body": "$f(0)=\\alpha^2\\cdot(-3)$: $\\alpha=-1$이면 $-3$, $\\alpha=7$이면 $-147$. 최댓값과 최솟값의 곱은 $(-3)(-147)=441$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f=x^3+px^2+qx+r$로 열면 미지수가 셋이라 (나)의 조건이 정리되지 않는다. 또 꺾임이 사라지려면 두 꺾임이 '같은 점'에 있어야 한다는 것을 먼저 쓰지 않으면 $\\beta\\ne3$인 경우를 놓친다. $\\alpha=3$은 $\\alpha\\ne\\beta$로 이미 배제되므로 후보가 둘이다.",
+    "skill_point": "꺾이는 점의 개수를 세고(위치 일치), 기울기 변화량을 세어(크기 일치) 상쇄 조건을 세운다. 중근은 꺾이지 않는다."
+  },
+  "verify": "from fractions import Fraction as Fr\n\ndef cand():\n    out = set()\n    e = Fr(1, 10**6)\n    for al2 in range(-30, 41):\n        for be2 in range(-30, 41):\n            al, be = Fr(al2, 2), Fr(be2, 2)\n            if al == be:\n                continue\n            def h(t):\n                fv = (t - al)**2*(t - be)\n                return (fv if fv >= 0 else 2*fv) + 8*abs(t - 3)\n            ok = True\n            for a in {al, be, Fr(3)}:\n                sl = (h(a + e) - h(a))/e\n                sr = (h(a) - h(a - e))/e\n                if abs(sl - sr) > Fr(1, 100):\n                    ok = False\n                    break\n            if ok:\n                out.add(-(al**2)*be)\n    return out\n\ndef skill():\n    vals = [-3*al**2 for al in (-1, 7) if (3 - al)**2 == 16]\n    return max(vals)*min(vals)\n\ndef standard():\n    v = cand()\n    return max(v)*min(v)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:49:24",
+    "hash": "68e1c8d5b0198b65",
+    "errors": [],
+    "warnings": []
+  }
+}

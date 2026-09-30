@@ -1,0 +1,87 @@
+{
+  "id": "C-M1-02-006",
+  "theme": "M1-02",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-260622",
+    "variation": "일반화",
+    "note": "일반화"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-03-C3"
+    ],
+    "strategy_ids": [
+      "S05"
+    ],
+    "first_judgment": "$y=2^{x-4}-4$는 $y=2^x$을 $(4,-4)$만큼 평행이동한 곡선이고 $(4,-4)$는 기울기 $-1$ 방향이므로 $\\mathrm{B}=\\mathrm{A}+(4,-4)$이다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "문제해결",
+  "question": "곡선 $y=2^{x}$ 위의 점 $\\mathrm{A}$의 $x$좌표를 $t$ $(t>0)$라 하자. 점 $\\mathrm{A}$를 지나고 기울기가 $-1$인 직선이 곡선 $y=2^{x-4}-4$와 만나는 점을 $\\mathrm{B}$라 할 때, 삼각형 $\\mathrm{AOB}$의 넓이가 $40$이다. $t\\times2^{t}$의 값을 구하시오. (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "64",
+  "answer_value": "64",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-03-C3"
+    ],
+    "guide": "곡선 $y=2^{x-4}-4$는 $y=2^x$을 $x$축 방향으로 $4$, $y$축 방향으로 $-4$만큼 옮긴 것이다. 이동 벡터 $(4,-4)$의 기울기가 $-1$이므로, $\\mathrm{A}$를 이 벡터만큼 옮긴 점은 이동된 곡선 위에 있고 동시에 기울기 $-1$인 직선 위에 있다(수학Ⅰ-03-C3). 증가 곡선과 감소 직선은 한 번만 만나므로 이 점이 $\\mathrm{B}$이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "점 B",
+            "body": "$\\mathrm{A}(t,2^t)$를 $(4,-4)$만큼 옮긴 $\\mathrm{B}(t+4,\\,2^t-4)$가 답이다. 따라서 $\\overline{\\mathrm{AB}}=4\\sqrt2$로 $t$와 관계없이 일정하다."
+          },
+          {
+            "label": "넓이",
+            "body": "직선 $\\mathrm{AB}$는 $x+y=t+2^t$이고 원점에서의 거리는 $\\frac{t+2^t}{\\sqrt2}$이다. 넓이는 $\\frac12\\cdot4\\sqrt2\\cdot\\frac{t+2^t}{\\sqrt2}=2(t+2^t)=40$이므로 $t+2^t=20$이다."
+          },
+          {
+            "label": "답",
+            "body": "$t+2^t$은 증가하고 $4+2^4=20$이므로 $t=4$이다. 구하는 값은 $4\\times2^4=64$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "점 B의 좌표",
+            "body": "$\\mathrm{B}$의 $x$좌표를 $u$라 하면 직선 $y=-(x-t)+2^t$ 위의 점이므로 $2^{u-4}-4=2^{t}-(u-t)$이다."
+          },
+          {
+            "label": "근의 확인",
+            "body": "$u=t+4$를 넣으면 좌변 $2^{t}-4$, 우변 $2^{t}-4$로 같다. 좌변은 $u$에 대하여 증가하고 우변은 감소하므로 근은 이것 하나뿐이고 $\\mathrm{B}(t+4,\\,2^t-4)$이다."
+          },
+          {
+            "label": "넓이 공식",
+            "body": "$\\mathrm{O}$, $\\mathrm{A}(t,2^t)$, $\\mathrm{B}(t+4,2^t-4)$에 대하여 넓이는 $\\frac12\\left|t(2^t-4)-(t+4)2^t\\right|=\\frac12\\left|-4t-4\\cdot2^t\\right|=2(t+2^t)$이다."
+          },
+          {
+            "label": "방정식",
+            "body": "$2(t+2^t)=40$에서 $t+2^t=20$이다. $t=1,2,3$일 때 $3,6,11$이고 $t=4$일 때 $20$이다. 좌변은 증가함수이므로 $t=4$뿐이다."
+          },
+          {
+            "label": "답",
+            "body": "$t\\times2^{t}=4\\times16=64$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\mathrm{B}$의 좌표를 $2^{u-4}-4=2^t-u+t$에서 직접 풀려고 하면 초월방정식이라 막힌다. 두 곡선의 평행이동 관계를 먼저 읽으면 이 방정식을 풀지 않고도 근이 보인다. 넓이를 좌표로 계산할 때 $t$가 소거되는 것도 같은 구조 덕분이다.",
+    "skill_point": "곡선이 평행이동 관계이고 이동 방향이 직선의 방향이면, 점을 이동 벡터만큼 옮긴 것이 교점이다."
+  },
+  "verify": "\ndef bis(f, lo, hi, n=200):\n    flo = f(lo)\n    for _ in range(n):\n        m = (lo + hi) / 2\n        fm = f(m)\n        if (flo <= 0) == (fm <= 0):\n            lo, flo = m, fm\n        else:\n            hi = m\n    return (lo + hi) / 2\n\ndef _area(t):\n    s = t + 2**t\n    xb = bis(lambda x: 2**(x-4) - 4 - (s - x), -50, 50)\n    yb = s - xb\n    return abs(t*yb - xb*2**t) / 2\n\ndef skill():\n    s = Rational(40, 2)\n    t = next(k for k in range(1, 30) if k + 2**k == s)\n    return t * 2**t\n\ndef standard():\n    t = bis(lambda t: _area(t) - 40, 0.001, 30)\n    return round(t * 2**t)\n\ndef unique():\n    xs = [0.01 + 0.05*k for k in range(500)]\n    vals = [_area(x) for x in xs]\n    assert all(v2 > v1 for v1, v2 in zip(vals, vals[1:]))\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:31:11",
+    "hash": "e52235c4cfd50894",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "C-M1-04-002",
+  "theme": "M1-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-251110",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C3"
+    ],
+    "strategy_ids": [
+      "S06"
+    ],
+    "first_judgment": "최솟값 $-a-2$로 $a$를 정하고, 최솟값을 갖는 위치는 위상이 $\\frac{3\\pi}2+2n\\pi$가 된다는 정수 조건으로 바꾼다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "닫힌구간 $[0,\\pi]$에서 정의된 함수 $f(x)=a\\sin bx-2$가 $x=\\dfrac\\pi6$에서 최솟값 $-12$를 갖도록 하는 두 자연수 $a$, $b$의 순서쌍 $(a,b)$에 대하여 $a+b$의 최솟값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "19",
+  "answer_value": "19",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C3"
+    ],
+    "guide": "$a>0$이므로 $a\\sin bx$가 $-a$일 때 $f$가 최소이다. $b\\ge2$이면 $bx$가 $[0,b\\pi]$를 지나면서 $\\frac{3\\pi}2$를 포함하므로 $\\sin bx=-1$에 도달하고 최솟값은 $-a-2$이다(수학Ⅰ-09-C3). 그 위치가 $x=\\frac\\pi6$이라는 조건은 $\\sin\\frac{b\\pi}6=-1$, 곧 위상이 $\\frac{3\\pi}2+2n\\pi$라는 정수 조건이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "a의 결정",
+            "body": "$b=1$이면 $[0,\\pi]$에서 $\\sin x\\ge0$이라 최솟값이 $-2$이므로 $b\\ge2$이다. 그러면 최솟값은 $-a-2=-12$이므로 $a=10$이다."
+          },
+          {
+            "label": "위상 조건",
+            "body": "$f\\left(\\frac\\pi6\\right)=-12$에서 $\\sin\\frac{b\\pi}6=-1$이다. 곧 $\\frac{b\\pi}6=\\frac{3\\pi}2+2n\\pi$이므로 $b=9+12n$ ($n=0,1,2,\\cdots$)이다."
+          },
+          {
+            "label": "답",
+            "body": "$b$의 최솟값은 $9$이므로 $a+b$의 최솟값은 $10+9=19$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "값의 범위",
+            "body": "$b=1$이면 $x\\in[0,\\pi]$에서 $\\sin x\\ge0$이므로 $f\\ge-2$이고 최솟값 $-12$가 나올 수 없다. $b\\ge2$이면 $bx$가 $[0,b\\pi]$ 전체를 지나 $\\frac{3\\pi}2$를 포함하므로 $\\sin bx$는 $-1$까지 내려간다."
+          },
+          {
+            "label": "a",
+            "body": "따라서 최솟값은 $-a-2$이고 $-a-2=-12$에서 $a=10$이다."
+          },
+          {
+            "label": "위치 조건",
+            "body": "$f\\left(\\frac\\pi6\\right)=10\\sin\\frac{b\\pi}6-2=-12$에서 $\\sin\\frac{b\\pi}6=-1$이다. 사인이 $-1$이 되는 각은 $\\frac{3\\pi}2+2n\\pi$이다."
+          },
+          {
+            "label": "b의 나열",
+            "body": "$\\frac{b\\pi}6=\\frac{3\\pi}2+2n\\pi$에서 $b=9+12n$이므로 $b=9,21,33,\\cdots$이고 순서쌍은 $(10,9),(10,21),\\cdots$이다."
+          },
+          {
+            "label": "최솟값",
+            "body": "$a+b=19,31,43,\\cdots$ 중 가장 작은 값은 $19$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a$와 $b$를 함께 열어 두고 $f\\left(\\frac\\pi6\\right)=-12$만 풀려고 하면 해가 무수히 많아 보인다. 먼저 최솟값이 $-a-2$라는 사실로 $a$를 고정하면 남은 조건은 $b$에 대한 합동식 하나이다.",
+    "skill_point": "최솟값·최댓값 조건은 진폭으로 계수를, 위치 조건은 위상 $=2n\\pi$ 꼴의 정수 조건으로 바꾼다."
+  },
+  "verify": "\ndef skill():\n    a = 12 - 2\n    b = 9\n    return a + b\n\ndef _pairs():\n    xs = np.linspace(0, math.pi, 20001)\n    res = []\n    for a in range(1, 41):\n        for b in range(1, 41):\n            f = a*np.sin(b*xs) - 2\n            if abs(f.min() + 12) < 1e-3 and abs(a*math.sin(b*math.pi/6) - 2 + 12) < 1e-9:\n                res.append((a, b))\n    return res\n\ndef standard():\n    return min(a + b for a, b in _pairs())\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:33:33",
+    "hash": "9a88d17f240ae6ec",
+    "errors": [],
+    "warnings": []
+  }
+}

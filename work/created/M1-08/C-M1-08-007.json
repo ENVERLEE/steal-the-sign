@@ -1,0 +1,97 @@
+{
+  "id": "C-M1-08-007",
+  "theme": "M1-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-240921",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-14-C1",
+      "수학Ⅰ-14-C4"
+    ],
+    "strategy_ids": [
+      "S09"
+    ],
+    "first_judgment": "합들의 합은 $a_1$과 $d$로 정리하면 '$a_1+3d$'가 나오므로 특정 항($a_4$)으로 읽어 미지수를 줄이고, 남은 정수 조건은 배수 나열로 후보를 자른다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "등차수열 $\\{a_n\\}$의 모든 항은 자연수이고, $S_n$은 첫째항부터 제$n$항까지의 합이다. $S_1+S_2+\\cdots+S_{10}=1265$이고 $a_9$가 $7$의 배수일 때, $a_{12}$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "31",
+  "answer_value": "31",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-14-C1",
+      "수학Ⅰ-14-C4"
+    ],
+    "guide": "$\\sum_{k=1}^{10}S_k=55a_1+165d=55(a_1+3d)=55a_4$이다(수학Ⅰ-14-C1). 모든 항이 자연수인 등차수열이므로 공차는 $0$ 이상의 정수이다. $a_9=a_4+5d$가 7의 배수라는 정수 조건으로 $d$를 좁힌다(수학Ⅰ-14-C4).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "합들의 합",
+            "body": "$\\sum_{k=1}^{10}S_k=55a_4=1265$이므로 $a_4=23$."
+          },
+          {
+            "label": "정수 조건",
+            "body": "$a_9=a_4+5d=23+5d$가 $7$의 배수이므로 $5d\\equiv-23\\equiv5\\pmod7$, 곧 $d\\equiv1\\pmod7$."
+          },
+          {
+            "label": "범위",
+            "body": "$a_1=23-3d>0$이므로 $d\\le7$. 따라서 $d=1$이고 $a_1=20$."
+          },
+          {
+            "label": "답",
+            "body": "$a_{12}=a_4+8d=23+8=31$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$S_k$",
+            "body": "$S_k=ka_1+\\dfrac{k(k-1)}2d$."
+          },
+          {
+            "label": "합",
+            "body": "$\\sum_{k=1}^{10}S_k=55a_1+d\\sum_{k=1}^{10}\\dfrac{k(k-1)}2=55a_1+165d=1265$이므로 $a_1+3d=23$."
+          },
+          {
+            "label": "후보 나열",
+            "body": "$a_1=23-3d\\ge1$에서 $d=0,1,\\dots,7$이고 그때의 $a_9=a_1+8d=23+5d$는 $23,28,33,38,43,48,53,58$."
+          },
+          {
+            "label": "배수 확인",
+            "body": "이 중 $7$의 배수는 $28$뿐이므로 $d=1$, $a_1=20$."
+          },
+          {
+            "label": "답",
+            "body": "$a_{12}=20+11=31$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$S_k$를 하나씩 더하는 정석은 $\\sum k(k-1)/2=165$를 계산해야 해서 길다. $\\sum S_k$가 항 하나의 상수배가 된다는 사실만 기억하면 미지수가 하나로 줄어든다. 공차가 음수이면 모든 항이 자연수일 수 없으므로 $d\\ge0$이다.",
+    "skill_point": "$a_1,d$로 정리한 뒤 '$a_1+kd$'가 보이면 곧바로 $a_{k+1}$로 읽는다."
+  },
+  "verify": "def skill():\n    a4 = Rational(1265, 55)\n    for d in range(0, 8):\n        if (a4 + 5*d) % 7 == 0 and a4 - 3*d > 0:\n            return a4 + 8*d\n\ndef standard():\n    res = set()\n    for a1 in range(1, 400):\n        for d in range(0, 200):\n            S = lambda k: k*a1 + k*(k - 1)//2*d\n            if sum(S(k) for k in range(1, 11)) == 1265 and (a1 + 8*d) % 7 == 0:\n                res.add(a1 + 11*d)\n    assert len(res) == 1\n    return list(res)[0]\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:30:25",
+    "hash": "7ae7896d814d624f",
+    "errors": [],
+    "warnings": []
+  }
+}

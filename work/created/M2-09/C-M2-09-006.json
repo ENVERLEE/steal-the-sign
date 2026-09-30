@@ -1,0 +1,101 @@
+{
+  "id": "C-M2-09-006",
+  "theme": "M2-09",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-231120",
+    "variation": "조건 변형",
+    "note": "속도가 0이 되는 경계 시각과 구간 안 부호 변화를 함께 다룸"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-19-C1",
+      "수학Ⅱ-19-C3"
+    ],
+    "strategy_ids": [
+      "S26"
+    ],
+    "first_judgment": "가속도를 적분해 속도를 구하고, 경계 $t=3$에서 속도가 연속이라는 조건($v(3)=0$)으로 적분상수를 정한 뒤 부호가 바뀌는 곳에서 끊어 거리를 센다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "계산",
+  "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t\\ge0)$에서의 속도 $v(t)$와 가속도 $a(t)$가 다음 조건을 만족시킨다. 시각 $t=0$에서 $t=5$까지 점 $\\mathrm{P}$가 움직인 거리를 구하시오. (단, $v(t)$는 $t\\ge0$에서 연속이다.)\n(가) $0\\le t\\le3$일 때, $v(t)=3t^2-12t+9$이다.\n(나) $t\\ge3$일 때, $a(t)=3t^2$이다.",
+  "condition": null,
+  "choices": null,
+  "answer": "90",
+  "answer_value": "90",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-19-C1",
+      "수학Ⅱ-19-C3"
+    ],
+    "guide": "$t\\ge3$에서는 가속도만 주어졌으므로 적분해서 속도를 만들고, 적분상수는 (가)의 $v(3)$과 이어지는 연속 조건으로 정한다(수학Ⅱ-19-C1). 그 뒤 $v$의 부호가 바뀌는 시각에서 끊는다(수학Ⅱ-19-C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "경계값",
+            "body": "(가)에서 $v(3)=27-36+9=0$."
+          },
+          {
+            "label": "속도",
+            "body": "$v(t)=\\int3t^2dt=t^3+C$, $v(3)=0$이므로 $C=-27$, $v(t)=t^3-27$ ($t\\ge3$). 이 값은 $t\\ge3$에서 양수."
+          },
+          {
+            "label": "끊기",
+            "body": "$v=3(t-1)(t-3)$이므로 $[0,1]$ 양, $[1,3]$ 음. $[3,5]$에서 양."
+          },
+          {
+            "label": "거리",
+            "body": "$\\int_0^1v=4$, $\\left|\\int_1^3v\\right|=4$, $\\int_3^5(t^3-27)dt=\\left[\\frac{t^4}4-27t\\right]_3^5=\\left(\\frac{625}4-135\\right)-\\left(\\frac{81}4-81\\right)=136-54=82$. 합 $=90$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "속도 구하기",
+            "body": "$t\\ge3$에서 $v(t)=\\int a(t)dt=t^3+C$. $v$가 $t=3$에서 연속이므로 $\\lim_{t\\to3^+}v(t)=v(3)=3\\cdot9-12\\cdot3+9=0$이고 $27+C=0$."
+          },
+          {
+            "label": "부호 조사",
+            "body": "$0\\le t\\le3$에서 $v=3(t-1)(t-3)$: $0<t<1$ 양수, $1<t<3$ 음수. $t>3$에서 $v=t^3-27>0$."
+          },
+          {
+            "label": "적분식",
+            "body": "거리 $=\\int_0^1v\\,dt-\\int_1^3v\\,dt+\\int_3^5(t^3-27)dt$."
+          },
+          {
+            "label": "앞 두 구간",
+            "body": "$H(t)=t^3-6t^2+9t$에서 $H(1)=4$, $H(3)=0$이므로 $\\int_0^1v=4$, $\\int_1^3v=-4$."
+          },
+          {
+            "label": "뒤 구간",
+            "body": "$\\int_3^5(t^3-27)dt=\\left(\\frac{625}4-135\\right)-\\left(\\frac{81}4-81\\right)=\\frac{544}4-54=136-54=82$."
+          },
+          {
+            "label": "합",
+            "body": "$4+4+82=90$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "경계에서 속도가 연속이라는 조건을 쓰지 않으면 적분상수 $C$가 정해지지 않는다. $v(3)=0$이고 $t>3$에서 $v>0$이므로 $t=3$은 후진이 끝나고 전진이 시작되는 방향 전환 시각이다. 그래서 $t=1$뿐 아니라 $t=3$에서도 구간을 나누어야 한다. $\\frac{625}4$ 같은 분수는 통분해 한 줄에 정리해 쓴다.",
+    "skill_point": "구간마다 다른 식은 경계에서 속도의 연속 조건으로 적분상수를 정한다."
+  },
+  "verify": "def skill():\n    t, C = symbols('t C')\n    v1 = 3*t**2 - 12*t + 9\n    v2 = integrate(3*t**2, t) + C\n    C0 = solve(v2.subs(t, 3) - v1.subs(t, 3), C)[0]\n    v2 = v2.subs(C, C0)\n    def dist(v, a, b):\n        F = integrate(v, t)\n        pts = [a] + sorted(r for r in solve(v, t) if r.is_real and a < r < b) + [b]\n        return sum(abs(F.subs(t, q) - F.subs(t, p)) for p, q in zip(pts[:-1], pts[1:]))\n    return dist(v1, 0, 3) + dist(v2, 3, 5)\n\ndef standard():\n    t = Symbol('t')\n    v1 = 3*t**2 - 12*t + 9\n    v2 = t**3 - 27\n    assert v1.subs(t, 3) == v2.subs(t, 3)\n    assert diff(v2, t) == 3*t**2\n    def dist(v, lo, hi):\n        F = integrate(v, t)\n        cuts = sorted(r for r in real_roots(Poly(v, t)) if lo < r < hi)\n        pts = [lo] + cuts + [hi]\n        return sum(abs(F.subs(t, q) - F.subs(t, p)) for p, q in zip(pts[:-1], pts[1:]))\n    return dist(v1, 0, 3) + dist(v2, 3, 5)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:32:40",
+    "hash": "27b66f4ef7cca2bf",
+    "errors": [],
+    "warnings": []
+  }
+}

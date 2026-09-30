@@ -19,6 +19,7 @@ from scripts.template import WEEK_TOKEN, load, load_ext
 from scripts.tex import Math, katex_css
 
 CORNERS = ("THE SIGN", "FIRST PITCH", "PRACTICE", "DUGOUT NOTE", "SIGN BOOK")
+LONG_SOL = 450  # 풀이 1 분량이 이보다 길면 긴 풀이로 본다(글자 수, 수식 기호 제외)
 STRUT = '<span style="display:inline-block;width:0;height:0;vertical-align:-24px"></span>'
 
 
@@ -72,6 +73,8 @@ class Model:
             "weeks": [{"label": two(i), "now": i == b["week"]} for i in range(1, b["total_weeks"] + 1)],
         }
         self.days = [self.day(d) for d in b["days"]]
+        self.appendix = self.build_appendix(b.get("appendix"))
+        self.advice = self.build_advice(b.get("advice"))
 
     # ---- 공통
     def r(self, text):
@@ -89,10 +92,11 @@ class Model:
 
     def source_of(self, ref, rec):
         if is_created_id(ref):
-            return "STEAL THE SIGN 창작"
+            return ""  # 창작 문항 출처는 비워 둔다
         if is_textbook_id(ref):
             e = self.ctx.source[ref]
-            return f"{e['book'].get('title', '교재')} {rec['page']}쪽 {rec['number']}번"
+            pg = f" {rec['page']}쪽" if rec.get("page") else ""
+            return f"{e['book'].get('title', '교재')}{pg} {rec['number']}번"
         return source_label(rec)
 
     def record(self, ref):
@@ -143,8 +147,18 @@ class Model:
             "fig": fig, "choices": choices, "choices_class": cls,
             "points": self.points_of(ref, rec),
             "source": H.escape(self.source_of(ref, rec)), "kind": kind_of(ref),
+            "sol_len": self.solution_len(ref, rec),
             "difficulty": H.escape(difficulty or ""),
         }
+
+    def solution_len(self, ref, rec):
+        """풀이 1(스킬) 분량 — 풀이가 짧을 문항을 한 쪽에 더 많이 배치하는 데 쓴다"""
+        try:
+            sol = self.solution_of(ref, rec)
+            first = (sol.get("solutions") or [{}])[0]
+            return len(strip_tex(sol.get("guide") or "")) + sum(len(strip_tex(st.get("body", ""))) for st in first.get("steps") or [])
+        except Exception:  # noqa: BLE001
+            return 0
 
     def solution_item(self, ref, no, notes, reuse_note):
         rec = self.record(ref)
@@ -172,6 +186,50 @@ class Model:
         return {"no2": two(no), "kind": "예제" if no == 1 else "연습", "source": H.escape(self.source_of(ref, rec)),
                 "answer": H.escape(answer_display(rec)), "shortcut": shortcut, "fig": None,
                 "standard": standard, "tip": tip or None, "error": error}
+
+    # ---- 학습 조언 (표지 다음 첫 쪽)
+    def build_advice(self, a):
+        if not a:
+            return None
+        return {"title": self.r(a.get("title") or "내 실력과 공부 방법"), "assessment": self.r(a["assessment"]),
+                "patterns": [{"name": self.r(x["name"]), "text": self.r(x.get("text")), "fix": self.r(x["fix"])}
+                             for x in a.get("patterns") or []],
+                "methods": [{"title": self.r(x["title"]) + " ", "text": self.r(x["text"])} for x in a["methods"]]}
+
+    # ---- 부록: 계산 연습 (창작 문항만)
+    def calc_cell(self, ref, no):
+        rec = self.record(ref)
+        q = self.question(ref, no, None, f"부록 #{no} {ref}")
+        ch = ""
+        if q["choices"]:
+            ch = '<div class="c-ch">' + "".join(f'<span>{c["label"]} {c["html"]}</span>' for c in q["choices"]) + "</div>"
+        cond = f'<div class="cond" style="margin:2px 0">{q["cond"]}</div>' if q["cond"] else ""
+        return (f'<div class="c-cell"><div class="no">{q["no2"]}</div><div>'
+                f'<div class="q">{q["text"]} <span class="pt">[{q["points"]}점]</span></div>{cond}{ch}</div></div>')
+
+    def build_appendix(self, app):
+        if not app:
+            return None
+        title = app.get("title") or "계산 연습"
+        tag = "A"
+        types, n = [], 0
+        for ti, ty in enumerate(app["types"], 1):
+            cells, sols = [], []
+            if ti == 1 and app.get("intro"):
+                cells.append(f'<div class="c-span c-intro">{self.r(app["intro"])}</div>')
+            trap = f'<div class="c-span c-trap"><b class="l">자주 하는 실수</b>{self.r(ty["trap"])}'
+            if ty.get("habit"):
+                trap += f'<br><b class="l k">검산 습관</b>{self.r(ty["habit"])}'
+            cells.append(trap + "</div>")
+            for ref in ty["refs"]:
+                n += 1
+                cells.append(self.calc_cell(ref, n))
+                item = self.solution_item(ref, n, {}, None)
+                item["kind"] = f"유형 {ti}"
+                item["source"] = ""  # 창작 문항 출처는 비워 둔다
+                sols.append(item)
+            types.append({"title": self.r(ty["title"]), "head": f"계산 연습 · 유형 {ti}", "cells": cells, "sols": sols})
+        return {"title": self.r(title), "tag": tag, "types": types}
 
     # ---- DAY
     def day(self, d):
@@ -391,6 +449,10 @@ class Measurer:
         self._pw.stop()
 
 
+def sol_cap_app(ctx):
+    return None if ctx.book.get("special") else (ctx.config.get("solution") or {}).get("per_page_max")
+
+
 def overflow(issues) -> bool:
     return any(x != "풀이 공간 부족" for x in issues)
 
@@ -404,6 +466,8 @@ def run(ctx: Context) -> Log:
     math.render(ctx, log)
     model.book = math.fill(model.book)
     model.days = math.fill(model.days)
+    model.appendix = math.fill(model.appendix)
+    model.advice = math.fill(model.advice)
     tpl = load(ctx.path("template"), katex_css(ctx))
     ext_head, ext_pages = load_ext(ctx.path("ext_template"))
     head = tpl.head.replace("</head>", ext_head + "\n</head>", 1)
@@ -443,11 +507,64 @@ def run(ctx: Context) -> Log:
                     log.error(where, f"{kind} 항목 하나가 한 장을 넘음 — 내용을 줄일 것")
             return [{**base, key: chunk} for chunk in pages]
 
+        def weight(q):
+            """풀이가 길 것 같은 문항은 자리를 더 차지한다 (짧으면 1, 길면 1.34 → 긴 문항은 한 쪽에 3개까지)"""
+            return 1.0 if q.get("sol_len", 0) < LONG_SOL else 1.34
+
+        def split_cols(items):
+            """좌우 2단: 1~2문항은 한 단에 하나씩, 3문항은 왼쪽 2 + 오른쪽 1, 4문항은 2 + 2 (읽는 순서는 왼쪽 단 위→아래, 오른쪽 단)"""
+            n = len(items)
+            if n <= 2:
+                return [[q] for q in items]
+            h = (n + 1) // 2
+            return [items[:h], items[h:]]
+
+        def balanced_pages(kind, base, key, items, where, cap):
+            """cap 이하로 고르게 나눈다(5개 → 3+2). 한 장에 넘치면 마지막 문항을 다음 장으로 미룬다.
+            4문항 쪽은 글자를 줄이고(dense) 문항마다 풀이 공간을 확보한 채로 재어 본다"""
+            k = -(-len(items) // cap)
+            sizes = [len(items) // k + (1 if i < len(items) % k else 0) for i in range(k)]
+            chunks, pos = [], 0
+            for sz in sizes:
+                chunks.append(items[pos:pos + sz])
+                pos += sz
+            out, carry = [], []
+            queue = list(chunks)
+            while queue or carry:
+                cur = carry + (queue.pop(0) if queue else [])
+                carry = []
+                while len(cur) > cap or (len(cur) > 1 and cap > 2 and sum(weight(q) for q in cur) > cap + 0.01):
+                    carry.insert(0, cur.pop())
+                while True:
+                    P = {**base, key: cur, "cols": split_cols(cur)}
+                    if len(cur) > 1 and overflow(meas.issues(render(kind, P))):
+                        carry.insert(0, cur.pop())
+                        continue
+                    if len(cur) == 1 and overflow(meas.issues(render(kind, P))):
+                        log.error(where, f"{kind} 항목 하나가 한 장을 넘음 — 내용을 줄일 것")
+                    break
+                out.append(P)
+            # 마지막 쪽에 한 문항만 남았으면 앞 쪽에 합쳐 본다
+            if len(out) > 1 and len(out[-1][key]) == 1 and len(out[-2][key]) < cap:
+                merged = out[-2][key] + out[-1][key]
+                P = {**base, key: merged, "cols": split_cols(merged)}
+                if not overflow(meas.issues(render(kind, P))):
+                    out[-2:] = [P]
+            return out
+
         seq = []  # (kind, P, tag)
         seq.append(("COVER", {}, None))
+        if model.advice:
+            fits_single("ADVICE", model.advice, "학습 조언")
+            seq.append(("ADVICE", model.advice, None))
         contents_items = [{"day2": d["base"]["day2"], "title": d["base"]["title"], "day": d["day"],
                            "corners": [{"name": c, "line": d["corners"][c], "page": "000"} for c in CORNERS]}
                           for d in model.days]
+        app = model.appendix
+        if app:
+            contents_items.append({"day2": app["tag"], "title": app["title"], "day": app["tag"], "corners": [
+                {"name": "계산 연습", "line": f"유형 {len(app['types'])}개 · {sum(len(t['sols']) for t in app['types'])}문항", "page": "000"},
+                {"name": "정답과 해설", "line": "부록 정답·해설", "page": "000"}]})
         contents_pages = flow("CONTENTS", {}, "days", contents_items, "목차", cap=5)
         seq += [("CONTENTS", P, None) for P in contents_pages]
 
@@ -473,9 +590,28 @@ def run(ctx: Context) -> Log:
                 fits_single("SIGN_READING", d["reading"], w)
                 seq += [("CONCEPT", d["concept"], (d["day"], "THE SIGN")), ("STRATEGY", P, None),
                         ("FIRST_PITCH", d["first"], (d["day"], "FIRST PITCH")), ("SIGN_READING", d["reading"], None)]
-            for i, pr in enumerate(d["practice"]):
-                fits_single("PRACTICE", pr, f"{w} #{i + 2}")
-                seq.append(("PRACTICE", pr, (d["day"], "PRACTICE") if i == 0 else None))
+            if ctx.book.get("practice_layout") == "multi":
+                # 한 쪽에 3~4문항(고난도는 2문항). 난이도 순서를 지키며 같은 성격끼리 묶는다
+                runs, cur = [], []
+                for pr in d["practice"]:
+                    hard = pr["q"]["difficulty"] == "고난도"
+                    if cur and cur[0][0] != hard:
+                        runs.append(cur)
+                        cur = []
+                    cur.append((hard, pr["q"]))
+                if cur:
+                    runs.append(cur)
+                first_page = True
+                for run in runs:
+                    hard = run[0][0]
+                    for P in balanced_pages("PRACTICE_M", {**d["base"], "hard": hard}, "qs", [q for _, q in run],
+                                            f"{w} 연습", cap=2 if hard else 4):
+                        seq.append(("PRACTICE_M", P, (d["day"], "PRACTICE") if first_page else None))
+                        first_page = False
+            else:
+                for i, pr in enumerate(d["practice"]):
+                    fits_single("PRACTICE", pr, f"{w} #{i + 2}")
+                    seq.append(("PRACTICE", pr, (d["day"], "PRACTICE") if i == 0 else None))
             for P in flow("REPLAY", d["base"], "entries", d["replay"], f"{w} REPLAY", cap=3):
                 seq.append(("REPLAY", P, None))
             fits_single("DUGOUT_NOTE", d["dugout"], w)
@@ -489,6 +625,18 @@ def run(ctx: Context) -> Log:
             sol_cap = None if ctx.book.get("special") else (ctx.config.get("solution") or {}).get("per_page_max")
             for P in flow("SOLUTION", d["base"], "entries", d["sols"], f"DAY {d['day']} 해설", cap=sol_cap):
                 seq.append(("SOLUTION", P, None))
+        if app:
+            first_c = first_s = True
+            for t in app["types"]:
+                base = {"tag": app["tag"], "title": t["title"], "head": t["head"]}
+                for P in flow("CALC", base, "cells", t["cells"], f"부록 {t['head']}"):
+                    seq.append(("CALC", P, (app["tag"], "계산 연습") if first_c else None))
+                    first_c = False
+            for t in app["types"]:
+                base = {"tag": app["tag"], "title": app["title"]}
+                for P in flow("CALC_SOL", base, "entries", t["sols"], f"부록 {t['head']} 해설", cap=sol_cap_app(ctx)):
+                    seq.append(("CALC_SOL", P, (app["tag"], "정답과 해설") if first_s else None))
+                    first_s = False
         seq.append(("BACK_COVER", {}, None))
 
         # ---- 쪽 번호와 목차 쪽수
@@ -500,7 +648,7 @@ def run(ctx: Context) -> Log:
         out_pages, index = [], []
         for i, (kind, P, _) in enumerate(seq, 1):
             out_pages.append(render(kind, P, f"{i:03d}"))
-            index.append({"no": i, "kind": kind.removesuffix("_X"), "day": P.get("day2") if isinstance(P, dict) else None})
+            index.append({"no": i, "kind": kind.removesuffix("_X").removesuffix("_M").replace("PRACTICE_M", "PRACTICE"), "day": P.get("day2") if isinstance(P, dict) else None})
         log.stats["measures"] = meas.count
     finally:
         meas.close()

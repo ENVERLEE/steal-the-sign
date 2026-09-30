@@ -1,0 +1,102 @@
+{
+  "id": "C-M2-01-007",
+  "theme": "M2-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-270611",
+    "variation": "일반화",
+    "note": "일차함수를 이차함수로 일반화하고, 존재 조건을 만족시키는 매개변수 $t$의 집합으로 함수를 결정"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-03-C1",
+      "수학Ⅱ-03-C2"
+    ],
+    "strategy_ids": [
+      "S13",
+      "S14"
+    ],
+    "first_judgment": "분모 $f(x)-f(x-t)$가 일차식이라 근이 하나이므로, 그 근에서 분자가 $0$이 되는 경우(근이 $1$이거나 $f$의 근)로 $t$의 집합을 식으로 세운다."
+  },
+  "difficulty": "고난도",
+  "behavior": "추론",
+  "question": "이차함수 $f(x)=x^2+bx+c$ ($b$, $c$는 정수)에 대하여 양수 $t$가 다음 조건 $\\mathrm{P}(t)$를 만족시킨다고 하자.\n$\\mathrm{P}(t)$: 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a}\\dfrac{(x-1)f(x)}{f(x)-f(x-t)}$의 값이 존재한다.\n$\\mathrm{P}(t)$를 만족시키는 양수 $t$의 집합이 $\\{3,5\\}$이고 $f(1)>0$일 때, $f(4)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "28",
+  "answer_value": "28",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-03-C1",
+      "수학Ⅱ-03-C2"
+    ],
+    "guide": "분모 $f(x)-f(x-t)$는 일차식이므로 근이 하나 $r$이다. 극한이 모든 $a$에서 존재하려면 그 근에서 분자가 $0$이어야 하고(수학Ⅱ-03-C2), 그 조건이 $t$의 값을 정한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "분모 정리",
+            "body": "$f(x)-f(x-t)=t(2x-t+b)$는 일차식이고 근은 $r=\\dfrac{t-b}{2}$ 하나뿐이다. 그러므로 분자 $(x-1)f(x)$가 $x=r$에서 $0$이면 된다: $r=1$ 또는 $f(r)=0$."
+          },
+          {
+            "label": "t의 후보",
+            "body": "$t=2r+b$. $r=1$이면 $t=b+2$, $f$의 실근 $\\rho_1<\\rho_2$이면 $t=2\\rho_i+b=\\pm(\\rho_2-\\rho_1)$. 양수는 $\\rho_2-\\rho_1$과 $b+2$ 뿐이다."
+          },
+          {
+            "label": "집합 $\\{3,5\\}$",
+            "body": "$\\{\\rho_2-\\rho_1,\\ b+2\\}=\\{3,5\\}$이고 $b=-(\\rho_1+\\rho_2)$. ($\\rho_2-\\rho_1=3$, $b=3$) 또는 ($\\rho_2-\\rho_1=5$, $b=1$)이므로 $f=x(x+3)$ 또는 $(x+3)(x-2)$."
+          },
+          {
+            "label": "f(1)>0",
+            "body": "$f(1)=4$인 $f=x^2+3x$. $f(4)=28$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "분모",
+            "body": "$f(x)-f(x-t)=\\{x^2+bx+c\\}-\\{(x-t)^2+b(x-t)+c\\}=2tx-t^2+bt=t(2x-t+b)$. $t>0$이므로 일차식이고 근은 $r=\\dfrac{t-b}2$이다."
+          },
+          {
+            "label": "존재 조건",
+            "body": "분모는 $x=r$에서만 단순근이므로 극한이 모든 $a$에서 존재하려면 분자 $(x-1)f(x)$가 $x=r$에서 $0$이어야 한다. 그러므로 $r=1$ 또는 $f(r)=0$."
+          },
+          {
+            "label": "t로 바꾸기",
+            "body": "$t=2r+b$이다. $r=1$이면 $t=b+2$. $f$가 실근 $\\rho_1\\le\\rho_2$를 가지면 $r=\\rho_i$에서 $t=2\\rho_i+b=2\\rho_i-(\\rho_1+\\rho_2)$, 곧 $\\rho_1-\\rho_2$ 또는 $\\rho_2-\\rho_1$. 양수인 것은 $\\rho_2-\\rho_1$."
+          },
+          {
+            "label": "두 원소 조건",
+            "body": "집합이 원소 두 개 $\\{3,5\\}$이므로 $f$는 서로 다른 실근을 가지고, $\\{\\rho_2-\\rho_1,\\ b+2\\}=\\{3,5\\}$이다. $\\rho_2-\\rho_1=\\sqrt{b^2-4c}$."
+          },
+          {
+            "label": "경우 1",
+            "body": "$b+2=5$, $\\rho_2-\\rho_1=3$: $b=3$, $b^2-4c=9$에서 $c=0$. $f=x^2+3x$."
+          },
+          {
+            "label": "경우 2",
+            "body": "$b+2=3$, $\\rho_2-\\rho_1=5$: $b=1$, $1-4c=25$에서 $c=-6$. $f=x^2+x-6$."
+          },
+          {
+            "label": "f(1)>0",
+            "body": "경우 1은 $f(1)=4>0$, 경우 2는 $f(1)=-4<0$이므로 $f=x^2+3x$이고 $f(4)=16+12=28$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f(x)+f(x-t)$처럼 합이 아니라 차이므로 분모의 차수가 낮아진다는 것이 핵심이다. 이차식으로 전개하면 판별식을 따지느라 식이 길어지지만, 차를 먼저 정리하면 일차식 하나만 남는다. 집합의 원소가 정확히 둘이라는 조건에서 $f$의 근의 개수가 정해진다는 것도 놓치기 쉽다.",
+    "skill_point": "분모가 일차식이면 근이 하나이므로 '그 근에서 분자 $=0$' 한 줄이 $t$의 집합을 결정한다."
+  },
+  "verify": "x = Symbol('x')\n\ndef nolim_at(N, D, a):\n    \"\"\"N/D 의 x->a 극한이 (유한값으로) 존재하지 않으면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    if Dp.is_zero:\n        return True\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.eval(a) == 0\n\ndef all_ok(N, D):\n    \"\"\"모든 실수 a 에서 극한이 존재하면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.count_roots() == 0\n\ndef S(b, c):\n    f = lambda t: t**2 + b*t + c\n    out = set()\n    # 분모 f(x)-f(x-t) 의 근 r=(t-b)/2 가 1 이거나 f 의 근일 때만 존재.\n    cands = set([b + 2])\n    for rho in real_roots(Poly(x**2 + b*x + c, x)):\n        cands.add(2*rho + b)\n    for t in cands:\n        if t > 0:\n            N = (x - 1)*f(x)\n            D = expand(f(x) - f(x - t))\n            if all_ok(N, D):\n                out.add(t)\n    return out\n\ndef cand():\n    out = set()\n    for b in range(-12, 13):\n        for c in range(-40, 41):\n            d = b*b - 4*c\n            # 판별식이 완전제곱수가 아니면 무리수 t 가 집합에 들어가므로 {3,5} 가 될 수 없다\n            if d <= 0 or int(sqrt(d))**2 != d:\n                continue\n            if S(b, c) == {3, 5} and (1 + b + c) > 0:\n                out.add(4**2 + 4*b + c)\n    return out\n\ndef skill():\n    b, c = 3, 0\n    return 4**2 + 4*b + c\n\ndef standard():\n    v = cand()\n    assert len(v) == 1\n    return list(v)[0]\n\ndef unique():\n    return sorted(cand())\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:47:19",
+    "hash": "8d40ee52eac7e332",
+    "errors": [],
+    "warnings": []
+  }
+}

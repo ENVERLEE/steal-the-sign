@@ -1,0 +1,87 @@
+{
+  "id": "C-M2-03-003",
+  "theme": "M2-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-240611",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-08-C4"
+    ],
+    "strategy_ids": [
+      "S19"
+    ],
+    "first_judgment": "'직선과의 거리가 최소인 점'은 점과 직선 사이의 거리 공식을 세우기 전에, 기울기가 그 직선과 같은 접선의 접점으로 잡는다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "문제해결",
+  "question": "곡선 $y=x^2-2x+5$ 위의 점 중에서 직선 $y=x-3$과의 거리가 최소인 점을 $\\mathrm{P}$라 하자. 점 $\\mathrm{P}$와 직선 $y=x-3$ 사이의 거리의 제곱을 $\\dfrac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "561",
+  "answer_value": "561",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-08-C4"
+    ],
+    "guide": "곡선 위에서 직선과의 거리가 최소인 점 $\\mathrm{P}$에서는 직선과 평행한 접선이 곡선에 접한다(수학Ⅱ-08-C4). 그러므로 $f'(x)=1$인 점이 $\\mathrm{P}$이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "접점",
+            "body": "$f(x)=x^2-2x+5$에서 $f'(x)=2x-2=1$이므로 $x=\\dfrac32$, $\\mathrm{P}\\left(\\dfrac32,\\,\\dfrac{17}{4}\\right)$."
+          },
+          {
+            "label": "거리",
+            "body": "직선 $x-y-3=0$까지의 거리는 $\\dfrac{\\left|\\frac32-\\frac{17}{4}-3\\right|}{\\sqrt2}=\\dfrac{23}{4\\sqrt2}$이므로 제곱은 $\\dfrac{529}{32}$."
+          },
+          {
+            "label": "답",
+            "body": "$p=32$, $q=529$이므로 $p+q=561$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "거리 함수",
+            "body": "곡선 위의 점 $(x,\\,x^2-2x+5)$에서 직선 $x-y-3=0$까지 거리의 제곱은 $D(x)=\\dfrac{\\{x-(x^2-2x+5)-3\\}^2}{2}=\\dfrac{(x^2-3x+8)^2}{2}$."
+          },
+          {
+            "label": "부호 확인",
+            "body": "$x^2-3x+8$의 판별식은 $9-32<0$이므로 항상 양수이다. 따라서 $D(x)$가 최소인 것은 $u(x)=x^2-3x+8$이 최소일 때이다."
+          },
+          {
+            "label": "최소",
+            "body": "$u'(x)=2x-3=0$에서 $x=\\dfrac32$이고 $u\\left(\\dfrac32\\right)=\\dfrac94-\\dfrac92+8=\\dfrac{23}{4}$."
+          },
+          {
+            "label": "거리의 제곱",
+            "body": "$D=\\dfrac12\\cdot\\left(\\dfrac{23}{4}\\right)^2=\\dfrac{529}{32}$."
+          },
+          {
+            "label": "답",
+            "body": "서로소인 $p=32$, $q=529$이므로 $p+q=561$."
+          }
+        ]
+      }
+    ],
+    "supplement": "거리 공식으로 시작하면 이차식을 제곱한 사차함수를 미분하게 되어 계산이 늘어난다. 접선의 기울기가 $1$이라는 판단만 있으면 $2x-2=1$ 한 줄로 접점이 정해진다. 또한 거리 공식의 분자에 넣을 때 부호를 잘못 잡아도 제곱하면 같으므로, 마지막에 $23$, $4$, $\\sqrt2$를 따로 적어 두고 제곱하는 편이 안전하다.",
+    "skill_point": "최소 거리는 평행한 접선의 접점. $f'(x)=(\\text{직선의 기울기})$ 한 줄로 시작한다."
+  },
+  "verify": "def skill():\n    x = Symbol('x')\n    f = x**2 - 2*x + 5\n    x0 = solve(diff(f, x) - 1, x)[0]\n    d2 = (x0 - f.subs(x, x0) - 3)**2/2\n    return d2.p + d2.q\n\ndef standard():\n    x = Symbol('x')\n    D = (x - (x**2 - 2*x + 5) - 3)**2/2\n    crit = [c for c in solve(diff(D, x), x) if c.is_real]\n    best = min(D.subs(x, c) for c in crit)\n    # 도함수가 0인 실수 점이 하나뿐이고, 무한대에서 D가 커지므로 최소\n    assert len(crit) == 1\n    return best.p + best.q\n\ndef unique():\n    x = Symbol('x')\n    D = (x - (x**2 - 2*x + 5) - 3)**2/2\n    real = [c for c in solve(diff(D, x), x) if c.is_real]\n    return [standard()] if len(real) == 1 else [None]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:54",
+    "hash": "7d6a175e96b7d601",
+    "errors": [],
+    "warnings": []
+  }
+}

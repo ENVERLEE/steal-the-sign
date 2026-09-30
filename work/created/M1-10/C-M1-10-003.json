@@ -1,0 +1,95 @@
+{
+  "id": "C-M1-10-003",
+  "theme": "M1-10",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-230615",
+    "variation": "수치 변형",
+    "note": "+1/(k+1), -1/k → +1/(k+2), -1/k, 목표 항 a_22 → a_25"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-17-C1"
+    ],
+    "strategy_ids": [
+      "S11"
+    ],
+    "first_judgment": "분수가 지저분하면 $k(k+2)$를 곱해 정수 수열로 바꾸고, $0$으로 돌아오는 주기를 찾는다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "자연수 $k$에 대하여 수열 $\\{a_n\\}$은 $a_1=0$이고, 모든 자연수 $n$에 대하여 $a_n\\le0$이면 $a_{n+1}=a_n+\\dfrac1{k+2}$, $a_n>0$이면 $a_{n+1}=a_n-\\dfrac1k$이다. $a_{25}=0$이 되도록 하는 모든 $k$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "22",
+  "answer_value": "22",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-17-C1"
+    ],
+    "guide": "더하고 빼는 양이 $\\frac1{k+2}$, $\\frac1k$이므로 $k(k+2)$를 곱해 $+k$, $-(k+2)$인 정수 수열로 바꾼다(수학Ⅰ-17-C1). 값이 $0$으로 돌아오는 시점이 곧 주기이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "정수화",
+            "body": "$b_n=k(k+2)a_n$으로 두면 $b_1=0$, $b_{n+1}=b_n+k\\ (b_n\\le0)$ 또는 $b_n-(k+2)\\ (b_n>0)$이다."
+          },
+          {
+            "label": "범위와 합동",
+            "body": "모든 $b_n$은 $-(k+1)$ 이상 $k$ 이하이고, 두 규칙 모두 $b_{n+1}\\equiv b_n+k\\pmod{2k+2}$이다. 구간 안의 정수 $2k+2$개는 법 $2k+2$의 서로 다른 나머지이므로 $b_n=0\\iff(2k+2)\\mid(n-1)k$이다."
+          },
+          {
+            "label": "조건",
+            "body": "$n=25$: $(2k+2)\\mid24k\\iff(k+1)\\mid12k\\iff(k+1)\\mid12$ ($k+1$과 $k$는 서로소)"
+          },
+          {
+            "label": "답",
+            "body": "$k+1=2,3,4,6,12$ → $k=1,2,3,5,11$, 합은 $22$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "정수화",
+            "body": "$b_n=k(k+2)a_n$으로 두면 $0$에서 출발하여 $b_n\\le0$이면 $+k$, $b_n>0$이면 $-(k+2)$를 반복한다."
+          },
+          {
+            "label": "처음 돌아오는 시점",
+            "body": "위로 $u$번, 아래로 $d$번 움직여 $0$으로 돌아오려면 $uk=d(k+2)$이고, $u+d$가 처음 $0$으로 돌아오는 주기 $L$이다. $L=\\dfrac{2k+2}{\\gcd(k,2)}$: $k=1,2,3,4,5,\\dots,11$에서 $L=4,3,8,5,12,7,16,9,20,11,24$"
+          },
+          {
+            "label": "$a_{25}=0$의 조건",
+            "body": "$a_{25}=0$은 $24$가 $L$의 배수일 때이다. $L\\ge k+1$이므로 $k\\le23$만 보면 된다."
+          },
+          {
+            "label": "대조",
+            "body": "$L=4,3,8,12,24$일 때 $24$의 약수이므로 $k=1,2,3,5,11$. $k=4,6,7,8,9,10$은 $L=5,7,16,9,20,11$이라 불가. $12\\le k\\le23$은 짝수 $k$의 $L=k+1$이 $13$ 이상의 홀수이고 홀수 $k$의 $L=2k+2\\ge28$이라 불가."
+          },
+          {
+            "label": "검산",
+            "body": "$k=2$이면 $b_n$은 $0\\to2\\to-2\\to0$($L=3$)으로 돌아오고, $a_{25}=b_{25}/8$에서 $24=3\\times8$이므로 $b_{25}=0$이다. $k=4$이면 $0,4,-2,2,-4,0$($L=5$)이고 $24$는 $5$의 배수가 아니라 $b_{25}\\ne0$이다."
+          },
+          {
+            "label": "답",
+            "body": "$1+2+3+5+11=22$"
+          }
+        ]
+      }
+    ],
+    "supplement": "$k=1,2,3,\\dots$를 하나씩 대입해 $25$번째 항까지 분수로 계산하면 분모가 계속 바뀌어 오래 걸린다. 정수로 바꾼 뒤 '한 번 $0$으로 돌아오면 같은 일이 반복된다'는 점만 쓰면 $k$마다 주기 하나만 구하면 된다.",
+    "skill_point": "분수 점화식은 공통분모를 곱해 정수로 바꾸고, 0으로 돌아오는 주기를 센다."
+  },
+  "verify": "def skill():\n    return sum(k for k in range(1, 200) if (24 * k) % (2 * k + 2) == 0)\n\ndef zero_at(N, k):\n    a = Fraction(0)\n    for _ in range(N - 1):\n        a = a + Fraction(1, k + 2) if a <= 0 else a - Fraction(1, k)\n    return a == 0\n\ndef standard():\n    return sum(k for k in range(1, 400) if zero_at(25, k))\n\ndef unique():\n    return [sum(k for k in range(1, 1000) if zero_at(25, k))]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:44:16",
+    "hash": "4c69b762c5920c6b",
+    "errors": [],
+    "warnings": []
+  }
+}

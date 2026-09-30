@@ -1,0 +1,88 @@
+{
+  "id": "C-M2-02-003",
+  "theme": "M2-02",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-220922",
+    "variation": "일반화",
+    "note": "절댓값 두 개를 곱한 함수로 일반화하여 삼차함수의 두 근을 확정"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-07-C1"
+    ],
+    "strategy_ids": [
+      "S15",
+      "S16"
+    ],
+    "first_judgment": "절댓값이 곱해진 함수는 각 꺾이는 점 $x=1,4$에서 나머지 인수(여기서는 $f$)의 값이 $0$이어야 매끄럽다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $g(x)=f(x)\\,|x-1|\\,|x-4|$가 실수 전체의 집합에서 미분가능하다. $f(0)=-8$일 때, $f(6)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "40",
+  "answer_value": "40",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-07-C1"
+    ],
+    "guide": "곱해진 절댓값이 꺾이는 점마다 나머지 인수가 $0$이 되어야 한다(수학Ⅱ-07-C1). $x=1$에서 나머지 인수는 $f(x)|x-4|$이므로 $f(1)=0$, $x=4$에서도 $f(4)=0$.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "꺾임 두 곳",
+            "body": "$|x-1|$, $|x-4|$는 각각 $x=1$, $x=4$에서 꺾이고, 꺾임의 크기는 나머지 인수와 $f$의 그 점 값에 비례한다. 꺾임이 사라지려면 $f(1)=f(4)=0$."
+          },
+          {
+            "label": "식 세우기",
+            "body": "$f(x)=(x-1)(x-4)(x-c)$이고 $f(0)=-4c=-8$에서 $c=2$."
+          },
+          {
+            "label": "값",
+            "body": "$f(6)=5\\cdot2\\cdot4=40$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "구간 나누기",
+            "body": "$g$는 $x<1$, $1<x<4$, $x>4$에서 각각 $f(x)(1-x)(4-x)$, $f(x)(x-1)(4-x)$, $f(x)(x-1)(x-4)$이다."
+          },
+          {
+            "label": "x=1에서",
+            "body": "$x=1$의 좌미분계수는 $\\dfrac{d}{dx}\\{f(x)(1-x)(4-x)\\}=-3f(1)$, 우미분계수는 $3f(1)$이다. 같으려면 $f(1)=0$."
+          },
+          {
+            "label": "x=4에서",
+            "body": "$x=4$의 좌미분계수는 $\\dfrac{d}{dx}\\{f(x)(x-1)(4-x)\\}=-3f(4)$, 우미분계수는 $3f(4)$. 같으려면 $f(4)=0$."
+          },
+          {
+            "label": "f 결정",
+            "body": "$f(x)=x^3+px^2+qx+r$에서 $f(1)=f(4)=0$, $f(0)=r=-8$의 세 식이 미지수 $p,q,r$을 정한다. $f(x)=(x-1)(x-4)(x-c)$로 쓰면 $f(0)=-4c=-8$, $c=2$."
+          },
+          {
+            "label": "답",
+            "body": "$f(6)=(6-1)(6-4)(6-2)=40$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f(x)=x^3+px^2+qx+r$로 열고 구간마다 미분하면 결국 $f(1)=f(4)=0$이라는 같은 결론이 나온다. 다만 두 절댓값의 곱 $|x-1||x-4|$는 두 근 사이에서 부호가 달라지므로 구간을 셋으로 나누는 과정에서 부호 실수가 잦다.",
+    "skill_point": "$q(x)\\,|x-c_1|\\,|x-c_2|$가 미분가능 $\\iff q(c_1)=q(c_2)=0$. 꺾이는 점마다 곱해진 함수가 $0$이 되게 한다."
+  },
+  "verify": "def skill():\n    c = Rational(-8, -4)\n    return (6 - 1)*(6 - 4)*(6 - c)\n\ndef standard():\n    x, p, q, r = symbols('x p q r')\n    f = x**3 + p*x**2 + q*x + r\n    d1 = diff(f*(1 - x)*(4 - x), x).subs(x, 1) - diff(f*(x - 1)*(4 - x), x).subs(x, 1)\n    d4 = diff(f*(x - 1)*(4 - x), x).subs(x, 4) - diff(f*(x - 1)*(x - 4), x).subs(x, 4)\n    s = solve([d1, d4, r + 8], [p, q, r])\n    return f.subs(s).subs(x, 6)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:49:06",
+    "hash": "640ff01f09dde65b",
+    "errors": [],
+    "warnings": []
+  }
+}

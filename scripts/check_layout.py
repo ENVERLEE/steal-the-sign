@@ -44,7 +44,7 @@ def run(ctx: Context) -> Log:
         browser = launch_chromium(p)
         page = browser.new_page(viewport={"width": 900, "height": 1300})
         route_network(page, allow_fonts=True)
-        page.goto(path.resolve().as_uri(), wait_until="load")
+        page.goto(path.resolve().as_uri(), wait_until="load", timeout=900000)
         res = page.evaluate(CHECK_JS)
         browser.close()
 
@@ -54,8 +54,8 @@ def run(ctx: Context) -> Log:
     kinds = [p["kind"] for p in pages]
     if not kinds or kinds[0] != "COVER" or kinds[-1] != "BACK_COVER":
         log.error("순서", "책은 COVER로 시작해 BACK_COVER로 끝나야 함")
-    if "CONTENTS" in kinds and kinds.index("CONTENTS") != 1:
-        log.error("순서", "CONTENTS는 표지 바로 뒤")
+    if "CONTENTS" in kinds and kinds.index("CONTENTS") != (2 if kinds[1:2] == ["ADVICE"] else 1):
+        log.error("순서", "CONTENTS는 표지(또는 표지 다음 ADVICE) 바로 뒤")
     for p in pages:
         where = f"{p['i']:03d}쪽 {p['kind']}"
         for w in p["why"]:

@@ -39,6 +39,11 @@ globs:
 - SCOUTING: db 기출만 (예제 자신 제외)
 - REPLAY·SIGN BOOK 번호 범위 검증
 
+## 부록 검사 (appendix)
+- refs가 문제은행의 verified·해시 일치 창작이고 `calc_type` 있음, 부록 안 중복 금지
+- 유형당 1~200문항(오류), 40문항 미만이면 경고(목표: 유형당 40개 이상). 창작 출처 표기는 비움
+- DAY 연습에 `calc_type` 창작을 쓰면 오류
+
 ## 노트 검사
 - `notes` 대상이 존재하는 문항 id
 - `shortcut` 있으면 `verify` 필수

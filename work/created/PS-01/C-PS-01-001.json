@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-01-001",
+  "theme": "PS-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-220930",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-08-C2",
+      "확률과 통계-07-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "하한은 먼저 나누어 주어 없애고, 상한이 걸린 한 사람의 몫을 고정한 뒤 나머지는 중복조합으로 센다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "같은 종류의 구슬 $15$개를 네 학생 $\\mathrm{A,B,C,D}$에게 남김없이 나누어 주는 경우의 수를 구하시오.",
+  "condition": "(가) 각 학생은 $2$개 이상의 구슬을 받는다.\n(나) 학생 $\\mathrm{D}$가 받는 구슬의 개수는 $5$ 이하이다.",
+  "choices": null,
+  "answer": "100",
+  "answer_value": "100",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-08-C2",
+      "확률과 통계-07-C2"
+    ],
+    "guide": "(가) 하한 $2$는 미리 배정해 지우고, (나) 상한은 그 사람의 몫으로 경우를 나눈다. 남은 분배는 빈칸을 허용하는 중복조합이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "하한 지우기",
+            "body": "네 학생에게 $2$개씩 $8$개를 먼저 주면 $7$개가 남고, 이제 각자 $0$개 이상 받는다. $\\mathrm{D}$는 $2$개를 이미 받았으므로 추가로 받는 몫 $e$는 $3$ 이하이다."
+          },
+          {
+            "label": "D의 몫 고정",
+            "body": "$e=0,1,2,3$일 때 나머지 $7-e$개를 $\\mathrm{A,B,C}$에게 나누는 경우는 ${}_3\\mathrm{H}_{7-e}$이다: $36+28+21+15=100$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "하한 처리",
+            "body": "각 학생이 $2$개 이상이므로 $x_i=y_i+2$로 놓으면 $y_1+y_2+y_3+y_4=7$ ($y_i\\ge0$)이다."
+          },
+          {
+            "label": "상한 처리",
+            "body": "(나)는 $y_4\\le3$이다. 상한이 있는 조건은 위반, 곧 $y_4\\ge4$인 경우를 전체에서 뺀다."
+          },
+          {
+            "label": "전체",
+            "body": "${}_4\\mathrm{H}_7={}_{10}\\mathrm{C}_3=120$."
+          },
+          {
+            "label": "위반",
+            "body": "$y_4=4+z$로 놓으면 $y_1+y_2+y_3+z=3$이므로 ${}_4\\mathrm{H}_3=20$."
+          },
+          {
+            "label": "답",
+            "body": "$120-20=100$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "상한 조건을 그대로 두고 $D=2,3,4,5$를 모두 세는 것은 같은 답이지만, 위반 쪽이 한 줄이면 뺄셈이 빠르다. 이 문항은 두 방법이 모두 짧으니 어느 쪽이 더 짧은지 먼저 비교하는 습관을 든다.",
+    "skill_point": "하한은 미리 주어 지우고, 상한은 그 사람의 몫으로 분류 기준을 하나 정한다."
+  },
+  "verify": "def skill():\n    return sum(binomial(9 - e, 2) for e in range(4))\n\ndef standard():\n    from itertools import product\n    return sum(1 for a, b, c, d in product(range(2, 16), repeat=4) if a + b + c + d == 15 and d <= 5)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:23:25",
+    "hash": "94fdfc4aa1356423",
+    "errors": [],
+    "warnings": []
+  }
+}

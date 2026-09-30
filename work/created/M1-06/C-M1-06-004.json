@@ -1,0 +1,89 @@
+{
+  "id": "C-M1-06-004",
+  "theme": "M1-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-231111",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-12-C3",
+      "수학Ⅰ-12-C2"
+    ],
+    "strategy_ids": [
+      "S08"
+    ],
+    "first_judgment": "같은 원에서 같은 원주각은 같은 현이므로 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$로 두 삼각형의 코사인법칙을 연결하면 $\\cos\\theta$가 나오고, 반지름은 $\\overline{\\mathrm{BC}}=2R\\sin\\theta$로 구한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "사각형 $\\mathrm{ABCD}$가 한 원에 내접하고 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{AD}}=6$, $\\overline{\\mathrm{AC}}=9$, $\\angle\\mathrm{BAC}=\\angle\\mathrm{CAD}$이다. 이 원의 반지름의 길이를 $R$라 할 때, $R^2$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "21",
+  "answer_value": "21",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-12-C3",
+      "수학Ⅰ-12-C2"
+    ],
+    "guide": "$\\angle\\mathrm{BAC}=\\angle\\mathrm{CAD}=\\theta$는 같은 원의 원주각이므로 현 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$이다(수학Ⅰ-12-C3). 두 삼각형 $\\mathrm{ABC}$, $\\mathrm{ACD}$에서 코사인법칙의 우변을 같게 놓으면 $\\cos\\theta$가 확정된다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "현의 길이 같음",
+            "body": "같은 원주각 $\\theta$에 대한 현이므로 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$."
+          },
+          {
+            "label": "$\\cos\\theta$",
+            "body": "$3^2+9^2-2\\cdot3\\cdot9\\cos\\theta=6^2+9^2-2\\cdot6\\cdot9\\cos\\theta$에서 $9-36=(54-108)\\cos\\theta$, $\\cos\\theta=\\dfrac12$."
+          },
+          {
+            "label": "반지름",
+            "body": "$\\overline{\\mathrm{BC}}^2=9+81-27=63$이고 $\\overline{\\mathrm{BC}}=2R\\sin\\theta=2R\\cdot\\dfrac{\\sqrt3}{2}$이므로 $R^2=\\dfrac{63}{3}=21$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "좌표",
+            "body": "$\\mathrm{A}$를 원점, $\\mathrm{C}(9,0)$으로 두고 $\\mathrm{B}=3(\\cos\\theta,\\sin\\theta)$, $\\mathrm{D}=6(\\cos\\theta,-\\sin\\theta)$라 한다."
+          },
+          {
+            "label": "한 원 위에 있을 조건",
+            "body": "원 $x^2+y^2+ux+vy=0$이 $\\mathrm{C}(9,0)$을 지나므로 $u=-9$. 이 원이 $\\mathrm{B}$, $\\mathrm{D}$를 지난다는 두 식을 세운다."
+          },
+          {
+            "label": "연립",
+            "body": "$\\mathrm{B}$: $9-9\\cdot3\\cos\\theta+3v\\sin\\theta=0$, $\\mathrm{D}$: $36-9\\cdot6\\cos\\theta-6v\\sin\\theta=0$. 두 식에서 $v\\sin\\theta$를 지우면 $54-108\\cos\\theta=0$이므로 $\\cos\\theta=\\dfrac12$, $\\theta=60^\\circ$."
+          },
+          {
+            "label": "원의 중심",
+            "body": "$\\mathrm{B}$의 식에서 $9-\\dfrac{27}{2}+3v\\cdot\\dfrac{\\sqrt3}{2}=0$이므로 $v=\\sqrt3$. 중심은 $\\left(\\dfrac92,-\\dfrac{\\sqrt3}{2}\\right)$."
+          },
+          {
+            "label": "반지름",
+            "body": "$R^2=\\dfrac{81}{4}+\\dfrac34=21$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\theta$를 모른 채 두 삼각형의 코사인법칙을 연립해도 되지만 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$라는 한 줄을 먼저 세우면 식이 하나로 끝난다. 원 위의 네 점을 좌표로 옮기는 정석은 확실하지만 식이 두 개 필요하다.",
+    "skill_point": "같은 원주각 → 같은 현 → $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$. 반지름은 현과 원주각으로 $2R=\\dfrac{\\text{현}}{\\sin\\theta}$."
+  },
+  "verify": "def skill():\n    c = symbols('c')\n    cs = solve(Eq(3**2 + 9**2 - 2*3*9*c, 6**2 + 9**2 - 2*6*9*c), c)[0]\n    BC2 = 9 + 81 - 2*3*9*cs\n    s2 = 1 - cs**2\n    return simplify(BC2/(4*s2))\n\ndef standard():\n    th = symbols('th', positive=True)\n    u, v = symbols('u v')\n    C = (9, 0)\n    B = (3*cos(th), 3*sin(th)); D = (6*cos(th), -6*sin(th))\n    uu = -9\n    eqB = B[0]**2 + B[1]**2 + uu*B[0] + v*B[1]\n    eqD = D[0]**2 + D[1]**2 + uu*D[0] + v*D[1]\n    # v를 지워 th 결정\n    vB = solve(eqB, v)[0]\n    e = simplify(eqD.subs(v, vB))\n    cth = symbols('cth')\n    sols = solve(simplify(e.subs(th, acos(cth))), cth)\n    cth0 = [s for s in sols if 0 < s < 1][0]\n    th0 = acos(cth0)\n    vv = simplify(vB.subs(th, th0))\n    cx, cy = -uu/Rational(2), -vv/2\n    return simplify(cx**2 + cy**2)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:15",
+    "hash": "1d0911fb0c6f599b",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "C-M1-01-102",
+  "theme": "M1-01",
+  "calc_type": "지수·거듭제곱근 부호",
+  "origin": {
+    "type": "original"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-01-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "거듭제곱근과 지수의 부호를 먼저 정리하고 계산한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$8^{\\frac{2}{3}}+16^{\\frac{3}{4}}\\times 2^{-1}$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-01-C1"
+    ],
+    "guide": "부호와 지수 규칙을 먼저 정리하면 계산이 짧아진다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 규칙 먼저",
+        "steps": [
+          {
+            "label": "정리",
+            "body": "$8^{\\frac23}=(2^3)^{\\frac23}=4$, $16^{\\frac34}=2^3=8$"
+          },
+          {
+            "label": "계산",
+            "body": "$4+8\\times\\frac12=8$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 차례로 계산 (비교용)",
+        "steps": [
+          {
+            "label": "1단계",
+            "body": "$8=2^3$이므로 $8^{\\frac{2}{3}}=2^{3\\cdot\\frac{2}{3}}=2^2=4$이다."
+          },
+          {
+            "label": "2단계",
+            "body": "$16=2^4$이므로 $16^{\\frac{3}{4}}=2^{4\\cdot\\frac{3}{4}}=2^3=8$이다."
+          },
+          {
+            "label": "3단계",
+            "body": "$2^{-1}=\\frac{1}{2}$이므로 $4+8\\times\\frac{1}{2}=4+4=8$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "부호를 마지막에 처리하면 홀수 제곱근에서 부호를 놓치기 쉽다. 계산 전에 부호부터 확정한다.",
+    "skill_point": "계산 전에 부호와 지수 규칙부터 확정한다."
+  },
+  "verify": "def skill():\n    return 8**Rational(2,3)+16**Rational(3,4)*2**-1\n\ndef standard():\n    return 4+8/2\n\ndef unique():\n    return [standard()]\n"
+}

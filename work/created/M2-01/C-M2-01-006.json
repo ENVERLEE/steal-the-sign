@@ -1,0 +1,102 @@
+{
+  "id": "C-M2-01-006",
+  "theme": "M2-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-261121",
+    "variation": "조건 변형",
+    "note": "분모를 $x(x-3)$으로 바꾸고, 우극한이 음수인 자연수의 개수를 $3$으로 준 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-04-C2",
+      "수학Ⅱ-03-C1"
+    ],
+    "strategy_ids": [
+      "S13",
+      "S14"
+    ],
+    "first_judgment": "부호를 뒤집는 조각함수의 연속은 이음매가 근이라는 뜻이고, 분모 $x(x-3)$이 $0$이 되는 점에서 분자도 $0$이므로 $f=x(x-3)(x-k)$로 확정한 뒤 몫의 부호를 $t$ 기준으로 읽는다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "계수가 모두 정수이고 최고차항의 계수가 $1$인 삼차함수 $f(x)$와 실수 $t$에 대하여 함수 $g(x)=\\begin{cases}-f(x) & (x<t)\\\\ f(x) & (x\\ge t)\\end{cases}$는 실수 전체의 집합에서 연속이고 다음 조건을 만족시킨다. $f(7)$의 값을 구하시오.\n(가) 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a+}\\dfrac{g(x)}{x(x-3)}$의 값이 존재한다.\n(나) $\\displaystyle\\lim_{x\\to m+}\\dfrac{g(x)}{x(x-3)}$의 값이 음수가 되도록 하는 자연수 $m$의 개수는 $3$이다.\n(다) $t>0$",
+  "condition": null,
+  "choices": null,
+  "answer": "28",
+  "answer_value": "28",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-04-C2",
+      "수학Ⅱ-03-C1"
+    ],
+    "guide": "연속이면 이음매 $t$에서 $f(t)=0$(수학Ⅱ-04-C2). 우극한의 분모 $x(x-3)$이 $0$이 되는 점에서는 분자도 $0$이어야 하므로(수학Ⅱ-03-C1) $f(0)=f(3)=0$이다. 남은 것은 세 번째 근 $k$와 이음매 $t$다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "연속·(가)",
+            "body": "연속이면 $f(t)=0$. (가)에서 $x\\to0+$, $3+$의 분모가 $0$이므로 $g(0)=g(3)=0$, 곧 $f(0)=f(3)=0$. 계수가 정수이므로 $f(x)=x(x-3)(x-k)$ ($k$ 정수)."
+          },
+          {
+            "label": "몫의 부호",
+            "body": "$\\dfrac{g(x)}{x(x-3)}=s(x)(x-k)$, 여기서 $s=-1$ ($x<t$), $+1$ ($x\\ge t$). $m$에서의 우극한 $=s(m)(m-k)$이고 $s(m)=+1\\iff m\\ge t$."
+          },
+          {
+            "label": "t의 후보",
+            "body": "$t\\in\\{0,3,k\\}$이고 (다)로 $t\\ne0$. $t=k$이면 $s(m)$의 부호와 $m-k$의 부호가 같아 음수가 없으므로 (나)에 어긋난다. $t=3$이어야 한다."
+          },
+          {
+            "label": "개수",
+            "body": "$t=3$이면 $m\\ge3$에서 $m<k$일 때 음수: $3\\le m<k$의 자연수가 $3$개 $\\Rightarrow k=6$ ($m<3$에서 음수는 최대 $2$개). 답 $f(7)=7\\cdot4\\cdot1=28$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "연속 조건",
+            "body": "$g$가 $x=t$에서 연속이려면 $-f(t)=f(t)$, 곧 $f(t)=0$이다."
+          },
+          {
+            "label": "(가) 해석",
+            "body": "$g(x)=\\pm f(x)$이므로 $x\\to0+$일 때 분모가 $0$으로 가서 극한이 유한하려면 $f(0)=0$이 필요하고, $x\\to3+$일 때도 $f(3)=0$이 필요하다. 그러므로 $f(x)=x(x-3)(x-k)$이고, 계수가 정수이려면 $k$는 정수이다."
+          },
+          {
+            "label": "몫",
+            "body": "$x\\ne0,3$에서 $\\dfrac{g(x)}{x(x-3)}=\\pm(x-k)$이고 부호는 $x<t$에서 $-$, $x\\ge t$에서 $+$이다. $m$에서의 우극한은 $m\\ge t$이면 $m-k$, $m<t$이면 $-(m-k)$이다."
+          },
+          {
+            "label": "t가 0인 경우",
+            "body": "$t=0$이면 모든 자연수에서 $m-k$이므로 음수인 $m$은 $1\\le m<k$, 개수가 $3$이면 $k=4$이다. 그러나 (다) $t>0$에 어긋난다."
+          },
+          {
+            "label": "t=k 인 경우",
+            "body": "$t=k>0$이면 $m<k$에서 $-(m-k)>0$, $m\\ge k$에서 $m-k\\ge0$이므로 음수가 없다. 개수가 $3$이 아니다."
+          },
+          {
+            "label": "t=3 인 경우",
+            "body": "$m=1,2$($<3$)는 $-(m-k)$, $m\\ge3$은 $m-k$. $m<3$에서 음수이려면 $m>k$이므로 많아야 $2$개, $m\\ge3$에서 음수이려면 $3\\le m<k$이므로 $k-3$개. 합이 $3$이 되는 것은 $k=6$뿐이다(이때 $m=3,4,5$)."
+          },
+          {
+            "label": "답",
+            "body": "$f(x)=x(x-3)(x-6)$, $f(7)=7\\cdot4\\cdot1=28$."
+          }
+        ]
+      }
+    ],
+    "supplement": "계수가 정수라는 조건이 없으면 $k$가 $5<k\\le6$인 실수 전체가 (나)를 만족해 답이 하나로 정해지지 않는다. 또 $t=0$인 경우($k=4$)는 (다)로만 배제된다. 경우를 나눌 때 $t\\in\\{0,3,k\\}$ 세 가지를 모두 세워야 한다.",
+    "skill_point": "조각함수의 부호가 $x<t$와 $x\\ge t$에서 갈리면, 몫을 $s(x)\\times(\\text{다항식})$으로 쓰고 $s$의 부호가 바뀌는 위치 $t$를 기준으로 자연수를 센다."
+  },
+  "verify": "from fractions import Fraction as Fr\n\ndef cand():\n    out = set()\n    e = Fr(1, 10**7)\n    for a in range(-14, 15):\n        for b in range(-30, 31):\n            for c in range(-60, 61):\n                F = lambda t: t**3 + a*t*t + b*t + c\n                # (가): x->0+, 3+ 에서 유한\n                ok = True\n                for p in (0, 3):\n                    u = p + e\n                    if abs(F(u)/(u*(u - 3))) > 10**4:\n                        ok = False\n                        break\n                if not ok:\n                    continue\n                if F(0) != 0 or F(3) != 0:\n                    continue\n                # 세 번째 근이 정수인 실근\n                for t in [r for r in real_roots(Poly(F(Symbol('x')), Symbol('x')))]:\n                    if t <= 0:\n                        continue\n                    t = Rational(t)\n                    cnt = 0\n                    for m in range(1, 80):\n                        u = Fr(m) + e\n                        gv = (-F(u)) if u < t else F(u)\n                        if gv/(u*(u - 3)) < 0:\n                            cnt += 1\n                    if cnt == 3:\n                        out.add(F(7))\n    return out\n\ndef skill():\n    k = 6\n    return 7*(7 - 3)*(7 - k)\n\ndef standard():\n    v = cand()\n    assert len(v) == 1\n    return list(v)[0]\n\ndef unique():\n    return sorted(cand())\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:46:29",
+    "hash": "3c6f734ff7a1b737",
+    "errors": [],
+    "warnings": []
+  }
+}

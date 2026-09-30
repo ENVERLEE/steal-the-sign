@@ -1,0 +1,97 @@
+{
+  "id": "C-M1-06-007",
+  "theme": "M1-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-241113",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-12-C1",
+      "수학Ⅰ-12-C5"
+    ],
+    "strategy_ids": [
+      "S07"
+    ],
+    "first_judgment": "삼각형 $\\mathrm{ABC}$는 SSA이므로 $\\overline{\\mathrm{AC}}$를 이차방정식으로 구해 '예각' 조건으로 근을 고르고, 삼각형 $\\mathrm{ACD}$는 넓이로 $\\sin(\\angle\\mathrm{ADC})$를 확정한 뒤 $\\overline{\\mathrm{AC}}=2R\\sin(\\angle\\mathrm{ADC})$를 쓴다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "$\\overline{\\mathrm{AB}}=5$, $\\overline{\\mathrm{BC}}=\\sqrt{21}$, $\\angle\\mathrm{BAC}=\\dfrac\\pi3$인 예각삼각형 $\\mathrm{ABC}$가 있다. 삼각형 $\\mathrm{ACD}$는 $\\overline{\\mathrm{AD}}\\times\\overline{\\mathrm{CD}}=12$이고, 삼각형 $\\mathrm{ACD}$의 넓이는 삼각형 $\\mathrm{ABC}$의 넓이의 $\\dfrac25$배이다. 삼각형 $\\mathrm{ACD}$의 외접원의 반지름의 길이를 $R$라 할 때, $\\dfrac{R}{\\sin(\\angle\\mathrm{ADC})}$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "6",
+  "answer_value": "6",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-12-C1",
+      "수학Ⅰ-12-C5"
+    ],
+    "guide": "$\\overline{\\mathrm{AC}}=x$에 대한 이차방정식 $21=25+x^2-5x$의 두 근 중 예각삼각형이 되는 것을 고른다. 그 뒤 $\\dfrac12\\overline{\\mathrm{AD}}\\cdot\\overline{\\mathrm{CD}}\\sin(\\angle\\mathrm{ADC})$가 넓이라는 것으로 $\\sin(\\angle\\mathrm{ADC})$를 정하고, $\\dfrac{R}{\\sin}$를 $\\dfrac{\\overline{\\mathrm{AC}}}{2\\sin^2}$으로 바꾼다(수학Ⅰ-12-C1, C5).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "$\\overline{\\mathrm{AC}}$",
+            "body": "$x^2-5x+4=0$에서 $x=1$ 또는 $4$. $x=1$이면 $5^2>1^2+21$로 둔각이므로 예각인 $x=4$."
+          },
+          {
+            "label": "$S_1$",
+            "body": "$S_1=\\dfrac12\\cdot5\\cdot4\\cdot\\dfrac{\\sqrt3}{2}=5\\sqrt3$이므로 $S_2=\\dfrac25S_1=2\\sqrt3$."
+          },
+          {
+            "label": "$\\sin(\\angle\\mathrm{ADC})$",
+            "body": "$S_2=\\dfrac12\\cdot12\\cdot\\sin(\\angle\\mathrm{ADC})=2\\sqrt3$에서 $\\sin(\\angle\\mathrm{ADC})=\\dfrac{\\sqrt3}{3}$."
+          },
+          {
+            "label": "답",
+            "body": "$\\overline{\\mathrm{AC}}=2R\\sin(\\angle\\mathrm{ADC})$이므로 $\\dfrac{R}{\\sin(\\angle\\mathrm{ADC})}=\\dfrac{\\overline{\\mathrm{AC}}}{2\\sin^2(\\angle\\mathrm{ADC})}=\\dfrac{4}{2\\cdot\\frac13}=6$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "이차방정식",
+            "body": "코사인법칙 $21=25+x^2-2\\cdot5x\\cos\\dfrac\\pi3$에서 $x^2-5x+4=0$, $x=1$ 또는 $4$."
+          },
+          {
+            "label": "근 선택",
+            "body": "$x=1$일 때 세 변은 $5,\\,1,\\,\\sqrt{21}$이고 $5^2=25>1+21=22$이므로 가장 긴 변 $5$의 대각이 둔각이다. 예각삼각형이 아니므로 $x=4$. ($x=4$이면 $25<16+21$이어서 예각.)"
+          },
+          {
+            "label": "넓이",
+            "body": "$S_1=\\dfrac12\\cdot5\\cdot4\\sin\\dfrac\\pi3=5\\sqrt3$, $S_2=\\dfrac25S_1=2\\sqrt3$."
+          },
+          {
+            "label": "$\\sin(\\angle\\mathrm{ADC})$",
+            "body": "$S_2=\\dfrac12\\cdot\\overline{\\mathrm{AD}}\\cdot\\overline{\\mathrm{CD}}\\sin(\\angle\\mathrm{ADC})=6\\sin(\\angle\\mathrm{ADC})$이므로 $\\sin(\\angle\\mathrm{ADC})=\\dfrac{\\sqrt3}{3}$."
+          },
+          {
+            "label": "$R$",
+            "body": "외접원의 반지름은 $R=\\dfrac{\\overline{\\mathrm{AD}}\\cdot\\overline{\\mathrm{CD}}\\cdot\\overline{\\mathrm{AC}}}{4S_2}=\\dfrac{12\\cdot4}{8\\sqrt3}=2\\sqrt3$."
+          },
+          {
+            "label": "답",
+            "body": "$\\dfrac{R}{\\sin(\\angle\\mathrm{ADC})}=\\dfrac{2\\sqrt3}{\\sqrt3/3}=6$."
+          }
+        ]
+      }
+    ],
+    "supplement": "근을 둘 다 남겨 두면 $\\overline{\\mathrm{AC}}=1$일 때 $\\sin(\\angle\\mathrm{ADC})$가 존재하지 않아 모순이 되기도 하지만, 그 확인은 훨씬 길다. '예각삼각형'이라는 조건은 처음부터 근 선택용임을 알아보는 것이 핵심이다. $\\dfrac{R}{\\sin}$ 꼴은 $2R\\sin=\\text{현}$에서 나온 것이므로 $\\overline{\\mathrm{AC}}$가 확정되면 $R$을 따로 구할 필요가 없다.",
+    "skill_point": "SSA → 이차방정식 + 예각·둔각으로 근 선택. $R$과 $\\sin$이 함께 있으면 현 $=2R\\sin$으로 한 번에."
+  },
+  "verify": "def skill():\n    S1 = Rational(1, 2)*5*4*sqrt(3)/2\n    S2 = Rational(2, 5)*S1\n    sD = S2/(Rational(1, 2)*12)\n    return simplify(4/(2*sD**2))\n\ndef standard():\n    x = Symbol('x', positive=True)\n    good = []\n    for r in solve(Eq(21, 25 + x**2 - 2*5*x*cos(pi/3)), x):\n        sides = sorted([5, r, sqrt(21)])\n        if sides[2]**2 < sides[0]**2 + sides[1]**2:\n            good.append(r)\n    assert len(good) == 1\n    AC = good[0]\n    S1 = Rational(1, 2)*5*AC*sin(pi/3)\n    S2 = Rational(2, 5)*S1\n    # AD*CD = 12, 넓이 -> sin D, 이어서 abc/4S\n    R = 12*AC/(4*S2)\n    sD = S2/6\n    # 존재성: AC^2 = AD^2 + CD^2 - 24 cos D (AD^2 + CD^2 >= 24)\n    cD = sqrt(1 - sD**2)\n    assert AC**2 >= 24 - 24*cD\n    return simplify(R/sD)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:17",
+    "hash": "bcd64ce3cd31aac8",
+    "errors": [],
+    "warnings": []
+  }
+}

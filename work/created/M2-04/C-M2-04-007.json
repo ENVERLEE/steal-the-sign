@@ -1,0 +1,93 @@
+{
+  "id": "C-M2-04-007",
+  "theme": "M2-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-250621",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-09-C5",
+      "수학Ⅱ-09-C2"
+    ],
+    "strategy_ids": [
+      "S21"
+    ],
+    "first_judgment": "사차함수가 수평선과 두 점에서 접하면 $f(x)-5=(x-\\alpha)^2(x-\\beta)^2$이므로 식을 전개하지 않고 이 꼴로 세운다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "최고차항의 계수가 $1$인 사차함수 $f(x)$에 대하여 직선 $y=5$가 곡선 $y=f(x)$와 서로 다른 두 점에서 접한다. $f(0)=5$, $f(1)=9$, $f'(2)<0$일 때, $f(4)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "21",
+  "answer_value": "21",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-09-C5",
+      "수학Ⅱ-09-C2"
+    ],
+    "guide": "곡선이 직선 $y=5$와 $x=\\alpha$, $x=\\beta$에서 접하면 $f(x)-5$는 $(x-\\alpha)^2$과 $(x-\\beta)^2$을 모두 인수로 갖는다(수학Ⅱ-09-C2, C5). 최고차항의 계수가 $1$이므로 $f(x)-5=(x-\\alpha)^2(x-\\beta)^2$.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "식 세우기",
+            "body": "$f(x)-5=(x-\\alpha)^2(x-\\beta)^2$. $f(0)=5$이므로 $0$이 접점 중 하나이다: $f(x)=5+x^2(x-\\beta)^2$."
+          },
+          {
+            "label": "$\\beta$ 찾기",
+            "body": "$f(1)=5+(1-\\beta)^2=9$에서 $(1-\\beta)^2=4$, $\\beta=3$ 또는 $\\beta=-1$. $f'(x)=2x(x-\\beta)(2x-\\beta)$이므로 $f'(2)=4(2-\\beta)(4-\\beta)$. $\\beta=3$이면 $-4<0$, $\\beta=-1$이면 $>0$이므로 $\\beta=3$."
+          },
+          {
+            "label": "답",
+            "body": "$f(4)=5+16\\cdot1=21$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "일반형",
+            "body": "$f(x)=x^4+ax^3+bx^2+cx+d$에서 $f(0)=5$이므로 $d=5$."
+          },
+          {
+            "label": "접함의 번역",
+            "body": "$y=5$와 서로 다른 두 점에서 접하려면 $f(x)-5$가 어떤 이차식의 제곱 $(x^2+px+q)^2$이고 그 이차식의 판별식이 양수여야 한다."
+          },
+          {
+            "label": "계수 비교",
+            "body": "$(x^2+px+q)^2=x^4+2px^3+(p^2+2q)x^2+2pqx+q^2$과 $f(x)-5=x^4+ax^3+bx^2+cx$를 비교하면 $q^2=0$, $q=0$이므로 $f(x)=5+x^2(x+p)^2$."
+          },
+          {
+            "label": "$p$ 결정",
+            "body": "$f(1)=5+(1+p)^2=9$에서 $p=1$ 또는 $p=-3$. 두 경우 모두 $p\\neq0$이므로 서로 다른 두 점에서 접한다."
+          },
+          {
+            "label": "$f'(2)$ 부호",
+            "body": "$f'(x)=2x(x+p)^2+2x^2(x+p)=2x(x+p)(2x+p)$이므로 $f'(2)=4(2+p)(4+p)$. $p=1$이면 $4\\cdot3\\cdot5>0$, $p=-3$이면 $4\\cdot(-1)\\cdot1<0$. 따라서 $p=-3$."
+          },
+          {
+            "label": "답",
+            "body": "$f(x)=5+x^2(x-3)^2$, $f(4)=5+16\\cdot1=21$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f(x)=x^4+ax^3+bx^2+cx+d$로 열고 '접한다'를 판별식으로 쓰면 사차식의 판별식이 되어 사실상 풀 수 없다. 접점이 두 개이고 접점에서 높이가 같다는 것만 쓰면 $f(x)-5$가 완전제곱식이라 미지수가 두 개($\\alpha,\\beta$)로 줄어든다. $f'(2)<0$은 $\\beta=3$과 $\\beta=-1$ 중 하나를 고르는 조건이다.",
+    "skill_point": "사차함수가 수평선에 두 점에서 접한다 → $f(x)-k=(x-\\alpha)^2(x-\\beta)^2$. 전개하지 않는다."
+  },
+  "verify": "def skill():\n    x, be = symbols('x be')\n    f = 5 + x**2*(x - be)**2\n    cand = solve(f.subs(x, 1) - 9, be)\n    good = [b0 for b0 in cand if diff(f, x).subs(be, b0).subs(x, 2) < 0]\n    assert len(good) == 1\n    return f.subs(be, good[0]).subs(x, 4)\n\ndef standard():\n    x, p, q, a, b, c = symbols('x p q a b c')\n    f = x**4 + a*x**3 + b*x**2 + c*x + 5\n    eq = Poly(expand(f - 5 - (x**2 + p*x + q)**2), x).all_coeffs()\n    sols = solve(eq + [f.subs(x, 1) - 9], [a, b, c, p, q], dict=True)\n    res = set()\n    for s in sols:\n        if s[p]**2 - 4*s[q] <= 0:\n            continue\n        g = f.subs(s)\n        if diff(g, x).subs(x, 2) < 0:\n            res.add(g.subs(x, 4))\n    assert len(res) == 1\n    return res.pop()\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:37",
+    "hash": "d0809f5e79b94308",
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "C-M1-02-005",
+  "theme": "M1-02",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-250914",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-06-C2"
+    ],
+    "strategy_ids": [
+      "S05"
+    ],
+    "first_judgment": "중심이 $y=x$ 위인 원과 $y=2^x$, $y=\\log_2x$가 모두 $y=x$ 대칭이므로 원과 로그곡선의 교점은 $\\mathrm{A}$, $\\mathrm{B}$를 뒤집은 점이다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "곡선 $y=2^{x}$ 위의 두 점 $\\mathrm{A}$, $\\mathrm{B}$가 다음 조건을 만족시킨다. 중심이 직선 $y=x$ 위에 있고 두 점 $\\mathrm{A}$, $\\mathrm{B}$를 지나는 원이 곡선 $y=\\log_2 x$와 만나는 두 점의 $x$좌표의 곱을 구하시오.",
+  "condition": "(가) 직선 $\\mathrm{AB}$의 기울기는 $6$이다.\\\\(나) $\\overline{\\mathrm{AB}}=2\\sqrt{37}$",
+  "choices": null,
+  "answer": "64",
+  "answer_value": "64",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-06-C2"
+    ],
+    "guide": "중심이 $y=x$ 위에 있는 원은 $y=x$에 대하여 대칭이고, $y=2^x$와 $y=\\log_2x$도 서로 $y=x$ 대칭이다(수학Ⅰ-06-C2). 그러므로 원과 $y=\\log_2x$의 교점은 $\\mathrm{A}(a,2^a)$, $\\mathrm{B}(b,2^b)$를 뒤집은 $(2^a,a)$, $(2^b,b)$이다. 원의 방정식은 필요 없고 $2^a\\cdot2^b$만 구하면 된다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "대칭으로 교점",
+            "body": "원과 $y=\\log_2x$의 교점은 $(2^a,a)$, $(2^b,b)$이므로 구하는 곱은 $2^a\\cdot2^b$이다."
+          },
+          {
+            "label": "가로 차",
+            "body": "기울기가 $6$인 직선에서 $\\overline{\\mathrm{AB}}=2\\sqrt{37}=(b-a)\\sqrt{1+6^2}$이므로 $b-a=2$이다."
+          },
+          {
+            "label": "높이 차",
+            "body": "$2^b-2^a=6(b-a)=12$이고 $2^b=4\\cdot2^a$이므로 $3\\cdot2^a=12$, $2^a=4$, $2^b=16$이다. 곱은 $4\\times16=64$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "두 점 A, B",
+            "body": "$a<b$라 하면 기울기 조건에서 $\\frac{2^b-2^a}{b-a}=6$이고 길이 조건에서 $(b-a)^2+(2^b-2^a)^2=148$이다. 두 식을 합치면 $(b-a)^2\\cdot37=148$이므로 $b-a=2$이다."
+          },
+          {
+            "label": "좌표",
+            "body": "$2^{a+2}-2^a=12$에서 $3\\cdot2^a=12$이므로 $a=2$, $b=4$이다. 곧 $\\mathrm{A}(2,4)$, $\\mathrm{B}(4,16)$이다."
+          },
+          {
+            "label": "원의 중심",
+            "body": "중심을 $(c,c)$라 하면 $\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}$에서 $(c-2)^2+(c-4)^2=(c-4)^2+(c-16)^2$이다. 정리하면 $(c-2)^2=(c-16)^2$이므로 $c=9$이다."
+          },
+          {
+            "label": "반지름",
+            "body": "$r^2=(9-2)^2+(9-4)^2=74$이므로 원은 $(x-9)^2+(y-9)^2=74$이다."
+          },
+          {
+            "label": "교점",
+            "body": "$y=\\log_2x$를 대입한 $(x-9)^2+(\\log_2x-9)^2=74$에 $x=4$를 넣으면 $25+49=74$, $x=16$을 넣으면 $49+25=74$로 성립한다. 두 해뿐이므로 곱은 $4\\times16=64$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "원의 방정식을 세우고 로그와 연립하면 초월방정식이 되어 해를 대입으로 찾아야 한다. 대칭을 쓰면 원은 사라지고 지수함수 위의 두 점만 남는다. 흔한 실수는 (나)의 길이를 가로 차로 착각하여 $b-a=2\\sqrt{37}$로 두는 것이다.",
+    "skill_point": "축 위에 중심이 있는 원은 축 대칭 — 교점을 뒤집어 짝으로 읽는다."
+  },
+  "verify": "\ndef bis(f, lo, hi, n=200):\n    flo = f(lo)\n    for _ in range(n):\n        m = (lo + hi) / 2\n        fm = f(m)\n        if (flo <= 0) == (fm <= 0):\n            lo, flo = m, fm\n        else:\n            hi = m\n    return (lo + hi) / 2\n\ndef skill():\n    d = 2\n    t = Rational(6*d, 2**d - 1)\n    return t * (t * 2**d)\n\ndef standard():\n    s = Symbol('s', real=True)\n    a0 = float(solve(Eq(2**(s + 2) - 2**s, 12), s)[0])\n    b0 = a0 + 2\n    cc = bis(lambda c: ((c-a0)**2 + (c-2**a0)**2) - ((c-b0)**2 + (c-2**b0)**2), -1000, 1000)\n    r2 = (cc - a0)**2 + (cc - 2**a0)**2\n    g = lambda x: (x - cc)**2 + (math.log2(x) - cc)**2 - r2\n    xs = [10**(-3 + 0.001*k) for k in range(0, 6000)]\n    roots = [bis(g, x1, x2) for x1, x2 in zip(xs, xs[1:]) if g(x1)*g(x2) < 0]\n    assert len(roots) == 2\n    return round(roots[0]*roots[1])\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:31:11",
+    "hash": "baf30ca91d49db2e",
+    "errors": [],
+    "warnings": []
+  }
+}

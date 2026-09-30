@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-04-006",
+  "theme": "M2-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-240622",
+    "variation": "일반화",
+    "note": "일반화"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-09-C4"
+    ],
+    "strategy_ids": [
+      "S19"
+    ],
+    "first_judgment": "삼차함수의 극댓값과 극솟값의 차는 두 극점 사이 거리의 세제곱의 $\\frac12$이므로, (나)에서 극점 사이의 거리가 곧바로 나온다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "문제해결",
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f(-2)$의 값을 구하시오.",
+  "condition": "(가) 함수 $f(x)$는 $x=-1$에서 극대이다.\\\\(나) 함수 $f(x)$의 극댓값과 극솟값의 차는 $32$이다.\\\\(다) 함수 $f(x)$의 극솟값은 $-20$이다.",
+  "choices": null,
+  "answer": "5",
+  "answer_value": "5",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-09-C4"
+    ],
+    "guide": "최고차항의 계수가 $1$인 삼차함수에서 $f'(x)=3(x-\\alpha)(x-\\beta)$ ($\\alpha<\\beta$)이면 극댓값과 극솟값의 차는 $\\displaystyle\\int_\\alpha^\\beta|f'(x)|dx=\\dfrac{(\\beta-\\alpha)^3}{2}$이다(수학Ⅱ-09-C4). 극대가 $x=-1$이므로 $\\alpha=-1$이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "극점 간격",
+            "body": "$\\alpha=-1$이고 극댓값과 극솟값의 차가 $\\dfrac{(\\beta+1)^3}{2}=32$이므로 $\\beta+1=4$, $\\beta=3$."
+          },
+          {
+            "label": "도함수",
+            "body": "$f'(x)=3(x+1)(x-3)=3x^2-6x-9$이므로 $f(x)=x^3-3x^2-9x+c$."
+          },
+          {
+            "label": "상수항",
+            "body": "극솟값 $f(3)=c-27=-20$에서 $c=7$. $f(-2)=-8-12+18+7=5$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "일반형",
+            "body": "$f(x)=x^3+ax^2+bx+c$로 두면 $f'(x)=3x^2+2ax+b$. $x=-1$에서 극대이므로 $f'(-1)=3-2a+b=0$, 곧 $b=2a-3$."
+          },
+          {
+            "label": "다른 극점",
+            "body": "$f'$의 두 근의 합은 $-\\dfrac{2a}3$이므로 다른 근은 $\\beta=-\\dfrac{2a}3+1$. 극대가 왼쪽이므로 $\\beta>-1$."
+          },
+          {
+            "label": "극값의 차",
+            "body": "$f(-1)-f(\\beta)$에서 상수항 $c$가 지워지므로 $a$만의 식이 된다. 전개하면 $\\dfrac{(\\beta+1)^3}2$과 같으므로 $\\left(2-\\dfrac{2a}3\\right)^3=64$."
+          },
+          {
+            "label": "풀이",
+            "body": "$2-\\dfrac{2a}3=4$에서 $a=-3$, $b=-9$, $\\beta=3$."
+          },
+          {
+            "label": "상수항",
+            "body": "극솟값 $f(3)=27-27-27+c=-20$에서 $c=7$."
+          },
+          {
+            "label": "답",
+            "body": "$f(x)=x^3-3x^2-9x+7$, $f(-2)=-8-12+18+7=5$."
+          }
+        ]
+      }
+    ],
+    "supplement": "극댓값과 극솟값을 각각 구해서 빼려면 미지수 $a,b,c$를 모두 대입해야 하지만, 차는 $f'$의 두 근만으로 정해진다는 것을 알면 상수항은 마지막 한 줄에서 처리하면 된다. 극대가 왼쪽 근이라는 (가)가 없으면 $\\alpha=-3$, $\\beta=1$처럼 다른 배치가 가능해 답이 둘이 될 수 있다.",
+    "skill_point": "극댓값$-$극솟값 $=\\dfrac{(\\beta-\\alpha)^3}{2}$ (최고차항 계수 $1$). 상수항은 마지막에."
+  },
+  "verify": "def skill():\n    x = Symbol('x')\n    beta = Integer(4) - 1\n    fp = 3*(x + 1)*(x - beta)\n    f = integrate(fp, x)\n    cc = Symbol('c')\n    f = integrate(fp, x) + cc\n    cv = solve(f.subs(x, beta) + 20, cc)[0]\n    return (f.subs(cc, cv)).subs(x, -2)\n\ndef standard():\n    x, a, c = symbols('x a c', real=True)\n    b = 2*a - 3\n    f = x**3 + a*x**2 + b*x + c\n    fp = diff(f, x)\n    roots = solve(fp, x)\n    out = set()\n    for aa in solve(Eq((f.subs(x, -1) - f.subs(x, 1 - 2*a/3))**2, 32**2), a):\n        g = f.subs(a, aa)\n        rs = sorted(solve(diff(g, x), x))\n        if len(rs) != 2 or rs[0] != -1:\n            continue\n        cv = solve(g.subs(x, rs[1]) + 20, c)[0]\n        out.add(g.subs(c, cv).subs(x, -2))\n    assert len(out) == 1\n    return out.pop()\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:36",
+    "hash": "f9660bbb1ee34f43",
+    "errors": [],
+    "warnings": []
+  }
+}

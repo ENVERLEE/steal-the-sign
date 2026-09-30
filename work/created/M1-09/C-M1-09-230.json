@@ -1,0 +1,76 @@
+{
+  "id": "C-M1-09-230",
+  "theme": "M1-09",
+  "origin": {
+    "type": "original",
+    "note": "부분분수·시그마 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "각 항을 부분분수로 나누면 이웃한 항이 소거되고 양 끝의 항만 남는다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\displaystyle\\sum_{k=1}^{3480}\\frac{1}{\\sqrt{k}+\\sqrt{k+1}}$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "58",
+  "answer_value": "58",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C2"
+    ],
+    "guide": "각 항을 부분분수로 나누면 이웃한 항이 소거되고 양 끝의 항만 남는다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "유리화",
+            "body": "$\\frac1{\\sqrt k+\\sqrt{k+1}}=\\sqrt{k+1}-\\sqrt k$이므로 첫 항과 끝 항만 남는다."
+          },
+          {
+            "label": "계산",
+            "body": "$\\sqrt{3481}-\\sqrt1=59-1=58$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "항 계산",
+            "body": "$k=1$: $\\frac{1}{1+\\sqrt2}$, $k=2$: $\\frac{1}{\\sqrt2+\\sqrt3}$, … 무리수를 그대로 더할 수 없다."
+          },
+          {
+            "label": "유리화",
+            "body": "각 항의 분모를 유리화하면 $\\sqrt2-1,\\ \\sqrt3-\\sqrt2,\\ \\dots$"
+          },
+          {
+            "label": "합",
+            "body": "$3480$개 항을 더하면 $\\sqrt{3481}-1=59-1$"
+          },
+          {
+            "label": "답",
+            "body": "$58$"
+          }
+        ]
+      }
+    ],
+    "supplement": "항을 하나씩 더하면 분모가 계속 바뀐다. 소거되고 남는 양 끝만 적으면 통분은 마지막에 한 번뿐이다.",
+    "skill_point": "부분분수로 쪼갠 뒤 '남는 첫 항과 끝 항'만 적고 나머지는 쓰지 않는다."
+  },
+  "verify": "def skill():\n    return sqrt(3481) - 1\n\ndef standard():\n    tot = math.fsum(1/(math.sqrt(kk) + math.sqrt(kk + 1)) for kk in range(1, 3481))\n    assert abs(tot - round(tot)) < 1e-6\n    return int(round(tot))\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "부분분수와 연쇄 소거",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:16:55",
+    "hash": "712e6ad7347a2026",
+    "errors": [],
+    "warnings": []
+  }
+}

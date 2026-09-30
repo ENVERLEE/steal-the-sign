@@ -1,0 +1,78 @@
+{
+  "id": "C-M2-08-127",
+  "theme": "M2-08",
+  "origin": {
+    "type": "original",
+    "note": "정적분 대입 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C1",
+      "수학Ⅱ-18-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "일차식의 거듭제곱은 t=ax+b로 치환하면 dx=dt/a 하나만 신경 쓰면 된다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\displaystyle\\int_{2}^{3}(4x-1)^2\\,dx$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "250",
+  "answer_value": "250",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C1",
+      "수학Ⅱ-18-C3"
+    ],
+    "guide": "일차식의 거듭제곱은 t=ax+b로 치환하면 dx=dt/a 하나만 신경 쓰면 된다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "치환",
+            "body": "$t=4x-1$로 놓으면 $dx=\\frac{1}{4}dt$이고 구간은 $[7,11]$"
+          },
+          {
+            "label": "계산",
+            "body": "$\\frac{1}{4}\\left[\\frac{t^3}{3}\\right]_{7}^{11}=\\frac{1331-(343)}{12}=\\frac{247}{3}$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전개",
+            "body": "$(4x-1)^2$을 이항정리로 전개하면 항이 3개이고 계수가 커진다."
+          },
+          {
+            "label": "부정적분",
+            "body": "각 항을 적분하여 부정적분을 만든다."
+          },
+          {
+            "label": "대입",
+            "body": "$x=3$와 $x=2$를 대입하고 뺀다. 각 항의 분수를 통분한다."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{247}{3}$"
+          }
+        ]
+      }
+    ],
+    "supplement": "전개하면 이항계수와 큰 거듭제곱이 얽힌다. 치환하면 양 끝 값만 거듭제곱하면 된다.",
+    "skill_point": "치환으로 구간을 [0, d]로 옮기고 거듭제곱 하나만 계산."
+  },
+  "verify": "def skill():\n    v = Fraction(11**3 - (7)**3, 12)\n    return v.numerator + v.denominator\n\ndef standard():\n    x = Symbol('x')\n    v = Rational(integrate(expand((4*x + (-1))**2), (x, 2, 3)))\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "정적분 대입과 넓이 공식",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:24:53",
+    "hash": "250a75a4806952cf",
+    "errors": [],
+    "warnings": []
+  }
+}

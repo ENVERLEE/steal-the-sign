@@ -1,0 +1,102 @@
+{
+  "id": "C-M2-01-004",
+  "theme": "M2-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-240915",
+    "variation": "수치 변형",
+    "note": "이동량 $3\\to2$, 상수 $+1\\to+2$로 바꾸고 극한과 함숫값의 차를 $1$로 준 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-03-C1",
+      "수학Ⅱ-04-C4"
+    ],
+    "strategy_ids": [
+      "S13",
+      "S14"
+    ],
+    "first_judgment": "극한이 함숫값과 다르다는 것은 $x=4$에서 분모가 $0$이라는 뜻이므로, 분모 $f(4)=0$과 분자 $f(6)=0$으로 근을 확정하고 남은 근은 극한값으로 정한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "함수 $g(x)$는 최고차항의 계수가 $1$인 삼차함수 $f(x)$를 이용하여\n$g(x)=\\begin{cases}\\dfrac{f(x+2)\\{f(x)+2\\}}{f(x)} & (f(x)\\ne0)\\\\ 1 & (f(x)=0)\\end{cases}$\n로 정의된다. $x=4$에서 극한값이 함숫값보다 $1$만큼 크다, 즉 $\\displaystyle\\lim_{x\\to4}g(x)=g(4)+1$일 때, $g(7)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "80",
+  "answer_value": "80",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-03-C1",
+      "수학Ⅱ-04-C4"
+    ],
+    "guide": "극한과 함숫값이 다르면 $x=4$는 $f(x)=0$의 특수 정의가 적용되는 점이다(수학Ⅱ-04-C4). 그러면 분모가 $0$으로 가므로 분자도 $0$이어야 하고(수학Ⅱ-03-C1), 이것이 $f(6)=0$이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "f(4)=0",
+            "body": "$f(4)\\ne0$이면 $g$는 $x=4$ 근처에서 유리식과 같아 $\\lim g=g(4)$이므로 모순. 따라서 $f(4)=0$, $g(4)=1$, $\\lim_{x\\to4}g(x)=2$."
+          },
+          {
+            "label": "f(6)=0",
+            "body": "분모 $f(x)\\to0$인데 극한이 유한하므로 분자 $f(x+2)\\{f(x)+2\\}\\to2f(6)=0$. $f(x)=(x-4)(x-6)(x-c)$."
+          },
+          {
+            "label": "극한 계산",
+            "body": "$f(x)+2\\to2$이고 $\\dfrac{f(x+2)}{f(x)}\\to\\dfrac{f'(6)}{f'(4)}$이므로 $2\\cdot\\dfrac{f'(6)}{f'(4)}=2$, $f'(6)=f'(4)$."
+          },
+          {
+            "label": "c 결정",
+            "body": "$f'(4)=2(c-4)$, $f'(6)=2(6-c)$이므로 $c=5$."
+          },
+          {
+            "label": "값",
+            "body": "$g(7)=\\dfrac{f(9)\\{f(7)+2\\}}{f(7)}=\\dfrac{60\\cdot8}{6}=80$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "연속인 경우 배제",
+            "body": "$f(4)\\ne0$이면 $x=4$ 근처에서 $g(x)=\\dfrac{f(x+2)\\{f(x)+2\\}}{f(x)}$이고 분모가 $0$이 아니므로 $x\\to4$의 극한이 $g(4)$와 같다. 이는 조건 $\\lim g=g(4)+1$과 모순이므로 $f(4)=0$, $g(4)=1$이고 극한값은 $2$이다."
+          },
+          {
+            "label": "분자 조건",
+            "body": "$x\\to4$에서 분모 $f(x)\\to0$인데 극한이 유한하려면 분자 $f(x+2)\\{f(x)+2\\}$도 $0$으로 가야 한다. $f(4)+2=2\\ne0$이므로 $f(6)=0$이다."
+          },
+          {
+            "label": "식 세우기",
+            "body": "삼차함수이고 최고차항의 계수가 $1$이므로 $f(x)=(x-4)(x-6)(x-c)$로 둔다."
+          },
+          {
+            "label": "극한값",
+            "body": "$\\dfrac{f(x+2)}{f(x)}=\\dfrac{(x-2)(x-4)(x+2-c)}{(x-4)(x-6)(x-c)}=\\dfrac{(x-2)(x+2-c)}{(x-6)(x-c)}$. $x\\to4$이면 $\\dfrac{2(6-c)}{(-2)(4-c)}$이고, 여기에 $f(x)+2\\to2$를 곱한 값이 $2$이므로 $\\dfrac{2(6-c)}{-2(4-c)}=1$."
+          },
+          {
+            "label": "정리",
+            "body": "$6-c=-(4-c)$이므로 $6-c=c-4$, $c=5$. ($c=4,6$은 근이 겹쳐 극한이 발산하거나 $0$이 되어 조건에 맞지 않는다.)"
+          },
+          {
+            "label": "g(7)",
+            "body": "$f(x)=(x-4)(x-5)(x-6)$에서 $f(9)=5\\cdot4\\cdot3=60$, $f(7)=3\\cdot2\\cdot1=6$이므로 $g(7)=\\dfrac{60\\cdot(6+2)}{6}=80$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f(x)=x^3+px^2+qx+r$로 열고 극한식을 전개하면 미지수 세 개가 남는다. 근 두 개를 먼저 확정하고 마지막 근 하나만 극한값 하나로 정하는 순서가 핵심이다. 인수가 겹치는 $c=4$, $c=6$은 분모의 중복도가 분자보다 높거나 낮아 극한값이 $2$가 되지 않는다.",
+    "skill_point": "'극한 $\\ne$ 함숫값' $\\Rightarrow$ 분모 $=0$인 점, 그러면 분자도 $0$. 근을 먼저 확정하고 미정 근은 극한값 하나로 정한다."
+  },
+  "verify": "x = Symbol('x')\n\ndef nolim_at(N, D, a):\n    \"\"\"N/D 의 x->a 극한이 (유한값으로) 존재하지 않으면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    if Dp.is_zero:\n        return True\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.eval(a) == 0\n\ndef all_ok(N, D):\n    \"\"\"모든 실수 a 에서 극한이 존재하면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.count_roots() == 0\n\ndef vals():\n    out = set()\n    for c in [Rational(k, 2) for k in range(-40, 41)]:\n        f = lambda t: (t - 4)*(t - 6)*(t - c)\n        expr = cancel(f(x + 2)*(f(x) + 2)/f(x))\n        L = limit(expr, x, 4)\n        if L == 2:\n            out.add(cancel(f(9)*(f(7) + 2)/f(7)))\n    return out\n\ndef skill():\n    c = 5\n    f = lambda t: (t - 4)*(t - 6)*(t - c)\n    assert 2*diff(f(x), x).subs(x, 6) == 2*diff(f(x), x).subs(x, 4)\n    return f(9)*(f(7) + 2)/f(7)\n\ndef standard():\n    v = vals()\n    assert len(v) == 1\n    return list(v)[0]\n\ndef unique():\n    return sorted(vals())\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:46:16",
+    "hash": "055085fcbd8a854b",
+    "errors": [],
+    "warnings": []
+  }
+}

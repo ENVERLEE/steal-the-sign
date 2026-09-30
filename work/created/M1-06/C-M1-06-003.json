@@ -1,0 +1,102 @@
+{
+  "id": "C-M1-06-003",
+  "theme": "M1-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-230610",
+    "variation": "수치 변형",
+    "note": "수치 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-12-C1",
+      "수학Ⅰ-12-C3"
+    ],
+    "strategy_ids": [
+      "S07",
+      "S08"
+    ],
+    "first_judgment": "두 변과 끼인각이 아닌 각이 주어진 삼각형은 이차방정식으로 세 번째 변을 구하고 부등식 조건으로 근을 고른 뒤, 중점을 지나는 현은 할선 정리로 잇는다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\overline{\\mathrm{AB}}=5$, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{AC}}>3$이고 $\\cos(\\angle\\mathrm{BAC})=\\dfrac58$인 삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{AC}$의 중점을 $\\mathrm{M}$, 삼각형 $\\mathrm{ABC}$의 외접원이 직선 $\\mathrm{BM}$과 만나는 점 중 $\\mathrm{B}$가 아닌 점을 $\\mathrm{D}$라 하자. $\\overline{\\mathrm{MD}}^{\\,2}=\\dfrac{q}{p}$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "65",
+  "answer_value": "65",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-12-C1",
+      "수학Ⅰ-12-C3"
+    ],
+    "guide": "$\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{BC}}$와 $\\angle\\mathrm{A}$는 SSA이므로 $\\overline{\\mathrm{AC}}$는 이차방정식의 두 근 중 하나이다. $\\overline{\\mathrm{AC}}>3$이 근 선택 조건이다. 그 뒤 중점 $\\mathrm{M}$을 지나는 두 현에서 $\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}$를 쓴다(수학Ⅰ-12-C1, C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "$\\overline{\\mathrm{AC}}$ 확정",
+            "body": "$\\overline{\\mathrm{AC}}=x$라 하면 코사인법칙 $16=25+x^2-2\\cdot5x\\cdot\\dfrac58$, 곧 $4x^2-25x+36=0$이고 $x=4$ 또는 $\\dfrac94$. $x>3$이므로 $x=4$."
+          },
+          {
+            "label": "$\\overline{\\mathrm{BM}}$",
+            "body": "$\\overline{\\mathrm{BC}}=\\overline{\\mathrm{AC}}=4$인 이등변삼각형이므로 중선 $\\overline{\\mathrm{BM}}$은 중선 정리 $\\overline{\\mathrm{BM}}^2=\\dfrac{2\\cdot25+2\\cdot16-16}{4}=\\dfrac{33}{2}$."
+          },
+          {
+            "label": "할선",
+            "body": "$\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=2\\cdot2=4=\\overline{\\mathrm{BM}}\\cdot\\overline{\\mathrm{MD}}$이므로 $\\overline{\\mathrm{MD}}^2=\\dfrac{16}{33/2}=\\dfrac{32}{33}$."
+          },
+          {
+            "label": "답",
+            "body": "$p=33$, $q=32$이므로 $p+q=65$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "$\\overline{\\mathrm{AC}}$",
+            "body": "코사인법칙으로 $4x^2-25x+36=0$, $x=4$ 또는 $\\dfrac94$. 조건 $x>3$으로 $x=4$."
+          },
+          {
+            "label": "좌표",
+            "body": "$\\mathrm{A}(0,0)$, $\\mathrm{C}(4,0)$, $\\mathrm{B}(5\\cos A,5\\sin A)=\\left(\\dfrac{25}{8},\\dfrac{5\\sqrt{39}}{8}\\right)$이고 $\\mathrm{M}(2,0)$."
+          },
+          {
+            "label": "외접원",
+            "body": "$x$축 위의 두 점 $\\mathrm{A}$, $\\mathrm{C}$를 지나므로 원의 방정식은 $x^2+y^2-4x+ey=0$. $\\mathrm{B}$를 대입해 $e$를 구한다."
+          },
+          {
+            "label": "직선과 원의 교점",
+            "body": "직선 $\\mathrm{BM}$을 매개변수로 나타내어 원의 방정식에 대입하면 $\\mathrm{B}$가 아닌 다른 근이 $\\mathrm{D}$의 매개변수이다."
+          },
+          {
+            "label": "길이",
+            "body": "$\\mathrm{M}$에서 $\\mathrm{D}$까지의 거리를 계산하면 $\\overline{\\mathrm{MD}}^2=\\dfrac{32}{33}$."
+          },
+          {
+            "label": "답",
+            "body": "$p+q=33+32=65$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$\\overline{\\mathrm{AC}}=\\dfrac94$도 코사인법칙을 만족하지만 조건 $\\overline{\\mathrm{AC}}>3$에서 버려진다. 조건이 근 선택용이라는 것을 놓치면 답이 두 개 나온다. $\\mathrm{D}$의 좌표를 직접 구하는 것보다 할선 정리 한 줄이 훨씬 짧다.",
+    "skill_point": "SSA는 이차방정식 → 부등식 조건으로 근 선택. 현이 만나면 $\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}$."
+  },
+  "verify": "def skill():\n    x = Symbol('x', positive=True)\n    roots = [r for r in solve(Eq(16, 25 + x**2 - 2*5*x*Rational(5, 8)), x) if r > 3]\n    b = roots[0]\n    BM2 = Rational(1, 4)*(2*25 + 2*16 - b**2)\n    MD2 = ((b/2)**2)**2/BM2\n    v = nsimplify(MD2)\n    return v.p + v.q\n\ndef standard():\n    A = Matrix([0, 0]); C = Matrix([4, 0])\n    cA = Rational(5, 8); sA = sqrt(1 - cA**2)\n    B = Matrix([5*cA, 5*sA])\n    assert simplify((B - C).dot(B - C) - 16) == 0\n    M = Matrix([2, 0])\n    e = Symbol('e')\n    ee = solve(Eq(B[0]**2 + B[1]**2 - 4*B[0] + e*B[1], 0), e)[0]\n    t = Symbol('t')\n    P = B + t*(M - B)\n    eq = P[0]**2 + P[1]**2 - 4*P[0] + ee*P[1]\n    ts = [s for s in solve(eq, t) if simplify(s) != 0]\n    D = B + ts[0]*(M - B)\n    MD2 = simplify((D - M).dot(D - M))\n    v = nsimplify(MD2)\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:07",
+    "hash": "0e150aa7e5b155f8",
+    "errors": [],
+    "warnings": []
+  }
+}

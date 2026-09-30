@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-03-002",
+  "theme": "M2-03",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-240910",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-08-C1"
+    ],
+    "strategy_ids": [
+      "S16"
+    ],
+    "first_judgment": "곡선 밖의 점에서 그은 접선은 접점을 $t$로 두고 접선이 그 점을 지난다는 식을 $t$에 대한 방정식으로 만든 뒤, 서로 다른 실근의 개수를 센다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "실수 $k$에 대하여 점 $(0,\\,k)$에서 곡선 $y=x^3-6x^2+9x$에 그을 수 있는 접선의 개수를 $g(k)$라 하자. $g(k)=2$를 만족시키는 모든 실수 $k$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-08-C1"
+    ],
+    "guide": "접점을 $(t,\\,f(t))$로 두면 접선은 $y=f'(t)(x-t)+f(t)$이다. 이 접선이 점 $(0,k)$를 지난다는 조건이 $t$에 대한 방정식이 되고, 접선의 개수는 서로 다른 실근 $t$의 개수와 같다(수학Ⅱ-08-C1).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "접점으로 식 세우기",
+            "body": "$f(x)=x^3-6x^2+9x$, $f'(x)=3x^2-12x+9$. 접선 $y=f'(t)(x-t)+f(t)$에 $x=0$을 넣으면 $k=f(t)-tf'(t)=-2t^3+6t^2$."
+          },
+          {
+            "label": "그래프 vs 수평선",
+            "body": "$h(t)=-2t^3+6t^2$에서 $h'(t)=-6t(t-2)$이므로 극솟값 $h(0)=0$, 극댓값 $h(2)=8$. $h(t)=k$의 서로 다른 실근이 $2$개인 것은 수평선이 극점에 접할 때, 곧 $k=0$ 또는 $k=8$."
+          },
+          {
+            "label": "답",
+            "body": "$0+8=8$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "접선의 방정식",
+            "body": "$y=(3t^2-12t+9)(x-t)+t^3-6t^2+9t$에 $x=0$을 대입하면 $k=(3t^2-12t+9)(-t)+t^3-6t^2+9t$."
+          },
+          {
+            "label": "정리",
+            "body": "전개하면 $k=-3t^3+12t^2-9t+t^3-6t^2+9t=-2t^3+6t^2$이므로 $2t^3-6t^2+k=0$."
+          },
+          {
+            "label": "실근 조건",
+            "body": "이 삼차방정식이 서로 다른 실근 $2$개를 가지려면 중근과 다른 한 근을 가져야 하므로 판별식이 $0$이어야 한다."
+          },
+          {
+            "label": "판별식",
+            "body": "$2t^3-6t^2+k$의 판별식은 $k(k-8)$에 양의 상수를 곱한 꼴이므로 $k=0$ 또는 $k=8$."
+          },
+          {
+            "label": "확인",
+            "body": "$k=0$이면 $2t^2(t-3)=0$, $k=8$이면 $2(t+1)(t-2)^2=0$으로 각각 서로 다른 실근이 $2$개이다. 합은 $8$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "접점을 모르는 상태에서 '접선의 기울기'를 $m$으로 두고 직선 $y=mx+k$와 곡선의 판별식을 쓰면 삼차식의 판별식이 되어 길어진다. 접점 $t$를 문자로 두면 $k$가 $t$의 함수로 곧바로 나와, 접선의 개수 문제가 '수평선 $y=k$와 곡선 $y=h(t)$의 교점 개수' 문제로 바뀐다. 또 $g(k)=3$이 되는 $k$의 범위는 $0<k<8$이다.",
+    "skill_point": "밖의 점에서 그은 접선의 개수 = $k=h(t)$의 서로 다른 실근 개수. 접점 $t$로 식을 세우고 수평선으로 센다."
+  },
+  "verify": "def skill():\n    t, k = symbols('t k')\n    h = expand(-2*t**3 + 6*t**2)\n    crit = solve(diff(h, t), t)\n    return sum(h.subs(t, c) for c in crit)\n\ndef standard():\n    t, k, x = symbols('t k x')\n    f = x**3 - 6*x**2 + 9*x\n    tan = diff(f, x).subs(x, t)*(0 - t) + f.subs(x, t)\n    p = expand(tan - k)\n    ks = solve(discriminant(p, t), k)\n    ks = [v for v in ks if v.is_real]\n    # 서로 다른 실근이 정확히 2개인지 전수 확인\n    for v in ks:\n        assert len(set(real_roots(Poly(p.subs(k, v), t)))) == 2\n    return sum(ks)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:25:45",
+    "hash": "ce028b21c0f19a94",
+    "errors": [],
+    "warnings": []
+  }
+}

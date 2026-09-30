@@ -1,0 +1,80 @@
+{
+  "id": "C-M1-04-119",
+  "theme": "M1-04",
+  "origin": {
+    "type": "original",
+    "note": "삼각함수 부호 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "직각삼각형으로 크기를 먼저 정하고, 사분면에서 sin·cos·tan의 부호를 붙인 뒤 계산한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\tan\\theta=-\\frac{5}{12}$이고 $\\sin\\theta<0$인 $\\theta$에 대하여 $3\\cos\\theta+\\tan\\theta$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$, $q$는 서로소인 정수이고 $p>0$이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "523",
+  "answer_value": "523",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C1"
+    ],
+    "guide": "직각삼각형으로 크기를 먼저 정하고, 사분면에서 sin·cos·tan의 부호를 붙인 뒤 계산한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "크기",
+            "body": "$\\tan\\theta$의 크기가 $\\frac{5}{12}$이므로 밑변 $12$, 높이 $5$, 빗변 $13$인 직각삼각형에서 $|\\sin\\theta|=\\frac{5}{13},\\ |\\cos\\theta|=\\frac{12}{13}$"
+          },
+          {
+            "label": "부호",
+            "body": "제4사분면이므로 $\\sin\\theta$는 음수, $\\cos\\theta$는 양수 → $\\sin\\theta=-\\frac{5}{13},\\ \\cos\\theta=\\frac{12}{13}$"
+          },
+          {
+            "label": "계산",
+            "body": "$3\\cos\\theta+\\tan\\theta=\\frac{367}{156}$ → $p+q=523$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "나머지 값",
+            "body": "$\\tan\\theta=-\\frac{5}{12}$이므로 항등식 $\\sin^2\\theta+\\cos^2\\theta=1$에서 나머지 하나의 제곱을 구하고 제곱근을 취하면 절댓값이 $12/13$ 꼴로 나온다."
+          },
+          {
+            "label": "부호 선택",
+            "body": "근호를 벗기면 $\\pm$ 두 후보가 생기므로, 제4사분면에서 부호가 정해지는 쪽을 골라 $\\sin\\theta=-\\frac{5}{13},\\ \\cos\\theta=\\frac{12}{13}$"
+          },
+          {
+            "label": "대입",
+            "body": "$3\\cos\\theta+\\tan\\theta$에 $\\sin\\theta=-\\frac{5}{13},\\ \\cos\\theta=\\frac{12}{13},\\ \\tan\\theta=-\\frac{5}{12}$를 대입하고 통분해서 정리하면 $\\frac{367}{156}$"
+          },
+          {
+            "label": "답",
+            "body": "$p=156$, $q=367$ → $p+q=523$"
+          }
+        ]
+      }
+    ],
+    "supplement": "사분면을 보지 않고 세 값을 모두 양수로 놓으면 $\\frac{497}{156}$가 되어 다른 정수가 나온다. 먼저 부호부터 적는 습관이 결과를 갈라 놓는다.",
+    "skill_point": "크기는 직각삼각형, 부호는 사분면. 두 일을 나누어 하면 분수 계산이 한 번으로 끝난다."
+  },
+  "verify": "def skill():\n    s, c = Fraction(-5, 13), Fraction(12, 13)\n    t = s/c\n    v = 3*c+t\n    return v.numerator + v.denominator\n\ndef standard():\n    V = -5/12\n    lo, hi = math.pi*3/2, math.pi*4/2\n    th = [x for x in [math.atan(V), math.atan(V) + math.pi, math.atan(V) + 2*math.pi] if lo < x < hi]\n    assert len(th) == 1\n    th = th[0]\n    s, c = math.sin(th), math.cos(th)\n    t = s/c\n    val = 3*c+t\n    v = Fraction(val).limit_denominator(100000)\n    assert abs(float(v) - val) < 1e-9\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "삼각함수 부호와 값",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:22:06",
+    "hash": "6a5b8df97e96a05f",
+    "errors": [],
+    "warnings": []
+  }
+}

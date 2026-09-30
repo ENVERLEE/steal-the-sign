@@ -1,0 +1,91 @@
+{
+  "id": "C-M1-05-008",
+  "theme": "M1-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-250620",
+    "variation": "일반화",
+    "note": "일반화"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-10-C1"
+    ],
+    "strategy_ids": [
+      "S06"
+    ],
+    "first_judgment": "$f(x)=t$의 근의 개수는 $\\sin x=\\frac{1+t}3$과 $\\sin x=\\frac{1-t}3$의 근의 개수의 합이고, 홀수가 되려면 어느 한 쪽의 값이 $0$ 또는 $\\pm1$이어야 한다."
+  },
+  "difficulty": "고난도",
+  "behavior": "문제해결",
+  "question": "닫힌구간 $[0,2\\pi]$에서 정의된 함수 $f(x)=|3\\sin x-1|$에 대하여 실수 $t$에 대한 방정식 $f(x)=t$의 서로 다른 실근의 개수를 $g(t)$라 하자. $g(t)$가 홀수가 되도록 하는 모든 실수 $t$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "7",
+  "answer_value": "7",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-10-C1"
+    ],
+    "guide": "$|3\\sin x-1|=t$는 $t\\ge0$일 때 $\\sin x=\\frac{1+t}3$ 또는 $\\sin x=\\frac{1-t}3$과 같다(수학Ⅰ-10-C1). $[0,2\\pi]$에서 $\\sin x=v$의 해의 개수는 $0<|v|<1$이면 $2$, $|v|=1$이면 $1$, $v=0$이면 $3$($x=0,\\pi,2\\pi$), $|v|>1$이면 $0$이다. 두 값의 해가 겹치지 않으면 $g(t)$는 두 개수의 합이다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "홀수가 되는 조건",
+            "body": "개수가 홀수인 경우는 $v=0$(3개) 또는 $|v|=1$(1개)뿐이므로, $g(t)$가 홀수이면 $\\frac{1+t}3$과 $\\frac{1-t}3$ 중 하나가 $0,\\pm1$이다."
+          },
+          {
+            "label": "t의 후보",
+            "body": "$t\\ge0$이므로 $\\frac{1+t}3=1$에서 $t=2$, $\\frac{1-t}3=0$에서 $t=1$, $\\frac{1-t}3=-1$에서 $t=4$이다. ($\\frac{1+t}3=0,-1$은 $t<0$이라 불가능)"
+          },
+          {
+            "label": "확인",
+            "body": "$t=2$: $\\sin x=1$(1개)과 $\\sin x=-\\frac13$(2개)로 $3$개. $t=1$: $\\sin x=\\frac23$(2개)과 $\\sin x=0$(3개)로 $5$개. $t=4$: $\\sin x=\\frac53$(0개)과 $\\sin x=-1$(1개)로 $1$개. 모두 홀수이다."
+          },
+          {
+            "label": "합",
+            "body": "$2+1+4=7$이다."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "식 정리",
+            "body": "$|3\\sin x-1|=t$는 $t<0$이면 근이 없고, $t\\ge0$이면 $3\\sin x-1=t$ 또는 $3\\sin x-1=-t$이다. 곧 $\\sin x=\\frac{1+t}3$ 또는 $\\sin x=\\frac{1-t}3$이다."
+          },
+          {
+            "label": "높이 구간 나누기",
+            "body": "$f$의 값이 바뀌는 특수 높이는 $\\sin x=\\frac13$일 때의 $0$, 끝값 $|{-1}|=1$, 최댓값 $2$, 최솟값 $|{-4}|=4$이다. $t$를 $0,\\ (0,1),\\ 1,\\ (1,2),\\ 2,\\ (2,4),\\ 4,\\ (4,\\infty)$로 나눈다."
+          },
+          {
+            "label": "각 구간의 개수",
+            "body": "$t=0$: $\\sin x=\\frac13$ 두 근으로 $2$개. $0<t<1$: $\\frac{1+t}3\\in\\left(\\frac13,\\frac23\\right)$, $\\frac{1-t}3\\in\\left(0,\\frac13\\right)$로 $2+2=4$개. $t=1$: $\\frac23$의 $2$개와 $0$의 $3$개로 $5$개. $1<t<2$: $\\frac{1+t}3\\in\\left(\\frac23,1\\right)$의 $2$개와 $\\frac{1-t}3\\in\\left(-\\frac13,0\\right)$의 $2$개로 $4$개."
+          },
+          {
+            "label": "나머지 구간",
+            "body": "$t=2$: $1$의 $1$개와 $-\\frac13$의 $2$개로 $3$개. $2<t<4$: $\\frac{1+t}3>1$이라 $0$개이고 $\\frac{1-t}3\\in\\left(-1,-\\frac13\\right)$의 $2$개로 $2$개. $t=4$: $-1$의 $1$개로 $1$개. $t>4$: $0$개."
+          },
+          {
+            "label": "홀수인 t",
+            "body": "$g(t)$가 홀수인 것은 $t=1\\ (5),\\ 2\\ (3),\\ 4\\ (1)$이고, 합은 $1+2+4=7$이다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f(x)=t$의 근을 그래프에서 눈으로만 세면 $t=1$에서 $x=0,2\\pi$가 끝점이라는 사실을 놓치기 쉽다. 식으로 $\\sin x=v$의 해의 개수표를 먼저 만들어 두면 끝점도 표에 포함된다. $g(t)$가 $0$인 $t$는 짝수(0)이므로 합에 넣지 않는다.",
+    "skill_point": "근의 개수의 홀짝은 접하는 높이($|v|=1$)와 끝점($v=0$)에서만 바뀐다."
+  },
+  "verify": "\ndef skill():\n    return 2 + 1 + 4\n\ndef _g(t):\n    x = Symbol('x', real=True)\n    s = solveset(Eq(3*sin(x) - 1, t), x, Interval(0, 2*pi)) | solveset(Eq(3*sin(x) - 1, -t), x, Interval(0, 2*pi))\n    return len(s)\n\ndef standard():\n    probes = [0, Rational(1, 2), 1, Rational(3, 2), 2, 3, 4, 5]\n    odd = [t for t in probes if _g(t) % 2 == 1]\n    return sum(odd)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:36:54",
+    "hash": "60d75eccf9a05cda",
+    "errors": [],
+    "warnings": []
+  }
+}

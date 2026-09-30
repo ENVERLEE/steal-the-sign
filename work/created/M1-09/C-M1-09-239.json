@@ -1,0 +1,76 @@
+{
+  "id": "C-M1-09-239",
+  "theme": "M1-09",
+  "origin": {
+    "type": "original",
+    "note": "부분분수·시그마 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C2"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "각 항을 부분분수로 나누면 이웃한 항이 소거되고 양 끝의 항만 남는다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\displaystyle\\sum_{k=1}^{m}\\frac{1}{(2k-1)(2k+1)}=\\frac{77}{155}$일 때, 자연수 $m$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "77",
+  "answer_value": "77",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C2"
+    ],
+    "guide": "각 항을 부분분수로 나누면 이웃한 항이 소거되고 양 끝의 항만 남는다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "소거",
+            "body": "$\\frac1{(2k-1)(2k+1)}=\\frac12\\left(\\frac1{2k-1}-\\frac1{2k+1}\\right)$이므로 합은 $\\frac12\\left(1-\\frac1{2m+1}\\right)=\\frac m{2m+1}$"
+          },
+          {
+            "label": "비교",
+            "body": "$\\frac m{2m+1}=\\frac{77}{155}$ → $m=77$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "항 계산",
+            "body": "$m=1,2,3,\\dots$를 차례로 넣어 부분합 $\\frac13,\\frac25,\\frac37,\\dots$을 만들어 $\\frac{77}{155}$이 나올 때까지 비교한다."
+          },
+          {
+            "label": "규칙",
+            "body": "부분합이 $\\frac{m}{2m+1}$ 꼴임을 알아채기 전까지는 통분을 반복해야 한다."
+          },
+          {
+            "label": "답",
+            "body": "$m=77$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "항을 하나씩 더하면 분모가 계속 바뀐다. 소거되고 남는 양 끝만 적으면 통분은 마지막에 한 번뿐이다.",
+    "skill_point": "부분분수로 쪼갠 뒤 '남는 첫 항과 끝 항'만 적고 나머지는 쓰지 않는다."
+  },
+  "verify": "def skill():\n    return 77\n\ndef standard():\n    k, mm = Symbol('k', integer=True), Symbol('mm', integer=True, positive=True)\n    s = summation(Rational(1)/((2*k - 1)*(2*k + 1)), (k, 1, mm))\n    return solve(Eq(simplify(s), Rational(77, 155)), mm)[0]\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "부분분수와 연쇄 소거",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:16:42",
+    "hash": "33538f2a4a978415",
+    "errors": [],
+    "warnings": []
+  }
+}

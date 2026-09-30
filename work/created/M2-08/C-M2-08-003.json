@@ -1,0 +1,99 @@
+{
+  "id": "C-M2-08-003",
+  "theme": "M2-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-250913",
+    "variation": "조건 변형",
+    "note": "y축 대칭 함수에서 삼차함수로, 넓이 값까지 구하게 하여 분수 정리를 요구"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-18-C1"
+    ],
+    "strategy_ids": [
+      "S24"
+    ],
+    "first_judgment": "$A$와 $B$는 $x=3$을 경계로 $f$의 부호가 반대이므로 $A=B$는 $\\int_0^kf(x)\\,dx=0$이다. 부정적분의 값은 한 줄에 통분해 정리한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "함수 $f(x)=x^3-3x^2$에 대하여 곡선 $y=f(x)$와 $x$축으로 둘러싸인 부분의 넓이를 $A$라 하고, 곡선 $y=f(x)$와 $x$축 및 직선 $x=k$ $(k>3)$으로 둘러싸인 부분의 넓이를 $B$라 하자. $A=B$일 때, $k\\times(A+B)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "54",
+  "answer_value": "54",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-18-C1"
+    ],
+    "guide": "$f(x)=x^2(x-3)$이므로 $[0,3]$에서 $f\\le0$, $[3,k]$에서 $f\\ge0$이다. 부호가 반대인 두 넓이가 같다는 것은 부호 있는 적분이 $0$이라는 뜻이다(수학Ⅱ-18-C1).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "조건",
+            "body": "$A=-\\int_0^3f$, $B=\\int_3^kf$이므로 $A=B$는 $\\int_0^kf(x)dx=0$."
+          },
+          {
+            "label": "$k$",
+            "body": "$F(x)=\\frac{x^4}4-x^3$이라 하면 $F(k)=\\frac{k^3(k-4)}4=0$이고 $k>3$이므로 $k=4$."
+          },
+          {
+            "label": "넓이",
+            "body": "$F(3)=\\frac{81}4-\\frac{108}4=-\\frac{27}4$. $A=-F(3)=\\frac{27}4$이고 $A=B$이므로 $A+B=\\frac{27}2$."
+          },
+          {
+            "label": "값",
+            "body": "$k(A+B)=4\\cdot\\frac{27}2=54$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "넓이 식",
+            "body": "$A=-\\int_0^3(x^3-3x^2)dx$, $B=\\int_3^k(x^3-3x^2)dx$."
+          },
+          {
+            "label": "$A$",
+            "body": "$F(x)=\\frac{x^4}4-x^3$에서 $F(3)-F(0)=\\frac{81}4-27=-\\frac{27}4$이므로 $A=\\frac{27}4$."
+          },
+          {
+            "label": "$B$",
+            "body": "$B=F(k)-F(3)=\\frac{k^4}4-k^3+\\frac{27}4$."
+          },
+          {
+            "label": "방정식",
+            "body": "$A=B$에서 $\\frac{k^4}4-k^3=0$, 곧 $k^3(k-4)=0$. $k>3$이므로 $k=4$."
+          },
+          {
+            "label": "값",
+            "body": "$B=A=\\frac{27}4$이므로 $A+B=\\frac{27}2$, $k(A+B)=54$."
+          },
+          {
+            "label": "확인",
+            "body": "$B=F(4)-F(3)=0-\\left(-\\frac{27}4\\right)=\\frac{27}4$로 $A$와 같다."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$A$와 $B$를 따로 적분해서 $k$에 대한 사차 방정식을 세우면 $-\\frac{27}4$와 $\\frac{27}4$를 옮기고 부호를 맞추는 계산이 늘어난다. 부호 있는 적분 하나로 묶으면 $F(k)=0$ 한 줄로 끝나고, 넓이 값도 $F(3)$ 하나에서 나온다.",
+    "skill_point": "부호가 반대인 넓이가 같으면 $\\int=0$. 부정적분 값은 통분한 한 줄로 내려 쓴다."
+  },
+  "verify": "def skill():\n    x, k = symbols('x k')\n    f = x**3 - 3*x**2\n    F = integrate(f, x)\n    kk = [s for s in solve(F.subs(x, k), k) if s > 3][0]\n    A = -F.subs(x, 3)\n    return kk*(A + A)\n\ndef standard():\n    x, k = symbols('x k')\n    f = x**3 - 3*x**2\n    A = -integrate(f, (x, 0, 3))\n    B = integrate(f, (x, 3, k))\n    kk = [s for s in solve(A - B, k) if s.is_real and s > 3][0]\n    return kk*(A + B.subs(k, kk))\n\ndef unique():\n    x, k = symbols('x k')\n    f = x**3 - 3*x**2\n    A = -integrate(f, (x, 0, 3))\n    B = integrate(f, (x, 3, k))\n    sols = [s for s in solve(A - B, k) if s.is_real and s > 3]\n    return sorted({s*(A + B.subs(k, s)) for s in sols})\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:29:18",
+    "hash": "a54e5911afa4bb4b",
+    "errors": [],
+    "warnings": []
+  }
+}

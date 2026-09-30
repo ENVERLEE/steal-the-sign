@@ -1,0 +1,76 @@
+{
+  "id": "C-M1-09-130",
+  "theme": "M1-09",
+  "origin": {
+    "type": "original",
+    "note": "분수 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "분수를 하나씩 이어 계산하지 않고, 공통 분모나 공통 인수를 먼저 정해 한 번에 정리한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "계산",
+  "question": "$\\dfrac{\\frac{5}{6}-\\frac{7}{9}}{\\frac{1}{4}}$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "11",
+  "answer_value": "11",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C3"
+    ],
+    "guide": "분수를 하나씩 이어 계산하지 않고, 공통 분모나 공통 인수를 먼저 정해 한 번에 정리한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "분자",
+            "body": "분자 $\\frac{5}{6}-\\frac{7}{9}=\\frac{1}{18}$"
+          },
+          {
+            "label": "역수",
+            "body": "분모가 분수이면 역수를 곱한다: $\\frac{1}{18}\\times\\frac{4}{1}=\\frac{2}{9}$ → $p+q=11$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "분자 통분",
+            "body": "분자 $\\frac{5}{6}-\\frac{7}{9}$의 분모를 $18$로 맞춘다: $\\frac{15}{18}-\\frac{14}{18}=\\frac{1}{18}$"
+          },
+          {
+            "label": "분모",
+            "body": "분모는 $\\frac{1}{4}$ 그대로이다."
+          },
+          {
+            "label": "나눗셈",
+            "body": "분수의 나눗셈은 $\\frac{1}{18}\\div\\frac{1}{4}=\\frac{1}{18}\\times\\frac{4}{1}$이고, 약분하여 $\\frac{2}{9}$"
+          },
+          {
+            "label": "답",
+            "body": "$p=9$, $q=2$ → $p+q=11$"
+          }
+        ]
+      }
+    ],
+    "supplement": "두 항씩 통분하면 분모가 두 번 바뀌고 약분도 두 번 해야 한다. 공통 분모를 한 번에 잡으면 분자의 정수 계산만 남는다.",
+    "skill_point": "분모의 최소공배수(또는 공통 인수)를 먼저 정하고, 상수는 마지막에 한 번만 계산한다."
+  },
+  "verify": "def skill():\n    v = (Fraction(5, 6) - Fraction(7, 9)) * Fraction(4, 1)\n    return v.numerator + v.denominator\n\ndef standard():\n    v = (Rational(5, 6) - Rational(7, 9)) / Rational(1, 4)\n    return v.p + v.q\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "분수 계산 전처리",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:09:29",
+    "hash": "1064c952f75e4e51",
+    "errors": [],
+    "warnings": []
+  }
+}

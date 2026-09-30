@@ -1,0 +1,87 @@
+{
+  "id": "C-PS-04-003",
+  "theme": "PS-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "PS-250928",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "확률과 통계-12-C1",
+      "확률과 통계-12-C3"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "조건을 만족하는 함수를 분모로 먼저 세되, 약수 관계의 맨 위 원소 $f(6)$의 값으로 표를 만들어 완전 나열한다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "집합 $X=\\{1,\\,2,\\,3,\\,6\\}$에 대하여 $f:X\\to X$인 모든 함수 $f$ 중에서 임의로 하나를 선택하는 시행을 한다. 이 시행에서 선택한 함수 $f$가 다음 조건을 만족시킬 때, $f(6)=6$일 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "$a\\in X$, $b\\in X$에 대하여 $a$가 $b$의 약수이면 $f(a)$는 $f(b)$의 약수이다.",
+  "choices": null,
+  "answer": "61",
+  "answer_value": "61",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "확률과 통계-12-C1",
+      "확률과 통계-12-C3"
+    ],
+    "guide": "약수 관계는 $1\\mid2,3,6$, $2\\mid6$, $3\\mid6$이다. 조건은 $f(1)\\mid f(2),f(3),f(6)$이고 $f(2)\\mid f(6)$, $f(3)\\mid f(6)$이다. 모든 것이 $f(6)$의 약수가 되므로 $f(6)$을 기준 변수로 삼는다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "기준 변수",
+            "body": "$f(1),f(2),f(3)$은 모두 $f(6)$의 약수이고 $f(1)$은 $f(2),f(3)$의 약수이다."
+          },
+          {
+            "label": "표",
+            "body": "$f(6)=v$이면 $f(2),f(3)\\in\\{v\\text{의 약수}\\}$, $f(1)$은 $f(2),f(3)$의 공통 약수: $f(6)=1$: 1, $f(6)=2$: 5, $f(6)=3$: 5, $f(6)=6$: 25."
+          },
+          {
+            "label": "답",
+            "body": "분모 $36$, 분자 $25$이므로 $\\frac{25}{36}$, $p+q=61$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전체",
+            "body": "함수는 $4^4=256$개이고, 조건을 만족하는지 조건 다섯 개를 하나씩 확인해야 한다: $f(1)\\mid f(2)$, $f(1)\\mid f(3)$, $f(1)\\mid f(6)$, $f(2)\\mid f(6)$, $f(3)\\mid f(6)$."
+          },
+          {
+            "label": "f(1)로 분류",
+            "body": "$f(1)$의 값 $1,2,3,6$으로 나눈다. $f(1)=1$이면 $f(2),f(3),f(6)$은 $f(2)\\mid f(6)$, $f(3)\\mid f(6)$만 만족하면 된다."
+          },
+          {
+            "label": "각 경우",
+            "body": "$f(1)=2$이면 $f(2),f(3),f(6)\\in\\{2,6\\}$이고 $f(2)\\mid f(6)$, $f(3)\\mid f(6)$을 만족하는 것만 남는다. $f(1)=3, 6$도 같은 방식으로 나열한다."
+          },
+          {
+            "label": "합",
+            "body": "네 경우를 합하면 $36$개이고, 그중 $f(6)=6$인 것은 $25$개이다."
+          },
+          {
+            "label": "답",
+            "body": "$\\frac{25}{36}$이므로 $p+q=61$."
+          }
+        ]
+      }
+    ],
+    "supplement": "가장 아래 원소 $f(1)$부터 나누면 위의 조건이 매번 달라진다. 조건이 모두 위쪽으로 모이는 원소 $f(6)$을 기준으로 삼으면 나머지가 그 값의 약수 안에서 자유롭다.",
+    "skill_point": "조건이 모이는 변수를 기준으로 표를 만들어 분모를 완전 나열한다."
+  },
+  "verify": "def skill():\n    X = [1, 2, 3, 6]\n    den = num = 0\n    for v in X:\n        divs = [d for d in X if v % d == 0]\n        cnt = 0\n        for f2 in divs:\n            for f3 in divs:\n                cnt += sum(1 for f1 in divs if f2 % f1 == 0 and f3 % f1 == 0)\n        den += cnt\n        if v == 6:\n            num += cnt\n    r = Fraction(num, den)\n    return r.numerator + r.denominator\n\ndef standard():\n    from itertools import product\n    X = [1, 2, 3, 6]\n    tot = fav = 0\n    for f in product(X, repeat=4):\n        m = dict(zip(X, f))\n        if all(m[b] % m[a] == 0 for a in X for b in X if b % a == 0):\n            tot += 1\n            fav += m[6] == 6\n    r = Fraction(fav, tot)\n    return r.numerator + r.denominator\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:45",
+    "hash": "4c042c82f3dac998",
+    "errors": [],
+    "warnings": []
+  }
+}

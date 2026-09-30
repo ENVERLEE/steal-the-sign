@@ -1,0 +1,95 @@
+{
+  "id": "C-M1-08-002",
+  "theme": "M1-08",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-270612",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-13-C2"
+    ],
+    "strategy_ids": [
+      "S09"
+    ],
+    "first_judgment": "차수가 같은 두 식은 $a_1^2$이 공통으로 붙어 있으므로 서로 나누거나 같다고 놓아 $r$만의 방정식으로 만든다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "모든 항이 양수인 등비수열 $\\{a_n\\}$이 $3a_1(a_1+a_3)=5a_2(a_1+a_2)=240$을 만족시킨다. $a_1a_6$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "2",
+  "answer_value": "2",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-13-C2"
+    ],
+    "guide": "두 식 모두 $a_1^2\\times(r$의 식$)$ 꼴이다. 앞의 등식에서 $a_1^2$이 약분되어 $r$에 대한 이차방정식이 된다(수학Ⅰ-13-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "$a_1^2$ 소거",
+            "body": "$3a_1^2(1+r^2)=5a_1^2\\,r(1+r)$에서 $3+3r^2=5r+5r^2$, 곧 $2r^2+5r-3=0$."
+          },
+          {
+            "label": "공비",
+            "body": "$(2r-1)(r+3)=0$이고 공비는 양수이므로 $r=\\dfrac12$."
+          },
+          {
+            "label": "첫째항",
+            "body": "$3a_1^2\\left(1+\\dfrac14\\right)=240$에서 $a_1^2=64$, $a_1=8$."
+          },
+          {
+            "label": "답",
+            "body": "$a_1a_6=a_1^2r^5=64\\cdot\\dfrac1{32}=2$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "문자 설정",
+            "body": "$a_1=a$, 공비 $r$이라 하면 $a_2=ar$, $a_3=ar^2$."
+          },
+          {
+            "label": "식 전개",
+            "body": "$3a(a+ar^2)=3a^2(1+r^2)$, $5ar(a+ar)=5a^2r(1+r)$."
+          },
+          {
+            "label": "두 식을 같게",
+            "body": "두 식이 모두 $240$이므로 같다: $3a^2(1+r^2)=5a^2r(1+r)$. $a\\ne0$이므로 $a^2$으로 나눈다."
+          },
+          {
+            "label": "이차방정식",
+            "body": "$3+3r^2=5r+5r^2$, $2r^2+5r-3=0$, $(2r-1)(r+3)=0$. $r>0$에서 $r=\\dfrac12$."
+          },
+          {
+            "label": "$a$",
+            "body": "$3a^2\\left(1+\\dfrac14\\right)=\\dfrac{15}{4}a^2=240$이므로 $a^2=64$, $a>0$에서 $a=8$."
+          },
+          {
+            "label": "답",
+            "body": "$a_6=8\\cdot\\dfrac1{32}=\\dfrac14$이므로 $a_1a_6=8\\cdot\\dfrac14=2$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$a_1$과 $r$을 모두 남긴 채 240을 대입해 두 식을 연립하면 4차식이 되어 계산이 폭주한다. 두 식이 모두 같은 값이라는 사실만 쓰면 $a_1^2$이 사라진다. 또 구하는 값도 $a_1a_6=a_1^2r^5$이라 $a_1$의 부호는 필요 없다.",
+    "skill_point": "등비수열 조건식 두 개 → 차수가 같으면 $a_1^2$을 약분하고 $r$만 남긴다."
+  },
+  "verify": "def skill():\n    r = Rational(1, 2)\n    a1sq = 240/(3*(1 + r**2))\n    return a1sq*r**5\n\ndef standard():\n    a, r = symbols('a r', positive=True)\n    a1 = a; a2 = a*r; a3 = a*r**2; a6 = a*r**5\n    sols = solve([Eq(3*a1*(a1 + a3), 240), Eq(5*a2*(a1 + a2), 240)], [a, r], dict=True)\n    assert len(sols) == 1\n    return simplify((a1*a6).subs(sols[0]))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:59",
+    "hash": "0766eaf8f7877048",
+    "errors": [],
+    "warnings": []
+  }
+}

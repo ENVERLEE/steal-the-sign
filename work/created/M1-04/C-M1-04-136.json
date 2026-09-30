@@ -1,0 +1,84 @@
+{
+  "id": "C-M1-04-136",
+  "theme": "M1-04",
+  "origin": {
+    "type": "original",
+    "note": "삼각함수 부호 계산 실수 교정용 신작"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-09-C1"
+    ],
+    "strategy_ids": [],
+    "first_judgment": "직각삼각형으로 크기를 먼저 정하고, 사분면에서 sin·cos·tan의 부호를 붙인 뒤 계산한다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "계산",
+  "question": "$0<\\theta<\\frac{\\pi}{2}$인 $\\theta$에 대하여 $\\sin\\theta-\\cos\\theta=\\frac{1}{5}$이다. $\\sin^3\\theta+\\cos^3\\theta$의 값을 $\\frac{q}{p}$라 할 때, $p+q$의 값을 구하시오. (단, $p$, $q$는 서로소인 정수이고 $p>0$이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "216",
+  "answer_value": "216",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-09-C1"
+    ],
+    "guide": "직각삼각형으로 크기를 먼저 정하고, 사분면에서 sin·cos·tan의 부호를 붙인 뒤 계산한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "곱",
+            "body": "양변을 제곱하면 $1-2\\sin\\theta\\cos\\theta=\\frac{1}{25}$이므로 $\\sin\\theta\\cos\\theta=\\frac{12}{25}$"
+          },
+          {
+            "label": "부호",
+            "body": "$\\sin\\theta+\\cos\\theta$의 제곱은 $\\frac{49}{25}$이고, 제1사분면에서 $\\sin\\theta$는 양수, $\\cos\\theta$는 양수이므로 $\\sin\\theta+\\cos\\theta=\\frac{7}{5}$"
+          },
+          {
+            "label": "계산",
+            "body": "$\\sin^3\\theta+\\cos^3\\theta$에 대입하면 $\\frac{91}{125}$ → $p+q=216$"
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "연립",
+            "body": "$\\sin\\theta-\\cos\\theta=\\frac{1}{5}$에서 한 문자를 소거해 $\\sin\\theta$에 관한 이차방정식을 만들고 $\\sin^2\\theta+\\cos^2\\theta=1$과 연립한다."
+          },
+          {
+            "label": "근 선택",
+            "body": "두 근의 $(\\sin\\theta,\\cos\\theta)$ 쌍 중 제1사분면에 맞는 쌍을 골라 $\\sin\\theta=\\frac{4}{5},\\ \\cos\\theta=\\frac{3}{5}$"
+          },
+          {
+            "label": "대입",
+            "body": "$\\sin^3\\theta+\\cos^3\\theta$에 대입하여 통분하면 $\\frac{91}{125}$"
+          },
+          {
+            "label": "답",
+            "body": "$p=125$, $q=91$ → $p+q=216$"
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "부호를 정하지 않고 크기만으로 계산하면 다른 값이 나온다.",
+    "skill_point": "크기는 직각삼각형, 부호는 사분면. 두 일을 나누어 하면 분수 계산이 한 번으로 끝난다."
+  },
+  "verify": "def skill():\n    g = Fraction(1, 5)\n    sc = (1 - g*g)/2\n    o2 = 1 + 2*sc\n    r = Fraction(math.isqrt(o2.numerator), math.isqrt(o2.denominator))\n    assert r*r == o2\n    o = r if True else -r\n    S = (g + o)/2\n    C = (o - g)/2\n    s, c = S, C\n    t = s/c\n    v = s**3+c**3\n    return v.numerator + v.denominator\n\ndef standard():\n    G = 1/5\n    lo, hi = math.pi*0/2, math.pi*1/2\n    f = lambda th: math.sin(th) - math.cos(th) - G\n    xs = [lo + (hi - lo)*i/20000 for i in range(1, 20000)]\n    roots = []\n    for x0, x1 in zip(xs, xs[1:]):\n        if f(x0) == 0 or f(x0)*f(x1) < 0:\n            a_, b_ = x0, x1\n            for _ in range(80):\n                m_ = (a_ + b_)/2\n                if f(a_)*f(m_) <= 0:\n                    b_ = m_\n                else:\n                    a_ = m_\n            roots.append((a_ + b_)/2)\n    assert len(roots) == 1\n    th = roots[0]\n    s, c = math.sin(th), math.cos(th)\n    t = s/c\n    val = s**3+c**3\n    v = Fraction(val).limit_denominator(100000)\n    assert abs(float(v) - val) < 1e-9\n    return v.numerator + v.denominator\n\ndef unique():\n    return [standard()]\n",
+  "calc_type": "삼각함수 부호와 값",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:22:14",
+    "hash": "ca1dccc1cd69bad4",
+    "errors": [],
+    "warnings": []
+  }
+}

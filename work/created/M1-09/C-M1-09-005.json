@@ -1,0 +1,87 @@
+{
+  "id": "C-M1-09-005",
+  "theme": "M1-09",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-220613",
+    "variation": "결합",
+    "note": "결합"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-16-C4"
+    ],
+    "strategy_ids": [
+      "S10"
+    ],
+    "first_judgment": "$k$를 (제곱수도 세제곱수도 아닌 것), (제곱수만), (세제곱수만), (둘 다)로 나누어 각 부류의 개수에 곱의 값을 곱한다. 겹치는 부류를 이중으로 세지 않는다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "실수 $x$에 대하여 $f(x)$는 $x$가 정수이면 $1$, 정수가 아니면 $4$이다. $\\displaystyle\\sum_{k=1}^{40}f(\\sqrt{k})\\times f(\\sqrt[3]{k})$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "541",
+  "answer_value": "541",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-16-C4"
+    ],
+    "guide": "곱 $f(\\sqrt k)f(\\sqrt[3]k)$는 네 값 $16,\\,4,\\,4,\\,1$ 중 하나이다. 규칙대로는 $16$이고 예외가 부류별로 다르다(수학Ⅰ-16-C4). 제곱수와 세제곱수가 겹치는 $k$는 한 번만 센다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "부류 개수",
+            "body": "$40$ 이하 제곱수: $1,4,9,16,25,36$ (6개), 세제곱수: $1,8,27$ (3개), 둘 다: $1$ (1개). 제곱수만 $5$개, 세제곱수만 $2$개, 아무것도 아닌 것 $40-(5+2+1)=32$개."
+          },
+          {
+            "label": "값",
+            "body": "아무것도 아님 $4\\cdot4=16$, 제곱수만 $1\\cdot4=4$, 세제곱수만 $4\\cdot1=4$, 둘 다 $1\\cdot1=1$."
+          },
+          {
+            "label": "합",
+            "body": "$32\\cdot16+5\\cdot4+2\\cdot4+1\\cdot1=512+20+8+1=541$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "항별 판정",
+            "body": "$k=1,\\dots,40$마다 $\\sqrt k$, $\\sqrt[3]k$가 정수인지 확인해 곱을 구한다."
+          },
+          {
+            "label": "특이한 $k$",
+            "body": "$k=1$: $1\\cdot1=1$. $k=4,9,16,25,36$: $1\\cdot4=4$. $k=8,27$: $4\\cdot1=4$. 나머지 $32$개: $16$."
+          },
+          {
+            "label": "합",
+            "body": "$1+5\\cdot4+2\\cdot4+32\\cdot16=541$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          },
+          {
+            "label": "확인 2",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "'제곱수 6개, 세제곱수 3개'를 그대로 곱하면 $k=1$을 두 번 세어 결과가 틀린다. 겹치는 원소가 있는 두 예외는 (제곱수만), (세제곱수만), (둘 다)로 쪼개어 세는 것이 안전하다.",
+    "skill_point": "예외가 둘이면 겹침부터 확인해 부류를 서로소로 나눈다."
+  },
+  "verify": "def skill():\n    sq = {k for k in range(1, 41) if math.isqrt(k)**2 == k}\n    cu = {k for k in range(1, 41) if round(k**(1/3))**3 == k}\n    both = sq & cu\n    only_sq = sq - cu\n    only_cu = cu - sq\n    none = 40 - len(sq | cu)\n    return none*16 + len(only_sq)*4 + len(only_cu)*4 + len(both)*1\n\ndef standard():\n    tot = 0\n    for k in range(1, 41):\n        f2 = 1 if sqrt(k).is_integer else 4\n        r = integer_nthroot(k, 3)\n        f3 = 1 if r[1] else 4\n        tot += f2*f3\n    return tot\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:32:07",
+    "hash": "8bc2b564b52cfcb7",
+    "errors": [],
+    "warnings": []
+  }
+}

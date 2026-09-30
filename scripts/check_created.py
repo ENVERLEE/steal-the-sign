@@ -203,13 +203,20 @@ def run(ctx: Context, recheck: bool = False) -> Log:
 
     # 한 번에 너무 많이 만들지 않기: 아직 통과하지 못한(검사 대기) 레코드가 테마당 batch_max를 넘으면
     # id 순으로 앞의 batch_max개만 검사하고 나머지는 막는다.
+    # 계산 연습 부록 문항(calc_type)은 테마와 따로 세고 한도도 calc_batch_max.
+    def bucket(rec):
+        return (rec.get("theme"), "calc") if rec.get("calc_type") else (rec.get("theme"), "")
+
+    def batch_limit(key):
+        return ccfg.get("calc_batch_max", ccfg["batch_max"]) if key[1] else ccfg["batch_max"]
+
     pending = defaultdict(list)
     for rid, e in sorted(bank.items()):
         rec = e["rec"]
         rv = rec.get("review") or {}
         if not (rec.get("status") == "verified" and rv.get("hash") == body_hash(rec)):
-            pending[rec.get("theme")].append(rid)
-    blocked = {rid for ids in pending.values() for rid in ids[ccfg["batch_max"]:]}
+            pending[bucket(rec)].append(rid)
+    blocked = {rid for key, ids in pending.items() for rid in ids[batch_limit(key):]}
 
     originals = Counter()
     status = Counter()
@@ -219,19 +226,20 @@ def run(ctx: Context, recheck: bool = False) -> Log:
         rv = rec.get("review") or {}
         if not recheck and rec.get("status") == "verified" and rv.get("hash") == h and not rv.get("errors"):
             status["verified"] += 1
-            if (rec.get("origin") or {}).get("type") == "original":
+            if (rec.get("origin") or {}).get("type") == "original" and not rec.get("calc_type"):
                 originals[rec.get("theme")] += 1
             continue
 
         th = rec.get("theme")
         if rid in blocked:
-            errs, warns = [f"테마 {th}의 검사 대기 {len(pending[th])}개 — 한 번에 {ccfg['batch_max']}개까지. "
-                           f"앞의 문항을 먼저 통과시킬 것"], []
+            key = bucket(rec)
+            errs, warns = [f"테마 {th}{' 계산 연습' if key[1] else ''}의 검사 대기 {len(pending[key])}개 — "
+                           f"한 번에 {batch_limit(key)}개까지. 앞의 문항을 먼저 통과시킬 것"], []
         else:
             errs, warns = check_record(rec, path, ctx)
         if seen_ids[rid] > 1:
             errs.append("같은 id의 레코드가 여러 개")
-        if (rec.get("origin") or {}).get("type") == "original":
+        if (rec.get("origin") or {}).get("type") == "original" and not rec.get("calc_type"):
             originals[th] += 1
             if originals[th] > ccfg["original_per_theme_max"]:
                 errs.append(f"테마 {th}의 신작(original)은 {ccfg['original_per_theme_max']}개까지")

@@ -1,0 +1,92 @@
+{
+  "id": "C-M2-01-003",
+  "theme": "M2-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-251121",
+    "variation": "수치 변형",
+    "note": "변환을 $x\\mapsto2x-3$으로 바꾸어 고정점을 $3$으로 옮김"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-03-C3"
+    ],
+    "strategy_ids": [
+      "S13",
+      "S14"
+    ],
+    "first_judgment": "$f(\\beta)=0$이면 $f(2\\beta-3)=0$이 되어 근이 사슬처럼 늘어나므로, 실근은 고정점 $\\beta=2\\beta-3=3$ 하나뿐이다."
+  },
+  "difficulty": "조건 변형",
+  "behavior": "추론",
+  "question": "정수 $a$, $b$에 대하여 삼차함수 $f(x)=x^3+ax^2+bx-12$가 있다. 모든 실수 $\\alpha$에서 극한 $\\displaystyle\\lim_{x\\to\\alpha}\\dfrac{f(2x-3)}{f(x)}$가 존재할 때, $f(5)$가 가질 수 있는 값 중 가장 큰 것을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "88",
+  "answer_value": "88",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-03-C3"
+    ],
+    "guide": "'모든 $\\alpha$에서 존재'이므로 분모의 근은 분자의 근이기도 하다. 근 $\\beta$가 $2\\beta-3$을 낳으므로 근이 끝없이 늘지 않으려면 $\\beta$가 $x\\mapsto2x-3$의 고정점 $3$이어야 한다(수학Ⅱ-03-C3).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "고정점",
+            "body": "$f(\\beta)=0$이면 $f(2\\beta-3)=0$이어야 한다. $\\beta-3$이 두 배씩 커지므로 실근은 $\\beta=2\\beta-3$, 곧 $\\beta=3$뿐이다."
+          },
+          {
+            "label": "인수 결정",
+            "body": "삼차식에는 실근이 있으므로 $f(x)=(x-3)(x^2+ux+4)$ ($f(0)=-12$에서 상수 $4$). 이차식은 실근이 없어야 하므로 $u^2<16$."
+          },
+          {
+            "label": "정수 조건",
+            "body": "$a=u-3$, $b=4-3u$가 정수이므로 $u=-3,\\dots,3$."
+          },
+          {
+            "label": "최대",
+            "body": "$f(5)=2(29+5u)$이므로 $u=3$일 때 최대 $88$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "실근의 사슬",
+            "body": "$\\alpha$에서 분모 $f(\\alpha)=0$이면 극한이 존재하기 위해 분자 $f(2\\alpha-3)=0$이어야 한다. 그러면 $2\\alpha-3$도 근이고 다시 $2(2\\alpha-3)-3=4\\alpha-9$도 근이 되어, $\\alpha\\ne3$이면 $\\alpha-3$이 $2,4,8,\\dots$배로 커지는 서로 다른 근이 무한히 생긴다. 삼차식의 근은 세 개뿐이므로 실근은 $3$ 하나뿐이다."
+          },
+          {
+            "label": "식 세우기",
+            "body": "실근이 $x=3$뿐이므로 $f(3)=0$이고 $f(x)=(x-3)(x^2+ux+v)$로 쓸 수 있다. $f(0)=-3v=-12$에서 $v=4$."
+          },
+          {
+            "label": "이차식의 실근",
+            "body": "$x^2+ux+4$가 실근을 가지면 그 근은 $3$이어야 하는데 $9+3u+4=0$에서 $u=-\\frac{13}3$으로 정수가 아니다. 그러므로 판별식 $u^2-16<0$, $u=-3,-2,\\dots,3$의 일곱 값."
+          },
+          {
+            "label": "확인",
+            "body": "$x=3$에서 분자 $f(2x-3)=(2x-6)(\\cdots)$와 분모 $f(x)=(x-3)(\\cdots)$는 모두 단순근이고 남은 인수 $(2x-3)^2+u(2x-3)+4$, $x^2+ux+4$는 $x=3$에서 $0$이 아니므로 극한이 존재한다."
+          },
+          {
+            "label": "f(5) 비교",
+            "body": "$f(5)=2(25+5u+4)=2(29+5u)$는 $u$에 대해 증가하므로 $u=3$일 때 $2\\cdot44=88$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f(2x-3)$을 전개해 나눗셈을 직접 시도하면 $a,b$ 두 문자가 얽혀 식이 길어진다. 실근이 하나뿐이라는 결론만 얻으면 $f(x)=(x-3)\\times(\\text{실근 없는 이차식})$으로 끝난다. 이차식이 실근을 갖는 경우를 빠뜨리면 $u=\\pm4$ 같은 값이 잘못 들어온다.",
+    "skill_point": "$\\dfrac{f(\\varphi(x))}{f(x)}$에서 근이 근을 낳으면 실근은 고정점 $\\varphi(\\beta)=\\beta$뿐이고, 나머지 인수는 실근이 없어야 한다."
+  },
+  "verify": "x = Symbol('x')\n\ndef nolim_at(N, D, a):\n    \"\"\"N/D 의 x->a 극한이 (유한값으로) 존재하지 않으면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    if Dp.is_zero:\n        return True\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.eval(a) == 0\n\ndef all_ok(N, D):\n    \"\"\"모든 실수 a 에서 극한이 존재하면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.count_roots() == 0\n\ndef cand():\n    best = []\n    for a in range(-15, 16):\n        for b in range(-20, 21):\n            f = lambda t: t**3 + a*t**2 + b*t - 12\n            N = expand(f(2*x - 3))\n            D = expand(f(x))\n            if all_ok(N, D):\n                best.append((a, b, f(5)))\n    return best\n\ndef skill():\n    return max(2*(29 + 5*u) for u in range(-3, 4))\n\ndef standard():\n    return max(v for _, _, v in cand())\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:46:13",
+    "hash": "b563ad2aa7d59b13",
+    "errors": [],
+    "warnings": []
+  }
+}

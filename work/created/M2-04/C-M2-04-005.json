@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-04-005",
+  "theme": "M2-04",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-231122",
+    "variation": "조건 변형",
+    "note": "조건 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-09-C4"
+    ],
+    "strategy_ids": [
+      "S19"
+    ],
+    "first_judgment": "삼차함수에서 이웃한 두 구간의 평균변화율이 같다는 조건은 세 점 $0,1,5$의 평균 $2$가 변곡점의 $x$좌표라는 말이므로, $f(x)=(x-2)^3+p(x-2)+q$로 식을 세운다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f(5)$의 값을 구하시오.",
+  "condition": "(가) $x$의 값이 $0$에서 $1$까지 변할 때의 평균변화율과 $1$에서 $5$까지 변할 때의 평균변화율은 서로 같다.\\\\(나) $f(0)=3$, $f(2)=5$",
+  "choices": null,
+  "answer": "23",
+  "answer_value": "23",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-09-C4"
+    ],
+    "guide": "최고차항의 계수가 $1$인 삼차함수는 변곡점 $x=m$에 대하여 $f(x)=(x-m)^3+p(x-m)+q$로 쓸 수 있고, 구간 $[s,t]$의 평균변화율은 $(s-m)^2+(s-m)(t-m)+(t-m)^2+p$이다(수학Ⅱ-09-C4).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "변곡점",
+            "body": "$[0,1]$과 $[1,5]$의 평균변화율이 같으면 두 식의 차에서 $(0-5)(0+1+5-3m)=0$이므로 $m=\\dfrac{0+1+5}{3}=2$."
+          },
+          {
+            "label": "식 세우기",
+            "body": "$f(x)=(x-2)^3+p(x-2)+q$. $f(2)=q=5$, $f(0)=-8-2p+5=3$에서 $p=-3$."
+          },
+          {
+            "label": "답",
+            "body": "$f(5)=27-9+5=23$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "일반형",
+            "body": "$f(x)=x^3+ax^2+bx+c$로 두면 (나)에서 $c=3$, $f(2)=8+4a+2b+3=5$이므로 $2a+b=-3$ … ①"
+          },
+          {
+            "label": "(가) 번역",
+            "body": "$[0,1]$의 평균변화율은 $f(1)-f(0)=1+a+b$, $[1,5]$의 평균변화율은 $\\dfrac{f(5)-f(1)}{4}$."
+          },
+          {
+            "label": "계산",
+            "body": "$f(5)-f(1)=(125+25a+5b)-(1+a+b)=124+24a+4b$이므로 평균변화율은 $31+6a+b$."
+          },
+          {
+            "label": "등식",
+            "body": "$1+a+b=31+6a+b$에서 $a=-6$. ①에서 $b=9$."
+          },
+          {
+            "label": "함수",
+            "body": "$f(x)=x^3-6x^2+9x+3$."
+          },
+          {
+            "label": "답",
+            "body": "$f(5)=125-150+45+3=23$."
+          }
+        ]
+      }
+    ],
+    "supplement": "삼차함수를 $x^3+ax^2+bx+c$로 열어 두면 평균변화율에서 $a,b$가 섞여 식이 길어진다. 평균변화율이 같은 두 구간이 주어지면 끝점들의 평균이 변곡점의 $x$좌표라는 판단 하나로 $a$가 정해진다. 그 뒤 $(x-m)^3+p(x-m)+q$의 미지수 $p,q$는 함숫값 두 개로 바로 정해진다.",
+    "skill_point": "평균변화율 두 개가 같다 → (세 끝점의 평균) $=$ 변곡점. $f(x)=(x-m)^3+p(x-m)+q$."
+  },
+  "verify": "def skill():\n    x, m, p, q = symbols('x m p q')\n    f = (x - m)**3 + p*(x - m) + q\n    rate = lambda s, t: (f.subs(x, t) - f.subs(x, s))/(t - s)\n    mm = solve(simplify(rate(0, 1) - rate(1, 5)), m)\n    assert mm == [2]\n    g = f.subs(m, 2)\n    sol = solve([g.subs(x, 0) - 3, g.subs(x, 2) - 5], [p, q], dict=True)[0]\n    return g.subs(sol).subs(x, 5)\n\ndef standard():\n    x, a, b, c = symbols('x a b c')\n    f = x**3 + a*x**2 + b*x + c\n    eqs = [f.subs(x, 0) - 3, f.subs(x, 2) - 5,\n           (f.subs(x, 1) - f.subs(x, 0)) - (f.subs(x, 5) - f.subs(x, 1))/4]\n    sol = solve(eqs, [a, b, c], dict=True)\n    assert len(sol) == 1\n    return f.subs(sol[0]).subs(x, 5)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:28:28",
+    "hash": "74e9627bc9f2a488",
+    "errors": [],
+    "warnings": []
+  }
+}

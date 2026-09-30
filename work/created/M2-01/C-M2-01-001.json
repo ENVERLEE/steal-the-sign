@@ -1,0 +1,92 @@
+{
+  "id": "C-M2-01-001",
+  "theme": "M2-01",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-270611",
+    "variation": "수치 변형",
+    "note": "분모의 인수를 바꾸고 존재·부재 점을 달리 한 일차함수 결정 문제"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-03-C1"
+    ],
+    "strategy_ids": [
+      "S13",
+      "S14"
+    ],
+    "first_judgment": "극한이 존재하는 점에서는 분모가 $0$이면 분자도 $0$이고, 존재하지 않는 점에서는 분모가 $0$이 되어야 하므로, 두 점에서의 함숫값 조건 $f(3)=0$, $f(5)=4$로 번역한다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "추론",
+  "question": "일차함수 $f(x)$와 유리식 $\\dfrac{f(x+1)}{(x-2)\\{f(x)-4\\}}$이 있다. $x\\to2$일 때에는 이 식의 극한이 존재하고 $x\\to5$일 때에는 극한이 존재하지 않는다고 한다. $f(10)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "14",
+  "answer_value": "14",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-03-C1"
+    ],
+    "guide": "'$a=2$에서 존재'는 분모가 $0$으로 가면 분자도 $0$으로 가야 한다는 뜻이고, '$a=5$에서 부재'는 분모가 $0$인데 분자는 $0$이 아니라는 뜻이다(수학Ⅱ-03-C1). 두 조건이 각각 함숫값 하나씩을 준다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "a=2",
+            "body": "분모 $(x-2)\\{f(x)-4\\}$가 $x\\to2$에서 $0$이므로 극한이 존재하려면 분자 $f(x+1)\\to f(3)=0$이다."
+          },
+          {
+            "label": "a=5",
+            "body": "$x-2$는 $x=5$에서 $0$이 아니므로, 분모가 $0$이 되는 것은 $f(5)=4$일 때뿐이다. 극한이 존재하지 않으려면 분모가 $0$이어야 하므로 $f(5)=4$."
+          },
+          {
+            "label": "직선 결정",
+            "body": "$(3,0)$, $(5,4)$를 지나는 직선이므로 기울기는 $2$, $f(x)=2(x-3)$이고 $f(10)=14$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "식 세우기",
+            "body": "$f(x)=mx+n$ $(m\\ne0)$이라 하면 분자는 $m(x+1)+n$, 분모는 $(x-2)(mx+n-4)$이다."
+          },
+          {
+            "label": "a=2 분석",
+            "body": "분모는 $x=2$에서 적어도 한 번 $0$이 된다. $2m+n-4\\ne0$이면 분모는 단순근이므로 분자도 $x=2$에서 $0$, 곧 $3m+n=0$이어야 한다. $2m+n-4=0$이면 분모가 $x=2$에서 이중근인데 분자는 일차식이라 이중근을 가질 수 없으므로 극한이 존재하지 않는다. 따라서 $3m+n=0$."
+          },
+          {
+            "label": "a=5 분석",
+            "body": "$x=5$에서 $x-2=3\\ne0$이므로 분모가 $0$이 되는 것은 $5m+n-4=0$일 때뿐이다. 분모가 $0$이 아니면 극한은 존재하므로 이 식이 반드시 필요하다."
+          },
+          {
+            "label": "연립",
+            "body": "$3m+n=0$과 $5m+n=4$를 빼면 $2m=4$, $m=2$, $n=-6$이다."
+          },
+          {
+            "label": "확인",
+            "body": "$f(x)=2x-6$이면 $f(x+1)=2(x-2)$이므로 $a=2$에서 $\\dfrac{2(x-2)}{(x-2)(2x-10)}\\to-\\dfrac16$로 존재한다. $a=5$에서는 분자 $f(6)=6\\ne0$이고 분모가 $0$이므로 존재하지 않는다."
+          },
+          {
+            "label": "답",
+            "body": "$f(10)=2\\cdot10-6=14$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$f(x)=mx+n$으로 열고 극한을 직접 계산하기 시작하면 두 점에서 경우가 갈려 식이 길어진다. 또 $a=5$에서 '존재하지 않는다'는 것이 분모가 $0$이라는 조건으로 바뀌는 것을 놓치기 쉽다. 존재하지 않는 점은 분모의 근이어야 한다.",
+    "skill_point": "존재하는 점 $\\Rightarrow$ (분모 $0$이면 분자 $0$), 존재하지 않는 점 $\\Rightarrow$ 분모 $=0$. 극한 조건을 함숫값 조건으로 바꾼다."
+  },
+  "verify": "x = Symbol('x')\n\ndef nolim_at(N, D, a):\n    \"\"\"N/D 의 x->a 극한이 (유한값으로) 존재하지 않으면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    if Dp.is_zero:\n        return True\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.eval(a) == 0\n\ndef all_ok(N, D):\n    \"\"\"모든 실수 a 에서 극한이 존재하면 True\"\"\"\n    Np, Dp = Poly(expand(N), x), Poly(expand(D), x)\n    G = gcd(Np, Dp)\n    D1 = quo(Dp, G)\n    return D1.count_roots() == 0\n\ndef cand():\n    vals = set()\n    for m in [Rational(k, 2) for k in range(-12, 13) if k != 0]:\n        for n in [Rational(k, 2) for k in range(-30, 31)]:\n            N = m*(x + 1) + n\n            D = (x - 2)*(m*x + n - 4)\n            if not nolim_at(N, D, 2) and nolim_at(N, D, 5):\n                vals.add(m*10 + n)\n    return vals\n\ndef skill():\n    m, n = symbols('m n')\n    s = solve([3*m + n, 5*m + n - 4], [m, n])\n    return s[m]*10 + s[n]\n\ndef standard():\n    v = cand()\n    assert len(v) == 1\n    return list(v)[0]\n\ndef unique():\n    return sorted(cand())\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T11:46:07",
+    "hash": "bbdfab280ea74d14",
+    "errors": [],
+    "warnings": []
+  }
+}

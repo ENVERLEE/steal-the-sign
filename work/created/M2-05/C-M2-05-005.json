@@ -1,0 +1,87 @@
+{
+  "id": "C-M2-05-005",
+  "theme": "M2-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-220622",
+    "variation": "결합",
+    "note": "결합"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-10-C2"
+    ],
+    "strategy_ids": [
+      "S20"
+    ],
+    "first_judgment": "합성 방정식은 안쪽을 $u=f(x)$로 치환해 바깥 식의 근을 먼저 구하고, 각 값에 대하여 $f(x)=u$의 실근 개수를 그래프로 센다."
+  },
+  "difficulty": "복합 사고",
+  "behavior": "추론",
+  "question": "함수 $f(x)=x^3-3x$에 대하여 $x$에 대한 방정식 $f(f(x))=0$의 서로 다른 실근의 개수를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-10-C2"
+    ],
+    "guide": "$f(f(x))=0$은 $u=f(x)$에 대하여 $f(u)=0$이다. $f(u)=u(u^2-3)=0$에서 $u=0,\\ \\sqrt3,\\ -\\sqrt3$이고, 각각에 대하여 $f(x)=u$의 실근을 센다(수학Ⅱ-10-C2). 서로 다른 $u$에 대한 근은 서로 다른 $x$이므로 개수를 더한다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "바깥 근",
+            "body": "$f(u)=0$의 근은 $u=0,\\pm\\sqrt3$."
+          },
+          {
+            "label": "안쪽 개수",
+            "body": "$f'(x)=3(x+1)(x-1)$이므로 극댓값 $f(-1)=2$, 극솟값 $f(1)=-2$. $|u|<2$이면 $f(x)=u$는 실근 $3$개."
+          },
+          {
+            "label": "답",
+            "body": "세 값 모두 $|u|<2$이므로 $3\\times3=9$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전개",
+            "body": "$f(f(x))=(x^3-3x)^3-3(x^3-3x)$는 $9$차 다항식이다."
+          },
+          {
+            "label": "인수분해",
+            "body": "$u=x^3-3x$로 치환하면 $u^3-3u=u(u^2-3)$이므로 $f(f(x))=(x^3-3x)(x^3-3x-\\sqrt3)(x^3-3x+\\sqrt3)$."
+          },
+          {
+            "label": "첫째 인수",
+            "body": "$x^3-3x=0$의 실근은 $0,\\pm\\sqrt3$의 $3$개."
+          },
+          {
+            "label": "둘째, 셋째 인수",
+            "body": "$x^3-3x=\\pm\\sqrt3$의 실근은 극댓값 $2$와 극솟값 $-2$ 사이에 수평선이 있으므로 각각 $3$개."
+          },
+          {
+            "label": "서로 다른가",
+            "body": "세 인수의 근은 서로 다른 $u$값에 대응하므로 겹치지 않는다. 따라서 $3+3+3=9$."
+          }
+        ]
+      }
+    ],
+    "supplement": "$9$차 다항식을 전개하고 근의 개수를 세는 것은 현실적이지 않다. 바깥 함수의 근을 먼저 구해 '안쪽이 가져야 할 값'으로 바꾸면 세 번의 그래프 읽기로 끝난다. 각 값 $u$가 극값 $\\pm2$ 사이인지만 확인하면 되며, 이 값이 $\\pm2$이면 근이 $2$개로 줄어드는 점에 주의한다.",
+    "skill_point": "$f(f(x))=0$ → $f(u)=0$의 근 $u_i$ → 각 $u_i$마다 $f(x)=u_i$의 근을 세어 더한다."
+  },
+  "verify": "def skill():\n    u = Symbol('u')\n    us = solve(u**3 - 3*u, u)\n    tot = 0\n    for v in us:\n        tot += 3 if abs(v) < 2 else (2 if abs(v) == 2 else 1)\n    return tot\n\ndef standard():\n    x = Symbol('x')\n    f = x**3 - 3*x\n    g = expand(f.subs(x, f))\n    return len(set(real_roots(Poly(g, x))))\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:30:06",
+    "hash": "8ea9c22909ce3baa",
+    "errors": [],
+    "warnings": []
+  }
+}

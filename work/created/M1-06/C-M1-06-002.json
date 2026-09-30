@@ -1,0 +1,89 @@
+{
+  "id": "C-M1-06-002",
+  "theme": "M1-06",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M1-250910",
+    "variation": "역방향",
+    "note": "역방향"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅰ-12-C5",
+      "수학Ⅰ-12-C2"
+    ],
+    "strategy_ids": [
+      "S07"
+    ],
+    "first_judgment": "수선의 길이 $h_a$가 외접원과 함께 나오면 $bc=2R\\cdot h_a$로 두 변의 곱과 반지름을 바로 잇는다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "이해",
+  "question": "삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{H}$라 하자. $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{AC}}=4$, $\\overline{\\mathrm{AH}}=3$일 때, 삼각형 $\\mathrm{ABC}$의 외접원의 넓이는 $k\\pi$이다. $k$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "16",
+  "answer_value": "16",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅰ-12-C5",
+      "수학Ⅰ-12-C2"
+    ],
+    "guide": "$\\overline{\\mathrm{AH}}$는 $\\mathrm{A}$에서 $\\mathrm{BC}$까지의 높이이고, 사인법칙 $c=2R\\sin C$와 $h_a=b\\sin C$를 곱하면 $\\sin C$가 사라져 $bc=2Rh_a$가 된다(수학Ⅰ-12-C5).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "관계식",
+            "body": "$h_a=b\\sin C$, $c=2R\\sin C$에서 $\\sin C$를 지우면 $bc=2R\\,h_a$."
+          },
+          {
+            "label": "대입",
+            "body": "$6\\cdot4=2R\\cdot3$이므로 $R=4$."
+          },
+          {
+            "label": "답",
+            "body": "외접원의 넓이는 $\\pi R^2=16\\pi$이므로 $k=16$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "좌표 설정",
+            "body": "$\\mathrm{H}$를 원점, 직선 $\\mathrm{BC}$를 $x$축으로 두면 $\\mathrm{A}(0,3)$이다. 피타고라스로 $\\overline{\\mathrm{BH}}=\\sqrt{36-9}=3\\sqrt3$, $\\overline{\\mathrm{CH}}=\\sqrt{16-9}=\\sqrt7$이다."
+          },
+          {
+            "label": "점의 위치",
+            "body": "$\\mathrm{B}(-3\\sqrt3,0)$, $\\mathrm{C}$는 $(\\sqrt7,0)$ 또는 $(-\\sqrt7,0)$이며 두 경우를 모두 살펴야 한다."
+          },
+          {
+            "label": "외접원의 중심",
+            "body": "중심을 $(p,q)$라 하면 $\\mathrm{B}$, $\\mathrm{C}$에서 같은 거리이므로 $p$는 $\\mathrm{BC}$의 중점의 $x$좌표이다. 이어서 $\\mathrm{A}$까지의 거리와 $\\mathrm{B}$까지의 거리가 같다는 식에서 $q$를 구한다."
+          },
+          {
+            "label": "반지름",
+            "body": "두 경우 모두 $R^2=p^2+(q-3)^2$를 계산하면 $16$이 나온다(경우에 따라 중심의 위치만 달라진다)."
+          },
+          {
+            "label": "답",
+            "body": "$k=R^2=16$."
+          }
+        ]
+      }
+    ],
+    "supplement": "수선의 발이 선분 $\\mathrm{BC}$ 안에 있는지 밖에 있는지 따지는 것은 필요 없다. $bc=2Rh_a$는 $\\sin C$만 지우므로 둔각이든 예각이든 성립한다. 좌표를 잡고 세 점을 지나는 원의 방정식을 세우면 같은 답이지만 경우가 둘로 갈린다.",
+    "skill_point": "높이 + 외접원 → $bc=2R\\cdot h$. 각을 구하지 않는다."
+  },
+  "verify": "def skill():\n    R = Rational(6*4, 2*3)\n    return R**2\n\ndef standard():\n    res = set()\n    for cx in (sqrt(7), -sqrt(7)):\n        p, q = symbols('p q', real=True)\n        A = (0, 3); B = (-3*sqrt(3), 0); C = (cx, 0)\n        sol = solve([(p - A[0])**2 + (q - A[1])**2 - (p - B[0])**2 - (q - B[1])**2,\n                     (p - C[0])**2 + (q - C[1])**2 - (p - B[0])**2 - (q - B[1])**2], [p, q], dict=True)[0]\n        R2 = simplify((sol[p] - B[0])**2 + (sol[q] - B[1])**2)\n        res.add(R2)\n    assert len(res) == 1\n    return list(res)[0]\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:26:06",
+    "hash": "3b1ab4d592d430f1",
+    "errors": [],
+    "warnings": []
+  }
+}

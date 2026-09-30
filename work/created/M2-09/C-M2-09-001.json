@@ -1,0 +1,83 @@
+{
+  "id": "C-M2-09-001",
+  "theme": "M2-09",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-251111",
+    "variation": "조건 변형",
+    "note": "위치를 주는 대신 속도를 인수분해된 꼴로 주고 짝수 중근 함정을 넣음"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-19-C2"
+    ],
+    "strategy_ids": [
+      "S26"
+    ],
+    "first_judgment": "$v=0$인 시각 중 부호가 바뀌는 시각만 방향 전환이다. $(t-1)^2$은 짝수 중근이라 부호가 안 바뀌므로 $t=6$뿐이다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t>0)$에서의 속도 $v(t)$가 $v(t)=(t-1)^2(t-6)$이다. 점 $\\mathrm{P}$의 운동 방향이 바뀌는 시각에서의 점 $\\mathrm{P}$의 가속도를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "25",
+  "answer_value": "25",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-19-C2"
+    ],
+    "guide": "속도가 이미 인수분해되어 있으므로 부호표를 바로 그린다. 운동 방향이 바뀌는 것은 $v$의 부호가 바뀌는 시각이다(수학Ⅱ-19-C2).",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "부호",
+            "body": "$(t-1)^2\\ge0$이므로 $v$의 부호는 $t-6$이 정한다. $t=1$의 좌우에서 부호가 같아 방향이 안 바뀌고, $t=6$에서만 $-\\to+$."
+          },
+          {
+            "label": "가속도",
+            "body": "$a(t)=v'(t)=2(t-1)(t-6)+(t-1)^2$. $t=6$이면 첫 항이 $0$이므로 $a(6)=5^2=25$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "전개",
+            "body": "$v(t)=(t^2-2t+1)(t-6)=t^3-8t^2+13t-6$."
+          },
+          {
+            "label": "부호표",
+            "body": "$v=0$의 근은 $t=1$(중근), $t=6$. $0<t<1$에서 $v<0$, $1<t<6$에서 $v<0$, $t>6$에서 $v>0$이므로 부호가 바뀌는 시각은 $t=6$."
+          },
+          {
+            "label": "도함수",
+            "body": "$a(t)=v'(t)=3t^2-16t+13$."
+          },
+          {
+            "label": "대입",
+            "body": "$a(6)=3\\cdot36-16\\cdot6+13=108-96+13=25$."
+          },
+          {
+            "label": "검산",
+            "body": "앞 단계의 각 계산을 다시 한 줄씩 옮겨 적어 부호와 분모를 하나씩 대조한다. 중간 결과를 지우지 않고 아래로 이어 써야 다음 단계의 값을 놓치지 않는다."
+          }
+        ]
+      }
+    ],
+    "supplement": "$v=0$의 근을 모두 방향 전환으로 세어 $t=1$까지 넣으면 가속도를 두 번 구하게 된다. 중근은 그래프가 축에 접할 뿐 지나가지 않으므로 방향이 바뀌지 않는다. 또 전개하지 않고 곱의 미분에서 $(t-6)=0$인 항을 바로 지우면 계산이 한 줄로 줄어든다.",
+    "skill_point": "방향 전환은 $v$의 부호가 바뀌는 시각뿐이다. 짝수 중근은 제외한다."
+  },
+  "verify": "def skill():\n    t = Symbol('t')\n    v = (t - 1)**2*(t - 6)\n    roots = [r for r in solve(v, t) if r > 0]\n    ch = [r for r in roots if v.subs(t, r - Rational(1, 100))*v.subs(t, r + Rational(1, 100)) < 0]\n    return diff(v, t).subs(t, ch[0])\n\ndef standard():\n    t = Symbol('t')\n    v = expand((t - 1)**2*(t - 6))\n    a = diff(v, t)\n    pts = sorted(set(real_roots(Poly(v, t))))\n    vals = [v.subs(t, p) for p in [Rational(1, 2), Rational(3), Rational(7)]]\n    assert [x < 0 for x in vals] == [True, True, False]\n    return a.subs(t, 6)\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:31:45",
+    "hash": "13caba7b9ffe3ffe",
+    "errors": [],
+    "warnings": []
+  }
+}

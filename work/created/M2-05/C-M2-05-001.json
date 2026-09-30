@@ -1,0 +1,91 @@
+{
+  "id": "C-M2-05-001",
+  "theme": "M2-05",
+  "origin": {
+    "type": "variant",
+    "parent_id": "M2-230609",
+    "variation": "수치 변형",
+    "note": "수치 변형"
+  },
+  "target": {
+    "concept_ids": [
+      "수학Ⅱ-11-C1"
+    ],
+    "strategy_ids": [
+      "S23"
+    ],
+    "first_judgment": "두 함수의 위아래 비교는 차함수 $h(x)=f(x)-g(x)$ 하나로 모으고, 상수 $a$는 $h$의 최솟값에 대한 조건 한 줄로 바꾼다."
+  },
+  "difficulty": "기본 적용",
+  "behavior": "계산",
+  "question": "두 함수 $f(x)=x^3-2x^2-4x+5$, $g(x)=x^2+5x+5$가 있다. $x\\ge0$인 모든 실수 $x$에 대하여 부등식 $f(x)+a\\ge g(x)$가 성립하도록 하는 실수 $a$의 최솟값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "27",
+  "answer_value": "27",
+  "figure": null,
+  "solution": {
+    "concept_refs": [
+      "수학Ⅱ-11-C1"
+    ],
+    "guide": "부등식 $f(x)+a\\ge g(x)$는 $h(x)=f(x)-g(x)$에 대하여 $h(x)\\ge-a$이다. 구간 $x\\ge0$에서 $h$의 최솟값이 $-a$ 이상이어야 한다(수학Ⅱ-11-C1). 최솟값은 구간 안의 극솟값 또는 끝점에서 나온다.",
+    "solutions": [
+      {
+        "title": "풀이 1 · 스킬",
+        "steps": [
+          {
+            "label": "차함수",
+            "body": "$h(x)=f(x)-g(x)=x^3-3x^2-9x$. $h'(x)=3(x-3)(x+1)$."
+          },
+          {
+            "label": "최솟값",
+            "body": "$x\\ge0$에서 $h$는 $x=3$에서 극소이고 최솟값은 $h(3)=27-27-27=-27$ (끝점 $h(0)=0$보다 작다)."
+          },
+          {
+            "label": "답",
+            "body": "$h(x)\\ge-a$이려면 $-27\\ge-a$, 곧 $a\\ge27$이므로 최솟값은 $27$."
+          }
+        ]
+      },
+      {
+        "title": "풀이 2 · 정석 (비교)",
+        "steps": [
+          {
+            "label": "정리",
+            "body": "$f(x)+a-g(x)\\ge0$이므로 $h(x)=x^3-3x^2-9x$에 대하여 $h(x)+a\\ge0$."
+          },
+          {
+            "label": "도함수",
+            "body": "$h'(x)=3x^2-6x-9=3(x-3)(x+1)$. $x\\ge0$에서 $h'$의 부호는 $0\\le x<3$에서 음, $x>3$에서 양."
+          },
+          {
+            "label": "증감",
+            "body": "$h$는 $[0,3]$에서 감소하고 $[3,\\infty)$에서 증가하므로 $x=3$에서 최솟값을 가진다."
+          },
+          {
+            "label": "최솟값",
+            "body": "$h(3)=27-27-27=-27$."
+          },
+          {
+            "label": "조건",
+            "body": "모든 $x\\ge0$에서 $h(x)+a\\ge0$이려면 최솟값에서 $-27+a\\ge0$이므로 $a\\ge27$."
+          },
+          {
+            "label": "답",
+            "body": "$a$의 최솟값은 $27$."
+          }
+        ]
+      }
+    ],
+    "supplement": "상수 $a$는 $h$의 모양을 바꾸지 않고 위아래로만 움직이므로 '$h$의 최솟값 $+a\\ge0$' 한 줄이면 충분하다. 구간의 끝점 $x=0$에서의 값만 비교하고 극솟값을 빼는 실수가 흔하다. $h'$의 근 $-1$은 구간 밖이라 버리고, $3$은 구간 안이므로 함숫값을 반드시 구한다.",
+    "skill_point": "부등식 → 차함수의 구간 최솟값. 상수 $a$는 최솟값 조건 한 줄로."
+  },
+  "verify": "def skill():\n    x = Symbol('x')\n    h = x**3 - 3*x**2 - 9*x\n    return -h.subs(x, 3)\n\ndef standard():\n    from sympy.calculus.util import minimum\n    x, a = symbols('x a')\n    f = x**3 - 2*x**2 - 4*x + 5\n    g = x**2 + 5*x + 5\n    m = minimum(f - g, x, Interval(0, oo))\n    return -m\n\ndef unique():\n    return [standard()]\n",
+  "status": "verified",
+  "review": {
+    "checked_at": "2026-09-30T07:30:02",
+    "hash": "ee12d48101b5d56d",
+    "errors": [],
+    "warnings": []
+  }
+}
