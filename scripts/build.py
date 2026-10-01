@@ -629,7 +629,7 @@ def run(ctx: Context) -> Log:
                 fits_single("SIGN_READING", d["reading"], w)
                 seq += [("CONCEPT", d["concept"], (d["day"], "THE SIGN")), ("STRATEGY", P, None),
                         ("FIRST_PITCH", d["first"], (d["day"], "FIRST PITCH")), ("SIGN_READING", d["reading"], None)]
-            if ctx.book.get("practice_layout") == "multi":
+            if ctx.book.get("practice_layout", "multi") == "multi":
                 # 한 쪽에 3~4문항(고난도는 2문항). 난이도 순서를 지키며 같은 성격끼리 묶는다
                 runs, cur = [], []
                 for pr in d["practice"]:
