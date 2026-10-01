@@ -21,6 +21,11 @@ globs:
 - 한 페이지 = A4 794×1123px
 - 목차(5 DAY까지)·REPLAY(3개까지)·정답표·해설은 build가 재면서 자동 나눔
 
+## 남는 공간
+
+- STRATEGY(교과서형)·REPLAY·SIGN BOOK 아래 남는 공간은 직접 쓰는 메모 칸(점선 상자)으로 채움. 150px보다 좁으면 숨김
+- 배점 `[N점]`은 본문 마지막 낱말과 묶여 혼자 줄바꿈되지 않음
+
 ## 넘침 처리
 
 페이지 초과(CONCEPT·STRATEGY·FIRST_PITCH·SIGN_READING·PRACTICE·SIGN_BOOK):

@@ -46,10 +46,10 @@ python run.py --book samples/book.sample.json --created <복사본> --out <임�
 | `check_created.py` | 창작 문제은행: 스키마·형식·정답·유일성·오답·스킬·유사도·렌더링 검사 → `status: verified` |
 | `check_book.py` | book.json 규칙 검사 |
 | `verify_answers.py` | DB 정답 검산, `notes[ref].verify` `skill()` 검산, 창작 `skill`·`standard`·`unique` 재실행 |
-| `render_figs.py` | 그림 명세 → SVG (sympy·numpy 계산). `out/figs/` 캐시 |
-| `tex.py` | KaTeX 일괄 조판 (Playwright + `vendor/katex`). `out/.cache/tex.json` 캐시. 글꼴 woff2 base64로 CSS 내장 |
+| `render_figs.py` | 그림 명세 → SVG (sympy·numpy 계산). 라벨은 KaTeX 글꼴(변수 기울임, 점 이름·함수 바로 세움, `2/3`은 분수꼴). `out/figs/` 캐시 |
+| `tex.py` | KaTeX 일괄 조판 (Playwright + `vendor/katex`). `out/.cache/tex.json` 캐시. 글꼴 woff2 base64로 CSS 내장. inline style은 공용 클래스로 압축. 수식 앞뒤 괄호·조사·문장부호는 수식과 한 덩어리 |
 | `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 누락 시 오류. `load_ext`: STS_ext.html의 HEAD·XPAGE. |
-| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html, 개념은 블록 단위로 흐름) → 조판 → **A4 판면 재면서** 목차·REPLAY·정답표·해설 페이지 분할 (해설은 한 장에 `config.json` `solution.per_page_max`문항) → `out/book.html` |
+| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html, 개념은 블록 단위로 흐름) → 조판 → **A4 판면 재면서** 목차·REPLAY·정답표·해설 페이지 분할 (해설은 두 단을 높이만큼 채움, `config.json` `solution.per_page_max`가 수이면 한 장 상한) → `out/book.html` |
 | `export_pdf.py` | HTML을 템플릿 인쇄 CSS로 Chromium 인쇄 → `out/book.pdf`. 쪽 수·A4 크기 확인 |
 | `check_layout.py` | 결과 HTML: 794×1123 크기, 넘침, `[[`·`]]`, 가짜 번호, KaTeX 오류, 수식 기호(`\frac`·`$`), 순서·쪽 번호 연속 검사 |
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 구성·비율·행동 영역·난도, 문제은행, 판면) |
