@@ -15,7 +15,7 @@
 ## 빠른 시작
 ```
 python run.py pages --pdf 교재.pdf --id KB1 --title "교재 이름"   # PDF → 판독용 이미지·텍스트
-python run.py source          # 교재 판독 검사 + 큐레이션 초안
+python run.py source          # 교재 판독 검사 + 큐레이션 초안 (--scale large: 연습 대규모·난도 순)
 python run.py created         # 창작 문제은행 검문
 python run.py new --parent M1-230911   # 변형 창작 뼈대(부모 복사)
 python run.py build --day 1   # 일부 DAY만 조판(미리보기)

@@ -1,6 +1,6 @@
 """교재 문항 → 테마별 큐레이션 초안 (out/curation.md, out/plan.json)
 
-테마마다 2~3 DAY. 교재 문항이 예제(DAY마다 1개)가 되고, 남는 교재 문항과
+테마마다 2~3 DAY(`--scale large`면 4~6 DAY·30~48문항). 교재 문항이 예제(DAY마다 1개)가 되고, 남는 교재 문항과
 유사 기출(교재 문항의 similar → 테마 problem_ids → related_ids 순)·통과한 창작이 연습 문항이 된다.
 테마당 8~13문항, 기출 5개 이상, 창작 50% 이하를 맞추고, 모자라면 '창작 N개 더 필요'로 알린다.
 AI는 plan.json의 문항 배정을 book.json에 옮기고 글(개념·분석·REPLAY 등)을 채운다.
@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from scripts.common import Context, Log, source_label, write_json
+from scripts.common import Context, Log, difficulty_rank, source_label, suggest_difficulty, write_json
 
 
 def _short(text: str, n: int = 60) -> str:
@@ -20,9 +20,10 @@ def _short(text: str, n: int = 60) -> str:
 def plan_theme(th: str, tb: list[dict], ctx: Context) -> dict:
     cfg = ctx.config
     t = ctx.themes[th]
-    lo, hi = cfg["theme_plan"]["problems"]
-    dlo, dhi = cfg["theme_plan"]["days"]
-    past_min = cfg["composition"]["past_min_per_theme"]
+    prof = ctx.plan_profile()
+    lo, hi = prof["problems"]
+    dlo, dhi = prof["days"]
+    past_min = prof["past_min"]
     share = cfg["composition"]["created_max_share_per_theme"]
 
     n_days = max(dlo, min(dhi, len(tb)))
@@ -49,7 +50,7 @@ def plan_theme(th: str, tb: list[dict], ctx: Context) -> dict:
         tb_used = max_tb
     textbook_n = tb_used
     # 기출: 5개 이상, 합계 10개 안팎, 최대 13개
-    past_goal = max(past_min, 10 - tb_used) - past_examples
+    past_goal = max(past_min, prof["past_target"] - tb_used) - past_examples
     past_n = max(0, min(len(pool), past_goal, hi - tb_used - past_examples))
     past = pool[:past_n]
     past_total = past_n + past_examples
@@ -72,6 +73,14 @@ def plan_theme(th: str, tb: list[dict], ctx: Context) -> dict:
     days = [{"first_pitch": ex, "practice": [], "scouting": []} for ex in examples]
     rest = tb_practice + past + created
     cap = -(-len(rest) // len(days)) if days else 0
+    if prof["scale"] == "large":
+        # 큰 규모: DAY가 올라갈수록 어려워지도록 예제도 난도 순, 연습은 난도 순으로 잘라 DAY에 순서대로 채운다
+        days.sort(key=lambda d: difficulty_rank(d["first_pitch"], ctx))
+        rest.sort(key=lambda r: (difficulty_rank(r, ctx), r))
+        per = -(-len(rest) // len(days)) if days else 0
+        for i, ref in enumerate(rest):
+            days[min(i // per, len(days) - 1)]["practice"].append(ref)
+        rest = []
     scored = []
     for ref in rest:
         sc = [affinity(d["first_pitch"], ref, ctx) for d in days]
@@ -80,9 +89,9 @@ def plan_theme(th: str, tb: list[dict], ctx: Context) -> dict:
         order_ = sorted(range(len(days)), key=lambda i: (-sc[i], len(days[i]["practice"])))
         i = next((i for i in order_ if len(days[i]["practice"]) < cap), order_[0])
         days[i]["practice"].append(ref)
-    for d in days:  # 연습 순서: 교재 → 기출(번호 순) → 창작
-        d["practice"].sort(key=lambda r: (0 if r.startswith("T-") else 2 if r.startswith("C-") else 1,
-                                          ctx.db[r]["source"]["number"] if r in ctx.db else 0))
+    for d in days:  # 연습 순서: 쉬운 것 → 어려운 것 (난도 단계 → 기출 번호). 난도 라벨은 제안값
+        d["practice"].sort(key=lambda r: (difficulty_rank(r, ctx), r))
+        d["difficulty"] = [suggest_difficulty(r, ctx) for r in d["practice"]]
         ex = d["first_pitch"]
         rec = ctx.source[ex]["rec"] if ex.startswith("T-") else None
         sim = [x for x in (rec or {}).get("similar") or [] if x != ex]
@@ -142,8 +151,8 @@ def run(ctx: Context) -> Log:
             L.append("")
         for d in p["days"]:
             L.append(f"**DAY {day_no}** 예제 {describe(d['first_pitch'], ctx)}")
-            for ref in d["practice"]:
-                L.append(f"- 연습 {describe(ref, ctx)}")
+            for ref, lab in zip(d["practice"], d["difficulty"]):
+                L.append(f"- 연습[{lab}] {describe(ref, ctx)}")
             if d["scouting"]:
                 L.append(f"- SCOUTING 후보: {', '.join(d['scouting'])}")
             L.append("")

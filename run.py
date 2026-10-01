@@ -14,6 +14,7 @@
 
   옵션: --book PATH  --created DIR  --source DIR  --out DIR
         --recheck(창작·교재 전체 재검사)  --force(검사 오류가 있어도 조판)
+        --scale large (큰 규모 구성: 테마당 4~6 DAY·30~48문항, 연습은 난도 순)
         --day 1,3 (build 전용: 일부 DAY만 조판해 미리보기)
 """
 from __future__ import annotations
@@ -107,6 +108,7 @@ def main(argv=None) -> int:
     ap.add_argument("--title", help="교재 출처 표기(사용자가 정한 이름 그대로)")
     ap.add_argument("--out")
     ap.add_argument("--day", help="build: 이 DAY 번호만 조판 (예: --day 1,3). 미리보기용이라 검사는 하지 않는다")
+    ap.add_argument("--scale", choices=["normal", "large"], help="source/curate: 테마 구성 규모 (large: 테마당 4~6 DAY·30~48문항)")
     ap.add_argument("--recheck", action="store_true")
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args(argv)
@@ -115,7 +117,7 @@ def main(argv=None) -> int:
     if only_days and args.target not in ("build", "figs", "layout", "pdf"):
         ap.error("--day는 build 단계에서만 쓴다")
     ctx = Context(book_path=args.book, created_dir=args.created, out_dir=args.out, source_dir=args.source,
-                  only_days=only_days)
+                  only_days=only_days, scale=args.scale)
     plan = PLANS.get(args.target, [args.target])
     failed_gate = False
     any_error = False

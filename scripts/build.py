@@ -112,7 +112,9 @@ class Model:
     def points_of(self, ref, rec):
         if is_textbook_id(ref):
             return rec["points"]
-        return self.ctx.config["points"]["created" if is_created_id(ref) else "past"]
+        if is_created_id(ref):
+            return self.ctx.config["points"]["created"]
+        return rec["source"]["points"]
 
     # ---- 문항
     def question(self, ref, no, difficulty, where):

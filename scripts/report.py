@@ -65,6 +65,8 @@ def run(ctx: Context) -> Log:
                 L.append(f"| {th} | {name} | {s['days']} | {s['problems']} | {s.get('textbook', 0)} | {s['past']} | "
                          f"{s['created']} | {share:.0%} |")
             L.append("")
+        if cb.get("past_points"):
+            L.append("- 기출 배점: " + " · ".join(f"{k}점 {v}" for k, v in sorted(cb["past_points"].items())) + f" (규모 {cb.get('scale')})")
         for key, title in (("behavior", "행동 영역"), ("difficulty", "난도(연습 문항)")):
             dist = cb.get(key) or {}
             if dist:

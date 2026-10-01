@@ -10,7 +10,7 @@ import json
 from collections import Counter, defaultdict
 
 from scripts.check_created import LITERAL_NL_MSG, LITERAL_NL_RE
-from scripts.common import Context, Log, choice_text, read_json, write_json
+from scripts.common import Context, Log, choice_text, past_points_ok, read_json, write_json
 
 ID_RE = re.compile(r"^(M1|M2|PS)-(\d{2})(\d{2})(\d{2})$")
 PREFIX = {"수학Ⅰ": "M1", "수학Ⅱ": "M2", "확률과 통계": "PS"}
@@ -66,8 +66,8 @@ def run(ctx: Context, katex: bool = True) -> Log:
         lo, hi = cfg["number_range"][r["subject"]]
         if not (lo <= nn <= hi) or s["number"] != nn:
             exclude(pid, f"번호 {nn}이 {r['subject']} 범위 {lo}~{hi} 밖이거나 source.number와 불일치")
-        if s.get("points") != ctx.config["points"]["past"]:
-            exclude(pid, f"배점 {s.get('points')}점 (기출은 4점)")
+        if not past_points_ok(s.get("points"), ctx.config):
+            exclude(pid, f"배점 {s.get('points')}점 (허용 {ctx.config['points']['past']})")
         if r.get("choices"):
             if len(r["choices"]) != 5:
                 exclude(pid, f"선택지 {len(r['choices'])}개")

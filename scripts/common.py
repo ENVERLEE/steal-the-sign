@@ -81,6 +81,7 @@ class Context:
     created_dir: Path | None = None
     out_dir: Path | None = None
     source_dir: Path | None = None
+    scale: str | None = None  # 테마 구성 규모: normal | large (기본: 책의 scale, 없으면 normal)
     only_days: frozenset | None = None  # 조판 미리보기: 이 DAY 번호만 책에 넣는다 (run.py build --day 1,3)
 
     def __post_init__(self):
@@ -152,6 +153,16 @@ class Context:
                 themes[self.home[pid]]["problem_ids"].append(pid)
         return themes
 
+    def plan_profile(self, book: dict | None = None) -> dict:
+        """테마 구성 한도(DAY 수·문항 수·기출 최소·기출 목표). book.scale 또는 --scale이 large면 큰 규모."""
+        tp, comp = self.config["theme_plan"], self.config["composition"]
+        scale = self.scale or (book or {}).get("scale") or "normal"
+        prof = {"scale": scale, "days": tp["days"], "problems": tp["problems"],
+                "past_min": comp["past_min_per_theme"], "past_target": 10}
+        if scale == "large":
+            prof.update(tp["large"])
+        return prof
+
     @cached_property
     def strategies(self) -> dict:
         return {s["id"]: s for s in read_json(self.path("strategy_notes"))["items"]}
@@ -203,6 +214,35 @@ def load_source(source_dir: Path) -> dict:
             for i, rec in enumerate(data.get("problems") or []):
                 bank[rec.get("id", f"{f.stem}#{i}")] = {"path": f, "index": i, "rec": rec, "book": data.get("book") or {}}
     return bank
+
+
+def past_points_ok(points, config: dict) -> bool:
+    allowed = config["points"]["past"]
+    return points in (allowed if isinstance(allowed, list) else [allowed])
+
+
+def difficulty_rank(ref: str, ctx: "Context") -> tuple:
+    """연습 문항을 쉬운 것→어려운 것으로 놓기 위한 정렬 키 (난도 단계, 번호).
+    교재·창작은 기록된 difficulty, 기출은 배점·번호·행동 영역으로 추정한다."""
+    order = ctx.config["difficulty_labels"]
+    if is_textbook_id(ref):
+        return (order.index(ctx.source[ref]["rec"].get("difficulty")) if ctx.source[ref]["rec"].get("difficulty") in order else 1, 0)
+    if is_created_id(ref):
+        d = ctx.created[ref]["rec"].get("difficulty")
+        return (order.index(d) if d in order else 0, 0)
+    r = ctx.db[ref]
+    s = r["source"]
+    if s["points"] <= 3:
+        rank = 0
+    elif s["number"] in ctx.config["hard_numbers"].get(r["subject"], []):
+        rank = 3
+    else:
+        rank = 2 if r.get("behavior") in ("추론", "문제해결") else 1
+    return (rank, s["number"])
+
+
+def suggest_difficulty(ref: str, ctx: "Context") -> str:
+    return ctx.config["difficulty_labels"][difficulty_rank(ref, ctx)[0]]
 
 
 def is_textbook_id(ref: str) -> bool:

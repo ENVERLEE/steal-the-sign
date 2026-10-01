@@ -31,6 +31,10 @@
       "type": "string",
       "description": "표지 [[ 과목 ]] 예: 수학Ⅰ"
     },
+    "scale": {
+      "enum": ["normal", "large"],
+      "description": "테마 구성 규모: normal(기본, 테마당 2~3 DAY·8~13문항) | large(테마당 4~6 DAY·30~48문항, 연습은 난도 순서 필수). config theme_plan.large"
+    },
     "special": {
       "type": "boolean",
       "description": "특강 모드: 여러 과목을 한 권에 담고 테마당 1 DAY부터 허용(config theme_plan.special_days)"

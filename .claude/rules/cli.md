@@ -35,6 +35,7 @@ python run.py \
   --created DIR               # 다른 창작 문제은행 폴더
   --source DIR                # 다른 교재 판독 폴더
   --out DIR                   # 다른 출력 폴더
+  --scale large               # source/curate: 큰 규모(테마당 4~6 DAY·30~48문항, 난도 순)
   --recheck                   # 창작·교재 전체 재검사
   --force                     # 검사 오류가 있어도 조판
 ```
