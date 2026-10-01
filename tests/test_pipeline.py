@@ -84,6 +84,24 @@ class TestDataLayout(unittest.TestCase):
             box.close()
 
 
+class TestNewCreated(unittest.TestCase):
+    def test_scaffold_copies_parent_and_numbers_next_id(self):
+        from scripts import new_created
+        box = Sandbox()
+        try:
+            ctx = box.ctx()
+            before = len(list(box.created.rglob("*.json")))
+            log = new_created.run(ctx, parent="M1-230911")
+            self.assertTrue(log.ok)
+            rec = read_json(Path(log.stats["file"]))
+            self.assertEqual(rec["origin"]["parent_id"], "M1-230911")
+            self.assertEqual(rec["question"], ctx.db["M1-230911"]["question"])
+            self.assertEqual(len(list(box.created.rglob("*.json"))), before + 1)
+            self.assertFalse(new_created.run(ctx, parent="NOPE").ok)
+        finally:
+            box.close()
+
+
 class TestMath(unittest.TestCase):
     def test_tex_to_sympy(self):
         self.assertTrue(same_value(tex_to_sympy(r"\frac97\pi"), "9*pi/7"))

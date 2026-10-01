@@ -81,6 +81,7 @@ class Context:
     created_dir: Path | None = None
     out_dir: Path | None = None
     source_dir: Path | None = None
+    only_days: frozenset | None = None  # 조판 미리보기: 이 DAY 번호만 책에 넣는다 (run.py build --day 1,3)
 
     def __post_init__(self):
         p = self.config["paths"]
@@ -173,8 +174,12 @@ class Context:
     def book(self) -> dict:
         if self.book_path.is_dir():
             from scripts.book_dir import load_dir
-            return load_dir(self.book_path)
-        return read_json(self.book_path)
+            book = load_dir(self.book_path)
+        else:
+            book = read_json(self.book_path)
+        if self.only_days:
+            book["days"] = [d for d in book.get("days") or [] if d.get("day") in self.only_days]
+        return book
 
 
 def load_created(created_dir: Path) -> dict:

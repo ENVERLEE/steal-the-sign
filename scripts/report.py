@@ -1,6 +1,7 @@
 """out/logs/*.json → out/report.md
 
 맨 앞의 'AI에게 전달할 수정 목록'은 그대로 채팅에 붙여 넣어 해당 항목만 고치게 한다.
+오류만 담은 짧은 `out/fixes.md`도 함께 쓴다(전체 보고서 대신 이것만 읽으면 된다).
 """
 from __future__ import annotations
 
@@ -128,6 +129,11 @@ def run(ctx: Context) -> Log:
             L.append(f"### {NAMES[n]}")
             L += [f"- {w['where']}: {w['msg']}" for w in ws]
             L.append("")
+
+    # 수정 목록만 따로: AI는 오류가 있을 때 이 짧은 파일만 읽는다
+    fixes = [f"[{NAMES[n]}] {e['where']}: {e['msg']}" for n in ORDER for e in (logs.get(n) or {}).get("errors", [])]
+    ctx.out_dir.mkdir(parents=True, exist_ok=True)
+    (ctx.out_dir / "fixes.md").write_text(("\n".join(fixes) if fixes else "오류 없음") + "\n", encoding="utf-8")
 
     out = ctx.out_dir / "report.md"
     out.parent.mkdir(parents=True, exist_ok=True)

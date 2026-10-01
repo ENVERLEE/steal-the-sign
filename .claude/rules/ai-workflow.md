@@ -43,7 +43,7 @@ python run.py pages --pdf <올린파일> --id <교재id> --title "<사용자가 
 - 교재 문항 2~3개가 예제
 - 나머지는 교재 문항·유사 기출·창작이 연습
 
-**창작 필요**: '창작 N개 더 필요'가 나오면 그 테마 창작을 **4문항 이하**로 `work/created/{테마}/{id}.json`에 씀 → `python run.py created` → 통과할 때까지 → 다시 `python run.py source`
+**창작 필요**: '창작 N개 더 필요'가 나오면 `python run.py new --parent <기출id>`로 뼈대(부모 본문·풀이 복사)를 만들고 바뀌는 부분만 고쳐, 그 테마 창작을 **4문항 이하**로 `work/created/{테마}/{id}.json`에 씀 → `python run.py created` → 통과할 때까지 → 다시 `python run.py source`
 
 ## 4단계: 교재 구성
 plan.json의 문항 배정을 `work/book.json`에 옮기고 글을 **`WRITING.md`의 교과서형 규격**으로 씀.
@@ -63,7 +63,7 @@ plan.json의 문항 배정을 `work/book.json`에 옮기고 글을 **`WRITING.md
 python run.py                   # 전체 파이프라인
 ```
 
-`out/report.md`의 **'AI에게 전달할 수정 목록'**만 고침 → 오류 0 → `out/book.html`(+`out/book.pdf`) 사용자에게 제공
+`out/fixes.md`(오류만 모은 짧은 목록)만 고침 → 오류 0 → `out/book.html`(+`out/book.pdf`) 사용자에게 제공
 
 ## 교재 PDF 없이 만들 때
 3~5단계만 한다 (예제는 기출·창작에서 고름).

@@ -38,7 +38,7 @@ python run.py --book samples/book.sample.json --created <복사본> --out <임�
 
 | 파일 | 역할 |
 |---|---|
-| `validate_sources.py` | id·code·번호·학년도·배점·충돌, 선지·정답 형식, strategy_notes 대조, solutions·themes 누락·불일치·참조, **제어문자**·**KaTeX 오류** → `out/excluded.json` |
+| `validate_sources.py` | 문항 파일명=id·`home`, `data/index.json` 자동 생성, id·code·번호·학년도·배점·충돌, 선지·정답 형식, strategy_notes 대조, solutions·themes 누락·불일치·참조, **제어문자**·**KaTeX 오류** → `out/excluded.json` |
 | `mock_import.py` | 실모 오답 분석 JSON(틀린 문제 본문·이유·패턴) → `work/mock/{id}_draft.json`(source 뼈대)·`{id}_analysis.json`·`source/{id}/pages.json`(표기). 필드 별칭 인식 |
 | `pdf_pages.py` | PDF → 쪽 PNG·텍스트 (pypdfium2). `--title` 필수. `title` 단계로 변경. |
 | `check_source.py` | 교재 판독 파일: 스키마, id·쪽, 테마·과목, 참조, `$` 짝, 제어문자, 그림명세, `verify` 검산 → `status: verified` |
@@ -55,6 +55,8 @@ python run.py --book samples/book.sample.json --created <복사본> --out <임�
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 구성·비율·행동 영역·난도, 문제은행, 판면) |
 | `mathval.py` | LaTeX 정답 → sympy 비교 |
 | `verify_runner.py` | verify 코드 별도 프로세스 실행 (30초 제한) |
+| `book_dir.py` | `split`/`join`: 책 JSON ↔ DAY별 폴더. 읽을 때(`Context.book`) 폴더는 한 책으로 합쳐진다 |
+| `new_created.py` | `new`: 부모 기출을 복사한 변형 창작 뼈대(`work/created/{테마}/C-{테마}-NNN.json`) |
 | `common.py` | 설정·경로·로그·브라우저 실행 |
 | `schemas.py` | 스키마 검증 |
 
