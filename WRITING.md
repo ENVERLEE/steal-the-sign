@@ -37,7 +37,7 @@ book.json의 글(개념·실전 개념·예제 분석)을 쓰는 규칙. 새 교
 ### REPLAY·SIGN BOOK·오답 첨삭
 - REPLAY는 잘못된 접근·막히는 지점·고치는 법을 각각 한 문장씩 온전한 문장으로 쓴다.
 - SIGN BOOK `rows`는 비우면 build가 `first_judgment`로 채운다. `next`는 다음 DAY로 잇는 한두 문장.
-- 해설(교재 문항 `solution`, 기출 `study_solution`)은 줄이지 않는다. 해설지는 한 장에 3문항(`config.json` `solution.per_page_max`).
+- 해설(교재 문항 `solution`, 기출 `study_solution`)은 줄이지 않는다. 해설지는 두 단을 판면 높이만큼 채운다(`config.json` `solution.per_page_max`에 수를 넣으면 한 장 문항 수 상한).
 
 ## 3. 문체·표기
 - 수식은 `$…$`. 수식 뒤 조사($x$에)는 build가 붙여 준다 — 조사를 띄우지 않는다.

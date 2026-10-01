@@ -16,7 +16,7 @@ from sympy.parsing.sympy_parser import (convert_xor, implicit_multiplication_app
 from scripts.common import Context, Log, content_hash, is_created_id, is_textbook_id
 from scripts.schemas import validate
 
-SVG_VERSION = 2  # SVG 출력 형식이 바뀌면 올린다(캐시 무효화)
+SVG_VERSION = 3  # SVG 출력 형식이 바뀌면 올린다(캐시 무효화)
 
 X = sympy.Symbol("x", real=True)
 T = sympy.Symbol("t", real=True)
@@ -129,9 +129,12 @@ class Canvas:
         dx = {"e": 6, "ne": 5, "se": 5, "n": 0, "s": 0, "w": -6, "nw": -5, "sw": -5}[pos]
         dy = {"n": -6, "ne": -5, "nw": -5, "e": 4, "w": 4, "s": 14, "se": 13, "sw": 13}[pos]
         anchor = "start" if dx > 0 else ("end" if dx < 0 else "middle")
-        italic = "" if re.search(r"[가-힣]", s) else ' font-style="italic"'
+        if re.search(r"[가-힣]", s):  # 한글 라벨은 본문 명조로
+            font, body = "font-family=\"'Noto Serif KR',serif\"", _rich_plain(s)
+        else:  # 수식 라벨은 본문 수식(KaTeX)과 같은 글꼴로
+            font, body = f'font-family="{MAIN}"', _rich(s)
         self.add(f'<text x="{X_ + dx:.1f}" y="{Y_ + dy:.1f}" font-size="{size}" fill="{color}" '
-                 f'text-anchor="{anchor}" font-family="\'Times New Roman\',serif"{italic}>{_rich(s)}</text>')
+                 f'text-anchor="{anchor}" {font}>{body}</text>')
 
     def svg(self) -> str:
         # 한 HTML에 SVG가 여러 개 들어가므로 clipPath id는 그림마다 달라야 한다
@@ -145,17 +148,64 @@ class Canvas:
                 f'width="{self.W}" height="{self.H}" role="img"><defs>{clip}</defs>{body}</svg>')
 
 
-def _rich(s: str) -> str:
-    """라벨의 ^{…}·^c는 위첨자, _{…}·_c는 아래첨자로"""
+MAIN = "KaTeX_Main,'Times New Roman',serif"
+MATH = "KaTeX_Math,'Times New Roman',serif"
+FUNCS = ("log", "ln", "sin", "cos", "tan", "exp", "lim", "max", "min")
+LABEL_TOKEN = re.compile(r"(\d+(?:\.\d+)?)/(\d+(?:\.\d+)?)|sqrt|(?:" + "|".join(FUNCS) + r")|[A-Za-z]|.", re.S)
+
+
+def _group(s: str, i: int) -> tuple[str, int]:
+    """s[i]에서 시작하는 {…} 또는 글자 하나 → (내용, 다음 위치)"""
+    if s[i] == "{":
+        depth = 0
+        for k in range(i, len(s)):
+            depth += {"{": 1, "}": -1}.get(s[k], 0)
+            if depth == 0:
+                return s[i + 1:k], k + 1
+    return s[i], i + 1
+
+
+def _rich(s: str, top: bool = True) -> str:
+    """수식 라벨을 KaTeX처럼: 소문자 변수는 기울임, 점 이름·숫자·함수 이름은 바로 세움.
+    ^{…}·_{…}는 위·아래첨자, 2/3 같은 분수는 위첨자/아래첨자 꼴, -는 빼기 기호(−)"""
     out, i = [], 0
     while i < len(s):
         c = s[i]
         if c in "^_" and i + 1 < len(s):
-            if s[i + 1] == "{" and "}" in s[i + 2:]:
-                k = s.index("}", i + 2)
-                inner, i = s[i + 2:k], k + 1
-            else:
-                inner, i = s[i + 1], i + 2
+            inner, i = _group(s, i + 1)
+            shift = "super" if c == "^" else "sub"
+            out.append(f'<tspan baseline-shift="{shift}" font-size="75%">{_rich(inner, top=False)}</tspan>')
+            continue
+        m = LABEL_TOKEN.match(s, i)
+        tok = m.group(0)
+        i = m.end()
+        if m.group(1) and top:  # 분수: 분자 위, 분모 아래
+            out.append(f'<tspan baseline-shift="35%" font-size="70%">{m.group(1)}</tspan>'
+                       f'<tspan>\u2044</tspan><tspan baseline-shift="-10%" font-size="70%">{m.group(2)}</tspan>')
+        elif m.group(1):
+            out.append(html.escape(tok))
+        elif tok == "sqrt":
+            out.append("\u221a")
+        elif tok in FUNCS:
+            out.append(tok)
+        elif tok.isascii() and tok.isalpha() and tok.islower():
+            out.append(f'<tspan font-family="{MATH}" font-style="italic">{tok}</tspan>')
+        elif tok == "-":
+            out.append("\u2212")
+        elif tok in "=<>":
+            out.append(f"\u200a{html.escape(tok)}\u200a")
+        else:
+            out.append(html.escape(tok))
+    return "".join(out)
+
+
+def _rich_plain(s: str) -> str:
+    """한글 라벨: 위·아래첨자만"""
+    out, i = [], 0
+    while i < len(s):
+        c = s[i]
+        if c in "^_" and i + 1 < len(s):
+            inner, i = _group(s, i + 1)
             shift = "super" if c == "^" else "sub"
             out.append(f'<tspan baseline-shift="{shift}" font-size="75%">{html.escape(inner)}</tspan>')
         else:
