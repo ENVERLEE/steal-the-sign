@@ -1,0 +1,34 @@
+{
+  "id": "PS-221129",
+  "concept_refs": [
+    "확률과 통계-16-C3",
+    "확률과 통계-16-C1"
+  ],
+  "guide": "$g$는 그래프가 없고 $g=k-f$로만 주어진다. 양변을 $[0,6]$에서 적분하면 $1+1=6k$, $k=\\frac13$(C3). 그러면 $\\mathrm P(6k\\le Y\\le15k)=\\mathrm P(2\\le Y\\le5)$이고, $g$의 넓이는 '높이 $\\frac13$ 직사각형 − $f$의 넓이'로 계산한다. $f$는 직선 조각이라 적분 없이 사다리꼴·직사각형 넓이면 된다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 직사각형 − $f$의 넓이",
+      "steps": [
+        {
+          "label": "$k$ 결정",
+          "body": "$\\int_0^6(f+g)\\,dx=1+1=6k\\Rightarrow k=\\dfrac13$."
+        },
+        {
+          "label": "구간 변환",
+          "body": "$\\mathrm P(6k\\le Y\\le15k)=\\mathrm P(2\\le Y\\le5)=\\dfrac13\\cdot3-\\int_2^5f(x)\\,dx=1-\\int_2^5f(x)\\,dx$."
+        },
+        {
+          "label": "$f$의 넓이",
+          "body": "$0\\le x\\le3$에서 $f(x)=\\frac{x}{12}$이므로 $f(2)=\\frac16$, $f(3)=\\frac14$.\n$[2,3]$: 사다리꼴 $\\frac12\\left(\\frac16+\\frac14\\right)\\cdot1=\\frac5{24}$, $[3,5]$: 직사각형 $\\frac14\\cdot2=\\frac12$. 합 $\\frac{17}{24}$."
+        },
+        {
+          "label": "답",
+          "body": "$1-\\dfrac{17}{24}=\\dfrac7{24}$, $p+q=31$."
+        }
+      ]
+    }
+  ],
+  "supplement": "$f$가 확률밀도함수인지 검산: $\\frac12\\cdot3\\cdot\\frac14+2\\cdot\\frac14+\\frac12\\cdot1\\cdot\\frac14=\\frac38+\\frac12+\\frac18=1$ ✓. $g=\\frac13-f$를 구간별 식으로 세워 적분해도 되지만, '높이 $k$의 직사각형에서 $f$의 넓이를 뺀다'는 그림으로 보면 적분 기호가 사라진다. $\\int_2^5f$ 대신 여사건 $\\int_0^2f+\\int_5^6f=\\frac16+\\frac18=\\frac7{24}$로 구해도 되는데, 이 값이 답과 같은 것은 우연이 아니다(직사각형 넓이 $3k=1$이 마침 $f$의 전체 넓이와 같아서 $1-\\int_2^5f=\\int_0^2f+\\int_5^6f$가 되기 때문).",
+  "skill_point": "$f+g=k$ → 적분으로 $k$ 결정, $g$의 넓이는 직사각형 − $f$의 넓이.",
+  "answer": "31"
+}

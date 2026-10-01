@@ -1,0 +1,35 @@
+{
+  "id": "M1-260920",
+  "concept_refs": [
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C4"
+  ],
+  "guide": "빈칸 추론형. 점 P는 원 밖에서 두 할선 PBA, PCD가 만나는 점이다. $\\triangle\\mathrm{BPC}\\sim\\triangle\\mathrm{DPA}$(내접사각형의 외각 = 내대각)에서 $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$ (수학Ⅰ-12-C3). 모든 길이를 $k$, $l$로 두고(수학Ⅰ-12-C4) 비례식 하나로 $l$을 $k$로 나타낸다. 그림에서 순서는 P–B–A, P–C–D.",
+  "solutions": [
+    {
+      "title": "풀이 · 할선 닮음 → 닮음비 → 사인법칙",
+      "steps": [
+        {
+          "label": "(가)",
+          "body": "$\\overline{\\mathrm{PA}}=7k+l$, $\\overline{\\mathrm{PD}}=5k+3l$. 닮음에서 $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$:\n$$7k(7k+l)=5k(5k+3l)\\ \\Rightarrow\\ 24k=8l\\ \\Rightarrow\\ l=3k$$\n$p=3$."
+        },
+        {
+          "label": "(나)",
+          "body": "$\\overline{\\mathrm{PD}}=5k+9k=14k$, $\\overline{\\mathrm{PA}}=10k$. 대응변 $\\overline{\\mathrm{PB}}:\\overline{\\mathrm{PD}}=7k:14k=1:2$ (확인: $\\overline{\\mathrm{PC}}:\\overline{\\mathrm{PA}}=5k:10k$). $q=2$."
+        },
+        {
+          "label": "(다)",
+          "body": "$\\overline{\\mathrm{BC}}=\\frac12\\overline{\\mathrm{AD}}=2\\sqrt{13}$. $\\cos\\theta=\\frac67$(삼각형 BPC의 세 변의 비 $7:5:\\sqrt{14}$에서 $\\frac{49+25-14}{70}$)이므로 $\\sin\\theta=\\frac{\\sqrt{13}}7$.\n$$R=\\frac{\\overline{\\mathrm{BC}}}{2\\sin\\theta}=\\frac{2\\sqrt{13}}{2\\sqrt{13}/7}=7$$\n$r=7$."
+        },
+        {
+          "label": "답",
+          "body": "$p+q+r=3+2+7=12$"
+        }
+      ]
+    }
+  ],
+  "supplement": "닮음의 대응을 헷갈리기 쉽다. $\\angle\\mathrm P$가 공통이고 $\\angle\\mathrm{PBC}=\\angle\\mathrm{PDA}$(내접사각형의 외각은 내대각과 같다)이므로 B↔D, C↔A다. 그래서 $\\overline{\\mathrm{PB}}$의 짝은 $\\overline{\\mathrm{PD}}$이고 곱 공식 $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$가 된다. 삼각형 BPC는 비만 알고 크기를 모르지만 $\\cos\\theta$는 비만으로 결정되므로(수학Ⅰ-12-C4) 먼저 구해 두고, 크기는 $\\overline{\\mathrm{AD}}$라는 절대 조건 하나로 마지막에 맞춘다.",
+  "skill_point": "원 밖의 점에서 두 할선 → $\\overline{\\mathrm{PB}}\\cdot\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PC}}\\cdot\\overline{\\mathrm{PD}}$. 비로 모양, 절대 조건으로 크기.",
+  "answer": "12"
+}

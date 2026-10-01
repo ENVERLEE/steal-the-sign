@@ -1,0 +1,50 @@
+{
+  "id": "M1-270612",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "270612",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2026년 6월 고3 12번"
+  },
+  "question": "공비가 양수인 등비수열 $\\{a_n\\}$이 $2a_1(a_1+a_3)=5a_2(a_1+a_2)=20$을 만족시킬 때, $a_1a_6$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac1{27}",
+    "\\frac19",
+    "\\frac13",
+    "1",
+    "3"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac1{27}",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-13",
+    "primary_name": "등차수열과 등비수열",
+    "links": []
+  },
+  "first_judgment": "첫째항 $a$, 공비 $r$로 두면 앞의 등식에서 $a^2$이 약분되어 $r$에 대한 이차방정식이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S09"
+  ],
+  "solution_ref": "$2a^2(1+r^2)=5a^2r(1+r)$ → $3r^2+5r-2=0$, $r=\\frac13$. $2a^2(1+r^2)=20$ → $a^2=9$. $a_1a_6=a^2r^5=\\frac1{27}$",
+  "legacy": {
+    "category": "등비수열의 일반항 구하기(3) : a_i+a_j=k 형태(a_i와 a_j의 사칙연산 형태)로 주어",
+    "book_no": 54,
+    "question_page": 27,
+    "solution_page": 69
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-08"
+}

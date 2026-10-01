@@ -1,0 +1,48 @@
+{
+  "id": "PS-240628",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "240628",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 28,
+    "points": 4,
+    "label": "2023년 6월 고3 28번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수는?",
+  "condition": "(가) $f(1)f(3)f(5)$는 홀수이다.\\\\(나) $f(2)<f(4)$\\\\(다) 함수 $f$의 치역의 원소의 개수는 $3$이다.",
+  "choices": [
+    "128",
+    "132",
+    "136",
+    "140",
+    "144"
+  ],
+  "answer": "5",
+  "answer_value": "144",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-03",
+    "primary_name": "중복순열",
+    "links": []
+  },
+  "first_judgment": "$f(1),f(3),f(5)$가 모두 홀수이므로 치역에 들어가는 홀수의 개수(1,2,3)로 나누고, 나머지 치역 원소를 $f(2),f(4)$가 채우게 한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 홀수 1개: $3$가지, $f(2)=2$, $f(4)=4$ → 3. (ii) 홀수 2개: $3\\cdot(2\\cdot2+6\\cdot4)=84$. (iii) 홀수 3개: $1\\cdot(3\\cdot1+18\\cdot2+6\\cdot3)=57$. 합 $144$",
+  "legacy": {
+    "category": "함수의 개수(1) : 중복순열",
+    "book_no": 3,
+    "question_page": 2,
+    "solution_page": 26
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-02"
+}

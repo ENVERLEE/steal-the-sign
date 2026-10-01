@@ -1,0 +1,34 @@
+{
+  "id": "M1-220615",
+  "concept_refs": [
+    "수학Ⅰ-10-C1",
+    "수학Ⅰ-10-C3"
+  ],
+  "guide": "$\\alpha(t)$, $\\beta(t)$는 두 곡선 $y=\\sin\\frac{\\pi x}2$, $y=\\cos\\frac{\\pi x}2$ $(0\\le x<4)$와 수평선 $y=t$의 교점 중 가장 왼쪽·가장 오른쪽 점이다(수학Ⅰ-10-C1). 두 곡선은 주기 4이고,\n· $\\sin$: $x=0,1,2,3$에서 $0,1,0,-1$\n· $\\cos$: $x=0,1,2,3$에서 $1,0,-1,0$ ($x=4$는 제외)\n특수 높이는 $t=0$, $t=\\pm1$, 그리고 두 곡선이 만나는 높이 $t=\\frac{\\sqrt2}2$ ($x=\\frac12$)이다. 각 보기에서 $\\sin\\leftrightarrow\\cos$ 관계로 근을 짝짓는다(수학Ⅰ-10-C3).",
+  "solutions": [
+    {
+      "title": "풀이 · 수평선 + 근의 짝짓기",
+      "steps": [
+        {
+          "label": "ㄱ ($-1\\le t<0$)",
+          "body": "$t<0$인 교점은 $\\sin$ 쪽이 $2<x<4$, $\\cos$ 쪽이 $1<x<3$에 있다.\n가장 작은 근 $\\alpha$는 $\\cos$ 쪽의 왼쪽 근($1<\\alpha\\le2$), 가장 큰 근 $\\beta$는 $\\sin$ 쪽의 오른쪽 근($3\\le\\beta<4$).\n$\\sin\\frac{\\pi(5-x)}2=\\sin\\left(\\frac{5\\pi}2-\\frac{\\pi x}2\\right)=\\cos\\frac{\\pi x}2$이므로 $\\cos\\frac{\\pi\\alpha}2=t$이면 $\\sin\\frac{\\pi(5-\\alpha)}2=t$이고 $5-\\alpha\\in[3,4)$. 따라서 $\\beta=5-\\alpha$, $\\alpha+\\beta=5$. **참**."
+        },
+        {
+          "label": "ㄴ",
+          "body": "$t=0$: 근은 $0,1,2,3$이므로 $\\beta(0)-\\alpha(0)=3$.\n· $0<t\\le\\frac{\\sqrt2}2$: $\\sin$의 첫 근 $s\\in(0,\\frac12]$, $\\cos$의 근 $c\\in[\\frac12,1)$과 $4-c$. $\\sin\\frac{\\pi s}2=\\cos\\frac{\\pi c}2$이고 $s,c\\in[0,1]$이므로 $s+c=1$. $\\alpha=s$, $\\beta=4-c$ → $\\beta-\\alpha=4-(s+c)=3$.\n· $\\frac{\\sqrt2}2<t<1$: 이제 $c<\\frac12<s$이므로 $\\alpha=c$, $\\beta=4-c$ → $\\beta-\\alpha=4-2c>3$.\n· $t=1$: 근 $0,1$ → 차 $1$.\n· $-1\\le t<0$: ㄱ에서 $\\beta-\\alpha=5-2\\alpha$, $1<\\alpha\\le2$이므로 $1\\le\\beta-\\alpha<3$.\n따라서 차가 3인 $t$의 집합은 $\\left[0,\\frac{\\sqrt2}2\\right]$. **참**."
+        },
+        {
+          "label": "ㄷ",
+          "body": "$t_1<t_2$에서 $\\alpha(t_1)=\\alpha(t_2)=\\alpha$이려면 같은 $x=\\alpha$가 두 수평선 모두의 근이어야 하므로 한 쪽은 $\\sin$, 다른 쪽은 $\\cos$의 근이다. ㄴ의 분석에서 이것은 $0<t_1\\le\\frac{\\sqrt2}2<t_2<1$, $\\alpha\\in(0,\\frac12)$일 때이고\n$$t_1=\\sin\\tfrac{\\pi\\alpha}2,\\qquad t_2=\\cos\\tfrac{\\pi\\alpha}2\\ \\Rightarrow\\ t_1^2+t_2^2=1$$\n$t_2=t_1+\\frac12$를 대입: $2t_1^2+t_1-\\frac34=0$. 이때 $t_1t_2=t_1^2+\\frac{t_1}2=\\frac12\\left(2t_1^2+t_1\\right)=\\frac38\\ne\\frac13$. **거짓**."
+        },
+        {
+          "label": "답",
+          "body": "옳은 것은 ㄱ, ㄴ → ②"
+        }
+      ]
+    }
+  ],
+  "supplement": "ㄷ에서 $t_1$을 $\\frac{-1+\\sqrt7}4$로 구체적으로 구할 필요가 없다. $t_1t_2=t_1^2+\\frac12t_1$이 이차방정식의 좌변 절반이라는 것을 보면 바로 $\\frac38$이다. 또 $t_1^2+t_2^2=1$은 '같은 각의 $\\sin$과 $\\cos$'라는 사실에서 나오므로, '같은 $\\alpha$'가 나오면 $\\sin^2+\\cos^2=1$을 떠올리자. $\\alpha(0)=\\alpha(1)=0$도 같은 $\\alpha$를 주지만 $t_2-t_1=1$이라 조건에 맞지 않는다.",
+  "skill_point": "두 삼각함수의 근은 $\\sin\\leftrightarrow\\cos$ 변환으로 짝지어 합을 얻는다. 같은 각의 $\\sin,\\cos$ 값 두 개 → 제곱합 1.",
+  "answer": "2"
+}

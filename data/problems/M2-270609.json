@@ -1,0 +1,52 @@
+{
+  "id": "M2-270609",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "270609",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2026년 6월 고3 9번"
+  },
+  "question": "시각 $t=0$일 때 동시에 원점을 출발하여 수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$가 있다. 시각 $t$ $(t\\ge0)$일 때 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 속도가 각각 $v_1(t)=t^2-t$, $v_2(t)=t$이다. 출발한 후 시각 $t=k$에서 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 위치가 같아질 때, 양수 $k$의 값은?",
+  "condition": null,
+  "choices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "answer": "3",
+  "answer_value": "3",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": [
+      "수학Ⅱ-14"
+    ]
+  },
+  "first_judgment": "같은 원점에서 출발했으므로 위치가 같다는 것은 $\\int_0^k v_1=\\int_0^k v_2$이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$\\frac13k^3-\\frac12k^2=\\frac12k^2$ → $\\frac13k^2(k-3)=0$, $k=3$",
+  "legacy": {
+    "category": "위치와 위치의 변화량",
+    "book_no": 69,
+    "question_page": 35,
+    "solution_page": 79
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-10"
+}

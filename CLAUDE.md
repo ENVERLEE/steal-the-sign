@@ -37,7 +37,7 @@ python -m unittest discover tests       # 테스트
 ## 폴더 구조 (참고)
 ```
 run.py, requirements.txt, WRITING.md
-data/: db.json, themes.json, solutions.json, strategy_notes.json, config.json, STS_template.html, STS_ext.html
+data/: problems/{id}.json(기출 1문항=1파일)·solutions/{id}.json(풀이)·index.json(자동 생성 색인, 문항은 이것만 읽고 고른다)·concepts.json, themes.json, strategy_notes.json, config.json, STS_template.html, STS_ext.html
 work/: book.json, created/{테마}/, source/{교재id}.json, source/{교재id}/pages/
 schema/, scripts/, samples/, tests/, vendor/katex/, out/
 ```

@@ -193,7 +193,7 @@ def run(ctx: Context) -> Log:
                 ts["past"] += 1
                 r = ctx.db.get(ref)
                 if not r:
-                    log.error(where, "db.json에 없는 기출 id")
+                    log.error(where, "data/problems에 없는 기출 id")
                     continue
                 if ref in ctx.excluded:
                     log.error(where, "excluded.json에 있는 기출")
@@ -224,7 +224,7 @@ def run(ctx: Context) -> Log:
         # 유사 기출(SCOUTING)
         for s in d["sign_reading"]["scouting"]:
             if s["ref"] not in ctx.db:
-                log.error(w, f"SCOUTING {s['ref']}가 db.json에 없음")
+                log.error(w, f"SCOUTING {s['ref']}가 data/problems에 없음")
             elif s["ref"] == d["first_pitch"]["ref"]:
                 log.error(w, "SCOUTING에 예제 자신을 넣음")
             elif s["ref"] in ctx.excluded:
@@ -244,7 +244,7 @@ def run(ctx: Context) -> Log:
                 log.error(w, f"notes[{ref}].shortcut에는 verify 필수")
         for cid in d["strategy"].get("concept_ids") or []:
             if cid not in ctx.concepts:
-                log.error(w, f"개념 id {cid}가 solutions.json에 없음")
+                log.error(w, f"개념 id {cid}가 concepts.json에 없음")
             elif cid.rsplit("-C", 1)[0] not in t["old_themes"]:
                 log.warn(w, f"개념 {cid}는 테마 {th}의 기존 테마({', '.join(t['old_themes'])}) 밖")
         if not (d["strategy"].get("concept_ids") or d["strategy"].get("tools")):

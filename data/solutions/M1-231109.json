@@ -1,0 +1,33 @@
+{
+  "id": "M1-231109",
+  "concept_refs": [
+    "수학Ⅰ-09-C3"
+  ],
+  "guide": "$f(x)=a-\\sqrt3\\tan2x$는 한 가지 안에서 **감소**한다. '최댓값과 최솟값을 갖는다'는 말은 구간 $\\left[-\\frac\\pi6,b\\right]$가 점근선 $x=\\frac\\pi4$를 넘지 않는다는 뜻이고, 그러면 최댓값은 왼쪽 끝, 최솟값은 오른쪽 끝에서 나온다(수학Ⅰ-09-C3).",
+  "solutions": [
+    {
+      "title": "풀이 · 단조성으로 끝값만 본다",
+      "steps": [
+        {
+          "label": "구간 확인",
+          "body": "$\\tan2x$의 점근선은 $2x=\\frac\\pi2+n\\pi$, 즉 $x=\\frac\\pi4+\\frac{n\\pi}2$. 구간이 $x=\\frac\\pi4$를 포함하면 $f$가 발산하므로 $-\\frac\\pi6<b<\\frac\\pi4$이고, 이 구간에서 $f$는 감소한다."
+        },
+        {
+          "label": "최댓값",
+          "body": "$f\\left(-\\frac\\pi6\\right)=a-\\sqrt3\\tan\\left(-\\frac\\pi3\\right)=a+3=7$ → $a=4$."
+        },
+        {
+          "label": "최솟값",
+          "body": "$f(b)=4-\\sqrt3\\tan2b=3$ → $\\tan2b=\\frac1{\\sqrt3}$. $-\\frac\\pi3<2b<\\frac\\pi2$이므로 $2b=\\frac\\pi6$, $b=\\frac\\pi{12}$."
+        },
+        {
+          "label": "답",
+          "body": "$ab=4\\cdot\\frac\\pi{12}=\\frac\\pi3$ → ③"
+        }
+      ]
+    }
+  ],
+  "supplement": "$-\\sqrt3\\tan2x$처럼 계수가 음수이면 증가함수가 감소함수로 뒤집힌다. 최댓값이 왼쪽 끝이라는 걸 놓치면 $a-\\sqrt3\\tan2b=7$처럼 반대로 세우는 실수가 생긴다. 탄젠트에서 '최댓값·최솟값이 존재'는 그 자체로 '점근선을 안 넘는다'는 정보이므로 $b$의 범위를 먼저 적어 두면 $\\tan2b=\\frac1{\\sqrt3}$의 해를 하나로 고를 수 있다.",
+  "skill_point": "tan는 한 가지 안에서 단조 → 최대·최소는 끝값. 계수 부호로 증가·감소를 먼저 판정.",
+  "answer": "3"
+}

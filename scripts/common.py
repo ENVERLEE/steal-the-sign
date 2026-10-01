@@ -107,30 +107,49 @@ class Context:
     # ---- 데이터
     @cached_property
     def db(self) -> dict:
-        return {r["id"]: r for r in read_json(self.path("db"))}
+        """기출 문항 id → 레코드 (data/problems/{id}.json 한 파일에 한 문항)"""
+        return {k: {f: v for f, v in r.items() if f != "home"} for k, r in self.problem_files.items()}
 
     @cached_property
-    def solutions(self) -> dict:
-        return read_json(self.path("solutions"))
+    def problem_files(self) -> dict:
+        d = self.path("problems")
+        return {f.stem: read_json(f) for f in sorted(d.glob("*.json"))} if d.exists() else {}
+
+    @cached_property
+    def home(self) -> dict:
+        """문항 id → 홈 테마 id (문항 파일의 home)"""
+        return {k: r.get("home") for k, r in self.problem_files.items()}
 
     @cached_property
     def study(self) -> dict:
-        """문항 id → study_solution"""
-        return {p["id"]: p["study_solution"] for p in self.solutions["problems"]}
+        """문항 id → study_solution (data/solutions/{id}.json)"""
+        d = self.path("solutions")
+        return {f.stem: read_json(f) for f in sorted(d.glob("*.json"))} if d.exists() else {}
+
+    @cached_property
+    def concept_themes(self) -> list:
+        return read_json(self.path("concepts"))["themes"]
 
     @cached_property
     def old_themes(self) -> dict:
-        """기존 64분류 id → solutions.json 테마 개념정리"""
-        return {t["theme"]: t for t in self.solutions["themes"]}
+        """기존 64분류 id → 테마 개념정리 (data/concepts.json)"""
+        return {t["theme"]: t for t in self.concept_themes}
 
     @cached_property
     def concepts(self) -> dict:
         """개념 id → 개념"""
-        return {c["id"]: c for t in self.solutions["themes"] for c in t["core_concepts"]}
+        return {c["id"]: c for t in self.concept_themes for c in t["core_concepts"]}
 
     @cached_property
     def themes(self) -> dict:
-        return {t["id"]: t for t in read_json(self.path("themes"))["themes"]}
+        """테마 id → 테마. problem_ids는 문항 파일의 home에서 모은다(id 순)."""
+        themes = {t["id"]: t for t in read_json(self.path("themes"))["themes"]}
+        for t in themes.values():
+            t["problem_ids"] = []
+        for pid in sorted(self.home):
+            if self.home[pid] in themes:
+                themes[self.home[pid]]["problem_ids"].append(pid)
+        return themes
 
     @cached_property
     def strategies(self) -> dict:
@@ -152,6 +171,9 @@ class Context:
 
     @cached_property
     def book(self) -> dict:
+        if self.book_path.is_dir():
+            from scripts.book_dir import load_dir
+            return load_dir(self.book_path)
         return read_json(self.book_path)
 
 
@@ -194,7 +216,7 @@ CIRCLED = "①②③④⑤"
 
 
 def choice_text(c: str) -> str:
-    """db.json 선지는 $ 없이 LaTeX만 적혀 있다(\\frac{5}{3}). ㄱ·ㄴ·ㄷ 같은 글자 선지는 그대로"""
+    """문항 파일 선지는 $ 없이 LaTeX만 적혀 있다(\\frac{5}{3}). ㄱ·ㄴ·ㄷ 같은 글자 선지는 그대로"""
     c = str(c)
     if "$" in c or re.search(r"[가-힣ㄱ-ㅎ]", c):
         return c

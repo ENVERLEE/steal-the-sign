@@ -1,0 +1,45 @@
+{
+  "id": "PS-220929",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "220929",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 29,
+    "points": 4,
+    "label": "2021년 9월 고3 29번"
+  },
+  "question": "두 이산확률변수 $X$, $Y$의 확률분포를 표로 나타내면 각각 다음과 같다. $\\mathrm V(X)=\\dfrac{31}5$일 때, $10\\,\\mathrm V(Y)$의 값을 구하시오.",
+  "condition": "$X$: $1,3,5,7,9$의 확률이 각각 $a,b,c,b,a$ (합계 1)\\\\$Y$: $1,3,5,7,9$의 확률이 각각 $a+\\frac1{20},\\ b,\\ c-\\frac1{10},\\ b,\\ a+\\frac1{20}$ (합계 1)",
+  "choices": null,
+  "answer": "78",
+  "answer_value": "78",
+  "figure": {
+    "description": "두 확률분포표",
+    "source_page": 20
+  },
+  "theme": {
+    "primary": "확률과 통계-15",
+    "primary_name": "이산확률변수",
+    "links": []
+  },
+  "first_judgment": "두 분포 모두 $5$에 대해 대칭이므로 평균이 $5$로 같고, $\\mathrm E(Y^2)$와 $\\mathrm E(X^2)$의 차만 계산하면 된다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm E(X)=\\mathrm E(Y)=5$, $\\mathrm E(X^2)=25+\\frac{31}5$. $\\mathrm E(Y^2)=\\mathrm E(X^2)+\\frac1{20}-\\frac52+\\frac{81}{20}=\\mathrm E(X^2)+\\frac85$. $\\mathrm V(Y)=\\frac{39}5$, $10\\mathrm V(Y)=78$",
+  "legacy": {
+    "category": "이산확률변수의 분산, 표준편차",
+    "book_no": 39,
+    "question_page": 20,
+    "solution_page": 44
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-06"
+}

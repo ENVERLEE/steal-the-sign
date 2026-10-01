@@ -1,0 +1,43 @@
+{
+  "id": "PS-230930",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "230930",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 30,
+    "points": 4,
+    "label": "2022년 9월 고3 30번"
+  },
+  "question": "집합 $X=\\{1,2,3,4,5\\}$와 함수 $f:X\\to X$에 대하여 함수 $f$의 치역을 $A$, 합성함수 $f\\circ f$의 치역을 $B$라 할 때, 다음 조건을 만족시키는 함수 $f$의 개수를 구하시오.",
+  "condition": "(가) $n(A)\\le3$\\\\(나) $n(A)=n(B)$\\\\(다) 집합 $X$의 모든 원소 $x$에 대하여 $f(x)\\ne x$이다.",
+  "choices": null,
+  "answer": "260",
+  "answer_value": "260",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-03",
+    "primary_name": "중복순열",
+    "links": []
+  },
+  "first_judgment": "(나)는 $f$를 $A$에 제한했을 때 일대일(치역 $A$ 위에서 전단사)이라는 뜻이고, (다)로 $n(A)=2,3$만 가능하다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) $n(A)=2$: $A$ 선택 10, $A$ 위에서 교환 1가지, 나머지 3원소 $2^3=8$ → 80. (ii) $n(A)=3$: $A$ 선택 10, $A$ 위에서 고정점 없는 순열 2, 나머지 $3^2=9$ → 180. 합 $260$",
+  "legacy": {
+    "category": "함수의 개수(3) : 종합",
+    "book_no": 19,
+    "question_page": 10,
+    "solution_page": 34
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-02"
+}

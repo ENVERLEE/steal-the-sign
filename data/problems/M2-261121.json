@@ -1,0 +1,49 @@
+{
+  "id": "M2-261121",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "261121",
+    "year": 2026,
+    "exam": "대학수학능력시험",
+    "number": 21,
+    "points": 4,
+    "label": "2025년 11월 고3 21번"
+  },
+  "question": "최고차항의 계수가 양수인 삼차함수 $f(x)$와 실수 $t$에 대하여 함수 $g(x)=\\begin{cases}-f(x) & (x<t)\\\\ f(x) & (x\\ge t)\\end{cases}$는 실수 전체의 집합에서 연속이고 다음 조건을 만족시킨다. $g(-5)$의 값을 구하시오. $\\left(\\text{단, }g(-1)\\ne-\\dfrac72g(1)\\right)$",
+  "condition": "(가) 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a+}\\frac{g(x)}{x(x-2)}$의 값이 존재한다.\\\\(나) $\\displaystyle\\lim_{x\\to m+}\\frac{g(x)}{x(x-2)}$의 값이 음수가 되도록 하는 자연수 $m$의 집합은 $\\left\\{g(-1),\\,-\\dfrac72g(1)\\right\\}$이다.",
+  "choices": null,
+  "answer": "65",
+  "answer_value": "65",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-04",
+    "primary_name": "함수의 연속",
+    "links": [
+      "수학Ⅱ-03",
+      "수학Ⅱ-05"
+    ]
+  },
+  "first_judgment": "연속 조건으로 $f(t)=0$, (가)로 $f(0)=f(2)=0$ → $f(x)=\\alpha x(x-2)(x-k)$로 두고 (나)의 자연수 집합 조건으로 $t$, $k$를 좁힌다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S14",
+    "S15"
+  ],
+  "solution_ref": "$f(t)=0$, $f(0)=f(2)=0$, $f(x)=\\alpha x(x-2)(x-k)$. (나)에서 $m=1$ 불가, $m=2$와 $m>2$인 $g(m)<0$ 필요 → $k>3$, $t=2$, $3<k\\le4$. $g(-1)=3\\alpha(k+1)$, $g(1)=-\\alpha(k-1)$. $\\{g(-1),-\\frac72g(1)\\}=\\{3,2\\}$ 중 $3<k\\le4$를 만족하는 경우: $g(-1)=3$, $-\\frac72g(1)=2$ → $k=\\frac{11}3$, $\\alpha=\\frac3{14}$. $g(-5)=-\\frac3{14}\\cdot(-5)(-7)\\left(-\\frac{26}3\\right)=65$",
+  "legacy": {
+    "category": "함수가 연속일 조건(1) : 구간별로 주어진 함수가 연속일 조건",
+    "book_no": 6,
+    "question_page": 3,
+    "solution_page": 44
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-02"
+}

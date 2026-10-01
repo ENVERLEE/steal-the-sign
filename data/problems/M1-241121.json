@@ -1,0 +1,45 @@
+{
+  "id": "M1-241121",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "241121",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 21,
+    "points": 4,
+    "label": "2023년 11월 고3 21번"
+  },
+  "question": "양수 $a$에 대하여 $x\\ge-1$에서 정의된 함수 $f(x)$는 $f(x)=\\begin{cases}-x^2+6x & (-1\\le x<6)\\\\ a\\log_4(x-5) & (x\\ge6)\\end{cases}$이다. $t\\ge0$인 실수 $t$에 대하여 닫힌구간 $[t-1,t+1]$에서의 $f(x)$의 최댓값을 $g(t)$라 하자. 구간 $[0,\\infty)$에서 함수 $g(t)$의 최솟값이 $5$가 되도록 하는 양수 $a$의 최솟값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "10",
+  "answer_value": "10",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-04",
+    "primary_name": "로그함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "$g(0)=5$이고 $f(5)=5$, $f(6)=0$이므로 $t=6$일 때 구간 $[5,7]$의 최댓값이 $5$ 이상이어야 한다 → $f(7)\\ge5$.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$g(0)=f(1)=5$. $1\\le t\\le5$에서 $g(t)\\ge5$. $t=6$일 때 $[5,7]$에서 최댓값 $\\ge5$ → $f(7)=a\\log_4 2=\\frac a2\\ge5$, $a\\ge10$. 최솟값 $10$",
+  "legacy": {
+    "category": "로그함수의 최대·최소 (2) : 최대·최소를 이용하여 미지수 구하기",
+    "book_no": 20,
+    "question_page": 10,
+    "solution_page": 51
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-03"
+}

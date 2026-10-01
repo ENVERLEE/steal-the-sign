@@ -1,0 +1,48 @@
+{
+  "id": "M1-240920",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "240920",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 20,
+    "points": 4,
+    "label": "2023년 9월 고3 20번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{AD}}=1$, $\\angle\\mathrm{DAB}=\\dfrac23\\pi$, $\\angle\\mathrm{BCD}=\\dfrac34\\pi$인 사각형 $\\mathrm{ABCD}$가 있다. 삼각형 $\\mathrm{BCD}$의 외접원의 반지름의 길이를 $R_1$, 삼각형 $\\mathrm{ABD}$의 외접원의 반지름의 길이를 $R_2$라 하자. 다음은 $R_1\\times R_2$의 값을 구하는 과정이다. 위의 (가), (나), (다)에 알맞은 수를 각각 $p,q,r$이라 할 때, $9\\times(p\\times q\\times r)^2$의 값을 구하시오.",
+  "condition": "삼각형 $\\mathrm{BCD}$에서 사인법칙에 의하여 $R_1=\\dfrac{\\sqrt2}2\\times\\overline{\\mathrm{BD}}$. 삼각형 $\\mathrm{ABD}$에서 사인법칙에 의하여 $R_2=$ (가) $\\times\\overline{\\mathrm{BD}}$. 삼각형 $\\mathrm{ABD}$에서 코사인법칙에 의하여 $\\overline{\\mathrm{BD}}^2=2^2+1^2-($(나)$)$이므로 $R_1\\times R_2=$ (다)",
+  "choices": null,
+  "answer": "98",
+  "answer_value": "98",
+  "figure": {
+    "description": "사각형 ABCD와 삼각형 BCD, ABD의 외접원(반지름 $R_1$, $R_2$)",
+    "source_page": 23
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "두 외접원 모두 공통변 $\\overline{\\mathrm{BD}}$에 대한 사인법칙으로 쓰고, $\\overline{\\mathrm{BD}}^2$는 코사인법칙으로 구한다.",
+  "behavior": "이해",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$R_2=\\frac{\\overline{\\mathrm{BD}}}{2\\sin\\frac23\\pi}=\\frac{\\sqrt3}3\\overline{\\mathrm{BD}}$ (가). $\\overline{\\mathrm{BD}}^2=4+1-2\\cdot2\\cdot1\\cdot\\cos\\frac23\\pi=5-(-2)=7$ (나)$=-2$. $R_1R_2=\\frac{\\sqrt6}6\\cdot7=\\frac{7\\sqrt6}6$ (다). $9(pqr)^2=9\\left(\\frac{\\sqrt3}3\\cdot(-2)\\cdot\\frac{7\\sqrt6}6\\right)^2=98$",
+  "legacy": {
+    "category": "사인법칙과 코사인법칙",
+    "book_no": 45,
+    "question_page": 23,
+    "solution_page": 64
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-07"
+}

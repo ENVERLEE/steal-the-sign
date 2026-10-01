@@ -1,0 +1,47 @@
+{
+  "id": "M2-241120",
+  "concept_refs": [
+    "수학Ⅱ-08-C1",
+    "수학Ⅱ-08-C3"
+  ],
+  "guide": "조건은 세 줄이지만 번역하면 식 두 개다.\n· '원점에서의 접선이 곡선과 다시 만나는 점 A' → 접선을 구하고 곡선과 연립\n· 'A가 선분 OB를 지름으로 하는 원 위' → 지름 위 원주각이므로 $\\mathrm{OA}\\perp\\mathrm{AB}$ (수학Ⅱ-08-C3)\n원의 방정식은 한 번도 쓰지 않는다. 마지막에 구하는 $\\overline{\\mathrm{OA}}\\times\\overline{\\mathrm{AB}}$는 직각삼각형의 두 변의 곱이므로 '넓이의 2배'로 보이면 계산이 한 줄로 끝난다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 넓이를 두 번 쓰기",
+      "steps": [
+        {
+          "label": "원점에서의 접선",
+          "body": "$f'(x)=-3x^2+2ax+2$이므로 $f'(0)=2$, 접선은 $y=2x$."
+        },
+        {
+          "label": "점 A 찾기",
+          "body": "$-x^3+ax^2+2x=2x\\iff x^2(x-a)=0$.\n$x=0$은 접점(중근)이므로 A의 $x$좌표는 $a$, 즉 $\\mathrm A(a,2a)$.\n※ 접선과 곡선을 연립하면 접점이 항상 중근으로 나온다는 것을 알고 있으면 인수분해가 바로 보인다(수학Ⅱ-08-C2)."
+        },
+        {
+          "label": "수직 조건",
+          "body": "$\\mathrm{OA}\\perp\\mathrm{AB}$이고, OA의 기울기는 $2$, AB는 A에서의 접선이므로 기울기가 $f'(a)$다.\n$$2\\cdot f'(a)=-1\\ \\Rightarrow\\ f'(a)=-\\tfrac12$$\n$f'(a)=-3a^2+2a^2+2=-a^2+2$이므로 $-a^2+2=-\\tfrac12$, 즉 $a^2=\\tfrac52$."
+        },
+        {
+          "label": "B의 위치",
+          "body": "A에서의 접선은 기울기 $-\\tfrac12$로 A$(a,2a)$를 지난다. 높이 $2a$를 내려가려면 가로로 $2a\\div\\tfrac12=4a$만큼 가야 하므로 $\\mathrm B(5a,0)$, $\\overline{\\mathrm{OB}}=5a$."
+        },
+        {
+          "label": "넓이의 두 가지 표현",
+          "body": "직각삼각형 OAB의 넓이를\n· 두 직각변으로: $\\tfrac12\\,\\overline{\\mathrm{OA}}\\cdot\\overline{\\mathrm{AB}}$\n· 밑변 OB와 높이(A의 $y$좌표)로: $\\tfrac12\\cdot5a\\cdot2a$\n두 식이 같으므로\n$$\\overline{\\mathrm{OA}}\\times\\overline{\\mathrm{AB}}=10a^2=10\\cdot\\tfrac52=25$$"
+        }
+      ]
+    },
+    {
+      "title": "풀이 2 · 길이를 직접 구하기 (비교용)",
+      "steps": [
+        {
+          "label": "",
+          "body": "$\\overline{\\mathrm{OA}}=\\sqrt{a^2+4a^2}=\\sqrt5\\,a$, $\\overline{\\mathrm{AB}}=\\sqrt{(4a)^2+(2a)^2}=2\\sqrt5\\,a$이므로 곱은 $10a^2=25$."
+        }
+      ]
+    }
+  ],
+  "supplement": "풀이 2도 어렵지 않지만, 풀이 1은 '두 변의 곱'이 나오는 순간 넓이를 떠올리는 습관을 만든다. 직각삼각형에서 빗변 위에 수선 AH를 내리면 $\\overline{\\mathrm{OH}},\\overline{\\mathrm{AH}},\\overline{\\mathrm{HB}}$가 등비수열($\\overline{\\mathrm{AH}}^2=\\overline{\\mathrm{OH}}\\cdot\\overline{\\mathrm{HB}}$)을 이룬다는 성질도 함께 기억해 두면, 이 문제에서 $\\overline{\\mathrm{HB}}=4a$를 기울기 없이도 얻을 수 있다($2a\\cdot2a=a\\cdot\\overline{\\mathrm{HB}}$).",
+  "skill_point": "원 위의 점 → 직각 → 기울기 곱 $-1$. 두 변의 곱 → 넓이의 2배.",
+  "answer": "25"
+}

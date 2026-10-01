@@ -1,0 +1,49 @@
+{
+  "id": "M2-221122",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "221122",
+    "year": 2022,
+    "exam": "대학수학능력시험",
+    "number": 22,
+    "points": 4,
+    "label": "2021년 11월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $\\dfrac12$인 삼차함수 $f(x)$와 실수 $t$에 대하여 방정식 $f'(x)=0$이 닫힌구간 $[t,t+2]$에서 갖는 실근의 개수를 $g(t)$라 할 때, 함수 $g(t)$는 다음 조건을 만족시킨다. $f(5)$의 값을 구하시오.",
+  "condition": "(가) 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{t\\to a+}g(t)+\\lim_{t\\to a-}g(t)\\le2$이다.\\\\(나) $g(f(1))=g(f(4))=2$, $g(f(0))=1$",
+  "choices": null,
+  "answer": "9",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-21",
+    "primary_name": "새롭게 정의된 함수",
+    "links": [
+      "수학Ⅱ-09",
+      "수학Ⅱ-14"
+    ]
+  },
+  "first_judgment": "$f'=0$의 두 근 $\\alpha<\\beta$의 간격이 $2$보다 크거나 작거나 같은지로 $g(t)$의 그래프 모양이 달라지므로, (가)로 $\\beta=\\alpha+2$를 먼저 확정한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "경우 나누기",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S18",
+    "S19"
+  ],
+  "solution_ref": "$f'=0$ 근 없음/중근 → (나) 모순. 서로 다른 두 근 $\\alpha,\\beta$: $\\beta>\\alpha+2$ → (나) 모순, $\\beta<\\alpha+2$ → (가) 모순, 따라서 $\\beta=\\alpha+2$ ($g=2$는 $t=\\alpha$에서만). $f(1)=f(4)=\\alpha$ → $\\alpha=1$ 또는 $2$. $\\alpha=1$: $f=\\frac12x^3-3x^2+\\frac92x-1$, $g(f(0))=g(-1)=1$ 적합. $\\alpha=2$: $g(f(0))=0$ 부적합. $f(5)=9$",
+  "legacy": {
+    "category": "함수의 연속과 부정적분",
+    "book_no": 40,
+    "question_page": 20,
+    "solution_page": 64
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-04"
+}

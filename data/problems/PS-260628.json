@@ -1,0 +1,53 @@
+{
+  "id": "PS-260628",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "260628",
+    "year": 2026,
+    "exam": "6월 모의평가",
+    "number": 28,
+    "points": 4,
+    "label": "2025년 6월 고3 28번"
+  },
+  "question": "공 $15$개와 비어 있는 세 상자 $\\mathrm{A,B,C}$가 있다. 한 개의 주사위를 사용하여 다음 규칙에 따라 세 상자 $\\mathrm{A,B,C}$에 공을 넣는 시행을 한다. 이 시행을 $5$번 반복한 후 상자 $\\mathrm{B}$에 들어 있는 공의 개수가 홀수일 때, 상자 $\\mathrm{A}$에 들어 있는 공의 개수와 상자 $\\mathrm{C}$에 들어 있는 공의 개수의 합이 $8$ 이상일 확률은?",
+  "condition": "주사위를 한 번 던져 나온 눈의 수가 $3$의 배수이면 세 상자 $\\mathrm{A,B,C}$에 넣는 공의 개수가 각각 $1,2,0$이고 나온 눈의 수가 $3$의 배수가 아니면 세 상자 $\\mathrm{A,B,C}$에 넣는 공의 개수가 각각 $1,1,1$이다.",
+  "choices": [
+    "\\frac{44}{61}",
+    "\\frac{47}{61}",
+    "\\frac{50}{61}",
+    "\\frac{53}{61}",
+    "\\frac{56}{61}"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{56}{61}",
+  "figure": {
+    "description": "공 15개와 빈 상자 A, B, C",
+    "source_page": 19
+  },
+  "theme": {
+    "primary": "확률과 통계-14",
+    "primary_name": "독립시행의 확률",
+    "links": [
+      "확률과 통계-12"
+    ]
+  },
+  "first_judgment": "3의 배수가 아닌 눈이 나온 횟수 $n$이 홀수여야 B가 홀수이고, A+C는 $5+n$이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(X)={}_5C_1\\frac23\\left(\\frac13\\right)^4+{}_5C_3\\left(\\frac23\\right)^3\\left(\\frac13\\right)^2+\\left(\\frac23\\right)^5=\\frac{122}{243}$. A+C$\\ge8$ ⇔ $n=3,5$: $\\frac{112}{243}$. $\\frac{112}{122}=\\frac{56}{61}$",
+  "legacy": {
+    "category": "독립시행의 확률을 이용한 계산",
+    "book_no": 38,
+    "question_page": 19,
+    "solution_page": 43
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-05"
+}

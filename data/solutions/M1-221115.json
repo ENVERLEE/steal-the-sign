@@ -1,0 +1,34 @@
+{
+  "id": "M1-221115",
+  "concept_refs": [
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C1"
+  ],
+  "guide": "빈칸 추론형이므로 과정을 따라가되, 각 빈칸이 무엇에서 나오는지만 정확히 잡는다.\n· (가): A, $\\mathrm O_1$, $\\mathrm O_2$가 한 직선 위이고 $\\mathrm O_2$가 원 $C_1$ 위에 있으므로 $\\overline{\\mathrm{AO_2}}$는 $C_1$의 **지름** → $\\angle\\mathrm{ABO_2}=\\frac\\pi2$ (수학Ⅰ-12-C3)\n· (나): 같은 직각삼각형의 $\\cos$\n· (다): 삼각형 $\\mathrm{O_2BC}$는 SSA → 이차방정식, 근은 원 안의 위치로 고른다(수학Ⅰ-12-C1)",
+  "solutions": [
+    {
+      "title": "풀이 · 지름의 원주각 + SSA 근 선택",
+      "steps": [
+        {
+          "label": "(가)",
+          "body": "$\\overline{\\mathrm{AO_2}}$가 원 $C_1$의 지름이고 B가 $C_1$ 위의 점이므로 $\\angle\\mathrm{ABO_2}=\\frac\\pi2$.\n$$\\overline{\\mathrm{AO_2}}=\\sqrt{k^2+(2\\sqrt2k)^2}=3k\\quad\\Rightarrow\\quad f(k)=3k$$"
+        },
+        {
+          "label": "(나)",
+          "body": "$\\angle\\mathrm{BO_2A}=\\frac{\\theta_1}2$(호 AB에 대한 원주각은 중심각 $\\theta_1$의 절반)이므로 직각삼각형 $\\mathrm{ABO_2}$에서\n$$\\cos\\tfrac{\\theta_1}2=\\frac{\\overline{\\mathrm{BO_2}}}{\\overline{\\mathrm{AO_2}}}=\\frac{2\\sqrt2k}{3k}=\\frac{2\\sqrt2}3=p$$"
+        },
+        {
+          "label": "(다)",
+          "body": "$\\angle\\mathrm{CO_1B}=\\angle\\mathrm{BO_1A}=\\theta_1$이므로 현 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{AB}}=k$. $\\overline{\\mathrm{O_2C}}=x$라 하면 코사인법칙에서\n$$k^2=x^2+8k^2-2\\cdot x\\cdot2\\sqrt2k\\cdot\\tfrac{2\\sqrt2}3\\ \\Rightarrow\\ 3x^2-16kx+21k^2=0\\ \\Rightarrow\\ (3x-7k)(x-3k)=0$$\n$x=3k$는 $\\overline{\\mathrm{O_2C}}=\\overline{\\mathrm{O_2A}}$(지름), 즉 $\\mathrm C=\\mathrm A$인 경우이므로 제외. $x=\\frac73k$, $g(k)=\\frac73k$."
+        },
+        {
+          "label": "답",
+          "body": "$f(p)\\cdot g(p)=3p\\cdot\\frac73p=7p^2=7\\cdot\\frac89=\\frac{56}9$ → ②"
+        }
+      ]
+    }
+  ],
+  "supplement": "SSA의 두 근 중 하나를 버리는 근거를 스스로 설명할 수 있어야 한다. 여기서는 $\\mathrm O_2$에서 원 $C_1$ 위의 점까지 거리가 최대 지름 $3k$이고, 그 최댓값은 A에서만 나온다. $x=3k$는 '삼각형 $\\mathrm{O_2BA}$'를 다시 구한 것이다(실제로 $\\overline{\\mathrm{BA}}=k$, $\\angle\\mathrm{AO_2B}=\\frac{\\theta_1}2$도 같은 조건을 만족). $f(p)g(p)$는 $p$를 대입하기 전에 $7p^2$으로 정리하면 계산이 한 줄이다.",
+  "skill_point": "지름이 보이면 직각. SSA의 가짜 근은 '같은 조건을 만족하는 다른 점'이다 — 그림으로 버린다.",
+  "answer": "2"
+}

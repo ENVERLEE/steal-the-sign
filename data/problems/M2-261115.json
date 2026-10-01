@@ -1,0 +1,53 @@
+{
+  "id": "M2-261115",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "261115",
+    "year": 2026,
+    "exam": "대학수학능력시험",
+    "number": 15,
+    "points": 4,
+    "label": "2025년 11월 고3 15번"
+  },
+  "question": "함수 $f(x)=\\begin{cases}-x^2 & (x<0)\\\\ x^2-x & (x\\ge0)\\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)=\\begin{cases}ax+a & (x<-1)\\\\ 0 & (-1\\le x<1)\\\\ ax-a & (x\\ge1)\\end{cases}$이라 하자. 함수 $h(x)=\\displaystyle\\int_0^x(g(t)-f(t))\\,dt$가 오직 하나의 극값을 갖도록 하는 $a$의 최댓값을 $k$라 하자. $a=k$일 때, $k+h(3)$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac92",
+    "\\frac{11}2",
+    "\\frac{13}2",
+    "\\frac{15}2",
+    "\\frac{17}2"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{15}2",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-16",
+    "primary_name": "정적분으로 정의된 함수의 활용",
+    "links": [
+      "수학Ⅱ-15"
+    ]
+  },
+  "first_judgment": "$h'=g-f$이므로 극값은 두 그래프가 교차하는 점; $x=1$에서의 교차 하나만 남도록 $x<-1$ 부분에서 직선이 포물선에 접하는 경우가 경계다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S22"
+  ],
+  "solution_ref": "$a\\le1$: $x=1$에서만 극값. $a>1$: $x>1$ 교점 $b$에서 극값 → $x<-1$에서 $f>g$인 구간이 없어야 → $y=ax+a$가 $y=-x^2$에 접할 때 최대. 접점 $(-2,-4)$, $a=4=k$. $h(3)=\\int_0^1(-t^2+t)dt+\\int_1^3(-t^2+5t-4)dt=\\frac16+\\frac{10}3=\\frac72$. $k+h(3)=\\frac{15}2$",
+  "legacy": {
+    "category": "정적분으로 정의된 함수의 극대 · 극소",
+    "book_no": 52,
+    "question_page": 26,
+    "solution_page": 69
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-07"
+}

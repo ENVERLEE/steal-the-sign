@@ -1,0 +1,46 @@
+{
+  "id": "M2-240922",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240922",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 22,
+    "points": 4,
+    "label": "2023년 9월 고3 22번"
+  },
+  "question": "두 다항함수 $f(x)$, $g(x)$에 대하여 $f(x)$의 한 부정적분을 $F(x)$라 하고 $g(x)$의 한 부정적분을 $G(x)$라 할 때, 이 함수들은 모든 실수 $x$에 대하여 다음 조건을 만족시킨다. $\\displaystyle\\int_1^3g(x)\\,dx$의 값을 구하시오.",
+  "condition": "(가) $\\displaystyle\\int_1^x f(t)\\,dt=xf(x)-2x^2-1$\\\\(나) $f(x)G(x)+F(x)g(x)=8x^3+3x^2+1$",
+  "choices": null,
+  "answer": "10",
+  "answer_value": "10",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-15",
+    "primary_name": "정적분으로 정의된 함수",
+    "links": [
+      "수학Ⅱ-14"
+    ]
+  },
+  "first_judgment": "(가)에 $x=1$ 대입과 미분으로 $f$를 구하고, (나)의 좌변이 $\\{F(x)G(x)\\}'$임을 알아본다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S22"
+  ],
+  "solution_ref": "$f(1)=3$, 미분 → $f'=4$, $f=4x-1$, $F=2x^2-x+C_2$. $FG=2x^4+x^3+x+C_3$, $G=x^2+ax+b$ → $2a-1=1$, $a=1$. $\\int_1^3g=G(3)-G(1)=10$",
+  "legacy": {
+    "category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+    "book_no": 50,
+    "question_page": 25,
+    "solution_page": 69
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

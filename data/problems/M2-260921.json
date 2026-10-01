@@ -1,0 +1,47 @@
+{
+  "id": "M2-260921",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "260921",
+    "year": 2026,
+    "exam": "9월 모의평가",
+    "number": 21,
+    "points": 4,
+    "label": "2025년 9월 고3 21번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킬 때, $f'(10)$의 값을 구하시오.",
+  "condition": "$0$이 아닌 모든 실수 $x$에 대하여 $\\dfrac{f'(x)}2+x^2-2\\le\\dfrac{f(2x)-f(0)}{2x}\\le x^4$이다.",
+  "choices": null,
+  "answer": "296",
+  "answer_value": "296",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-11",
+    "primary_name": "함수의 그래프와 부등식",
+    "links": [
+      "수학Ⅱ-09"
+    ]
+  },
+  "first_judgment": "$f=x^3+ax^2+bx+c$를 대입하면 $-3x^2-4\\le2ax+b\\le x^4-4x^2$ — 직선 $y=2ax+b$가 포물선과 사차곡선 사이에 끼는 조건이다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S23"
+  ],
+  "solution_ref": "$-3x^2-4\\le2ax+b\\le x^4-4x^2$. $g=-3x^2-4$ 꼭짓점 $(0,-4)$, $h=x^4-4x^2$ 극솟값 $-4$ ($x=\\pm\\sqrt2$). 사이에 끼는 직선은 $y=-4$뿐 → $a=0$, $b=-4$. $f'(10)=300-4=296$",
+  "legacy": {
+    "category": "부등식이 항상 성립할 조건",
+    "book_no": 33,
+    "question_page": 17,
+    "solution_page": 61
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-05"
+}

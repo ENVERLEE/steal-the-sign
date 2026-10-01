@@ -1,0 +1,45 @@
+{
+  "id": "PS-260930",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "260930",
+    "year": 2026,
+    "exam": "9월 모의평가",
+    "number": 30,
+    "points": 4,
+    "label": "2025년 9월 고3 30번"
+  },
+  "question": "학생 $\\mathrm{A}$는 숫자 $1,8$이 각각 하나씩 적혀 있는 $2$장의 카드 중 임의로 한 장의 카드를 선택하여 선택한 카드에 적힌 수가 $8$일 때만 선택한 카드를 바닥에 내려놓고, 학생 $\\mathrm{B}$는 숫자 $2,3,4,5,6,7$이 각각 하나씩 적혀 있는 $6$장의 카드 중 임의로 한 장의 카드를 선택하여 선택한 카드에 적힌 수가 자연수 $n$보다 작거나 같을 때만 선택한 카드를 바닥에 내려놓는다. 다음 규칙에 따라 학생 $\\mathrm{A}$가 귤을 받을 확률을 $p$, 학생 $\\mathrm{B}$가 귤을 받을 확률을 $q$라 하자. $p=q$일 때, $24(n+p)$의 값을 구하시오. (단, $n$은 $7$ 이하의 자연수이다.)",
+  "condition": "· 카드를 내려놓은 학생이 $2$명이면 더 큰 수가 적힌 카드를 내려놓은 학생만 귤을 받는다.\\\\· 카드를 내려놓은 학생이 $1$명이면 카드를 내려놓지 않은 학생만 귤을 받는다.\\\\· 카드를 내려놓은 학생이 없으면 어느 학생도 귤을 받지 못한다.",
+  "choices": null,
+  "answer": "80",
+  "answer_value": "80",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-13",
+    "primary_name": "확률의 곱셈정리",
+    "links": [
+      "확률과 통계-12"
+    ]
+  },
+  "first_judgment": "A가 내려놓으면 항상 $8$이 가장 크므로, A가 귤을 받는 경우는 'A·B 모두 내려놓음' 또는 'B만 내려놓음'이다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(A)=\\frac12$, $\\mathrm P(B)=\\frac{n-1}6$. $p=\\frac12\\cdot\\frac{n-1}6+\\frac12\\cdot\\frac{n-1}6=\\frac{n-1}6$, $q=\\frac12\\left(1-\\frac{n-1}6\\right)=\\frac{7-n}{12}$. $p=q$ → $n=3$, $p=\\frac13$. $24\\left(3+\\frac13\\right)=80$",
+  "legacy": {
+    "category": "확률의 곱셈정리(2) : P( E) =P(A∩E)+P(A^c∩E)",
+    "book_no": 35,
+    "question_page": 18,
+    "solution_page": 42
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-04"
+}

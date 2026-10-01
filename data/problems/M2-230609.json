@@ -1,0 +1,52 @@
+{
+  "id": "M2-230609",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "230609",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2022년 6월 고3 9번"
+  },
+  "question": "두 함수 $f(x)=x^3-x+6$, $g(x)=x^2+a$가 있다. $x\\ge0$인 모든 실수 $x$에 대하여 부등식 $f(x)\\ge g(x)$가 성립할 때, 실수 $a$의 최댓값은?",
+  "condition": null,
+  "choices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "answer": "5",
+  "answer_value": "5",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-11",
+    "primary_name": "함수의 그래프와 부등식",
+    "links": [
+      "수학Ⅱ-09"
+    ]
+  },
+  "first_judgment": "$h(x)=f(x)-g(x)$로 두고 $x\\ge0$에서의 최솟값이 $0$ 이상일 조건으로 바꾼다.",
+  "behavior": "계산",
+  "reasoning": [
+    "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+    "S23"
+  ],
+  "solution_ref": "$h=x^3-x^2-x+6-a$, $h'=(3x+1)(x-1)$. $x\\ge0$ 최솟값 $h(1)=5-a\\ge0$ → $a\\le5$",
+  "legacy": {
+    "category": "주어진 구간에서 부등식이 항상 성립할 조건(2) : 최대 · 최소의 활용",
+    "book_no": 32,
+    "question_page": 16,
+    "solution_page": 60
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-05"
+}

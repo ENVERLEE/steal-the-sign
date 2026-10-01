@@ -1,0 +1,47 @@
+{
+  "id": "M1-260922",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "260922",
+    "year": 2026,
+    "exam": "9월 모의평가",
+    "number": 22,
+    "points": 4,
+    "label": "2025년 9월 고3 22번"
+  },
+  "question": "곡선 $y=\\log_2 x$ 위에 서로 다른 두 점 $\\mathrm{A}$, $\\mathrm{B}$가 있다. 점 $\\mathrm{A}$에서 직선 $y=x$에 내린 수선의 발을 $\\mathrm{P}$라 하고, 점 $\\mathrm{B}$를 직선 $y=x$에 대하여 대칭이동한 점을 $\\mathrm{Q}$라 할 때, 네 점 $\\mathrm{A,B,P,Q}$가 다음 조건을 만족시킨다. 사각형 $\\mathrm{APQB}$의 넓이가 $\\dfrac qp$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "(가) (직선 $\\mathrm{AP}$의 $y$절편)$-$(직선 $\\mathrm{BQ}$의 $y$절편)$=\\dfrac{13}{2}$\\\\(나) 직선 $\\mathrm{AB}$의 기울기는 $\\dfrac67$이다.",
+  "choices": null,
+  "answer": "73",
+  "answer_value": "73",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-04",
+    "primary_name": "로그함수의 그래프",
+    "links": [
+      "수학Ⅰ-06"
+    ]
+  },
+  "first_judgment": "$\\mathrm{AP}$, $\\mathrm{BQ}$ 모두 기울기 $-1$인 직선이므로 $y$절편을 $a+\\log_2a$, $b+\\log_2b$로 쓰고 (나)와 연립한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "미지수 소거·연립",
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$\\mathrm A(a,\\log_2a)$, $\\mathrm B(b,\\log_2b)$. (가) $(a-b)+(\\log_2a-\\log_2b)=\\frac{13}2$, (나) $\\log_2a-\\log_2b=\\frac67(a-b)$ → $a-b=\\frac72$, $\\frac ab=8$ → $b=\\frac12$, $a=4$. $\\mathrm P(3,3)$, $\\mathrm Q(-1,\\frac12)$. $\\overline{\\mathrm{AP}}=\\sqrt2$, $\\overline{\\mathrm{BQ}}=\\frac{3\\sqrt2}2$, 높이 $\\overline{\\mathrm{PM}}=\\frac{13\\sqrt2}4$. 넓이 $\\frac12\\left(\\sqrt2+\\frac{3\\sqrt2}{2}\\right)\\frac{13\\sqrt2}{4}=\\frac{65}8$, $p+q=73$",
+  "legacy": {
+    "category": "로그함수의 그래프에서의 함숫값",
+    "book_no": 18,
+    "question_page": 9,
+    "solution_page": 49
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-02"
+}

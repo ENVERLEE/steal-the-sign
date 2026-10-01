@@ -1,0 +1,54 @@
+{
+  "id": "M1-230615",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230615",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2022년 6월 고3 15번"
+  },
+  "question": "자연수 $k$에 대하여 다음 조건을 만족시키는 수열 $\\{a_n\\}$이 있다. $a_{22}=0$이 되도록 하는 모든 $k$의 값의 합은?",
+  "condition": "$a_1=0$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+\\dfrac1{k+1} & (a_n\\le0)\\\\ a_n-\\dfrac1k & (a_n>0)\\end{cases}$이다.",
+  "choices": [
+    "12",
+    "14",
+    "16",
+    "18",
+    "20"
+  ],
+  "answer": "2",
+  "answer_value": "14",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-17",
+    "primary_name": "귀납적으로 정의된 수열",
+    "links": [
+      "수학Ⅰ-18"
+    ]
+  },
+  "first_judgment": "몇 항을 직접 나열해 $a_{2j}=\\frac{j-k}{k(k+1)}$ 꼴의 규칙과 $0$으로 돌아오는 주기를 찾는다.",
+  "behavior": "추론",
+  "reasoning": [
+    "단순화·특수화로 규칙성 찾기",
+    "나열·역추적"
+  ],
+  "strategy_ids": [
+    "S10",
+    "S11"
+  ],
+  "solution_ref": "$a_2=\\frac1{k+1}$, $a_3=\\frac1{k+1}-\\frac1k<0$, $a_4=\\frac{k-1}{k(k+1)}$, …. $k=1$: $a_4=0$, 주기 3 → $a_{22}=0$. $k=2$: $a_6=0$, 주기 5 → $a_{22}\\ne0$. $k=3$: $a_8=0$ → $a_{22}=0$. $k=4$: $a_{10}=0$ → $\\ne0$. $5\\le k\\le9$: $\\ne0$. $k=10$: $a_{22}=0$. $k\\ge11$: $\\ne0$. 합 $1+3+10=14$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 70,
+    "question_page": 35,
+    "solution_page": 76
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-10"
+}

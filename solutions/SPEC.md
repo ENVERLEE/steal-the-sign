@@ -9,7 +9,7 @@
 - 반드시 `pilot/pilot_v2.json`을 먼저 읽고 **그 깊이·문체·구조를 기준**으로 삼는다.
 
 ## 입력
-- 문항 DB: `data/m1.json`(수학Ⅰ), `data/m2.json`(수학Ⅱ), `data/prob.json`(확률과 통계). 각 문항의 `question`, `condition`, `choices`, `answer`, `answer_value`, `theme`, `first_judgment`, `strategy_ids`, `solution_ref`(PDF 해설 요약, 참고용), `figure`.
+- 문항 DB: `data/problems/{id}.json`(문항별 파일, 색인 `data/index.json`). 각 문항의 `question`, `condition`, `choices`, `answer`, `answer_value`, `theme`, `first_judgment`, `strategy_ids`, `solution_ref`(PDF 해설 요약, 참고용), `figure`.
 - 전략 노트: `tools/strategy_notes.json` (S01~S26).
 - 그림이 필요한 문항: `figure.source_page`의 페이지 이미지
   `/tmp/claude-0/-home-user-steal-the-sign/5fc4cc41-d01e-516a-8f36-535f54b30021/scratchpad/pages/{m1|m2|prob}_{page:03d}.png` (Read 도구로 보기). 해설 페이지는 `legacy.solution_page`.

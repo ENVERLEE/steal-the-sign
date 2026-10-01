@@ -1,0 +1,55 @@
+{
+  "id": "M1-250614",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250614",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2024년 6월 고3 14번"
+  },
+  "question": "다음 조건을 만족시키는 모든 자연수 $k$의 값의 합은?",
+  "condition": "$\\log_2\\sqrt{-n^2+10n+75}-\\log_4(75-kn)$의 값이 양수가 되도록 하는 자연수 $n$의 개수가 $12$이다.",
+  "choices": [
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+  ],
+  "answer": "4",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-05",
+    "primary_name": "지수로그의 방정식과 부등식",
+    "links": [
+      "수학Ⅰ-02"
+    ]
+  },
+  "first_judgment": "진수 조건 두 개와 부등식을 모두 $n$의 범위로 바꾼 뒤, 세 범위의 교집합 크기를 $k$별로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기",
+    "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+    "S03",
+    "S04"
+  ],
+  "solution_ref": "진수: $1\\le n<15$ ㉠, $n<\\frac{75}k$ ㉡. 부등식 $\\log_4(-n^2+10n+75)>\\log_4(75-kn)$ → $n(n-10-k)<0$ → $n<10+k$ ㉢. 개수 12 → $k>2$. $k=3$: $1\\le n<13$ (12개, 적합), $k=4$: 13개, $k=5$: 14개, $k=6$: $n<\\frac{25}2$ (12개, 적합), $k\\ge7$: $\\frac{75}k<11$ 부적합. 합 $3+6=9$",
+  "legacy": {
+    "category": "로그의 진수에 미지수를 포함하는 부등식의 응용",
+    "book_no": 25,
+    "question_page": 13,
+    "solution_page": 54
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-01"
+}

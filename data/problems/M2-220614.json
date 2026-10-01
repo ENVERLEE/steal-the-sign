@@ -1,0 +1,53 @@
+{
+  "id": "M2-220614",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "220614",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2021년 6월 고3 14번"
+  },
+  "question": "두 양수 $p,q$와 함수 $f(x)=x^3-3x^2-9x-12$에 대하여 실수 전체의 집합에서 연속인 함수 $g(x)$가 다음 조건을 만족시킬 때, $p+q$의 값은?",
+  "condition": "(가) 모든 실수 $x$에 대하여 $xg(x)=|xf(x-p)+qx|$이다.\\\\(나) 함수 $g(x)$가 $x=a$에서 미분가능하지 않은 실수 $a$의 개수는 $1$이다.",
+  "choices": [
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+  ],
+  "answer": "3",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-07",
+    "primary_name": "미분가능성",
+    "links": [
+      "수학Ⅱ-09"
+    ]
+  },
+  "first_judgment": "$g(x)=\\pm|f(x-p)+q|$ ($x\\gtrless0$)이므로 연속 조건으로 $f(-p)+q=0$이고, 꺾이는 점이 1개가 되도록 극값 위치를 맞춘다.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S16"
+  ],
+  "solution_ref": "$f$: 극댓값 $f(-1)=-7$, 극솟값 $f(3)=-39$. 연속 → $f(-p)+q=0$. $|f(x-p)+q|$의 그래프는 평행이동 후 $x$축 아래를 뒤집은 것; 미분불가능점 1개 → 원점이 극대점($p=1$, $q=7$). $p+q=8$",
+  "legacy": {
+    "category": "함수의 그래프 그리기",
+    "book_no": 23,
+    "question_page": 12,
+    "solution_page": 53
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-02"
+}

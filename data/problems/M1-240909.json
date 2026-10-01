@@ -1,0 +1,52 @@
+{
+  "id": "M1-240909",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "240909",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2023년 9월 고3 9번"
+  },
+  "question": "$0\\le x\\le2\\pi$일 때, 부등식 $\\cos x\\le\\sin\\dfrac\\pi7$을 만족시키는 모든 $x$의 값의 범위는 $\\alpha\\le x\\le\\beta$이다. $\\beta-\\alpha$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac87\\pi",
+    "\\frac{17}{14}\\pi",
+    "\\frac97\\pi",
+    "\\frac{19}{14}\\pi",
+    "\\frac{10}7\\pi"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac97\\pi",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-10",
+    "primary_name": "삼각함수의 방정식과 부등식",
+    "links": [
+      "수학Ⅰ-11"
+    ]
+  },
+  "first_judgment": "$\\sin\\frac\\pi7=\\cos\\frac{5\\pi}{14}$로 바꿔 코사인끼리 비교한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "$\\sin\\frac\\pi7=\\cos\\frac{5}{14}\\pi$. $x_1=\\frac5{14}\\pi$, $x_2=2\\pi-x_1=\\frac{23}{14}\\pi$. $\\beta-\\alpha=\\frac97\\pi$",
+  "legacy": {
+    "category": "삼각함수가 포함된 부등식(1) : 일차식 꼴",
+    "book_no": 36,
+    "question_page": 18,
+    "solution_page": 60
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-05"
+}

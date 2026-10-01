@@ -1,0 +1,50 @@
+{
+  "id": "M2-240614",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240614",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2023년 6월 고3 14번"
+  },
+  "question": "실수 $a$ $(a\\ge0)$에 대하여 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t\\ge0)$에서의 속도 $v(t)$를 $v(t)=-t(t-1)(t-a)(t-2a)$라 하자. 점 $\\mathrm{P}$가 시각 $t=0$일 때 출발한 후 운동 방향을 한 번만 바꾸도록 하는 $a$에 대하여 시각 $t=0$에서 $t=2$까지 점 $\\mathrm{P}$의 위치의 변화량의 최댓값은?",
+  "condition": null,
+  "choices": [
+    "\\frac15",
+    "\\frac7{30}",
+    "\\frac4{15}",
+    "\\frac3{10}",
+    "\\frac13"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac4{15}",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "근 $0,1,a,2a$ 중 중근이 생겨야 부호 변화가 한 번이 되므로 $a=0,\\frac12,1$ 세 경우만 본다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$a\\ne0,\\frac12,1$이면 방향 3번 전환. (i) $a=0$: $\\int_0^2-t^3(t-1)dt=-\\frac{12}5$. (ii) $a=\\frac12$: $-\\frac{11}{15}$. (iii) $a=1$: $\\int_0^2-t(t-1)^2(t-2)dt=\\frac4{15}$. 최댓값 $\\frac4{15}$",
+  "legacy": {
+    "category": "위치와 위치의 변화량",
+    "book_no": 70,
+    "question_page": 35,
+    "solution_page": 79
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-10"
+}

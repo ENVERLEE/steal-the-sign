@@ -1,0 +1,50 @@
+{
+  "id": "M1-240609",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "240609",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2023년 6월 고3 9번"
+  },
+  "question": "수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}\\frac{1}{(2k-1)a_k}=n^2+2n$을 만족시킬 때, $\\displaystyle\\sum_{n=1}^{10}a_n$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac{10}{21}",
+    "\\frac47",
+    "\\frac23",
+    "\\frac{16}{21}",
+    "\\frac67"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{10}{21}",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-16",
+    "primary_name": "여러 가지 수열의 합",
+    "links": []
+  },
+  "first_judgment": "합과 일반항의 관계로 $\\frac1{(2n-1)a_n}=2n+1$을 얻으면 $a_n$이 부분분수 꼴이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S10"
+  ],
+  "solution_ref": "$a_1=\\frac13$, $n\\ge2$: $\\frac1{(2n-1)a_n}=2n+1$ → $a_n=\\frac1{(2n-1)(2n+1)}$ ($n=1$도 성립). $\\sum_{n=1}^{10}=\\frac12\\left(1-\\frac1{21}\\right)=\\frac{10}{21}$",
+  "legacy": {
+    "category": "∑로 표현된 수열의 합과 일반항의 관계",
+    "book_no": 67,
+    "question_page": 34,
+    "solution_page": 75
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-09"
+}

@@ -1,0 +1,54 @@
+{
+  "id": "M1-220915",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220915",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2021년 9월 고3 15번"
+  },
+  "question": "수열 $\\{a_n\\}$은 $|a_1|\\le1$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}-2a_n-2 & \\left(-1\\le a_n<-\\dfrac12\\right)\\\\ 2a_n & \\left(-\\dfrac12\\le a_n\\le\\dfrac12\\right)\\\\ -2a_n+2 & \\left(\\dfrac12<a_n\\le1\\right)\\end{cases}$을 만족시킨다. $a_5+a_6=0$이고 $\\displaystyle\\sum_{k=1}^{5}a_k>0$이 되도록 하는 모든 $a_1$의 값의 합은?",
+  "condition": null,
+  "choices": [
+    "\\frac92",
+    "5",
+    "\\frac{11}2",
+    "6",
+    "\\frac{13}2"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac92",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-20",
+    "primary_name": "역추적",
+    "links": [
+      "수학Ⅰ-21",
+      "수학Ⅰ-17"
+    ]
+  },
+  "first_judgment": "$a_5+a_6=0$에서 $a_5=0$을 확정한 뒤, 가지가 둘인 역함수 $a_n=\\frac12a_{n+1}$ 또는 $1-\\frac12a_{n+1}$로 거꾸로 올라간다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "나열·역추적",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S11"
+  ],
+  "solution_ref": "세 구간별로 $a_5+a_6=0$ 확인 → $a_5=0$, $a_4=-1,0,1$. $a_4=-1$: 이후 음수로 조건 불만족. $a_4=0$: $a_3=0$(→$a_2=1$일 때 $a_1=\\frac12$, $a_2=0$일 때 $a_1=1$) 또는 $a_3=1$($a_2=\\frac12$, $a_1=\\frac14,\\frac34$). $a_4=1$: $a_3=\\frac12$, $a_2=\\frac14$($a_1=\\frac18,\\frac78$) 또는 $\\frac34$($a_1=\\frac38,\\frac58$). 합 $1+\\frac12+\\frac14+\\frac34+\\frac18+\\frac78+\\frac38+\\frac58=\\frac92$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 71,
+    "question_page": 36,
+    "solution_page": 76
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-11"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "M1-230610",
+  "concept_refs": [
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C3"
+  ],
+  "guide": "삼각형 ABC는 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{BC}}$와 **끼인각이 아닌** $\\angle\\mathrm A$가 주어진 SSA다. $\\overline{\\mathrm{AC}}$에 대한 이차방정식이 되고 조건 $\\overline{\\mathrm{AC}}>3$이 근을 고른다(수학Ⅰ-12-C1).\n그다음 원 안에서 두 현 AC, BD가 M에서 만나므로 $\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}$ (수학Ⅰ-12-C3). $\\overline{\\mathrm{MB}}$만 구하면 끝이다.",
+  "solutions": [
+    {
+      "title": "풀이 · SSA 이차방정식 + 두 현의 곱",
+      "steps": [
+        {
+          "label": "$\\overline{\\mathrm{AC}}$ 구하기",
+          "body": "$\\overline{\\mathrm{AC}}=x$라 하면 코사인법칙에서\n$$2^2=3^2+x^2-2\\cdot3\\cdot x\\cdot\\tfrac78\\ \\Rightarrow\\ 4x^2-21x+20=0\\ \\Rightarrow\\ (4x-5)(x-4)=0$$\n$x>3$이므로 $x=4$. 따라서 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{MC}}=2$."
+        },
+        {
+          "label": "$\\overline{\\mathrm{MB}}$",
+          "body": "삼각형 ABM은 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{AM}}=2$, 끼인각 $A$로 결정된다(SAS).\n$$\\overline{\\mathrm{MB}}^2=9+4-2\\cdot3\\cdot2\\cdot\\tfrac78=\\tfrac52,\\qquad\\overline{\\mathrm{MB}}=\\tfrac{\\sqrt{10}}2$$"
+        },
+        {
+          "label": "두 현의 곱",
+          "body": "현 AC와 현 BD가 원 내부의 점 M에서 만나므로\n$$\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}\\ \\Rightarrow\\ 2\\cdot2=\\tfrac{\\sqrt{10}}2\\cdot\\overline{\\mathrm{MD}}$$\n$\\overline{\\mathrm{MD}}=\\frac8{\\sqrt{10}}=\\frac{4\\sqrt{10}}5$ → ③"
+        }
+      ]
+    }
+  ],
+  "supplement": "'두 현의 곱' 성질은 $\\triangle\\mathrm{MAB}\\sim\\triangle\\mathrm{MDC}$(같은 호에 대한 원주각 $\\angle\\mathrm{BAC}=\\angle\\mathrm{BDC}$, 맞꼭지각)에서 나온다. 이 성질 없이 D의 위치를 구하려면 외접원 반지름·각을 모두 계산해야 해서 훨씬 길어진다. SSA에서 $x=\\frac54$도 수학적으로 가능한 삼각형이라는 점, 그래서 문제에 $\\overline{\\mathrm{AC}}>3$이 붙어 있다는 점을 읽어 내는 것이 첫 판단이다.",
+  "skill_point": "SSA → 이차방정식, 붙은 부등식 조건으로 근 선택. 원 안에서 만나는 두 현 → 곱이 같다.",
+  "answer": "3"
+}

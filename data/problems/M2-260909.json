@@ -1,0 +1,48 @@
+{
+  "id": "M2-260909",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "260909",
+    "year": 2026,
+    "exam": "9월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2025년 9월 고3 9번"
+  },
+  "question": "다항함수 $f(x)$의 한 부정적분을 $F(x)$라 하고, 함수 $2f(x)+1$의 한 부정적분을 $G(x)$라 하자. $G(3)=2F(3)$일 때, $G(5)-2F(5)$의 값은?",
+  "condition": null,
+  "choices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "answer": "2",
+  "answer_value": "2",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-14",
+    "primary_name": "적분 연산",
+    "links": []
+  },
+  "first_judgment": "$H(x)=G(x)-2F(x)$로 묶으면 $H'(x)=1$이 되어 $H$가 일차함수로 정해진다.",
+  "behavior": "계산",
+  "reasoning": [
+    "치환·보조함수 도입"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$H'=2f+1-2f=1$ → $H=x+C$, $H(3)=0$ → $C=-3$. $H(5)=2$",
+  "legacy": {
+    "category": "부정적분의 정의",
+    "book_no": 37,
+    "question_page": 19,
+    "solution_page": 62
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

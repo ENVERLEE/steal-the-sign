@@ -1,0 +1,47 @@
+{
+  "id": "M1-250620",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250620",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 20,
+    "points": 4,
+    "label": "2024년 6월 고3 20번"
+  },
+  "question": "$5$ 이하의 두 자연수 $a,b$에 대하여 열린구간 $(0,2\\pi)$에서 정의된 함수 $y=a\\sin x+b$의 그래프가 직선 $x=\\pi$와 만나는 점의 집합을 $A$라 하고, 두 직선 $y=1$, $y=3$과 만나는 점의 집합을 각각 $B$, $C$라 하자. $n(A\\cup B\\cup C)=3$이 되도록 하는 $a,b$의 순서쌍 $(a,b)$에 대하여 $a+b$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $Mm$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "24",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-09",
+    "primary_name": "삼각함수의 그래프",
+    "links": [
+      "수학Ⅰ-10"
+    ]
+  },
+  "first_judgment": "$x=\\pi$와의 교점 $(\\pi,b)$는 항상 1개이므로, $b$ 값(1~5)별로 $y=1$, $y=3$과의 교점 수를 그래프로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "(i) $b=1$: $a>2$ → $(3,1),(4,1),(5,1)$. (ii) $b=2$: $a=1$ → $(1,2)$. (iii) $b=3$: $-a+3<1$, $a>2$ → $(3,3),(4,3),(5,3)$. (iv) $b=4$: $1<-a+4<3$ → $(2,4)$. (v) $b=5$: $2<a<4$ → $(3,5)$. $M=8$, $m=3$, $Mm=24$",
+  "legacy": {
+    "category": "y=asin(bx+c)+d의 성질",
+    "book_no": 27,
+    "question_page": 14,
+    "solution_page": 55
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-05"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "M1-251112",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "251112",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 12,
+    "points": 4,
+    "label": "2024년 11월 고3 12번"
+  },
+  "question": "$a_1=2$인 수열 $\\{a_n\\}$과 $b_1=2$인 등차수열 $\\{b_n\\}$이 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}\\frac{a_k}{b_{k+1}}=\\frac12n^2$을 만족시킬 때, $\\displaystyle\\sum_{k=1}^{5}a_k$의 값은?",
+  "condition": null,
+  "choices": [
+    "120",
+    "125",
+    "130",
+    "135",
+    "140"
+  ],
+  "answer": "1",
+  "answer_value": "120",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-16",
+    "primary_name": "여러 가지 수열의 합",
+    "links": [
+      "수학Ⅰ-14"
+    ]
+  },
+  "first_judgment": "$n=1$ 대입으로 $b_2$를 얻어 $\\{b_n\\}$을 확정하고, 합과 일반항의 관계($n$과 $n-1$ 차)로 $a_n$을 구한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S10"
+  ],
+  "solution_ref": "$\\frac{a_1}{b_2}=\\frac12$ → $b_2=4$, $b_n=2n$. $\\frac{a_n}{b_{n+1}}=n-\\frac12$ → $a_n=2(n+1)\\left(n-\\frac12\\right)=2n^2+n-1$ ($a_1=2$도 성립). $\\sum_{k=1}^5(2k^2+k-1)=110+15-5=120$",
+  "legacy": {
+    "category": "자연수의 거듭제곱의 합(2) : 다항식인 일반항을 구해야하는 경우",
+    "book_no": 60,
+    "question_page": 30,
+    "solution_page": 72
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-09"
+}

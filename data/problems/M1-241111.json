@@ -1,0 +1,53 @@
+{
+  "id": "M1-241111",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "241111",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 11,
+    "points": 4,
+    "label": "2023년 11월 고3 11번"
+  },
+  "question": "공차가 $0$이 아닌 등차수열 $\\{a_n\\}$에 대하여 $|a_6|=a_8$, $\\displaystyle\\sum_{k=1}^{5}\\frac{1}{a_ka_{k+1}}=\\frac5{96}$일 때, $\\displaystyle\\sum_{k=1}^{15}a_k$의 값은?",
+  "condition": null,
+  "choices": [
+    "60",
+    "65",
+    "70",
+    "75",
+    "80"
+  ],
+  "answer": "1",
+  "answer_value": "60",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-16",
+    "primary_name": "여러 가지 수열의 합",
+    "links": [
+      "수학Ⅰ-14"
+    ]
+  },
+  "first_judgment": "$|a_6|=a_8$이고 공차 $\\ne0$이므로 $a_6+a_8=0$ → $a_7=0$, $a_1=-6d$; 합은 부분분수로 망원합이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S10"
+  ],
+  "solution_ref": "$a_6+a_8=0$ → $a_1=-6d$ ($d>0$). $\\sum\\frac1{a_ka_{k+1}}=\\frac1d\\left(\\frac1{a_1}-\\frac1{a_6}\\right)=\\frac5{a_1(a_1+5d)}=\\frac5{96}$ → $a_1(a_1+5d)=96$ → $6d^2=96$, $d=4$, $a_1=-24$. $\\sum_{k=1}^{15}a_k=\\frac{15(-48+56)}2=60$",
+  "legacy": {
+    "category": "여러 가지 수열의 합(1) : 부분분수를 이용하는 경우",
+    "book_no": 61,
+    "question_page": 31,
+    "solution_page": 72
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-09"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "M1-221111",
+  "concept_refs": [
+    "수학Ⅰ-09-C1",
+    "수학Ⅰ-09-C2"
+  ],
+  "guide": "그림에서 A는 원점 왼쪽 가지 위(제3사분면), B는 제1사분면, C는 오른쪽 가지 위에 있다.\n· 직선 AB가 원점을 지나고 tan 그래프는 원점 대칭 → $\\mathrm A=-\\mathrm B$ (수학Ⅰ-09-C2)\n· AC는 수평이므로 $\\overline{\\mathrm{AC}}=$ 주기 $a$ (수학Ⅰ-09-C1)\n· 정삼각형이고 AC가 수평이면 $\\angle\\mathrm{BAC}=60^\\circ$ → 직선 AB의 기울기 $\\sqrt3$\n세 번역으로 모든 길이가 한 문자로 정리된다.",
+  "solutions": [
+    {
+      "title": "풀이 · 대칭 + 주기 + 정삼각형의 기울기",
+      "steps": [
+        {
+          "label": "좌표 설정",
+          "body": "직선 AB는 기울기 $\\sqrt3$이고 원점을 지나므로 $\\mathrm B(t,\\sqrt3t)$, $\\mathrm A(-t,-\\sqrt3t)$ $(t>0)$로 둔다."
+        },
+        {
+          "label": "변의 길이를 한 문자로",
+          "body": "$\\overline{\\mathrm{OB}}=2t$(기울기 $\\sqrt3$ → $1:\\sqrt3:2$)이므로 $\\overline{\\mathrm{AB}}=4t$.\n정삼각형이므로 $\\overline{\\mathrm{AC}}=4t$이고, $\\overline{\\mathrm{AC}}$는 주기이므로 $a=4t$."
+        },
+        {
+          "label": "B가 곡선 위",
+          "body": "$\\sqrt3t=\\tan\\frac{\\pi t}{a}=\\tan\\frac{\\pi t}{4t}=\\tan\\frac\\pi4=1$ → $t=\\frac1{\\sqrt3}$."
+        },
+        {
+          "label": "넓이",
+          "body": "한 변이 $4t=\\frac4{\\sqrt3}$인 정삼각형의 넓이는 $\\frac{\\sqrt3}4\\cdot\\frac{16}3=\\frac{4\\sqrt3}3$ → ③"
+        }
+      ]
+    }
+  ],
+  "supplement": "B의 $x$좌표가 주기의 정확히 $\\frac14$($t=\\frac a4$)로 떨어진다는 것이 핵심이다. 주기로 길이를 표현하면 $\\tan$ 안의 각이 특수각이 되어 방정식이 사라진다. 확인: $\\mathrm C=\\mathrm A+(a,0)=(3t,-1)$이고 $\\tan\\frac{3\\pi}4=-1$이므로 곡선 위에 있다. 정삼각형 조건을 '세 변이 같다'로만 쓰면 식이 많아지지만, '수평선과 $60^\\circ$ → 기울기 $\\sqrt3$'로 쓰면 한 줄이다.",
+  "skill_point": "원점을 지나는 직선과 tan의 두 교점은 원점 대칭, 수평선 위 두 점 간격은 주기.",
+  "answer": "3"
+}

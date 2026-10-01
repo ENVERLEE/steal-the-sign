@@ -1,0 +1,54 @@
+{
+  "id": "M1-221111",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "221111",
+    "year": 2022,
+    "exam": "대학수학능력시험",
+    "number": 11,
+    "points": 4,
+    "label": "2021년 11월 고3 11번"
+  },
+  "question": "양수 $a$에 대하여 집합 $\\left\\{x\\,\\middle|\\,-\\dfrac a2<x\\le a,\\ x\\ne\\dfrac a2\\right\\}$에서 정의된 함수 $f(x)=\\tan\\dfrac{\\pi x}a$가 있다. 그림과 같이 함수 $y=f(x)$의 그래프 위의 세 점 $\\mathrm{O}$, $\\mathrm{A}$, $\\mathrm{B}$를 지나는 직선이 있다. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 함수 $y=f(x)$의 그래프와 만나는 점 중 $\\mathrm{A}$가 아닌 점을 $\\mathrm{C}$라 하자. 삼각형 $\\mathrm{ABC}$가 정삼각형일 때, 삼각형 $\\mathrm{ABC}$의 넓이는? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+    "\\frac{3\\sqrt3}2",
+    "\\frac{17\\sqrt3}{12}",
+    "\\frac{4\\sqrt3}3",
+    "\\frac{5\\sqrt3}4",
+    "\\frac{7\\sqrt3}6"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{4\\sqrt3}3",
+  "figure": {
+    "description": "$y=\\tan\\frac{\\pi x}a$ 그래프 위 원점을 지나는 직선 위의 A(제3사분면), B(제1사분면); A에서 수평선이 다음 가지와 만나는 점 C; 정삼각형 ABC",
+    "source_page": 15
+  },
+  "theme": {
+    "primary": "수학Ⅰ-09",
+    "primary_name": "삼각함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "정삼각형이면 직선 $\\mathrm{AB}$의 기울기가 $\\sqrt3$이고, $\\overline{\\mathrm{AC}}$는 주기 $a$와 같다.",
+  "behavior": "추론",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "$\\mathrm B(t,\\sqrt3t)$, $\\mathrm A(-t,-\\sqrt3t)$, $\\overline{\\mathrm{AB}}=4t=\\overline{\\mathrm{AC}}=a$. $\\mathrm C(3t,-\\sqrt3t)$가 곡선 위: $-\\sqrt3t=\\tan\\frac{3\\pi}4$ → $t=\\frac1{\\sqrt3}$. 넓이 $\\frac{\\sqrt3}4(4t)^2=\\frac{4\\sqrt3}3$",
+  "legacy": {
+    "category": "y=atan(bx)의 성질",
+    "book_no": 29,
+    "question_page": 15,
+    "solution_page": 56
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-04"
+}

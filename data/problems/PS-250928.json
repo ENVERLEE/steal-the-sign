@@ -1,0 +1,51 @@
+{
+  "id": "PS-250928",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "250928",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 28,
+    "points": 4,
+    "label": "2024년 9월 고3 28번"
+  },
+  "question": "집합 $X=\\{1,2,3,4\\}$에 대하여 $f:X\\to X$인 모든 함수 $f$ 중에서 임의로 하나를 선택하는 시행을 한다. 이 시행에서 선택한 함수 $f$가 다음 조건을 만족시킬 때, $f(4)$가 짝수일 확률은?",
+  "condition": "$a\\in X$, $b\\in X$에 대하여 $a$가 $b$의 약수이면 $f(a)$는 $f(b)$의 약수이다.",
+  "choices": [
+    "\\frac9{19}",
+    "\\frac8{15}",
+    "\\frac35",
+    "\\frac{27}{40}",
+    "\\frac{19}{25}"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{27}{40}",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-12",
+    "primary_name": "조건부확률 Ⅱ",
+    "links": [
+      "확률과 통계-11"
+    ]
+  },
+  "first_judgment": "조건은 '$b$가 $a$의 배수이면 $f(b)$는 $f(a)$의 배수'이므로 $f(1)$ 값별로 $f(2)$, $f(4)$, $f(3)$의 가능성을 센다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$f(1)=4$: 1개(짝수 1). $f(1)=3$: 1개(짝수 0). $f(1)=2$: $(f(2),f(4))=(2,2),(2,4),(4,4)$, $f(3)=2,4$ → 6(짝수 6). $f(1)=1$: 쌍 8가지 × $f(3)$ 4가지 = 32(짝수 20). $n(A)=40$, $n(A\\cap B)=27$ → $\\frac{27}{40}$",
+  "legacy": {
+    "category": "조건부확률",
+    "book_no": 29,
+    "question_page": 15,
+    "solution_page": 38
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-04"
+}

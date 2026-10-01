@@ -1,0 +1,54 @@
+{
+  "id": "M1-231113",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "231113",
+    "year": 2023,
+    "exam": "대학수학능력시험",
+    "number": 13,
+    "points": 4,
+    "label": "2022년 11월 고3 13번"
+  },
+  "question": "자연수 $m$ $(m\\ge2)$에 대하여 $m^{12}$의 $n$제곱근 중에서 정수가 존재하도록 하는 $2$ 이상의 자연수 $n$의 개수를 $f(m)$이라 할 때, $\\displaystyle\\sum_{m=2}^{9}f(m)$의 값은?",
+  "condition": null,
+  "choices": [
+    "37",
+    "42",
+    "47",
+    "52",
+    "57"
+  ],
+  "answer": "3",
+  "answer_value": "47",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-01",
+    "primary_name": "거듭제곱근",
+    "links": [
+      "수학Ⅰ-16"
+    ]
+  },
+  "first_judgment": "$x^n=m^{12}$의 정수근 존재 조건이므로, $m$이 완전거듭제곱($4=2^2$, $8=2^3$, $9=3^2$)인지에 따라 지수가 달라진다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+    "S01",
+    "S02"
+  ],
+  "solution_ref": "$m=2,3,5,6,7$: $n\\mid12$, $n\\ge2$ → $2,3,4,6,12$로 5개. $m=4$: $x^n=2^{24}$ → 7개. $m=8$: $2^{36}$ → 8개. $m=9$: $3^{24}$ → 7개. 합 $5\\cdot5+7\\cdot2+8=47$",
+  "legacy": {
+    "category": "∑의 뜻",
+    "book_no": 57,
+    "question_page": 29,
+    "solution_page": 70
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-01"
+}

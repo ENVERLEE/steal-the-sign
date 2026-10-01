@@ -1,0 +1,44 @@
+{
+  "id": "PS-270629",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "270629",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 29,
+    "points": 4,
+    "label": "2026년 6월 고3 29번"
+  },
+  "question": "서로 다른 다섯 개의 주사위를 동시에 던져 나온 다섯 개의 눈의 수의 곱이 홀수일 때, 이 다섯 개의 눈의 수의 합이 $15$일 확률은 $\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "98",
+  "answer_value": "98",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-11",
+    "primary_name": "조건부확률 Ⅰ",
+    "links": [
+      "확률과 통계-02"
+    ]
+  },
+  "first_judgment": "곱이 홀수 ⇔ 모두 홀수이므로 표본공간이 $3^5$으로 줄고, 합이 $15$인 홀수 다섯 개의 구성을 나열한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\mathrm P(A)=\\left(\\frac12\\right)^5$. 합 15 구성: $3,3,3,3,3$(1), $1,1,3,5,5$(30), $1,3,3,3,5$(20) → 51. $\\mathrm P(B|A)=\\frac{51}{243}=\\frac{17}{81}$, $p+q=98$",
+  "legacy": {
+    "category": "조건부확률",
+    "book_no": 28,
+    "question_page": 14,
+    "solution_page": 38
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-03"
+}

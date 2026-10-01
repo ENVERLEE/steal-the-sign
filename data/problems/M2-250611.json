@@ -1,0 +1,54 @@
+{
+  "id": "M2-250611",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250611",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2024년 6월 고3 11번"
+  },
+  "question": "최고차항의 계수가 $1$이고 $f(0)=0$인 삼차함수 $f(x)$가 $\\displaystyle\\lim_{x\\to a}\\frac{f(x)-1}{x-a}=3$을 만족시킨다. 곡선 $y=f(x)$ 위의 점 $(a,f(a))$에서의 접선의 $y$절편이 $4$일 때, $f(1)$의 값은? (단, $a$는 상수이다.)",
+  "condition": null,
+  "choices": [
+    "-1",
+    "-2",
+    "-3",
+    "-4",
+    "-5"
+  ],
+  "answer": "5",
+  "answer_value": "-5",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-08",
+    "primary_name": "접선의 활용",
+    "links": [
+      "수학Ⅱ-06"
+    ]
+  },
+  "first_judgment": "극한 조건은 곧 $f(a)=1$, $f'(a)=3$이므로 접선 $y=3x-3a+1$의 $y$절편에서 $a$를 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S16",
+    "S19"
+  ],
+  "solution_ref": "$f(a)=1$, $f'(a)=3$. 접선 $y=3x-3a+1$, $-3a+1=4$ → $a=-1$. $f=x^3+px^2+qx$: $-1+p-q=1$, $3-2p+q=3$ → $p=-2$, $q=-4$. $f(1)=-5$",
+  "legacy": {
+    "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+    "book_no": 13,
+    "question_page": 7,
+    "solution_page": 48
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-03"
+}

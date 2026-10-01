@@ -3,9 +3,9 @@ globs:
   - "work/source/**"
   - "work/created/**"
   - "work/book*.json"
-  - "data/db.json"
+  - "data/index.json"
   - "data/themes.json"
-  - "data/solutions.json"
+  - "data/concepts.json"
 ---
 
 # AI 작업 순서 — 교재 PDF를 받았을 때

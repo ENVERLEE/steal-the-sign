@@ -1,0 +1,55 @@
+{
+  "id": "M2-250615",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250615",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2024년 6월 고3 15번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$와 상수 $k$ $(k\\ge0)$에 대하여 함수 $g(x)=\\begin{cases}2x-k & (x\\le k)\\\\ f(x) & (x>k)\\end{cases}$가 다음 조건을 만족시킨다. $g(k+1)$의 최솟값은?",
+  "condition": "(가) 함수 $g(x)$는 실수 전체의 집합에서 증가하고 미분가능하다.\\\\(나) 모든 실수 $x$에 대하여 $\\displaystyle\\int_0^x g(t)\\{|t(t-1)|+t(t-1)\\}\\,dt\\ge0$이고 $\\displaystyle\\int_3^x g(t)\\{|(t-1)(t+2)|-(t-1)(t+2)\\}\\,dt\\ge0$이다.",
+  "choices": [
+    "4-\\sqrt6",
+    "5-\\sqrt6",
+    "6-\\sqrt6",
+    "7-\\sqrt6",
+    "8-\\sqrt6"
+  ],
+  "answer": "2",
+  "answer_value": "5-\\sqrt6",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-15",
+    "primary_name": "정적분으로 정의된 함수",
+    "links": [
+      "수학Ⅱ-16",
+      "수학Ⅱ-07"
+    ]
+  },
+  "first_judgment": "$h_1(t)=|t(t-1)|+t(t-1)\\ge0$, $h_2\\ge0$이 $0$인 구간을 확인하면 (나)는 $g$의 부호가 특정 점에서 바뀌어야 한다는 조건 → $g$의 근 $\\frac k2$의 위치로 $k$를 확정한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S22",
+    "S24"
+  ],
+  "solution_ref": "$\\int_p^x h(t)dt\\ge0$ 꼴 조건 → (i) $0\\le\\frac k2\\le1$, (ii) $\\frac k2\\ge1$ → $k=2$. $g'(2)=f'(2)=2$, $g(2)=f(2)=2$ → $b=-4a-10$, $c=4a+14$. $x\\ge2$에서 $f'\\ge0$: $-\\frac a3<2$이면 성립, 아니면 $(a+6)^2\\le6$ → $a\\ge-6-\\sqrt6$. $g(3)=a+11\\ge5-\\sqrt6$",
+  "legacy": {
+    "category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+    "book_no": 43,
+    "question_page": 22,
+    "solution_page": 65
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-07"
+}

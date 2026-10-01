@@ -1,0 +1,51 @@
+{
+  "id": "M1-250910",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250910",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2024년 9월 고3 10번"
+  },
+  "question": "$\\angle\\mathrm{A}>\\dfrac\\pi2$인 삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 선분 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{H}$라 하자. $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{AC}}=\\sqrt2:1$, $\\overline{\\mathrm{AH}}=2$이고, 삼각형 $\\mathrm{ABC}$의 외접원의 넓이가 $50\\pi$일 때, 선분 $\\mathrm{BH}$의 길이는?",
+  "condition": null,
+  "choices": [
+    "6",
+    "\\frac{25}4",
+    "\\frac{13}2",
+    "\\frac{27}4",
+    "7"
+  ],
+  "answer": "1",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "$\\sin C=\\frac{\\overline{\\mathrm{AH}}}{\\overline{\\mathrm{AC}}}$와 사인법칙 $\\overline{\\mathrm{AB}}=2R\\sin C$를 연결한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "그래프·도형 해석",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S07"
+  ],
+  "solution_ref": "$R=5\\sqrt2$. $\\overline{\\mathrm{AC}}=x$, $\\overline{\\mathrm{AB}}=\\sqrt2x$, $\\sin C=\\frac2x$. $\\sqrt2x=2\\cdot5\\sqrt2\\cdot\\frac2x$ → $x^2=20$, $\\overline{\\mathrm{AB}}=2\\sqrt{10}$. $\\overline{\\mathrm{BH}}=\\sqrt{40-4}=6$",
+  "legacy": {
+    "category": "외접원의 반지름의 길이와 삼각형의 넓이",
+    "book_no": 47,
+    "question_page": 24,
+    "solution_page": 65
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-06"
+}

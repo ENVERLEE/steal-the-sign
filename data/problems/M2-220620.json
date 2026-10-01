@@ -1,0 +1,49 @@
+{
+  "id": "M2-220620",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "220620",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 20,
+    "points": 4,
+    "label": "2021년 6월 고3 20번"
+  },
+  "question": "실수 $a$와 함수 $f(x)=x^3-12x^2+45x+3$에 대하여 함수 $g(x)=\\displaystyle\\int_a^x\\{f(x)-f(t)\\}\\times\\{f(t)\\}^4\\,dt$가 오직 하나의 극값을 갖도록 하는 모든 $a$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-16",
+    "primary_name": "정적분으로 정의된 함수의 활용",
+    "links": [
+      "수학Ⅱ-15",
+      "수학Ⅱ-09"
+    ]
+  },
+  "first_judgment": "$g(x)=f(x)\\int_a^x f^4\\,dt-\\int_a^x f^5\\,dt$로 분리해 미분하면 $g'(x)=f'(x)\\int_a^x\\{f(t)\\}^4dt$가 되어 근이 $3,5,a$이다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S22",
+    "S18"
+  ],
+  "solution_ref": "$g'=f'(x)\\int_a^x f^4\\,dt$, $f'=3(x-3)(x-5)$. $a\\ne3,5$: 극값 3개. $a=3$: $x=3$은 부호 변화 없음, $x=5$에서만 극값. $a=5$: $x=3$에서만 극값. 합 $8$",
+  "legacy": {
+    "category": "정적분으로 정의된 함수의 극대 · 극소",
+    "book_no": 55,
+    "question_page": 28,
+    "solution_page": 72
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-07"
+}

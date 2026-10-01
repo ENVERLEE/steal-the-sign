@@ -90,7 +90,7 @@ def check_record(rec: dict, path, ctx: Context) -> tuple[list[str], list[str]]:
         if not pid:
             errs.append("variant는 origin.parent_id 필수")
         elif pid not in ctx.db:
-            errs.append(f"parent_id {pid}가 db.json에 없음")
+            errs.append(f"parent_id {pid}가 data/problems에 없음")
         elif pid in ctx.excluded:
             errs.append(f"parent_id {pid}는 excluded.json에 있음")
         else:
@@ -106,7 +106,7 @@ def check_record(rec: dict, path, ctx: Context) -> tuple[list[str], list[str]]:
     tg = rec["target"]
     for cid in tg["concept_ids"] + (rec["solution"].get("concept_refs") or []):
         if cid not in ctx.concepts:
-            errs.append(f"개념 id {cid}가 solutions.json에 없음")
+            errs.append(f"개념 id {cid}가 concepts.json에 없음")
     olds = set(t["old_themes"])
     if not any(cid.rsplit("-C", 1)[0] in olds for cid in tg["concept_ids"]):
         warns.append(f"target.concept_ids가 테마 {theme}의 개념({', '.join(sorted(olds))})을 하나도 겨냥하지 않음")

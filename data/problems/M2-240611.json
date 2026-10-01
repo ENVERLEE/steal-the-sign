@@ -1,0 +1,57 @@
+{
+  "id": "M2-240611",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240611",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2023년 6월 고3 11번"
+  },
+  "question": "그림과 같이 실수 $t$ $(0<t<1)$에 대하여 곡선 $y=x^2$ 위의 점 중에서 직선 $y=2tx-1$과의 거리가 최소인 점을 $\\mathrm{P}$라 하고 직선 $\\mathrm{OP}$가 직선 $y=2tx-1$과 만나는 점을 $\\mathrm{Q}$라 할 때, $\\displaystyle\\lim_{t\\to1-}\\frac{\\overline{\\mathrm{PQ}}}{1-t}$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+    "\\sqrt6",
+    "\\sqrt7",
+    "2\\sqrt2",
+    "3",
+    "\\sqrt{10}"
+  ],
+  "answer": "3",
+  "answer_value": "2\\sqrt2",
+  "figure": {
+    "description": "포물선 $y=x^2$, 직선 $y=2tx-1$, 원점 O, 포물선 위 P, 직선 OP와 $y=2tx-1$의 교점 Q",
+    "source_page": 9
+  },
+  "theme": {
+    "primary": "수학Ⅱ-08",
+    "primary_name": "접선의 활용",
+    "links": [
+      "수학Ⅱ-02"
+    ]
+  },
+  "first_judgment": "직선과 거리가 최소인 점은 접선의 기울기가 $2t$인 점이므로 $\\mathrm P(t,t^2)$이다.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S19",
+    "S13"
+  ],
+  "solution_ref": "$\\mathrm P(t,t^2)$, 직선 $\\mathrm{OP}$: $y=tx$, $tx=2tx-1$ → $\\mathrm Q\\left(\\frac1t,1\\right)$. $\\overline{\\mathrm{PQ}}=(1-t^2)\\sqrt{\\frac1{t^2}+1}$. $\\lim\\frac{\\overline{\\mathrm{PQ}}}{1-t}=\\lim(1+t)\\sqrt{\\frac1{t^2}+1}=2\\sqrt2$",
+  "legacy": {
+    "category": "곡선 위의 점과 직선 사이의 거리",
+    "book_no": 17,
+    "question_page": 9,
+    "solution_page": 50
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-03"
+}

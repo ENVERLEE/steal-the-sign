@@ -1,0 +1,45 @@
+{
+  "id": "PS-240930",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "240930",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 30,
+    "points": 4,
+    "label": "2023년 9월 고3 30번"
+  },
+  "question": "다음 조건을 만족시키는 $13$ 이하의 자연수 $a,b,c,d$의 모든 순서쌍 $(a,b,c,d)$의 개수를 구하시오.",
+  "condition": "(가) $a\\le b\\le c\\le d$\\\\(나) $ad$는 홀수이고, $b+c$는 짝수이다.",
+  "choices": null,
+  "answer": "336",
+  "answer_value": "336",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-06",
+    "primary_name": "중복조합 - 부등식 응용형",
+    "links": [
+      "확률과 통계-05"
+    ]
+  },
+  "first_judgment": "$a,d$는 홀수로 고정되고 $b,c$는 둘 다 홀수 또는 둘 다 짝수 — 두 경우로 나눠 중복조합을 쓴다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "대응·모델링"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) $b,c$ 홀수: 홀수 7개에서 4개 중복선택 $_7H_4=210$. (ii) $b,c$ 짝수: $d-a=12,10,8,6,4,2$별로 $1\\cdot{}_6H_2,\\ 2\\cdot{}_5H_2,\\ 3\\cdot{}_4H_2,\\ 4\\cdot{}_3H_2,\\ 5\\cdot{}_2H_2,\\ 6\\cdot1$ → $21+30+30+24+15+6=126$. 합 $336$",
+  "legacy": {
+    "category": "중복조합의 수",
+    "book_no": 10,
+    "question_page": 5,
+    "solution_page": 29
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-01"
+}

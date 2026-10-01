@@ -1,0 +1,50 @@
+{
+  "id": "M2-230910",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "230910",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2022년 9월 고3 10번"
+  },
+  "question": "수직선 위의 점 $\\mathrm{A}(6)$과 시각 $t=0$일 때 원점을 출발하여 이 수직선 위를 움직이는 점 $\\mathrm{P}$가 있다. 시각 $t$ $(t\\ge0)$에서의 점 $\\mathrm{P}$의 속도 $v(t)$를 $v(t)=3t^2+at$ $(a>0)$이라 하자. 시각 $t=2$에서 점 $\\mathrm{P}$와 점 $\\mathrm{A}$ 사이의 거리가 $10$일 때, 상수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "answer": "4",
+  "answer_value": "4",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "$t=2$에서의 위치 $\\int_0^2v=8+2a$와 $6$의 거리가 $10$이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$x(2)=8+2a$, $|2a+2|=10$, $a>0$ → $a=4$",
+  "legacy": {
+    "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+    "book_no": 76,
+    "question_page": 38,
+    "solution_page": 82
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-09"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "M1-240612",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "240612",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2023년 6월 고3 12번"
+  },
+  "question": "$a_2=-4$이고 공차가 $0$이 아닌 등차수열 $\\{a_n\\}$에 대하여 수열 $\\{b_n\\}$을 $b_n=a_n+a_{n+1}$ $(n\\ge1)$이라 하고, 두 집합 $A$, $B$를 $A=\\{a_1,a_2,a_3,a_4,a_5\\}$, $B=\\{b_1,b_2,b_3,b_4,b_5\\}$라 하자. $n(A\\cap B)=3$이 되도록 하는 모든 수열 $\\{a_n\\}$에 대하여 $a_{20}$의 값의 합은?",
+  "condition": null,
+  "choices": [
+    "30",
+    "34",
+    "38",
+    "42",
+    "46"
+  ],
+  "answer": "5",
+  "answer_value": "46",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-13",
+    "primary_name": "등차수열과 등비수열",
+    "links": []
+  },
+  "first_judgment": "$\\{b_n\\}$도 공차 $2d$인 등차수열이므로 공차 부호로 나누고, 두 수열의 항이 '몇 칸 어긋나 겹치는지'로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S09"
+  ],
+  "solution_ref": "(i) $d>0$: $a_1<0$, $b_1<a_1$; $n(A\\cap B)=3$이려면 $b_2=a_1$ 또는 $b_3=a_1$. (a) $b_2=a_1$: $-8+d=-4-d$, $d=2$, $a_{20}=32$. (b) $b_3=a_1$: $-8+3d=-4-d$, $d=1$, $a_{20}=14$. (ii) $d<0$: 어떤 경우든 $n(A\\cap B)\\le2$. 합 $46$",
+  "legacy": {
+    "category": "조건을 만족시키는 등차수열의 항 구하기(3) : 이외의 조건이 주어진 경우",
+    "book_no": 52,
+    "question_page": 26,
+    "solution_page": 68
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-08"
+}

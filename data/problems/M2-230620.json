@@ -1,0 +1,49 @@
+{
+  "id": "M2-230620",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "230620",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 20,
+    "points": 4,
+    "label": "2022년 6월 고3 20번"
+  },
+  "question": "최고차항의 계수가 $2$인 이차함수 $f(x)$에 대하여 함수 $g(x)=\\displaystyle\\int_x^{x+1}|f(t)|\\,dt$는 $x=1$과 $x=4$에서 극소이다. $f(0)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "13",
+  "answer_value": "13",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-16",
+    "primary_name": "정적분으로 정의된 함수의 활용",
+    "links": [
+      "수학Ⅱ-20",
+      "수학Ⅱ-15"
+    ]
+  },
+  "first_judgment": "$g'(x)=|f(x+1)|-|f(x)|$이므로 극소 조건은 $x=1$, $x=4$에서 이 값이 $0$이 되는 것이고, 근 $\\alpha,\\beta$가 구간 $[x,x+1]$에 걸치는 두 경우로 나눈다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S22",
+    "S24"
+  ],
+  "solution_ref": "$f\\ge0$이면 $g$ 이차함수로 극소 1개 → 불가. $f=2(x-\\alpha)(x-\\beta)$. (i) $x<\\alpha<x+1$: $g'(1)=0$ → $3\\alpha+3\\beta-2\\alpha\\beta-5=0$. (ii) $x<\\beta<x+1$: $g'(4)=0$ → $9\\alpha+9\\beta-2\\alpha\\beta-41=0$. 연립 → $\\alpha\\beta=\\frac{13}2$. $f(0)=2\\alpha\\beta=13$",
+  "legacy": {
+    "category": "정적분으로 정의된 함수의 극대 · 극소",
+    "book_no": 54,
+    "question_page": 27,
+    "solution_page": 71
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-07"
+}

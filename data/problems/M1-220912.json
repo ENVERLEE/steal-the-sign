@@ -1,0 +1,54 @@
+{
+  "id": "M1-220912",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220912",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2021년 9월 고3 12번"
+  },
+  "question": "반지름의 길이가 $2\\sqrt7$인 원에 내접하고 $\\angle\\mathrm{A}=\\dfrac\\pi3$인 삼각형 $\\mathrm{ABC}$가 있다. 점 $\\mathrm{A}$를 포함하지 않는 호 $\\mathrm{BC}$ 위의 점 $\\mathrm{D}$에 대하여 $\\sin(\\angle\\mathrm{BCD})=\\dfrac{2\\sqrt7}7$일 때, $\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}}$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac{19}2",
+    "10",
+    "\\frac{21}2",
+    "11",
+    "\\frac{23}2"
+  ],
+  "answer": "2",
+  "answer_value": "10",
+  "figure": {
+    "description": "원에 내접하는 삼각형 ABC($\\angle$A$=\\frac\\pi3$)와 호 BC 위의 점 D",
+    "source_page": 23
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "같은 외접원을 공유하므로 사인법칙으로 $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{BD}}$를 구하고, 내접사각형 대각의 합 $\\pi$로 $\\angle\\mathrm{BDC}=\\frac23\\pi$를 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{BC}}=4\\sqrt7\\sin\\frac\\pi3=2\\sqrt{21}$, $\\overline{\\mathrm{BD}}=4\\sqrt7\\cdot\\frac{2\\sqrt7}7=8$. $\\angle\\mathrm{BDC}=\\frac23\\pi$: $84=x^2+64+8x$ → $x=2$. 합 $10$",
+  "legacy": {
+    "category": "사인법칙과 코사인법칙",
+    "book_no": 46,
+    "question_page": 23,
+    "solution_page": 65
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-07"
+}

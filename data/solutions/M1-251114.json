@@ -1,0 +1,39 @@
+{
+  "id": "M1-251114",
+  "concept_refs": [
+    "수학Ⅰ-12-C4",
+    "수학Ⅰ-12-C5",
+    "수학Ⅰ-12-C2"
+  ],
+  "guide": "주어진 것이 모두 **비**다: $\\overline{\\mathrm{AD}}:\\overline{\\mathrm{DB}}$, $\\sin A:\\sin C$, 넓이비. 원 $O$의 반지름을 $r$로 두고 모든 변을 $r$로 표현하면(수학Ⅰ-12-C4) 삼각형의 모양이 확정되고, 외접원 반지름 $7$로 $r$이 정해진다.\n최댓값: P가 원 $O$ 위를 움직일 때 높이는 'A에서 BC까지의 거리 $+\\,r$'이 최대다(수학Ⅰ-12-C5).",
+  "solutions": [
+    {
+      "title": "풀이 · 모든 변을 $r$로",
+      "steps": [
+        {
+          "label": "변을 $r$로",
+          "body": "$\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AE}}=r$, $\\overline{\\mathrm{AB}}=\\frac53r$.\n넓이비: $\\dfrac{\\frac12r\\cdot r\\sin A}{\\frac12\\cdot\\frac53r\\cdot\\overline{\\mathrm{AC}}\\sin A}=\\dfrac{3r}{5\\overline{\\mathrm{AC}}}=\\dfrac9{35}$ → $\\overline{\\mathrm{AC}}=\\frac73r$.\n$\\sin A:\\sin C=\\overline{\\mathrm{BC}}:\\overline{\\mathrm{AB}}=8:5$ → $\\overline{\\mathrm{BC}}=\\frac83r$."
+        },
+        {
+          "label": "모양 확정",
+          "body": "$\\overline{\\mathrm{AB}}:\\overline{\\mathrm{BC}}:\\overline{\\mathrm{CA}}=5:8:7$. 가운데 길이 7의 대각 B:\n$$\\cos B=\\frac{25+64-49}{2\\cdot5\\cdot8}=\\frac12\\ \\Rightarrow\\ B=\\frac\\pi3$$"
+        },
+        {
+          "label": "크기 확정",
+          "body": "사인법칙: $\\overline{\\mathrm{AC}}=2\\cdot7\\cdot\\sin\\frac\\pi3=7\\sqrt3=\\frac73r$ → $r=3\\sqrt3$. 따라서 $\\overline{\\mathrm{AB}}=5\\sqrt3$, $\\overline{\\mathrm{BC}}=8\\sqrt3$."
+        },
+        {
+          "label": "A에서 BC까지 거리",
+          "body": "$h=\\overline{\\mathrm{AB}}\\sin B=5\\sqrt3\\cdot\\frac{\\sqrt3}2=\\frac{15}2$."
+        },
+        {
+          "label": "최댓값",
+          "body": "P가 BC에서 가장 먼 곳(A를 지나 BC에 수직인 직선이 원과 만나는, BC 반대쪽 점)일 때 높이 $\\frac{15}2+3\\sqrt3$.\n$$\\tfrac12\\cdot8\\sqrt3\\cdot\\left(\\tfrac{15}2+3\\sqrt3\\right)=30\\sqrt3+36$$ → ④"
+        }
+      ]
+    }
+  ],
+  "supplement": "세 변의 비 $5:7:8$은 사잇각 $60^\\circ$가 나오는 유명한 삼각형이다($3:5:7$의 $120^\\circ$와 함께 기억). 크기 조건(외접원 반지름 7)을 처음부터 쓰면 $\\sin C$ 등 미지수가 늘어나지만, 비로 모양을 먼저 확정하면 각 $B$가 특수각으로 떨어져 모든 계산이 간단해진다. 원 위의 점에 대한 넓이 최대는 '중심까지 거리 + 반지름'이 정석이다.",
+  "skill_point": "비만 주어지면 한 문자로 모양 확정 → 특수각 확인 → 절대 조건으로 크기.",
+  "answer": "4"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "M1-220921",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220921",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 21,
+    "points": 4,
+    "label": "2021년 9월 고3 21번"
+  },
+  "question": "$a>1$인 실수 $a$에 대하여 직선 $y=-x+4$가 두 곡선 $y=a^{x-1}$, $y=\\log_a(x-1)$과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 곡선 $y=a^{x-1}$이 $y$축과 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=2\\sqrt2$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는 $S$이다. $50S$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "192",
+  "answer_value": "192",
+  "figure": {
+    "description": "곡선 $y=a^{x-1}$, $y=\\log_a(x-1)$과 직선 $y=-x+4$가 각각 A, B에서 만나고, C는 $y=a^{x-1}$의 $y$절편; 삼각형 ABC 색칠",
+    "source_page": 11
+  },
+  "theme": {
+    "primary": "수학Ⅰ-06",
+    "primary_name": "지수함수와 로그함수의 대칭성",
+    "links": [
+      "수학Ⅰ-07"
+    ]
+  },
+  "first_judgment": "두 곡선은 직선 $y=x-1$에 대하여 대칭이므로 $\\mathrm{AB}$의 중점은 $y=-x+4$와 $y=x-1$의 교점 $\\mathrm M\\left(\\frac52,\\frac32\\right)$이다.",
+  "behavior": "추론",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$\\mathrm M\\left(\\frac52,\\frac32\\right)$, $\\overline{\\mathrm{AM}}=\\sqrt2$ → $\\mathrm A\\left(\\frac32,\\frac52\\right)$, $a^{1/2}=\\frac52$, $a=\\frac{25}4$. $\\mathrm C\\left(0,\\frac4{25}\\right)$. $\\overline{\\mathrm{CH}}=\\frac{|4/25-4|}{\\sqrt2}=\\frac{48\\sqrt2}{25}$. $S=\\frac12\\cdot2\\sqrt2\\cdot\\frac{48\\sqrt2}{25}=\\frac{96}{25}$, $50S=192$",
+  "legacy": {
+    "category": "지수함수와 로그함수의 관계",
+    "book_no": 22,
+    "question_page": 11,
+    "solution_page": 52
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-02"
+}

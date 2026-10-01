@@ -1,0 +1,48 @@
+{
+  "id": "M2-250909",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250909",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2024년 9월 고3 9번"
+  },
+  "question": "함수 $f(x)=x^2+x$에 대하여 $5\\displaystyle\\int_0^1f(x)\\,dx-\\int_0^1(5x+f(x))\\,dx$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac16",
+    "\\frac13",
+    "\\frac12",
+    "\\frac23",
+    "\\frac56"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac56",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-14",
+    "primary_name": "적분 연산",
+    "links": []
+  },
+  "first_judgment": "적분 구간이 같으므로 피적분함수를 하나로 합쳐 $\\int_0^1(4x^2-x)\\,dx$로 계산한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_0^1(4x^2+4x-5x)\\,dx=\\frac43-\\frac12=\\frac56$",
+  "legacy": {
+    "category": "정적분의 계산(1) : 적분 구간이 같은 경우",
+    "book_no": 41,
+    "question_page": 21,
+    "solution_page": 65
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

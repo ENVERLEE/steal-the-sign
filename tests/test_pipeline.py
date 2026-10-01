@@ -56,6 +56,34 @@ class Sandbox:
         shutil.rmtree(self.dir, ignore_errors=True)
 
 
+class TestDataLayout(unittest.TestCase):
+    """data/problems·solutions 문항별 파일 구조"""
+
+    def test_problem_files(self):
+        ctx = Context()
+        self.assertGreaterEqual(len(ctx.db), 208)
+        for pid, r in ctx.problem_files.items():
+            self.assertEqual(r["id"], pid)
+            self.assertIn(r["home"], ctx.themes)
+            self.assertIn(pid, ctx.study)
+        self.assertNotIn("home", next(iter(ctx.db.values())))
+
+    def test_theme_problem_ids_from_home(self):
+        ctx = Context()
+        ids = [p for t in ctx.themes.values() for p in t["problem_ids"]]
+        self.assertEqual(sorted(ids), sorted(ctx.db))
+
+    def test_book_dir_roundtrip(self):
+        from scripts.book_dir import load_dir, split
+        box = Sandbox()
+        try:
+            ctx = box.ctx()
+            self.assertTrue(split(ctx).ok)
+            self.assertEqual(load_dir(box.book.with_suffix("")), read_json(box.book))
+        finally:
+            box.close()
+
+
 class TestMath(unittest.TestCase):
     def test_tex_to_sympy(self):
         self.assertTrue(same_value(tex_to_sympy(r"\frac97\pi"), "9*pi/7"))

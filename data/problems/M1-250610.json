@@ -1,0 +1,50 @@
+{
+  "id": "M1-250610",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250610",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2024년 6월 고3 10번"
+  },
+  "question": "다음 조건을 만족시키는 삼각형 $\\mathrm{ABC}$의 외접원의 넓이가 $9\\pi$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는?",
+  "condition": "(가) $3\\sin A=2\\sin B$\\\\(나) $\\cos B=\\cos C$",
+  "choices": [
+    "\\frac{32}9\\sqrt2",
+    "\\frac{40}9\\sqrt2",
+    "\\frac{16}3\\sqrt2",
+    "\\frac{56}9\\sqrt2",
+    "\\frac{64}9\\sqrt2"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{64}9\\sqrt2",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "(가)는 사인법칙으로 변의 비 $3a=2b$, (나)는 $b=c$(이등변)로 바꾼다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S07"
+  ],
+  "solution_ref": "$R=3$. $b=\\frac32a$, $b=c$ → $a=2k$, $b=c=3k$. $\\cos A=\\frac{9+9-4}{18}=\\frac79$, $\\sin A=\\frac{4\\sqrt2}9$. $a=6\\sin A=\\frac{8\\sqrt2}3$, $b=c=4\\sqrt2$. 넓이 $\\frac12\\cdot32\\cdot\\frac{4\\sqrt2}9=\\frac{64\\sqrt2}9$",
+  "legacy": {
+    "category": "삼각형의 넓이(4) : 한 변의 길이와 양 끝 각의 크기가 주어진 경우",
+    "book_no": 49,
+    "question_page": 25,
+    "solution_page": 66
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-06"
+}

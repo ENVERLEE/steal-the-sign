@@ -1,0 +1,54 @@
+{
+  "id": "M1-261114",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "261114",
+    "year": 2026,
+    "exam": "대학수학능력시험",
+    "number": 14,
+    "points": 4,
+    "label": "2025년 11월 고3 14번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=4$이고 $\\angle\\mathrm{B}=\\dfrac\\pi2$인 직각삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{AB}$를 $2:1$로 내분하는 점을 $\\mathrm{D}$, 점 $\\mathrm{A}$를 중심으로 하고 반지름의 길이가 $\\overline{\\mathrm{AD}}$인 원이 선분 $\\mathrm{AC}$와 만나는 점을 $\\mathrm{E}$, 직선 $\\mathrm{AB}$가 이 원과 만나는 점 중 $\\mathrm{D}$가 아닌 점을 $\\mathrm{F}$라 하고, 호 $\\mathrm{EF}$ 위의 점 $\\mathrm{G}$를 $\\overline{\\mathrm{CG}}=2\\sqrt6$이 되도록 잡는다. 세 점 $\\mathrm{C,E,G}$를 지나는 원 위의 점 $\\mathrm{H}$가 $\\angle\\mathrm{HCG}=\\angle\\mathrm{BAC}$를 만족시킬 때, 선분 $\\mathrm{GH}$의 길이는?",
+  "condition": null,
+  "choices": [
+    "\\frac{6\\sqrt{15}}5",
+    "\\frac{38\\sqrt{10}}{25}",
+    "\\frac{14\\sqrt3}5",
+    "\\frac{32\\sqrt{15}}{25}",
+    "\\frac{8\\sqrt{10}}5"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{32\\sqrt{15}}{25}",
+  "figure": {
+    "description": "직각삼각형 ABC, A 중심 반지름 2인 원(D, E, F, G), C·E·G·H를 지나는 원",
+    "source_page": 21
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "$\\overline{\\mathrm{GH}}=2R\\sin\\angle\\mathrm{HCG}$이므로 원 $\\mathrm{CEG}$의 반지름 $R$을 삼각형 $\\mathrm{CGE}$에서 구하는 것이 목표다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AC}}=5$, $\\sin\\theta_1=\\frac45$. $\\overline{\\mathrm{AG}}=\\overline{\\mathrm{AE}}=2$, $\\cos\\angle\\mathrm{CAG}=\\frac{4+25-24}{20}=\\frac14$, $\\overline{\\mathrm{GE}}^2=8-2=6$. $\\cos\\angle\\mathrm{ECG}=\\frac{24+9-6}{2\\cdot2\\sqrt6\\cdot3}=\\frac{3\\sqrt6}8$, $\\sin=\\frac{\\sqrt{10}}8$. $2R=\\frac{\\sqrt6}{\\sqrt{10}/8}=\\frac{8\\sqrt{15}}5$. $\\overline{\\mathrm{GH}}=2R\\sin\\theta_1=\\frac{32\\sqrt{15}}{25}$",
+  "legacy": {
+    "category": "사인법칙과 코사인법칙",
+    "book_no": 42,
+    "question_page": 21,
+    "solution_page": 63
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-07"
+}

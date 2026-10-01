@@ -1,0 +1,48 @@
+{
+  "id": "M1-230621",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230621",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 21,
+    "points": 4,
+    "label": "2022년 6월 고3 21번"
+  },
+  "question": "자연수 $n$에 대하여 $4\\log_{64}\\left(\\dfrac{3}{4n+16}\\right)$의 값이 정수가 되도록 하는 $1000$ 이하의 모든 $n$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "426",
+  "answer_value": "426",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-02",
+    "primary_name": "지수로그의 연산",
+    "links": [
+      "수학Ⅰ-05"
+    ]
+  },
+  "first_judgment": "식을 $\\log_8\\left(\\frac{3}{4n+16}\\right)^2$로 정리하고, 값 자체를 정수 $m$으로 두어 $n$이 아니라 $m$(또는 $k$) 기준으로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+    "S03",
+    "S04"
+  ],
+  "solution_ref": "$4\\log_{64}\\frac{3}{4n+16}=\\log_8\\left(\\frac{3}{4n+16}\\right)^2$이 정수 $m$ → $\\left(\\frac{3}{4n+16}\\right)^2=8^m$. $4n+16$이 3의 배수여야 하므로 $n=3k-1$ ($1\\le k\\le333$). $\\left(\\frac{1}{4k+4}\\right)^2=2^{3m}\\Rightarrow (k+1)^2=2^{-3m-4}$, 즉 $2^2,2^8,2^{14}$ → $k=1,15,127$, $n=2,44,380$. 합 $426$",
+  "legacy": {
+    "category": "로그의 정의",
+    "book_no": 3,
+    "question_page": 2,
+    "solution_page": 43
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-01"
+}

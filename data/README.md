@@ -1,13 +1,8 @@
-> 참고 문서: `claude/pdf-problem-db-merge-98r9as` 브랜치에서 가져옴. 이 저장소에서는 `all.json` → `data/db.json`, `solutions_all.json` → `data/solutions.json`, `tools/strategy_notes.json` → `data/strategy_notes.json`. 언급된 `tools/*.py`는 원 브랜치에만 있다. 프로젝트 목적·규칙은 루트 `CLAUDE.md` 기준.
+> 참고 문서: `claude/pdf-problem-db-merge-98r9as` 브랜치에서 가져옴. 이 저장소에서는 `all.json`은 `data/problems/{id}.json`(문항별 파일), `solutions_all.json`은 `data/solutions/{id}.json`(풀이)·`data/concepts.json`(개념), `tools/strategy_notes.json` → `data/strategy_notes.json`. 언급된 `tools/*.py`는 원 브랜치에만 있다. 프로젝트 목적·규칙은 루트 `CLAUDE.md` 기준.
 
 # 평가원 4점 기출 통합 DB (208문항)
 
-| 파일 | 과목 | 문항 수 | 출처 PDF |
-|---|---|---|---|
-| `m1.json` | 수학Ⅰ | 81 | 수학I 평가원 기출모음 (고3 21년 6월 ~ 26년 6월) |
-| `m2.json` | 수학Ⅱ | 79 | 수학II 평가원 4점 기출모음 |
-| `prob.json` | 확률과 통계 | 48 | 확통 평가원 4점기출모음 |
-| `all.json` | 전체 | 208 | 위 세 파일 합본 |
+`data/problems/{id}.json` 208개 = 수학Ⅰ 81(`M1-`) · 수학Ⅱ 79(`M2-`) · 확통 48(`PS-`). 과목은 id 접두어로 구분한다. 문항 파일에는 아래 스키마 + `home`(홈 테마)이 있다.
 
 ## 스키마
 

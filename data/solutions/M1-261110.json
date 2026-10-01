@@ -1,0 +1,29 @@
+{
+  "id": "M1-261110",
+  "concept_refs": [
+    "수학Ⅰ-03-C2"
+  ],
+  "guide": "점근선이 $y=-2$이므로 세로선 위에서 $x$축과 점근선 사이 거리 $\\overline{\\mathrm{BC}}$는 항상 $2$다(수학Ⅰ-03-C2). 그러면 $\\overline{\\mathrm{AB}}=2$, 즉 A의 $y$좌표가 $2$로 바로 확정된다. 삼각형 AOC는 세로변 AC와 가로 거리 $\\overline{\\mathrm{OB}}$로 넓이를 잰다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 점근선까지 거리는 상수",
+      "steps": [
+        {
+          "label": "A의 높이",
+          "body": "A의 $x$좌표를 $p$라 하면 $\\mathrm B(p,0)$, $\\mathrm C(p,-2)$이므로 $\\overline{\\mathrm{BC}}=2=\\overline{\\mathrm{AB}}$. 따라서 $\\mathrm A(p,2)$이고 $a^p-2=2$, $a^p=4$."
+        },
+        {
+          "label": "넓이",
+          "body": "$\\overline{\\mathrm{AC}}=4$는 세로변, O에서 이 세로선까지 거리는 $p=\\overline{\\mathrm{OB}}$.\n$$\\frac12\\cdot4\\cdot p=8\\ \\Rightarrow\\ p=4$$"
+        },
+        {
+          "label": "답",
+          "body": "$a^4=4$에서 $a=\\sqrt2$, $a\\times\\overline{\\mathrm{OB}}=4\\sqrt2=2^{\\frac52}$ → ③"
+        }
+      ]
+    }
+  ],
+  "supplement": "A의 좌표를 $(p,a^p-2)$로 두고 시작해도 되지만, '점근선 ⇒ 고정된 거리'를 먼저 보면 미지수가 처음부터 줄어든다. 점근선은 그래프 문제에서 '공짜 길이'를 주는 장치다.",
+  "skill_point": "점근선 $y=c$ → 세로선 위 점근선까지 거리는 상수.",
+  "answer": "3"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "PS-231130",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "231130",
+    "year": 2023,
+    "exam": "대학수학능력시험",
+    "number": 30,
+    "points": 4,
+    "label": "2022년 11월 고3 30번"
+  },
+  "question": "집합 $X=\\{x\\mid x\\text{는 }10\\text{ 이하의 자연수}\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수를 구하시오.",
+  "condition": "(가) $9$ 이하의 모든 자연수 $x$에 대하여 $f(x)\\le f(x+1)$이다.\\\\(나) $1\\le x\\le5$일 때 $f(x)\\le x$이고, $6\\le x\\le10$일 때 $f(x)\\ge x$이다.\\\\(다) $f(6)=f(5)+6$",
+  "choices": null,
+  "answer": "100",
+  "answer_value": "100",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-06",
+    "primary_name": "중복조합 - 부등식 응용형",
+    "links": [
+      "확률과 통계-03"
+    ]
+  },
+  "first_judgment": "(나)에서 $f(1)=1$, $f(10)=10$이고 (다)로 $(f(5),f(6))$ 쌍이 4가지뿐 → 앞·뒤 부분을 독립적으로 센다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "나열·역추적"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$(f(5),f(6))=(1,7),(2,8),(3,9),(4,10)$. 앞부분 $(f(2),f(3),f(4))$ 수 $1,4,9,14$, 뒷부분 $(f(7),f(8),f(9))$ 수 $14,9,4,1$. $14+36+36+14=100$",
+  "legacy": {
+    "category": "함수의 개수(2) : 중복조합",
+    "book_no": 17,
+    "question_page": 9,
+    "solution_page": 33
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-02"
+}

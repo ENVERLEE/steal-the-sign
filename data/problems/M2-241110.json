@@ -1,0 +1,53 @@
+{
+  "id": "M2-241110",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "241110",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 10,
+    "points": 4,
+    "label": "2023년 11월 고3 10번"
+  },
+  "question": "시각 $t=0$일 때 동시에 원점을 출발하여 수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 속도가 각각 $v_1(t)=t^2-6t+5$, $v_2(t)=2t-7$이다. 시각 $t$에서의 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ 사이의 거리를 $f(t)$라 할 때, 함수 $f(t)$는 구간 $[0,a]$에서 증가하고, 구간 $[a,b]$에서 감소하고, 구간 $[b,\\infty)$에서 증가한다. 시각 $t=a$에서 $t=b$까지 점 $\\mathrm{Q}$가 움직인 거리는? (단, $0<a<b$)",
+  "condition": null,
+  "choices": [
+    "\\frac{15}2",
+    "\\frac{17}2",
+    "\\frac{19}2",
+    "\\frac{21}2",
+    "\\frac{23}2"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{17}2",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": [
+      "수학Ⅱ-09"
+    ]
+  },
+  "first_judgment": "$f(t)=|x_1-x_2|=\\left|\\frac13t^3-4t^2+12t\\right|$이 $t\\ge0$에서 음이 아니므로 절댓값 없이 증감을 보고 $a=2$, $b=6$을 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$g=\\frac13t^3-4t^2+12t\\ge0$, $g'=(t-2)(t-6)$ → $a=2$, $b=6$. $\\int_2^6|2t-7|dt=\\frac94+\\frac{25}4=\\frac{17}2$",
+  "legacy": {
+    "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+    "book_no": 73,
+    "question_page": 37,
+    "solution_page": 81
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-10"
+}

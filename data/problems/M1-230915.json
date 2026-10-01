@@ -1,0 +1,54 @@
+{
+  "id": "M1-230915",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230915",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2022년 9월 고3 15번"
+  },
+  "question": "수열 $\\{a_n\\}$이 다음 조건을 만족시킨다. $|a_m|\\ge5$를 만족시키는 $100$ 이하의 자연수 $m$의 개수를 $p$라 할 때, $p+a_1$의 값은?",
+  "condition": "(가) 모든 자연수 $k$에 대하여 $a_{4k}=r^k$이다. (단, $r$는 $0<|r|<1$인 상수이다.)\\\\(나) $a_1<0$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+3 & (|a_n|<5)\\\\ -\\dfrac12a_n & (|a_n|\\ge5)\\end{cases}$이다.",
+  "choices": [
+    "8",
+    "10",
+    "12",
+    "14",
+    "16"
+  ],
+  "answer": "3",
+  "answer_value": "12",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-20",
+    "primary_name": "역추적",
+    "links": [
+      "수학Ⅰ-17",
+      "수학Ⅰ-18"
+    ]
+  },
+  "first_judgment": "$a_4=r$, $a_8=r^2$에서 출발해 $a_5,a_6,a_7,a_8$을 $r$로 나열하면 $r$이 결정되고, 이후 $a_3,a_2,a_1$은 역추적한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "나열·역추적",
+    "단순화·특수화로 규칙성 찾기"
+  ],
+  "strategy_ids": [
+    "S11"
+  ],
+  "solution_ref": "$a_4=r$, $|a_4|<5$ → $a_5=r+3$, $a_6=r+6$, $|a_6|\\ge5$ → $a_7=-\\frac r2-3$, $a_8=-\\frac r2=r^2$ → $r=-\\frac12$. 역추적: $a_3=-\\frac72$, $a_2=7$, $a_1=-14$. 이후 $|a_{4k-2}|\\ge5$, 즉 $m=1,2,6,10,\\dots,98$ → $p=26$. $p+a_1=12$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 80,
+    "question_page": 40,
+    "solution_page": 84
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-11"
+}

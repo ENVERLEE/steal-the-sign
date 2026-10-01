@@ -1,0 +1,50 @@
+{
+  "id": "M2-270621",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "270621",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 21,
+    "points": 4,
+    "label": "2026년 6월 고3 21번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 있다. 실수 $t$에 대하여 $f(\\alpha)=f'(t)-4t^2+4$를 만족시키는 실수 $\\alpha$의 최댓값을 $g(t)$라 하자. 함수 $g(t)$가 $t=3$에서만 불연속이고 $g(3)=1$일 때, $f(2)$의 값을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "11",
+  "answer_value": "11",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-21",
+    "primary_name": "새롭게 정의된 함수",
+    "links": [
+      "수학Ⅱ-09",
+      "수학Ⅱ-04"
+    ]
+  },
+  "first_judgment": "우변 $h(t)=-t^2+2at+b+4$는 $t=a$ 대칭인 위로 볼록한 포물선이고, $g$가 불연속인 곳은 $h(t)$가 $f$의 극솟값과 같아지는 곳이다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "치환·보조함수 도입",
+    "그래프·도형 해석",
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+    "S18",
+    "S19"
+  ],
+  "solution_ref": "$h(t)=-t^2+2at+b+4$. $g$는 $h(t_1)$이 극솟값일 때 불연속; $h$가 $t=a$ 대칭이므로 불연속점이 하나이려면 $a=3$, $h(3)$=극솟값. $g(3)=x_2=1$ → $f'(1)=0$ → $b=-9$. $f(1)=h(3)$: $c-5=4$, $c=9$. $f(x)=x^3+3x^2-9x+9$, $f(2)=11$",
+  "legacy": {
+    "category": "함수의 최대 · 최소를 이용한 미정계수의 결정",
+    "book_no": 26,
+    "question_page": 13,
+    "solution_page": 55
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-05"
+}

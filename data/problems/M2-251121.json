@@ -1,0 +1,47 @@
+{
+  "id": "M2-251121",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "251121",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 21,
+    "points": 4,
+    "label": "2024년 11월 고3 21번"
+  },
+  "question": "함수 $f(x)=x^3+ax^2+bx+4$가 다음 조건을 만족시키도록 하는 두 정수 $a,b$에 대하여 $f(1)$의 최댓값을 구하시오.",
+  "condition": "모든 실수 $\\alpha$에 대하여 $\\displaystyle\\lim_{x\\to\\alpha}\\frac{f(2x+1)}{f(x)}$의 값이 존재한다.",
+  "choices": null,
+  "answer": "16",
+  "answer_value": "16",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-03",
+    "primary_name": "극한값과 인수결정",
+    "links": [
+      "수학Ⅱ-01"
+    ]
+  },
+  "first_judgment": "$f(\\beta)=0$이면 $f(2\\beta+1)=0$이 되어 근이 $\\beta,2\\beta+1,4\\beta+3,\\dots$로 늘어나므로, 삼차방정식의 근은 $\\beta=2\\beta+1$, 즉 $-1$뿐이어야 한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+    "S13"
+  ],
+  "solution_ref": "$f(\\beta)=0\\Rightarrow f(2\\beta+1)=0$. 근이 무한히 생기지 않으려면 실근은 $-1$뿐. $f(-1)=0$ → $b=a+3$, $f(x)=(x+1)\\{x^2+(a-1)x+4\\}$. 이차식 실근 없음: $(a-1)^2<16$ → $-3<a<5$. $f(1)=2a+8$, $a=4$일 때 최댓값 $16$",
+  "legacy": {
+    "category": "미정계수의 결정",
+    "book_no": 3,
+    "question_page": 2,
+    "solution_page": 42
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-01"
+}

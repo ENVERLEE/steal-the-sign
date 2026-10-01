@@ -1,0 +1,47 @@
+{
+  "id": "PS-240630",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "240630",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 30,
+    "points": 4,
+    "label": "2023년 6월 고3 30번"
+  },
+  "question": "주머니에 숫자 $1,2,3,4$가 하나씩 적혀 있는 흰 공 $4$개와 숫자 $4,5,6,7$이 하나씩 적혀 있는 검은 공 $4$개가 들어 있다. 이 주머니를 사용하여 다음 규칙에 따라 점수를 얻는 시행을 한다. 이 시행을 한 번 하여 얻은 점수가 $24$ 이하의 짝수일 확률이 $\\dfrac qp$일 때, $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "주머니에서 임의로 $2$개의 공을 동시에 꺼내어 꺼낸 공이 서로 다른 색이면 $12$를 점수로 얻고, 꺼낸 공이 서로 같은 색이면 꺼낸 두 공에 적힌 수의 곱을 점수로 얻는다.",
+  "choices": null,
+  "answer": "51",
+  "answer_value": "51",
+  "figure": {
+    "description": "주머니 속 흰 공 1~4, 검은 공 4~7",
+    "source_page": 11
+  },
+  "theme": {
+    "primary": "확률과 통계-09",
+    "primary_name": "확률의 정의 Ⅰ",
+    "links": [
+      "확률과 통계-10"
+    ]
+  },
+  "first_judgment": "다른 색이면 항상 $12$점(조건 만족)이고, 같은 색일 때만 곱이 $24$ 이하 짝수인지 센다.",
+  "behavior": "계산",
+  "reasoning": [
+    "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 다른 색: $\\frac{16}{28}=\\frac47$. (ii) 흰·흰 곱 짝수: $6-1=5$, 검·검 $\\{4,5\\},\\{4,6\\}$: 2 → $\\frac7{28}=\\frac14$. 합 $\\frac{23}{28}$, $p+q=51$",
+  "legacy": {
+    "category": "수학적 확률 구하기(5) : 조합",
+    "book_no": 22,
+    "question_page": 11,
+    "solution_page": 35
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-03"
+}

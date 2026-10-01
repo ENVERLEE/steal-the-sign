@@ -1,0 +1,53 @@
+{
+  "id": "M1-240615",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "240615",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2023년 6월 고3 15번"
+  },
+  "question": "자연수 $k$에 대하여 다음 조건을 만족시키는 수열 $\\{a_n\\}$이 있다. $a_3\\times a_4\\times a_5\\times a_6<0$이 되도록 하는 모든 $k$의 값의 합은?",
+  "condition": "$a_1=k$이고, 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n+2n-k & (a_n\\le0)\\\\ a_n-2n-k & (a_n>0)\\end{cases}$이다.",
+  "choices": [
+    "10",
+    "14",
+    "18",
+    "22",
+    "26"
+  ],
+  "answer": "2",
+  "answer_value": "14",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-17",
+    "primary_name": "귀납적으로 정의된 수열",
+    "links": [
+      "수학Ⅰ-21"
+    ]
+  },
+  "first_judgment": "$a_2=-2<0$이 $k$와 무관하게 정해지므로, 이후 항의 부호를 $k$의 범위로 나누며 나열한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "나열·역추적"
+  ],
+  "strategy_ids": [
+    "S11"
+  ],
+  "solution_ref": "$a_2=-2$, $a_3=2-k$. (i) $k=1$: $a_3>0$, $a_4<0$, $a_5>0$, $a_6<0$ → 곱 $>0$. (ii) $k>2$: $a_4=8-2k$. (a) $k=3$: $a_4=2$, $a_5=-9$, $a_6=-2$ → 조건 만족. (b) $k>4$: $a_5=16-3k$; $k=5$: $a_5=1$, $a_6=-14$ → 만족; $k\\ge6$: $a_6=26-4k>0$ → $k=6$. 합 $3+5+6=14$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 78,
+    "question_page": 39,
+    "solution_page": 82
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-10"
+}

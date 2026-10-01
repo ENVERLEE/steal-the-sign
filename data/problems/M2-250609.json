@@ -1,0 +1,50 @@
+{
+  "id": "M2-250609",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250609",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2024년 6월 고3 9번"
+  },
+  "question": "함수 $f(x)=\\begin{cases}x-\\dfrac12 & (x<0)\\\\ -x^2+3 & (x\\ge0)\\end{cases}$에 대하여 함수 $\\{f(x)+a\\}^2$이 실수 전체의 집합에서 연속일 때, 상수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+    "-\\frac94",
+    "-\\frac74",
+    "-\\frac54",
+    "-\\frac34",
+    "-\\frac14"
+  ],
+  "answer": "3",
+  "answer_value": "-\\frac54",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-04",
+    "primary_name": "함수의 연속",
+    "links": []
+  },
+  "first_judgment": "불연속점은 $x=0$뿐이므로 $x=0$에서 좌극한과 함숫값의 제곱이 같도록 식을 세운다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S14"
+  ],
+  "solution_ref": "$\\left(-\\frac12+a\\right)^2=(3+a)^2$ → $7a=-\\frac{35}4$, $a=-\\frac54$",
+  "legacy": {
+    "category": "함수가 연속일 조건(1) : 구간별로 주어진 함수가 연속일 조건",
+    "book_no": 7,
+    "question_page": 4,
+    "solution_page": 45
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-02"
+}

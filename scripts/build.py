@@ -1,4 +1,4 @@
-"""book.json + db.json + solutions.json + 문제은행 → out/book.html
+"""book.json + data/problems·solutions + 문제은행 → out/book.html
 
 1) 모델: DAY별 페이지 데이터(텍스트는 Math.rich로 HTML화, 수식은 자리표시)
 2) KaTeX 일괄 조판 → 자리표시 채움

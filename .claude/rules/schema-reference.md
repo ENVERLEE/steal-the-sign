@@ -1,15 +1,18 @@
 ---
 globs:
-  - "data/db.json"
+  - "data/problems/**"
   - "data/themes.json"
-  - "data/solutions.json"
+  - "data/solutions/**"
+  - "data/concepts.json"
   - "work/book*.json"
   - "schema/**"
 ---
 
 # 스키마 참고 문서
 
-## db.json — 기출 데이터
+## data/problems/{id}.json — 기출 데이터 (문항 하나 = 파일 하나)
+
+- 파일명 = `id`. 아래 스키마 + `"home": "M1-01"`(홈 테마, 필수, 208문항이 한 번씩). `data/index.json`은 validate가 자동 생성하는 한 줄 요약이다. **문항을 고를 때는 index.json만 읽고, 고른 문항 파일만 연다.**
 
 ```json
 {
@@ -45,15 +48,15 @@ globs:
 원칙: 교과서 소단원이 아니라 **평가원 첫 판단**이 같은 문항끼리 묶음.
 
 - 28개 = 수학Ⅰ 11(`M1-01`~`11`) + 수학Ⅱ 10(`M2-01`~`10`) + 확통 7(`PS-01`~`07`)
-- 208문항이 홈 테마 하나에 한 번씩 배정(테마당 5~10)
-- **교재 테마는 themes.json 기준.** db의 `theme.primary`는 기존 64분류(개념 id 출처로만 사용).
+- 208문항이 홈 테마 하나에 한 번씩 배정(테마당 5~10, 문항 파일의 `home`)
+- **교재 테마는 themes.json 기준.** 테마의 `problem_ids`는 문항 파일의 `home`에서 자동 집계(파일에 쓰지 않는다). `related_ids`만 themes.json에 둔다. 문항의 `theme.primary`는 기존 64분류(개념 id 출처로만 사용).
 - **기출 중복 사용 허용**: 우선 `problem_ids`·`related_ids`에서. 그 밖은 `reason` 필수(경고).
 - 같은 DAY 중복 금지, 책 전체 3회 이하 사용, 홈 테마 밖이면 `reuse_note` 필수.
 
-## solutions.json — 해설 및 개념
+## 해설 및 개념
 
-- `themes[]`: 54개 테마의 개념·의사결정 흐름. 기존 64분류 기준.
-- `problems[]`: db 레코드 + `study_solution`(풀이).
+- `data/concepts.json`: `themes[]` 54개 테마의 개념·의사결정 흐름. 기존 64분류 기준.
+- `data/solutions/{id}.json`: 문항 하나의 `study_solution`(풀이).
 - 풀이: `guide`(조건 번역) → `solutions`(풀이 1 스킬, 풀이 2 정석) → `supplement`(비교) → `skill_point`.
 - 내부 개념 id `(수학Ⅰ-02-C1)`는 build가 지우거나 「개념 이름」으로 변환.
 

@@ -1,0 +1,54 @@
+{
+  "id": "M2-260613",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "260613",
+    "year": 2026,
+    "exam": "6월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2025년 6월 고3 13번"
+  },
+  "question": "그림과 같이 함수 $f(x)=3x^2-7x+2$에 대하여 곡선 $y=f(x)$와 직선 $y=\\dfrac13x-\\dfrac23$ 및 $y$축으로 둘러싸인 영역을 $A$, 곡선 $y=f(x)$와 직선 $y=\\dfrac13x-\\dfrac23$로 둘러싸인 영역을 $B$, 곡선 $y=f(x)$와 두 직선 $y=\\dfrac13x-\\dfrac23$, $x=k$ $(k>2)$로 둘러싸인 영역을 $C$라 하자. $(A\\text{의 넓이})+(C\\text{의 넓이})=(B\\text{의 넓이})$일 때, 상수 $k$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac{29}{12}",
+    "\\frac52",
+    "\\frac{31}{12}",
+    "\\frac83",
+    "\\frac{11}4"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac83",
+  "figure": {
+    "description": "포물선 $y=3x^2-7x+2$와 직선 $y=\\frac13x-\\frac23$, $y$축, $x=k$; 영역 A(왼쪽 작은 부분), B(아래 큰 부분), C(오른쪽) 색칠",
+    "source_page": 31
+  },
+  "theme": {
+    "primary": "수학Ⅱ-18",
+    "primary_name": "정적분과 넓이",
+    "links": []
+  },
+  "first_judgment": "넓이 조건 $A+C=B$는 부호를 살린 적분 $\\int_0^k\\{f(x)-(\\text{직선})\\}dx=0$과 같다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S24",
+    "S25"
+  ],
+  "solution_ref": "$\\int_0^k\\left(3x^2-\\frac{22}3x+\\frac83\\right)dx=k^3-\\frac{11}3k^2+\\frac83k=\\frac13k(k-1)(3k-8)=0$ → $k=\\frac83$",
+  "legacy": {
+    "category": "곡선과 직선 사이의 넓이",
+    "book_no": 62,
+    "question_page": 31,
+    "solution_page": 76
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-08"
+}

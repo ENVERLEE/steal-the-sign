@@ -1,0 +1,48 @@
+{
+  "id": "M2-251109",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "251109",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 9,
+    "points": 4,
+    "label": "2024년 11월 고3 9번"
+  },
+  "question": "함수 $f(x)=3x^2-16x-20$에 대하여 $\\displaystyle\\int_{-2}^{a}f(x)\\,dx=\\int_{-2}^{0}f(x)\\,dx$일 때, 양수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+    "16",
+    "14",
+    "12",
+    "10",
+    "8"
+  ],
+  "answer": "4",
+  "answer_value": "10",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-14",
+    "primary_name": "적분 연산",
+    "links": []
+  },
+  "first_judgment": "구간을 나누면 조건은 $\\int_0^af(x)\\,dx=0$과 같다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_0^a f=a^3-8a^2-20a=a(a+2)(a-10)=0$ → $a=10$",
+  "legacy": {
+    "category": "정적분의 계산(2) : 피적분함수가 같은 경우",
+    "book_no": 42,
+    "question_page": 21,
+    "solution_page": 65
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "M1-220912",
+  "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C1"
+  ],
+  "guide": "삼각형 ABC, BCD가 **같은 원**에 내접하므로 반지름 $2\\sqrt7$ 하나로 현 BC와 현 BD가 모두 나온다(수학Ⅰ-12-C2).\n· $\\overline{\\mathrm{BC}}=2R\\sin A$\n· $\\overline{\\mathrm{BD}}=2R\\sin(\\angle\\mathrm{BCD})$ ($\\angle\\mathrm{BCD}$는 현 BD의 원주각)\n그리고 사각형 ABDC가 원에 내접하므로 $\\angle\\mathrm{BDC}=\\pi-\\frac\\pi3$ (수학Ⅰ-12-C3). 그러면 삼각형 BCD는 SSA가 되어 $\\overline{\\mathrm{CD}}$에 대한 이차방정식.",
+  "solutions": [
+    {
+      "title": "풀이 · 같은 원의 사인법칙 두 번",
+      "steps": [
+        {
+          "label": "두 현",
+          "body": "$\\overline{\\mathrm{BC}}=2\\cdot2\\sqrt7\\cdot\\sin\\frac\\pi3=2\\sqrt{21}$, $\\overline{\\mathrm{BD}}=4\\sqrt7\\cdot\\frac{2\\sqrt7}7=8$."
+        },
+        {
+          "label": "대각",
+          "body": "D는 A를 포함하지 않는 호 위에 있으므로 A와 D는 현 BC에 대해 반대편: $\\angle\\mathrm{BDC}=\\pi-\\frac\\pi3=\\frac23\\pi$."
+        },
+        {
+          "label": "$\\overline{\\mathrm{CD}}$",
+          "body": "$\\overline{\\mathrm{CD}}=x$라 하면\n$$84=64+x^2-2\\cdot8\\cdot x\\cdot\\left(-\\tfrac12\\right)\\ \\Rightarrow\\ x^2+8x-20=0\\ \\Rightarrow\\ x=2\\ (x>0)$$"
+        },
+        {
+          "label": "답",
+          "body": "$\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}}=10$ → ②"
+        }
+      ]
+    }
+  ],
+  "supplement": "$\\sin(\\angle\\mathrm{BCD})$만 주어지면 $\\angle\\mathrm{BCD}$가 예각인지 둔각인지 모른다(S07 주의). 하지만 이 문제는 $\\angle\\mathrm{BCD}$를 직접 쓰지 않고 $\\sin$을 현의 길이로만 바꾸므로 그 모호함을 피한다. 원이 주어졌을 때 $\\sin$ 값은 곧 '현의 길이'라고 번역하는 습관을 들이자. 둔각 $\\frac23\\pi$에서 $-2ab\\cos$가 $+ab$가 되는 부호도 자주 틀리는 부분이다.",
+  "skill_point": "같은 원에 내접하면 $\\sin$ 값 = 현의 길이$/2R$. 내접사각형은 대각의 합 $\\pi$.",
+  "answer": "2"
+}

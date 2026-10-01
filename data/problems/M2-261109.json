@@ -1,0 +1,53 @@
+{
+  "id": "M2-261109",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "261109",
+    "year": 2026,
+    "exam": "대학수학능력시험",
+    "number": 9,
+    "points": 4,
+    "label": "2025년 11월 고3 9번"
+  },
+  "question": "양수 $a$에 대하여 함수 $f(x)$를 $f(x)=x^3+3ax^2-9a^2x+4$라 하자. 직선 $y=5$가 곡선 $y=f(x)$에 접할 때, $f(2)$의 값은?",
+  "condition": null,
+  "choices": [
+    "11",
+    "12",
+    "13",
+    "14",
+    "15"
+  ],
+  "answer": "4",
+  "answer_value": "14",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-09",
+    "primary_name": "증가/감소, 극대/극소, 최대/최소",
+    "links": [
+      "수학Ⅱ-08"
+    ]
+  },
+  "first_judgment": "$y=5$가 접하면 극댓값 또는 극솟값이 $5$이다; $f(0)=4<5$이므로 극솟값이 아니라 극댓값 $f(-3a)=5$이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S18",
+    "S19"
+  ],
+  "solution_ref": "$f'=3(x+3a)(x-a)$. $f(0)=4<5$ → $f(-3a)=27a^3+4=5$, $a=\\frac13$. $f(x)=x^3+x^2-x+4$, $f(2)=14$",
+  "legacy": {
+    "category": "함수의 극대 · 극소를 이용한 미정계수의 결정",
+    "book_no": 20,
+    "question_page": 10,
+    "solution_page": 51
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-04"
+}

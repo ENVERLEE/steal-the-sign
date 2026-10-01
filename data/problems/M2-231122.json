@@ -1,0 +1,50 @@
+{
+  "id": "M2-231122",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "231122",
+    "year": 2023,
+    "exam": "대학수학능력시험",
+    "number": 22,
+    "points": 4,
+    "label": "2022년 11월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$와 실수 전체의 집합에서 연속인 함수 $g(x)$가 다음 조건을 만족시킬 때, $f(4)$의 값을 구하시오.",
+  "condition": "(가) 모든 실수 $x$에 대하여 $f(x)=f(1)+(x-1)f'(g(x))$이다.\\\\(나) 함수 $g(x)$의 최솟값은 $\\dfrac52$이다.\\\\(다) $f(0)=-3$, $f(g(1))=6$",
+  "choices": null,
+  "answer": "13",
+  "answer_value": "13",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-09",
+    "primary_name": "증가/감소, 극대/극소, 최대/최소",
+    "links": [
+      "수학Ⅱ-08",
+      "수학Ⅱ-06",
+      "수학Ⅱ-10"
+    ]
+  },
+  "first_judgment": "(가)는 평균값 정리 꼴이다: 점 $(1,f(1))$과 $(x,f(x))$를 잇는 직선의 기울기가 $f'(g(x))$이므로, $g$의 최솟값 $\\frac52$에서의 접선이 $(1,f(1))$을 지난다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S19",
+    "S21"
+  ],
+  "solution_ref": "$f=x^3+ax^2+bx-3$. 점 $\\left(\\frac52,f\\left(\\frac52\\right)\\right)$의 접선이 $(1,f(1))$을 지남 → $a=-6$. $x\\to1$ 극한: $3k^2-12k+b=b-9$ ($k=g(1)$) → $k=1$ 또는 $3$; $g\\ge\\frac52$이므로 $g(1)=3$. $f(3)=6$ → $b=12$. $f(4)=64-96+48-3=13$",
+  "legacy": {
+    "category": "함수의 최대 · 최소를 이용한 미정계수의 결정",
+    "book_no": 27,
+    "question_page": 14,
+    "solution_page": 56
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-04"
+}

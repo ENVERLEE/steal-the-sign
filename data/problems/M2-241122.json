@@ -1,0 +1,50 @@
+{
+  "id": "M2-241122",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "241122",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 22,
+    "points": 4,
+    "label": "2023년 11월 고3 22번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f'\\left(-\\dfrac14\\right)=-\\dfrac14$, $f'\\left(\\dfrac14\\right)<0$일 때, $f(8)$의 값을 구하시오.",
+  "condition": "함수 $f(x)$에 대하여 $f(k-1)f(k+1)<0$을 만족시키는 정수 $k$는 존재하지 않는다.",
+  "choices": null,
+  "answer": "483",
+  "answer_value": "483",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-13",
+    "primary_name": "다항함수와 정수조건",
+    "links": [
+      "수학Ⅱ-09",
+      "수학Ⅱ-10"
+    ]
+  },
+  "first_judgment": "조건은 '간격 2인 정수쌍에서 부호가 바뀌지 않는다'이므로, $f(x)=0$의 실근 개수(1, 2, 3)로 나눠 근이 연속한 정수 사이에 몰려 있어야 함을 본다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "경우 나누기",
+    "정수 조건으로 후보 좁히기",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S09",
+    "S19"
+  ],
+  "solution_ref": "모든 정수 $k$에 대해 $f(k-1)f(k+1)\\ge0$. (i) 실근 1개: 불가. (ii) 실근 2개: $f=x(x-1)^2$ 또는 $x^2(x-1)$ — $f'\\left(-\\frac14\\right)=-\\frac14$ 불만족. (iii) 실근 3개: $b=m+1$, $c=m+2$, $m=-1$ → $f=(x-a)(x^2-x)$, $f'\\left(-\\frac14\\right)=\\frac{11}{16}+\\frac32a=-\\frac14$ → $a=-\\frac58$. $f(8)=\\frac{69}8\\cdot56=483$",
+  "legacy": {
+    "category": "함수의 그래프 그리기",
+    "book_no": 22,
+    "question_page": 11,
+    "solution_page": 52
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-05"
+}

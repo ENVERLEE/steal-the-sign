@@ -1,0 +1,51 @@
+{
+  "id": "M2-240911",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240911",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2023년 9월 고3 11번"
+  },
+  "question": "두 점 $\\mathrm{P}$와 $\\mathrm{Q}$는 시각 $t=0$일 때 각각 점 $\\mathrm{A}(1)$과 점 $\\mathrm{B}(8)$에서 출발하여 수직선 위를 움직인다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 속도는 각각 $v_1(t)=3t^2+4t-7$, $v_2(t)=2t+4$이다. 출발한 시각부터 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ 사이의 거리가 처음으로 $4$가 될 때까지 점 $\\mathrm{P}$가 움직인 거리는?",
+  "condition": null,
+  "choices": [
+    "10",
+    "14",
+    "19",
+    "25",
+    "32"
+  ],
+  "answer": "5",
+  "answer_value": "32",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "두 위치 함수를 세워 $|s_1-s_2|=4$의 가장 작은 양의 근을 구하고, 그때까지 $v_1$의 부호 변화를 반영해 거리를 계산한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$s_1=t^3+2t^2-7t+1$, $s_2=t^2+4t+8$. $|t^3+t^2-11t-7|=4$ → $t=\\sqrt{11}$ 또는 $t=3$; 처음은 $t=3$. $v_1=(3t+7)(t-1)$. 거리 $=-(-4)+28=32$",
+  "legacy": {
+    "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+    "book_no": 74,
+    "question_page": 37,
+    "solution_page": 82
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-10"
+}

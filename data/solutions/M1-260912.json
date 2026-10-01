@@ -1,0 +1,30 @@
+{
+  "id": "M1-260912",
+  "concept_refs": [
+    "수학Ⅰ-03-C2",
+    "수학Ⅰ-03-C1"
+  ],
+  "guide": "BC가 세로선이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이므로 A는 BC의 수직이등분선 위, 즉 A의 높이가 BC 중점의 높이다(수학Ⅰ-03-C2). B의 높이는 A의 높이의 제곱($a^{2t}=(a^t)^2$, 수학Ⅰ-03-C1)이므로 이 한 줄로 $a^t$가 정해진다. 넓이는 세로변 BC와 가로 거리 $t$로 계산한다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 수직이등분선 + 세로변 넓이",
+      "steps": [
+        {
+          "label": "이등변 조건",
+          "body": "$\\mathrm A(t,a^t)$, $\\mathrm B(2t,a^{2t})$, $\\mathrm C(2t,0)$. A가 BC의 수직이등분선 위에 있으므로\n$$a^t=\\frac{a^{2t}}2=\\frac{(a^t)^2}2\\ \\Rightarrow\\ a^t=2,\\quad a^{2t}=4$$"
+        },
+        {
+          "label": "넓이",
+          "body": "세로변 $\\overline{\\mathrm{BC}}=4$, A에서 BC까지 가로 거리 $2t-t=t$.\n$$\\frac12\\cdot4\\cdot t=8\\ \\Rightarrow\\ t=4$$"
+        },
+        {
+          "label": "답",
+          "body": "$a^4=2$이므로 $a=2^{\\frac14}$, $at=2^{\\frac14}\\cdot2^2=2^{\\frac94}$ → ①"
+        }
+      ]
+    }
+  ],
+  "supplement": "$\\overline{\\mathrm{AB}}^2=\\overline{\\mathrm{AC}}^2$을 거리 공식으로 세우면 $t^2+(a^{2t}-a^t)^2=t^2+a^{2t}$가 되어 결국 같은 식이 나오지만, 전개가 길고 실수하기 쉽다. '이등변 ⇒ 꼭짓점은 밑변의 수직이등분선 위'는 그래프 문제에서 가장 자주 쓰는 번역이다.",
+  "skill_point": "이등변 + 세로 밑변 → 꼭짓점 높이 $=$ 밑변 중점 높이.",
+  "answer": "1"
+}

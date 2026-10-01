@@ -93,9 +93,11 @@
   },
 
   "paths": {
-    "db": "data/db.json",
+    "problems": "data/problems",
+    "index": "data/index.json",
     "themes": "data/themes.json",
-    "solutions": "data/solutions.json",
+    "solutions": "data/solutions",
+    "concepts": "data/concepts.json",
     "strategy_notes": "data/strategy_notes.json",
     "template": "data/STS_template.html",
     "ext_template": "data/STS_ext.html",

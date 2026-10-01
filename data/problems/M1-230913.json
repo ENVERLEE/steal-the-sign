@@ -1,0 +1,55 @@
+{
+  "id": "M1-230913",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230913",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2022년 9월 고3 13번"
+  },
+  "question": "그림과 같이 선분 $\\mathrm{AB}$를 지름으로 하는 반원의 호 $\\mathrm{AB}$ 위에 두 점 $\\mathrm{C}$, $\\mathrm{D}$가 있다. 선분 $\\mathrm{AB}$의 중점 $\\mathrm{O}$에 대하여 두 선분 $\\mathrm{AD}$, $\\mathrm{CO}$가 점 $\\mathrm{E}$에서 만나고, $\\overline{\\mathrm{CE}}=4$, $\\overline{\\mathrm{ED}}=3\\sqrt2$, $\\angle\\mathrm{CEA}=\\dfrac34\\pi$이다. $\\overline{\\mathrm{AC}}\\times\\overline{\\mathrm{CD}}$의 값은?",
+  "condition": null,
+  "choices": [
+    "6\\sqrt{10}",
+    "10\\sqrt5",
+    "16\\sqrt2",
+    "12\\sqrt5",
+    "20\\sqrt2"
+  ],
+  "answer": "5",
+  "answer_value": "20\\sqrt2",
+  "figure": {
+    "description": "지름 AB인 반원, 호 위의 C, D, 중심 O, AD와 CO의 교점 E, $\\angle$CEA$=\\frac34\\pi$",
+    "source_page": 22
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "삼각형 $\\mathrm{CDE}$는 두 변과 끼인각($\\frac\\pi4$)이 주어져 결정되므로 $\\overline{\\mathrm{CD}}$부터 구하고, $\\overline{\\mathrm{AC}}$는 외접원·이등변삼각형 $\\mathrm{AOC}$로 구한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{CD}}^2=16+18-2\\cdot4\\cdot3\\sqrt2\\cdot\\frac1{\\sqrt2}=10$. $\\cos\\angle\\mathrm{CDE}=\\frac1{\\sqrt5}$, $\\sin=\\frac2{\\sqrt5}$. $\\overline{\\mathrm{AC}}=x$, $\\overline{\\mathrm{AE}}=y$: $x^2=y^2+4\\sqrt2y+16$ ㉠; $2R=\\frac{\\sqrt5}2x$, $\\cos\\alpha=\\frac2{\\sqrt5}$, $\\sin\\alpha=\\frac{\\sqrt5}5$; 삼각형 ACE 사인법칙 $\\sqrt2x=\\sqrt5y$ ㉡ → $3y^2-8\\sqrt2y-32=0$, $y=4\\sqrt2$, $x=4\\sqrt5$. $\\overline{\\mathrm{AC}}\\cdot\\overline{\\mathrm{CD}}=4\\sqrt5\\cdot\\sqrt{10}=20\\sqrt2$",
+  "legacy": {
+    "category": "사인법칙과 코사인법칙",
+    "book_no": 44,
+    "question_page": 22,
+    "solution_page": 63
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-06"
+}

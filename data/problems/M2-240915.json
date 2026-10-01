@@ -1,0 +1,54 @@
+{
+  "id": "M2-240915",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240915",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2023년 9월 고3 15번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $g(x)$를 $g(x)=\\begin{cases}\\dfrac{f(x+3)\\{f(x)+1\\}}{f(x)} & (f(x)\\ne0)\\\\ 3 & (f(x)=0)\\end{cases}$이라 하자. $\\displaystyle\\lim_{x\\to3}g(x)=g(3)-1$일 때, $g(5)$의 값은?",
+  "condition": null,
+  "choices": [
+    "14",
+    "16",
+    "18",
+    "20",
+    "22"
+  ],
+  "answer": "4",
+  "answer_value": "20",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-04",
+    "primary_name": "함수의 연속",
+    "links": [
+      "수학Ⅱ-03"
+    ]
+  },
+  "first_judgment": "$f(3)\\ne0$이면 $g$가 $x=3$에서 연속이라 모순이므로 $f(3)=0$; 그러면 분모$\\to0$이므로 분자 $f(6)\\{f(3)+1\\}=0$ → $f(6)=0$.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S14",
+    "S13"
+  ],
+  "solution_ref": "$f(3)=0$, $f(6)=0$, $f(x)=(x-3)(x-6)(x-k)$. $\\lim_{x\\to3}g=\\frac{3(6-k)}{-3(3-k)}=\\frac{6-k}{k-3}=3-1$ → $k=4$. $f(8)=40,\\ f(5)=-2$ → $g(5)=\\frac{40\\cdot(-1)}{-2}=20$",
+  "legacy": {
+    "category": "함수가 불연속일 조건(2) : 다양한 형태의 함수가 불연속일 조건",
+    "book_no": 10,
+    "question_page": 5,
+    "solution_page": 46
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-01"
+}

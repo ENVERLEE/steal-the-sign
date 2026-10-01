@@ -1,0 +1,45 @@
+{
+  "id": "PS-241130",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "241130",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 30,
+    "points": 4,
+    "label": "2023년 11월 고3 30번"
+  },
+  "question": "양수 $t$에 대하여 확률변수 $X$가 정규분포 $\\mathrm N(1,t^2)$을 따른다. $\\mathrm P(X\\le5t)\\ge\\dfrac12$이 되도록 하는 모든 양수 $t$에 대하여 $\\mathrm P(t^2-t+1\\le X\\le t^2+t+1)$의 최댓값을 다음 표준정규분포표를 이용하여 구한 값을 $k$라 하자. $1000k$의 값을 구하시오.",
+  "condition": "표준정규분포표: $\\mathrm P(0\\le Z\\le0.6)=0.226$, $\\mathrm P(0\\le Z\\le0.8)=0.288$, $\\mathrm P(0\\le Z\\le1.0)=0.341$, $\\mathrm P(0\\le Z\\le1.2)=0.385$, $\\mathrm P(0\\le Z\\le1.4)=0.419$",
+  "choices": null,
+  "answer": "673",
+  "answer_value": "673",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-18",
+    "primary_name": "정규분포와 표준화",
+    "links": [
+      "확률과 통계-19"
+    ]
+  },
+  "first_judgment": "표준화하면 구간이 $[t-1,t+1]$로 길이 $2$가 고정되므로, 중심 $t$가 $0$에 가까울수록 확률이 커진다 — $t\\ge\\frac15$의 최소값에서 최대.",
+  "behavior": "추론",
+  "reasoning": [
+    "치환·보조함수 도입",
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$5t\\ge1$ → $t\\ge\\frac15$. $\\mathrm P(t-1\\le Z\\le t+1)$은 $t=\\frac15$에서 최대: $\\mathrm P(-0.8\\le Z\\le1.2)=0.288+0.385=0.673$. $1000k=673$",
+  "legacy": {
+    "category": "정규분포에서 확률을 만족시키는 미지수의 값 구하기",
+    "book_no": 42,
+    "question_page": 21,
+    "solution_page": 45
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-07"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "M2-261111",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "261111",
+    "year": 2026,
+    "exam": "대학수학능력시험",
+    "number": 11,
+    "points": 4,
+    "label": "2025년 11월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 원점을 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$가 있다. 실수 $k$에 대하여 시각 $t$ $(t\\ge0)$일 때 점 $\\mathrm{P}$의 속도 $v(t)$가 $v(t)=t^2-kt+4$이다. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $k=0$이면, 시각 $t=1$일 때 점 $\\mathrm{P}$의 위치는 $\\dfrac{13}3$이다.\\\\ㄴ. $k=3$이면, 출발한 후 점 $\\mathrm{P}$의 운동 방향이 한 번 바뀐다.\\\\ㄷ. $k=5$이면, 시각 $t=0$에서 $t=2$까지 점 $\\mathrm{P}$가 움직인 거리는 $3$이다.",
+  "choices": [
+    "ㄱ",
+    "ㄱ, ㄴ",
+    "ㄱ, ㄷ",
+    "ㄴ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "3",
+  "answer_value": "ㄱ, ㄷ",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "위치는 $\\int v$, 움직인 거리는 $\\int|v|$ — ㄷ은 $v=(t-1)(t-4)$의 부호가 $t=1$에서 바뀌는 것을 반영한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "ㄱ: $\\int_0^1(t^2+4)dt=\\frac{13}3$ (참). ㄴ: $v=\\left(t-\\frac32\\right)^2+\\frac74>0$ (거짓). ㄷ: $\\int_0^1v-\\int_1^2v=\\frac{11}6+\\frac76=3$ (참). 답 ㄱ, ㄷ",
+  "legacy": {
+    "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+    "book_no": 71,
+    "question_page": 36,
+    "solution_page": 80
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-09"
+}

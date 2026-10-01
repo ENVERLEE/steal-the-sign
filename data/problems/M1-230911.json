@@ -1,0 +1,54 @@
+{
+  "id": "M1-230911",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230911",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2022년 9월 고3 11번"
+  },
+  "question": "함수 $f(x)=-(x-2)^2+k$에 대하여 다음 조건을 만족시키는 자연수 $n$의 개수가 $2$일 때, 상수 $k$의 값은?",
+  "condition": "$\\sqrt{3}^{\\,f(n)}$의 네제곱근 중 실수인 것을 모두 곱한 값이 $-9$이다.",
+  "choices": [
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+  ],
+  "answer": "2",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-01",
+    "primary_name": "거듭제곱근",
+    "links": [
+      "수학Ⅰ-02"
+    ]
+  },
+  "first_judgment": "양수의 네제곱근 중 실수는 $\\pm$ 두 개이므로 그 곱은 $-\\sqrt{3}^{\\,f(n)/2}$이고, 이것이 $-9$가 되는 $f(n)$ 값을 먼저 구한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+    "S01",
+    "S02"
+  ],
+  "solution_ref": "$\\sqrt[4]{\\sqrt3^{f(n)}}\\cdot\\left(-\\sqrt[4]{\\sqrt3^{f(n)}}\\right)=-3^{\\frac14 f(n)}=-9\\Rightarrow f(n)=8$. 대칭축 $x=2$이므로 $f(n)=8$인 자연수 $n$이 2개이려면 그래프가 $(1,8)$을 지나야 한다. $f(1)=-1+k=8\\therefore k=9$",
+  "legacy": {
+    "category": "ⁿ√a의 정의",
+    "book_no": 1,
+    "question_page": 1,
+    "solution_page": 42
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-01"
+}

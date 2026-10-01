@@ -1,0 +1,49 @@
+{
+  "id": "M2-220622",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "220622",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 22,
+    "points": 4,
+    "label": "2021년 6월 고3 22번"
+  },
+  "question": "삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f(1)=4$, $f'(1)=1$, $f'(0)>1$일 때, $f(0)=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": "(가) 방정식 $f(x)=0$의 서로 다른 실근의 개수는 $2$이다.\\\\(나) 방정식 $f(x-f(x))=0$의 서로 다른 실근의 개수는 $3$이다.",
+  "choices": null,
+  "answer": "61",
+  "answer_value": "61",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-10",
+    "primary_name": "방정식에의 활용",
+    "links": [
+      "수학Ⅱ-12",
+      "수학Ⅱ-08"
+    ]
+  },
+  "first_judgment": "(가)의 두 근을 $\\alpha,\\beta$로 두면 (나)는 $f(x)=x-\\alpha$ 또는 $x-\\beta$의 교점 수가 3 — 평행한 두 직선과의 교점 문제로 바꾼다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "치환·보조함수 도입",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S20",
+    "S19"
+  ],
+  "solution_ref": "$f=k(x-\\alpha)^2(x-\\beta)$. $(1,4)$에서 접선 $y=x+3$; 교점 3개 조건으로 접선 $y=x+3$이 $y=x-\\alpha$ 중 하나이고 $x=-3$에서 접함 → $f(x)-(x+3)=k(x+3)(x-1)^2$, $f'(-3)=0$ → $k=-\\frac1{16}$. $f(0)=\\frac{45}{16}$, $p+q=61$",
+  "legacy": {
+    "category": "방정식 f(x)=0의 실근",
+    "book_no": 29,
+    "question_page": 15,
+    "solution_page": 58
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-05"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "M1-230909",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230909",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2022년 9월 고3 9번"
+  },
+  "question": "닫힌구간 $[0,12]$에서 정의된 두 함수 $f(x)=\\cos\\dfrac{\\pi x}6$, $g(x)=-3\\cos\\dfrac{\\pi x}6-1$이 있다. 곡선 $y=f(x)$와 직선 $y=k$가 만나는 두 점의 $x$좌표를 $\\alpha_1,\\alpha_2$라 할 때, $|\\alpha_1-\\alpha_2|=8$이다. 곡선 $y=g(x)$와 직선 $y=k$가 만나는 두 점의 $x$좌표를 $\\beta_1,\\beta_2$라 할 때, $|\\beta_1-\\beta_2|$의 값은? (단, $k$는 $-1<k<1$인 상수이다.)",
+  "condition": null,
+  "choices": [
+    "3",
+    "\\frac72",
+    "4",
+    "\\frac92",
+    "5"
+  ],
+  "answer": "3",
+  "answer_value": "4",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-09",
+    "primary_name": "삼각함수의 그래프",
+    "links": [
+      "수학Ⅰ-10"
+    ]
+  },
+  "first_judgment": "주기 $12$, 대칭축 $x=6$이므로 $\\alpha_1+\\alpha_2=12$와 차 $8$로 교점을 바로 구한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "$\\alpha_1+\\alpha_2=12$, $\\alpha_2-\\alpha_1=8$ → $\\alpha_1=2$, $k=\\cos\\frac\\pi3=\\frac12$. $-3\\cos\\frac{\\pi x}6-1=\\frac12\\Rightarrow\\cos\\frac{\\pi x}6=-\\frac12$ → $x=4,8$. $|\\beta_1-\\beta_2|=4$",
+  "legacy": {
+    "category": "삼각함수의 그래프의 대칭성",
+    "book_no": 32,
+    "question_page": 16,
+    "solution_page": 58
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-04"
+}

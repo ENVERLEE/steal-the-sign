@@ -1,0 +1,30 @@
+{
+  "id": "M1-231111",
+  "concept_refs": [
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C2"
+  ],
+  "guide": "$\\angle\\mathrm{BAC}=\\angle\\mathrm{CAD}$는 같은 원의 원주각이므로 **현 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$** (수학Ⅰ-12-C3). 삼각형 ABC, ACD 각각은 두 변만 알고 각은 모르지만, 공통각 $\\theta$와 '같은 현'으로 식 두 개가 생긴다. 반지름은 현 BC와 원주각 $\\theta$로 $2R=\\frac{\\overline{\\mathrm{BC}}}{\\sin\\theta}$ (수학Ⅰ-12-C2).",
+  "solutions": [
+    {
+      "title": "풀이 · 같은 원주각 → 같은 현",
+      "steps": [
+        {
+          "label": "같은 현을 두 번 쓰기",
+          "body": "$\\angle\\mathrm{BAC}=\\angle\\mathrm{CAD}=\\theta$라 하면\n$$\\overline{\\mathrm{BC}}^2=25+45-30\\sqrt5\\cos\\theta,\\qquad\\overline{\\mathrm{CD}}^2=49+45-42\\sqrt5\\cos\\theta$$"
+        },
+        {
+          "label": "$\\cos\\theta$",
+          "body": "$\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$이므로 $70-30\\sqrt5\\cos\\theta=94-42\\sqrt5\\cos\\theta$, $12\\sqrt5\\cos\\theta=24$, $\\cos\\theta=\\frac2{\\sqrt5}$, $\\sin\\theta=\\frac1{\\sqrt5}$."
+        },
+        {
+          "label": "반지름",
+          "body": "$\\overline{\\mathrm{BC}}^2=70-60=10$. 삼각형 ABC에서 사인법칙:\n$$2R=\\frac{\\sqrt{10}}{1/\\sqrt5}=5\\sqrt2,\\qquad R=\\frac{5\\sqrt2}2$$ → ①"
+        }
+      ]
+    }
+  ],
+  "supplement": "같은 원주각이 보이면 곧바로 '같은 현'으로 번역하는 것이 핵심이다. 이 번역 없이 원의 중심을 잡으려 하면 미지수가 폭발한다. 참고로 $\\overline{\\mathrm{AB}}\\ne\\overline{\\mathrm{AD}}$인데도 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{CD}}$인 것은 C가 호 BD의 중점이기 때문이다. $\\cos\\theta$를 구할 때 $\\overline{\\mathrm{BC}}^2$에서 $\\cos\\theta$의 계수 차 $12\\sqrt5$만 보면 되므로 계산이 짧다.",
+  "skill_point": "같은 원주각 → 같은 현 → 코사인법칙 두 식을 같다고 놓는다.",
+  "answer": "1"
+}

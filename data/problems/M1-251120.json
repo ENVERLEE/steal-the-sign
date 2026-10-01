@@ -1,0 +1,45 @@
+{
+  "id": "M1-251120",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "251120",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 20,
+    "points": 4,
+    "label": "2024년 11월 고3 20번"
+  },
+  "question": "곡선 $y=\\left(\\dfrac15\\right)^{x-3}$과 직선 $y=x$가 만나는 점의 $x$좌표를 $k$라 하자. 실수 전체의 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다. $f\\left(\\dfrac{1}{k^3\\times5^{3k}}\\right)$의 값을 구하시오.",
+  "condition": "$x>k$인 모든 실수 $x$에 대하여 $f(x)=\\left(\\dfrac15\\right)^{x-3}$이고 $f(f(x))=3x$이다.",
+  "choices": null,
+  "answer": "36",
+  "answer_value": "36",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-03",
+    "primary_name": "지수함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "$k$의 정의 $\\left(\\frac15\\right)^{k-3}=k$에서 $k\\cdot5^k=5^3$을 얻어 입력값을 $\\frac1{5^9}$로 단순화하고, 이것을 $f(\\alpha)$ 꼴로 본다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "조건의 식 번역",
+    "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$\\left(\\frac15\\right)^{k-3}=k\\Rightarrow k\\cdot5^k=5^3$, 따라서 $\\frac1{k^3 5^{3k}}=\\frac1{5^9}$. $x<k$에서 $f$ 감소 확인 후, $f(\\alpha)=\\left(\\frac15\\right)^{\\alpha-3}=\\frac1{5^9}$인 $\\alpha=12>k$. $f\\left(\\frac1{5^9}\\right)=f(f(12))=36$",
+  "legacy": {
+    "category": "지수함수의 그래프에서의 함숫값",
+    "book_no": 9,
+    "question_page": 5,
+    "solution_page": 45
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-03"
+}

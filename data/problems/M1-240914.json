@@ -1,0 +1,53 @@
+{
+  "id": "M1-240914",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "240914",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2023년 9월 고3 14번"
+  },
+  "question": "두 자연수 $a,b$에 대하여 함수 $f(x)=\\begin{cases}2^{x+a}+b & (x\\le-8)\\\\ -3^{x-3}+8 & (x>-8)\\end{cases}$이 다음 조건을 만족시킬 때, $a+b$의 값은?",
+  "condition": "집합 $\\{f(x)\\mid x\\le k\\}$의 원소 중 정수인 것의 개수가 $2$가 되도록 하는 모든 실수 $k$의 값의 범위는 $3\\le k<4$이다.",
+  "choices": [
+    "11",
+    "13",
+    "15",
+    "17",
+    "19"
+  ],
+  "answer": "2",
+  "answer_value": "13",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-03",
+    "primary_name": "지수함수의 그래프",
+    "links": [
+      "수학Ⅰ-07"
+    ]
+  },
+  "first_judgment": "$x>-8$ 부분은 $k$가 커질수록 새 정수값을 만든다($k=3$에서 $7$, $k=4$에서 $6$이 추가). 개수가 $k\\ge3$에서 처음 $2$가 되려면 $x\\le-8$ 부분이 정수 $6$ 하나를 미리 채워 두어야 한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석",
+    "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$x>-8$에서 $3\\le k<4$이면 정수 $f(x)=6,7$ ($f(3)=7$, $f(4)=5$). 따라서 $x\\le-8$ 부분의 정수값은 $6$뿐 → $b=5$, $6\\le f(-8)=2^{-8+a}+5<7$ → $8\\le a<9$, $a=8$. $a+b=13$",
+  "legacy": {
+    "category": "지수함수의 그래프에서의 함숫값",
+    "book_no": 11,
+    "question_page": 6,
+    "solution_page": 46
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-03"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "PS-230628",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "230628",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 28,
+    "points": 4,
+    "label": "2022년 6월 고3 28번"
+  },
+  "question": "숫자 $1,2,3,4,5$ 중에서 서로 다른 $4$개를 택해 일렬로 나열하여 만들 수 있는 모든 네 자리의 자연수 중에서 임의로 하나의 수를 택할 때, 택한 수가 $5$의 배수 또는 $3500$ 이상일 확률은?",
+  "condition": null,
+  "choices": [
+    "\\frac9{20}",
+    "\\frac12",
+    "\\frac{11}{20}",
+    "\\frac35",
+    "\\frac{13}{20}"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac35",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-10",
+    "primary_name": "확률의 정의 Ⅱ",
+    "links": []
+  },
+  "first_judgment": "덧셈정리로 '5의 배수', '3500 이상', '둘 다'를 각각 센다.",
+  "behavior": "계산",
+  "reasoning": [
+    "경우 나누기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "전체 120. 5의 배수 24, 3500 이상 $6+24+24=54$, 둘 다 6. $\\frac{24+54-6}{120}=\\frac35$",
+  "legacy": {
+    "category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+    "book_no": 26,
+    "question_page": 13,
+    "solution_page": 37
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-03"
+}
