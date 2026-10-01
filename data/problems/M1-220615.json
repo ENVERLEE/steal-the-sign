@@ -1,0 +1,55 @@
+{
+  "id": "M1-220615",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220615",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2021년 6월 고3 15번"
+  },
+  "question": "$-1\\le t\\le1$인 실수 $t$에 대하여 $x$에 대한 방정식 $\\left(\\sin\\dfrac{\\pi x}2-t\\right)\\left(\\cos\\dfrac{\\pi x}2-t\\right)=0$의 실근 중에서 집합 $\\{x\\mid0\\le x<4\\}$에 속하는 가장 작은 값을 $\\alpha(t)$, 가장 큰 값을 $\\beta(t)$라 하자. <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $-1\\le t<0$인 모든 실수 $t$에 대하여 $\\alpha(t)+\\beta(t)=5$이다.\\\\ㄴ. $\\{t\\mid\\beta(t)-\\alpha(t)=\\beta(0)-\\alpha(0)\\}=\\left\\{t\\,\\middle|\\,0\\le t\\le\\dfrac{\\sqrt2}2\\right\\}$\\\\ㄷ. $\\alpha(t_1)=\\alpha(t_2)$인 두 실수 $t_1,t_2$에 대하여 $t_2-t_1=\\dfrac12$이면 $t_1t_2=\\dfrac13$이다.",
+  "choices": [
+    "ㄱ",
+    "ㄱ, ㄴ",
+    "ㄱ, ㄷ",
+    "ㄴ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "2",
+  "answer_value": "ㄱ, ㄴ",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-10",
+    "primary_name": "삼각함수의 방정식과 부등식",
+    "links": [
+      "수학Ⅰ-09",
+      "수학Ⅰ-11"
+    ]
+  },
+  "first_judgment": "$y=\\sin\\frac{\\pi x}2$, $y=\\cos\\frac{\\pi x}2$ 두 그래프와 수평선 $y=t$의 교점으로 보고, 대칭축 $x=1,3$과 대칭점 $(2,0)$을 활용한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "경우 나누기",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "ㄱ: $-1\\le t<0$이면 $\\alpha=1+k$, $\\beta=4-k$ → 합 5 (참). ㄴ: $\\beta(0)-\\alpha(0)=3$; $0\\le t\\le\\frac{\\sqrt2}2$에서 $\\beta-\\alpha=3$, $\\frac{\\sqrt2}2<t<1$에서 $4-2k$, $t=1$에서 1, $t<0$에서 $<3$ (참). ㄷ: $\\alpha(t_1)=\\alpha(t_2)=\\alpha$면 $t_1=\\sin\\frac\\pi2\\alpha$, $t_2=\\cos\\frac\\pi2\\alpha$, $t_2=t_1+\\frac12$ → $\\sin\\frac\\pi2\\alpha=\\frac{-1+\\sqrt7}4$, $t_1t_2=\\frac38$ (거짓). 답 ㄱ, ㄴ",
+  "legacy": {
+    "category": "삼각함수가 포함된 방정식의 근의 조건",
+    "book_no": 34,
+    "question_page": 17,
+    "solution_page": 59
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-05"
+}

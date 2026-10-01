@@ -1,0 +1,53 @@
+{
+  "id": "M1-270614",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "270614",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2026년 6월 고3 14번"
+  },
+  "question": "양수 $a$와 자연수 $b$에 대하여 $0\\le x\\le2$일 때 $x$에 대한 방정식 $\\left\\{\\cos(b\\pi x)-\\dfrac12\\right\\}\\left\\{a\\cos(b\\pi x)+\\dfrac{a+2}2\\right\\}=0$의 서로 다른 실근의 개수는 $15$이다. $a+b$의 값은?",
+  "condition": null,
+  "choices": [
+    "6",
+    "\\frac{13}2",
+    "7",
+    "\\frac{15}2",
+    "8"
+  ],
+  "answer": "3",
+  "answer_value": "7",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-10",
+    "primary_name": "삼각함수의 방정식과 부등식",
+    "links": [
+      "수학Ⅰ-09"
+    ]
+  },
+  "first_judgment": "두 번째 인수를 $\\cos(b\\pi x)=-\\left(\\frac12+\\frac1a\\right)$로 바꾸고, 이 값이 $-1$보다 작은지·같은지·큰지($a$와 $2$ 비교)로 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "한 주기 $\\left[0,\\frac2b\\right]$에서 근의 수: (i) $a>2$: 4개 → $4b=15$ 불가. (ii) $a=2$: 3개 → $3b=15$, $b=5$. (iii) $0<a<2$: 2개 → $2b=15$ 불가. $a+b=7$",
+  "legacy": {
+    "category": "삼각함수가 포함된 방정식의 근의 조건",
+    "book_no": 35,
+    "question_page": 18,
+    "solution_page": 59
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-05"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "M2-251111",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "251111",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 11,
+    "points": 4,
+    "label": "2024년 11월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t\\ge0)$에서의 위치 $x$가 $x=t^3-\\dfrac32t^2-6t$이다. 출발한 후 점 $\\mathrm{P}$의 운동 방향이 바뀌는 시각에서의 점 $\\mathrm{P}$의 가속도는?",
+  "condition": null,
+  "choices": [
+    "6",
+    "9",
+    "12",
+    "15",
+    "18"
+  ],
+  "answer": "2",
+  "answer_value": "9",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "운동 방향이 바뀌는 시각 = 속도 $v=0$이면서 부호가 바뀌는 시각이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$v=3t^2-3t-6=3(t-2)(t+1)$ → $t=2$. $a=6t-3=9$",
+  "legacy": {
+    "category": "속도 · 가속도와 운동 방향",
+    "book_no": 36,
+    "question_page": 18,
+    "solution_page": 62
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-09"
+}

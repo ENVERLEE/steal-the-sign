@@ -1,0 +1,56 @@
+{
+  "id": "M1-230613",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230613",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2022년 6월 고3 13번"
+  },
+  "question": "두 곡선 $y=16^x$, $y=2^x$과 한 점 $\\mathrm{A}(64,2^{64})$이 있다. 점 $\\mathrm{A}$를 지나며 $x$축과 평행한 직선이 곡선 $y=16^x$과 만나는 점을 $\\mathrm{P}_1$이라 하고, 점 $\\mathrm{P}_1$을 지나며 $y$축과 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{Q}_1$이라 하자. 점 $\\mathrm{Q}_1$을 지나며 $x$축과 평행한 직선이 곡선 $y=16^x$과 만나는 점을 $\\mathrm{P}_2$라 하고, 점 $\\mathrm{P}_2$를 지나며 $y$축과 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{Q}_2$라 하자. 이와 같은 과정을 계속하여 $n$번째 얻은 두 점을 각각 $\\mathrm{P}_n$, $\\mathrm{Q}_n$이라 하고 점 $\\mathrm{Q}_n$의 $x$좌표를 $x_n$이라 할 때, $x_n<\\dfrac1k$을 만족시키는 $n$의 최솟값이 $6$이 되도록 하는 자연수 $k$의 개수는?",
+  "condition": null,
+  "choices": [
+    "48",
+    "51",
+    "54",
+    "57",
+    "60"
+  ],
+  "answer": "1",
+  "answer_value": "48",
+  "figure": {
+    "description": "곡선 $y=16^x$, $y=2^x$ 사이를 계단 모양으로 내려가는 점 A, $\\mathrm P_1,\\mathrm Q_1,\\mathrm P_2,\\mathrm Q_2,\\dots$",
+    "source_page": 28
+  },
+  "theme": {
+    "primary": "수학Ⅰ-13",
+    "primary_name": "등차수열과 등비수열",
+    "links": [
+      "수학Ⅰ-03"
+    ]
+  },
+  "first_judgment": "같은 높이 조건 $2^{x_n}=16^{x_{n+1}}$에서 $x_{n+1}=\\frac14x_n$, 즉 $\\{x_n\\}$이 등비수열임을 먼저 잡는다.",
+  "behavior": "추론",
+  "reasoning": [
+    "단순화·특수화로 규칙성 찾기",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S09"
+  ],
+  "solution_ref": "$2^{64}=16^{x_1}$ → $x_1=16$. $x_{n+1}=\\frac14x_n$ → $x_n=2^{6-2n}$. $x_5\\ge\\frac1k$, $x_6<\\frac1k$ → $16\\le k<64$. 개수 $48$",
+  "legacy": {
+    "category": "도형에서 등비수열의 활용",
+    "book_no": 56,
+    "question_page": 28,
+    "solution_page": 70
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-08"
+}

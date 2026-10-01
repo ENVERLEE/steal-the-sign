@@ -1,0 +1,53 @@
+{
+  "id": "M1-250914",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250914",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2024년 9월 고3 14번"
+  },
+  "question": "자연수 $n$에 대하여 곡선 $y=2^x$ 위의 두 점 $\\mathrm{A}_n$, $\\mathrm{B}_n$이 다음 조건을 만족시킨다. 중심이 직선 $y=x$ 위에 있고 두 점 $\\mathrm{A}_n$, $\\mathrm{B}_n$을 지나는 원이 곡선 $y=\\log_2 x$와 만나는 두 점의 $x$좌표 중 큰 값을 $x_n$이라 하자. $x_1+x_2+x_3$의 값은?",
+  "condition": "(가) 직선 $\\mathrm{A}_n\\mathrm{B}_n$의 기울기는 $3$이다.\\\\(나) $\\overline{\\mathrm{A}_n\\mathrm{B}_n}=\\sqrt{10}\\,n$",
+  "choices": [
+    "\\frac{150}7",
+    "\\frac{155}7",
+    "\\frac{160}7",
+    "\\frac{165}7",
+    "\\frac{170}7"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac{170}7",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-06",
+    "primary_name": "지수함수와 로그함수의 대칭성",
+    "links": [
+      "수학Ⅰ-03"
+    ]
+  },
+  "first_judgment": "원의 중심이 $y=x$ 위이므로 원과 두 곡선이 모두 $y=x$ 대칭 → $x_n$은 $\\mathrm B_n$의 $y$좌표와 같다.",
+  "behavior": "추론",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$\\mathrm A_n(a_n,2^{a_n})$, $\\mathrm B_n(b_n,2^{b_n})$. (가) $2^{b_n}-2^{a_n}=3(b_n-a_n)$, (나) 대입 → $b_n-a_n=n$. $2^{b_n}(1-2^{-n})=3n$ → $2^{b_n}=\\frac{3n\\cdot2^n}{2^n-1}$. $x_n=2^{b_n}$이므로 $x_1+x_2+x_3=6+8+\\frac{72}7=\\frac{170}7$",
+  "legacy": {
+    "category": "지수함수와 로그함수의 관계",
+    "book_no": 21,
+    "question_page": 11,
+    "solution_page": 52
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-03"
+}

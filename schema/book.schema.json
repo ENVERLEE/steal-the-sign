@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "book.schema.json",
   "title": "교재 한 권(WEEK) 구성 — AI가 쓰는 내용만. HTML 금지, 텍스트 + $LaTeX$",
-  "description": "문항은 id로만 참조한다(기출: db.json id, 창작: C-… 문제은행 id). 본문·정답·해설은 build가 db.json·solutions.json·문제은행에서 가져온다. 텍스트 안 줄바꿈은 \\n.",
+  "description": "문항은 id로만 참조한다(기출: 문항 id, 창작: C-… 문제은행 id). 본문·정답·해설은 build가 data/problems·solutions·문제은행에서 가져온다. 텍스트 안 줄바꿈은 \\n.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -31,13 +31,17 @@
       "type": "string",
       "description": "표지 [[ 과목 ]] 예: 수학Ⅰ"
     },
+    "scale": {
+      "enum": ["normal", "large"],
+      "description": "테마 구성 규모: normal(기본, 테마당 2~3 DAY·8~13문항) | large(테마당 4~6 DAY·30~48문항, 연습은 난도 순서 필수). config theme_plan.large"
+    },
     "special": {
       "type": "boolean",
       "description": "특강 모드: 여러 과목을 한 권에 담고 테마당 1 DAY부터 허용(config theme_plan.special_days)"
     },
     "figures": {
       "type": "object",
-      "description": "기출 문항 그림 명세 {db id: 그림 명세}. 그림이 있는 기출(db.json figure)을 쓰면 필수",
+      "description": "기출 문항 그림 명세 {db id: 그림 명세}. 그림이 있는 기출(문항 figure)을 쓰면 필수",
       "additionalProperties": {
         "$ref": "figure.schema.json"
       }
@@ -171,7 +175,7 @@
         "single",
         "multi"
       ],
-      "description": "연습 문항 판면: single(기본, 한 쪽에 한 문항) | multi(한 쪽에 3~4문항, 고난도는 2문항)"
+      "description": "연습 문항 판면: multi(기본, 한 쪽에 3~4문항·고난도는 2문항) | single(한 쪽에 한 문항)"
     }
   },
   "$defs": {
@@ -432,7 +436,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "실전 개념 행으로 넣을 solutions.json 개념 id({기존테마}-C{n}). 이름·내용·쓰는 때를 build가 채운다"
+              "description": "실전 개념 행으로 넣을 concepts.json 개념 id({기존테마}-C{n}). 이름·내용·쓰는 때를 build가 채운다"
             },
             "tools": {
               "type": "array",

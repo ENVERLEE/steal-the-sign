@@ -1,0 +1,53 @@
+{
+  "id": "M2-250915",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250915",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2024년 9월 고3 15번"
+  },
+  "question": "두 다항함수 $f(x)$, $g(x)$는 모든 실수 $x$에 대하여 다음 조건을 만족시킨다. $\\displaystyle\\int_0^3g(x)\\,dx$의 값은?",
+  "condition": "(가) $\\displaystyle\\int_1^x tf(t)\\,dt+\\int_{-1}^x tg(t)\\,dt=3x^4+8x^3-3x^2$\\\\(나) $f(x)=xg'(x)$",
+  "choices": [
+    "72",
+    "76",
+    "80",
+    "84",
+    "88"
+  ],
+  "answer": "1",
+  "answer_value": "72",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-15",
+    "primary_name": "정적분으로 정의된 함수",
+    "links": [
+      "수학Ⅱ-14"
+    ]
+  },
+  "first_judgment": "(가)를 미분하고 (나)를 대입하면 $\\{xg(x)\\}'$가 나오는 꼴이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+    "S22"
+  ],
+  "solution_ref": "$x\\{f+g\\}=12x^3+24x^2-6x$ → $xg'+g=12x^2+24x-6$ → $xg=4x^3+12x^2-6x$ → $g=4x^2+12x-6$. $\\int_0^3g=36+54-18=72$",
+  "legacy": {
+    "category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+    "book_no": 49,
+    "question_page": 25,
+    "solution_page": 69
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

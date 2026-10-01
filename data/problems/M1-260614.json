@@ -1,0 +1,54 @@
+{
+  "id": "M1-260614",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "260614",
+    "year": 2026,
+    "exam": "6월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2025년 6월 고3 14번"
+  },
+  "question": "$\\overline{\\mathrm{AB}}=2\\sqrt7$인 삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{BC}$의 중점을 $\\mathrm{P}$, 선분 $\\mathrm{BC}$를 $5:1$로 내분하는 점을 $\\mathrm{Q}$라 하자. $\\overline{\\mathrm{AQ}}=3\\sqrt2$, $\\sin(\\angle\\mathrm{QAP}):\\sin(\\angle\\mathrm{APQ})=\\sqrt2:3$일 때, 삼각형 $\\mathrm{ABC}$의 외접원의 넓이는?",
+  "condition": null,
+  "choices": [
+    "\\frac{85}9\\pi",
+    "\\frac{88}9\\pi",
+    "\\frac{91}9\\pi",
+    "\\frac{94}9\\pi",
+    "\\frac{97}9\\pi"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{88}9\\pi",
+  "figure": {
+    "description": "삼각형 ABC와 BC 위의 점 P(중점), Q(5:1 내분점)",
+    "source_page": 20
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "삼각형 $\\mathrm{APQ}$에서 사인법칙으로 $\\overline{\\mathrm{PQ}}$를 구하면 $\\overline{\\mathrm{BC}}$가 결정되고, 이후 삼각형이 SSS로 결정된다.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S07"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{PQ}}=\\frac{\\sqrt2}3\\cdot3\\sqrt2=2$. $\\overline{\\mathrm{BC}}=\\frac12\\overline{\\mathrm{BC}}+2+\\frac16\\overline{\\mathrm{BC}}$ → $\\overline{\\mathrm{BC}}=6$, $\\overline{\\mathrm{BQ}}=5$. $\\cos B=\\frac{28+25-18}{2\\cdot2\\sqrt7\\cdot5}=\\frac{\\sqrt7}4$. $\\overline{\\mathrm{AC}}^2=28+36-2\\cdot2\\sqrt7\\cdot6\\cdot\\frac{\\sqrt7}4=22$. $\\sin B=\\frac34$, $R=\\frac{\\sqrt{22}}{2\\cdot3/4}=\\frac{2\\sqrt{22}}3$. 넓이 $\\frac{88}9\\pi$",
+  "legacy": {
+    "category": "사인법칙과 코사인법칙",
+    "book_no": 40,
+    "question_page": 20,
+    "solution_page": 62
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-06"
+}

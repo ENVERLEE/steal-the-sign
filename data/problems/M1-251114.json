@@ -1,0 +1,55 @@
+{
+  "id": "M1-251114",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "251114",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 14,
+    "points": 4,
+    "label": "2024년 11월 고3 14번"
+  },
+  "question": "그림과 같이 삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{AB}$ 위에 $\\overline{\\mathrm{AD}}:\\overline{\\mathrm{DB}}=3:2$인 점 $\\mathrm{D}$를 잡고, 점 $\\mathrm{A}$를 중심으로 하고 점 $\\mathrm{D}$를 지나는 원을 $O$, 원 $O$와 선분 $\\mathrm{AC}$가 만나는 점을 $\\mathrm{E}$라 하자. $\\sin A:\\sin C=8:5$이고, 삼각형 $\\mathrm{ADE}$와 삼각형 $\\mathrm{ABC}$의 넓이의 비가 $9:35$이다. 삼각형 $\\mathrm{ABC}$의 외접원의 반지름의 길이가 $7$일 때, 원 $O$ 위의 점 $\\mathrm{P}$에 대하여 삼각형 $\\mathrm{PBC}$의 넓이의 최댓값은? (단, $\\overline{\\mathrm{AB}}<\\overline{\\mathrm{AC}}$)",
+  "condition": null,
+  "choices": [
+    "18+15\\sqrt3",
+    "24+20\\sqrt3",
+    "30+25\\sqrt3",
+    "36+30\\sqrt3",
+    "42+35\\sqrt3"
+  ],
+  "answer": "4",
+  "answer_value": "36+30\\sqrt3",
+  "figure": {
+    "description": "삼각형 ABC, A 중심 원 O(반지름 AD), AC와 원의 교점 E",
+    "source_page": 25
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "원 $O$의 반지름을 $r$로 두고 모든 변을 $r$로 표현한 뒤, 최댓값은 '$\\mathrm{A}$에서 $\\mathrm{BC}$까지 거리 $+\\,r$'이 높이일 때다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AE}}=r$, $\\overline{\\mathrm{AB}}=\\frac53r$, $\\overline{\\mathrm{CE}}=x$. 넓이비 $\\frac12r^2:\\frac56r(r+x)=9:35$ → $x=\\frac43r$, $\\overline{\\mathrm{AC}}=\\frac73r$. $\\overline{\\mathrm{BC}}=\\frac53r\\cdot\\frac85=\\frac83r$. $\\cos\\theta=\\frac{11}{14}$, $\\sin\\theta=\\frac{5\\sqrt3}{14}$ ($\\theta=\\angle\\mathrm{ACB}$). $\\frac{5r/3}{\\sin\\theta}=14$ → $r=3\\sqrt3$. $\\overline{\\mathrm{AH}}=\\frac73r\\sin\\theta=\\frac{15}2$. 최댓값 $\\frac12\\cdot8\\sqrt3\\cdot\\left(3\\sqrt3+\\frac{15}2\\right)=36+30\\sqrt3$",
+  "legacy": {
+    "category": "삼각형의 넓이를 활용하는 문제",
+    "book_no": 50,
+    "question_page": 25,
+    "solution_page": 66
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-07"
+}

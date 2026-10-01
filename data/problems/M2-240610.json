@@ -1,0 +1,53 @@
+{
+  "id": "M2-240610",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240610",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2023년 6월 고3 10번"
+  },
+  "question": "양수 $k$에 대하여 함수 $f(x)$는 $f(x)=kx(x-2)(x-3)$이다. 곡선 $y=f(x)$와 $x$축이 원점 $\\mathrm{O}$와 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ $(\\overline{\\mathrm{OP}}<\\overline{\\mathrm{OQ}})$에서 만난다. 곡선 $y=f(x)$와 선분 $\\mathrm{OP}$로 둘러싸인 영역을 $A$, 곡선 $y=f(x)$와 선분 $\\mathrm{PQ}$로 둘러싸인 영역을 $B$라 하자. $(A\\text{의 넓이})-(B\\text{의 넓이})=3$일 때, $k$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac76",
+    "\\frac43",
+    "\\frac32",
+    "\\frac53",
+    "\\frac{11}6"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac43",
+  "figure": {
+    "description": "곡선 $y=kx(x-2)(x-3)$과 $x$축; 0~2 사이 위쪽 영역 A, 2~3 사이 아래쪽 영역 B 색칠",
+    "source_page": 30
+  },
+  "theme": {
+    "primary": "수학Ⅱ-18",
+    "primary_name": "정적분과 넓이",
+    "links": []
+  },
+  "first_judgment": "넓이의 차 $A-B$는 부호를 살린 정적분 $\\int_0^3f(x)\\,dx$와 같다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S24"
+  ],
+  "solution_ref": "$\\int_0^3f=k\\left[\\frac14x^4-\\frac53x^3+3x^2\\right]_0^3=\\frac94k=3$ → $k=\\frac43$",
+  "legacy": {
+    "category": "곡선과 x축 사이의 넓이",
+    "book_no": 60,
+    "question_page": 30,
+    "solution_page": 75
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-08"
+}

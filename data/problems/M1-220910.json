@@ -1,0 +1,54 @@
+{
+  "id": "M1-220910",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220910",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2021년 9월 고3 10번"
+  },
+  "question": "두 양수 $a,b$에 대하여 곡선 $y=a\\sin b\\pi x\\left(0\\le x\\le\\dfrac3b\\right)$이 직선 $y=a$와 만나는 서로 다른 두 점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. 삼각형 $\\mathrm{OAB}$의 넓이가 $5$이고 직선 $\\mathrm{OA}$의 기울기와 직선 $\\mathrm{OB}$의 기울기의 곱이 $\\dfrac54$일 때, $a+b$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "answer": "3",
+  "answer_value": "3",
+  "figure": {
+    "description": "곡선 $y=a\\sin b\\pi x$가 직선 $y=a$와 A, B(최댓점 두 곳)에서 만나고 삼각형 OAB 색칠",
+    "source_page": 13
+  },
+  "theme": {
+    "primary": "수학Ⅰ-09",
+    "primary_name": "삼각함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "주기 $\\frac2b$로 최댓점 $\\mathrm A\\left(\\frac1{2b},a\\right)$, $\\mathrm B\\left(\\frac5{2b},a\\right)$를 바로 적는다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "넓이 $\\frac12\\cdot a\\cdot\\frac2b=5\\Rightarrow a=5b$. 기울기 곱 $2ab\\cdot\\frac{2ab}5=\\frac54\\Rightarrow ab=\\frac54$. $a=\\frac52$, $b=\\frac12$, $a+b=3$",
+  "legacy": {
+    "category": "y=asin(bx)의 성질",
+    "book_no": 26,
+    "question_page": 13,
+    "solution_page": 55
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-04"
+}

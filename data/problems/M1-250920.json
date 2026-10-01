@@ -1,0 +1,47 @@
+{
+  "id": "M1-250920",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250920",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 20,
+    "points": 4,
+    "label": "2024년 9월 고3 20번"
+  },
+  "question": "닫힌구간 $[0,2\\pi]$에서 정의된 함수 $f(x)=\\begin{cases}\\sin x-1 & (0\\le x<\\pi)\\\\ -\\sqrt2\\sin x-1 & (\\pi\\le x\\le2\\pi)\\end{cases}$가 있다. $0\\le t\\le2\\pi$인 실수 $t$에 대하여 $x$에 대한 방정식 $f(x)=f(t)$의 서로 다른 실근의 개수가 $3$이 되도록 하는 모든 $t$의 값의 합은 $\\dfrac qp\\pi$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "15",
+  "answer_value": "15",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-10",
+    "primary_name": "삼각함수의 방정식과 부등식",
+    "links": [
+      "수학Ⅰ-09"
+    ]
+  },
+  "first_judgment": "$f$의 그래프를 그리고 수평선 $y=f(t)$와 교점이 3개가 되는 높이($-1$, $0$)를 먼저 찾은 뒤 그 높이를 주는 $t$를 모두 모은다.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "$[0,\\pi)$: 최댓값 0, 최솟값 $-1$. $[\\pi,2\\pi]$: 최댓값 $\\sqrt2-1$, 최솟값 $-1$. 교점 3개 ⇔ $f(t)=-1$ 또는 $0$. (i) $f(t)=-1$: $t=0,\\pi,2\\pi$. (ii) $f(t)=0$: $t=\\frac\\pi2$, $-\\sqrt2\\sin t-1=0$에서 $t=\\frac54\\pi,\\frac74\\pi$. 합 $\\frac{13}2\\pi$, $p+q=15$",
+  "legacy": {
+    "category": "삼각함수가 포함된 방정식(4) : 그래프 이용",
+    "book_no": 33,
+    "question_page": 17,
+    "solution_page": 58
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-05"
+}

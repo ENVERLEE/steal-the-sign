@@ -59,7 +59,31 @@
 .page{word-break:keep-all;overflow-wrap:break-word;line-break:strict}
 .nw{white-space:nowrap}
 .x-p,.x-tbl td,.x-card .in,.x-tool .bd,.x-pt .t,.x-ex .t,.x-sol .cols>div,.x-eq,.box-body,.q-text,.cond,.choices>div,.row>div:not(.k),.step .t,.tbl td:not(.no){font-family:'Noto Serif KR',serif;font-weight:500}
-.x-p b,.x-pt .t b,.x-card .in b,.box-body b,.q-text b,.step .t b,.row b,.tbl td b,.x-tool .bd b,.x-tbl td b{font-family:'Noto Sans KR',sans-serif;font-weight:800}
+/* 굵게도 본문과 같은 명조로 (문장 안에서 서체가 바뀌지 않게) */
+.x-p b,.x-pt .t b,.x-card .in b,.box-body b,.q-text b,.step .t b,.row b,.tbl td b,.x-tool .bd b,.x-tbl td b,.c-trap b:not(.l),.c-intro b{font-family:'Noto Serif KR',serif;font-weight:900}
+/* 문항 번호는 어디서나 같은 꼴(빨간 굵은 숫자) */
+.s-no{font-family:var(--display);font-size:14px;font-weight:400;color:var(--red-text)}
+/* 꼬리말: 다음 코너 안내 옆 쪽 번호 */
+.ft .nav .pg{margin-left:12px}
+/* 상자 이름표는 테두리 위에 걸친다 (이름표 옆 빈 띠 없앰) */
+.box-label{top:-13px;left:14px;padding:3px 10px 4px;font-size:14px}
+.box-body{padding-top:24px}
+.rows,.bs-grid{margin-top:24px}
+.box>div[style*="margin-top:44px"],.dbox>.steps[style*="margin-top:44px"]{margin-top:24px !important}
+.box>.lines[style*="inset:44px"]{top:28px !important}
+.dbox.dim{margin-top:6px}
+.box .rows>.row:first-child,.box .ab-row:first-child,.box>.bs-grid,.dbox>.steps[style*="margin-top:44px"]{border-top:none}
+/* 채점 칸: 문항 수만큼 폭을 나눈다 (줄 끝 칸은 상자 테두리가 대신한다) */
+.bs-grid{margin-left:-1px}
+.bs-cell{border-right:none !important;border-left:1px solid var(--ink)}
+/* 남는 아래 공간의 메모 칸: 꽉 찬 쪽에서는 높이 0이 되도록 앞 간격을 되돌리고(음수 margin), 150px보다 좁으면 숨긴다 */
+.memo{flex:1 1 0;min-height:0;container-type:size;display:flex;flex-direction:column;margin-top:-26px}
+.inkhead .fill>.memo,.dark .fill>.memo{margin-top:-22px}
+.x-body>.memo{margin-top:-14px}
+.memo-box{flex:1;min-height:0;display:flex;flex-direction:column;box-shadow:none;border-width:1.5px;border-style:dashed;margin:40px 4px 4px 0}
+.memo-box .box-label{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink)}
+.memo-lines{flex:1;margin:26px 22px 10px}
+@container (max-height:150px){.memo-box{display:none}}
 
 .x-fig.wide svg{max-height:230px}
 .x-pts{background:#fff;border:1.5px solid var(--ink);padding:4px 16px}
@@ -86,7 +110,7 @@
 .pm2-item{flex:1 1 0;display:flex;flex-direction:column;padding-bottom:12px}
 .pm2-item+.pm2-item{border-top:1px dashed #b9b5ab;padding-top:16px}
 .pi-hd{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #8d897f;margin-bottom:9px;padding-bottom:1px}
-.pi-no{font-family:'Noto Serif KR',serif;font-weight:900;font-size:19px;line-height:1.1;padding:0 12px 1px 4px;border-right:1px solid #8d897f;min-width:34px}
+.pi-no{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1;padding:0 4px 1px 0;color:var(--red);-webkit-text-stroke:0.7px var(--ink);min-width:34px}
 .pi-tag{font-size:11.5px;font-weight:800;color:var(--red-text)}
 .pi-src{margin-left:auto;font-size:10.5px;color:#4a4740;font-family:'Noto Serif KR',serif}
 .pm2 .q-text{font-size:13.6px;line-height:1.85}
@@ -129,10 +153,11 @@
     <div class="x-h"><span class="n">■</span>실전 개념</div>
     {% for t in P.tools %}<div class="x-tool"><div class="nm"><small>TOOL {{ loop.index }}</small>{{ t.name }}</div><div class="bd">{{ t.body }}{% if t.eq %}<div class="eq">{{ t.eq }}</div>{% endif %}{% if t.when %}<div class="when"><b>이런 문제에서</b> {{ t.when }}</div>{% endif %}</div></div>
     {% endfor %}
+    <div class="memo"><div class="box memo-box"><div class="box-label">실전 개념을 내 말로 다시 쓰기</div><div class="lines memo-lines"></div></div></div>
   </div>
   <div class="ft">
     <div>STEAL THE SIGN : KICE / W<span data-slot="WEEK">{{ book.week2 }}</span></div>
-    <div class="nav"><div class="tri"></div><div>FIRST PITCH</div></div>
+    <div class="nav"><div class="tri"></div><div>FIRST PITCH</div><div class="pg"><span data-slot="PAGE">{{ pg }}</span></div></div>
   </div>
 </div>
 <!-- XPAGE:END STRATEGY_X -->
@@ -226,14 +251,14 @@
 <div class="page" data-page="PRACTICE">
   <div class="hd">
     <div class="hd-day"><div class="k">DAY</div><div class="v"><span data-slot="DAY">{{ P.day2 }}</span></div></div>
-    <div class="hd-title"><div class="k">연습 문항 <span class="meta">· {{ P.qs[0].no2 }}{% if P.qs|length > 1 %}~{{ P.qs[-1].no2 }}{% endif %}번{% if P.hard %} · 고난도{% endif %}</span></div><div class="v">{{ P.title }}</div></div>
+    <div class="hd-title"><div class="k"><span class="en">PRACTICE</span>연습 문항 <span class="meta">· {{ P.qs[0].no2 }}{% if P.qs|length > 1 %}~{{ P.qs[-1].no2 }}{% endif %}번{% if P.hard %} · 고난도{% endif %}</span></div><div class="v">{{ P.title }}</div></div>
     <div class="hd-no"><span data-slot="PAGE">{{ pg }}</span></div>
   </div>
   <div class="x-body pm2">
     {% for col in P.cols %}<div class="pm2-col">
       {% for q in col %}<div class="pm2-item">
         <div class="pi-hd"><span class="pi-no">{{ q.no2 }}</span>{% if q.difficulty == '고난도' %}<span class="pi-tag">★ 고난도</span>{% endif %}<span class="pi-src">{{ q.source }}</span></div>
-        <div class="q-text">{{ q.text }} <span class="pt">[{{ q.points }}점]</span></div>
+        <div class="q-text">{{ q.text }}</div>
         {% if q.cond %}<div class="cond">{{ q.cond }}</div>{% endif %}
         {% if q.fig %}<div class="fig">{{ q.fig }}</div>{% endif %}
         {% if q.choices %}<div class="choices{{ q.choices_class }}">{% for c in q.choices %}<div>{{ c.label }} {{ c.html }}</div>{% endfor %}</div>{% endif %}

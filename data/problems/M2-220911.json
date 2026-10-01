@@ -1,0 +1,53 @@
+{
+  "id": "M2-220911",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "220911",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2021년 9월 고3 11번"
+  },
+  "question": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $xf(x)=2x^3+ax^2+3a+\\displaystyle\\int_1^xf(t)\\,dt$를 만족시킨다. $f(1)=\\displaystyle\\int_0^1f(t)\\,dt$일 때, $a+f(3)$의 값은? (단, $a$는 상수이다.)",
+  "condition": null,
+  "choices": [
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "answer": "4",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-15",
+    "primary_name": "정적분으로 정의된 함수",
+    "links": [
+      "수학Ⅱ-14"
+    ]
+  },
+  "first_judgment": "$x=1$, $x=0$을 대입해 $f(1)$과 $\\int_0^1f$를 $a$로 나타내고, 미분해 $f'$을 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S22"
+  ],
+  "solution_ref": "$x=1$: $f(1)=2+4a$. $x=0$: $\\int_0^1f=3a$. $2+4a=3a$ → $a=-2$, $f(1)=-6$. 미분: $f'=6x-4$, $f=3x^2-4x-5$. $f(3)=10$, $a+f(3)=8$",
+  "legacy": {
+    "category": "정적분을 포함한 등식(2) : 적분구간에 변수가 있는 경우",
+    "book_no": 51,
+    "question_page": 26,
+    "solution_page": 69
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

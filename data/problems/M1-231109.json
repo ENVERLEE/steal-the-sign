@@ -1,0 +1,50 @@
+{
+  "id": "M1-231109",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "231109",
+    "year": 2023,
+    "exam": "대학수학능력시험",
+    "number": 9,
+    "points": 4,
+    "label": "2022년 11월 고3 9번"
+  },
+  "question": "함수 $f(x)=a-\\sqrt3\\tan2x$가 닫힌구간 $\\left[-\\dfrac\\pi6,b\\right]$에서 최댓값 $7$, 최솟값 $3$을 가질 때, $ab$의 값은? (단, $a,b$는 상수이다.)",
+  "condition": null,
+  "choices": [
+    "\\frac\\pi2",
+    "\\frac{5\\pi}{12}",
+    "\\frac\\pi3",
+    "\\frac\\pi4",
+    "\\frac\\pi6"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac\\pi3",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-09",
+    "primary_name": "삼각함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "$f$는 구간에서 감소하므로 양 끝값이 최댓값·최솟값이다(단, 구간이 점근선을 넘지 않아야 함).",
+  "behavior": "계산",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "$-\\frac\\pi6<b<\\frac\\pi4$. $f\\left(-\\frac\\pi6\\right)=a+3=7\\Rightarrow a=4$. $f(b)=4-\\sqrt3\\tan2b=3\\Rightarrow\\tan2b=\\frac{\\sqrt3}3$, $b=\\frac\\pi{12}$. $ab=\\frac\\pi3$",
+  "legacy": {
+    "category": "삼각함수의 미정계수의 결정(1) : 조건이 주어진 경우",
+    "book_no": 30,
+    "question_page": 15,
+    "solution_page": 57
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-04"
+}

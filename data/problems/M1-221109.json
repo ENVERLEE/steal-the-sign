@@ -1,0 +1,56 @@
+{
+  "id": "M1-221109",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "221109",
+    "year": 2022,
+    "exam": "대학수학능력시험",
+    "number": 9,
+    "points": 4,
+    "label": "2021년 11월 고3 9번"
+  },
+  "question": "직선 $y=2x+k$가 두 함수 $y=\\left(\\dfrac23\\right)^{x+3}+1$, $y=\\left(\\dfrac23\\right)^{x+1}+\\dfrac83$의 그래프와 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 하자. $\\overline{\\mathrm{PQ}}=\\sqrt5$일 때, 상수 $k$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac{31}6",
+    "\\frac{16}3",
+    "\\frac{11}2",
+    "\\frac{17}3",
+    "\\frac{35}6"
+  ],
+  "answer": "4",
+  "answer_value": "\\frac{17}3",
+  "figure": {
+    "description": "직선 $y=2x+k$와 두 감소 지수곡선; 아래 곡선 위의 P, 위 곡선 위의 Q",
+    "source_page": 12
+  },
+  "theme": {
+    "primary": "수학Ⅰ-05",
+    "primary_name": "지수로그의 방정식과 부등식",
+    "links": [
+      "수학Ⅰ-03"
+    ]
+  },
+  "first_judgment": "기울기가 $2$이므로 $\\overline{\\mathrm{PQ}}=\\sqrt5$에서 $x$좌표 차가 $1$임을 바로 얻고, 두 점을 $p$ 하나로 표현한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S03",
+    "S04"
+  ],
+  "solution_ref": "$\\mathrm P(p,2p+k)$, $\\mathrm Q(p+1,2p+k+2)$. $\\left(\\frac23\\right)^{p+3}+1=2p+k$, $\\left(\\frac23\\right)^{p+2}+\\frac83=2p+k+2$ → $\\left(\\frac23\\right)^{p+2}=1$, $p=-2$. $k=\\frac23+1+4=\\frac{17}3$",
+  "legacy": {
+    "category": "지수에 미지수를 포함하는 방정식의 응용",
+    "book_no": 24,
+    "question_page": 12,
+    "solution_page": 54
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-02"
+}

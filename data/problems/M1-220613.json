@@ -1,0 +1,51 @@
+{
+  "id": "M1-220613",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220613",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2021년 6월 고3 13번"
+  },
+  "question": "실수 전체의 집합에서 정의된 함수 $f(x)$가 구간 $(0,1]$에서 $f(x)=\\begin{cases}3 & (0<x<1)\\\\ 1 & (x=1)\\end{cases}$이고, 모든 실수 $x$에 대하여 $f(x+1)=f(x)$를 만족시킨다. $\\displaystyle\\sum_{k=1}^{20}\\frac{k\\times f(\\sqrt k)}{3}$의 값은?",
+  "condition": null,
+  "choices": [
+    "150",
+    "160",
+    "170",
+    "180",
+    "190"
+  ],
+  "answer": "5",
+  "answer_value": "190",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-16",
+    "primary_name": "여러 가지 수열의 합",
+    "links": []
+  },
+  "first_judgment": "$f$는 정수에서만 $1$, 나머지에서 $3$이므로 $\\sqrt k$가 정수인 $k=1,4,9,16$만 따로 뺀다.",
+  "behavior": "계산",
+  "reasoning": [
+    "경우 나누기",
+    "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [
+    "S10"
+  ],
+  "solution_ref": "$k=1,4,9,16$: $f(\\sqrt k)=1$; 그 외 $3$. $30\\cdot\\frac13+(210-30)\\cdot1=190$",
+  "legacy": {
+    "category": "여러 가지 수열의 합(11) : 이외의 조건이 주어진 경우 수열의 합",
+    "book_no": 63,
+    "question_page": 32,
+    "solution_page": 73
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-09"
+}

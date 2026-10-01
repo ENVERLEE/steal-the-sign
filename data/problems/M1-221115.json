@@ -1,0 +1,54 @@
+{
+  "id": "M1-221115",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "221115",
+    "year": 2022,
+    "exam": "대학수학능력시험",
+    "number": 15,
+    "points": 4,
+    "label": "2021년 11월 고3 15번"
+  },
+  "question": "두 점 $\\mathrm{O}_1$, $\\mathrm{O}_2$를 각각 중심으로 하고 반지름의 길이가 $\\overline{\\mathrm{O}_1\\mathrm{O}_2}$인 두 원 $C_1$, $C_2$가 있다. 그림과 같이 원 $C_1$ 위의 서로 다른 세 점 $\\mathrm{A,B,C}$와 원 $C_2$ 위의 점 $\\mathrm{D}$가 주어져 있고, 세 점 $\\mathrm{A},\\mathrm{O}_1,\\mathrm{O}_2$와 세 점 $\\mathrm{C},\\mathrm{O}_2,\\mathrm{D}$가 각각 한 직선 위에 있다. 이때 $\\angle\\mathrm{BO}_1\\mathrm{A}=\\theta_1$, $\\angle\\mathrm{O}_2\\mathrm{O}_1\\mathrm{C}=\\theta_2$, $\\angle\\mathrm{O}_1\\mathrm{O}_2\\mathrm{D}=\\theta_3$이라 하자. 다음은 $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{O}_1\\mathrm{D}}=1:2\\sqrt2$이고 $\\theta_3=\\theta_1+\\theta_2$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{CD}$의 길이의 비를 구하는 과정이다. 위의 (가), (다)에 알맞은 식을 각각 $f(k)$, $g(k)$라 하고, (나)에 알맞은 수를 $p$라 할 때, $f(p)\\times g(p)$의 값은?",
+  "condition": "$\\angle\\mathrm{CO}_2\\mathrm{O}_1+\\angle\\mathrm{O}_1\\mathrm{O}_2\\mathrm{D}=\\pi$이므로 $\\theta_3=\\dfrac\\pi2+\\dfrac{\\theta_2}2$이고 $\\theta_3=\\theta_1+\\theta_2$에서 $2\\theta_1+\\theta_2=\\pi$이므로 $\\angle\\mathrm{CO}_1\\mathrm{B}=\\theta_1$. 이때 $\\angle\\mathrm{O}_2\\mathrm{O}_1\\mathrm{B}=\\theta_1+\\theta_2=\\theta_3$이므로 삼각형 $\\mathrm{O}_1\\mathrm{O}_2\\mathrm{B}$와 삼각형 $\\mathrm{O}_2\\mathrm{O}_1\\mathrm{D}$는 합동이다. $\\overline{\\mathrm{AB}}=k$라 할 때, $\\overline{\\mathrm{BO}_2}=\\overline{\\mathrm{O}_1\\mathrm{D}}=2\\sqrt2k$이므로 $\\overline{\\mathrm{AO}_2}=$ (가) 이고, $\\angle\\mathrm{BO}_2\\mathrm{A}=\\dfrac{\\theta_1}2$이므로 $\\cos\\dfrac{\\theta_1}2=$ (나) 이다. 삼각형 $\\mathrm{O}_2\\mathrm{BC}$에서 $\\overline{\\mathrm{BC}}=k$, $\\overline{\\mathrm{BO}_2}=2\\sqrt2k$, $\\angle\\mathrm{CO}_2\\mathrm{B}=\\dfrac{\\theta_1}2$이므로 코사인법칙에 의하여 $\\overline{\\mathrm{O}_2\\mathrm{C}}=$ (다) 이다. $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{O}_2\\mathrm{D}}+\\overline{\\mathrm{O}_2\\mathrm{C}}=\\overline{\\mathrm{O}_1\\mathrm{O}_2}+\\overline{\\mathrm{O}_2\\mathrm{C}}$이므로 $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{CD}}=k:\\left(\\dfrac{(가)}2+(다)\\right)$이다.",
+  "choices": [
+    "\\frac{169}{27}",
+    "\\frac{56}9",
+    "\\frac{167}{27}",
+    "\\frac{166}{27}",
+    "\\frac{55}9"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{56}9",
+  "figure": {
+    "description": "두 원 $C_1$, $C_2$(중심 $\\mathrm O_1$, $\\mathrm O_2$)와 점 A, B, C, D, 각 $\\theta_1,\\theta_2,\\theta_3$",
+    "source_page": 20
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "$\\mathrm{AO_2}$가 지름이므로 $\\angle\\mathrm{ABO_2}=90^\\circ$를 이용해 피타고라스로 (가)를 구하고, 이어서 과정을 따라간다.",
+  "behavior": "이해",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "(가) $\\overline{\\mathrm{AO_2}}=\\sqrt{k^2+8k^2}=3k$. (나) $\\cos\\frac{\\theta_1}2=\\frac{2\\sqrt2k}{3k}=\\frac{2\\sqrt2}3$. (다) $k^2=x^2+8k^2-2x\\cdot2\\sqrt2k\\cdot\\frac{2\\sqrt2}3$ → $(3x-7k)(x-3k)=0$, $x=\\frac73k$. $f(p)g(p)=3p\\cdot\\frac73p=7p^2=\\frac{56}9$",
+  "legacy": {
+    "category": "코사인법칙",
+    "book_no": 39,
+    "question_page": 20,
+    "solution_page": 61
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-07"
+}

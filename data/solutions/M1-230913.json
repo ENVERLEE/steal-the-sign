@@ -1,0 +1,56 @@
+{
+  "id": "M1-230913",
+  "concept_refs": [
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C3",
+    "수학Ⅰ-12-C2"
+  ],
+  "guide": "결정되는 삼각형부터: 삼각형 CDE는 $\\overline{\\mathrm{CE}}=4$, $\\overline{\\mathrm{ED}}=3\\sqrt2$, 끼인각 $\\angle\\mathrm{CED}=\\pi-\\frac34\\pi=\\frac\\pi4$로 SAS → $\\overline{\\mathrm{CD}}$, $\\angle\\mathrm{CDE}$가 나온다(수학Ⅰ-12-C1).\n$\\overline{\\mathrm{AC}}$는 원의 중심 O가 핵심이다(S08). $\\angle\\mathrm{CDA}$는 호 AC에 대한 원주각이므로 중심각 $\\angle\\mathrm{AOC}=2\\angle\\mathrm{CDA}$, 그리고 $\\triangle\\mathrm{AOC}$는 반지름 두 개로 이등변이다(수학Ⅰ-12-C3). 그러면 삼각형 ACE의 세 각이 모두 정해져 ASA로 결정된다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 중심각 → 이등변 → 각으로 결정",
+      "steps": [
+        {
+          "label": "삼각형 CDE (SAS)",
+          "body": "$\\overline{\\mathrm{CD}}^2=16+18-2\\cdot4\\cdot3\\sqrt2\\cdot\\frac{\\sqrt2}2=10$, $\\overline{\\mathrm{CD}}=\\sqrt{10}$.\n$\\angle\\mathrm{CDE}=\\alpha$라 하면 $\\cos\\alpha=\\frac{18+10-16}{2\\cdot3\\sqrt2\\cdot\\sqrt{10}}=\\frac1{\\sqrt5}$, $\\sin\\alpha=\\frac2{\\sqrt5}$."
+        },
+        {
+          "label": "중심각과 이등변삼각형",
+          "body": "$\\angle\\mathrm{CDA}=\\alpha$는 호 AC에 대한 원주각이므로 $\\angle\\mathrm{AOC}=2\\alpha$. $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OC}}$이므로\n$$\\angle\\mathrm{OCA}=\\angle\\mathrm{OAC}=\\tfrac\\pi2-\\alpha$$"
+        },
+        {
+          "label": "삼각형 ACE의 세 각",
+          "body": "$\\angle\\mathrm{AEC}=\\frac34\\pi$, $\\angle\\mathrm{ACE}=\\angle\\mathrm{ACO}=\\frac\\pi2-\\alpha$이므로\n$$\\angle\\mathrm{CAE}=\\pi-\\tfrac34\\pi-\\left(\\tfrac\\pi2-\\alpha\\right)=\\alpha-\\tfrac\\pi4$$\n$\\sin\\left(\\alpha-\\frac\\pi4\\right)=\\frac{\\sin\\alpha-\\cos\\alpha}{\\sqrt2}=\\frac{1}{\\sqrt{10}}$."
+        },
+        {
+          "label": "사인법칙",
+          "body": "삼각형 ACE에서 $\\dfrac{\\overline{\\mathrm{AC}}}{\\sin\\frac34\\pi}=\\dfrac{\\overline{\\mathrm{CE}}}{\\sin(\\alpha-\\frac\\pi4)}$이므로\n$$\\overline{\\mathrm{AC}}=4\\cdot\\tfrac{\\sqrt2}2\\cdot\\sqrt{10}=4\\sqrt5$$"
+        },
+        {
+          "label": "답",
+          "body": "$\\overline{\\mathrm{AC}}\\times\\overline{\\mathrm{CD}}=4\\sqrt5\\cdot\\sqrt{10}=20\\sqrt2$ → ⑤"
+        }
+      ]
+    },
+    {
+      "title": "풀이 2 · 두 현의 곱 + 코사인법칙 (비교용)",
+      "steps": [
+        {
+          "label": "반지름 $r$로 두기",
+          "body": "직선 CO를 연장해 원과 다시 만나는 점을 $\\mathrm C'$라 하면 $\\overline{\\mathrm{EC'}}=\\overline{\\mathrm{EO}}+r=(r-4)+r=2r-4$. 두 현 AD, CC'이 E에서 만나므로\n$$\\overline{\\mathrm{EA}}\\cdot3\\sqrt2=4(2r-4)\\ \\Rightarrow\\ \\overline{\\mathrm{EA}}=\\tfrac{4\\sqrt2}3(r-2)$$"
+        },
+        {
+          "label": "삼각형 AOE",
+          "body": "$\\angle\\mathrm{AEO}=\\angle\\mathrm{CED}=\\frac\\pi4$(맞꼭지각), $\\overline{\\mathrm{OA}}=r$, $\\overline{\\mathrm{OE}}=r-4$. 코사인법칙 $r^2=\\overline{\\mathrm{EA}}^2+(r-4)^2-\\sqrt2\\,\\overline{\\mathrm{EA}}(r-4)$에 대입해 $(r-2)$로 나누면 $r=5$, $\\overline{\\mathrm{EA}}=4\\sqrt2$."
+        },
+        {
+          "label": "",
+          "body": "삼각형 ACE: $\\overline{\\mathrm{AC}}^2=32+16-2\\cdot4\\sqrt2\\cdot4\\cdot\\left(-\\frac{\\sqrt2}2\\right)=80$, $\\overline{\\mathrm{AC}}=4\\sqrt5$. 곱은 $20\\sqrt2$."
+        }
+      ]
+    }
+  ],
+  "supplement": "풀이 2도 가능하지만 반지름 $r$이라는 미지수를 새로 도입해 이차식을 정리해야 한다. 풀이 1은 '원의 중심이 보이면 반지름 두 개로 이등변, 원주각은 중심각의 절반'(S08)만으로 삼각형 ACE의 각을 모두 확정한다. 각이 모두 정해지면 한 변만으로 삼각형이 결정된다(ASA)는 것이 S07의 관점이다. $\\sin(\\alpha-\\frac\\pi4)$ 같은 합차 계산이 부담이면 삼각형 ACE에서 $\\angle\\mathrm{ACE}$의 $\\sin,\\cos$을 먼저 구해 사인법칙을 써도 된다.",
+  "skill_point": "원의 중심 → 반지름 두 개로 이등변 + 중심각 = 2×원주각 → 각으로 삼각형 결정.",
+  "answer": "5"
+}

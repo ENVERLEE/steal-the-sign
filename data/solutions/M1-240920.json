@@ -1,0 +1,34 @@
+{
+  "id": "M1-240920",
+  "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C1"
+  ],
+  "guide": "두 외접원이 모두 공통변 BD를 현으로 갖는다. 각 원에서 BD의 대각이 주어져 있으므로 $R=\\frac{\\overline{\\mathrm{BD}}}{2\\sin(\\text{대각})}$로 둘 다 $\\overline{\\mathrm{BD}}$로 표현된다(수학Ⅰ-12-C2). 삼각형 ABD는 SAS이므로 $\\overline{\\mathrm{BD}}^2$가 코사인법칙으로 바로 나온다(수학Ⅰ-12-C1).",
+  "solutions": [
+    {
+      "title": "풀이 · 공통 현 BD",
+      "steps": [
+        {
+          "label": "(가)",
+          "body": "삼각형 ABD에서 $2R_2=\\dfrac{\\overline{\\mathrm{BD}}}{\\sin\\frac23\\pi}=\\dfrac{2}{\\sqrt3}\\overline{\\mathrm{BD}}$이므로 $R_2=\\dfrac{\\sqrt3}3\\overline{\\mathrm{BD}}$. $p=\\frac{\\sqrt3}3$."
+        },
+        {
+          "label": "(나)",
+          "body": "$\\overline{\\mathrm{BD}}^2=2^2+1^2-2\\cdot2\\cdot1\\cdot\\cos\\frac23\\pi$이므로 (나)$=2\\cdot2\\cdot1\\cdot\\left(-\\frac12\\right)=-2$. $q=-2$, $\\overline{\\mathrm{BD}}^2=7$."
+        },
+        {
+          "label": "(다)",
+          "body": "$R_1R_2=\\frac{\\sqrt2}2\\cdot\\frac{\\sqrt3}3\\cdot\\overline{\\mathrm{BD}}^2=\\frac{\\sqrt6}6\\cdot7=\\frac{7\\sqrt6}6$. $r=\\frac{7\\sqrt6}6$."
+        },
+        {
+          "label": "답",
+          "body": "$pqr=\\frac{\\sqrt3}3\\cdot(-2)\\cdot\\frac{7\\sqrt6}6=-\\frac{7\\sqrt2}3$, $(pqr)^2=\\frac{98}9$. 따라서 $9(pqr)^2=98$."
+        }
+      ]
+    }
+  ],
+  "supplement": "(나)는 '빼는 값'이므로 부호에 주의한다. $\\cos\\frac23\\pi<0$이라 (나)가 음수 $-2$가 되고, 이것을 $2$로 적으면 $(pqr)^2$는 같아 보여도 논리적으로 틀린 답을 쓴 셈이다(이 문제는 제곱이라 우연히 같다). 두 원이 공통 현을 가지면 $R_1:R_2=\\frac1{\\sin\\theta_1}:\\frac1{\\sin\\theta_2}$처럼 '대각의 $\\sin$'만으로 비교된다는 것이 드릴 포인트다.",
+  "skill_point": "공통 현을 가진 원들 → 모두 그 현과 대각의 $\\sin$으로 표현한다.",
+  "answer": "98"
+}

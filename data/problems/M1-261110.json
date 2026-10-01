@@ -1,0 +1,50 @@
+{
+  "id": "M1-261110",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "261110",
+    "year": 2026,
+    "exam": "대학수학능력시험",
+    "number": 10,
+    "points": 4,
+    "label": "2025년 11월 고3 10번"
+  },
+  "question": "상수 $a$ $(a>1)$에 대하여 곡선 $y=a^x-2$ 위의 점 중 제1사분면에 있는 점 $\\mathrm{A}$를 지나고 $y$축에 평행한 직선이 $x$축과 만나는 점을 $\\mathrm{B}$, 곡선 $y=a^x-2$의 점근선과 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}$이고 삼각형 $\\mathrm{AOC}$의 넓이가 $8$일 때, $a\\times\\overline{\\mathrm{OB}}$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+    "2^{\\frac{13}{6}}",
+    "2^{\\frac73}",
+    "2^{\\frac52}",
+    "2^{\\frac83}",
+    "2^{\\frac{17}{6}}"
+  ],
+  "answer": "3",
+  "answer_value": "2^{\\frac52}",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-03",
+    "primary_name": "지수함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "점근선 $y=-2$이므로 $\\overline{\\mathrm{BC}}=2$, 따라서 $\\mathrm A$의 $y$좌표가 $2$로 바로 정해진다.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{BC}}=2=\\overline{\\mathrm{AB}}$ → $\\mathrm A(p,2)$, $a^p=4$. 넓이 $\\frac12\\cdot4\\cdot\\overline{\\mathrm{OB}}=8\\Rightarrow\\overline{\\mathrm{OB}}=4$, $a^4=4$, $a=\\sqrt2$. $a\\cdot\\overline{\\mathrm{OB}}=4\\sqrt2=2^{5/2}$",
+  "legacy": {
+    "category": "지수함수의 그래프에서의 함숫값",
+    "book_no": 8,
+    "question_page": 4,
+    "solution_page": 45
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-02"
+}

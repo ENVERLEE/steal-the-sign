@@ -18,7 +18,7 @@
       "required": ["type"],
       "properties": {
         "type": {"enum": ["variant", "original"]},
-        "parent_id": {"type": "string", "description": "variant면 필수: db.json id"},
+        "parent_id": {"type": "string", "description": "variant면 필수: 문항 id"},
         "variation": {"type": "string", "description": "variant면 필수: config created.variations 중 하나"},
         "note": {"type": "string"}
       }

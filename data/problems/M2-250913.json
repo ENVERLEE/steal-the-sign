@@ -1,0 +1,52 @@
+{
+  "id": "M2-250913",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250913",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2024년 9월 고3 13번"
+  },
+  "question": "함수 $f(x)=\\begin{cases}-x^2-2x+6 & (x<0)\\\\ -x^2+2x+6 & (x\\ge0)\\end{cases}$의 그래프가 $x$축과 만나는 서로 다른 두 점을 $\\mathrm{P}$, $\\mathrm{Q}$라 하고, 상수 $k$ $(k>4)$에 대하여 직선 $x=k$가 $x$축과 만나는 점을 $\\mathrm{R}$이라 하자. 곡선 $y=f(x)$와 선분 $\\mathrm{PQ}$로 둘러싸인 부분의 넓이를 $A$, 곡선 $y=f(x)$와 직선 $x=k$ 및 선분 $\\mathrm{QR}$로 둘러싸인 부분의 넓이를 $B$라 하자. $A=2B$일 때, $k$의 값은? (단, 점 $\\mathrm{P}$의 $x$좌표는 음수이다.)",
+  "condition": null,
+  "choices": [
+    "\\frac92",
+    "5",
+    "\\frac{11}2",
+    "6",
+    "\\frac{13}2"
+  ],
+  "answer": "4",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-18",
+    "primary_name": "정적분과 넓이",
+    "links": []
+  },
+  "first_judgment": "$f$는 $y$축 대칭이므로 $A$의 절반이 $\\int_0^{x_Q}f$이고, $A=2B$는 곧 $\\int_0^kf(x)\\,dx=0$이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S24",
+    "S25"
+  ],
+  "solution_ref": "$\\int_0^k(-x^2+2x+6)\\,dx=-\\frac13k(k+3)(k-6)=0$ → $k=6$",
+  "legacy": {
+    "category": "곡선과 x축 사이의 넓이",
+    "book_no": 59,
+    "question_page": 30,
+    "solution_page": 75
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-08"
+}

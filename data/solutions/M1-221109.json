@@ -1,0 +1,33 @@
+{
+  "id": "M1-221109",
+  "concept_refs": [
+    "수학Ⅰ-05-C3"
+  ],
+  "guide": "직선의 기울기가 $2$이므로 방향벡터는 $(1,2)$이고 그 길이가 정확히 $\\sqrt5$다. 따라서 $\\overline{\\mathrm{PQ}}=\\sqrt5$는 'P에서 가로 $1$, 세로 $2$ 가면 Q'라는 뜻이다. P를 $(p,2p+k)$로 두면 Q도 $p$로 표현되고, 두 교점 방정식을 빼면 $k$가 소거되며 지수항 하나만 남는다(수학Ⅰ-05-C3).",
+  "solutions": [
+    {
+      "title": "풀이 1 · 좌표 차 확정 후 빼기",
+      "steps": [
+        {
+          "label": "좌표 설정",
+          "body": "$\\mathrm P(p,2p+k)$, $\\mathrm Q(p+1,2p+k+2)$ (그림에서 Q가 오른쪽 위). "
+        },
+        {
+          "label": "두 방정식",
+          "body": "$\\left(\\frac23\\right)^{p+3}+1=2p+k$ ⋯ ①\n$\\left(\\frac23\\right)^{p+2}+\\frac83=2p+k+2$ ⋯ ②"
+        },
+        {
+          "label": "② $-$ ①",
+          "body": "$\\left(\\frac23\\right)^{p+2}-\\left(\\frac23\\right)^{p+3}+\\frac53=2$\n$\\left(\\frac23\\right)^{p+2}\\left(1-\\frac23\\right)=\\frac13\\ \\Rightarrow\\ \\left(\\frac23\\right)^{p+2}=1\\ \\Rightarrow\\ p=-2$"
+        },
+        {
+          "label": "답",
+          "body": "①에 대입: $\\frac23+1=-4+k$, $k=\\frac{17}3$ → ④"
+        }
+      ]
+    }
+  ],
+  "supplement": "Q를 P의 왼쪽 아래 $(p-1,2p+k-2)$로 두면 같은 방식으로 빼서 $\\left(\\frac23\\right)^p\\cdot\\frac{19}{27}=-\\frac{11}3$이 되어 해가 없다. 그림이 없어도 이 확인으로 위치가 결정된다. 거리 공식 $(x_2-x_1)^2+(y_2-y_1)^2=5$를 세우고 지수식을 직접 넣으면 풀 수 없는 식이 되므로, '기울기 + 거리 → 좌표 차'를 먼저 쓰는 것이 필수다.",
+  "skill_point": "기울기 $m$, 거리 $d$ → 가로 차 $\\frac d{\\sqrt{1+m^2}}$로 확정, 두 방정식을 빼서 지수항 하나로.",
+  "answer": "4"
+}

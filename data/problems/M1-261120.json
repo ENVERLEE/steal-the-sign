@@ -1,0 +1,46 @@
+{
+  "id": "M1-261120",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "261120",
+    "year": 2026,
+    "exam": "대학수학능력시험",
+    "number": 20,
+    "points": 4,
+    "label": "2025년 11월 고3 20번"
+  },
+  "question": "수열 $\\{a_n\\}$이 다음 조건을 만족시킨다. 다음은 $\\displaystyle\\sum_{k=1}^{12}a_k+\\sum_{k=1}^{5}a_{2k+1}$의 값을 구하는 과정이다. 위의 (가)에 알맞은 식을 $f(n)$이라 하고, (나), (다)에 알맞은 수를 각각 $p,q$라 할 때, $\\dfrac{pq}{f(12)}$의 값을 구하시오.",
+  "condition": "[조건] $a_1=7$; $2$ 이상의 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}a_k=\\frac23a_n+\\frac16n^2-\\frac16n+10$이다.\\\\[과정] $2$ 이상의 자연수 $n$에 대하여 $a_{n+1}=\\displaystyle\\sum_{k=1}^{n+1}a_k-\\sum_{k=1}^{n}a_k$이므로 $a_{n+1}=\\dfrac23(a_{n+1}-a_n)+$ (가) 이고, 이 식을 정리하면 $2a_n+a_{n+1}=3\\times$ (가) $\\cdots$㉠ 이다. $\\displaystyle\\sum_{k=1}^{n}a_k=\\frac23a_n+\\frac16n^2-\\frac16n+10$ $(n\\ge2)$에서 양변에 $n=2$를 대입하면 $a_2=$ (나) $\\cdots$㉡ 이다. ㉠과 ㉡에 의하여 $\\displaystyle\\sum_{k=1}^{12}a_k+\\sum_{k=1}^{5}a_{2k+1}=a_1+a_2+\\sum_{k=1}^{5}(2a_{2k+1}+a_{2k+2})=$ (다) 이다.",
+  "choices": null,
+  "answer": "130",
+  "answer_value": "130",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-16",
+    "primary_name": "여러 가지 수열의 합",
+    "links": [
+      "수학Ⅰ-17"
+    ]
+  },
+  "first_judgment": "$S_{n+1}-S_n$으로 $a_{n+1}$과 $a_n$의 관계식을 얻고, 구하는 합을 $2a_{2k+1}+a_{2k+2}$ 묶음으로 재배열한다.",
+  "behavior": "이해",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S10"
+  ],
+  "solution_ref": "(가) $\\frac13n$ → $2a_n+a_{n+1}=n$. $n=2$: $a_1+\\frac13a_2=\\frac{31}3$ → $a_2=10$ (나). $\\sum=a_1+a_2+\\sum_{k=1}^5(2k+1)=7+10+35=52$ (다). $\\frac{pq}{f(12)}=\\frac{10\\cdot52}{4}=130$",
+  "legacy": {
+    "category": "a_n과 S_n 사이의 관계식이 주어진 수열",
+    "book_no": 81,
+    "question_page": 41,
+    "solution_page": 84
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-09"
+}

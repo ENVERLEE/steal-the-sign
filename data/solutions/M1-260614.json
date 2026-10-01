@@ -1,0 +1,35 @@
+{
+  "id": "M1-260614",
+  "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C4"
+  ],
+  "guide": "$\\sin$의 비가 주어진 삼각형 APQ에서 사인법칙을 쓰면 **대변의 비**가 된다: $\\overline{\\mathrm{PQ}}:\\overline{\\mathrm{AQ}}=\\sin(\\angle\\mathrm{QAP}):\\sin(\\angle\\mathrm{APQ})$. 여기서 $\\overline{\\mathrm{PQ}}$가 나오면 P, Q가 BC의 내분점이므로 $\\overline{\\mathrm{BC}}$가 확정되고, 삼각형 ABQ가 SSS로 결정된다(수학Ⅰ-12-C1). 외접원은 '한 변과 대각의 $\\sin$'으로 구한다(수학Ⅰ-12-C2).",
+  "solutions": [
+    {
+      "title": "풀이 · 사인비 → 변의 비 → SSS",
+      "steps": [
+        {
+          "label": "$\\overline{\\mathrm{PQ}}$",
+          "body": "삼각형 APQ에서 $\\angle\\mathrm{QAP}$의 대변은 PQ, $\\angle\\mathrm{APQ}$의 대변은 AQ이므로\n$$\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{AQ}}\\cdot\\tfrac{\\sqrt2}3=3\\sqrt2\\cdot\\tfrac{\\sqrt2}3=2$$"
+        },
+        {
+          "label": "$\\overline{\\mathrm{BC}}$",
+          "body": "$\\overline{\\mathrm{BC}}=a$라 하면 $\\overline{\\mathrm{BP}}=\\frac a2$, $\\overline{\\mathrm{BQ}}=\\frac{5a}6$이므로 $\\overline{\\mathrm{PQ}}=\\frac a3=2$, $a=6$, $\\overline{\\mathrm{BQ}}=5$."
+        },
+        {
+          "label": "$\\cos B$",
+          "body": "삼각형 ABQ (SSS: $2\\sqrt7,5,3\\sqrt2$):\n$$\\cos B=\\frac{28+25-18}{2\\cdot2\\sqrt7\\cdot5}=\\frac{35}{20\\sqrt7}=\\frac{\\sqrt7}4,\\qquad\\sin B=\\frac34$$"
+        },
+        {
+          "label": "$\\overline{\\mathrm{AC}}$와 외접원",
+          "body": "$\\overline{\\mathrm{AC}}^2=28+36-2\\cdot2\\sqrt7\\cdot6\\cdot\\frac{\\sqrt7}4=22$.\n$$2R=\\frac{\\overline{\\mathrm{AC}}}{\\sin B}=\\frac{4\\sqrt{22}}3\\ \\Rightarrow\\ R^2=\\frac{88}9$$\n외접원의 넓이 $\\frac{88}9\\pi$ → ②"
+        }
+      ]
+    }
+  ],
+  "supplement": "'$\\sin$의 비'는 곧 '대변의 비'라는 번역이 첫 단추다. 어느 각의 대변이 어느 변인지 그림에서 반드시 확인하자(각 QAP는 꼭짓점 A, 대변 PQ). 외접원을 구할 때는 이미 구한 각 $B$의 대변 $\\overline{\\mathrm{AC}}$를 쓰는 것이 가장 짧다.",
+  "skill_point": "$\\sin$의 비 = 대변의 비. 내분점이 나오면 전체 길이를 한 문자로.",
+  "answer": "2"
+}

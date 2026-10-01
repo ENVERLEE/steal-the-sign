@@ -1,0 +1,47 @@
+{
+  "id": "M1-250922",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250922",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 22,
+    "points": 4,
+    "label": "2024년 9월 고3 22번"
+  },
+  "question": "양수 $k$에 대하여 $a_1=k$인 수열 $\\{a_n\\}$이 다음 조건을 만족시킨다. $a_5=0$이 되도록 하는 서로 다른 모든 양수 $k$에 대하여 $k^2$의 값의 합을 구하시오.",
+  "condition": "(가) $a_2a_3<0$\\\\(나) 모든 자연수 $n$에 대하여 $\\left(a_{n+1}-a_n+\\dfrac23k\\right)(a_{n+1}+ka_n)=0$이다.",
+  "choices": null,
+  "answer": "8",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-21",
+    "primary_name": "가지수열",
+    "links": [
+      "수학Ⅰ-17"
+    ]
+  },
+  "first_judgment": "매 단계 $a_{n+1}=a_n-\\frac23k$ 또는 $-ka_n$의 두 갈래이므로 트리로 나열하되, (가)로 $a_2,a_3$ 부호가 다른 가지만 남긴다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "경우 나누기",
+    "나열·역추적"
+  ],
+  "strategy_ids": [
+    "S11"
+  ],
+  "solution_ref": "$a_2=\\frac k3$ 또는 $-k^2$. (i) $a_2=\\frac k3$: $a_3=-\\frac k3$ → $a_4=\\frac{k^2}3$일 때 $a_5=\\frac{k^2}3-\\frac23k=0$, $k=2$; $a_3=-\\frac{k^2}3$ → $a_4=\\frac{k^3}3$일 때 $k=\\sqrt2$. (ii) $a_2=-k^2$: $a_3=k^3$ → $a_4=k^3-\\frac23k$일 때 $a_5=0$에서 $k=\\frac2{\\sqrt3}$ 또는 $\\sqrt{\\frac23}$. $k^2$의 합 $4+2+\\frac43+\\frac23=8$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 77,
+    "question_page": 39,
+    "solution_page": 80
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-10"
+}

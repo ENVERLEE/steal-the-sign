@@ -1,0 +1,54 @@
+{
+  "id": "M1-260914",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "260914",
+    "year": 2026,
+    "exam": "9월 모의평가",
+    "number": 14,
+    "points": 4,
+    "label": "2025년 9월 고3 14번"
+  },
+  "question": "양수 $k$에 대하여 집합 $\\left\\{x\\,\\middle|\\,0\\le x<\\dfrac{3k\\pi}2,\\ x\\ne\\dfrac{k\\pi}2\\right\\}$에서 정의된 함수 $f(x)=\\tan\\dfrac xk$가 있다. 점 $\\mathrm{P}(0,p)$ $(p>0)$을 지나며 $x$축에 평행한 직선이 함수 $y=f(x)$의 그래프와 만나는 두 점을 $\\mathrm{A}$, $\\mathrm{B}$ $(\\overline{\\mathrm{PA}}<\\overline{\\mathrm{PB}})$라 하고, 직선 $y=-p$가 함수 $y=f(x)$의 그래프와 만나는 점을 $\\mathrm{C}$라 하자. $\\overline{\\mathrm{AB}}=3\\overline{\\mathrm{PA}}$이고 삼각형 $\\mathrm{OCB}$의 넓이가 $\\dfrac{5\\pi}3$일 때, $k+p$의 값은? (단, $\\mathrm{O}$는 원점이다.)",
+  "condition": null,
+  "choices": [
+    "\\frac{4\\sqrt3}3",
+    "\\frac{13\\sqrt3}9",
+    "\\frac{14\\sqrt3}9",
+    "\\frac{5\\sqrt3}3",
+    "\\frac{16\\sqrt3}9"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{14\\sqrt3}9",
+  "figure": {
+    "description": "$y=\\tan\\frac xk$의 두 가지와 직선 $y=p$(P, A, B), $y=-p$(C); 삼각형 OCB 색칠",
+    "source_page": 14
+  },
+  "theme": {
+    "primary": "수학Ⅰ-09",
+    "primary_name": "삼각함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "주기 $k\\pi$이므로 $\\overline{\\mathrm{AB}}=k\\pi$, $\\overline{\\mathrm{PA}}=\\frac{k\\pi}3$을 바로 얻고, $\\mathrm B$와 $\\mathrm C$는 $x$축 위의 점 $\\mathrm D(k\\pi,0)$에 대해 대칭이다.",
+  "behavior": "추론",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{OD}}=k\\pi$, $\\overline{\\mathrm{PA}}=\\frac{k\\pi}3$. $p=\\tan\\frac\\pi3=\\sqrt3$. 넓이 $=\\triangle\\mathrm{ODB}+\\triangle\\mathrm{OCD}=\\sqrt3k\\pi=\\frac{5\\pi}3$ → $k=\\frac{5\\sqrt3}9$. $k+p=\\frac{14\\sqrt3}9$",
+  "legacy": {
+    "category": "y=atan(bx)의 성질",
+    "book_no": 28,
+    "question_page": 14,
+    "solution_page": 56
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-04"
+}

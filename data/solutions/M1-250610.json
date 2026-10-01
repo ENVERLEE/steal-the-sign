@@ -1,0 +1,40 @@
+{
+  "id": "M1-250610",
+  "concept_refs": [
+    "수학Ⅰ-12-C4",
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C5"
+  ],
+  "guide": "$\\sin$ 관계식은 사인법칙으로 **변의 관계식**이 된다(수학Ⅰ-12-C4).\n· (가) $3\\sin A=2\\sin B$ → $3a=2b$\n· (나) $\\cos B=\\cos C$ → $B=C$ ($0<B,C<\\pi$에서 $\\cos$은 일대일) → $b=c$\n세 변의 비 $2:3:3$으로 모양이 확정되고, 크기는 $R=3$으로 마지막에 정한다.",
+  "solutions": [
+    {
+      "title": "풀이 · 비로 모양, $R$로 크기",
+      "steps": [
+        {
+          "label": "변의 비",
+          "body": "$a:b:c=2:3:3$. 이등변이므로 $\\cos A=\\frac{9+9-4}{2\\cdot3\\cdot3}=\\frac79$, $\\sin A=\\frac{4\\sqrt2}9$."
+        },
+        {
+          "label": "크기 결정",
+          "body": "$\\pi R^2=9\\pi$에서 $R=3$. $a=2R\\sin A=6\\cdot\\frac{4\\sqrt2}9=\\frac{8\\sqrt2}3$이므로 비례상수 $\\frac{4\\sqrt2}3$, $b=c=4\\sqrt2$."
+        },
+        {
+          "label": "넓이",
+          "body": "$S=\\frac12bc\\sin A=\\frac12\\cdot32\\cdot\\frac{4\\sqrt2}9=\\frac{64\\sqrt2}9$ → ⑤"
+        }
+      ]
+    },
+    {
+      "title": "풀이 2 · $S=\\frac{abc}{4R}$ (확인용)",
+      "steps": [
+        {
+          "label": "",
+          "body": "$S=\\dfrac{abc}{4R}=\\dfrac{\\frac{8\\sqrt2}3\\cdot32}{12}=\\dfrac{64\\sqrt2}9$. 세 변과 $R$이 모두 있을 때는 이 공식이 가장 빠르다."
+        }
+      ]
+    }
+  ],
+  "supplement": "$\\cos B=\\cos C$에서 $B=C$로 가는 근거는 $(0,\\pi)$에서 $\\cos$이 감소함수(일대일)라는 것이다. $\\sin B=\\sin C$였다면 $B=C$ 또는 $B+C=\\pi$ 두 경우가 생긴다는 차이를 기억하자. 비를 먼저 확정하면 $\\cos A$가 크기와 무관하게 나오므로 계산이 깔끔하다.",
+  "skill_point": "$\\sin$ 관계식 → 변의 관계식. 비로 모양(각) 먼저, $R$로 크기는 마지막.",
+  "answer": "5"
+}

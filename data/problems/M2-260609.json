@@ -1,0 +1,48 @@
+{
+  "id": "M2-260609",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "260609",
+    "year": 2026,
+    "exam": "6월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2025년 6월 고3 9번"
+  },
+  "question": "함수 $f(x)=x^2+ax$에 대하여 $\\displaystyle\\int_{-3}^{3}(x+1)f(x)\\,dx=36+\\int_{-3}^{3}f(x)\\,dx$일 때, 상수 $a$의 값은?",
+  "condition": null,
+  "choices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "answer": "2",
+  "answer_value": "2",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-14",
+    "primary_name": "적분 연산",
+    "links": []
+  },
+  "first_judgment": "양변의 $\\int f$가 소거되어 $\\int_{-3}^3xf(x)\\,dx=36$만 남고, 기함수 부분은 $0$이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_{-3}^3(x^3+ax^2)\\,dx=2\\int_0^3ax^2\\,dx=18a=36$ → $a=2$",
+  "legacy": {
+    "category": "우함수 · 기함수의 정적분(1) : 피적분함수가 주어진 경우",
+    "book_no": 48,
+    "question_page": 24,
+    "solution_page": 68
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

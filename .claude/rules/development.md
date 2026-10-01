@@ -38,7 +38,7 @@ python run.py --book samples/book.sample.json --created <복사본> --out <임�
 
 | 파일 | 역할 |
 |---|---|
-| `validate_sources.py` | id·code·번호·학년도·배점·충돌, 선지·정답 형식, strategy_notes 대조, solutions·themes 누락·불일치·참조, **제어문자**·**KaTeX 오류** → `out/excluded.json` |
+| `validate_sources.py` | 문항 파일명=id·`home`, `data/index.json` 자동 생성, id·code·번호·학년도·배점·충돌, 선지·정답 형식, strategy_notes 대조, solutions·themes 누락·불일치·참조, **제어문자**·**KaTeX 오류** → `out/excluded.json` |
 | `mock_import.py` | 실모 오답 분석 JSON(틀린 문제 본문·이유·패턴) → `work/mock/{id}_draft.json`(source 뼈대)·`{id}_analysis.json`·`source/{id}/pages.json`(표기). 필드 별칭 인식 |
 | `pdf_pages.py` | PDF → 쪽 PNG·텍스트 (pypdfium2). `--title` 필수. `title` 단계로 변경. |
 | `check_source.py` | 교재 판독 파일: 스키마, id·쪽, 테마·과목, 참조, `$` 짝, 제어문자, 그림명세, `verify` 검산 → `status: verified` |
@@ -46,15 +46,17 @@ python run.py --book samples/book.sample.json --created <복사본> --out <임�
 | `check_created.py` | 창작 문제은행: 스키마·형식·정답·유일성·오답·스킬·유사도·렌더링 검사 → `status: verified` |
 | `check_book.py` | book.json 규칙 검사 |
 | `verify_answers.py` | DB 정답 검산, `notes[ref].verify` `skill()` 검산, 창작 `skill`·`standard`·`unique` 재실행 |
-| `render_figs.py` | 그림 명세 → SVG (sympy·numpy 계산). `out/figs/` 캐시 |
-| `tex.py` | KaTeX 일괄 조판 (Playwright + `vendor/katex`). `out/.cache/tex.json` 캐시. 글꼴 woff2 base64로 CSS 내장 |
+| `render_figs.py` | 그림 명세 → SVG (sympy·numpy 계산). 라벨은 KaTeX 글꼴(변수 기울임, 점 이름·함수 바로 세움, `2/3`은 분수꼴). `out/figs/` 캐시 |
+| `tex.py` | KaTeX 일괄 조판 (Playwright + `vendor/katex`). `out/.cache/tex.json` 캐시. 글꼴 woff2 base64로 CSS 내장. inline style은 공용 클래스로 압축. 수식 앞뒤 괄호·조사·문장부호는 수식과 한 덩어리 |
 | `template.py` | STS_template.html → 페이지별 Jinja2 템플릿. 슬롯 누락 시 오류. `load_ext`: STS_ext.html의 HEAD·XPAGE. |
-| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html, 개념은 블록 단위로 흐름) → 조판 → **A4 판면 재면서** 목차·REPLAY·정답표·해설 페이지 분할 (해설은 한 장에 `config.json` `solution.per_page_max`문항) → `out/book.html` |
+| `build.py` | 모델 구성(교과서형 DAY는 STS_ext.html, 개념은 블록 단위로 흐름) → 조판 → **A4 판면 재면서** 목차·REPLAY·정답표·해설 페이지 분할 (해설은 두 단을 높이만큼 채움, `config.json` `solution.per_page_max`가 수이면 한 장 상한) → `out/book.html` |
 | `export_pdf.py` | HTML을 템플릿 인쇄 CSS로 Chromium 인쇄 → `out/book.pdf`. 쪽 수·A4 크기 확인 |
 | `check_layout.py` | 결과 HTML: 794×1123 크기, 넘침, `[[`·`]]`, 가짜 번호, KaTeX 오류, 수식 기호(`\frac`·`$`), 순서·쪽 번호 연속 검사 |
 | `report.py` | 로그 → `out/report.md` (요약, AI 수정 목록, 구성·비율·행동 영역·난도, 문제은행, 판면) |
 | `mathval.py` | LaTeX 정답 → sympy 비교 |
 | `verify_runner.py` | verify 코드 별도 프로세스 실행 (30초 제한) |
+| `book_dir.py` | `split`/`join`: 책 JSON ↔ DAY별 폴더. 읽을 때(`Context.book`) 폴더는 한 책으로 합쳐진다 |
+| `new_created.py` | `new`: 부모 기출을 복사한 변형 창작 뼈대(`work/created/{테마}/C-{테마}-NNN.json`) |
 | `common.py` | 설정·경로·로그·브라우저 실행 |
 | `schemas.py` | 스키마 검증 |
 

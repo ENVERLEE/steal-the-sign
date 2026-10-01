@@ -1,0 +1,34 @@
+{
+  "id": "PS-231128",
+  "concept_refs": [
+    "확률과 통계-16-C1",
+    "확률과 통계-16-C2"
+  ],
+  "guide": "그래프는 $(0,0)$, $(b,c)$, $(a,0)$을 꼭짓점으로 하는 삼각형이다. 전체 넓이 $1$ → $ac=2$(C1). $\\mathrm P(X\\le b)-\\mathrm P(X\\ge b)=\\frac14$와 합이 $1$임을 연립하면 $\\mathrm P(X\\le b)=\\frac58$. $\\mathrm P(X\\le\\sqrt5)=\\frac12<\\frac58$이므로 $\\sqrt5$는 $b$의 왼쪽 — 왼쪽 삼각형에서 닮음비 제곱(C2)을 쓰면 $b$가 바로 나온다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 닮음비 제곱",
+      "steps": [
+        {
+          "label": "전체 넓이",
+          "body": "$\\frac12ac=1\\Rightarrow ac=2$."
+        },
+        {
+          "label": "$\\mathrm P(X\\le b)$",
+          "body": "$\\mathrm P(X\\le b)+\\mathrm P(X\\ge b)=1$, 차가 $\\frac14$ → $\\mathrm P(X\\le b)=\\frac58$, 즉 $\\frac12bc=\\frac58$, $bc=\\frac54$."
+        },
+        {
+          "label": "닮음비",
+          "body": "$\\frac12<\\frac58$이므로 $\\sqrt5<b$. 왼쪽 삼각형에서\n$$\\mathrm P(X\\le\\sqrt5)=\\frac58\\left(\\frac{\\sqrt5}b\\right)^2=\\frac12\\ \\Rightarrow\\ b^2=\\frac{25}4,\\ b=\\frac52$$"
+        },
+        {
+          "label": "나머지",
+          "body": "$c=\\dfrac{5/4}{5/2}=\\dfrac12$, $a=\\dfrac2c=4$. $a+b+c=4+\\dfrac52+\\dfrac12=7$ → ④"
+        }
+      ]
+    }
+  ],
+  "supplement": "정석대로 하면 $0\\le x\\le b$에서 $f(x)=\\frac cbx$를 세우고 $\\int_0^{\\sqrt5}\\frac cbx\\,dx=\\frac{5c}{2b}=\\frac12$ 에서 $b=5c$, 다시 $bc=\\frac54$와 연립해야 한다. 닮음비 제곱을 쓰면 $c$를 거치지 않고 $b$가 먼저 나온다. $\\sqrt5$가 $b$의 어느 쪽인지 확인하지 않고 왼쪽 삼각형을 쓰면 논리적 구멍이 생기니, 확률 크기 비교($\\frac12<\\frac58$)로 먼저 정당화하자.",
+  "skill_point": "선형 밀도함수의 부분 확률 → 닮음비 제곱. 어느 쪽 삼각형인지는 확률 크기로 먼저 판정.",
+  "answer": "4"
+}

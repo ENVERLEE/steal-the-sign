@@ -1,0 +1,49 @@
+{
+  "id": "M1-270620",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "270620",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 20,
+    "points": 4,
+    "label": "2026년 6월 고3 20번"
+  },
+  "question": "다음 그림과 같이 $1$보다 큰 실수 $b$에 대하여 두 함수 $f(x)=b^x$과 $g(x)=-\\log_b x$의 그래프가 제1사분면에서 만나는 점 $\\mathrm{P}$의 좌표를 $(\\alpha,\\beta)$라 하자. 다음은 $\\alpha\\beta^3=1$일 때, 직선 $\\mathrm{OP}$의 기울기 $m$에 대하여 $g(m)$의 값을 구하는 과정이다. (단, $\\mathrm{O}$는 원점이다.) 위의 (가), (나), (다)에 알맞은 수를 각각 $p,q,r$이라 할 때, $(pqr)^2$의 값을 구하시오.",
+  "condition": "제1사분면에 있는 점 $\\mathrm P(\\alpha,\\beta)$는 두 곡선 $y=f(x)$, $y=g(x)$ 위의 점이므로 두 양수 $\\alpha,\\beta$가 $\\beta=b^\\alpha$, $\\beta=-\\log_b\\alpha$를 만족시킨다. $\\alpha\\beta^3=1$이고 $\\alpha=\\log_b\\beta$, $\\beta=-\\log_b\\alpha$이므로 $3\\alpha-\\beta=3\\log_b\\beta+\\log_b\\alpha=\\log_b(\\alpha\\beta^3)=0$이다. 따라서 $m=\\dfrac\\beta\\alpha=$ (가) 이다. $\\beta^4=m\\alpha\\beta^3=m$이므로 $\\beta=$ (나) 이다. $b=\\alpha^{-\\frac1\\beta}$이고 $\\alpha=\\dfrac\\beta m$이므로 $g(m)=-\\log_b m=\\dfrac{\\beta}{\\log_m\\alpha}=\\dfrac{\\beta}{-1+\\log_m\\beta}=$ (다) 이다.",
+  "choices": null,
+  "answer": "48",
+  "answer_value": "48",
+  "figure": {
+    "description": "증가하는 곡선 $y=f(x)=b^x$와 감소하는 곡선 $y=g(x)=-\\log_b x$가 제1사분면의 점 P에서 만나는 그림",
+    "source_page": 8
+  },
+  "theme": {
+    "primary": "수학Ⅰ-04",
+    "primary_name": "로그함수의 그래프",
+    "links": [
+      "수학Ⅰ-03"
+    ]
+  },
+  "first_judgment": "빈칸 과정의 흐름을 따라 $\\beta=3\\alpha$를 먼저 얻고 $m=3$을 확정한 뒤 나머지를 대입한다.",
+  "behavior": "이해",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$3\\alpha-\\beta=0$ → $m=3$ (가). $\\beta^4=3$ → $\\beta=3^{1/4}$ (나). $g(m)=\\frac{3^{1/4}}{-1+\\frac14}=-4\\cdot3^{-3/4}$ (다). $(pqr)^2=(-4\\cdot3^{1/2})^2=48$",
+  "legacy": {
+    "category": "로그함수의 그래프에서의 함숫값",
+    "book_no": 16,
+    "question_page": 8,
+    "solution_page": 49
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-02"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "M1-270622",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "270622",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 22,
+    "points": 4,
+    "label": "2026년 6월 고3 22번"
+  },
+  "question": "수열 $\\{a_n\\}$은 $a_1=1$, $a_3=4$이고, 모든 자연수 $n$에 대하여 $a_{2n}=a_n+1$, $a_{4n+3}=a_{4n+1}=a_n+4$를 만족시킨다. $a_k=10$을 만족시키는 자연수 $k$의 개수를 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "32",
+  "answer_value": "32",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-21",
+    "primary_name": "가지수열",
+    "links": [
+      "수학Ⅰ-17"
+    ]
+  },
+  "first_judgment": "$k$를 홀수($4n+1$, $4n+3$)와 짝수($2m$)로 나눠 $a_k=10$을 더 작은 값 $a_n=6$, $a_m=9$ 등의 개수 문제로 줄인다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "경우 나누기",
+    "나열·역추적"
+  ],
+  "strategy_ids": [
+    "S11"
+  ],
+  "solution_ref": "표로 $a_n$의 값을 나열하면 $n\\ge17$, $n\\ne32$일 때 $a_n>6$. (i) $k$ 홀수: $a_n=6$인 $n$은 $9,10,11,12,14,32$의 6개, 각각 $4n+1$, $4n+3$ → 12개. (ii) $k$ 짝수: $k=4m$이면 $a_m=8$인 $m$ 개수 12, $k=8n+2$ 또는 $8n+6$이면 $a_n=5$인 $n$ 4개 → 8. 합 $12+20=32$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 75,
+    "question_page": 38,
+    "solution_page": 79
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-11"
+}

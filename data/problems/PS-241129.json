@@ -1,0 +1,43 @@
+{
+  "id": "PS-241129",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "241129",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 29,
+    "points": 4,
+    "label": "2023년 11월 고3 29번"
+  },
+  "question": "다음 조건을 만족시키는 $6$ 이하의 자연수 $a,b,c,d$의 모든 순서쌍 $(a,b,c,d)$의 개수를 구하시오.",
+  "condition": "$a\\le c\\le d$이고 $b\\le c\\le d$이다.",
+  "choices": null,
+  "answer": "196",
+  "answer_value": "196",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-05",
+    "primary_name": "중복조합 - 부등식 기본형",
+    "links": []
+  },
+  "first_judgment": "$a\\le b$와 $b\\le a$ 두 경우로 나누면 각각 4개짜리 비감소 수열이 되고, 겹치는 $a=b$를 한 번 뺀다.",
+  "behavior": "계산",
+  "reasoning": [
+    "경우 나누기",
+    "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$a\\le b\\le c\\le d$: $_6H_4=126$, $b\\le a\\le c\\le d$: 126, $a=b$: $_6H_3=56$. $126+126-56=196$",
+  "legacy": {
+    "category": "부등식의 해의 개수",
+    "book_no": 13,
+    "question_page": 7,
+    "solution_page": 31
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-01"
+}

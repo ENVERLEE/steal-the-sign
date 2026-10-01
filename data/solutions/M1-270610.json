@@ -1,0 +1,29 @@
+{
+  "id": "M1-270610",
+  "concept_refs": [
+    "수학Ⅰ-02-C1"
+  ],
+  "guide": "밑 $9$와 $3$이 섞여 있으므로 밑을 $3$으로 통일하고 $X=\\log_3a$, $Y=\\log_3b$로 둔다(수학Ⅰ-02-C1). 두 조건은 $X,Y$에 대한 연립일차방정식이고, 묻는 $\\frac ab$는 $\\log_3\\frac ab=X-Y$로 나온다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 로그값을 미지수로",
+      "steps": [
+        {
+          "label": "밑 통일",
+          "body": "$\\log_9a=\\dfrac12X$, $\\log_9b=\\dfrac12Y$이므로\n$$\\frac12X+Y=2,\\qquad X=8\\cdot\\frac12Y=4Y$$"
+        },
+        {
+          "label": "연립",
+          "body": "$2Y+Y=2$에서 $Y=\\dfrac23$, $X=\\dfrac83$."
+        },
+        {
+          "label": "묻는 값",
+          "body": "$\\log_3\\dfrac ab=X-Y=2$이므로 $\\dfrac ab=9$ → ③"
+        }
+      ]
+    }
+  ],
+  "supplement": "$a=3^{\\frac83}$, $b=3^{\\frac23}$을 실제로 구할 필요는 없다. 로그값을 미지수로 두면 지수·로그가 섞인 식이 평범한 일차방정식이 된다는 점이 요점이다. $\\log_9a=\\frac12\\log_3a$에서 $\\frac12$을 $2$로 착각하는 실수(밑의 지수는 역수로 나온다)를 조심한다.",
+  "skill_point": "밑 통일 후 $\\log_3a$, $\\log_3b$를 $X,Y$로 → 연립일차방정식.",
+  "answer": "3"
+}

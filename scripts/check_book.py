@@ -5,7 +5,7 @@ from collections import Counter, defaultdict
 
 from scripts import check_source
 from scripts.check_created import CTRL_RE, LITERAL_NL_MSG, LITERAL_NL_RE, banned_hits, body_hash, ctrl_msg
-from scripts.common import Context, Log, is_created_id, is_textbook_id
+from scripts.common import Context, Log, difficulty_rank, is_created_id, is_textbook_id, past_points_ok
 from scripts.schemas import validate
 
 SKIP_KEYS = {"ref", "theme", "verify", "concept_ids", "difficulty"}
@@ -132,6 +132,8 @@ def run(ctx: Context) -> Log:
     behaviors = Counter()
     difficulties = Counter()
     hard = 0
+    point_dist = Counter()
+    prof = ctx.plan_profile(book)
     figures = book.get("figures") or {}
 
     for d in days:
@@ -193,13 +195,14 @@ def run(ctx: Context) -> Log:
                 ts["past"] += 1
                 r = ctx.db.get(ref)
                 if not r:
-                    log.error(where, "db.json에 없는 기출 id")
+                    log.error(where, "data/problems에 없는 기출 id")
                     continue
                 if ref in ctx.excluded:
                     log.error(where, "excluded.json에 있는 기출")
                 y0, y1 = cfg["sources"]["years"]
-                if not (y0 <= r["source"]["year"] <= y1) or r["source"]["points"] != cfg["points"]["past"]:
-                    log.error(where, "기출 범위(22~27학년도, 4점) 밖")
+                if not (y0 <= r["source"]["year"] <= y1) or not past_points_ok(r["source"]["points"], cfg):
+                    log.error(where, f"기출 범위(22~27학년도, {cfg['points']['past']}점) 밖")
+                point_dist[r["source"]["points"]] += 1
                 if r["subject"] != t["subject"]:
                     log.error(where, f"과목 {r['subject']}이 테마 과목 {t['subject']}과 다름")
                 if ref not in cands:
@@ -212,10 +215,16 @@ def run(ctx: Context) -> Log:
                 if r.get("figure") and ref not in figures:
                     log.error(where, f"그림이 있는 기출 — book.figures[{ref}] 그림 명세 필요 ({r['figure'].get('description', '')[:40]})")
                 behaviors[r["behavior"]] += 1
-                if r["source"]["number"] in cfg["hard_numbers"][r["subject"]]:
+                if r["source"]["points"] == 4 and r["source"]["number"] in cfg["hard_numbers"][r["subject"]]:
                     hard += 1
         for p in d["practice"]:
             difficulties[p["difficulty"]] += 1
+        # 연습은 쉬운 것 → 어려운 것 순서 (표시한 난도 기준). 큰 규모(scale: large)에서는 오류
+        order = cfg["difficulty_labels"]
+        ranks = [order.index(p["difficulty"]) for p in d["practice"] if p["difficulty"] in order]
+        if ranks != sorted(ranks):
+            (log.error if prof["scale"] == "large" else log.warn)(
+                w, "연습 문항이 쉬운 것→어려운 것 순서가 아님 (난도: " + " → ".join(p["difficulty"] for p in d["practice"]) + ")")
 
         dup = [r for r, n in Counter(refs).items() if n > 1]
         if dup:
@@ -224,7 +233,7 @@ def run(ctx: Context) -> Log:
         # 유사 기출(SCOUTING)
         for s in d["sign_reading"]["scouting"]:
             if s["ref"] not in ctx.db:
-                log.error(w, f"SCOUTING {s['ref']}가 db.json에 없음")
+                log.error(w, f"SCOUTING {s['ref']}가 data/problems에 없음")
             elif s["ref"] == d["first_pitch"]["ref"]:
                 log.error(w, "SCOUTING에 예제 자신을 넣음")
             elif s["ref"] in ctx.excluded:
@@ -244,7 +253,7 @@ def run(ctx: Context) -> Log:
                 log.error(w, f"notes[{ref}].shortcut에는 verify 필수")
         for cid in d["strategy"].get("concept_ids") or []:
             if cid not in ctx.concepts:
-                log.error(w, f"개념 id {cid}가 solutions.json에 없음")
+                log.error(w, f"개념 id {cid}가 concepts.json에 없음")
             elif cid.rsplit("-C", 1)[0] not in t["old_themes"]:
                 log.warn(w, f"개념 {cid}는 테마 {th}의 기존 테마({', '.join(t['old_themes'])}) 밖")
         if not (d["strategy"].get("concept_ids") or d["strategy"].get("tools")):
@@ -275,15 +284,15 @@ def run(ctx: Context) -> Log:
 
     # ---- 테마 구성
     plan, comp = cfg["theme_plan"], cfg["composition"]
-    dlo, dhi = plan["special_days"] if special else plan["days"]
-    plo, phi = plan["special_problems"] if special else plan["problems"]
+    dlo, dhi = plan["special_days"] if special else prof["days"]
+    plo, phi = plan["special_problems"] if special else prof["problems"]
     for th, s in theme_stats.items():
         if not dlo <= s["days"] <= dhi:
             log.error(th, f"DAY {s['days']}개 (테마당 {dlo}~{dhi})")
         if not plo <= s["problems"] <= phi:
             log.error(th, f"문항 {s['problems']}개 (테마당 {plo}~{phi}, 예제 포함)")
-        if s["past"] < comp["past_min_per_theme"]:
-            log.error(th, f"기출 {s['past']}개 (테마당 {comp['past_min_per_theme']}개 이상)")
+        if s["past"] < prof["past_min"]:
+            log.error(th, f"기출 {s['past']}개 (테마당 {prof['past_min']}개 이상)")
         if s["problems"] and s["created"] / s["problems"] > comp["created_max_share_per_theme"]:
             log.error(th, f"창작 비중 {s['created'] / s['problems']:.0%} (테마당 {comp['created_max_share_per_theme']:.0%} 이하)")
 
@@ -308,7 +317,7 @@ def run(ctx: Context) -> Log:
         "days": len(days), "themes": len(theme_stats), "problems": past + created + textbook,
         "past": past, "created": created, "textbook": textbook,
         "past_ratio": round(past / (past + created + textbook), 3) if past + created + textbook else None,
-        "hard_numbers": hard, "behavior": dict(behaviors), "difficulty": dict(difficulties),
+        "hard_numbers": hard, "past_points": dict(point_dist), "scale": prof["scale"], "behavior": dict(behaviors), "difficulty": dict(difficulties),
         "theme_stats": {k: dict(v) for k, v in theme_stats.items()},
         "reused": {r: n for r, n in uses.items() if n > 1},
     }

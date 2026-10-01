@@ -1,0 +1,53 @@
+{
+  "id": "M2-270615",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "270615",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2026년 6월 고3 15번"
+  },
+  "question": "상수항이 $0$인 삼차함수 $f(x)$가 다음 조건을 만족시킨다. $f(6)$의 값은?",
+  "condition": "(가) $\\displaystyle\\int_p^{p+3}|f(x)|\\,dx\\ne\\left|\\int_p^{p+3}f(x)\\,dx\\right|$가 되도록 하는 모든 실수 $p$의 값의 범위는 $0<p<3$이다.\\\\(나) $\\displaystyle\\int_0^3|f(x)+q|\\,dx\\ne\\left|\\int_0^3\\{f(x)+q\\}\\,dx\\right|$가 되도록 하는 모든 실수 $q$의 값의 범위는 $0<q<1$이다.",
+  "choices": [
+    "18",
+    "21",
+    "24",
+    "27",
+    "30"
+  ],
+  "answer": "4",
+  "answer_value": "27",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-18",
+    "primary_name": "정적분과 넓이",
+    "links": [
+      "수학Ⅱ-16"
+    ]
+  },
+  "first_judgment": "$\\int|f|\\ne|\\int f|$ ⇔ 구간 안에서 $f$의 부호가 바뀐다. (가)로 부호가 바뀌는 근이 $x=3$뿐이고 $x=0$에서는 접함을 끌어낸다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S24"
+  ],
+  "solution_ref": "$f(0)=0$, (가) → $f(3)=0$이고 $x=0$에서 접함 → $f=ax^2(x-3)$. (나): $a>0$이어야 하고 $[0,3]$ 최솟값 $f(2)=-4a$, $-4a+q<0<q$ 범위가 $0<q<1$ → $a=\\frac14$. $f(6)=\\frac14\\cdot36\\cdot3=27$",
+  "legacy": {
+    "category": "정적분의 계산(5) : 다양한 조건이 주어진 경우",
+    "book_no": 46,
+    "question_page": 23,
+    "solution_page": 67
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-08"
+}

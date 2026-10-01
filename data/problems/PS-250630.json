@@ -1,0 +1,45 @@
+{
+  "id": "PS-250630",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "250630",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 30,
+    "points": 4,
+    "label": "2024년 6월 고3 30번"
+  },
+  "question": "집합 $X=\\{-2,-1,0,1,2\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수를 구하시오.",
+  "condition": "(가) $X$의 모든 원소 $x$에 대하여 $x+f(x)\\in X$\\\\(나) $x=-2,-1,0,1$일 때 $f(x)\\ge f(x+1)$",
+  "choices": null,
+  "answer": "108",
+  "answer_value": "108",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-06",
+    "primary_name": "중복조합 - 부등식 응용형",
+    "links": [
+      "확률과 통계-03"
+    ]
+  },
+  "first_judgment": "(가)로 각 $x$에서 가능한 $f(x)$ 범위가 제한되고 (나)는 비증가 조건이므로 $f(-2)$ 값별로 중복조합에서 불가능한 경우를 뺀다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$f(-2)\\ge0$, $f(2)\\le0$ 등. (i) $f(-2)=0$: $_3H_4-1=14$. (ii) $f(-2)=1$: $_4H_4-2=33$. (iii) $f(-2)=2$: $_5H_4-1-5-3=61$. 합 $108$",
+  "legacy": {
+    "category": "함수의 개수(2) : 중복조합",
+    "book_no": 16,
+    "question_page": 8,
+    "solution_page": 33
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-02"
+}

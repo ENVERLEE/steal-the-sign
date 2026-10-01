@@ -15,8 +15,10 @@
 ## 빠른 시작
 ```
 python run.py pages --pdf 교재.pdf --id KB1 --title "교재 이름"   # PDF → 판독용 이미지·텍스트
-python run.py source          # 교재 판독 검사 + 큐레이션 초안
+python run.py source          # 교재 판독 검사 + 큐레이션 초안 (--scale large: 연습 대규모·난도 순)
 python run.py created         # 창작 문제은행 검문
+python run.py new --parent M1-230911   # 변형 창작 뼈대(부모 복사)
+python run.py build --day 1   # 일부 DAY만 조판(미리보기)
 python run.py                 # 전체 파이프라인
 python run.py check           # 검사만 (조판 제외)
 python run.py build           # 조판만
@@ -37,7 +39,7 @@ python -m unittest discover tests       # 테스트
 ## 폴더 구조 (참고)
 ```
 run.py, requirements.txt, WRITING.md
-data/: db.json, themes.json, solutions.json, strategy_notes.json, config.json, STS_template.html, STS_ext.html
+data/: problems/{id}.json(기출 1문항=1파일)·solutions/{id}.json(풀이)·index.json(자동 생성 색인, 문항은 이것만 읽고 고른다)·concepts.json, themes.json, strategy_notes.json, config.json, STS_template.html, STS_ext.html
 work/: book.json, created/{테마}/, source/{교재id}.json, source/{교재id}/pages/
 schema/, scripts/, samples/, tests/, vendor/katex/, out/
 ```

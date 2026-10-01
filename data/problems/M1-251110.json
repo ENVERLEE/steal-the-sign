@@ -1,0 +1,51 @@
+{
+  "id": "M1-251110",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "251110",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 10,
+    "points": 4,
+    "label": "2024년 11월 고3 10번"
+  },
+  "question": "닫힌구간 $[0,2\\pi]$에서 정의된 함수 $f(x)=a\\cos bx+3$이 $x=\\dfrac\\pi3$에서 최댓값 $13$을 갖도록 하는 두 자연수 $a,b$의 순서쌍 $(a,b)$에 대하여 $a+b$의 최솟값은?",
+  "condition": null,
+  "choices": [
+    "12",
+    "14",
+    "16",
+    "18",
+    "20"
+  ],
+  "answer": "3",
+  "answer_value": "16",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-09",
+    "primary_name": "삼각함수의 그래프",
+    "links": []
+  },
+  "first_judgment": "$a>0$이므로 최댓값은 $a+3$이고, $x=\\frac\\pi3$이 주기 $\\frac{2\\pi}b$의 정수배여야 한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+    "S06"
+  ],
+  "solution_ref": "$a+3=13\\Rightarrow a=10$. $\\frac{2\\pi}b\\cdot n=\\frac\\pi3\\Rightarrow b=6n$, 최소 $b=6$. $a+b=16$",
+  "legacy": {
+    "category": "삼각함수의 미정계수의 결정(1) : 조건이 주어진 경우",
+    "book_no": 31,
+    "question_page": 16,
+    "solution_page": 57
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-04"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "M1-260622",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "260622",
+    "year": 2026,
+    "exam": "6월 모의평가",
+    "number": 22,
+    "points": 4,
+    "label": "2025년 6월 고3 22번"
+  },
+  "question": "$k>1$인 실수 $k$에 대하여 두 곡선 $y=2^x+\\dfrac k2$, $y=k\\cdot\\left(\\dfrac12\\right)^x+k-2$가 만나는 점을 $\\mathrm{A}$라 하고, 점 $\\mathrm{A}$를 지나고 기울기가 $-1$인 직선이 곡선 $y=2^{x-2}-3$과 만나는 점을 $\\mathrm{B}$라 하자. 삼각형 $\\mathrm{AOB}$의 넓이가 $16$일 때, $k+\\log_2 k=\\dfrac qp$이다. $p+q$의 값을 구하시오. (단, $\\mathrm{O}$는 원점이고, $p$와 $q$는 서로소인 자연수이다.)",
+  "condition": null,
+  "choices": null,
+  "answer": "38",
+  "answer_value": "38",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-03",
+    "primary_name": "지수함수의 그래프",
+    "links": [
+      "수학Ⅰ-07"
+    ]
+  },
+  "first_judgment": "교점 $\\mathrm A$가 $\\left(\\log_2\\frac k2,k\\right)$로 정리되어 곡선 $y=2^{x+1}$ 위를 움직이고, $y=2^{x-2}-3$은 이 곡선의 평행이동이므로 $\\overline{\\mathrm{AB}}$가 상수가 된다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석",
+    "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$2^a=t$: $t+\\frac k2=\\frac kt+k-2\\Rightarrow(t+2)(2t-k)=0$, $t=\\frac k2$. $\\mathrm A\\left(\\log_2\\frac k2,k\\right)$는 $y=2^{x+1}$ 위. $y=2^{x-2}-3$은 이를 $(3,-3)$ 평행이동 → $\\mathrm B\\left(\\log_2\\frac k2+3,k-3\\right)$, $\\overline{\\mathrm{AB}}=3\\sqrt2$. 높이 $h=\\frac{16\\sqrt2}{3}$. 직선 $x+y-k-\\log_2\\frac k2=0$과 원점 거리: $\\frac{|k+\\log_2 k-1|}{\\sqrt2}=\\frac{16\\sqrt2}3$ → $k+\\log_2k=\\frac{35}{3}$. $p+q=38$",
+  "legacy": {
+    "category": "지수함수의 그래프에서의 함숫값",
+    "book_no": 12,
+    "question_page": 6,
+    "solution_page": 46
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-03"
+}

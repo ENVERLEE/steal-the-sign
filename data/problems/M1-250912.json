@@ -1,0 +1,53 @@
+{
+  "id": "M1-250912",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250912",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2024년 9월 고3 12번"
+  },
+  "question": "수열 $\\{a_n\\}$은 등차수열이고, 수열 $\\{b_n\\}$은 모든 자연수 $n$에 대하여 $b_n=\\displaystyle\\sum_{k=1}^{n}(-1)^{k+1}a_k$를 만족시킨다. $b_2=-2$, $b_3+b_7=0$일 때, 수열 $\\{b_n\\}$의 첫째항부터 제9항까지의 합은?",
+  "condition": null,
+  "choices": [
+    "-22",
+    "-20",
+    "-18",
+    "-16",
+    "-14"
+  ],
+  "answer": "2",
+  "answer_value": "-20",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-16",
+    "primary_name": "여러 가지 수열의 합",
+    "links": [
+      "수학Ⅰ-13"
+    ]
+  },
+  "first_judgment": "$b_2=a_1-a_2=-d$로 공차부터 확정하고, 교대합을 두 항씩 묶어 $b_3$, $b_7$을 간단히 한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "나열·역추적"
+  ],
+  "strategy_ids": [
+    "S10"
+  ],
+  "solution_ref": "$d=2$. $b_3=a_3-2$, $b_7=a_7-6$ → $2a_1+8=0$, $a_1=-4$, $a_n=2n-6$. $b_1,\\dots,b_9=-4,-2,-2,-4,0,-6,2,-8,4$, 합 $-20$",
+  "legacy": {
+    "category": "여러 가지 수열의 합(8) : 수열의 일반항을 새롭게 정의하는 경우",
+    "book_no": 62,
+    "question_page": 31,
+    "solution_page": 73
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-09"
+}

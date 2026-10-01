@@ -1,0 +1,53 @@
+{
+  "id": "M1-260610",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "260610",
+    "year": 2026,
+    "exam": "6월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2025년 6월 고3 10번"
+  },
+  "question": "실수 $a$ $(a>1)$에 대하여 곡선 $y=\\log_a(x+3)$이 곡선 $y=\\log_a(-x+3)$과 만나는 점을 $\\mathrm{A}$, 곡선 $y=\\log_a(x+3)$이 $x$축과 만나는 점을 $\\mathrm{B}$, 곡선 $y=\\log_a(-x+3)$이 $x$축과 만나는 점을 $\\mathrm{C}$라 하자. 삼각형 $\\mathrm{ABC}$가 정삼각형일 때, $a$의 값은?",
+  "condition": null,
+  "choices": [
+    "3^{\\frac{\\sqrt3}{6}}",
+    "3^{\\frac{\\sqrt3}{4}}",
+    "3^{\\frac{\\sqrt3}{3}}",
+    "3^{\\frac{5\\sqrt3}{12}}",
+    "3^{\\frac{\\sqrt3}{2}}"
+  ],
+  "answer": "1",
+  "answer_value": "3^{\\frac{\\sqrt3}{6}}",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-04",
+    "primary_name": "로그함수의 그래프",
+    "links": [
+      "수학Ⅰ-06"
+    ]
+  },
+  "first_judgment": "두 곡선은 $y$축 대칭이므로 $\\mathrm A$는 $y$축 위의 $(0,\\log_a3)$이고, 정삼각형 조건은 $\\tan\\frac\\pi3=\\frac{\\overline{\\mathrm{OA}}}{\\overline{\\mathrm{OB}}}$이다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$\\mathrm A(0,\\log_a3)$, $\\mathrm B(-2,0)$, $\\mathrm C(2,0)$. $\\sqrt3=\\frac{\\log_a3}{2}\\Rightarrow a^{2\\sqrt3}=3$, $a=3^{\\frac{\\sqrt3}{6}}$",
+  "legacy": {
+    "category": "로그함수의 그래프에서의 함숫값",
+    "book_no": 15,
+    "question_page": 8,
+    "solution_page": 48
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-02"
+}

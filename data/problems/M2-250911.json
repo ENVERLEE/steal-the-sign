@@ -1,0 +1,52 @@
+{
+  "id": "M2-250911",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250911",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2024년 9월 고3 11번"
+  },
+  "question": "수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 위치가 각각 $x_1=t^2+t-6$, $x_2=-t^3+7t^2$이다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 위치가 같아지는 순간 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 가속도를 각각 $p,q$라 할 때, $p-q$의 값은?",
+  "condition": null,
+  "choices": [
+    "24",
+    "27",
+    "30",
+    "33",
+    "36"
+  ],
+  "answer": "1",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": [
+      "수학Ⅱ-06"
+    ]
+  },
+  "first_judgment": "$x_1=x_2$를 풀어 시각을 먼저 구하고, 위치를 두 번 미분해 가속도를 얻는다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$t^3-6t^2+t-6=(t-6)(t^2+1)=0$ → $t=6$. $a_1=2$, $a_2=-6t+14=-22$. $p-q=24$",
+  "legacy": {
+    "category": "가속도",
+    "book_no": 34,
+    "question_page": 17,
+    "solution_page": 61
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-10"
+}

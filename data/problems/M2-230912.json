@@ -1,0 +1,56 @@
+{
+  "id": "M2-230912",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "230912",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2022년 9월 고3 12번"
+  },
+  "question": "실수 $t$ $(t>0)$에 대하여 직선 $y=x+t$와 곡선 $y=x^2$이 만나는 두 점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y=x^2$과 만나는 점 중 $\\mathrm{A}$가 아닌 점을 $\\mathrm{C}$, 점 $\\mathrm{B}$에서 선분 $\\mathrm{AC}$에 내린 수선의 발을 $\\mathrm{H}$라 하자. $\\displaystyle\\lim_{t\\to0+}\\frac{\\overline{\\mathrm{AH}}-\\overline{\\mathrm{CH}}}{t}$의 값은? (단, 점 $\\mathrm{A}$의 $x$좌표는 양수이다.)",
+  "condition": null,
+  "choices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "answer": "2",
+  "answer_value": "2",
+  "figure": {
+    "description": "포물선 $y=x^2$과 직선 $y=x+t$의 교점 A(오른쪽), B(왼쪽 아래), A와 같은 높이의 C, B에서 AC에 내린 수선의 발 H",
+    "source_page": 3
+  },
+  "theme": {
+    "primary": "수학Ⅱ-02",
+    "primary_name": "도형에 대한 극한",
+    "links": [
+      "수학Ⅱ-01"
+    ]
+  },
+  "first_judgment": "교점의 $x$좌표 $a,b$를 근과 계수의 관계($a+b=1$, $ab=-t$)로 다루면 길이가 $t$의 식이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S13"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AH}}=a-b=\\sqrt{1+4t}$, $\\overline{\\mathrm{CH}}=b+a=1$. $\\lim_{t\\to0+}\\frac{\\sqrt{1+4t}-1}{t}=\\lim\\frac{4}{\\sqrt{1+4t}+1}=2$",
+  "legacy": {
+    "category": "함수의 극한의 활용",
+    "book_no": 5,
+    "question_page": 3,
+    "solution_page": 44
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-01"
+}

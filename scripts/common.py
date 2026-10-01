@@ -81,6 +81,8 @@ class Context:
     created_dir: Path | None = None
     out_dir: Path | None = None
     source_dir: Path | None = None
+    scale: str | None = None  # 테마 구성 규모: normal | large (기본: 책의 scale, 없으면 normal)
+    only_days: frozenset | None = None  # 조판 미리보기: 이 DAY 번호만 책에 넣는다 (run.py build --day 1,3)
 
     def __post_init__(self):
         p = self.config["paths"]
@@ -107,30 +109,59 @@ class Context:
     # ---- 데이터
     @cached_property
     def db(self) -> dict:
-        return {r["id"]: r for r in read_json(self.path("db"))}
+        """기출 문항 id → 레코드 (data/problems/{id}.json 한 파일에 한 문항)"""
+        return {k: {f: v for f, v in r.items() if f != "home"} for k, r in self.problem_files.items()}
 
     @cached_property
-    def solutions(self) -> dict:
-        return read_json(self.path("solutions"))
+    def problem_files(self) -> dict:
+        d = self.path("problems")
+        return {f.stem: read_json(f) for f in sorted(d.glob("*.json"))} if d.exists() else {}
+
+    @cached_property
+    def home(self) -> dict:
+        """문항 id → 홈 테마 id (문항 파일의 home)"""
+        return {k: r.get("home") for k, r in self.problem_files.items()}
 
     @cached_property
     def study(self) -> dict:
-        """문항 id → study_solution"""
-        return {p["id"]: p["study_solution"] for p in self.solutions["problems"]}
+        """문항 id → study_solution (data/solutions/{id}.json)"""
+        d = self.path("solutions")
+        return {f.stem: read_json(f) for f in sorted(d.glob("*.json"))} if d.exists() else {}
+
+    @cached_property
+    def concept_themes(self) -> list:
+        return read_json(self.path("concepts"))["themes"]
 
     @cached_property
     def old_themes(self) -> dict:
-        """기존 64분류 id → solutions.json 테마 개념정리"""
-        return {t["theme"]: t for t in self.solutions["themes"]}
+        """기존 64분류 id → 테마 개념정리 (data/concepts.json)"""
+        return {t["theme"]: t for t in self.concept_themes}
 
     @cached_property
     def concepts(self) -> dict:
         """개념 id → 개념"""
-        return {c["id"]: c for t in self.solutions["themes"] for c in t["core_concepts"]}
+        return {c["id"]: c for t in self.concept_themes for c in t["core_concepts"]}
 
     @cached_property
     def themes(self) -> dict:
-        return {t["id"]: t for t in read_json(self.path("themes"))["themes"]}
+        """테마 id → 테마. problem_ids는 문항 파일의 home에서 모은다(id 순)."""
+        themes = {t["id"]: t for t in read_json(self.path("themes"))["themes"]}
+        for t in themes.values():
+            t["problem_ids"] = []
+        for pid in sorted(self.home):
+            if self.home[pid] in themes:
+                themes[self.home[pid]]["problem_ids"].append(pid)
+        return themes
+
+    def plan_profile(self, book: dict | None = None) -> dict:
+        """테마 구성 한도(DAY 수·문항 수·기출 최소·기출 목표). book.scale 또는 --scale이 large면 큰 규모."""
+        tp, comp = self.config["theme_plan"], self.config["composition"]
+        scale = self.scale or (book or {}).get("scale") or "normal"
+        prof = {"scale": scale, "days": tp["days"], "problems": tp["problems"],
+                "past_min": comp["past_min_per_theme"], "past_target": 10}
+        if scale == "large":
+            prof.update(tp["large"])
+        return prof
 
     @cached_property
     def strategies(self) -> dict:
@@ -152,7 +183,14 @@ class Context:
 
     @cached_property
     def book(self) -> dict:
-        return read_json(self.book_path)
+        if self.book_path.is_dir():
+            from scripts.book_dir import load_dir
+            book = load_dir(self.book_path)
+        else:
+            book = read_json(self.book_path)
+        if self.only_days:
+            book["days"] = [d for d in book.get("days") or [] if d.get("day") in self.only_days]
+        return book
 
 
 def load_created(created_dir: Path) -> dict:
@@ -178,6 +216,35 @@ def load_source(source_dir: Path) -> dict:
     return bank
 
 
+def past_points_ok(points, config: dict) -> bool:
+    allowed = config["points"]["past"]
+    return points in (allowed if isinstance(allowed, list) else [allowed])
+
+
+def difficulty_rank(ref: str, ctx: "Context") -> tuple:
+    """연습 문항을 쉬운 것→어려운 것으로 놓기 위한 정렬 키 (난도 단계, 번호).
+    교재·창작은 기록된 difficulty, 기출은 배점·번호·행동 영역으로 추정한다."""
+    order = ctx.config["difficulty_labels"]
+    if is_textbook_id(ref):
+        return (order.index(ctx.source[ref]["rec"].get("difficulty")) if ctx.source[ref]["rec"].get("difficulty") in order else 1, 0)
+    if is_created_id(ref):
+        d = ctx.created[ref]["rec"].get("difficulty")
+        return (order.index(d) if d in order else 0, 0)
+    r = ctx.db[ref]
+    s = r["source"]
+    if s["points"] <= 3:
+        rank = 0
+    elif s["number"] in ctx.config["hard_numbers"].get(r["subject"], []):
+        rank = 3
+    else:
+        rank = 2 if r.get("behavior") in ("추론", "문제해결") else 1
+    return (rank, s["number"])
+
+
+def suggest_difficulty(ref: str, ctx: "Context") -> str:
+    return ctx.config["difficulty_labels"][difficulty_rank(ref, ctx)[0]]
+
+
 def is_textbook_id(ref: str) -> bool:
     return ref.startswith("T-")
 
@@ -194,7 +261,7 @@ CIRCLED = "①②③④⑤"
 
 
 def choice_text(c: str) -> str:
-    """db.json 선지는 $ 없이 LaTeX만 적혀 있다(\\frac{5}{3}). ㄱ·ㄴ·ㄷ 같은 글자 선지는 그대로"""
+    """문항 파일 선지는 $ 없이 LaTeX만 적혀 있다(\\frac{5}{3}). ㄱ·ㄴ·ㄷ 같은 글자 선지는 그대로"""
     c = str(c)
     if "$" in c or re.search(r"[가-힣ㄱ-ㅎ]", c):
         return c

@@ -1,0 +1,57 @@
+{
+  "id": "M1-250612",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "250612",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2024년 6월 고3 12번"
+  },
+  "question": "그림과 같이 곡선 $y=1-2^{-x}$ 위의 제1사분면에 있는 점 $\\mathrm{A}$를 지나고 $y$축에 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y=2^x$과 만나는 점을 $\\mathrm{C}$, 점 $\\mathrm{C}$를 지나고 $y$축에 평행한 직선이 곡선 $y=1-2^{-x}$과 만나는 점을 $\\mathrm{D}$라 하자. $\\overline{\\mathrm{AB}}=2\\overline{\\mathrm{CD}}$일 때, 사각형 $\\mathrm{ABCD}$의 넓이는?",
+  "condition": null,
+  "choices": [
+    "\\frac52\\log_2 3-\\frac54",
+    "3\\log_2 3-\\frac32",
+    "\\frac72\\log_2 3-\\frac74",
+    "4\\log_2 3-2",
+    "\\frac92\\log_2 3-\\frac94"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac72\\log_2 3-\\frac74",
+  "figure": {
+    "description": "곡선 $y=2^x$, $y=1-2^{-x}$와 점 A(제1사분면, 아래 곡선 위), B(A 위쪽 $y=2^x$ 위), C(A와 같은 높이, $y=2^x$ 위), D(C 아래 $y=1-2^{-x}$ 위); 사각형 ABCD가 색칠됨",
+    "source_page": 5
+  },
+  "theme": {
+    "primary": "수학Ⅰ-03",
+    "primary_name": "지수함수의 그래프",
+    "links": [
+      "수학Ⅰ-06"
+    ]
+  },
+  "first_judgment": "A의 $x$좌표 $a$, C의 $x$좌표 $c$로 두고 'A, C의 $y$좌표가 같다'는 관계로 미지수를 하나로 줄인다.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석",
+    "미지수 소거·연립",
+    "치환·보조함수 도입"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{AB}}=2^a+2^{-a}-1$, $\\overline{\\mathrm{CD}}=2^c+2^{-c}-1$, $2^c=1-2^{-a}$. $2^a=t$로 두면 $t+\\frac1t-1=-\\frac2t+\\frac{2t}{t-1}$ → $(t-3)(t^2-t+1)=0$, $t=3$. $a=\\log_2 3$, $c=1-\\log_2 3$. 넓이 $\\frac12(a-c)(2^a-1+2^{-c})=\\frac12(2\\log_2 3-1)\\left(3-1+\\frac32\\right)=\\frac72\\log_2 3-\\frac74$",
+  "legacy": {
+    "category": "지수함수의 그래프에서의 함숫값",
+    "book_no": 10,
+    "question_page": 5,
+    "solution_page": 46
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-02"
+}

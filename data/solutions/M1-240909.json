@@ -1,0 +1,29 @@
+{
+  "id": "M1-240909",
+  "concept_refs": [
+    "수학Ⅰ-10-C4"
+  ],
+  "guide": "좌변은 $\\cos$, 우변은 $\\sin\\frac\\pi7$로 함수가 다르다. $\\sin\\frac\\pi7=\\cos\\left(\\frac\\pi2-\\frac\\pi7\\right)=\\cos\\frac{5\\pi}{14}$로 바꾸면 '$\\cos x$가 $\\cos\\frac{5\\pi}{14}$ 이하'가 되어 그래프에서 바로 읽힌다(수학Ⅰ-10-C4).",
+  "solutions": [
+    {
+      "title": "풀이 · 같은 함수로 바꾸고 대칭으로 읽기",
+      "steps": [
+        {
+          "label": "경계값 변환",
+          "body": "$\\sin\\frac\\pi7=\\cos\\frac{5\\pi}{14}$ ($\\because\\sin\\theta=\\cos(\\frac\\pi2-\\theta)$)."
+        },
+        {
+          "label": "경계점",
+          "body": "$[0,2\\pi]$에서 $\\cos x=\\cos\\frac{5\\pi}{14}$의 해는 대칭축 $x=\\pi$에 대해 대칭인 $\\frac{5\\pi}{14}$, $2\\pi-\\frac{5\\pi}{14}=\\frac{23\\pi}{14}$."
+        },
+        {
+          "label": "해 구간",
+          "body": "$\\cos x$는 두 경계점 사이(최솟점 $x=\\pi$ 쪽)에서 경계값보다 작으므로 $\\alpha=\\frac{5\\pi}{14}$, $\\beta=\\frac{23\\pi}{14}$.\n$\\beta-\\alpha=2\\pi-2\\cdot\\frac{5\\pi}{14}=\\frac{18\\pi}{14}=\\frac97\\pi$ → ③"
+        }
+      ]
+    }
+  ],
+  "supplement": "대칭을 쓰면 $\\beta$를 따로 구할 필요 없이 $\\beta-\\alpha=2\\pi-2\\alpha$(또는 $2(\\pi-\\alpha)$)로 끝난다. $\\sin$을 기준으로 바꾸려 하면($\\cos x=\\sin(\\frac\\pi2-x)$) 부등식 방향과 구간 처리가 복잡해진다. 바꿀 때는 '변수가 있는 쪽'이 아니라 '상수 쪽'을 바꾸는 것이 원칙이다.",
+  "skill_point": "부등식의 상수 쪽을 같은 함수로 맞추고, 경계점은 대칭축으로 짝짓는다.",
+  "answer": "3"
+}

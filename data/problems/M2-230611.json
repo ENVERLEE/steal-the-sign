@@ -1,0 +1,50 @@
+{
+  "id": "M2-230611",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "230611",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2022년 6월 고3 11번"
+  },
+  "question": "시각 $t=0$일 때 동시에 원점을 출발하여 수직선 위를 움직이는 두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 시각 $t$ $(t\\ge0)$에서의 속도가 각각 $v_1(t)=2-t$, $v_2(t)=3t$이다. 출발한 시각부터 점 $\\mathrm{P}$가 원점으로 돌아올 때까지 점 $\\mathrm{Q}$가 움직인 거리는?",
+  "condition": null,
+  "choices": [
+    "16",
+    "18",
+    "20",
+    "22",
+    "24"
+  ],
+  "answer": "5",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "$\\mathrm P$의 위치 $2t-\\frac12t^2=0$에서 복귀 시각 $t=4$를 먼저 구한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$2t-\\frac12t^2=0$ → $t=4$. $\\int_0^4 3t\\,dt=24$",
+  "legacy": {
+    "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+    "book_no": 77,
+    "question_page": 39,
+    "solution_page": 83
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-09"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "M1-261114",
+  "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C3"
+  ],
+  "guide": "구하는 $\\overline{\\mathrm{GH}}$는 원 CEG의 현이고, 그 원주각이 $\\angle\\mathrm{HCG}=\\angle\\mathrm{BAC}$로 주어진다. 따라서 $\\overline{\\mathrm{GH}}=2R'\\sin(\\angle\\mathrm{BAC})$이고, 목표는 **원 CEG의 지름 $2R'$** 하나다(수학Ⅰ-12-C2).\n$2R'$은 삼각형 CEG의 한 변과 대각으로 구한다. 결정되는 삼각형부터: 삼각형 ACG는 SSS($5,2,2\\sqrt6$)로 결정 → $\\angle\\mathrm{GAE}$ → 이등변삼각형 AGE → $\\overline{\\mathrm{GE}}$와 밑각(수학Ⅰ-12-C1).",
+  "solutions": [
+    {
+      "title": "풀이 1 · 이등변삼각형의 밑각으로 $2R'$",
+      "steps": [
+        {
+          "label": "기본 길이",
+          "body": "$\\overline{\\mathrm{AC}}=5$, $\\sin(\\angle\\mathrm{BAC})=\\frac45$. $\\overline{\\mathrm{AD}}=2$이므로 원의 반지름은 $2$: $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{AG}}=2$, $\\overline{\\mathrm{CE}}=3$."
+        },
+        {
+          "label": "삼각형 ACG (SSS)",
+          "body": "$$\\cos(\\angle\\mathrm{CAG})=\\frac{4+25-24}{2\\cdot2\\cdot5}=\\frac14$$\n점 E는 AC 위에 있으므로 $\\angle\\mathrm{GAE}=\\angle\\mathrm{CAG}$."
+        },
+        {
+          "label": "이등변삼각형 AGE",
+          "body": "$\\overline{\\mathrm{GE}}^2=4+4-2\\cdot2\\cdot2\\cdot\\frac14=6$, $\\overline{\\mathrm{GE}}=\\sqrt6$.\n꼭짓점 A에서 GE에 수선을 내리면 밑각 $\\angle\\mathrm{AEG}$에 대해 $\\cos(\\angle\\mathrm{AEG})=\\frac{\\sqrt6/2}{2}=\\frac{\\sqrt6}4$, $\\sin(\\angle\\mathrm{AEG})=\\frac{\\sqrt{10}}4$."
+        },
+        {
+          "label": "원 CEG의 지름",
+          "body": "$\\angle\\mathrm{CEG}=\\pi-\\angle\\mathrm{AEG}$이므로 $\\sin(\\angle\\mathrm{CEG})=\\frac{\\sqrt{10}}4$. 삼각형 CEG에서 사인법칙:\n$$2R'=\\frac{\\overline{\\mathrm{CG}}}{\\sin(\\angle\\mathrm{CEG})}=\\frac{2\\sqrt6}{\\sqrt{10}/4}=\\frac{8\\sqrt{15}}5$$"
+        },
+        {
+          "label": "답",
+          "body": "$\\overline{\\mathrm{GH}}=2R'\\sin(\\angle\\mathrm{HCG})=\\frac{8\\sqrt{15}}5\\cdot\\frac45=\\frac{32\\sqrt{15}}{25}$ → ④"
+        }
+      ]
+    },
+    {
+      "title": "풀이 2 · 삼각형 CGE에서 코사인법칙 (비교용)",
+      "steps": [
+        {
+          "label": "",
+          "body": "$\\overline{\\mathrm{GE}}=\\sqrt6$을 구한 뒤 삼각형 CGE(SSS: $2\\sqrt6,3,\\sqrt6$)에서\n$$\\cos(\\angle\\mathrm{ECG})=\\frac{24+9-6}{2\\cdot2\\sqrt6\\cdot3}=\\frac{3\\sqrt6}8,\\quad\\sin(\\angle\\mathrm{ECG})=\\frac{\\sqrt{10}}8,\\quad 2R'=\\frac{\\sqrt6}{\\sqrt{10}/8}=\\frac{8\\sqrt{15}}5$$\n결과는 같지만 한 번 더 코사인법칙을 써야 한다."
+        }
+      ]
+    }
+  ],
+  "supplement": "점 H의 위치를 직접 구하려고 하면 막힌다. '원 위의 현 + 원주각'이 주어졌으니 필요한 것은 그 원의 지름뿐이라는 역산이 이 문제의 첫 판단이다. $\\angle\\mathrm{CEG}$와 $\\angle\\mathrm{AEG}$는 보각이라 $\\sin$이 같다는 점도 자주 쓰이는 연결고리다. 이등변삼각형(원의 반지름 두 개)이 보이면 수선을 내려 밑각의 $\\cos$을 바로 읽자(S08).",
+  "skill_point": "현의 길이를 묻고 원주각이 주어지면 목표는 그 원의 지름 $2R$ 하나. 반지름 두 개 → 이등변 → 밑각.",
+  "answer": "4"
+}

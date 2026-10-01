@@ -1,0 +1,51 @@
+{
+  "id": "PS-230928",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "230928",
+    "year": 2023,
+    "exam": "9월 모의평가",
+    "number": 28,
+    "points": 4,
+    "label": "2022년 9월 고3 28번"
+  },
+  "question": "$1$부터 $10$까지의 자연수 중에서 임의로 서로 다른 $3$개의 수를 선택한다. 선택된 세 개의 수의 곱이 $5$의 배수이고 합은 $3$의 배수일 확률은?",
+  "condition": null,
+  "choices": [
+    "\\frac3{20}",
+    "\\frac16",
+    "\\frac{11}{60}",
+    "\\frac15",
+    "\\frac{13}{60}"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{11}{60}",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-10",
+    "primary_name": "확률의 정의 Ⅱ",
+    "links": [
+      "확률과 통계-09"
+    ]
+  },
+  "first_judgment": "곱이 $5$의 배수 ⇔ $5$ 또는 $10$ 포함; 합이 $3$의 배수는 나머지 집합 $S_0,S_1,S_2$로 분류해 센다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$S_0=\\{3,6,9\\}$, $S_1=\\{1,4,7,10\\}$, $S_2=\\{2,5,8\\}$. 5 포함 13, 10 포함 12, 둘 다 3 → 22. $\\frac{22}{120}=\\frac{11}{60}$",
+  "legacy": {
+    "category": "확률의 덧셈정리(1) : 배반사건이 아닌 경우",
+    "book_no": 25,
+    "question_page": 13,
+    "solution_page": 37
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-03"
+}

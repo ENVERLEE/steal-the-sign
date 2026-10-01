@@ -1,0 +1,50 @@
+{
+  "id": "M2-240910",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240910",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2023년 9월 고3 10번"
+  },
+  "question": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 곡선 $y=f(x)$ 위의 점 $(-2,f(-2))$에서의 접선과 곡선 $y=f(x)$ 위의 점 $(2,3)$에서의 접선이 점 $(1,3)$에서 만날 때, $f(0)$의 값은?",
+  "condition": null,
+  "choices": [
+    "31",
+    "33",
+    "35",
+    "37",
+    "39"
+  ],
+  "answer": "3",
+  "answer_value": "35",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-08",
+    "primary_name": "접선의 활용",
+    "links": []
+  },
+  "first_judgment": "$(2,3)$에서의 접선이 $(1,3)$을 지나므로 수평선 $y=3$이고, $f(x)-3=(x-a)(x-2)^2$으로 둔다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S19"
+  ],
+  "solution_ref": "$f(x)=(x-a)(x-2)^2+3$. $(-2,f(-2))$에서 접선이 $(1,3)$ 지남: $3-f(-2)=3f'(-2)$ → $32+16a=96+24a$, $a=-8$. $f(0)=8\\cdot4+3=35$",
+  "legacy": {
+    "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+    "book_no": 15,
+    "question_page": 8,
+    "solution_page": 49
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-03"
+}

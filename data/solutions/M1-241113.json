@@ -1,0 +1,31 @@
+{
+  "id": "M1-241113",
+  "concept_refs": [
+    "수학Ⅰ-12-C1",
+    "수학Ⅰ-12-C5",
+    "수학Ⅰ-12-C2"
+  ],
+  "guide": "삼각형 ABC는 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{BC}}$, $\\angle\\mathrm{BAC}$로 SSA지만, 이차방정식의 양수근이 하나뿐이라 결정된다(수학Ⅰ-12-C1). $\\overline{\\mathrm{AC}}$가 나오면\n· $S_2=\\frac12\\overline{\\mathrm{AD}}\\cdot\\overline{\\mathrm{CD}}\\sin(\\angle\\mathrm{ADC})$에서 곱 $\\overline{\\mathrm{AD}}\\cdot\\overline{\\mathrm{CD}}=9$가 그대로 쓰여 $\\sin(\\angle\\mathrm{ADC})$가 나온다(수학Ⅰ-12-C5).\n· $R=\\frac{\\overline{\\mathrm{AC}}}{2\\sin(\\angle\\mathrm{ADC})}$ (수학Ⅰ-12-C2).\n변 AD, CD를 따로 구할 필요가 없다는 것이 포인트.",
+  "solutions": [
+    {
+      "title": "풀이",
+      "steps": [
+        {
+          "label": "$\\overline{\\mathrm{AC}}$",
+          "body": "$\\overline{\\mathrm{AC}}=a$: $13=9+a^2-2\\cdot3\\cdot a\\cdot\\frac12$ → $a^2-3a-4=0$ → $a=4$."
+        },
+        {
+          "label": "$S_1$과 $\\sin(\\angle\\mathrm{ADC})$",
+          "body": "$S_1=\\frac12\\cdot3\\cdot4\\cdot\\frac{\\sqrt3}2=3\\sqrt3$. $S_2=\\frac12\\cdot9\\cdot\\sin(\\angle\\mathrm{ADC})=\\frac56\\cdot3\\sqrt3=\\frac{5\\sqrt3}2$이므로 $\\sin(\\angle\\mathrm{ADC})=\\frac{5\\sqrt3}9$."
+        },
+        {
+          "label": "답",
+          "body": "$\\dfrac{R}{\\sin(\\angle\\mathrm{ADC})}=\\dfrac{\\overline{\\mathrm{AC}}}{2\\sin^2(\\angle\\mathrm{ADC})}=\\dfrac{4}{2\\cdot\\frac{75}{81}}=\\dfrac{54}{25}$ → ①"
+        }
+      ]
+    }
+  ],
+  "supplement": "$R$을 먼저 구해($R=\\frac{6\\sqrt3}5$) 나눠도 되지만, $\\frac{R}{\\sin}=\\frac{\\overline{\\mathrm{AC}}}{2\\sin^2}$로 한 번에 쓰면 근호 계산이 사라진다. 곱 $\\overline{\\mathrm{AD}}\\times\\overline{\\mathrm{CD}}$가 주어지면 개별 길이를 구하지 말고 넓이 공식의 $ab$ 자리에 그대로 넣으라는 신호다.",
+  "skill_point": "두 변의 곱이 주어지면 넓이 $\\frac12ab\\sin C$에 통째로 넣는다. 외접원은 한 변과 대각의 $\\sin$.",
+  "answer": "1"
+}

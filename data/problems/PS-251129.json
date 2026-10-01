@@ -1,0 +1,45 @@
+{
+  "id": "PS-251129",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "251129",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 29,
+    "points": 4,
+    "label": "2024년 11월 고3 29번"
+  },
+  "question": "정규분포 $\\mathrm N(m_1,\\sigma_1^2)$을 따르는 확률변수 $X$와 정규분포 $\\mathrm N(m_2,\\sigma_2^2)$을 따르는 확률변수 $Y$가 다음 조건을 만족시킨다. $\\mathrm P(15\\le X\\le20)+\\mathrm P(15\\le Y\\le20)$의 값을 다음 표준정규분포표를 이용하여 구한 것이 $0.4772$일 때, $m_1+\\sigma_2$의 값을 구하시오. (단, $\\sigma_1$과 $\\sigma_2$는 양수이다.)",
+  "condition": "모든 실수 $x$에 대하여 $\\mathrm P(X\\le x)=\\mathrm P(X\\ge40-x)$이고, $\\mathrm P(Y\\le x)=\\mathrm P(X\\le x+10)$이다.\\\\표준정규분포표: $\\mathrm P(0\\le Z\\le0.5)=0.1915$, $1.0$: $0.3413$, $1.5$: $0.4332$, $2.0$: $0.4772$",
+  "choices": null,
+  "answer": "25",
+  "answer_value": "25",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-18",
+    "primary_name": "정규분포와 표준화",
+    "links": [
+      "확률과 통계-19"
+    ]
+  },
+  "first_judgment": "첫 조건은 $X$가 $x=20$ 대칭 ⇒ $m_1=20$; 둘째 조건은 $Y$가 $X$를 $10$만큼 평행이동한 분포 ⇒ $m_2=10$, $\\sigma_2=\\sigma_1$.",
+  "behavior": "추론",
+  "reasoning": [
+    "대칭성·주기성 활용",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$m_1=20$, $\\sigma_1=\\sigma_2$, $m_2=10$. 합 $=\\mathrm P\\left(0\\le Z\\le\\frac5{\\sigma_1}\\right)+\\mathrm P\\left(\\frac5{\\sigma_1}\\le Z\\le\\frac{10}{\\sigma_1}\\right)=\\mathrm P\\left(0\\le Z\\le\\frac{10}{\\sigma_1}\\right)=0.4772$ → $\\sigma_1=5$. $m_1+\\sigma_2=25$",
+  "legacy": {
+    "category": "표준화하여 미지수의 값 구하기",
+    "book_no": 43,
+    "question_page": 22,
+    "solution_page": 45
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-07"
+}

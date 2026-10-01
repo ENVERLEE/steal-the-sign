@@ -1,0 +1,54 @@
+{
+  "id": "M1-241113",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "241113",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 13,
+    "points": 4,
+    "label": "2023년 11월 고3 13번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=\\sqrt{13}$, $\\overline{\\mathrm{AD}}\\times\\overline{\\mathrm{CD}}=9$, $\\angle\\mathrm{BAC}=\\dfrac\\pi3$인 사각형 $\\mathrm{ABCD}$가 있다. 삼각형 $\\mathrm{ABC}$의 넓이를 $S_1$, 삼각형 $\\mathrm{ACD}$의 넓이를 $S_2$라 하고, 삼각형 $\\mathrm{ACD}$의 외접원의 반지름의 길이를 $R$이라 하자. $S_2=\\dfrac56S_1$일 때, $\\dfrac{R}{\\sin(\\angle\\mathrm{ADC})}$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac{54}{25}",
+    "\\frac{117}{50}",
+    "\\frac{63}{25}",
+    "\\frac{27}{10}",
+    "\\frac{72}{25}"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{54}{25}",
+  "figure": {
+    "description": "사각형 ABCD와 삼각형 ACD의 외접원, $\\angle$BAC$=\\frac\\pi3$",
+    "source_page": 24
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "삼각형 $\\mathrm{ABC}$는 SSA 조건이지만 코사인법칙으로 $\\overline{\\mathrm{AC}}$가 결정되고, 넓이 조건으로 $\\sin(\\angle\\mathrm{ADC})$가 나온다.",
+  "behavior": "계산",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$13=9+a^2-3a$ → $a=4$. $S_1=3\\sqrt3$. $S_2=\\frac92\\sin(\\angle\\mathrm{ADC})=\\frac56\\cdot3\\sqrt3$ → $\\sin=\\frac{5\\sqrt3}9$. $2R=\\frac{4}{5\\sqrt3/9}$, $R=\\frac{6\\sqrt3}5$. $\\frac{R}{\\sin}=\\frac{54}{25}$",
+  "legacy": {
+    "category": "외접원의 반지름의 길이와 삼각형의 넓이",
+    "book_no": 48,
+    "question_page": 24,
+    "solution_page": 66
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-06"
+}

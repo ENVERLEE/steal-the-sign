@@ -1,0 +1,43 @@
+{
+  "id": "M1-260914",
+  "concept_refs": [
+    "수학Ⅰ-09-C1",
+    "수학Ⅰ-09-C2"
+  ],
+  "guide": "$y=p$가 두 가지와 만나는 두 점 A, B 사이 거리는 **주기** $k\\pi$다(수학Ⅰ-09-C1). 그러면 $\\overline{\\mathrm{AB}}=3\\overline{\\mathrm{PA}}$에서 A의 $x$좌표가 바로 나오고, 그 점의 높이 $p$는 $\\tan$의 특수각으로 결정된다.\n점 C는 $y=-p$ 위의 점이므로, 두 번째 가지의 대칭중심 $\\mathrm D(k\\pi,0)$에 대해 B와 점대칭이다(수학Ⅰ-09-C2). 그림에서도 C는 B와 같은 가지(오른쪽 가지) 위에 있다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 주기 + 점대칭",
+      "steps": [
+        {
+          "label": "A의 위치와 $p$",
+          "body": "주기가 $k\\pi$이므로 $\\overline{\\mathrm{AB}}=k\\pi$, $\\overline{\\mathrm{PA}}=\\frac{k\\pi}3$. 즉 $\\mathrm A\\left(\\frac{k\\pi}3,p\\right)$이고\n$$p=\\tan\\frac{k\\pi/3}{k}=\\tan\\frac\\pi3=\\sqrt3$$"
+        },
+        {
+          "label": "B, C의 좌표",
+          "body": "$\\mathrm B\\left(\\frac{4k\\pi}3,\\sqrt3\\right)$. 두 번째 가지는 $\\mathrm D(k\\pi,0)$에 대해 점대칭이므로 $\\mathrm C$는 B의 대칭점: $\\mathrm C\\left(\\frac{2k\\pi}3,-\\sqrt3\\right)$."
+        },
+        {
+          "label": "넓이",
+          "body": "$\\triangle\\mathrm{OCB}$는 $x$축 위의 선분 $\\mathrm{OD}$($=k\\pi$)로 위아래 두 삼각형으로 나뉜다. 높이가 각각 $\\sqrt3$이므로\n$$\\triangle\\mathrm{OCB}=\\tfrac12\\cdot k\\pi\\cdot\\sqrt3+\\tfrac12\\cdot k\\pi\\cdot\\sqrt3=\\sqrt3k\\pi=\\tfrac{5\\pi}3$$\n$\\therefore k=\\frac5{3\\sqrt3}=\\frac{5\\sqrt3}9$."
+        },
+        {
+          "label": "답",
+          "body": "$k+p=\\frac{5\\sqrt3}9+\\sqrt3=\\frac{14\\sqrt3}9$ → ③"
+        }
+      ]
+    },
+    {
+      "title": "풀이 2 · 좌표 넓이 공식 (비교용)",
+      "steps": [
+        {
+          "label": "",
+          "body": "$\\mathrm O(0,0)$, $\\mathrm C\\left(\\frac{2k\\pi}3,-\\sqrt3\\right)$, $\\mathrm B\\left(\\frac{4k\\pi}3,\\sqrt3\\right)$이므로\n$$S=\\tfrac12\\left|\\tfrac{2k\\pi}3\\cdot\\sqrt3-\\tfrac{4k\\pi}3\\cdot(-\\sqrt3)\\right|=\\sqrt3k\\pi$$\n같은 결과다. C의 좌표를 $\\tan\\frac xk=-\\sqrt3$을 풀어 구해도 되지만 점대칭이 훨씬 빠르다."
+        }
+      ]
+    }
+  ],
+  "supplement": "탄젠트 그래프는 영점마다 점대칭 중심을 갖는다는 사실이 이 문제의 전부다. B와 C가 D에 대해 대칭이므로 BC는 D를 지나고, 삼각형 OCB는 $x$축 위의 공통 밑변 OD를 가진 두 삼각형의 합이 된다. '두 수평선 $y=p$, $y=-p$'라는 표현이 보이면 점대칭을 먼저 떠올리자.",
+  "skill_point": "tan: 같은 높이 두 점 간격 = 주기, $y=p$와 $y=-p$의 교점은 영점에 대해 점대칭.",
+  "answer": "3"
+}

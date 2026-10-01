@@ -1,0 +1,48 @@
+{
+  "id": "M2-250621",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "250621",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 21,
+    "points": 4,
+    "label": "2024년 6월 고3 21번"
+  },
+  "question": "최고차항의 계수가 $1$인 사차함수 $f(x)$가 다음 조건을 만족시킨다. $f(0)=0$, $f'(1)=0$일 때, $f(3)$의 값을 구하시오.",
+  "condition": "(가) $f'(a)\\le0$인 실수 $a$의 최댓값은 $2$이다.\\\\(나) 집합 $\\{x\\mid f(x)=k\\}$의 원소의 개수가 $3$ 이상이 되도록 하는 실수 $k$의 최솟값은 $\\dfrac83$이다.",
+  "choices": null,
+  "answer": "15",
+  "answer_value": "15",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-09",
+    "primary_name": "증가/감소, 극대/극소, 최대/최소",
+    "links": [
+      "수학Ⅱ-14"
+    ]
+  },
+  "first_judgment": "(나)에서 $f'=0$이 서로 다른 세 실근을 가지고, (가)에서 가장 큰 근이 $2$이므로 $f'(x)=4(x-1)(x-2)(x-b)$로 두고 $b$의 위치로 나눈다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "경우 나누기",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S17",
+    "S18"
+  ],
+  "solution_ref": "$f'=4(x-1)(x-2)(x-b)$, $f(0)=0$으로 $f=x^4-\\frac43(b+3)x^3+2(3b+2)x^2-8bx$. (i) $b<1$, $f(b)<f(2)$: $f(2)=\\frac83$ → $b=-1$, $f(-1)=-\\frac{19}3<\\frac83$ 적합. (ii) $b<1$, $f(2)<f(b)$: 최솟값 음수 → 불가. (iii) $1<b<2$: 불가. $f(3)=81-72-18+24=15$",
+  "legacy": {
+    "category": "도함수가 주어진 경우의 부정적분 : f'(x)로부터 f(x)구하기",
+    "book_no": 38,
+    "question_page": 19,
+    "solution_page": 62
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-04"
+}

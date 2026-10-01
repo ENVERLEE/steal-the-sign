@@ -1,0 +1,34 @@
+{
+  "id": "M1-260922",
+  "concept_refs": [
+    "수학Ⅰ-04-C2",
+    "수학Ⅰ-02-C1"
+  ],
+  "guide": "AP는 $y=x$에 내린 수선, BQ는 $y=x$ 대칭인 두 점을 잇는 선분이므로 둘 다 기울기 $-1$이다. 따라서 $y$절편은 각각 $a+\\log_2a$, $b+\\log_2b$이고(수학Ⅰ-04-C2), (가)·(나)가 $a-b$와 $\\log_2a-\\log_2b$에 대한 연립일차방정식이 된다. 사각형 APQB는 AP∥BQ인 사다리꼴이고 높이는 두 평행선 사이 거리 $\\frac{13/2}{\\sqrt2}$로 (가)에서 바로 나온다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · $x+y=c$ 꼴 직선",
+      "steps": [
+        {
+          "label": "연립",
+          "body": "$X=a-b$, $Y=\\log_2a-\\log_2b$로 두면\n(가) $X+Y=\\dfrac{13}2$, (나) $Y=\\dfrac67X$.\n$\\dfrac{13}7X=\\dfrac{13}2$에서 $X=\\dfrac72$, $Y=3$."
+        },
+        {
+          "label": "A, B",
+          "body": "$\\log_2\\dfrac ab=3\\Rightarrow a=8b$, $7b=\\dfrac72\\Rightarrow b=\\dfrac12$, $a=4$.\n$\\mathrm A(4,2)$, $\\mathrm B\\left(\\frac12,-1\\right)$, $\\mathrm P(3,3)$, $\\mathrm Q\\left(-1,\\frac12\\right)$."
+        },
+        {
+          "label": "사다리꼴의 세 길이",
+          "body": "$\\overline{\\mathrm{AP}}=\\dfrac{|4-2|}{\\sqrt2}=\\sqrt2$, $\\overline{\\mathrm{BQ}}=2\\cdot\\dfrac{|\\frac12-(-1)|}{\\sqrt2}=\\dfrac{3}{\\sqrt2}$.\n높이 $=$ 직선 $x+y=6$과 $x+y=-\\frac12$ 사이 거리 $=\\dfrac{13/2}{\\sqrt2}=\\dfrac{13}{2\\sqrt2}$."
+        },
+        {
+          "label": "넓이",
+          "body": "$\\dfrac12\\left(\\sqrt2+\\dfrac3{\\sqrt2}\\right)\\cdot\\dfrac{13}{2\\sqrt2}=\\dfrac12\\cdot\\dfrac5{\\sqrt2}\\cdot\\dfrac{13}{2\\sqrt2}=\\dfrac{65}8$, $p+q=73$."
+        }
+      ]
+    }
+  ],
+  "supplement": "(가)의 '$y$절편의 차'는 두 평행선 사이의 세로 간격이고, 이것을 $\\sqrt2$로 나누면 사다리꼴의 높이다. 즉 (가)는 연립용 식이면서 동시에 넓이 계산에 필요한 높이를 공짜로 준다. 점과 직선 $y=x$ 사이 거리 $\\frac{|x-y|}{\\sqrt2}$도 자주 쓰므로 공식처럼 기억해 두자.",
+  "skill_point": "$y=x$에 수직인 직선은 $x+y=c$ → $y$절편 $=$ 좌표의 합, 평행선 거리 $=\\frac{|\\Delta c|}{\\sqrt2}$.",
+  "answer": "73"
+}

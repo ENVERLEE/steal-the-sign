@@ -1,0 +1,52 @@
+{
+  "id": "M2-270611",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "270611",
+    "year": 2027,
+    "exam": "6월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2026년 6월 고3 11번"
+  },
+  "question": "일차함수 $f(x)$에 대하여 $\\displaystyle\\lim_{x\\to a}\\frac{f(x+2)}{x\\{f(x)-3\\}}$의 값이 $a=0$일 때 존재하고 $a=3$일 때 존재하지 않는다. $f(4)$의 값은?",
+  "condition": null,
+  "choices": [
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+  ],
+  "answer": "1",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-03",
+    "primary_name": "극한값과 인수결정",
+    "links": [
+      "수학Ⅱ-01"
+    ]
+  },
+  "first_judgment": "$a=0$에서 분모$\\to0$이므로 분자$\\to0$($f(2)=0$); $a=3$에서 존재하지 않으려면 분모가 $0$이 되어야 한다($f(3)=3$).",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S13"
+  ],
+  "solution_ref": "$a=0$: $f(2)=0$. $a=3$: $f(5)\\ne0$이므로 $3\\{f(3)-3\\}=0$, $f(3)=3$. $f(x)=3(x-2)$, $f(4)=6$",
+  "legacy": {
+    "category": "미정계수의 결정",
+    "book_no": 1,
+    "question_page": 1,
+    "solution_page": 41
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-01"
+}

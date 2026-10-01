@@ -1,0 +1,55 @@
+{
+  "id": "M1-240613",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "240613",
+    "year": 2024,
+    "exam": "6월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2023년 6월 고3 13번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{BC}}=3$, $\\overline{\\mathrm{CD}}=2$, $\\cos(\\angle\\mathrm{BCD})=-\\dfrac13$, $\\angle\\mathrm{DAB}>\\dfrac\\pi2$인 사각형 $\\mathrm{ABCD}$에서 두 삼각형 $\\mathrm{ABC}$와 $\\mathrm{ACD}$는 모두 예각삼각형이다. 선분 $\\mathrm{AC}$를 $1:2$로 내분하는 점 $\\mathrm{E}$에 대하여 선분 $\\mathrm{AE}$를 지름으로 하는 원이 두 선분 $\\mathrm{AB}$, $\\mathrm{AD}$와 만나는 점 중 $\\mathrm{A}$가 아닌 점을 각각 $\\mathrm{P}_1$, $\\mathrm{P}_2$라 하고, 선분 $\\mathrm{CE}$를 지름으로 하는 원이 두 선분 $\\mathrm{BC}$, $\\mathrm{CD}$와 만나는 점 중 $\\mathrm{C}$가 아닌 점을 각각 $\\mathrm{Q}_1$, $\\mathrm{Q}_2$라 하자. $\\overline{\\mathrm{P}_1\\mathrm{P}_2}:\\overline{\\mathrm{Q}_1\\mathrm{Q}_2}=3:5\\sqrt2$이고 삼각형 $\\mathrm{ABD}$의 넓이가 $2$일 때, $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}$의 값은? (단, $\\overline{\\mathrm{AB}}>\\overline{\\mathrm{AD}}$)",
+  "condition": null,
+  "choices": [
+    "\\sqrt{21}",
+    "\\sqrt{22}",
+    "\\sqrt{23}",
+    "2\\sqrt6",
+    "5"
+  ],
+  "answer": "1",
+  "answer_value": "\\sqrt{21}",
+  "figure": {
+    "description": "사각형 ABCD, 대각선 AC 위의 E, AE·CE를 지름으로 하는 두 원과 교점 $\\mathrm P_1,\\mathrm P_2,\\mathrm Q_1,\\mathrm Q_2$",
+    "source_page": 26
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "두 원의 지름 비가 $1:2$이므로 반지름을 $r$, $2r$로 두고 사인법칙으로 $\\sin\\alpha:\\sin\\beta$를 얻는다($\\alpha=\\angle\\mathrm{BCD}$, $\\beta=\\angle\\mathrm{DAB}$).",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$\\overline{\\mathrm{BD}}^2=9+4+4=17$. $\\frac{\\overline{\\mathrm{P_1P_2}}}{\\sin\\beta}=2r$, $\\frac{\\overline{\\mathrm{Q_1Q_2}}}{\\sin\\alpha}=4r$ → $\\sin\\beta=\\frac{6\\sin\\alpha}{5\\sqrt2}$; $\\sin\\alpha=\\frac{2\\sqrt2}3$ → $\\sin\\beta=\\frac45$, $\\cos\\beta=-\\frac35$. $\\frac12ab\\cdot\\frac45=2$ → $ab=5$. $a^2+b^2+6=17$ → $a^2+b^2=11$. $(a+b)^2=21$",
+  "legacy": {
+    "category": "삼각형의 넓이를 활용하는 문제",
+    "book_no": 51,
+    "question_page": 26,
+    "solution_page": 68
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-07"
+}

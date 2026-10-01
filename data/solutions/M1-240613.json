@@ -1,0 +1,35 @@
+{
+  "id": "M1-240613",
+  "concept_refs": [
+    "수학Ⅰ-12-C2",
+    "수학Ⅰ-12-C5",
+    "수학Ⅰ-12-C1"
+  ],
+  "guide": "두 원은 지름이 $\\overline{\\mathrm{AE}}$, $\\overline{\\mathrm{CE}}$ ($1:2$)이다. 현 $\\mathrm{P_1P_2}$는 A에서 본 원주각이 $\\angle\\mathrm{DAB}=\\beta$, 현 $\\mathrm{Q_1Q_2}$는 C에서 본 원주각이 $\\angle\\mathrm{BCD}=\\alpha$이므로\n$$\\overline{\\mathrm{P_1P_2}}=\\overline{\\mathrm{AE}}\\sin\\beta,\\qquad\\overline{\\mathrm{Q_1Q_2}}=\\overline{\\mathrm{CE}}\\sin\\alpha$$\n(현 $=$ 지름 $\\times\\sin$ 원주각, 수학Ⅰ-12-C2). 여기서 $\\sin\\beta$가 나오고, 삼각형 ABD의 넓이·코사인법칙으로 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}$를 합·곱으로 구한다. $\\overline{\\mathrm{BD}}$는 SAS인 삼각형 BCD에서(수학Ⅰ-12-C1).",
+  "solutions": [
+    {
+      "title": "풀이 · 지름 × sin + 합과 곱",
+      "steps": [
+        {
+          "label": "$\\sin\\beta$",
+          "body": "$\\overline{\\mathrm{AE}}=d$, $\\overline{\\mathrm{CE}}=2d$라 하면\n$$\\frac{\\overline{\\mathrm{P_1P_2}}}{\\overline{\\mathrm{Q_1Q_2}}}=\\frac{d\\sin\\beta}{2d\\sin\\alpha}=\\frac3{5\\sqrt2}$$\n$\\cos\\alpha=-\\frac13$에서 $\\sin\\alpha=\\frac{2\\sqrt2}3$이므로 $\\sin\\beta=\\frac{6}{5\\sqrt2}\\cdot\\frac{2\\sqrt2}3=\\frac45$. $\\beta>\\frac\\pi2$이므로 $\\cos\\beta=-\\frac35$."
+        },
+        {
+          "label": "$\\overline{\\mathrm{BD}}^2$",
+          "body": "삼각형 BCD (SAS): $\\overline{\\mathrm{BD}}^2=9+4-2\\cdot3\\cdot2\\cdot\\left(-\\frac13\\right)=17$."
+        },
+        {
+          "label": "합과 곱",
+          "body": "$\\overline{\\mathrm{AB}}=x$, $\\overline{\\mathrm{AD}}=y$.\n· 넓이: $\\frac12xy\\cdot\\frac45=2$ → $xy=5$\n· 코사인법칙: $17=x^2+y^2-2xy\\left(-\\frac35\\right)=x^2+y^2+6$ → $x^2+y^2=11$"
+        },
+        {
+          "label": "답",
+          "body": "$(x+y)^2=11+10=21$이므로 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}=\\sqrt{21}$ → ①"
+        }
+      ]
+    }
+  ],
+  "supplement": "'예각삼각형' 조건은 $\\mathrm{P_1},\\mathrm{P_2},\\mathrm{Q_1},\\mathrm{Q_2}$가 모두 선분 위에 있도록(수선의 발이 변 위에 떨어지도록) 보장하는 장치이고, '$\\angle\\mathrm{DAB}>\\frac\\pi2$'는 $\\sin\\beta=\\frac45$에서 $\\cos\\beta$의 부호를 고르는 장치다(S07 주의: $\\sin$만으로는 예각·둔각을 모른다). $x$, $y$를 따로 구하지 말고 합·곱($x^2+y^2$와 $xy$)으로 바로 $(x+y)^2$을 만드는 것도 습관으로.",
+  "skill_point": "지름이 주어진 원의 현 = 지름 × sin(원주각). $\\sin$만 나오면 조건으로 $\\cos$ 부호를 고른다.",
+  "answer": "1"
+}

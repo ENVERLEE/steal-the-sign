@@ -1,0 +1,48 @@
+{
+  "id": "M1-231121",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "231121",
+    "year": 2023,
+    "exam": "대학수학능력시험",
+    "number": 21,
+    "points": 4,
+    "label": "2022년 11월 고3 21번"
+  },
+  "question": "자연수 $n$에 대하여 함수 $f(x)$를 $f(x)=\\begin{cases}|3^{x+2}-n| & (x<0)\\\\ |\\log_2(x+4)-n| & (x\\ge0)\\end{cases}$이라 하자. 실수 $t$에 대하여 $x$에 대한 방정식 $f(x)=t$의 서로 다른 실근의 개수를 $g(t)$라 할 때, 함수 $g(t)$의 최댓값이 $4$가 되도록 하는 모든 자연수 $n$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "33",
+  "answer_value": "33",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-07",
+    "primary_name": "지수함수와 로그함수의 평행이동",
+    "links": [
+      "수학Ⅰ-03",
+      "수학Ⅰ-04"
+    ]
+  },
+  "first_judgment": "각 부분을 평행이동 + 절댓값으로 그리고, $x=0$에서의 값 $|9-n|$, $|2-n|$의 부호로 $n$을 구간별로 나눈다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "그래프·도형 해석",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S05"
+  ],
+  "solution_ref": "$x<0$: $y=|3^{x+2}-n|$은 점근선 $y=n$, $(0,|9-n|)$. $x\\ge0$: $y=|\\log_2(x+4)-n|$은 $(0,|2-n|)$. $g(t)$ 최댓값 4가 되려면 두 부분 모두 꺾임이 생겨야 하므로 $9-n>0$, $2-n<0$ → $n=3,\\dots,8$. 합 $33$",
+  "legacy": {
+    "category": "지수함수와 로그함수의 관계",
+    "book_no": 23,
+    "question_page": 12,
+    "solution_page": 52
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-03"
+}

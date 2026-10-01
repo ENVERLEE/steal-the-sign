@@ -1,0 +1,52 @@
+{
+  "id": "M1-220609",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220609",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2021년 6월 고3 9번"
+  },
+  "question": "수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}\\dfrac1{a_n} & (n\\text{이 홀수인 경우})\\\\ 8a_n & (n\\text{이 짝수인 경우})\\end{cases}$이고 $a_{12}=\\dfrac12$일 때, $a_1+a_4$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac34",
+    "\\frac94",
+    "\\frac52",
+    "\\frac{17}4",
+    "\\frac92"
+  ],
+  "answer": "5",
+  "answer_value": "\\frac92",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-20",
+    "primary_name": "역추적",
+    "links": [
+      "수학Ⅰ-17"
+    ]
+  },
+  "first_judgment": "뒤의 항이 주어졌으므로 점화식을 거꾸로 적용해 $a_{11},a_{10},\\dots$를 역추적한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "나열·역추적"
+  ],
+  "strategy_ids": [
+    "S11"
+  ],
+  "solution_ref": "$a_{11}=2$, $a_{10}=\\frac14$, $a_9=4$, $a_8=\\frac12$, $a_7=2$, $a_6=\\frac14$, $a_5=4$, $a_4=\\frac12$, $a_3=2$, $a_2=\\frac14$, $a_1=4$. $a_1+a_4=\\frac92$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 68,
+    "question_page": 34,
+    "solution_page": 75
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-11"
+}

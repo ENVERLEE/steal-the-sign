@@ -1,21 +1,34 @@
 """원천 데이터 검증 → out/excluded.json
 
-db.json·solutions.json·themes.json·strategy_notes.json 사이의 모순을 찾는다.
+data/problems·solutions·concepts.json·themes.json·strategy_notes.json 사이의 모순을 찾는다.
 문항 자체에 문제가 있으면 excluded.json에 올려 교재에서 쓰지 못하게 한다.
 """
 from __future__ import annotations
 
 import re
+import json
 from collections import Counter, defaultdict
 
 from scripts.check_created import LITERAL_NL_MSG, LITERAL_NL_RE
-from scripts.common import Context, Log, choice_text, read_json, write_json
+from scripts.common import Context, Log, choice_text, past_points_ok, read_json, write_json
 
 ID_RE = re.compile(r"^(M1|M2|PS)-(\d{2})(\d{2})(\d{2})$")
 PREFIX = {"수학Ⅰ": "M1", "수학Ⅱ": "M2", "확률과 통계": "PS"}
 
 
 CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]|\r|\t")
+
+
+def write_index(ctx: Context) -> None:
+    """data/index.json: AI가 문항을 고를 때 읽는 한 줄 요약(자동 생성, 직접 고치지 않는다)"""
+    rows = []
+    for pid, r in ctx.db.items():
+        s = r["source"]
+        rows.append({"id": pid, "subject": r["subject"], "home": ctx.home.get(pid), "year": s["year"],
+                     "no": s["number"], "behavior": r.get("behavior"),
+                     "judgment": (r.get("first_judgment") or "")[:40]})
+    lines = ",\n".join("  " + json.dumps(r, ensure_ascii=False, separators=(",", ":")) for r in rows)
+    ctx.path("index").write_text('{"_note":"validate가 자동 생성. 직접 고치지 않는다","problems":[\n' + lines + "\n]}\n", encoding="utf-8")
 
 
 def run(ctx: Context, katex: bool = True) -> Log:
@@ -30,11 +43,10 @@ def run(ctx: Context, katex: bool = True) -> Log:
     db = ctx.db
     y0, y1 = cfg["years"]
 
-    # ---- 1. db.json 레코드 자체
-    db_list = read_json(ctx.path("db"))
-    for pid, n in Counter(r["id"] for r in db_list).items():
-        if n > 1:
-            exclude(pid, f"db.json에 id 중복 {n}회")
+    # ---- 1. 문항 파일 자체 (data/problems/{id}.json)
+    for stem, r in ctx.problem_files.items():
+        if r.get("id") != stem:
+            exclude(stem, f"파일명 {stem}.json과 id {r.get('id')} 불일치")
 
     for pid, r in db.items():
         s = r["source"]
@@ -54,8 +66,8 @@ def run(ctx: Context, katex: bool = True) -> Log:
         lo, hi = cfg["number_range"][r["subject"]]
         if not (lo <= nn <= hi) or s["number"] != nn:
             exclude(pid, f"번호 {nn}이 {r['subject']} 범위 {lo}~{hi} 밖이거나 source.number와 불일치")
-        if s.get("points") != ctx.config["points"]["past"]:
-            exclude(pid, f"배점 {s.get('points')}점 (기출은 4점)")
+        if not past_points_ok(s.get("points"), ctx.config):
+            exclude(pid, f"배점 {s.get('points')}점 (허용 {ctx.config['points']['past']})")
         if r.get("choices"):
             if len(r["choices"]) != 5:
                 exclude(pid, f"선택지 {len(r['choices'])}개")
@@ -99,16 +111,16 @@ def run(ctx: Context, katex: bool = True) -> Log:
                 continue  # DB 범위 밖 예시
             recs = codes.get(code)
             if not recs:
-                log.warn(sid, f"예시 {code}({ex.get('source')})가 db.json에 없음")
+                log.warn(sid, f"예시 {code}({ex.get('source')})가 data/problems에 없음")
             elif not any(sid in (r.get("strategy_ids") or []) for r in recs):
                 log.warn(sid, f"예시 {code}의 db 레코드 strategy_ids에 {sid}가 없음")
 
-    # ---- 4. solutions.json
+    # ---- 4. data/solutions (풀이)
     concepts = ctx.concepts
     for pid in db:
         st = ctx.study.get(pid)
         if st is None:
-            exclude(pid, "solutions.json에 풀이 없음")
+            exclude(pid, "data/solutions/{id}.json 풀이 없음")
             continue
         if str(st.get("answer")) != str(db[pid]["answer"]):
             exclude(pid, f"풀이 정답 {st.get('answer')} ≠ DB 정답 {db[pid]['answer']}")
@@ -124,31 +136,25 @@ def run(ctx: Context, katex: bool = True) -> Log:
                     exclude(pid, f"풀이 '{step.get('label')}'의 $ 짝이 맞지 않음")
     for pid in ctx.study:
         if pid not in db:
-            log.warn(pid, "solutions.json에만 있는 문항")
+            log.warn(pid, "data/solutions에만 있는 풀이")
 
     # ---- 5. themes.json
-    home = Counter()
     for tid, t in ctx.themes.items():
         for pid in t["problem_ids"]:
-            home[pid] += 1
-            if pid not in db:
-                log.error(tid, f"problem_ids의 {pid}가 db.json에 없음")
-            elif db[pid]["subject"] != t["subject"]:
+            if db[pid]["subject"] != t["subject"]:
                 log.error(tid, f"{pid} 과목이 테마 과목과 다름")
         for pid in t.get("related_ids") or []:
             if pid not in db:
-                log.error(tid, f"related_ids의 {pid}가 db.json에 없음")
+                log.error(tid, f"related_ids의 {pid}가 data/problems에 없음")
         for o in t["old_themes"]:
             if o not in ctx.old_themes:
-                log.error(tid, f"old_themes {o}가 solutions.json에 없음")
+                log.error(tid, f"old_themes {o}가 concepts.json에 없음")
         for sid in t.get("strategy_ids") or []:
             if sid not in ctx.strategies:
                 log.error(tid, f"strategy {sid}가 strategy_notes에 없음")
     for pid in db:
-        if home[pid] == 0:
-            exclude(pid, "themes.json 어느 테마에도 배정되지 않음")
-        elif home[pid] > 1:
-            log.error(pid, f"themes.json 홈 테마 중복 배정 {home[pid]}회")
+        if ctx.home.get(pid) not in ctx.themes:
+            exclude(pid, f"문항 파일의 home({ctx.home.get(pid)})이 themes.json의 테마가 아님")
     counts = Counter(t["subject"] for t in ctx.themes.values())
     for subj, n in ctx.config["themes"]["count"].items():
         if counts[subj] != n:
@@ -166,7 +172,7 @@ def run(ctx: Context, katex: bool = True) -> Log:
         for sol in st.get("solutions") or []:
             texts.append((pid, sol.get("title")))
             texts += [(pid, x.get(k)) for x in sol.get("steps") or [] for k in ("label", "body")]
-    for t in ctx.solutions["themes"]:
+    for t in ctx.concept_themes:
         texts.append((t["theme"], t.get("overview")))
         for c in t["core_concepts"]:
             texts += [(c["id"], c.get(f)) for f in ("name", "statement", "why", "when")]
@@ -191,6 +197,7 @@ def run(ctx: Context, katex: bool = True) -> Log:
                 log.error(owner, f"KaTeX 오류 ${tex[:50]}$ — {err[:100]}")
         log.stats["math"] = len(m.items)
 
+    write_index(ctx)
     out = [{"id": pid, "reasons": why} for pid, why in sorted(excluded.items())]
     write_json(ctx.excluded_path, out)
     log.stats.update({"problems": len(db), "excluded": len(out), "themes": len(ctx.themes),

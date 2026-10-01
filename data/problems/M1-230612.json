@@ -1,0 +1,53 @@
+{
+  "id": "M1-230612",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230612",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2022년 6월 고3 12번"
+  },
+  "question": "공차가 $3$인 등차수열 $\\{a_n\\}$이 다음 조건을 만족시킬 때, $a_{10}$의 값은?",
+  "condition": "(가) $a_5\\times a_7<0$\\\\(나) $\\displaystyle\\sum_{k=1}^{6}|a_{k+6}|=6+\\sum_{k=1}^{6}|a_{2k}|$",
+  "choices": [
+    "\\frac{21}2",
+    "11",
+    "\\frac{23}2",
+    "12",
+    "\\frac{25}2"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{23}2",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-14",
+    "primary_name": "등차수열의 합",
+    "links": [
+      "수학Ⅰ-13"
+    ]
+  },
+  "first_judgment": "(가)로 부호가 바뀌는 위치($a_5<0<a_7$)가 정해지므로 절댓값을 벗기고, 남는 $|a_6|$의 부호로 경우를 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S09"
+  ],
+  "solution_ref": "$n\\le5$면 $a_n<0$, $n\\ge7$면 $a_n>0$. (나)에서 공통항 소거: $a_7+a_9+a_{11}=6-a_2-a_4+|a_6|$ → $|a_1+15|=5a_1+78$. $a_1+15\\ge0$이면 $a_1=-\\frac{63}4$ (모순). $a_1+15<0$ → $a_1=-\\frac{31}2$. $a_{10}=\\frac{23}2$",
+  "legacy": {
+    "category": "∑를 이용한 수열의 합",
+    "book_no": 58,
+    "question_page": 29,
+    "solution_page": 71
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-08"
+}

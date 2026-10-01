@@ -1,0 +1,46 @@
+{
+  "id": "M1-220621",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220621",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 21,
+    "points": 4,
+    "label": "2021년 6월 고3 21번"
+  },
+  "question": "다음 조건을 만족시키는 최고차항의 계수가 $1$인 이차함수 $f(x)$가 존재하도록 하는 모든 자연수 $n$의 값의 합을 구하시오.",
+  "condition": "(가) $x$에 대한 방정식 $(x^n-64)f(x)=0$은 서로 다른 두 실근을 갖고, 각각의 실근은 중근이다.\\\\(나) 함수 $f(x)$의 최솟값은 음의 정수이다.",
+  "choices": null,
+  "answer": "24",
+  "answer_value": "24",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-01",
+    "primary_name": "거듭제곱근",
+    "links": []
+  },
+  "first_judgment": "$x^n=64$의 실근 개수가 $n$의 홀짝에 따라 달라지므로 $n$을 홀수·짝수로 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "정수 조건으로 후보 좁히기"
+  ],
+  "strategy_ids": [
+    "S01",
+    "S02"
+  ],
+  "solution_ref": "$f$의 최솟값이 음수이므로 $f(x)=0$은 서로 다른 두 실근을 가진다. (i) $n$ 홀수: $x^n=64$의 실근 1개 → 모든 근이 중근일 수 없다. (ii) $n$ 짝수: $x=\\pm2^{6/n}$이므로 $f(x)=(x-2^{6/n})(x+2^{6/n})$, 최솟값 $f(0)=-2^{12/n}$이 음의 정수 → $n=2,4,6,12$. 합 $24$",
+  "legacy": {
+    "category": "a^r이 자연수가 되도록 하는 미지수 구하기",
+    "book_no": 2,
+    "question_page": 1,
+    "solution_page": 42
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-01"
+}

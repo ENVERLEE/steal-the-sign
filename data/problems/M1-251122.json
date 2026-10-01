@@ -1,0 +1,48 @@
+{
+  "id": "M1-251122",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "251122",
+    "year": 2025,
+    "exam": "대학수학능력시험",
+    "number": 22,
+    "points": 4,
+    "label": "2024년 11월 고3 22번"
+  },
+  "question": "모든 항이 정수이고 다음 조건을 만족시키는 모든 수열 $\\{a_n\\}$에 대하여 $|a_1|$의 값의 합을 구하시오.",
+  "condition": "(가) 모든 자연수 $n$에 대하여 $a_{n+1}=\\begin{cases}a_n-3 & (|a_n|\\text{이 홀수인 경우})\\\\ \\dfrac12a_n & (a_n=0\\text{ 또는 }|a_n|\\text{이 짝수인 경우})\\end{cases}$\\\\(나) $|a_m|=|a_{m+2}|$인 자연수 $m$의 최솟값은 $3$이다.",
+  "choices": null,
+  "answer": "64",
+  "answer_value": "64",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-20",
+    "primary_name": "역추적",
+    "links": [
+      "수학Ⅰ-21",
+      "수학Ⅰ-17"
+    ]
+  },
+  "first_judgment": "(나)에서 $|a_3|=|a_5|$이므로 $|a_3|$의 홀짝으로 나눠 $a_3$ 후보를 찾고, $|a_1|\\ne|a_3|$, $|a_2|\\ne|a_4|$를 확인하며 역추적한다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "나열·역추적",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S11"
+  ],
+  "solution_ref": "(i) $|a_3|$ 홀수: $a_3=1$ 또는 $-3$ → 모두 $|a_2|=|a_4|$가 되어 불가. (ii) $|a_3|$ 짝수 또는 0: $\\frac14a_3$과 비교 → $a_3=0$ ($a_1=6$), 또는 $|a_3|=\\left|\\frac12a_3-3\\right|$ → $a_3=2$ ($a_1=10,7,8$), $a_3=-6$ ($a_1=-9,-24$). 합 $6+(10+7+8)+(9+24)=64$",
+  "legacy": {
+    "category": "수열의 귀납적 정의",
+    "book_no": 73,
+    "question_page": 37,
+    "solution_page": 78
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-11"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "M2-220920",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "220920",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 20,
+    "points": 4,
+    "label": "2021년 9월 고3 20번"
+  },
+  "question": "함수 $f(x)=\\dfrac12x^3-\\dfrac92x^2+10x$에 대하여 $x$에 대한 방정식 $f(x)+|f(x)+x|=6x+k$의 서로 다른 실근의 개수가 $4$가 되도록 하는 모든 정수 $k$의 값의 합을 구하시오.",
+  "condition": null,
+  "choices": null,
+  "answer": "21",
+  "answer_value": "21",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-10",
+    "primary_name": "방정식에의 활용",
+    "links": [
+      "수학Ⅱ-11"
+    ]
+  },
+  "first_judgment": "$g(x)=f(x)+|f(x)+x|-6x$로 두고 $y=g(x)$와 $y=k$의 교점으로 본다; $f(x)=-x$의 근이 원점뿐임을 먼저 확인한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "치환·보조함수 도입",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S21",
+    "S23"
+  ],
+  "solution_ref": "$f(x)=-x$ → $x=0$만. $g(x)=-7x$ ($x<0$), $h(x)=x^3-9x^2+15x$ ($x\\ge0$). $h$: 극댓값 $h(1)=7$, 극솟값 $h(5)=-25$. 교점 4개 → $0<k<7$. 합 $21$",
+  "legacy": {
+    "category": "두 그래프의 교점의 개수",
+    "book_no": 31,
+    "question_page": 16,
+    "solution_page": 60
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-05"
+}

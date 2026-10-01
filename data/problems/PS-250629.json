@@ -1,0 +1,42 @@
+{
+  "id": "PS-250629",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "250629",
+    "year": 2025,
+    "exam": "6월 모의평가",
+    "number": 29,
+    "points": 4,
+    "label": "2024년 6월 고3 29번"
+  },
+  "question": "$40$개의 공이 들어 있는 주머니가 있다. 각각의 공은 흰 공 또는 검은 공 중 하나이다. 이 주머니에서 임의로 $2$개의 공을 동시에 꺼낼 때, 흰 공 $2$개를 꺼낼 확률을 $p$, 흰 공 $1$개와 검은 공 $1$개를 꺼낼 확률을 $q$, 검은 공 $2$개를 꺼낼 확률을 $r$이라 하자. $p=q$일 때, $60r$의 값을 구하시오. (단, $p>0$)",
+  "condition": null,
+  "choices": null,
+  "answer": "6",
+  "answer_value": "6",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-09",
+    "primary_name": "확률의 정의 Ⅰ",
+    "links": []
+  },
+  "first_judgment": "흰 공을 $n$개로 두면 $p=q$는 $_nC_2=n(40-n)$이라는 방정식이 된다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\frac{n(n-1)}2=n(40-n)$ → $n=27$, 검은 공 13. $r=\\frac{_{13}C_2}{_{40}C_2}=\\frac1{10}$. $60r=6$",
+  "legacy": {
+    "category": "수학적 확률 구하기(5) : 조합",
+    "book_no": 21,
+    "question_page": 11,
+    "solution_page": 35
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-03"
+}

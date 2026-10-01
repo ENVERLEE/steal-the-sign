@@ -1,0 +1,53 @@
+{
+  "id": "M2-260913",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "260913",
+    "year": 2026,
+    "exam": "9월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2025년 9월 고3 13번"
+  },
+  "question": "함수 $f(x)=x^2+6x+12$에 대하여 다음 조건을 만족시키는 모든 정수 $k$의 개수는?",
+  "condition": "모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a}\\frac{x^2}{\\{f(x)\\}^2-k(x+2)f(x)}$의 값이 존재한다.",
+  "choices": [
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "answer": "4",
+  "answer_value": "8",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-03",
+    "primary_name": "극한값과 인수결정",
+    "links": [
+      "수학Ⅱ-01"
+    ]
+  },
+  "first_judgment": "분모가 $0$이 되는 $a$가 없거나, 있다면 분자도 $0$($a=0$)이어야 한다 — 두 경우로 나눈다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S13"
+  ],
+  "solution_ref": "$f(x)=(x+3)^2+3>0$. (i) 분모$\\ne0$: $f(x)=k(x+2)$가 실근 없음 → $(6-k)^2-4(12-2k)<0$ → $-2<k<6$. (ii) 분모$=0$인 $a$가 있으면 $a=0$: $f(0)=2k$ → $k=6$, 이때 극한 $\\frac1{12}$ 존재. $k=-1,0,\\dots,6$로 8개",
+  "legacy": {
+    "category": "미정계수의 결정",
+    "book_no": 2,
+    "question_page": 1,
+    "solution_page": 41
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-01"
+}

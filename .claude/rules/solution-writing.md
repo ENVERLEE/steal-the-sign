@@ -1,6 +1,6 @@
 ---
 globs:
-  - "data/solutions.json"
+  - "data/solutions/**"
   - "solutions/**"
   - "work/book*.json"
 ---
@@ -9,7 +9,7 @@ globs:
 
 ## 기출 해설
 
-기출 해설은 `solutions.json` `study_solution`에 이미 작성·검산 완료 (208문항).
+기출 해설은 `data/solutions/{id}.json`(`study_solution`)에 이미 작성·검산 완료 (208문항).
 
 - 풀이 1 = 스킬 풀이
 - 풀이 2 = 정석 비교 (있으면)

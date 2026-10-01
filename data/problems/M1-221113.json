@@ -1,0 +1,53 @@
+{
+  "id": "M1-221113",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "221113",
+    "year": 2022,
+    "exam": "대학수학능력시험",
+    "number": 13,
+    "points": 4,
+    "label": "2021년 11월 고3 13번"
+  },
+  "question": "두 상수 $a,b$ $(1<a<b)$에 대하여 좌표평면 위의 두 점 $(a,\\log_2 a)$, $(b,\\log_2 b)$를 지나는 직선의 $y$절편과 두 점 $(a,\\log_4 a)$, $(b,\\log_4 b)$를 지나는 직선의 $y$절편이 같다. 함수 $f(x)=a^{bx}+b^{ax}$에 대하여 $f(1)=40$일 때, $f(2)$의 값은?",
+  "condition": null,
+  "choices": [
+    "760",
+    "800",
+    "840",
+    "880",
+    "920"
+  ],
+  "answer": "2",
+  "answer_value": "800",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅰ-02",
+    "primary_name": "지수로그의 연산",
+    "links": [
+      "수학Ⅰ-04"
+    ]
+  },
+  "first_judgment": "$\\log_4=\\frac12\\log_2$이므로 두 $y$절편 식을 $\\log_2$로 통일해 같다고 놓으면 $a^b=b^a$가 나온다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S03"
+  ],
+  "solution_ref": "$y$절편: $-\\frac{a(\\log_2b-\\log_2a)}{b-a}+\\log_2a=-\\frac12\\cdot\\frac{a(\\log_2b-\\log_2a)}{b-a}+\\frac12\\log_2a$ → $(b-a)\\log_2a=a\\log_2\\frac ba$ → $a^b=b^a$. $f(1)=a^b+b^a=40\\Rightarrow a^b=b^a=20$. $f(2)=(a^b)^2+(b^a)^2=800$",
+  "legacy": {
+    "category": "로그의 여러 가지 성질을 이용한 계산",
+    "book_no": 6,
+    "question_page": 3,
+    "solution_page": 44
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-01"
+}

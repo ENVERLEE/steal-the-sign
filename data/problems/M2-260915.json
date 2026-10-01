@@ -1,0 +1,55 @@
+{
+  "id": "M2-260915",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "260915",
+    "year": 2026,
+    "exam": "9월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2025년 9월 고3 15번"
+  },
+  "question": "최고차항의 계수가 양수이고 $f(0)=0$인 삼차함수 $f(x)$에 대하여 함수 $g(x)=\\displaystyle\\int_0^x(|f(t)|-|t|)\\,dt$가 다음 조건을 만족시킨다. $f(6)g(2)<0$일 때, $f(8)$의 값은?",
+  "condition": "(가) 방정식 $g'(x)=0$의 서로 다른 실근의 개수는 $4$이다.\\\\(나) 함수 $g(x)$는 $x=2$, $x=6$에서 극값을 갖는다.",
+  "choices": [
+    "16",
+    "22",
+    "28",
+    "34",
+    "40"
+  ],
+  "answer": "5",
+  "answer_value": "40",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-16",
+    "primary_name": "정적분으로 정의된 함수의 활용",
+    "links": [
+      "수학Ⅱ-15",
+      "수학Ⅱ-09"
+    ]
+  },
+  "first_judgment": "$g'=|f|-|x|$이므로 (나)에서 $|f(2)|=2$, $|f(6)|=6$ — 부호 조합 4가지로 나누고 (가)의 근 개수로 거른다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "경우 나누기",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S22",
+    "S18"
+  ],
+  "solution_ref": "$f(2)=\\pm2$, $f(6)=\\pm6$. (i) $(2,6)$: $g(2)>0$, $f(6)g(2)>0$ 모순. (ii) $(2,-6)$: 극값 조건 모순. (iii) $(-2,-6)$: 판별식 → $k<0$ 모순. (iv) $(-2,6)$: $f=kx^3+px^2+qx$, 원점에서 $y=x$에 접함 → $q=1$, $k=\\frac14$, $p=-\\frac32$. $f(8)=128-96+8=40$",
+  "legacy": {
+    "category": "정적분으로 정의된 함수의 극대 · 극소",
+    "book_no": 53,
+    "question_page": 27,
+    "solution_page": 70
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-07"
+}

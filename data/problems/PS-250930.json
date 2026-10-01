@@ -1,0 +1,45 @@
+{
+  "id": "PS-250930",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "250930",
+    "year": 2025,
+    "exam": "9월 모의평가",
+    "number": 30,
+    "points": 4,
+    "label": "2024년 9월 고3 30번"
+  },
+  "question": "흰 공 $4$개와 검은 공 $4$개를 세 명의 학생 $\\mathrm{A,B,C}$에게 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하시오. (단, 같은 색 공끼리는 서로 구별하지 않고, 공을 받지 못하는 학생이 있을 수 있다.)",
+  "condition": "(가) 학생 $\\mathrm{A}$가 받는 공의 개수는 $0$ 이상 $2$ 이하이다.\\\\(나) 학생 $\\mathrm{B}$가 받는 공의 개수는 $2$ 이상이다.",
+  "choices": null,
+  "answer": "93",
+  "answer_value": "93",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-08",
+    "primary_name": "중복조합 - 합 응용형",
+    "links": [
+      "확률과 통계-07"
+    ]
+  },
+  "first_judgment": "A가 받는 공의 개수(0,1,2)와 색 구성으로 나눈 뒤, 남은 공을 B, C에 나누되 B가 2개 미만인 경우를 뺀다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "여사건·전체에서 빼기"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) A 0개: $5\\cdot5-3=22$. (ii) A 1개: 흰 1개 $4\\cdot5-3=17$, 검은 1개 17 → 34. (iii) A 2개: 흰2 → 12, 검2 → 12, 흰1검1 → $4\\cdot4-3=13$ → 37. 합 $93$",
+  "legacy": {
+    "category": "중복조합의 수",
+    "book_no": 9,
+    "question_page": 5,
+    "solution_page": 29
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-01"
+}

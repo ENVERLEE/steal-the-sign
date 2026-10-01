@@ -1,0 +1,54 @@
+{
+  "id": "M2-240913",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "240913",
+    "year": 2024,
+    "exam": "9월 모의평가",
+    "number": 13,
+    "points": 4,
+    "label": "2023년 9월 고3 13번"
+  },
+  "question": "두 실수 $a,b$에 대하여 함수 $f(x)=\\begin{cases}-\\dfrac13x^3-ax^2-bx & (x<0)\\\\ \\dfrac13x^3+ax^2-bx & (x\\ge0)\\end{cases}$이 구간 $(-\\infty,-1]$에서 감소하고 구간 $[-1,\\infty)$에서 증가할 때, $a+b$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $M-m$의 값은?",
+  "condition": null,
+  "choices": [
+    "\\frac32+3\\sqrt2",
+    "3+3\\sqrt2",
+    "\\frac92+3\\sqrt2",
+    "6+3\\sqrt2",
+    "\\frac{15}2+3\\sqrt2"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac92+3\\sqrt2",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-09",
+    "primary_name": "증가/감소, 극대/극소, 최대/최소",
+    "links": [
+      "수학Ⅱ-07"
+    ]
+  },
+  "first_judgment": "$x=-1$에서 증감이 바뀌므로 $f'(-1)=0$ → $b=2a-1$; 이후 $x<0$, $x>0$ 각 구간에서 $f'$의 부호 조건을 $a$의 범위로 바꾼다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "경우 나누기"
+  ],
+  "strategy_ids": [
+    "S17",
+    "S18"
+  ],
+  "solution_ref": "$b=2a-1$. $x<0$: $f'=-(x+1)(x+2a-1)$, $-2a+1\\ge-1$... → $a\\le\\frac12$. $x>0$: $f'=(x+a)^2-a^2-2a+1\\ge0$; $a>0$이면 $f'(0)\\ge0$ → $0<a\\le\\frac12$; $a\\le0$이면 $-a^2-2a+1\\ge0$ → $-1-\\sqrt2\\le a\\le0$. $a+b=3a-1$: 최댓값 $\\frac12$, 최솟값 $-4-3\\sqrt2$. $M-m=\\frac92+3\\sqrt2$",
+  "legacy": {
+    "category": "삼차함수의 증가 · 감소의 조건(2) : 주어진 구간에서",
+    "book_no": 19,
+    "question_page": 10,
+    "solution_page": 50
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-04"
+}

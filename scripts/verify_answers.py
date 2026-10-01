@@ -1,6 +1,6 @@
 """정답 검산
 
-- 기출: DB 정답 = solutions.json 정답, 정답 선지 값 일치. db.check.needs_review가 있으면 경고.
+- 기출: DB 정답 = 풀이 정답, 정답 선지 값 일치. db.check.needs_review가 있으면 경고.
 - 기출에 새 숏컷(notes[ref].shortcut)을 달면 그 verify의 skill()이 정답 값과 같아야 한다.
 - 창작·교재 문항: verify(skill·standard·unique)를 다시 실행해 정답과 맞춘다(교재는 skill만 필수).
 """

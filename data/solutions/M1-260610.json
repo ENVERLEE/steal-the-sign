@@ -1,0 +1,29 @@
+{
+  "id": "M1-260610",
+  "concept_refs": [
+    "수학Ⅰ-04-C2"
+  ],
+  "guide": "$\\log_a(-x+3)$은 $\\log_a(x+3)$에서 $x$를 $-x$로 바꾼 것이므로 두 곡선은 $y$축 대칭이고, 교점 A는 $y$축 위의 $(0,\\log_a3)$이다(수학Ⅰ-04-C2). B, C는 대칭인 $(-2,0)$, $(2,0)$. 정삼각형의 높이 $=\\frac{\\sqrt3}2\\times$(한 변)을 쓰면 끝난다.",
+  "solutions": [
+    {
+      "title": "풀이 1 · 대칭축 위의 꼭짓점",
+      "steps": [
+        {
+          "label": "세 점",
+          "body": "$\\mathrm A(0,\\log_a3)$, $\\mathrm B(-2,0)$ ($x+3=1$), $\\mathrm C(2,0)$ ($-x+3=1$). $\\overline{\\mathrm{BC}}=4$."
+        },
+        {
+          "label": "정삼각형 높이",
+          "body": "높이 $=\\dfrac{\\sqrt3}2\\cdot4=2\\sqrt3$이므로 $\\log_a3=2\\sqrt3$."
+        },
+        {
+          "label": "답",
+          "body": "$a^{2\\sqrt3}=3\\Rightarrow a=3^{\\frac1{2\\sqrt3}}=3^{\\frac{\\sqrt3}6}$ → ①"
+        }
+      ]
+    }
+  ],
+  "supplement": "$\\log_a(x+3)=\\log_a(-x+3)$을 풀어 $x=0$을 얻어도 되지만, 대칭을 보면 풀 필요조차 없다. 마지막 $\\frac1{2\\sqrt3}=\\frac{\\sqrt3}6$의 유리화에서 선택지와 모양을 맞추는 것도 잊지 말자.",
+  "skill_point": "$f(x)$와 $f(-x)$ 꼴 두 곡선 → 교점은 $y$축 위.",
+  "answer": "1"
+}

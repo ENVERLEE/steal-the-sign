@@ -58,13 +58,13 @@ def check_problem(rec: dict, book: dict, pages: int | None, ctx: Context) -> tup
     refs = (rec["solution"].get("concept_refs") or [])
     for cid in refs:
         if cid not in ctx.concepts:
-            errs.append(f"개념 id {cid}가 solutions.json에 없음")
+            errs.append(f"개념 id {cid}가 concepts.json에 없음")
     if refs and not any(c.rsplit("-C", 1)[0] in t["old_themes"] for c in refs):
         warns.append(f"concept_refs가 테마 {rec['theme']}의 개념을 하나도 가리키지 않음 — 테마 분류 재확인")
     cands = set(t["problem_ids"]) | set(t.get("related_ids") or [])
     for pid in rec.get("similar") or []:
         if pid not in ctx.db:
-            errs.append(f"similar {pid}가 db.json에 없음")
+            errs.append(f"similar {pid}가 data/problems에 없음")
         elif pid in ctx.excluded:
             errs.append(f"similar {pid}는 excluded")
         elif ctx.db[pid]["subject"] != rec["subject"]:

@@ -14,6 +14,7 @@ from scripts.common import Context, Log, content_hash, launch_chromium, read_jso
 
 PH_OPEN, PH_CLOSE = "", ""
 PH_RE = re.compile(PH_OPEN + r"(\d+)" + PH_CLOSE)
+STYLE_RE = re.compile(r'<span((?: class="[^"]*")?) style="([^"]*)"(?![^>]*\sclass=)')
 
 
 def katex_version(ctx: Context) -> str:
@@ -42,6 +43,7 @@ class Math:
         self.index: dict[tuple[str, bool], int] = {}
         self.html: dict[int, str] = {}
         self.errors: list[tuple[str, str]] = []
+        self.style_css = ""  # 조판 결과의 inline style을 모은 클래스 (render 뒤 head에 넣는다)
 
     def _ph(self, tex: str, display: bool) -> str:
         key = (tex, display)
@@ -57,21 +59,28 @@ class Math:
         # **굵게**·__밑줄__: 수식을 사이에 둘 수 있으므로 자르기 전에 표시 문자로 바꿔 두었다가 태그로 되돌린다
         text = EMPH_U.sub("\x03\\1\x04", EMPH_B.sub("\x01\\1\x02", str(text)))
         out, parts = [], split_math(text)
-        glue = ""
+        glue, lead = "", ""
         for i, (kind, part) in enumerate(parts):
             if kind == "text":
                 part = part[len(glue):]
                 glue = ""
+                nxt = parts[i + 1] if i + 1 < len(parts) else None
+                o = OPEN_TAIL.search(part) if nxt and nxt[0] == "inline" else None
+                if o:  # 수식 바로 앞의 여는 괄호(예: ($a>1$)는 수식과 함께 넘긴다
+                    lead, part = o.group(0), part[:o.start()]
                 out.append(_plain(part))
                 continue
             ph = self._ph(part, kind == "display")
             nxt = parts[i + 1] if i + 1 < len(parts) else None
             m = HANGUL_HEAD.match(nxt[1]) if kind == "inline" and nxt and nxt[0] == "text" else None
-            if m:  # 수식 바로 뒤의 조사(예: $x$에)가 다음 줄로 떨어지지 않게 묶는다
+            if m and m.group(0):  # 수식 바로 뒤의 조사·문장부호(예: $x$에, $A$,)가 다음 줄로 떨어지지 않게 묶는다
                 glue = m.group(0)
-                out.append(f'<span class="nw">{ph}{_plain(glue)}</span>')
+                out.append(f'<span class="nw">{_plain(lead)}{ph}{_plain(glue)}</span>')
+            elif lead:
+                out.append(f'<span class="nw">{_plain(lead)}{ph}</span>')
             else:
                 out.append(ph)
+            lead = ""
         return "".join(out).translate(EMPH_TAGS)
 
     def render(self, ctx: Context, log: Log) -> None:
@@ -105,8 +114,25 @@ class Math:
             if c.get("error"):
                 self.errors.append((c["tex"], c["error"]))
                 log.error("수식", f"KaTeX 오류 ${c['tex'][:60]}$ — {c['error'][:120]}")
+        self._compact()
         log.stats["math"] = len(self.items)
         log.stats["math_rendered_now"] = len(todo)
+
+    def _compact(self) -> None:
+        """KaTeX가 붙이는 inline style(margin·height·top …)을 짧은 공용 클래스로 바꾼다.
+        같은 style이 수만 번 되풀이되어 book.html이 커지는 것을 막는다. 규칙에 !important를 달아
+        inline style과 같은 우선순위를 지키므로 판면은 그대로다."""
+        table: dict[str, str] = {}
+
+        def rep(m):
+            k = table.setdefault(m.group(2), f"zk{len(table):x}")
+            cls = m.group(1)
+            return f'<span class="{cls[8:-1]} {k}"' if cls else f'<span class="{k}"'
+        for i, h in self.html.items():
+            self.html[i] = STYLE_RE.sub(rep, h)
+        self.style_css = "".join(
+            ".katex ." + k + "{" + ";".join(d.strip() + "!important" for d in st.split(";") if d.strip()) + "}"
+            for st, k in table.items())
 
     def fill(self, node):
         """모델 안의 모든 문자열에서 자리표시를 조판 결과로 바꾼다"""
@@ -159,7 +185,9 @@ def split_math(text: str) -> list[tuple[str, str]]:
     return parts
 
 
-HANGUL_HEAD = re.compile(r"[가-힣]+")
+# 수식 바로 뒤에 붙어 다음 줄로 떨어지면 안 되는 것: 조사(한글)와 닫는 문장부호(, . ) ? 등)
+HANGUL_HEAD = re.compile(r"[,.:;!?)\]}·」』’”…]*[가-힣]*[,.:;!?)\]}·」』’”…]*")
+OPEN_TAIL = re.compile(r"[(\[{「『‘“]+$")
 EMPH_B = re.compile(r"\*\*(.+?)\*\*", re.S)
 EMPH_U = re.compile(r"__(.+?)__", re.S)
 EMPH_TAGS = str.maketrans({"\x01": "<b>", "\x02": "</b>", "\x03": "<u>", "\x04": "</u>"})

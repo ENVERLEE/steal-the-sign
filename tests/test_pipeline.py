@@ -56,6 +56,82 @@ class Sandbox:
         shutil.rmtree(self.dir, ignore_errors=True)
 
 
+class TestDataLayout(unittest.TestCase):
+    """data/problems·solutions 문항별 파일 구조"""
+
+    def test_problem_files(self):
+        ctx = Context()
+        self.assertGreaterEqual(len(ctx.db), 208)
+        for pid, r in ctx.problem_files.items():
+            self.assertEqual(r["id"], pid)
+            self.assertIn(r["home"], ctx.themes)
+            self.assertIn(pid, ctx.study)
+        self.assertNotIn("home", next(iter(ctx.db.values())))
+
+    def test_theme_problem_ids_from_home(self):
+        ctx = Context()
+        ids = [p for t in ctx.themes.values() for p in t["problem_ids"]]
+        self.assertEqual(sorted(ids), sorted(ctx.db))
+
+    def test_book_dir_roundtrip(self):
+        from scripts.book_dir import load_dir, split
+        box = Sandbox()
+        try:
+            ctx = box.ctx()
+            self.assertTrue(split(ctx).ok)
+            self.assertEqual(load_dir(box.book.with_suffix("")), read_json(box.book))
+        finally:
+            box.close()
+
+
+class TestScaleAndPoints(unittest.TestCase):
+    def test_three_point_past_allowed_and_ranked_easy(self):
+        from scripts.common import difficulty_rank, past_points_ok
+        ctx = Context()
+        self.assertTrue(past_points_ok(3, ctx.config) and past_points_ok(4, ctx.config))
+        self.assertFalse(past_points_ok(2, ctx.config))
+        rec = next(iter(ctx.db.values()))
+        three = {**rec, "id": "M1-990103", "source": {**rec["source"], "points": 3, "number": 3}}
+        ctx.__dict__["db"] = {**ctx.db, "M1-990103": three}
+        self.assertEqual(difficulty_rank("M1-990103", ctx)[0], 0)
+
+    def test_profiles(self):
+        ctx = Context()
+        self.assertEqual(ctx.plan_profile({})["problems"], [8, 13])
+        big = ctx.plan_profile({"scale": "large"})
+        self.assertEqual((big["days"], big["problems"]), ([4, 6], [30, 48]))
+
+    def test_large_book_requires_difficulty_order(self):
+        book = read_json(SAMPLE_BOOK)
+        book["scale"] = "large"
+        for d in book["days"]:
+            d["practice"].sort(key=lambda p: ["기본 적용", "조건 변형", "복합 사고", "고난도"].index(p["difficulty"]), reverse=True)
+        box = Sandbox(book)
+        try:
+            log = check_book.run(box.ctx())
+            self.assertTrue(any("쉬운 것→어려운 것" in e["msg"] for e in log.errors))
+        finally:
+            box.close()
+
+
+class TestNewCreated(unittest.TestCase):
+    def test_scaffold_copies_parent_and_numbers_next_id(self):
+        from scripts import new_created
+        box = Sandbox()
+        try:
+            ctx = box.ctx()
+            before = len(list(box.created.rglob("*.json")))
+            log = new_created.run(ctx, parent="M1-230911")
+            self.assertTrue(log.ok)
+            rec = read_json(Path(log.stats["file"]))
+            self.assertEqual(rec["origin"]["parent_id"], "M1-230911")
+            self.assertEqual(rec["question"], ctx.db["M1-230911"]["question"])
+            self.assertEqual(len(list(box.created.rglob("*.json"))), before + 1)
+            self.assertFalse(new_created.run(ctx, parent="NOPE").ok)
+        finally:
+            box.close()
+
+
 class TestMath(unittest.TestCase):
     def test_tex_to_sympy(self):
         self.assertTrue(same_value(tex_to_sympy(r"\frac97\pi"), "9*pi/7"))

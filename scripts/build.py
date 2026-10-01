@@ -1,4 +1,4 @@
-"""book.json + db.json + solutions.json + 문제은행 → out/book.html
+"""book.json + data/problems·solutions + 문제은행 → out/book.html
 
 1) 모델: DAY별 페이지 데이터(텍스트는 Math.rich로 HTML화, 수식은 자리표시)
 2) KaTeX 일괄 조판 → 자리표시 채움
@@ -16,7 +16,7 @@ from scripts.common import (CIRCLED, FONTS_LOADED_JS, Context, Log, answer_displ
                             is_textbook_id, kind_of,
                             launch_chromium, route_network, source_label, strip_tex, write_json)
 from scripts.template import WEEK_TOKEN, load, load_ext
-from scripts.tex import Math, katex_css
+from scripts.tex import PH_RE, Math, katex_css
 
 CORNERS = ("THE SIGN", "FIRST PITCH", "PRACTICE", "DUGOUT NOTE", "SIGN BOOK")
 LONG_SOL = 450  # 풀이 1 분량이 이보다 길면 긴 풀이로 본다(글자 수, 수식 기호 제외)
@@ -25,6 +25,34 @@ STRUT = '<span style="display:inline-block;width:0;height:0;vertical-align:-24px
 
 def two(n: int) -> str:
     return f"{n:02d}"
+
+
+TAG_OPEN = re.compile(r"<(\w+)[^>]*>")
+TAG_CLOSE = re.compile(r"</(\w+)>")
+
+
+def with_points(text: str, points, math: Math) -> str:
+    """문제 본문 끝에 [N점]을 붙인다. 마지막 낱말과 한 덩어리로 묶어 배점만 다음 줄로 떨어지지 않게 한다.
+    (마지막 낱말에 태그가 걸쳐 있거나 긴 수식이 있으면 묶지 않는다)"""
+    pt = f'<span class="pt">[{points}점]</span>'
+    depth, cut = 0, -1
+    for k in range(len(text) - 1, -1, -1):
+        c = text[k]
+        if c == ">":
+            depth += 1
+        elif c == "<":
+            depth -= 1
+        elif depth == 0 and c in " \n":
+            cut = k
+            break
+    if cut >= 0 and not text[cut + 1:].startswith("<br>"):
+        head, tail = text[:cut + 1], text[cut + 1:]
+        opens = [t for t in TAG_OPEN.findall(tail) if t != "br"]
+        closes = TAG_CLOSE.findall(tail)
+        long_math = any(len(math.items[int(i)][0]) > 24 or math.items[int(i)][1] for i in PH_RE.findall(tail))
+        if sorted(opens) == sorted(closes) and not long_math and tail.strip():
+            return f'{head}<span class="nw">{tail}{STRUT}\u00a0{pt}</span>'
+    return f"{text}{STRUT} {pt}"
 
 
 CID = r"(?:수학Ⅰ|수학Ⅱ|확률과 통계)-\d{2}-C\d+"
@@ -112,7 +140,9 @@ class Model:
     def points_of(self, ref, rec):
         if is_textbook_id(ref):
             return rec["points"]
-        return self.ctx.config["points"]["created" if is_created_id(ref) else "past"]
+        if is_created_id(ref):
+            return self.ctx.config["points"]["created"]
+        return rec["source"]["points"]
 
     # ---- 문항
     def question(self, ref, no, difficulty, where):
@@ -143,7 +173,8 @@ class Model:
             cls = "" if longest <= 9 else (" two" if longest <= 18 else " stack")
         return {
             # 마지막 줄의 큰 수식(Σ·분수)이 .pad 아래로 몇 px 나가지 않도록 줄 상자를 아래로 조금 늘리는 받침
-            "no2": two(no), "text": self.r(rec["question"]) + STRUT, "cond": self.r(rec.get("condition")) or None,
+            "no2": two(no), "text": with_points(self.r(rec["question"]), self.points_of(ref, rec), self.m),
+            "cond": self.r(rec.get("condition")) or None,
             "fig": fig, "choices": choices, "choices_class": cls,
             "points": self.points_of(ref, rec),
             "source": H.escape(self.source_of(ref, rec)), "kind": kind_of(ref),
@@ -205,7 +236,7 @@ class Model:
             ch = '<div class="c-ch">' + "".join(f'<span>{c["label"]} {c["html"]}</span>' for c in q["choices"]) + "</div>"
         cond = f'<div class="cond" style="margin:2px 0">{q["cond"]}</div>' if q["cond"] else ""
         return (f'<div class="c-cell"><div class="no">{q["no2"]}</div><div>'
-                f'<div class="q">{q["text"]} <span class="pt">[{q["points"]}점]</span></div>{cond}{ch}</div></div>')
+                f'<div class="q">{q["text"]}</div>{cond}{ch}</div></div>')
 
     def build_appendix(self, app):
         if not app:
@@ -221,12 +252,18 @@ class Model:
             if ty.get("habit"):
                 trap += f'<br><b class="l k">검산 습관</b>{self.r(ty["habit"])}'
             cells.append(trap + "</div>")
+            seen = set()  # 같은 유형에서 되풀이되는 '실전 개념'·'오답 첨삭' 문장은 처음 한 번만 싣는다
             for ref in ty["refs"]:
                 n += 1
                 cells.append(self.calc_cell(ref, n))
                 item = self.solution_item(ref, n, {}, None)
                 item["kind"] = f"유형 {ti}"
                 item["source"] = ""  # 창작 문항 출처는 비워 둔다
+                for k in ("tip", "error"):
+                    if item[k] and (k, item[k]) in seen:
+                        item[k] = None
+                    elif item[k]:
+                        seen.add((k, item[k]))
                 sols.append(item)
             types.append({"title": self.r(ty["title"]), "head": f"계산 연습 · 유형 {ti}", "cells": cells, "sols": sols})
         return {"title": self.r(title), "tag": tag, "types": types}
@@ -290,7 +327,8 @@ class Model:
                     for i, ref in enumerate(refs[1:], 2)]
         replay = [{"no2": two(x["no"]), "wrong": self.r(x["wrong"]), "stuck": self.r(x["stuck"]), "fix": self.r(x["fix"])}
                   for x in d["replay"]]
-        dugout = {**base, "nos": [two(i) for i in range(1, len(refs) + 1)]}
+        rows_n = -(-len(refs) // 7)  # 한 줄에 7칸까지, 줄마다 칸 수를 고르게
+        dugout = {**base, "nos": [two(i) for i in range(1, len(refs) + 1)], "bs_cols": -(-len(refs) // rows_n)}
 
         over = {x["no"]: x for x in d["sign_book"].get("rows") or []}
         rows = []
@@ -368,7 +406,8 @@ class Model:
             units.append(f'<div class="x-banner">{self.r(c["banner"])}</div>')
         ex = c.get("example")
         if ex:
-            units.append('<div class="x-h"><span class="n">+</span>확인 예제</div>'
+            n += 1
+            units.append(f'<div class="x-h"><span class="n">{n}</span>확인 예제</div>'
                          f'<div class="x-ex"><div class="lab">EXAMPLE<b>01</b></div><div class="t">{self.r(ex["q"])}</div></div>'
                          '<div class="x-sol"><div class="bar"><div class="a">교과서적 해법</div><div class="b">실전 해법</div></div>'
                          f'<div class="cols"><div>{self.r(ex["textbook"])}</div><div>{self.r(ex["skill"])}</div></div></div>')
@@ -470,7 +509,7 @@ def run(ctx: Context) -> Log:
     model.advice = math.fill(model.advice)
     tpl = load(ctx.path("template"), katex_css(ctx))
     ext_head, ext_pages = load_ext(ctx.path("ext_template"))
-    head = tpl.head.replace("</head>", ext_head + "\n</head>", 1)
+    head = tpl.head.replace("</head>", ext_head + f"\n<style>{math.style_css}</style>\n</head>", 1)
     pages_tpl = {**tpl.pages, **ext_pages}
     B = model.book
 
@@ -590,7 +629,7 @@ def run(ctx: Context) -> Log:
                 fits_single("SIGN_READING", d["reading"], w)
                 seq += [("CONCEPT", d["concept"], (d["day"], "THE SIGN")), ("STRATEGY", P, None),
                         ("FIRST_PITCH", d["first"], (d["day"], "FIRST PITCH")), ("SIGN_READING", d["reading"], None)]
-            if ctx.book.get("practice_layout") == "multi":
+            if ctx.book.get("practice_layout", "multi") == "multi":
                 # 한 쪽에 3~4문항(고난도는 2문항). 난이도 순서를 지키며 같은 성격끼리 묶는다
                 runs, cur = [], []
                 for pr in d["practice"]:

@@ -1,0 +1,54 @@
+{
+  "id": "M2-221110",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "221110",
+    "year": 2022,
+    "exam": "대학수학능력시험",
+    "number": 10,
+    "points": 4,
+    "label": "2021년 11월 고3 10번"
+  },
+  "question": "삼차함수 $f(x)$에 대하여 곡선 $y=f(x)$ 위의 점 $(0,0)$에서의 접선과 곡선 $y=xf(x)$ 위의 점 $(1,2)$에서의 접선이 일치할 때, $f'(2)$의 값은?",
+  "condition": null,
+  "choices": [
+    "-18",
+    "-17",
+    "-16",
+    "-15",
+    "-14"
+  ],
+  "answer": "5",
+  "answer_value": "-14",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-08",
+    "primary_name": "접선의 활용",
+    "links": [
+      "수학Ⅱ-06"
+    ]
+  },
+  "first_judgment": "두 접선의 기울기와 $y$절편을 각각 같다고 놓으면 $f'(0)$, $f'(1)$과 $f(1)$에 대한 조건이 나온다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역",
+    "미지수 소거·연립"
+  ],
+  "strategy_ids": [
+    "S16",
+    "S19"
+  ],
+  "solution_ref": "$f(0)=0$, 접선 $y=f'(0)x$. $f(1)=2$, $y=xf(x)$의 $(1,2)$ 접선 $y=\\{f'(1)+2\\}x-f'(1)$. 일치 → $f'(1)=0$, $f'(0)=2$. $f=ax^3+bx^2+cx$: $c=2$, $3a+2b+2=0$, $a+b+c=2$ → $a=-2$, $b=2$. $f'(2)=-24+8+2=-14$",
+  "legacy": {
+    "category": "곡선 위의 점에서의 접선의 방정식의 활용",
+    "book_no": 16,
+    "question_page": 8,
+    "solution_page": 49
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-03"
+}

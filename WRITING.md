@@ -1,7 +1,7 @@
 # 교재 글 작성 규격 — 교과서형
 
 book.json의 글(개념·실전 개념·예제 분석)을 쓰는 규칙. 새 교재는 모두 이 형식(교과서형)으로 쓴다.
-**모범**: `work/book_w1.json` DAY 1(대칭축 위의 점), DAY 13(`work/book_w2.json`, 적분 구간 분리). 쓰기 전에 둘 다 읽는다.
+**모범**: `work/book_m1_w1.json`·`book_m2_w1.json`의 첫 DAY 하나씩. 쓰기 전에 둘 다 읽는다.
 
 ## 1. 원칙
 - **수학책처럼 쓴다.** 짧은 줄 나열·메모투 금지. 교과서·모범 문제집 말투(~한다/~이다)의 줄글로 설명하고, 표·그림·가운데 수식으로 정리한다.
@@ -37,7 +37,7 @@ book.json의 글(개념·실전 개념·예제 분석)을 쓰는 규칙. 새 교
 ### REPLAY·SIGN BOOK·오답 첨삭
 - REPLAY는 잘못된 접근·막히는 지점·고치는 법을 각각 한 문장씩 온전한 문장으로 쓴다.
 - SIGN BOOK `rows`는 비우면 build가 `first_judgment`로 채운다. `next`는 다음 DAY로 잇는 한두 문장.
-- 해설(교재 문항 `solution`, 기출 `study_solution`)은 줄이지 않는다. 해설지는 한 장에 3문항(`config.json` `solution.per_page_max`).
+- 해설(교재 문항 `solution`, 기출 `study_solution`)은 줄이지 않는다. 해설지는 두 단을 판면 높이만큼 채운다(`config.json` `solution.per_page_max`에 수를 넣으면 한 장 문항 수 상한).
 
 ## 3. 문체·표기
 - 수식은 `$…$`. 수식 뒤 조사($x$에)는 build가 붙여 준다 — 조사를 띄우지 않는다.

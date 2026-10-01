@@ -26,6 +26,7 @@
     "special_days": [1, 3],
     "special_problems": [16, 24],
     "problems": [8, 13],
+    "large": {"days": [4, 6], "problems": [30, 48], "past_min": 12, "past_target": 24},
     "count_example": true
   },
 
@@ -48,7 +49,7 @@
   },
 
   "points": {
-    "past": 4,
+    "past": [3, 4],
     "created": 3
   },
 
@@ -70,7 +71,7 @@
   },
 
   "solution": {
-    "per_page_max": 3
+    "per_page_max": null
   },
 
   "textbook": {
@@ -80,6 +81,7 @@
   },
 
   "difficulty_labels": ["기본 적용", "조건 변형", "복합 사고", "고난도"],
+  "difficulty_order_note": "difficulty_labels 순서가 쉬운 것→어려운 것. 연습 문항은 이 순서로 놓는다",
   "behaviors": ["계산", "이해", "추론", "문제해결"],
 
   "banned_terms": ["초구", "타석", "구종", "안타", "삼진", "덕아웃", "배터리", "스트라이크",
@@ -93,9 +95,11 @@
   },
 
   "paths": {
-    "db": "data/db.json",
+    "problems": "data/problems",
+    "index": "data/index.json",
     "themes": "data/themes.json",
-    "solutions": "data/solutions.json",
+    "solutions": "data/solutions",
+    "concepts": "data/concepts.json",
     "strategy_notes": "data/strategy_notes.json",
     "template": "data/STS_template.html",
     "ext_template": "data/STS_ext.html",

@@ -1,0 +1,53 @@
+{
+  "id": "M1-220612",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "220612",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 12,
+    "points": 4,
+    "label": "2021년 6월 고3 12번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{AC}}=5$이고 $\\cos(\\angle\\mathrm{BAC})=\\dfrac18$인 삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$와 선분 $\\mathrm{BC}$ 위의 점 $\\mathrm{E}$에 대하여 $\\angle\\mathrm{BAC}=\\angle\\mathrm{BDA}=\\angle\\mathrm{BED}$일 때, 선분 $\\mathrm{DE}$의 길이는?",
+  "condition": null,
+  "choices": [
+    "\\frac73",
+    "\\frac52",
+    "\\frac83",
+    "\\frac{17}6",
+    "3"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac83",
+  "figure": {
+    "description": "삼각형 ABC와 AC 위의 D, BC 위의 E; $\\angle$BAC$=\\angle$BDA$=\\angle$BED 표시",
+    "source_page": 19
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "같은 각 조건에서 이등변삼각형($\\overline{\\mathrm{BD}}=\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{DB}}=\\overline{\\mathrm{DC}}$)을 찾아 길이를 확정한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S07"
+  ],
+  "solution_ref": "$\\triangle\\mathrm{ABD}$ 이등변 → $\\overline{\\mathrm{BD}}=4$, $\\overline{\\mathrm{AD}}=2\\cdot4\\cdot\\frac18=1$, $\\overline{\\mathrm{DC}}=4$. $\\overline{\\mathrm{BC}}^2=16+25-5=36$, $\\overline{\\mathrm{BC}}=6$, $\\overline{\\mathrm{BH'}}=3$. $\\overline{\\mathrm{DE}}=x$면 $\\overline{\\mathrm{DH'}}=\\frac{\\sqrt{63}}8x$. $16=\\frac{63}{64}x^2+9$ → $x=\\frac83$",
+  "legacy": {
+    "category": "코사인법칙",
+    "book_no": 38,
+    "question_page": 19,
+    "solution_page": 61
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-06"
+}

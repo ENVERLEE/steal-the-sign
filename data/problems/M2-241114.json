@@ -1,0 +1,54 @@
+{
+  "id": "M2-241114",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "241114",
+    "year": 2024,
+    "exam": "대학수학능력시험",
+    "number": 14,
+    "points": 4,
+    "label": "2023년 11월 고3 14번"
+  },
+  "question": "두 자연수 $a,b$에 대하여 함수 $f(x)$는 $f(x)=\\begin{cases}2x^3-6x+1 & (x\\le2)\\\\ a(x-2)(x-b)+9 & (x>2)\\end{cases}$이다. 실수 $t$에 대하여 함수 $y=f(x)$의 그래프와 직선 $y=t$가 만나는 점의 개수를 $g(t)$라 하자. $g(k)+\\displaystyle\\lim_{t\\to k-}g(t)+\\lim_{t\\to k+}g(t)=9$를 만족시키는 실수 $k$의 개수가 $1$이 되도록 하는 두 자연수 $a,b$의 순서쌍 $(a,b)$에 대하여 $a+b$의 최댓값은?",
+  "condition": null,
+  "choices": [
+    "51",
+    "52",
+    "53",
+    "54",
+    "55"
+  ],
+  "answer": "1",
+  "answer_value": "51",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-10",
+    "primary_name": "방정식에의 활용",
+    "links": [
+      "수학Ⅱ-09"
+    ]
+  },
+  "first_judgment": "$x\\le2$ 부분은 극댓값 $5$, 극솟값 $-3$으로 고정이므로, $x>2$ 포물선의 극솟값 $m$과 $-3$, $5$의 대소로 나눠 $g$의 값 표를 만든다.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "경우 나누기",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S19",
+    "S21"
+  ],
+  "solution_ref": "(i) $b=1,2$: $-3<k<5$ 전부 만족 → 불가. (ii) $b\\ge3$, 극솟값 $m=f\\left(1+\\frac b2\\right)$: $m>-3$, $m<-3$은 불가, $m=-3$일 때 $k=-3$만 만족. $a\\left(\\frac b2-1\\right)\\left(1-\\frac b2\\right)+9=-3$ → $a(b-2)^2=48$ → $(a,b)=(48,3),(12,4),(3,6)$. 최댓값 $51$",
+  "legacy": {
+    "category": "방정식 f(x)=g(x)의 실근",
+    "book_no": 30,
+    "question_page": 15,
+    "solution_page": 58
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-05"
+}

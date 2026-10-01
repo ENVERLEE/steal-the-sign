@@ -1,0 +1,50 @@
+{
+  "id": "M2-220611",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "220611",
+    "year": 2022,
+    "exam": "6월 모의평가",
+    "number": 11,
+    "points": 4,
+    "label": "2021년 6월 고3 11번"
+  },
+  "question": "닫힌구간 $[0,1]$에서 연속인 함수 $f(x)$가 $f(0)=0$, $f(1)=1$, $\\displaystyle\\int_0^1f(x)\\,dx=\\frac16$을 만족시킨다. 실수 전체의 집합에서 정의된 함수 $g(x)$가 다음 조건을 만족시킬 때, $\\displaystyle\\int_{-3}^{2}g(x)\\,dx$의 값은?",
+  "condition": "(가) $g(x)=\\begin{cases}-f(x+1)+1 & (-1<x<0)\\\\ f(x) & (0\\le x\\le1)\\end{cases}$\\\\(나) 모든 실수 $x$에 대하여 $g(x+2)=g(x)$이다.",
+  "choices": [
+    "\\frac52",
+    "\\frac{17}6",
+    "\\frac{19}6",
+    "\\frac72",
+    "\\frac{23}6"
+  ],
+  "answer": "2",
+  "answer_value": "\\frac{17}6",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-20",
+    "primary_name": "적분구간의 평행이동",
+    "links": [
+      "수학Ⅱ-14"
+    ]
+  },
+  "first_judgment": "$-f(x+1)+1$은 $f$를 대칭·평행이동한 것이므로 한 주기 $[-1,1]$의 적분을 먼저 구하고 주기성으로 확장한다.",
+  "behavior": "계산",
+  "reasoning": [
+    "대칭성·주기성 활용"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "$\\int_{-1}^0g=1-\\frac16=\\frac56$, $\\int_0^1g=\\frac16$, 한 주기 합 $1$. $\\int_{-3}^2g=2\\cdot1+\\int_{-1}^0g=\\frac{17}6$",
+  "legacy": {
+    "category": "정적분의 계산(3) : 구간에 따라 다르게 정의된 함수",
+    "book_no": 45,
+    "question_page": 23,
+    "solution_page": 67
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-06"
+}

@@ -103,9 +103,36 @@ class TemplateError(RuntimeError):
     pass
 
 
+MEMO = ('<div class="memo"><div class="box memo-box"><div class="box-label">{label}</div>'
+        '<div class="lines memo-lines"></div></div></div>')
+NAV_RE = re.compile(r'(<div class="nav"><div class="tri"></div><div>[^<]+</div>)(</div>)')
+
+
 def _specials(name: str, body: str) -> str:
-    """구조를 바꾸지 않는 선에서 필요한 치환 (권 칸 수, 선지, 배점, 없는 해설 줄)"""
+    """구조를 바꾸지 않는 선에서 필요한 치환 (권 칸 수, 선지, 배점, 없는 해설 줄, 쪽 번호)"""
+    # 꼬리말에 다음 코너 안내(▼ FIRST PITCH)가 있는 쪽도 쪽 번호를 함께 찍는다
+    body = NAV_RE.sub(r'\1<div class="pg"><span data-slot="PAGE">000</span></div>\2', body)
+    if name == "PRACTICE":
+        body, n = re.subn(r'<div class="k">연습 문항 ', '<div class="k"><span class="en">PRACTICE</span>연습 문항 ', body)
+        if n != 1:
+            raise TemplateError("PRACTICE 머리 구조가 바뀜")
+    if name == "REPLAY":  # 남는 아래 공간은 직접 쓰는 메모 칸 (좁으면 STS_ext.html CSS가 숨긴다)
+        body, n = re.subn(r"(<!-- REPEAT:END REPLAY_ITEM -->\n)", r"\1    " + MEMO.format(label="내 풀이에서 같은 실수 찾기") + "\n", body)
+        if n != 1:
+            raise TemplateError("REPLAY 반복 구조가 바뀜")
+    if name == "SIGN_BOOK":
+        body, n = re.subn(r'(<div class="box-body">\[\[ 이 챕터의 판단이[^\n]*\n\s*</div>\n)', r"\1    " + MEMO.format(label="이 챕터를 내 말로 한 줄 정리") + "\n", body)
+        if n != 1:
+            raise TemplateError("SIGN_BOOK 구조가 바뀜")
+    if name == "DUGOUT_NOTE":  # 채점 칸은 문항 수에 맞춰 폭을 채운다
+        body, n = re.subn(r'<div class="bs-grid">', '<div class="bs-grid" style="grid-template-columns:repeat({{ P.bs_cols }},1fr)">', body)
+        if n != 1:
+            raise TemplateError("DUGOUT_NOTE 채점 칸 구조가 바뀜")
     if name == "COVER":
+        # 권 칸은 전체 권 수만큼만 (10권이 넘으면 10칸씩 줄바꿈)
+        body, n = re.subn(r"grid-template-columns:repeat\(10,1fr\)", "grid-template-columns:repeat({{ [book.weeks|length, 10]|min }},1fr)", body)
+        if n != 1:
+            raise TemplateError("COVER 권 칸 격자 구조가 바뀜")
         body, n = re.subn(r"(?:[ \t]*<div class=\"wk[^\n]*\n)+",
                           "      {% for w in book.weeks %}<div class=\"wk{{ ' now' if w.now else '' }}\">"
                           "{{ w.label }}</div>{% endfor %}\n", body)
@@ -115,7 +142,8 @@ def _specials(name: str, body: str) -> str:
         body, n = re.subn(r'<div class="choices">(?:<div>[①②③④⑤] \[\[ \]\]</div>){5}</div>',
                           '<div class="choices{{ q.choices_class }}">{% for c in q.choices %}'
                           '<div>{{ c.label }} {{ c.html }}</div>{% endfor %}</div>', body)
-        body, m = re.subn(r'<span class="pt">\[4점\]</span>', '<span class="pt">[{{ q.points }}점]</span>', body)
+        # 배점은 build가 본문 끝 낱말과 묶어 q.text에 넣는다
+        body, m = re.subn(r' <span class="pt">\[4점\]</span>', '', body)
         if n != 1 or m != 1:
             raise TemplateError(f"{name} 선지·배점 구조가 바뀜")
         body = "{% set q = P.q %}" + body

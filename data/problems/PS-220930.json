@@ -1,0 +1,45 @@
+{
+  "id": "PS-220930",
+  "subject": "확률과 통계",
+  "source": {
+    "code": "220930",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 30,
+    "points": 4,
+    "label": "2021년 9월 고3 30번"
+  },
+  "question": "네 명의 학생 $\\mathrm{A,B,C,D}$에게 같은 종류의 사인펜 $14$개를 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하시오.",
+  "condition": "(가) 각 학생은 $1$개 이상의 사인펜을 받는다.\\\\(나) 각 학생이 받는 사인펜의 개수는 $9$ 이하이다.\\\\(다) 적어도 한 학생은 짝수 개의 사인펜을 받는다.",
+  "choices": null,
+  "answer": "218",
+  "answer_value": "218",
+  "figure": null,
+  "theme": {
+    "primary": "확률과 통계-06",
+    "primary_name": "중복조합 - 부등식 응용형",
+    "links": [
+      "확률과 통계-08"
+    ]
+  },
+  "first_judgment": "합이 $14$(짝수)이므로 홀수 개를 받는 학생 수는 짝수 — (다)는 '짝수 개 받는 학생이 2명 또는 4명'으로 바뀐다.",
+  "behavior": "추론",
+  "reasoning": [
+    "경우 나누기",
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [],
+  "solution_ref": "(i) 짝수 2명·홀수 2명: $_4C_2\\cdot({}_4H_4-2)=6\\cdot33=198$. (ii) 4명 모두 짝수: $a+b+c+d=3$ → $_4H_3=20$. 합 $218$",
+  "legacy": {
+    "category": "'적어도'의 조건이 있는 중복조합의 수",
+    "book_no": 12,
+    "question_page": 6,
+    "solution_page": 31
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "PS-01"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "M2-260615",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "260615",
+    "year": 2026,
+    "exam": "6월 모의평가",
+    "number": 15,
+    "points": 4,
+    "label": "2025년 6월 고3 15번"
+  },
+  "question": "상수 $k$와 $f'(0)=6$인 삼차함수 $f(x)$에 대하여 함수 $g(x)=\\begin{cases}f(x)+k & (|x|>1)\\\\ -f(x) & (|x|\\le1)\\end{cases}$이 다음 조건을 만족시킬 때, $k+f\\left(\\dfrac12\\right)$의 값은?",
+  "condition": "(가) 모든 실수 $a$에 대하여 $\\displaystyle\\lim_{x\\to a+}\\frac{g(x)-g(a)}{x-a}$의 값이 존재하고 그 값은 $0$ 이하이다.\\\\(나) $x$에 대한 방정식 $g(x)=t$의 서로 다른 실근의 개수가 $2$가 되도록 하는 실수 $t$의 최댓값은 $13$이다.",
+  "choices": [
+    "\\frac{15}4",
+    "\\frac{27}4",
+    "\\frac{39}4",
+    "\\frac{51}4",
+    "\\frac{63}4"
+  ],
+  "answer": "1",
+  "answer_value": "\\frac{15}4",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-09",
+    "primary_name": "증가/감소, 극대/극소, 최대/최소",
+    "links": [
+      "수학Ⅱ-07",
+      "수학Ⅱ-04"
+    ]
+  },
+  "first_judgment": "(가)는 우미분계수가 모두 $0$ 이하라는 뜻이므로 $|x|>1$에서 $f'\\le0$, $|x|<1$에서 $f'\\ge0$ → $f'(\\pm1)=0$.",
+  "behavior": "문제해결",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S16",
+    "S18"
+  ],
+  "solution_ref": "$f'(x)=3a(x+1)(x-1)$, $f'(0)=6$ → $a=-2$, $b=0$, $f=-2x^3+6x+d$. $x=1$ 우극한 존재 → $f(1)+k=-f(1)$, $f(1)=-\\frac k2$. (나) $g(-1)=-f(-1)=13$ → $d=-9$. $f(1)=-5=-\\frac k2$ → $k=10$. $f\\left(\\frac12\\right)=-\\frac{25}4$. $k+f\\left(\\frac12\\right)=\\frac{15}4$",
+  "legacy": {
+    "category": "삼차함수의 극값(3) : 주어진 구간에서 삼차함수가 극값을 가질 조건",
+    "book_no": 24,
+    "question_page": 12,
+    "solution_page": 53
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-04"
+}

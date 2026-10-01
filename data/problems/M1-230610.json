@@ -1,0 +1,54 @@
+{
+  "id": "M1-230610",
+  "subject": "수학Ⅰ",
+  "source": {
+    "code": "230610",
+    "year": 2023,
+    "exam": "6월 모의평가",
+    "number": 10,
+    "points": 4,
+    "label": "2022년 6월 고3 10번"
+  },
+  "question": "그림과 같이 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=2$, $\\overline{\\mathrm{AC}}>3$이고 $\\cos(\\angle\\mathrm{BAC})=\\dfrac78$인 삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{AC}$의 중점을 $\\mathrm{M}$, 삼각형 $\\mathrm{ABC}$의 외접원이 직선 $\\mathrm{BM}$과 만나는 점 중 $\\mathrm{B}$가 아닌 점을 $\\mathrm{D}$라 할 때, 선분 $\\mathrm{MD}$의 길이는?",
+  "condition": null,
+  "choices": [
+    "\\frac{3\\sqrt{10}}5",
+    "\\frac{7\\sqrt{10}}{10}",
+    "\\frac{4\\sqrt{10}}5",
+    "\\frac{9\\sqrt{10}}{10}",
+    "\\sqrt{10}"
+  ],
+  "answer": "3",
+  "answer_value": "\\frac{4\\sqrt{10}}5",
+  "figure": {
+    "description": "삼각형 ABC의 외접원, AC의 중점 M, 직선 BM이 원과 다시 만나는 점 D",
+    "source_page": 19
+  },
+  "theme": {
+    "primary": "수학Ⅰ-12",
+    "primary_name": "사인법칙과 코사인법칙",
+    "links": []
+  },
+  "first_judgment": "코사인법칙으로 $\\overline{\\mathrm{AC}}$를 구한 뒤, 원의 할선 성질(닮음) $\\overline{\\mathrm{MA}}\\cdot\\overline{\\mathrm{MC}}=\\overline{\\mathrm{MB}}\\cdot\\overline{\\mathrm{MD}}$를 쓴다.",
+  "behavior": "계산",
+  "reasoning": [
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S07",
+    "S08"
+  ],
+  "solution_ref": "$4=9+a^2-\\frac{21}4a$ → $(4a-5)(a-4)=0$, $a=4$. $\\overline{\\mathrm{MB}}^2=9+4-2\\cdot3\\cdot2\\cdot\\frac78=\\frac52$, $\\overline{\\mathrm{MB}}=\\frac{\\sqrt{10}}2$. $2\\cdot2=\\frac{\\sqrt{10}}2\\overline{\\mathrm{MD}}$ → $\\overline{\\mathrm{MD}}=\\frac{4\\sqrt{10}}5$",
+  "legacy": {
+    "category": "코사인법칙",
+    "book_no": 37,
+    "question_page": 19,
+    "solution_page": 60
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M1-07"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "M1-220910",
+  "concept_refs": [
+    "수학Ⅰ-09-C1"
+  ],
+  "guide": "'곡선이 직선 $y=a$와 만나는 점' = 최댓점이다. 방정식 $\\sin b\\pi x=1$을 풀 필요 없이 주기 $\\frac2b$만 구하면 최댓점의 $x$좌표는 주기의 $\\frac14$, $\\frac54$ 위치로 바로 적힌다. 정의역 $0\\le x\\le\\frac3b$는 주기의 $1.5$배이므로 최댓점이 정확히 두 개다.\n그 뒤는 넓이·기울기곱 두 식으로 $a,b$ 두 미지수를 정하는 연립이다.",
+  "solutions": [
+    {
+      "title": "풀이 · 주기의 $\\frac14$ 위치로 최댓점 찍기",
+      "steps": [
+        {
+          "label": "주기와 최댓점",
+          "body": "$y=a\\sin b\\pi x$의 주기는 $\\frac{2\\pi}{b\\pi}=\\frac2b$. 최댓점은 주기의 $\\frac14$ 지점과 거기서 한 주기 뒤이므로\n$$\\mathrm A\\left(\\tfrac1{2b},a\\right),\\qquad \\mathrm B\\left(\\tfrac1{2b}+\\tfrac2b,a\\right)=\\left(\\tfrac5{2b},a\\right)$$\n(그림에서도 A, B는 이웃한 두 봉우리다.)"
+        },
+        {
+          "label": "넓이 조건",
+          "body": "밑변 $\\overline{\\mathrm{AB}}=$ 주기 $=\\frac2b$, 높이 $a$(A, B의 $y$좌표)이므로\n$$\\tfrac12\\cdot\\tfrac2b\\cdot a=\\tfrac ab=5\\ \\Rightarrow\\ a=5b$$"
+        },
+        {
+          "label": "기울기의 곱",
+          "body": "OA의 기울기 $=\\dfrac{a}{1/(2b)}=2ab$, OB의 기울기 $=\\dfrac{a}{5/(2b)}=\\dfrac{2ab}5$.\n$$2ab\\cdot\\tfrac{2ab}5=\\tfrac{4(ab)^2}5=\\tfrac54\\ \\Rightarrow\\ ab=\\tfrac54\\quad(\\because a,b>0)$$"
+        },
+        {
+          "label": "연립",
+          "body": "$a=5b$를 대입하면 $5b^2=\\frac54$, $b=\\frac12$, $a=\\frac52$. 따라서 $a+b=3$ → ③"
+        }
+      ]
+    }
+  ],
+  "supplement": "$\\sin b\\pi x=1$을 풀어 $b\\pi x=\\frac\\pi2+2n\\pi$로 가도 되지만, '최댓점 = 주기의 $\\frac14$ 지점, 다음 최댓점 = 한 주기 뒤'를 바로 쓰면 식이 필요 없다. 또 두 최댓점 사이 거리는 항상 주기이므로 밑변이 곧 주기라는 점을 놓치지 말자. 기울기 곱이 $ab$에 대한 식으로 깔끔히 정리되는 것은 두 점의 $x$좌표가 모두 $\\frac1b$의 배수이기 때문이다.",
+  "skill_point": "같은 높이의 이웃한 두 점 사이 거리 = 주기. 최댓점은 주기의 $\\frac14$ 지점.",
+  "answer": "3"
+}

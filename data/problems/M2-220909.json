@@ -1,0 +1,50 @@
+{
+  "id": "M2-220909",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "220909",
+    "year": 2022,
+    "exam": "9월 모의평가",
+    "number": 9,
+    "points": 4,
+    "label": "2021년 9월 고3 9번"
+  },
+  "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$ $(t>0)$에서의 속도 $v(t)$가 $v(t)=-4t^3+12t^2$이다. 시각 $t=k$에서 점 $\\mathrm{P}$의 가속도가 $12$일 때, 시각 $t=3k$에서 $t=4k$까지 점 $\\mathrm{P}$가 움직인 거리는? (단, $k$는 상수이다.)",
+  "condition": null,
+  "choices": [
+    "23",
+    "25",
+    "27",
+    "29",
+    "31"
+  ],
+  "answer": "3",
+  "answer_value": "27",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "가속도 $a=-12t^2+24t=12$에서 $k=1$을 얻고, $[3,4]$에서 $v\\le0$이므로 절댓값을 벗긴다.",
+  "behavior": "계산",
+  "reasoning": [
+    "조건의 식 번역"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "$-12k^2+24k=12$ → $k=1$. $v=-4t^2(t-3)\\le0$ ($3\\le t\\le4$). $\\int_3^4(4t^3-12t^2)dt=[t^4-4t^3]_3^4=27$",
+  "legacy": {
+    "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+    "book_no": 79,
+    "question_page": 40,
+    "solution_page": 83
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-09"
+}

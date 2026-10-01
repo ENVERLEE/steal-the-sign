@@ -1,15 +1,18 @@
 ---
 globs:
-  - "data/db.json"
+  - "data/problems/**"
   - "data/themes.json"
-  - "data/solutions.json"
+  - "data/solutions/**"
+  - "data/concepts.json"
   - "work/book*.json"
   - "schema/**"
 ---
 
 # 스키마 참고 문서
 
-## db.json — 기출 데이터
+## data/problems/{id}.json — 기출 데이터 (문항 하나 = 파일 하나)
+
+- 파일명 = `id`. 아래 스키마 + `"home": "M1-01"`(홈 테마, 필수, 208문항이 한 번씩). `data/index.json`은 validate가 자동 생성하는 한 줄 요약이다. **문항을 고를 때는 index.json만 읽고, 고른 문항 파일만 연다.**
 
 ```json
 {
@@ -34,7 +37,8 @@ globs:
 ```
 
 - `source.code`=`YYMMNN` 학년도 기준. `label`은 시행연도. `exam`은 6월·9월·수능.
-- 범위: 2022~2027학년도(2021년 6월~2026년 6월) 평가원 기출, 전부 4점.
+- 범위: 2022~2027학년도(2021년 6월~2026년 6월) 평가원 기출. **배점은 3점·4점 허용**(`config.points.past`). 3점도 id는 같은 형식(`M1-YYMMNN`, 번호가 달라 충돌 없음). 출처 표기 `[N점]`은 문항의 `source.points`.
+- **id 접두어(고정)**: 평가원 기출 `M1-`·`M2-`·`PS-` + `YYMMNN`, 교재 판독 `T-`, 창작 `C-`. 새 출처(교육청 등)를 추가하면 접두어를 여기에 먼저 정하고 `config.json` `sources`·`validate_sources.PREFIX`에 반영한다.
 - 번호: 공통 1~22, 확통 23~30. 수학Ⅰ·Ⅱ code 충돌 검사 대상.
 - 텍스트: `$…$` 수식, `\\`·`\n` 줄바꿈. **선지는 `$` 없이 LaTeX만**.
 - 정답: 208문항 전부 검산 완료.
@@ -45,19 +49,21 @@ globs:
 원칙: 교과서 소단원이 아니라 **평가원 첫 판단**이 같은 문항끼리 묶음.
 
 - 28개 = 수학Ⅰ 11(`M1-01`~`11`) + 수학Ⅱ 10(`M2-01`~`10`) + 확통 7(`PS-01`~`07`)
-- 208문항이 홈 테마 하나에 한 번씩 배정(테마당 5~10)
-- **교재 테마는 themes.json 기준.** db의 `theme.primary`는 기존 64분류(개념 id 출처로만 사용).
+- 208문항이 홈 테마 하나에 한 번씩 배정(테마당 5~10, 문항 파일의 `home`)
+- **교재 테마는 themes.json 기준.** 테마의 `problem_ids`는 문항 파일의 `home`에서 자동 집계(파일에 쓰지 않는다). `related_ids`만 themes.json에 둔다. 문항의 `theme.primary`는 기존 64분류(개념 id 출처로만 사용).
 - **기출 중복 사용 허용**: 우선 `problem_ids`·`related_ids`에서. 그 밖은 `reason` 필수(경고).
 - 같은 DAY 중복 금지, 책 전체 3회 이하 사용, 홈 테마 밖이면 `reuse_note` 필수.
 
-## solutions.json — 해설 및 개념
+## 해설 및 개념
 
-- `themes[]`: 54개 테마의 개념·의사결정 흐름. 기존 64분류 기준.
-- `problems[]`: db 레코드 + `study_solution`(풀이).
+- `data/concepts.json`: `themes[]` 54개 테마의 개념·의사결정 흐름. 기존 64분류 기준.
+- `data/solutions/{id}.json`: 문항 하나의 `study_solution`(풀이).
 - 풀이: `guide`(조건 번역) → `solutions`(풀이 1 스킬, 풀이 2 정석) → `supplement`(비교) → `skill_point`.
 - 내부 개념 id `(수학Ⅰ-02-C1)`는 build가 지우거나 「개념 이름」으로 변환.
 
 ## book.json — 교재 구성
+
+- 한 파일 또는 폴더(`work/book_x/meta.json` + `day01.json`…). 큰 책은 `run.py split`으로 나눠 **고칠 DAY 파일만 연다**. 검사·조판은 폴더를 한 책으로 합쳐 읽는다.
 
 ```json
 {
@@ -87,6 +93,8 @@ globs:
 - **개념: 교과서형** = `sections`(제목·블록) + `card`(정리) + `banner`(요약) + `example`(교과서적 vs 실전 해법) + `map`(5행).
 - 텍스트 강조: `**굵게**`, `__밑줄(형광)__`. 수식 뒤 조사($x$에)는 build가 묶음.
 - **build 자동화**: 목차, 쪽번, 정답표, DUGOUT NOTE, 실전 개념 행, 해설지 (숏컷 = 조건번역+풀이1, 정석 = 풀이2).
+- `scale`: `normal`(기본) | `large`. large는 테마당 4~6 DAY·30~48문항·기출 12개 이상(`config.theme_plan.large`)이고 **연습 문항이 쉬운 것→어려운 것 순서가 아니면 오류**(normal은 경고). DAY가 올라갈수록 어려워지게 짠다.
+- `practice[].difficulty`: 기본 적용 < 조건 변형 < 복합 사고 < 고난도 (이 순서로 놓는다). 기출 난도 추정: 3점=기본 적용, 4점 고난도 번호=고난도, 그 밖의 4점=행동 영역(추론·문제해결이면 복합 사고, 아니면 조건 변형).
 - 샘플: `samples/book.sample.json` (M1-01, 2 DAY).
 
 ## figure 명세

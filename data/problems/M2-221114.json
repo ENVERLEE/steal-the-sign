@@ -1,0 +1,51 @@
+{
+  "id": "M2-221114",
+  "subject": "수학Ⅱ",
+  "source": {
+    "code": "221114",
+    "year": 2022,
+    "exam": "대학수학능력시험",
+    "number": 14,
+    "points": 4,
+    "label": "2021년 11월 고3 14번"
+  },
+  "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 위치 $x(t)$가 두 상수 $a,b$에 대하여 $x(t)=t(t-1)(at+b)$ $(a\\ne0)$이다. 점 $\\mathrm{P}$의 시각 $t$에서의 속도 $v(t)$가 $\\displaystyle\\int_0^1|v(t)|\\,dt=2$를 만족시킬 때, <보기>에서 옳은 것만을 있는 대로 고른 것은?",
+  "condition": "ㄱ. $\\displaystyle\\int_0^1v(t)\\,dt=0$\\\\ㄴ. $|x(t_1)|>1$인 $t_1$이 열린구간 $(0,1)$에 존재한다.\\\\ㄷ. $0\\le t\\le1$인 모든 $t$에 대하여 $|x(t)|<1$이면 $x(t_2)=0$인 $t_2$가 열린구간 $(0,1)$에 존재한다.",
+  "choices": [
+    "ㄱ",
+    "ㄱ, ㄴ",
+    "ㄱ, ㄷ",
+    "ㄴ, ㄷ",
+    "ㄱ, ㄴ, ㄷ"
+  ],
+  "answer": "3",
+  "answer_value": "ㄱ, ㄷ",
+  "figure": null,
+  "theme": {
+    "primary": "수학Ⅱ-19",
+    "primary_name": "위치, 속도, 가속도",
+    "links": []
+  },
+  "first_judgment": "$x(0)=x(1)=0$이므로 변위는 $0$이고, 움직인 거리 $2$와 원점으로부터 거리의 관계로 ㄴ·ㄷ을 판단한다.",
+  "behavior": "추론",
+  "reasoning": [
+    "조건의 식 번역",
+    "그래프·도형 해석"
+  ],
+  "strategy_ids": [
+    "S26"
+  ],
+  "solution_ref": "ㄱ: 변위 $x(1)-x(0)=0$ (참). ㄴ: $|x(t_1)|>1$이면 거리 $>2$로 모순 (거짓). ㄷ: $|x|<1$인데 거리 2이면 적어도 한 번 원점을 지남 (참). 답 ㄱ, ㄷ",
+  "legacy": {
+    "category": "움직인 거리(1) : 직선 운동에서의 위치와 움직인 거리",
+    "book_no": 78,
+    "question_page": 39,
+    "solution_page": 83
+  },
+  "check": {
+    "answer_match": null,
+    "excluded": false,
+    "needs_review": []
+  },
+  "home": "M2-10"
+}
